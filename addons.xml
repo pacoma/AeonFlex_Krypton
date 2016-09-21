@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="context.flex.artwork.downloader.auto" name="Flex Context Addon - Artwork Downloader Auto" version="1.0.0" provider-name="Pacoma/Marc0810">
+	<requires>
+		<import addon="xbmc.python" version="2.20.0" />
+		<import addon="script.artwork.downloader" version="13.1.0" />
+	</requires>
+	<extension point="kodi.context.item" library="context.py">
+		<item>
+			<label>32000</label>
+			<visible>Container.Content(tvshows)|Container.Content(movies)|Container.Content(musicvideos)</visible>
+			<parent>kodi.core.manage</parent>
+		</item>
+	</extension>
+	<extension point="kodi.addon.metadata">
+		<summary lang="en">Download all missing artwork configured in Artwork Downloader for the selected item.</summary>
+		<description lang="en">Download all missing artwork configured in Artwork Downloader for the selected item. Added to the 'Manage...' context menu. The add-on Artwork Downloader does all the work, this just runs it for the selected item.</description>
+		<disclaimer lang="en" />
+		<platform>all</platform>
+		<language />
+		<website />
+		<forum />
+		<email />
+		<license>GNU General Public License, v2</license>
+		<source />
+	</extension>
+</addon>
+<addon id="context.flex.artwork.downloader.gui" name="Flex Context Addon - Artwork Downloader GUI" version="1.0.0" provider-name="Pacoma/Marc0810">
+	<requires>
+		<import addon="xbmc.python" version="2.20.0" />
+		<import addon="script.artwork.downloader" version="13.1.0" />
+	</requires>
+	<extension point="kodi.context.item" library="context.py">
+		<item>
+			<label>32000</label>
+			<visible>Container.Content(tvshows)|Container.Content(movies)|Container.Content(musicvideos)</visible>
+			<parent>kodi.core.manage</parent>
+		</item>
+	</extension>
+	<extension point="kodi.addon.metadata">
+		<summary lang="en">Show Artwork Downloader GUI for the selected item.</summary>
+		<description lang="en">Show Artwork Downloader GUI for the selected item. Added to the 'Manage...' context menu. The add-on Artwork Downloader does all the work, this just runs it for the selected item.</description>
+		<disclaimer lang="en" />
+		<platform>all</platform>
+		<language />
+		<website />
+		<forum />
+		<email />
+		<license>GNU General Public License, v2</license>
+		<source />
+	</extension>
+</addon>
+<addon id="resource.images.moviegenrefanart.flex" name="Flex Videogenre Artworks" version="0.0.1" provider-name="Marc0810">
+	<extension point="kodi.resource.images" compile="true" type="moviegenrefanart" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0"/>
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="de">Genre Artworks</summary>
+		<summary lang="en">Genre Artworks</summary>
+		<description lang="de">Videogenre Artworks f??ilme und Serien</description>
+		<description lang="en">Videogenre Artworks for movies and tvshows</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+<addon id="resource.images.skinbackgrounds.flex" name="Flex Home background text artworks" version="0.0.1" provider-name="Pacoma">
+	<extension point="kodi.resource.images" compile="false" type="skinbackgrounds" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0"/>
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="de">Home background text artworks</summary>
+		<description lang="de">Home background text artworks multiimages</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+<addon id="script.skin.info.service" name="Skin Info Service" version="1.0.0" provider-name="phil65">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.simplejson" version="2.0.10"/>
+	</requires>
+	<extension point="xbmc.python.library"          library="default.py" />
+    <extension point="xbmc.python.script"           library="default.py">
+        <provides>executable</provides>
+    </extension>
+	<extension point="xbmc.addon.metadata">
+		<language/>
+		<summary lang="en">Script used by skins to show extended media info.</summary>
+		<description lang="en">This script fetches extended information for several media types (artists, albums, movie sets etc.). Needs skin support.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+		<forum>-</forum>
+		<source>-</source>
+		<email>-</email>
+	</extension>
+</addon>
+<addon id="script.libraryeditor" name="Library Editor Script" version="0.9.0" provider-name="phil65">
+	<requires>
+		<import addon="xbmc.python" version="2.13.0"/>
+		<import addon="script.module.simplejson" version="3.3.0"/>
+	</requires>
+	<extension point="xbmc.python.library" library="default.py" />
+	<extension point="xbmc.addon.metadata">
+		<language/>
+		<summary lang="en">Library Editor Script</summary>
+		<description lang="en">This script makes it possible to edit movie details manually from within XBMC. Needs Skin Support</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+		<forum>-</forum>
+		<source>-</source>
+		<email>-</email>
+	</extension>
+</addon>
+<addon id="script.playalbum" name="Play Album Script" version="2.0.2" provider-name="ronie">
+	<requires>
+		<import addon="xbmc.python" version="2.20.0"/>
+		<import addon="script.module.simplejson" version="3.3.0"/>
+	</requires>
+	<extension point="xbmc.python.library" library="default.py" />
+	<extension point="xbmc.addon.metadata">
+		<language></language>
+		<summary lang="en">Play Album Script</summary>
+		<description lang="en">Script will play a full album when executed in the album info dialog.</description>
+		<platform>all</platform>
+		<forum>http://forum.kodi.tv/showthread.php?tid=104189</forum>
+		<source>https://github.com/ronie/script.playalbum</source>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
+		<website></website>
+		<email></email>
+	</extension>
+</addon>
+<addon id="script.moviesetart" name="Movie Set Artwork Automator" version="0.2.2" provider-name="Trent Fitzgibbon">
+	<extension point="xbmc.python.script" library="default.py"></extension> 
+	<extension point="xbmc.addon.metadata">
+		<language></language>
+		<platform>all</platform>
+		<summary>Movie Set Artwork Automator</summary>
+		<description>This addon will automatically set artwork for all movie sets in your library. The addon can search for common parent folders of movies within a set or you can specify a single artwork folder containing artwork for all your movie sets (eg &lt;set name&gt;-poster.jpg).</description>
+	</extension>
+</addon>
+<addon id="service.nfo.watchedstate.updater_axbmcuser" name="NFO Watchedstate Updater (axbmcuser MOD)" version="1.1.12" provider-name="4lb3rtO, axbmcuser (MOD+FIX)">
+	<extension point="xbmc.service" library="default.py" start="login"/>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Watchedstate .NFO Updater</summary>
+		<description lang="en">This addon writes the watchedstate to the corresponding .nfo file as soon as it updated within the KODI library.</description>
+		<platform>all</platform>
+		<license/>
+		<forum>http://forum.kodi.tv/showthread.php?tid=242892</forum>
+		<website/>
+		<email/>
+		<source/>
+		<news>[B]1.1.12[/B] (2016-08-05)
+- Minor cleanup
+
+[B]1.1.11[/B] (2016-08-03)
+- Minor cleanup
+
+[B]1.1.10[/B] (2016-07-23)
+- axbmcuser MOD: Fix for KODI 17 (Krypton): "videolibrary" renamed to "Videos" [default.py]
+		</news>
+		<assets>
+			<icon>resources/icon.png</icon>
+		</assets>
+	</extension>
+</addon>
+<addon id="skin.AeonFlex" version="2.0.0" name="AeonFlex" provider-name="Pacoma/Marc0810">
+	<requires>
+		<import addon="xbmc.gui" version="5.12.0"/>
+		<import addon="script.skinshortcuts" version="1.0.10"/>
+	  </requires>
+	<extension point="xbmc.gui.skin" defaultthemename="textures.xbt" debugging="false" effectslowdown="1.0">
+		<res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="de">AeonFlex von Pacoma und Marc0810, Version 2.0.0</summary>
+		<platform>all</platform>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>extras\skinsettings\appearance.jpg</screenshot>
+			<screenshot>extras\skinsettings\artworkaddons.jpg</screenshot>
+			<screenshot>extras\skinsettings\farben.jpg</screenshot>
+			<screenshot>extras\skinsettings\helferscript.jpg</screenshot>
+			<screenshot>extras\skinsettings\home.jpg</screenshot>
+			<screenshot>extras\skinsettings\programme.jpg</screenshot>
+			<screenshot>extras\skinsettings\statusmarkierungen.jpg</screenshot>
+			<screenshot>extras\skinsettings\zusatzfeatures.jpg</screenshot>
+		</assets>
+	</extension>
+	<language>de</language>
+	<license>Creative Commons Attribution-Share Alike 3.0 United States</license>
+</addon>
+</addons>
