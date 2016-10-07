@@ -163,7 +163,7 @@
 		</assets>
 	</extension>
 </addon>
-<addon id="skin.AeonFlex" version="2.0.0" name="AeonFlex" provider-name="Pacoma/Marc0810">
+<addon id="skin.AeonFlex" version="2.0.1" name="AeonFlex" provider-name="Pacoma/Marc0810">
 	<requires>
 		<import addon="xbmc.gui" version="5.12.0"/>
 		<import addon="script.skinshortcuts" version="1.0.10"/>
@@ -172,7 +172,7 @@
 		<res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary lang="de">AeonFlex von Pacoma und Marc0810, Version 2.0.0</summary>
+		<summary lang="de">AeonFlex von Pacoma und Marc0810, Version 2.0.1</summary>
 		<platform>all</platform>
 		<assets>
 			<icon>resources/icon.png</icon>
