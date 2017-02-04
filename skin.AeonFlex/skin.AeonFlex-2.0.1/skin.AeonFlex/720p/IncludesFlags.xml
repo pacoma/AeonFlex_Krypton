@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- ####Flags ####-->
+	<include name="flags_image_texture">
+		<width>84</width>
+		<height>50</height>
+		<aspectratio>keep</aspectratio>
+		<fadetime>FanartCrossFadeTime</fadetime>
+	</include>
+
+	<include name="flags_image_separator">
+		<width>1</width>
+		<height>50</height>
+		<texture colordiffuse="$VAR[AC_value_shadow_color]">flags/flagseparator.png</texture>
+	</include>
+
+	<include name="flags_label">
+		<width>71</width>
+		<height>50</height>
+		<align>center</align>
+		<font>SemiSmall</font>
+		<fadetime>FanartCrossFadeTime</fadetime>
+	</include>
+	
+	<!-- Mpaa Flags  -->
+	<variable name="flags_value_mpaa">
+		<value condition="String.Contains(ListItem.Mpaa,fsk-0) | String.Contains(ListItem.Mpaa,fsk0) | String.Contains(ListItem.Mpaa,Rated 0) | String.Contains(ListItem.Mpaa,fsk 0) | String.Contains(ListItem.Mpaa,fsk o.A.) | String.Contains(ListItem.Mpaa,o.A.) | String.Contains(ListItem.Mpaa,ab 0) | String.Contains(ListItem.Mpaa,Germany:0) | String.Contains(ListItem.Mpaa,Germany:o.Al.)">flags/mpaa/fsk-0.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,fsk-6) | String.Contains(ListItem.Mpaa,fsk6) | String.Contains(ListItem.Mpaa,Rated 6) | String.Contains(ListItem.Mpaa,fsk 6) | String.Contains(ListItem.Mpaa,ab 6) | String.Contains(ListItem.Mpaa,Germany:6)">flags/mpaa/fsk-6.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,fsk-12) | String.Contains(ListItem.Mpaa,fsk12) | String.Contains(ListItem.Mpaa,Rated 12) | String.Contains(ListItem.Mpaa,fsk 12) | String.Contains(ListItem.Mpaa,ab 12) | String.Contains(ListItem.Mpaa,Germany:12)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,fsk-16) | String.Contains(ListItem.Mpaa,fsk16) | String.Contains(ListItem.Mpaa,Rated 16) | String.Contains(ListItem.Mpaa,fsk 16) | String.Contains(ListItem.Mpaa,ab 16) | String.Contains(ListItem.Mpaa,Germany:16)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,fsk-18) | String.Contains(ListItem.Mpaa,fsk18) | String.Contains(ListItem.Mpaa,Rated 18) | String.Contains(ListItem.Mpaa,fsk 18) | String.Contains(ListItem.Mpaa,ab 18) | String.Contains(ListItem.Mpaa,Germany:18)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,TV-Y)">flags/mpaa/fsk-0.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,TV-PG)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,TV-14)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,TV-MA) | String.Contains(ListItem.Mpaa,TV-18) | String.EndsWith(ListItem.Mpaa,18)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,TV-Y7) | String.EndsWith(ListItem.Mpaa,6)">flags/mpaa/fsk-6.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,NR) | String.Contains(ListItem.Mpaa,Rated NR) | String.Contains(ListItem.Mpaa,USA:NR)|String.Contains(ListItem.Mpaa,not rated)">flags/mpaa/fsk-0.png</value>
+		<value condition="[String.Contains(ListItem.Mpaa,PG) | String.Contains(ListItem.Mpaa,Rated PG) | String.Contains(ListItem.Mpaa,USA:PG)] + !String.Contains(ListItem.Mpaa,PG-13) + !String.Contains(ListItem.Mpaa,Rated PG-13) + !String.Contains(ListItem.Mpaa,Rated: PG-13)">6</value>
+		<value condition="String.Contains(ListItem.Mpaa,PG-13) | String.Contains(ListItem.Mpaa,Rated PG-13) | String.Contains(ListItem.Mpaa,USA:PG-13)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,R) | String.Contains(ListItem.Mpaa,Rated R) | String.Contains(ListItem.Mpaa,USA:R)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,NC-17) | String.Contains(ListItem.Mpaa,Rated NC-17) | String.Contains(ListItem.Mpaa,USA:NC-17)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(ListItem.Mpaa,G) | String.Contains(ListItem.Mpaa,Rated G) | String.Contains(ListItem.Mpaa,USA:G)">flags/mpaa/fsk-0.png</value>
+	</variable>
+
+	<!-- Mpaa Flags Global Search -->
+	<variable name="flags_value_mpaaGS">
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),fsk-0) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk0) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated 0) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk 0) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk o.A.) | String.Contains(Container(100).ListItem.Property(Mpaa),o.A.) | String.Contains(Container(100).ListItem.Property(Mpaa),ab 0) | String.Contains(Container(100).ListItem.Property(Mpaa),Germany:0) | String.Contains(Container(100).ListItem.Property(Mpaa),Germany:o.Al.)">flags/mpaa/fsk-0.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),fsk-6) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk6) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated 6) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk 6) | String.Contains(Container(100).ListItem.Property(Mpaa),ab 6) | String.Contains(Container(100).ListItem.Property(Mpaa),Germany:6)">flags/mpaa/fsk-6.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),fsk-12) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk12) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated 12) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk 12) | String.Contains(Container(100).ListItem.Property(Mpaa),ab 12) | String.Contains(Container(100).ListItem.Property(Mpaa),Germany:12)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),fsk-16) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk16) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated 16) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk 16) | String.Contains(Container(100).ListItem.Property(Mpaa),ab 16) | String.Contains(Container(100).ListItem.Property(Mpaa),Germany:16)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),fsk-18) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk18) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated 18) | String.Contains(Container(100).ListItem.Property(Mpaa),fsk 18) | String.Contains(Container(100).ListItem.Property(Mpaa),ab 18) | String.Contains(Container(100).ListItem.Property(Mpaa),Germany:18)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),TV-Y)">flags/mpaa/fsk-0.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),TV-PG)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),TV-14)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),TV-MA) | String.Contains(Container(100).ListItem.Property(Mpaa),TV-18) | String.EndsWith(Container(100).ListItem.Property(Mpaa),18)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),TV-Y7) | String.EndsWith(Container(100).ListItem.Property(Mpaa),6)">flags/mpaa/fsk-6.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),NR) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated NR) | String.Contains(Container(100).ListItem.Property(Mpaa),USA:NR)|String.Contains(Container(100).ListItem.Property(Mpaa),not rated)">flags/mpaa/fsk-0.png</value>
+		<value condition="[String.Contains(Container(100).ListItem.Property(Mpaa),PG) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated PG) | String.Contains(Container(100).ListItem.Property(Mpaa),USA:PG)] + !String.Contains(Container(100).ListItem.Property(Mpaa),PG-13) + !String.Contains(Container(100).ListItem.Property(Mpaa),Rated PG-13) + !String.Contains(Container(100).ListItem.Property(Mpaa),Rated: PG-13)">6</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),PG-13) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated PG-13) | String.Contains(Container(100).ListItem.Property(Mpaa),USA:PG-13)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),R) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated R) | String.Contains(Container(100).ListItem.Property(Mpaa),USA:R)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),NC-17) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated NC-17) | String.Contains(Container(100).ListItem.Property(Mpaa),USA:NC-17)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(Container(100).ListItem.Property(Mpaa),G) | String.Contains(Container(100).ListItem.Property(Mpaa),Rated G) | String.Contains(Container(100).ListItem.Property(Mpaa),USA:G)">flags/mpaa/fsk-0.png</value>
+	</variable>
+
+	<!-- Mpaa PlayerFlags  -->
+	<variable name="flags_value_player_mpaa">
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-0) | String.Contains(VideoPlayer.Mpaa,fsk0) | String.Contains(VideoPlayer.Mpaa,Rated 0) | String.Contains(VideoPlayer.Mpaa,fsk 0) | String.Contains(VideoPlayer.Mpaa,fsk o.A.) | String.Contains(VideoPlayer.Mpaa,o.A.) | String.Contains(VideoPlayer.Mpaa,ab 0) | String.Contains(VideoPlayer.Mpaa,Germany:0) | String.Contains(VideoPlayer.Mpaa,Germany:o.Al.)">flags/mpaa/fsk-0.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-6) | String.Contains(VideoPlayer.Mpaa,fsk6) | String.Contains(VideoPlayer.Mpaa,Rated 6) | String.Contains(VideoPlayer.Mpaa,fsk 6) | String.Contains(VideoPlayer.Mpaa,ab 6) | String.Contains(VideoPlayer.Mpaa,Germany:6)">flags/mpaa/fsk-6.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-12) | String.Contains(VideoPlayer.Mpaa,fsk12) | String.Contains(VideoPlayer.Mpaa,Rated 12) | String.Contains(VideoPlayer.Mpaa,fsk 12) | String.Contains(VideoPlayer.Mpaa,ab 12) | String.Contains(VideoPlayer.Mpaa,Germany:12)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-16) | String.Contains(VideoPlayer.Mpaa,fsk16) | String.Contains(VideoPlayer.Mpaa,Rated 16) | String.Contains(VideoPlayer.Mpaa,fsk 16) | String.Contains(VideoPlayer.Mpaa,ab 16) | String.Contains(VideoPlayer.Mpaa,Germany:16)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-18) | String.Contains(VideoPlayer.Mpaa,fsk18) | String.Contains(VideoPlayer.Mpaa,Rated 18) | String.Contains(VideoPlayer.Mpaa,fsk 18) | String.Contains(VideoPlayer.Mpaa,ab 18) | String.Contains(VideoPlayer.Mpaa,Germany:18)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-Y)">flags/mpaa/fsk-0.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-PG)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-14)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-MA) | String.Contains(VideoPlayer.Mpaa,TV-18) | String.EndsWith(VideoPlayer.Mpaa,18)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-Y7) | String.EndsWith(VideoPlayer.Mpaa,6)">flags/mpaa/fsk-6.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,NR) | String.Contains(VideoPlayer.Mpaa,Rated NR) | String.Contains(VideoPlayer.Mpaa,USA:NR)|String.Contains(VideoPlayer.Mpaa,not rated)">flags/mpaa/fsk-0.png</value>
+		<value condition="[String.Contains(VideoPlayer.Mpaa,PG) | String.Contains(VideoPlayer.Mpaa,Rated PG) | String.Contains(VideoPlayer.Mpaa,USA:PG)] + !String.Contains(VideoPlayer.Mpaa,PG-13) + !String.Contains(VideoPlayer.Mpaa,Rated PG-13) + !String.Contains(VideoPlayer.Mpaa,Rated: PG-13)">6</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,PG-13) | String.Contains(VideoPlayer.Mpaa,Rated PG-13) | String.Contains(VideoPlayer.Mpaa,USA:PG-13)">flags/mpaa/fsk-12.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,R) | String.Contains(VideoPlayer.Mpaa,Rated R) | String.Contains(VideoPlayer.Mpaa,USA:R)">flags/mpaa/fsk-16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,NC-17) | String.Contains(VideoPlayer.Mpaa,Rated NC-17) | String.Contains(VideoPlayer.Mpaa,USA:NC-17)">flags/mpaa/fsk-18.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,G) | String.Contains(VideoPlayer.Mpaa,Rated G) | String.Contains(VideoPlayer.Mpaa,USA:G)">flags/mpaa/fsk-0.png</value>
+	</variable>
+
+	<variable name="flags_value_player_mpaa_min">
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-0) | String.Contains(VideoPlayer.Mpaa,fsk0) | String.Contains(VideoPlayer.Mpaa,Rated 0) | String.Contains(VideoPlayer.Mpaa,fsk 0) | String.Contains(VideoPlayer.Mpaa,fsk o.A.) | String.Contains(VideoPlayer.Mpaa,o.A.) | String.Contains(VideoPlayer.Mpaa,ab 0) | String.Contains(VideoPlayer.Mpaa,Germany:0) | String.Contains(VideoPlayer.Mpaa,Germany:o.Al.)">osd/fsk_osd_0.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-6) | String.Contains(VideoPlayer.Mpaa,fsk6) | String.Contains(VideoPlayer.Mpaa,Rated 6) | String.Contains(VideoPlayer.Mpaa,fsk 6) | String.Contains(VideoPlayer.Mpaa,ab 6) | String.Contains(VideoPlayer.Mpaa,Germany:6)">osd/fsk_osd_6.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-12) | String.Contains(VideoPlayer.Mpaa,fsk12) | String.Contains(VideoPlayer.Mpaa,Rated 12) | String.Contains(VideoPlayer.Mpaa,fsk 12) | String.Contains(VideoPlayer.Mpaa,ab 12) | String.Contains(VideoPlayer.Mpaa,Germany:12)">osd/fsk_osd_12.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-16) | String.Contains(VideoPlayer.Mpaa,fsk16) | String.Contains(VideoPlayer.Mpaa,Rated 16) | String.Contains(VideoPlayer.Mpaa,fsk 16) | String.Contains(VideoPlayer.Mpaa,ab 16) | String.Contains(VideoPlayer.Mpaa,Germany:16)">osd/fsk_osd_16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,fsk-18) | String.Contains(VideoPlayer.Mpaa,fsk18) | String.Contains(VideoPlayer.Mpaa,Rated 18) | String.Contains(VideoPlayer.Mpaa,fsk 18) | String.Contains(VideoPlayer.Mpaa,ab 18) | String.Contains(VideoPlayer.Mpaa,Germany:18)">osd/fsk_osd_18.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-Y)">osd/fsk_osd_0.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-PG)">osd/fsk_osd_12.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-14)">osd/fsk_osd_16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-MA) | String.Contains(VideoPlayer.Mpaa,TV-18) | String.EndsWith(VideoPlayer.Mpaa,18)">osd/fsk_osd_18.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,TV-Y7) | String.EndsWith(VideoPlayer.Mpaa,6)">osd/fsk_osd_16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,NR) | String.Contains(VideoPlayer.Mpaa,Rated NR) | String.Contains(VideoPlayer.Mpaa,USA:NR)|String.Contains(VideoPlayer.Mpaa,not rated)">osd/fsk_osd_nr.png</value>
+		<value condition="[String.Contains(VideoPlayer.Mpaa,PG) | String.Contains(VideoPlayer.Mpaa,Rated PG) | String.Contains(VideoPlayer.Mpaa,USA:PG)] + !String.Contains(VideoPlayer.Mpaa,PG-13) + !String.Contains(VideoPlayer.Mpaa,Rated PG-13) + !String.Contains(VideoPlayer.Mpaa,Rated: PG-13)">6</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,PG-13) | String.Contains(VideoPlayer.Mpaa,Rated PG-13) | String.Contains(VideoPlayer.Mpaa,USA:PG-13)">osd/fsk_osd_12.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,R) | String.Contains(VideoPlayer.Mpaa,Rated R) | String.Contains(VideoPlayer.Mpaa,USA:R)">osd/fsk_osd_16.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,NC-17) | String.Contains(VideoPlayer.Mpaa,Rated NC-17) | String.Contains(VideoPlayer.Mpaa,USA:NC-17)">osd/fsk_osd_18.png</value>
+		<value condition="String.Contains(VideoPlayer.Mpaa,G) | String.Contains(VideoPlayer.Mpaa,Rated G) | String.Contains(VideoPlayer.Mpaa,USA:G)">osd/fsk_osd_0.png</value>
+	</variable>
+
+	<!-- musiccodec -->
+	<variable name="flags_value_musiccodec">
+		<value condition="String.Contains(ListItem.Filename,.aac)">flags/audiocodec/aac.png</value>
+		<value condition="String.Contains(ListItem.Filename,.ac3)">flags/audiocodec/ac3.png</value>
+		<value condition="String.Contains(ListItem.Filename,.aif) + ![String.Contains(ListItem.Filename,.aifc) | String.Contains(ListItem.Filename,.aiff)]">flags/audiocodec/aif.png</value>
+		<value condition="String.Contains(ListItem.Filename,.aifc)">flags/audiocodec/aifc.png</value>
+		<value condition="String.Contains(ListItem.Filename,.aiff)">flags/audiocodec/aiff.png</value>
+		<value condition="String.Contains(ListItem.Filename,.avs)">flags/audiocodec/avs.png</value>
+		<value condition="String.Contains(ListItem.Filename,.ape)">flags/audiocodec/ape.png</value>
+		<value condition="String.Contains(ListItem.Filename,.cdda)">flags/audiocodec/cdda.png</value>
+		<value condition="String.Contains(ListItem.Filename,.dts)">flags/audiocodec/dts.png</value>
+		<value condition="String.Contains(ListItem.Filename,.flac)">flags/audiocodec/flac.png</value>
+		<value condition="String.Contains(ListItem.Filename,.m4a)">flags/audiocodec/m4a.png</value>
+		<value condition="String.Contains(ListItem.Filename,.mlp)">flags/audiocodec/mlp.png</value>
+		<value condition="String.Contains(ListItem.Filename,.mp2)">flags/audiocodec/mp2.png</value>
+		<value condition="String.Contains(ListItem.Filename,.mp3)">flags/audiocodec/mp3.png</value>
+		<value condition="String.Contains(ListItem.Filename,.mpc)">flags/audiocodec/mpc.png</value>
+		<value condition="String.Contains(ListItem.Filename,.ogg)">flags/audiocodec/ogg.png</value>
+		<value condition="String.Contains(ListItem.Filename,.ra)">flags/audiocodec/ra.png</value>
+		<value condition="String.Contains(ListItem.Filename,.shn)">flags/audiocodec/shn.png</value>
+		<value condition="String.Contains(ListItem.Filename,.wav)">flags/audiocodec/wav.png</value>
+		<value condition="String.Contains(ListItem.Filename,.wma)">flags/audiocodec/wma.png</value>
+		<value condition="String.Contains(ListItem.Filename,.wv)">flags/audiocodec/wv.png</value>
+	</variable>
+	
+	<include name="global_flagbar">
+		<control type="image">
+			<width>54</width>
+			<bordersize>5</bordersize>
+			<aspectratio align="center" aligny="bottom">keep</aspectratio>
+			<include>flags_image_texture</include>
+			<texture fallback="flags/defaultstudio.png">resource://resource.images.studios.coloured/$INFO[ListItem.Studio,,.png]</texture><!-- jarvis -->
+			<visible>System.HasAddon(resource.images.studios.coloured) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>System.HasAddon(resource.images.studios.coloured) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_texture</include>
+			<texture>flags/3d/3d.png</texture>
+			<visible>!String.StartsWith(ListItem.StereoscopicMode,mono) + Container.Content(movies)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.StartsWith(ListItem.StereoscopicMode,mono) + Container.Content(movies)</visible>
+		</control>
+		<control type="group">
+			<width>84</width>
+			<height>50</height>
+			<visible>!String.StartsWith(ListItem.top250,0) + !String.IsEmpty(ListItem.top250)</visible>
+			<control type="image"><!-- Top 250 -->
+				<top>0</top>
+				<left>7</left>
+				<include>flags_image_texture</include>
+				<texture>flags/imdb_250.png</texture>
+			</control>
+			<control type="label"><!-- Top 250 info -->
+				<top>0</top>
+				<left>22</left>
+				<font>RegularNormal</font>
+				<include>flags_label</include>
+				<label>$INFO[ListItem.Top250]</label>
+			</control>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.StartsWith(ListItem.top250,0) + !String.IsEmpty(ListItem.top250)</visible>
+		</control>
+		<control type="image"><!-- Mpaa -->
+			<include>flags_image_texture</include>
+			<texture>$VAR[flags_value_mpaa]</texture>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Control.GetLabel(558))</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Control.GetLabel(558))</visible>
+		</control>
+		<control type="image"><!-- Codec -->
+			<include>flags_image_texture</include>
+			<texture>$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
+			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+		</control>
+		<control type="image"><!-- Resolution -->
+			<include>flags_image_texture</include>
+			<texture>$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
+			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+		</control>
+		<control type="image"><!-- Aspect -->
+			<include>flags_image_texture</include>
+			<texture>$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+			<visible>!String.IsEmpty(ListItem.VideoAspect)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.VideoAspect)</visible>
+		</control>
+		<control type="image"><!-- Codec audio -->
+			<include>flags_image_texture</include>
+			<texture>$INFO[ListItem.AudioCodec,flags/audiocodec/,.png]</texture>
+			<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+		</control>
+		<control type="image"><!-- Channels -->
+			<include>flags_image_texture</include>
+			<texture>$INFO[ListItem.AudioChannels,flags/audiochannels/,ch.png]</texture>
+			<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
+		</control>
+		<control type="image"><!-- Trailer -->
+			<include>flags_image_texture</include>
+			<texture>flags/trailer.png</texture>
+			<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+		</control>
+		<control type="group">
+			<width>84</width>
+			<height>50</height>
+			<visible>!String.IsEqual(ListItem.PercentPlayed,0)</visible>
+			<control type="image"><!-- % Played -->
+				<include>flags_image_texture</include>
+				<texture>flags/percentplayed.png</texture>
+			</control>
+			<control type="label"><!-- % Played -->
+				<top>0</top>
+				<left>18</left>
+				<include>flags_label</include>
+				<top>0</top>
+				<label>$INFO[ListItem.PercentPlayed]%</label>
+			</control>
+		</control>
+		<control type="image">
+			<include>flags_image_separator</include>
+			<visible>!String.IsEqual(ListItem.PercentPlayed,0)</visible>
+		</control>
+		<control type="label">
+			<width>73</width>
+			<height>50</height>
+			<align>center</align>
+			<font>Icons-Bottombar-Small</font>
+			<shadowcolor>TextColor3</shadowcolor>
+			<textcolor>TextColorFocus</textcolor>
+			<label>$VAR[viewglobal_video_Showstatus]</label>
+			<visible>!String.IsEmpty(Window(Home).Property(NextAired.StatusID))</visible>
+		</control>
+	</include>
+
+	<!-- #### Watchedstatus Overlays ####-->
+	<variable name="viewglobal_video_Showstatus">
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),0)">ŏ</value><!-- Returning Series -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),11)">Ő</value><!-- Cancelled/Ended -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),2)">ő</value><!-- TBD/On The Bubble/ Noch festzulegen -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),4)">Œ</value><!-- New Series -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),6)">Ŕ</value><!-- Final Season -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),-1)">ő</value><!-- Undefined -->
+		<value>-</value>
+	</variable>
+	
+	<variable name="WatchedOverlayFlagSet1">
+		<value condition="ListItem.IsCollection">A</value>
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)">B</value><!-- ongoing -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">C</value><!-- new -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">D</value><!-- watched -->
+
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable">B</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">C</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable">D</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable">B</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">C</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">D</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">C</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">D</value><!-- watched -->
+		<value></value>
+	</variable>
+	
+	<variable name="WatchedOverlayFlagSet2">
+		<value condition="ListItem.IsCollection">G</value>
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)">H</value><!-- ongoing -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">I</value><!-- new -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">J</value><!-- watched -->
+
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable">H</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">I</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable">J</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable">H</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">I</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">J</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">I</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">J</value><!-- watched -->
+		<value></value>
+	</variable>
+	
+	<variable name="WatchedOverlayFlagSet3">
+		<value condition="ListItem.IsCollection">M</value>
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)">N</value><!-- ongoing -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">O</value><!-- new -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">P</value><!-- watched -->
+
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable">N</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">O</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable">P</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable">N</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">O</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">P</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">O</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">P</value><!-- watched -->
+		<value></value>
+	</variable>
+	
+	<variable name="WatchedOverlayFlagSet4">
+		<value condition="ListItem.IsCollection">S</value>
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)">T</value><!-- ongoing -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">U</value><!-- new -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">V</value><!-- watched -->
+
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable">T</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">U</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable">V</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable">T</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">U</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">V</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">U</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">V</value><!-- watched -->
+		<value></value>
+	</variable>
+	
+	<variable name="WatchedOverlayFlagSet5">
+		<value condition="ListItem.IsCollection">a</value>
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)">b</value><!-- ongoing -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">c</value><!-- new -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">d</value><!-- watched -->
+
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable">b</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">c</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable">d</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable">b</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">c</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">d</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">c</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">d</value><!-- watched -->
+		<value></value>
+	</variable>
+		
+	<variable name="WatchedOverlayFlagSet6">
+		<value condition="ListItem.IsCollection">g</value>
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)">h</value><!-- ongoing -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">i</value><!-- new -->
+		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">j</value><!-- watched -->
+
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable">h</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">i</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable">j</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable">h</value><!-- ongoing -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">i</value><!-- new -->
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable">j</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">i</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">j</value><!-- watched -->
+		<value></value>
+	</variable>
+	
+	<variable name="WatchedOverlayFlag">
+		<value condition="String.IsEqual(Skin.string(OverlaySet),2)">$VAR[WatchedOverlayFlagSet2]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),3)">$VAR[WatchedOverlayFlagSet3]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),4)">$VAR[WatchedOverlayFlagSet4]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),5)">$VAR[WatchedOverlayFlagSet5]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),6)">$VAR[WatchedOverlayFlagSet6]</value>
+		<value>$VAR[WatchedOverlayFlagSet1]</value>
+	</variable>
+	
+	<variable name="WatchedOverlayGSFlagNew">
+		<value condition="String.IsEqual(Skin.string(OverlaySet),2)">I</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),3)">O</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),4)">U</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),5)">c</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),6)">i</value>
+		<value>C</value>
+	</variable>
+	<variable name="WatchedOverlayGSFlagOngoing">
+		<value condition="String.IsEqual(Skin.string(OverlaySet),2)">H</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),3)">N</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),4)">T</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),5)">b</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),6)">h</value>
+		<value>B</value>
+	</variable>
+
+	<expression name="ongoing_overlay_show_visible">[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Overlay,OverlayWatched.png)</expression>
+	<expression name="ongoing_overlay_movie_visible">!ListItem.IsCollection + String.Contains(ListItem.DBTYPE,movie) + ListItem.IsResumable</expression>
+	<expression name="ongoing_overlay_episode_visible">String.Contains(ListItem.DBTYPE,episode) + ListItem.IsResumable</expression>
+	
+	<expression name="new_overlay_show_visible">[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)</expression>
+	<expression name="new_overlay_movie_visible">!ListItem.IsCollection + String.Contains(ListItem.DBTYPE,movie) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable</expression>
+	<expression name="new_overlay_episode_visible">String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable</expression>
+	<expression name="new_overlay_video_visible">!String.IsEmpty(ListItem.Duration) + !Container.Content(tvshows) + !Container.Content(Seasons) + !Container.Content(episodes) + !Container.Content(movies) + !Container.Content(sets) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)</expression>
+
+	<expression name="watched_overlay_show_visible">[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Overlay,OverlayWatched.png)</expression>
+	<expression name="watched_overlay_movie_visible">!ListItem.IsCollection + String.Contains(ListItem.DBTYPE,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !ListItem.IsResumable</expression>
+	<expression name="watched_overlay_episode_visible">String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable</expression>
+	<expression name="watched_overlay_video_visible">!String.IsEmpty(ListItem.Duration) + !Container.Content(tvshows) + !Container.Content(Seasons) + !Container.Content(episodes) + !Container.Content(movies) + !Container.Content(sets) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)</expression>
+
+	<expression name="set_overlay_visible">ListItem.IsCollection</expression>
+		
+	<include name="watched_overlayBG">
+		<param name="left"/>
+		<param name="top"/>
+		<param name="width"/>
+		<param name="height"/>
+		<definition>
+			<control type="image">
+				<description>Watched flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[watched_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>$EXP[watched_overlay_show_visible] | $EXP[watched_overlay_movie_visible] | $EXP[watched_overlay_episode_visible] | $EXP[watched_overlay_video_visible]</visible>
+			</control>
+			<control type="image">
+				<description>new flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[new_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>$EXP[new_overlay_show_visible] | $EXP[new_overlay_movie_visible] | $EXP[new_overlay_episode_visible] | $EXP[new_overlay_video_visible]</visible>
+			</control>
+			<control type="image">
+				<description>ongoing flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[ongoing_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>$EXP[ongoing_overlay_show_visible] | $EXP[ongoing_overlay_movie_visible] | $EXP[ongoing_overlay_episode_visible]</visible>
+			</control>
+			<control type="image">
+				<description>set flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[set_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>$EXP[set_overlay_visible]</visible>
+			</control>
+		</definition>
+	</include>
+
+	<include name="watched_overlay_listLabel">
+		<param name="left"/>
+		<param name="top"/>
+		<param name="width"/>
+		<param name="height"/>
+		<definition>
+			<control type="label">
+				<description>Media Overlay Watched</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[watched_overlay_color]</selectedcolor>
+				<textcolor>$VAR[watched_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[watched_overlay_show_visible] | $EXP[watched_overlay_movie_visible] | $EXP[watched_overlay_episode_visible] | $EXP[watched_overlay_video_visible]</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay new</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[new_overlay_color]</selectedcolor>
+				<textcolor>$VAR[new_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[new_overlay_show_visible] | $EXP[new_overlay_movie_visible] | $EXP[new_overlay_episode_visible] | $EXP[new_overlay_video_visible]</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay ongoing</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[ongoing_overlay_color]</selectedcolor>
+				<textcolor>$VAR[ongoing_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[ongoing_overlay_show_visible] | $EXP[ongoing_overlay_movie_visible] | $EXP[ongoing_overlay_episode_visible]</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay set</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[set_overlay_color]</selectedcolor>
+				<textcolor>$VAR[set_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[set_overlay_visible]</visible>
+			</control>
+		</definition>
+	</include>
+
+	<include name="watched_overlay_BiglistLabel">
+		<param name="left"/>
+		<param name="top"/>
+		<param name="width"/>
+		<param name="height"/>
+		<definition>
+			<control type="label">
+				<description>Media Overlay Watched</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay38</font>
+				<selectedcolor>$VAR[watched_overlay_color]</selectedcolor>
+				<textcolor>$VAR[watched_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[watched_overlay_show_visible] | $EXP[watched_overlay_movie_visible] | $EXP[watched_overlay_episode_visible] | $EXP[watched_overlay_video_visible]</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay new</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay38</font>
+				<selectedcolor>$VAR[new_overlay_color]</selectedcolor>
+				<textcolor>$VAR[new_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[new_overlay_show_visible] | $EXP[new_overlay_movie_visible] | $EXP[new_overlay_episode_visible] | $EXP[new_overlay_video_visible]</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay ongoing</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay38</font>
+				<selectedcolor>$VAR[ongoing_overlay_color]</selectedcolor>
+				<textcolor>$VAR[ongoing_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[ongoing_overlay_show_visible] | $EXP[ongoing_overlay_movie_visible] | $EXP[ongoing_overlay_episode_visible]</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay set</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay38</font>
+				<selectedcolor>$VAR[set_overlay_color]</selectedcolor>
+				<textcolor>$VAR[set_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+				<visible>$EXP[set_overlay_visible]</visible>
+			</control>
+		</definition>
+	</include>
+		
+	<!-- #### Widget Overlays #### -->
+	<include name="watched_overlayWidgetBG">
+		<param name="left"/>
+		<param name="top"/>
+		<param name="width"/>
+		<param name="height"/>
+		<definition>
+			<control type="image">
+				<description>Watched flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[watched_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>String.Contains(Container(510).ListItem.DBTYPE,tvshow) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) | String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable | String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable</visible>
+			</control>
+			<control type="image">
+				<description>new flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[new_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>String.Contains(Container(510).ListItem.DBTYPE,tvshow) + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) | String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable | String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable</visible>
+			</control>
+			<control type="image">
+				<description>ongoing flag</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$VAR[ongoing_overlay_color]">overlays/watched_bg.png</texture>
+				<visible>String.Contains(Container(510).ListItem.DBTYPE,tvshow) + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) | String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable | String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable</visible>
+			</control>
+		</definition>
+	</include>
+
+	<variable name="WatchedOverlayWidgetFlagSet1">
+		<value condition="Container(510).ListItem.IsCollection">A</value>
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">B</value><!-- ongoing -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0)">C</value><!-- new -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">D</value><!-- watched -->
+
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable">B</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">C</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable">D</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable">B</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">C</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">D</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayUnwatched.png)">C</value><!-- new -->
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">D</value><!-- watched -->
+		<value></value>
+	</variable>
+
+	<variable name="WatchedOverlayWidgetFlagSet2">
+		<value condition="Container(510).ListItem.IsCollection">G</value>
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">H</value><!-- ongoing -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0)">I</value><!-- new -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">J</value><!-- watched -->
+
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable">H</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">I</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable">J</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable">H</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">I</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">J</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayUnwatched.png)">I</value><!-- new -->
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">J</value><!-- watched -->
+		<value></value>
+	</variable>
+
+	<variable name="WatchedOverlayWidgetFlagSet3">
+		<value condition="Container(510).ListItem.IsCollection">M</value>
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">N</value><!-- ongoing -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0)">O</value><!-- new -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">P</value><!-- watched -->
+
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable">N</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">O</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable">P</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable">N</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">O</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">P</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayUnwatched.png)">O</value><!-- new -->
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">P</value><!-- watched -->
+		<value></value>
+	</variable>
+
+	<variable name="WatchedOverlayWidgetFlagSet4">
+		<value condition="Container(510).ListItem.IsCollection">S</value>
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">T</value><!-- ongoing -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0)">U</value><!-- new -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">V</value><!-- watched -->
+
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable">T</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">U</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable">V</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable">T</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">U</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">V</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayUnwatched.png)">U</value><!-- new -->
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">V</value><!-- watched -->
+		<value></value>
+	</variable>
+
+	<variable name="WatchedOverlayWidgetFlagSet5">
+		<value condition="Container(510).ListItem.IsCollection">a</value>
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">b</value><!-- ongoing -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0)">c</value><!-- new -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">d</value><!-- watched -->
+
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable">b</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">c</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable">d</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable">b</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">c</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">d</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayUnwatched.png)">c</value><!-- new -->
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">d</value><!-- watched -->
+		<value></value>
+	</variable>
+		
+	<variable name="WatchedOverlayWidgetFlagSet6">
+		<value condition="Container(510).ListItem.IsCollection">g</value>
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">h</value><!-- ongoing -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0)">i</value><!-- new -->
+		<value condition="[String.Contains(Container(510).ListItem.DBTYPE,season) | String.Contains(Container(510).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">j</value><!-- watched -->
+
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable">h</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">i</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable">j</value><!-- watched -->
+		
+		
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable">h</value><!-- ongoing -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">i</value><!-- new -->
+		<value condition="String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable">j</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayUnwatched.png)">i</value><!-- new -->
+		<value condition="String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png)">j</value><!-- watched -->
+		<value></value>
+	</variable>
+
+	<variable name="WatchedOverlayWidgetFlag">
+		<value condition="String.IsEqual(Skin.string(OverlaySet),2)">$VAR[WatchedOverlayWidgetFlagSet2]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),3)">$VAR[WatchedOverlayWidgetFlagSet3]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),4)">$VAR[WatchedOverlayWidgetFlagSet4]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),5)">$VAR[WatchedOverlayWidgetFlagSet5]</value>
+		<value condition="String.IsEqual(Skin.string(OverlaySet),6)">$VAR[WatchedOverlayWidgetFlagSet6]</value>
+		<value>$VAR[WatchedOverlayWidgetFlagSet1]</value>
+	</variable>
+	
+	<include name="watched_overlay_WidgetlistLabel">
+		<param name="left"/>
+		<param name="top"/>
+		<param name="width"/>
+		<param name="height"/>
+		<definition>
+			<control type="label">
+				<description>Media Overlay Watched</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[watched_overlay_color]</selectedcolor>
+				<textcolor>$VAR[watched_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayWidgetFlag]</label>
+				<visible>String.Contains(Container(510).ListItem.DBTYPE,tvshow) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) | String.Contains(Container(510).ListItem.DBTYPE,movie) + String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) + !Container(510).ListItem.IsResumable | String.Contains(Container(510).ListItem.DBTYPE,episode) + Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay new</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[new_overlay_color]</selectedcolor>
+				<textcolor>$VAR[new_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayWidgetFlag]</label>
+				<visible>String.Contains(Container(510).ListItem.DBTYPE,tvshow) + !Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) | String.Contains(Container(510).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable | String.Contains(Container(510).ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(510).ListItem.PlayCount,0) + !Container(510).ListItem.IsResumable</visible>
+			</control>
+			<control type="label">
+				<description>Media Overlay ongoing</description>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconListOverlay30</font>
+				<selectedcolor>$VAR[ongoing_overlay_color]</selectedcolor>
+				<textcolor>$VAR[ongoing_overlay_color]</textcolor>
+				<label>$VAR[WatchedOverlayWidgetFlag]</label>
+				<visible>String.Contains(Container(510).ListItem.DBTYPE,tvshow) + Integer.IsGreater(Container(510).ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(Container(510).ListItem.Overlay,OverlayWatched.png) | String.Contains(Container(510).ListItem.DBTYPE,movie) + Container(510).ListItem.IsResumable | String.Contains(Container(510).ListItem.DBTYPE,episode) + Container(510).ListItem.IsResumable</visible>
+			</control>
+
+		</definition>
+	</include>
+
+</includes>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>1000</defaultcontrol>
+<onunload>ClearProperty(Selectdialogcategory)</onunload>
+<controls>
+<control type="group">
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>dialog-outer-width</width>
+	<height>425</height>
+	<include>animation_dialog_popup</include>
+	<visible>!Window.IsVisible(shutdownmenu)</visible>
+	<control type="image">
+		<description>schatten 1-4 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height4</height>
+		<visible>Integer.IsLessOrEqual(Container(996).NumItems,4)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 1-4 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height4</height>
+		<visible>Integer.IsLessOrEqual(Container(996).NumItems,4)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 5 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height5</height>
+		<visible>String.IsEqual(Container(996).NumItems,5)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 5 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height5</height>
+		<visible>String.IsEqual(Container(996).NumItems,5)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 6 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height6</height>
+		<visible>String.IsEqual(Container(996).NumItems,6)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 6 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height6</height>
+		<visible>String.IsEqual(Container(996).NumItems,6)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 7 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height7</height>
+		<visible>String.IsEqual(Container(996).NumItems,7)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 7 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height7</height>
+		<visible>String.IsEqual(Container(996).NumItems,7)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 8 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height8</height>
+		<visible>String.IsEqual(Container(996).NumItems,8)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 8 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height8</height>
+		<visible>String.IsEqual(Container(996).NumItems,8)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 9 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height9</height>
+		<visible>String.IsEqual(Container(996).NumItems,9)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 9 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height9</height>
+		<visible>String.IsEqual(Container(996).NumItems,9)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 10 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+		<visible>String.IsEqual(Container(996).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 10 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+		<visible>String.IsEqual(Container(996).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 10+ elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+		<visible>Integer.IsGreater(Container(996).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 10+ elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+		<visible>Integer.IsGreater(Container(996).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include>dialog_headerfront_neu</include>
+	</control>
+	<control type="label">
+		<description>header</description>
+		<label>$LOCALIZE[31391]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="grouplist" id="996"><!-- list -->
+		<left>dialog-border</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>350</height>
+		<onleft>close</onleft>
+		<onright>close</onright>
+		<itemgap>0</itemgap>
+		<control type="button" id="1000">
+			<include>dialog_buttonneu</include>
+		</control>
+		<control type="button" id="1111">
+			<description>Addon Pinboard</description>
+			<label>$VAR[viewglobal_addon_pinboardlabel]</label>
+			<include>dialog_buttonneu</include>
+			<onclick condition="String.IsEmpty(Skin.String(AddonList1Path))">Skin.SetString(AddonList1Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="String.IsEmpty(Skin.String(AddonList1Path))">Skin.SetString(AddonList1Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + String.IsEmpty(Skin.String(AddonList2Path))">Skin.SetString(AddonList2Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + String.IsEmpty(Skin.String(AddonList2Path))">Skin.SetString(AddonList2Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + [String.IsEmpty(Skin.String(AddonList3Path))]">Skin.SetString(AddonList3Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + [String.IsEmpty(Skin.String(AddonList3Path))]">Skin.SetString(AddonList3Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + [String.IsEmpty(Skin.String(AddonList4Path))]">Skin.SetString(AddonList4Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + [String.IsEmpty(Skin.String(AddonList4Path))]">Skin.SetString(AddonList4Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + [String.IsEmpty(Skin.String(AddonList5Path))]">Skin.SetString(AddonList5Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + [String.IsEmpty(Skin.String(AddonList5Path))]">Skin.SetString(AddonList5Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + [String.IsEmpty(Skin.String(AddonList6Path))]">Skin.SetString(AddonList6Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + [String.IsEmpty(Skin.String(AddonList6Path))]">Skin.SetString(AddonList6Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + [String.IsEmpty(Skin.String(AddonList6Path))]">Skin.SetString(AddonList6Icon,$INFO[ListItem.Icon])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + [String.IsEmpty(Skin.String(AddonList7Path))]">Skin.SetString(AddonList7Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + [String.IsEmpty(Skin.String(AddonList7Path))]">Skin.SetString(AddonList7Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + [String.IsEmpty(Skin.String(AddonList8Path))]">Skin.SetString(AddonList8Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + [String.IsEmpty(Skin.String(AddonList8Path))]">Skin.SetString(AddonList8Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + !String.IsEmpty(Skin.String(AddonList8Path)) + [String.IsEmpty(Skin.String(AddonList9Path))]">Skin.SetString(AddonList9Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + !String.IsEmpty(Skin.String(AddonList8Path)) + [String.IsEmpty(Skin.String(AddonList9Path))]">Skin.SetString(AddonList9Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + !String.IsEmpty(Skin.String(AddonList8Path)) + !String.IsEmpty(Skin.String(AddonList9Path)) + [String.IsEmpty(Skin.String(AddonList10Path))]">Skin.SetString(AddonList10Path,$INFO[ListItem.Property(Addon.ID)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + !String.IsEmpty(Skin.String(AddonList8Path)) + !String.IsEmpty(Skin.String(AddonList9Path)) + [String.IsEmpty(Skin.String(AddonList10Path))]">Skin.SetString(AddonList10Fanart,$INFO[ListItem.Art(fanart)])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(AddonList1Path)) + !String.IsEmpty(Skin.String(AddonList2Path)) + !String.IsEmpty(Skin.String(AddonList3Path)) + !String.IsEmpty(Skin.String(AddonList4Path)) + !String.IsEmpty(Skin.String(AddonList5Path)) + !String.IsEmpty(Skin.String(AddonList6Path)) + !String.IsEmpty(Skin.String(AddonList7Path)) + !String.IsEmpty(Skin.String(AddonList8Path)) + !String.IsEmpty(Skin.String(AddonList9Path)) + !String.IsEmpty(Skin.String(AddonList10Path))">ActivateWindow(1121)</onclick>
+			<visible>Container.Content(addons)</visible>
+		</control>
+		<control type="button" id="1112">
+			<description>Library editor</description>
+			<include>dialog_buttonneu</include>
+			<label>Library editor</label>
+			<onclick>XBMC.RunScript(script.libraryeditor,DBID=$INFO[ListItem.DBID])</onclick>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] + System.HasAddon(script.libraryeditor) + !Window.IsActive(favourites)</visible>
+		</control>
+		<control type="button" id="1013">
+			<description>Trailer</description>
+			<include>dialog_buttonneu</include>
+			<label>$LOCALIZE[31390]</label>
+			<onclick>Dialog.Close(all)</onclick>
+			<onclick condition="Skin.HasSetting(fullscreentrailer)">PlayMedia("$INFO[ListItem.Trailer]")</onclick>
+			<onclick condition="!Skin.HasSetting(fullscreentrailer)">SetProperty(WindowTrailer,$INFO[ListItem.Label,Trailer: ,],Home)</onclick>
+			<onclick condition="!Skin.HasSetting(fullscreentrailer)">PlayMedia("$INFO[ListItem.Trailer]",1)</onclick>
+			<onclick condition="!Skin.HasSetting(fullscreentrailer)">Setfocus(9930)</onclick>
+			<visible>!String.IsEmpty(ListItem.Trailer) + !Window.IsActive(favourites)</visible>
+		</control>
+		<control type="button" id="1014">
+			<include>dialog_buttonneu</include>
+			<onleft>Dialog.Close(106)</onleft>
+			<onright>Dialog.Close(106)</onright>
+			<onclick>ActivateWindow(shutdownmenu)</onclick>
+			<label>$LOCALIZE[31017]</label>
+		</control>
+		<control type="button" id="1015">
+			<include>dialog_buttonneu</include>
+			<onleft>Dialog.Close(106)</onleft>
+			<onright>Dialog.Close(106)</onright>
+			<label>$LOCALIZE[31363]</label>
+			<onclick>ActivateWindow(1123)</onclick>
+			<visible>System.HasAddon(service.kn.switchtimer) + [Window.IsVisible(tvguide) | Window.IsVisible(tvtimers)] + !String.IsEqual(Skin.String(SwitchTimerActiveItems),0)</visible>
+		</control>
+		<control type="button" id="1016">
+			<include>dialog_buttonneu</include>
+			<onleft>Dialog.Close(106)</onleft>
+			<onright>Dialog.Close(106)</onright>
+			<label>German Telecast Offers</label>
+			<onclick>SetProperty(gotv.addon.isrunning,On,home)</onclick>
+			<onclick>Dialog.Close(106)</onclick>
+			<onclick>Addon.OpenSettings(plugin.service.gto)</onclick>
+			<visible>Window.IsVisible(Custom_1121_Pinboard.xml) + String.IsEqual(Skin.string(VideoslotWidgetCategory),pvrgoto)</visible>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

@@ -1,0 +1,3112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<!-- ####  View Exdended List video #### -->
+<include name="viewextended_video_big_itemlayout">
+	<control type="group"><!-- back -->
+		<left>460</left>
+		<top>30</top>
+		<visible>ListItem.IsParentFolder</visible>
+		<control type="label">
+			<width>590</width>
+			<height>26</height>
+			<font>SemiBig</font>
+			<textcolor>TextColor1</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Rating -->
+		<left>1080</left>
+		<top>25</top>
+		<visible>!ListItem.IsParentFolder</visible>
+		<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+		<control type="label">
+			<top>-20</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Ratingback-label]</label>
+			<font>Rating-small</font>
+			<include>Star-Rating-color-layoutback</include>
+		</control>
+		<control type="label">
+			<top>-20</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Rating-label]</label>
+			<font>Rating-small</font>
+			<include>Star-Rating-color-layout</include>
+			<visible>String.IsEmpty(ListItem.UserRating)</visible>
+		</control>
+		<control type="label">
+			<top>-20</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Rating-label]</label>
+			<font>Rating-small</font>
+			<include>Star-UserRating-color-layout</include>
+			<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+		</control>
+	</control>
+	<include content="watched_overlay_BiglistLabel"><!-- watched_overlay -->
+		<param name="left">386</param>
+		<param name="top">12</param>
+		<param name="width">60</param>
+		<param name="height">30</param>
+	</include>
+	<control type="image"><!-- Last Watched -->
+		<left>1185</left>
+		<top>16</top>
+		<width>30</width>
+		<height>30</height>
+		<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+	</control>
+	<control type="group"><!-- Detailinfo1/Detailinfo2 -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieDetailInfo))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowDetailInfo))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonDetailInfo))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo)] | [[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+		<control type="label">
+			<width>740</width>
+			<height>26</height>
+			<font>SemiBig</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+		<control type="label">
+			<top>30</top>
+			<width>740</width>
+			<height>22</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-details1]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Detailinfo Handlung -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]]</visible>
+		<control type="label">
+			<width>740</width>
+			<height>26</height>
+			<font>SemiBig</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Detailinfo Handlung2 -->
+		<left>460</left>
+		<top>17</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+		<control type="label"><!-- title -->
+			<height>22</height>
+			<width>940</width>
+			<textcolor>TextColor2</textcolor>
+			<label>[B]$VAR[viewextendedlist-value-title][/B]</label>
+		</control>
+		<control type="label">
+			<top>22</top>
+			<width>940</width>
+			<height>22</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-details1]</label>
+		</control>
+	</control>
+</include>
+
+<include name="viewextended_video_big_focusedlayout">
+<control type="group">
+	<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieListstyle))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowListstyle))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonListstyle))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList)]</visible>
+	<!-- CDART -->
+	<control type="group">
+		<animation type="WindowOpen">
+			<effect type="slide" start="-330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+			<effect type="fade" start="0" end="100" time="500" delay="500"/>
+		</animation>
+		<animation type="Visible">
+			<!-- 
+			<effect type="slide" start="330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>-->
+			<effect type="fade" start="0" end="100" time="500" delay="500"/>
+		</animation>
+		<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+		<animation type="Hidden">
+			<effect type="slide" start="0,0" end="330,0" time="300" tween="cubic" easing="out"/>
+			<effect type="fade" start="100" end="0" time="200"/>
+		</animation>
+		<visible>![String.IsEmpty(ListItem.Art(discart)) | Skin.HasSetting(noextendedlistdiscart) | String.StartsWith(ListItem.Path,videodb://movies/sets)]</visible>
+		<!-- Discart -->
+		<control type="image">
+			<left>980</left>
+			<top>-50</top>
+			<width>270</width>
+			<height>270</height>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<texture diffuse="artworks/extendedlistbig-cdart-overlay.png">$VAR[art_value_discart]</texture>
+		</control>
+		<control type="image">
+			<left>980</left>
+			<top>-50</top>
+			<width>270</width>
+			<height>270</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<animation effect="fade" start="30" end="70" time="0" condition="true">Conditional</animation>
+			<texture diffuse="artworks/extendedlistbig-cdart-diffuse.png">$VAR[art_value_discart]</texture>
+		</control>
+	</control>
+	<!-- CDART set -->
+	<control type="group">
+		<animation type="WindowOpen">
+			<effect type="slide" start="-330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+			<effect type="fade" start="0" end="100" time="500" delay="500"/>
+		</animation>
+		<animation type="Visible">
+			<effect type="slide" start="330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+			<effect type="fade" start="0" end="100" time="500" delay="500"/>
+		</animation>
+		<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+		<animation type="Hidden">
+			<effect type="slide" start="0,0" end="330,0" time="300" tween="cubic" easing="out"/>
+			<effect type="fade" start="100" end="0" time="200"/>
+		</animation>
+		<visible>![String.IsEmpty(Window(home).Property(Set.Movie.1.Art(discart))) | Skin.HasSetting(noextendedlistdiscart)] + Window.IsActive(videos) + String.StartsWith(ListItem.Path,videodb://movies/sets)</visible>
+		<control type="grouplist">
+			<left>830</left>
+			<top>-50</top>
+			<orientation>horizontal</orientation>
+			<itemgap>-70</itemgap>
+			<!-- Discart --><!-- CDART SETS Linie 1 -->
+			<control type="image">
+				<width>120</width>
+				<height>120</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/cdart-diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(0).Art(discart)]</texture>
+				<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(0).Art(discart))</visible>
+			</control>
+			<control type="image">
+				<width>120</width>
+				<height>120</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/cdart-diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(1).Art(discart)]</texture>
+				<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(1).Art(discart))</visible>
+			</control>
+			<control type="image">
+				<width>120</width>
+				<height>120</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/cdart-diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(2).Art(discart)]</texture>
+				<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(2).Art(discart))</visible>
+			</control>
+			<control type="image">
+				<width>120</width>
+				<height>120</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/cdart-diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(3).Art(discart)]</texture>
+				<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(3).Art(discart))</visible>
+			</control>
+			<control type="image">
+				<width>120</width>
+				<height>120</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/cdart-diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(4).Art(discart)]</texture>
+				<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(4).Art(discart))</visible>
+			</control>
+			<control type="image">
+				<width>120</width>
+				<height>120</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/cdart-diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(5).Art(discart)]</texture>
+				<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(5).Art(discart))</visible>
+			</control>
+		</control>
+	</control>
+	<control type="image">
+		<left>440</left>
+		<top>10</top>
+		<width>1140</width>
+		<height>180</height>
+		<texture flipx="true" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+		<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+			<effect type="fade" start="0" end="100" time="500"/>
+		</animation>
+		<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+			<effect type="fade" start="100" end="0" time="200"/>
+		</animation>
+	</control>
+	<control type="image">
+		<left>0</left>
+		<top>10</top>
+		<width>440</width>
+		<height>180</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+		<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+			<effect type="fade" start="0" end="100" time="500"/>
+		</animation>
+		<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+			<effect type="fade" start="100" end="0" time="200"/>
+		</animation>
+	</control>
+	<control type="image">
+		<left>80</left>
+		<top>10</top>
+		<width>360</width>
+		<height>180</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+		<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+		<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+			<effect type="fade" start="0" end="100" time="500"/>
+		</animation>
+		<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+			<effect type="fade" start="100" end="0" time="200"/>
+		</animation>
+	</control>
+	<control type="image">
+		<left>440</left>
+		<top>10</top>
+		<height>180</height>
+		<include>global_texture_border8_rightv</include>
+	</control>
+	<control type="group">
+		<control type="group"><!-- back -->
+			<visible>ListItem.IsParentFolder</visible>
+			<control type="image">
+				<include>viewextendedlist_biglist_squareartworks</include>
+				<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">folderback/FolderBackExtrathumb.png</texture>
+				<visible>String.IsEqual(Skin.String(ExtendedListShowArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListShowArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListShowArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListShowArtwork1),Extra-Thumb)</visible>
+			</control>
+			<control type="image">
+				<texture background="true" diffuse="artworks/extendedbanner_diffuse.png">folderback/Extended_FolderBackBanner.png</texture>
+				<include>viewextendedlist_biglist_bannerrartworks</include>
+				<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Banner)</visible>
+			</control>
+			<control type="image">
+				<include>viewextendedlist_biglist_posterartworks</include>
+				<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">folderback/FolderBackPoster.png</texture>
+				<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Poster)</visible>
+			</control>
+			<control type="image">
+				<include>viewextendedlist_biglist_squareartworks</include>
+				<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">folderback/FolderBackExtrathumb.png</texture>
+				<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Logo)</visible>
+			</control>
+			<control type="label">
+				<left>460</left>
+				<top>15</top>
+				<width>590</width>
+				<height>26</height>
+				<font>SemiBig</font>
+				<label>$VAR[viewextendedlist-value-title]</label>
+			</control>
+		</control>
+		<control type="group"><!-- video artworks -->
+			<visible>!ListItem.IsParentFolder</visible>
+			<include>viewextendedlist_movie_artworkRow</include>
+			<include>viewextendedlist_show_artworkRow</include>
+			<include>viewextendedlist_season_artworkRow</include>
+			<include>viewextendedlist_episodes_artworkRow</include>
+		</control>
+		<control type="group"><!-- Detailinfo1 -->
+			<left>460</left>
+			<top>15</top>
+			<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieDetailInfo))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowDetailInfo))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonDetailInfo))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo)]]</visible>
+			<control type="label"><!-- title -->
+				<width>740</width>
+				<height>26</height>
+				<font>SemiBig</font>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$VAR[viewextendedlist-value-title]</label>
+			</control>
+			<control type="group"><!-- Rating -->
+				<top>32</top>
+				<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+				<control type="label">
+					<left>-5</left>
+					<top>-12</top>
+					<width>135</width>
+					<height>25</height>
+					<aligny>center</aligny>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-12</top>
+					<width>135</width>
+					<height>25</height>
+					<aligny>center</aligny>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layout</include>
+					<visible>String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-12</top>
+					<width>135</width>
+					<height>25</height>
+					<aligny>center</aligny>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-UserRating-color-layout</include>
+					<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>100</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+					<visible>String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+				<control type="label">
+					<left>100</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]</label>
+					<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+			</control>
+			<control type="group"><!-- left info -->
+				<top>75</top>
+				<control type="label">
+					<height>22</height>
+					<width>350</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details1]</label>
+				</control>
+				<control type="label">
+					<top>22</top>
+					<height>22</height>
+					<width>350</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details2]</label>
+				</control>
+				<control type="label">
+					<top>44</top>
+					<height>22</height>
+					<width>350</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details3]</label>
+				</control>
+				<control type="label">
+					<top>66</top>
+					<height>22</height>
+					<width>350</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details4]</label>
+				</control>
+			</control>
+			<control type="textbox"><!-- right plot -->
+				<left>370</left>
+				<top>75</top>
+				<include>PlotNormal88</include>
+				<width>350</width>
+				<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+				<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+				<visible>!String.StartsWith(ListItem.label,*)</visible>
+			</control>
+		</control>
+		<control type="group"><!-- Detailinfo2 -->
+			<left>460</left>
+			<top>15</top>
+			<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+			<control type="label"><!-- title -->
+				<left>0</left>
+				<top>0</top>
+				<width>740</width>
+				<height>26</height>
+				<font>SemiBig</font>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$VAR[viewextendedlist-value-title]</label>
+			</control>
+			<control type="group"><!-- Rating -->
+				<top>32</top>
+				<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layout</include>
+					<visible>String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-UserRating-color-layout</include>
+					<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>113</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+					<visible>String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+				<control type="label">
+					<left>113</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]</label>
+					<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+			</control>
+			<control type="group"><!-- left info -->
+				<top>65</top>
+				<control type="label">
+					<height>22</height>
+					<width>740</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details1]$VAR[viewextendedlist-value-details2,  |  ,]</label>
+				</control>
+				<control type="label">
+					<top>22</top>
+					<height>22</height>
+					<width>740</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details3]$VAR[viewextendedlist-value-details4,  |  ,]</label>
+				</control>
+				<control type="textbox"><!-- right plot -->
+					<top>54</top>
+					<include>PlotNormal44</include>
+					<width>740</width>
+					<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					<visible>!String.StartsWith(ListItem.label,*)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Detailinfo Handlung -->
+			<left>460</left>
+			<top>15</top>
+			<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]]</visible>
+			<control type="label"><!-- title -->
+				<width>740</width>
+				<height>26</height>
+				<font>SemiBig</font>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$VAR[viewextendedlist-value-title]</label>
+			</control>
+			<control type="group"><!-- Rating -->
+				<top>32</top>
+				<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layout</include>
+					<visible>String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-UserRating-color-layout</include>
+					<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>113</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+					<visible>String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+				<control type="label">
+					<left>113</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]</label>
+					<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+			</control>
+			<control type="group"><!-- info -->
+				<top>75</top>
+				<control type="label">
+					<height>22</height>
+					<width>740</width>
+					<align>top</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-details1]$VAR[viewextendedlist-value-details2,  |  ,]</label>
+				</control>
+				<control type="textbox"><!-- right plot -->
+					<top>30</top>
+					<include>PlotNormal66</include>
+					<width>740</width>
+					<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					<visible>!String.StartsWith(ListItem.label,*)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Detailinfo Handlung2 -->
+			<left>460</left>
+			<top>17</top>
+			<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+			<control type="group"><!-- Rating -->
+				<top>32</top>
+				<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layout</include>
+					<visible>String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>-10</top>
+					<width>135</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-UserRating-color-layout</include>
+					<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>113</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+					<visible>String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+				<control type="label">
+					<left>113</left>
+					<width>680</width>
+					<height>28</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[rating_value_label,  |  ,]</label>
+					<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+				</control>
+			</control>
+			<control type="label"><!-- title -->
+				<height>22</height>
+				<width>740</width>
+				<font>SemiBig</font>
+				<textcolor>TextColor2</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>[B]$VAR[viewextendedlist-value-title][/B]</label>
+			</control>
+			<control type="textbox"><!-- plot -->
+				<left>0</left>
+				<top>72</top>
+				<include>PlotNormal88</include>
+				<width>740</width>
+				<label fallback="31009">[B]$VAR[viewextendedlist-value-details1,, ][/B]$VAR[viewglobal_value_plot]</label>
+				<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+				<visible>!String.StartsWith(ListItem.label,*)</visible>
+			</control>
+		</control>
+		<control type="image"><!-- Last Watched -->
+			<left>1185</left>
+			<top>19</top>
+			<width>30</width>
+			<height>30</height>
+			<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+		</control>
+		<control type="image">
+			<top>5</top>
+			<include>global_topshadow5</include>
+		</control>
+		<include content="watched_overlayBG"><!-- progress -->
+			<param name="left">386</param>
+			<param name="top">6</param>
+			<param name="width">60</param>
+			<param name="height">60</param>
+		</include>
+		<control type="label"><!-- Media Overlay -->
+			<description>Media Overlay - neu, angefangene usw.</description>
+			<left>386</left>
+			<top>6</top>
+			<width>60</width>
+			<height>60</height>
+			<aligny>top</aligny>
+			<align>right</align>
+			<font>IconOverlay_big</font>
+			<textcolor>TextColorFocus</textcolor>
+			<selectedcolor>TextColorFocus</selectedcolor>
+			<label>$VAR[WatchedOverlayFlag]</label>
+		</control>
+		<control type="image">
+			<top>190</top>
+			<include>global_bottomshadow5</include>
+		</control>
+	</control>
+</control>
+</include>
+
+<include name="viewextended_video_small_itemlayout">
+	<control type="group"><!-- back -->
+		<left>460</left>
+		<top>10</top>
+		<visible>ListItem.IsParentFolder</visible>
+		<control type="label">
+			<width>590</width>
+			<height>22</height>
+			<font>SemiLarge</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Rating -->
+		<left>1080</left>
+		<top>25</top>
+		<visible>!ListItem.IsParentFolder</visible>
+		<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+		<control type="label">
+			<top>-23</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Ratingback-label]</label>
+			<font>Rating-small</font>
+			<include>Star-Rating-color-layoutback</include>
+		</control>
+		<control type="label">
+			<top>-23</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Rating-label]</label>
+			<font>Rating-small</font>
+			<include>Star-Rating-color-layout</include>
+			<visible>String.IsEmpty(ListItem.UserRating)</visible>
+		</control>
+		<control type="label">
+			<top>-23</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Rating-label]</label>
+			<font>Rating-small</font>
+			<include>Star-UserRating-color-layout</include>
+			<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+		</control>
+	</control>
+	<include content="watched_overlay_BiglistLabel"><!-- watched_overlay -->
+		<param name="left">406</param>
+		<param name="top">12</param>
+		<param name="width">38</param>
+		<param name="height">30</param>
+	</include>
+	<control type="image"><!-- Last Watched -->
+		<left>1185</left>
+		<top>13</top>
+		<width>30</width>
+		<height>30</height>
+		<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+	</control>
+	<control type="group"><!-- Detailinfo1/Detailinfo2 -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieDetailInfo))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowDetailInfo))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonDetailInfo))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo)] | [[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+		<control type="label">
+			<width>740</width>
+			<height>22</height>
+			<font>SemiLarge</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+		<control type="label">
+			<top>28</top>
+			<width>740</width>
+			<height>22</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-details1]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Detailinfo Handlung -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]]</visible>
+		<control type="label">
+			<width>740</width>
+			<height>22</height>
+			<font>SemiLarge</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Detailinfo Handlung2 -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+		<control type="label">
+			<width>740</width>
+			<height>22</height>
+			<font>SemiLarge</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+	</control>
+</include>
+
+<include name="viewextended_video_small_focusedlayout">
+	<control type="group">
+		<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle))]</visible>
+		<!-- CDART -->
+		<control type="group">
+			<animation type="WindowOpen">
+				<effect type="slide" start="-330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+				<effect type="fade" start="0" end="100" time="500" delay="500"/>
+			</animation>
+			<animation type="Visible">
+				<effect type="slide" start="330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+				<effect type="fade" start="0" end="100" time="500" delay="500"/>
+			</animation>
+			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+			<animation type="Hidden">
+				<effect type="slide" start="0,0" end="330,0" time="300" tween="cubic" easing="out"/>
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+			<visible>![String.IsEmpty(ListItem.Art(discart)) | Skin.HasSetting(noextendedlistdiscart) | String.StartsWith(ListItem.Path,videodb://movies/sets)]</visible>
+			<!-- Discart -->
+			<control type="image"><!-- 950 -->
+				<left>980</left>
+				<top>-40</top>
+				<width>230</width>
+				<height>230</height>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/extendedlistsmall-cdart-overlay.png">$VAR[art_value_discart]</texture>
+			</control>
+			<control type="image"><!-- 950 -->
+				<left>980</left>
+				<top>-40</top>
+				<width>230</width>
+				<height>230</height>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<animation effect="fade" start="30" end="70" time="0" condition="true">Conditional</animation>
+				<texture diffuse="artworks/extendedlistsmall-cdart-diffuse.png">$VAR[art_value_discart]</texture>
+			</control>
+		</control>
+		<!-- CDART set -->
+		<control type="group">
+			<animation type="WindowOpen">
+				<effect type="slide" start="-330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+				<effect type="fade" start="0" end="100" time="500" delay="500"/>
+			</animation>
+			<animation type="Visible">
+				<effect type="slide" start="330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+				<effect type="fade" start="0" end="100" time="500" delay="500"/>
+			</animation>
+			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+			<animation type="Hidden">
+				<effect type="slide" start="0,0" end="330,0" time="300" tween="cubic" easing="out"/>
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+			<visible>![String.IsEmpty(Window(home).Property(Set.Movie.1.Art(discart))) | Skin.HasSetting(noextendedlistdiscart)] + Window.IsActive(videos) + String.StartsWith(ListItem.Path,videodb://movies/sets)</visible>
+			<control type="grouplist">
+				<left>830</left>
+				<top>-40</top>
+				<orientation>horizontal</orientation>
+				<itemgap>-70</itemgap>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.1.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.1.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.2.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.2.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.3.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.3.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.4.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.4.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.5.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.5.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.6.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.6.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.7.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.7.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.8.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.8.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.9.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.9.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.10.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.10.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.11.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.11.Art(discart)))</visible>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>100</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture>$INFO[Window(home).Property(Set.Movie.12.Art(discart))]</texture>
+					<visible>!String.IsEmpty(Window(home).Property(Set.Movie.12.Art(discart)))</visible>
+				</control>
+			</control>
+		</control>
+		<control type="image">
+			<left>440</left>
+			<top>10</top>
+			<width>1240</width>
+			<height>130</height>
+			<texture flipx="true" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+			<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+		</control>
+		<control type="image">
+			<top>10</top>
+			<width>440</width>
+			<height>130</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+			<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+		</control>
+		<control type="image">
+			<left>80</left>
+			<top>10</top>
+			<width>360</width>
+			<height>130</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+		</control>
+		<control type="image">
+			<left>440</left>
+			<top>10</top>
+			<height>130</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="group">
+			<control type="group"><!-- back -->
+				<visible>ListItem.IsParentFolder</visible>
+				<control type="image">
+					<texture background="true">folderback/FolderBackExtrathumb.png</texture>
+					<include>viewextendedlist_smalllist_squareartworks</include>
+					<visible>String.IsEqual(Skin.String(ExtendedListShowArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListShowArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListShowArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListShowArtwork1),Extra-Thumb)</visible>
+				</control>
+				<control type="image">
+					<texture background="true">folderback/Extended_FolderBackBanner.png</texture>
+					<include>viewextendedlist_smalllist_bannerrartworks</include>
+					<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Banner)</visible>
+				</control>
+				<control type="image">
+					<texture background="true">folderback/FolderBackPoster.png</texture>
+					<include>viewextendedlist_smalllist_posterartworks</include>
+					<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Poster)</visible>
+				</control>
+				<control type="image">
+					<texture background="true">folderback/FolderBackExtrathumb.png</texture>
+					<include>viewextendedlist_smalllist_squareartworks</include>
+					<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Logo)</visible>
+				</control>
+				<control type="label">
+					<left>460</left>
+					<top>10</top>
+					<width>590</width>
+					<height>22</height>
+					<font>SemiLarge</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[viewextendedlist-value-title]</label>
+				</control>
+			</control>
+			<control type="group"><!-- artworks -->
+				<visible>!ListItem.IsParentFolder</visible>
+				<include>viewextendedlist_movie_artworkRow</include>
+				<include>viewextendedlist_show_artworkRow</include>
+				<include>viewextendedlist_season_artworkRow</include>
+				<include>viewextendedlist_episodes_artworkRow</include>
+			</control>
+			<control type="group"><!-- Detailinfo1 -->
+				<left>460</left>
+				<top>10</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieDetailInfo))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowDetailInfo))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonDetailInfo))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo)]]</visible>
+				<control type="label"><!-- title -->
+					<width>740</width>
+					<height>26</height>
+					<font>SemiLarge</font>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[viewextendedlist-value-title]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<top>28</top>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<aligny>center</aligny>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<aligny>center</aligny>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<aligny>center</aligny>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>25</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+						<visible>String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+					<control type="label">
+						<left>100</left>
+						<width>680</width>
+						<height>25</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]</label>
+						<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- left info -->
+					<top>60</top>
+					<control type="label">
+						<height>22</height>
+						<width>350</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-details1]</label>
+					</control>
+					<control type="label">
+						<top>22</top>
+						<height>22</height>
+						<width>350</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-details2]</label>
+					</control>
+					<control type="label">
+						<top>44</top>
+						<height>22</height>
+						<width>350</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-details3]</label>
+					</control>
+				</control>
+				<control type="textbox"><!-- right plot -->
+					<left>370</left>
+					<top>60</top>
+					<include>PlotNormal66</include>
+					<width>350</width>
+					<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					<visible>!String.StartsWith(ListItem.label,*)</visible>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo2 -->
+				<left>460</left>
+				<top>10</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+				<control type="label"><!-- title -->
+					<width>740</width>
+					<height>26</height>
+					<font>SemiLarge</font>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[viewextendedlist-value-title]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<top>28</top>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>22</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+						<visible>String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+					<control type="label">
+						<left>100</left>
+						<width>680</width>
+						<height>22</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]</label>
+						<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- left info -->
+					<top>60</top>
+					<control type="label">
+						<height>22</height>
+						<width>740</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-details1]$VAR[viewextendedlist-value-details2,  |  ,]</label>
+					</control>
+					<control type="label">
+						<top>22</top>
+						<height>22</height>
+						<width>740</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-details3]$VAR[viewextendedlist-value-details4,  |  ,]</label>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo Handlung -->
+				<left>460</left>
+				<top>15</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]]</visible>
+				<control type="label"><!-- title -->
+					<width>740</width>
+					<height>26</height>
+					<font>SemiLarge</font>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[viewextendedlist-value-title]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<top>28</top>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>22</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+						<visible>String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>22</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]</label>
+						<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- info -->
+					<top>55</top>
+					<control type="textbox"><!-- right plot -->
+						<include>PlotNormal66</include>
+						<width>740</width>
+						<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+						<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						<visible>!String.StartsWith(ListItem.label,*)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo Handlung2 -->
+				<left>460</left>
+				<top>17</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+				<control type="group"><!-- Rating -->
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-12</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>22</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]  ]$VAR[viewextendedlist-value-details1,  |  ,]</label>
+						<visible>String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>22</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$VAR[viewextendedlist-value-details1,  |  ,]</label>
+						<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+				</control>
+				<control type="textbox"><!-- plot -->
+					<top>30</top>
+					<include>PlotNormal88</include>
+					<width>740</width>
+					<textcolor>TextColor2</textcolor>
+					<label fallback="31009">[B]$VAR[viewextendedlist-value-title,, ][/B]$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					<visible>!String.StartsWith(ListItem.label,*)</visible>
+				</control>
+			</control>
+			<control type="image"><!-- Last Watched -->
+				<left>1185</left>
+				<top>19</top>
+				<width>30</width>
+				<height>30</height>
+				<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+			</control>
+		</control>
+		<control type="image">
+			<top>5</top>
+			<include>global_topshadow5</include>
+		</control>
+		<include content="watched_overlayBG"><!-- watched_overlay -->
+			<param name="left">406</param>
+			<param name="top">6</param>
+			<param name="width">38</param>
+			<param name="height">38</param>
+		</include>
+		<control type="label">
+			<description>Media Overlay - neu, angefangene usw.</description>
+			<left>406</left>
+			<top>6</top>
+			<width>38</width>
+			<height>38</height>
+			<aligny>top</aligny>
+			<align>right</align>
+			<font>IconOverlay38</font>
+			<textcolor>TextColorFocus</textcolor>
+			<selectedcolor>TextColorFocus</selectedcolor>
+			<label>$VAR[WatchedOverlayFlag]</label>
+		</control>
+		<control type="image">
+			<top>140</top>
+			<include>global_bottomshadow5</include>
+		</control>
+	</control>
+</include>
+
+<include name="viewextended_video_text_itemlayout">
+	<control type="group"><!-- back -->
+		<left>460</left>
+		<top>50</top>
+		<visible>ListItem.IsParentFolder</visible>
+		<control type="label">
+			<width>590</width>
+			<height>26</height>
+			<font>SemiBig</font>
+			<textcolor>TextColor1</textcolor>
+			<label>$INFO[ListItem.label]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Rating -->
+		<left>1080</left>
+		<top>25</top>
+		<visible>!ListItem.IsParentFolder</visible>
+		<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+		<control type="label">
+			<left>-5</left>
+			<top>-20</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Ratingback-label]</label>
+			<font>Rating-small</font>
+			<include>Star-Rating-color-layoutback</include>
+		</control>
+		<control type="label">
+			<left>-5</left>
+			<top>-20</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Rating-label]</label>
+			<font>Rating-small</font>
+			<include>Star-Rating-color-layout</include>
+			<visible>String.IsEmpty(ListItem.UserRating)</visible>
+		</control>
+		<control type="label">
+			<left>-5</left>
+			<top>-20</top>
+			<width>135</width>
+			<height>25</height>
+			<label>$VAR[Star-Rating-label]</label>
+			<font>Rating-small</font>
+			<include>Star-UserRating-color-layout</include>
+			<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+		</control>
+	</control>
+	<include content="watched_overlay_BiglistLabel"><!-- watched_overlay -->
+		<param name="left">395</param>
+		<param name="top">12</param>
+		<param name="width">60</param>
+		<param name="height">30</param>
+	</include>
+	<control type="image"><!-- Last Watched -->
+		<left>1185</left>
+		<top>15</top>
+		<width>30</width>
+		<height>30</height>
+		<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+	</control>
+	<control type="group"><!-- Detailinfo1/Detailinfo2 -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieDetailInfo))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowDetailInfo))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonDetailInfo))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo)] | [[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+		<control type="label">
+			<width>740</width>
+			<height>26</height>
+			<font>SemiBig</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+		<control type="label">
+			<top>30</top>
+			<width>740</width>
+			<height>22</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-details1]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Detailinfo Handlung -->
+		<left>460</left>
+		<top>15</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]]</visible>
+		<control type="label">
+			<left>0</left>
+			<top>0</top>
+			<width>740</width>
+			<height>26</height>
+			<font>SemiBig</font>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-title]</label>
+		</control>
+	</control>
+	<control type="group"><!-- Detailinfo Handlung2 -->
+		<left>460</left>
+		<top>17</top>
+		<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+		<control type="label"><!-- title -->
+			<height>22</height>
+			<width>940</width>
+			<textcolor>TextColor2</textcolor>
+			<label>[B]$VAR[viewextendedlist-value-title][/B]</label>
+		</control>
+		<control type="label">
+			<top>22</top>
+			<width>940</width>
+			<height>22</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[viewextendedlist-value-details1]</label>
+		</control>
+	</control>
+</include>
+
+<include name="viewextended_video_text_focusedlayout">
+	<control type="group">
+		<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),PlotList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),PlotList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),PlotList)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),PlotList)]</visible>
+		<control type="image">
+			<left>450</left>
+			<top>10</top>
+			<width>1140</width>
+			<height>180</height>
+			<texture flipx="true" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+			<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+		</control>
+		<control type="image">
+			<top>10</top>
+			<width>450</width>
+			<height>180</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+			<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+		</control>
+		<control type="image">
+			<left>100</left>
+			<top>10</top>
+			<width>350</width>
+			<height>180</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+				<effect type="fade" start="100" end="0" time="200"/>
+			</animation>
+		</control>
+		<control type="image">
+			<left>450</left>
+			<top>10</top>
+			<height>180</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="group">
+			<control type="group"><!-- back -->
+				<left>460</left>
+				<top>50</top>
+				<visible>ListItem.IsParentFolder</visible>
+				<control type="label">
+					<width>590</width>
+					<height>26</height>
+					<font>SemiBig</font>
+					<textcolor>TextColor1</textcolor>
+					<label>$INFO[ListItem.label]</label>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo1 -->
+				<left>220</left>
+				<top>15</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieDetailInfo))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowDetailInfo))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonDetailInfo))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo)]]</visible>
+				<control type="label"><!-- title -->
+					<left>240</left>
+					<width>980</width>
+					<height>26</height>
+					<font>SemiBig</font>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[viewextendedlist-value-title]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<top>52</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>25</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]</label>
+					</control>
+				</control>
+				<control type="group"><!-- left info -->
+					<top>95</top>
+					<control type="label">
+						<height>22</height>
+						<width>230</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails1]</label>
+					</control>
+					<control type="label">
+						<top>22</top>
+						<height>22</height>
+						<width>230</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails2]</label>
+					</control>
+				</control>
+				<control type="group"><!-- right info -->
+					<left>240</left>
+					<top>32</top>
+					<control type="label">
+						<height>30</height>
+						<width>480</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails4]</label>
+					</control>
+					<control type="label">
+						<top>22</top>
+						<height>30</height>
+						<width>480</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails3]</label>
+					</control>
+				</control>
+				<control type="textbox"><!-- plot -->
+					<left>240</left>
+					<top>95</top>
+					<include>PlotNormal66</include>
+					<width>740</width>
+					<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					<visible>!String.StartsWith(ListItem.label,*)</visible>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo2 -->
+				<left>220</left>
+				<top>15</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+				<control type="group"><!-- Rating -->
+					<top>32</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>113</left>
+						<width>680</width>
+						<height>25</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]</label>
+					</control>
+					<control type="label">
+						<top>25</top>
+						<width>680</width>
+						<height>28</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+						<visible>!String.IsEmpty(ListItem.Votes)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- left info -->
+					<top>95</top>
+					<control type="label">
+						<height>22</height>
+						<width>230</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails1]</label>
+					</control>
+					<control type="label">
+						<top>22</top>
+						<height>22</height>
+						<width>230</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails2]</label>
+					</control>
+				</control>
+				<control type="group"><!-- right info -->
+					<left>240</left>
+					<top>32</top>
+					<control type="label"><!-- title -->
+						<top>-32</top>
+						<width>980</width>
+						<height>26</height>
+						<font>SemiBig</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$VAR[viewextendedlist-value-title]</label>
+					</control>
+					<control type="label">
+						<height>30</height>
+						<width>960</width>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails3]</label>
+					</control>
+					<control type="label">
+						<top>30</top>
+						<height>22</height>
+						<width>960</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-textdetails4]</label>
+					</control>
+					<control type="textbox"><!-- plot -->
+						<top>63</top>
+						<include>PlotNormal66</include>
+						<width>740</width>
+						<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+						<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						<visible>!String.StartsWith(ListItem.label,*) + !Container.Content(sets) + !ListItem.IsCollection</visible>
+					</control>
+					<control type="grouplist"><!-- set info -->
+						<top>63</top>
+						<visible>[Container.Content(sets) | ListItem.IsCollection]</visible>
+						<control type="label"><!-- right plot -->
+							<height>22</height>
+							<width>350</width>
+							<label>$INFO[Container(5350).ListItemNowrap.Label,1. ,]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						</control>
+						<control type="label"><!-- right plot -->
+							<height>22</height>
+							<width>350</width>
+							<label>$INFO[Container(5350).ListItemNowrap(1).Label,2. ,]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						</control>
+						<control type="label"><!-- right plot -->
+							<height>22</height>
+							<width>350</width>
+							<label>$INFO[Container(5350).ListItemNowrap(2).Label,3. ,]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						</control>
+					</control>
+					<control type="grouplist"><!-- set info -->
+						<left>360</left>
+						<top>63</top>
+						<visible>[Container.Content(sets) | ListItem.IsCollection]</visible>
+						<control type="label"><!-- right plot -->
+							<height>22</height>
+							<width>350</width>
+							<label>$INFO[Container(5350).ListItemNowrap(3).Label,4. ,]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						</control>
+						<control type="label"><!-- right plot -->
+							<height>22</height>
+							<width>350</width>
+							<label>$INFO[Container(5350).ListItemNowrap(4).Label,5. ,]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						</control>
+						<control type="label"><!-- right plot -->
+							<height>22</height>
+							<width>350</width>
+							<label>$INFO[Container(5350).ListItemNowrap(5).Label,6. ,]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						</control>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo Handlung -->
+				<left>150</left>
+				<top>15</top>
+				<visible>!ListItem.IsParentFolder</visible>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]</visible>
+				<control type="label"><!-- title -->
+					<top>22</top>
+					<width>220</width>
+					<height>66</height>
+					<wrapmultiline>true</wrapmultiline>
+					<aligny>top</aligny>
+					<font>SemiBig</font>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[viewextendedlist-value-title]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<top>120</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>25</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]</label>
+					</control>
+					<control type="label">
+						<top>32</top>
+						<height>22</height>
+						<width>960</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-details1]</label>
+					</control>
+				</control>
+				<control type="group"><!-- info -->
+					<left>310</left>
+					<top>15</top>
+					<control type="textbox"><!-- right plot -->
+						<top>12</top>
+						<include>PlotNormal110</include>
+						<width>740</width>
+						<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+						<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						<visible>!String.StartsWith(ListItem.label,*)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Detailinfo Handlung2 -->
+				<left>460</left>
+				<top>17</top>
+				<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+				<control type="group"><!-- Rating -->
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-13</top>
+						<width>135</width>
+						<height>25</height>
+						<aligny>center</aligny>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>95</left>
+						<width>680</width>
+						<height>25</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]  ]$VAR[viewextendedlist-value-details1,  |  ,]$VAR[viewextendedlist-value-details2,  |  ,]</label>
+						<visible>String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+					<control type="label">
+						<left>113</left>
+						<width>680</width>
+						<height>28</height>
+						<font>SemiNormal</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[rating_value_label,  |  ,]$VAR[viewextendedlist-value-details1,  |  ,]$VAR[viewextendedlist-value-details2,  |  ,]</label>
+						<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+					</control>
+				</control>
+				<control type="textbox"><!-- plot -->
+					<top>32</top>
+					<include>PlotNormal110</include>
+					<width>740</width>
+					<label fallback="31009">[B]$VAR[viewextendedlist-value-title,, ][/B]$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					<visible>!String.StartsWith(ListItem.label,*)</visible>
+				</control>
+			</control>
+			<control type="image"><!-- Last Watched -->
+				<left>1185</left>
+				<top>19</top>
+				<width>30</width>
+				<height>30</height>
+				<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<visible>!Skin.HasSetting(DisableLastwatchedHistory) + !ListItem.IsParentFolder</visible>
+			</control>
+		</control>
+		<control type="image">
+			<top>5</top>
+			<include>global_topshadow5</include>
+		</control>
+		<include content="watched_overlayBG"><!-- progress -->
+			<param name="left">395</param>
+			<param name="top">6</param>
+			<param name="width">60</param>
+			<param name="height">60</param>
+		</include>
+		<control type="label"><!-- Media Overlay -->
+			<description>Media Overlay - neu, angefangene usw.</description>
+			<left>395</left>
+			<top>6</top>
+			<width>60</width>
+			<height>60</height>
+			<aligny>top</aligny>
+			<align>right</align>
+			<font>IconOverlay_big</font>
+			<textcolor>TextColorFocus</textcolor>
+			<selectedcolor>TextColorFocus</selectedcolor>
+			<label>$VAR[WatchedOverlayFlag]</label>
+		</control>
+		<control type="image">
+			<top>190</top>
+			<include>global_bottomshadow5</include>
+		</control>
+	</control>
+</include>
+
+<include name="View54ExtendedList_video">
+	<control type="group">
+		<control type="label" id="6313">
+			<include>Hiddencontrol</include>
+			<label>$VAR[viewextendedlist_video_artworkblockfallback]</label>
+		</control>
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<include>viewextendedlist_backgroundoverlay</include>
+		<visible>Control.IsVisible(54)</visible>
+		<control type="group"><!-- diffuse -->
+			<top>218</top>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<control type="image"><!-- small -->
+				<top>-90</top>
+				<width>1280</width>
+				<height>100</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle))]</visible>
+			</control>
+			<control type="image"><!-- small -->
+				<top>140</top>
+				<width>1280</width>
+				<height>180</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle))]</visible>
+			</control>
+			<control type="image"><!-- big -->
+				<top>-120</top>
+				<width>1280</width>
+				<height>130</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieListstyle))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowListstyle))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonListstyle))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList)]</visible>
+			</control>
+			<control type="image"><!-- big -->
+				<top>190</top>
+				<width>1280</width>
+				<height>130</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieListstyle))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowListstyle))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonListstyle))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList)]</visible>
+			</control>
+			<control type="image"><!-- text -->
+				<top>-120</top>
+				<width>1280</width>
+				<height>130</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),PlotList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),PlotList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),PlotList)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),PlotList)]</visible>
+			</control>
+			<control type="image"><!-- text -->
+				<top>190</top>
+				<width>1280</width>
+				<height>130</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),PlotList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),PlotList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),PlotList)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),PlotList)]</visible>
+			</control>
+		</control>
+		<control type="fixedlist" id="54"><!-- List -->
+			<viewtype label="$LOCALIZE[31228]">Wide Icon</viewtype>
+			<top>80</top>
+			<width>1280</width>
+			<height>545</height>
+			<onleft>SetFocus(9000)</onleft><!-- Menue -->
+			<onright condition="Integer.IsGreater(Container(54).NumPages,1)">80</onright>
+			<onright condition="!Integer.IsGreater(Container(54).NumPages,1)">SetFocus(9000)</onright>
+			<onup>54</onup>
+			<ondown>54</ondown>
+			<pagecontrol>80</pagecontrol>
+			<preloaditems>4</preloaditems>
+			<focusposition>2</focusposition>
+			<include>OnInfoContent</include>
+			<animation effect="fade" start="100" end="0" time="400" tween="cubic" easing="inout" condition="Window.IsVisible(Custom_1113_Settings_Dialogs.xml)">Conditional</animation>
+			<visible>!String.Contains(Container.FolderPath,plugin) + [[Container.Content(movies) + String.Contains(Skin.String(PLS_FilmViewtype),ExtendedList) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(movies) + String.Contains(Skin.String(FilmViewtype),ExtendedList) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(TVViewtype),ExtendedList) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(PLS_TVViewtype),ExtendedList) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(episodes) + String.Contains(Skin.String(EpisodeViewtype),ExtendedList) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(episodes) + String.Contains(Skin.String(PLS_EpisodeViewtype),ExtendedList) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(sets) + String.Contains(Skin.String(SetViewtype),ExtendedList)]] | [Container.Content(seasons) + String.Contains(Skin.String(StaffelViewtype),ExtendedList)] | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+			<itemlayout condition="[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieListstyle))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowListstyle))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonListstyle))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList)]" width="1280" height="69">
+				<include>viewextended_video_big_itemlayout</include>
+			</itemlayout>
+			<focusedlayout condition="[[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieListstyle))] | [Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowListstyle))] | [Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonListstyle))] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList)]" width="1280" height="200">
+			</focusedlayout>
+			<itemlayout condition="[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle))]" width="1000" height="65">
+				<include>viewextended_video_small_itemlayout</include>
+			</itemlayout>
+			<focusedlayout condition="[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle))]" width="1000" height="155">
+			</focusedlayout>
+			<itemlayout condition="[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),PlotList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),PlotList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),PlotList)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),PlotList)]" width="1000" height="69">
+				<include>viewextended_video_text_itemlayout</include>
+			</itemlayout>
+			<focusedlayout condition="[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieListstyle),PlotList)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowListstyle),PlotList)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonListstyle),PlotList)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),PlotList)]" width="1000" height="200">
+			</focusedlayout>
+		</control>
+		<control type="group"><!-- focusinfo -->
+			<top>218</top>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<include>viewextended_video_text_focusedlayout</include>
+			<include>viewextended_video_small_focusedlayout</include>
+			<include>viewextended_video_big_focusedlayout</include>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>1200</left>
+			<top>80</top>
+			<height>535</height>
+			<onleft>SetFocus(54)</onleft>
+			<onright>SetFocus(9000)</onright><!-- Menue -->
+			<visible allowhiddenfocus="true">Control.IsVisible(54) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+
+<!-- ####  View Exdended List music #### -->
+<variable name="View54ExtendedList_musictitle">
+	<value condition="ListItem.IsParentFolder">..</value>
+	<value condition="Container.Content(songs)">$VAR[global_trackprefix]$INFO[ListItem.TrackNumber,, ]$INFO[ListItem.Title]</value>
+	<value>$INFO[ListItem.label]</value>
+</variable>
+
+<variable name="View54ExtendedList_music_subtitle">
+	<value condition="ListItem.IsParentFolder"></value>
+	<value condition="Container.Content(songs) + String.Contains(Container.Folderpath,musicdb://songs) + !String.IsEmpty(ListItem.Album)">$INFO[ListItem.Artist,, | ]$INFO[ListItem.Album]</value><!-- unten Artist alle songs db-->
+	<value condition="Container.Content(songs) + String.Contains(Container.Folderpath,musicdb://songs) + String.IsEmpty(ListItem.Album)">$INFO[ListItem.Artist]</value><!-- unten Artist alle songs db-->
+
+	<value condition="Container.Content(songs) + String.IsEqual(Container.SortMethod,$LOCALIZE[576])">$INFO[ListItem.Album,, | ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value><!-- rechts dateAdded NODE_TYPE_SONG_TOP100 SortByNone 576 Play count -->
+	<value condition="Container.Content(songs) + String.IsEqual(Container.SortMethod,$LOCALIZE[19075])">$INFO[ListItem.Artist,, | ]$INFO[ListItem.Album]</value><!-- unten Artist bei sortierung name -->
+
+	<value condition="Container.Content(songs) + !String.IsEqual(Container.SortMethod,$LOCALIZE[552]) + !String.IsEqual(Container.SortMethod,$LOCALIZE[576]) + !String.IsEqual(Container.SortMethod,$LOCALIZE[551])">$INFO[ListItem.Genre]</value><!-- unten genre bei allen -->
+	<value condition="Container.Content(songs) + String.IsEqual(Container.SortMethod,$LOCALIZE[552])">$INFO[ListItem.Album,, | ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value><!-- rechts dateAdded NODE_TYPE_ALBUM_RECENTLY_ADDED_SONGS SortByNone	552	dateAdded -->
+
+	<value condition="Container.Content(artists) + String.IsEqual(Container.SortMethod,$LOCALIZE[29904])">$INFO[ListItem.Property(Artist_Genre)]</value><!-- unten Artistgenre bei sortierung interpret -->
+	<value condition="Container.Content(artists) + !String.IsEqual(Container.SortMethod,$LOCALIZE[29904])">$INFO[ListItem.Label2]</value><!-- unten Artistgenre bei sortierung interpret -->
+	
+
+	<value condition="Container.Content(Albums) + ![String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[578])]">$INFO[ListItem.Genre]</value><!-- unten Artist bei SortBy Artist 557 / Album 558 / SortBy Artist/year 578 -->
+	<value condition="Container.Content(Albums)">$INFO[ListItem.Label2]</value><!-- unten label2 beim rest -->
+	
+	
+	
+	<value condition="Container.Content(Albums) + ![String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[578])]">$INFO[ListItem.Artist]</value><!-- unten Artist bei SortByYear 562 / SortByDateAdded 570 / SortByPlaycount 567 / SortByRating 563 / SortByUserRating 38018 / SortByNone 552 dateAdded / SortByLastPlayed 568 last played -->
+	<value condition="Container.Content(Albums) + [String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[578])]">$INFO[ListItem.Genre]</value><!-- unten genre bei SortByTitle 556 / SortByAlbum 558 / SortByArtist 557  -->
+	<value></value>
+</variable>
+
+<include name="View54ExtendedList_music">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<visible>Control.IsVisible(54)</visible>
+		<control type="group"><!-- diffuse -->
+			<top>218</top>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<control type="image"><!-- small -->
+				<top>-90</top>
+				<width>1280</width>
+				<height>100</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>Container.Content(songs)</visible>
+			</control>
+			<control type="image"><!-- small -->
+				<top>140</top>
+				<width>1280</width>
+				<height>180</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>Container.Content(songs)</visible>
+			</control>
+			<control type="image"><!-- big -->
+				<top>-120</top>
+				<width>1280</width>
+				<height>130</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>Container.Content(artists) | Container.Content(albums)</visible>
+			</control>
+			<control type="image"><!-- big -->
+				<top>190</top>
+				<width>1280</width>
+				<height>130</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>Container.Content(artists) | Container.Content(albums)</visible>
+			</control>
+		</control>
+		<control type="image">
+			<top>218</top>
+			<width>1280</width>
+			<height>190</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+		</control>
+		<control type="image">
+			<top>408</top>
+			<width>1280</width>
+			<height>120</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse.png" flipy="true">White.png</texture>
+			<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+		</control>
+		<!-- List -->
+		<control type="fixedlist" id="54">
+			<viewtype label="$LOCALIZE[31228]">list</viewtype>
+			<top>80</top>
+			<width>1280</width>
+			<height>545</height>
+			<onleft>SetFocus(9000)</onleft><!-- Menue -->
+			<onright condition="Integer.IsGreater(Container(54).NumPages,1)">80</onright>
+			<onright condition="!Integer.IsGreater(Container(54).NumPages,1)">SetFocus(9000)</onright>
+			<onup>54</onup>
+			<ondown>54</ondown>
+			<pagecontrol>80</pagecontrol>
+			<preloaditems>4</preloaditems>
+			<focusposition>2</focusposition>
+			<visible>[Container.Content(albums) + String.Contains(Skin.String(AlbumViewtype),ExtendedList)] | [Container.Content(artists) + String.Contains(Skin.String(ArtistViewtype),ExtendedList)] | [Container.Content(songs) + String.Contains(Skin.String(SongViewtype),ExtendedList)] | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+			<itemlayout condition="Container.Content(artists) | Container.Content(albums)"  width="1280" height="69">
+				<control type="group"><!-- back -->
+					<left>460</left>
+					<top>50</top>
+					<visible>ListItem.IsParentFolder</visible>
+					<control type="label">
+						<left>0</left>
+						<top>0</top>
+						<width>590</width>
+						<height>26</height>
+						<font>SemiBig</font>
+						<textcolor>TextColor1</textcolor>
+						<label>$VAR[View54ExtendedList_musictitle]</label>
+					</control>
+				</control>
+				<control type="group"><!-- info -->
+					<left>460</left>
+					<top>15</top>
+					<control type="label">
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>26</height>
+						<font>SemiBig</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[View54ExtendedList_musictitle]</label>
+					</control>
+					<control type="label">
+						<left>0</left>
+						<top>30</top>
+						<width>740</width>
+						<height>22</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.label2]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<left>1080</left>
+					<top>25</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>Container.Content(albums) | Container.Content(songs)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+				</control>
+			</itemlayout>
+			<itemlayout condition="Container.Content(songs)"  width="1280" height="65">
+				<control type="group"><!-- back -->
+					<left>460</left>
+					<top>10</top>
+					<visible>ListItem.IsParentFolder</visible>
+					<control type="label">
+						<width>590</width>
+						<height>22</height>
+						<font>SemiLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-title]</label>
+					</control>
+				</control>
+				<control type="group"><!-- info -->
+					<left>460</left>
+					<top>15</top>
+					<control type="label">
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>26</height>
+						<font>SemiBig</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[View54ExtendedList_musictitle]</label>
+					</control>
+					<control type="label">
+						<left>0</left>
+						<top>30</top>
+						<width>740</width>
+						<height>22</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.label2]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<left>1080</left>
+					<top>25</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>Container.Content(albums) | Container.Content(songs)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="Container.Content(artists) | Container.Content(albums)"width="1280" height="200">
+			</focusedlayout>
+			<focusedlayout condition="Container.Content(songs)"width="1280" height="155">
+			</focusedlayout>
+		</control>
+		<control type="group"><!-- focusinfo artist/album-->
+			<top>218</top>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<visible>Container.Content(artists) | Container.Content(albums)</visible>
+			<control type="image">
+				<left>440</left>
+				<top>10</top>
+				<width>1140</width>
+				<height>180</height>
+				<texture flipx="true" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+				<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="0" end="100" time="500"/>
+				</animation>
+				<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+			</control>
+			<control type="image">
+				<top>10</top>
+				<width>440</width>
+				<height>180</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+				<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="0" end="100" time="500"/>
+				</animation>
+				<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+			</control>
+			<!-- CDART -->
+			<control type="group">
+				<animation type="WindowOpen">
+					<effect type="slide" start="-330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+				</animation>
+				<animation type="Visible">
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+				</animation>
+				<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+				<animation type="Hidden">
+					<effect type="slide" start="0,0" end="330,0" time="300" tween="cubic" easing="out"/>
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+				<!-- Discart -->
+				<control type="image">
+					<left>30</left>
+					<top>-50</top>
+					<width>270</width>
+					<height>270</height>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<texture diffuse="artworks/extendedlistbig-cdart-overlay.png">$VAR[art_value_cdart]</texture>
+				</control>
+				<control type="image">
+					<left>30</left>
+					<top>-50</top>
+					<width>270</width>
+					<height>270</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="30" end="70" time="0" condition="true">Conditional</animation>
+					<texture diffuse="artworks/extendedlistbig-cdart-diffuse.png">$VAR[art_value_cdart]</texture>
+				</control>
+			</control>
+			<control type="group"><!-- back -->
+				<top>10</top>
+				<visible>ListItem.IsParentFolder</visible>
+				<control type="image">
+					<left>260</left>
+					<width>180</width>
+					<height>180</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">folderback/DefaultFolderBack.png</texture>
+				</control>
+				<control type="label">
+					<left>460</left>
+					<top>5</top>
+					<width>590</width>
+					<height>26</height>
+					<font>SemiBig</font>
+					<label>$VAR[View54ExtendedList_musictitle]</label>
+				</control>
+			</control>
+			<control type="group"><!-- artwork -->
+				<top>10</top>
+				<visible>!ListItem.IsParentFolder</visible>
+				<control type="image">
+					<left>260</left>
+					<width>180</width>
+					<height>180</height>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true" fallback="DefaultAudio.png">$INFO[ListItem.Icon]</texture>
+				</control>
+			</control>
+			<control type="image"><!-- artwork shadows -->
+				<description>Schatten</description>
+				<left>432</left>
+				<top>10</top>
+				<height>180</height>
+				<include>global_texture_border8_leftv</include>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<left>252</left>
+				<top>10</top>
+				<height>180</height>
+				<include>global_texture_border8_leftv</include>
+			</control>
+			<control type="group"><!-- info -->
+				<left>460</left>
+				<top>15</top>
+				<visible>!ListItem.IsParentFolder</visible>
+				<control type="label"><!-- title -->
+					<width>630</width>
+					<height>26</height>
+					<font>SemiBig</font>
+					<label>$VAR[View54ExtendedList_musictitle]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<left>600</left>
+					<visible>String.Contains(ListItem.DBTYPE,album)</visible>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="label">
+						<left>-5</left>
+						<top>-10</top>
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<font>Rating-small</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- left info -->
+					<top>40</top>
+					<control type="label">
+						<height>22</height>
+						<width>600</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[View54ExtendedList_music_subtitle]</label>
+					</control>
+				<control type="grouplist">
+					<left>0</left>
+					<top>22</top>
+					<width>600</width>
+					<orientation>vertical</orientation>
+					<itemgap>1</itemgap>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="label">
+						<height>20</height>
+						<width>600</width>
+						<aligny>top</aligny>
+						<label>$VAR[viewglobal_value_fileinfo1_title] $VAR[viewglobal_value_fileinfo1_label]</label>
+						<visible>!String.IsEmpty(Control.GetLabel(5112))</visible>
+					</control>
+					<control type="label">
+						<height>20</height>
+						<width>600</width>
+						<aligny>top</aligny>
+						<label>$VAR[viewglobal_value_fileinfo3_title] $VAR[viewglobal_value_fileinfo3_label]</label>
+						<visible>!String.IsEmpty(Control.GetLabel(5114))</visible>
+					</control>
+					<control type="label">
+						<height>20</height>
+						<width>600</width>
+						<aligny>top</aligny>
+						<label>$VAR[viewglobal_value_fileinfo4_title] $VAR[viewglobal_value_fileinfo4_label]</label>
+						<visible>!String.IsEmpty(Control.GetLabel(5115))</visible>
+					</control>
+					<control type="label">
+						<include>RightList56Label</include>
+						<label>$VAR[viewglobal_value_fileinfo5_title] $VAR[viewglobal_value_fileinfo5_label]</label>
+						<visible>!String.IsEmpty(Control.GetLabel(5116))</visible>
+					</control>
+					<control type="label">
+						<height>20</height>
+						<width>600</width>
+						<aligny>top</aligny>
+						<label>$VAR[viewglobal_value_fileinfo6_title] $VAR[viewglobal_value_fileinfo6_label]</label>
+						<visible>!String.IsEmpty(Control.GetLabel(5117))</visible>
+					</control>
+				</control>
+					<control type="label">
+						<top>3422</top>
+						<height>22</height>
+						<width>600</width>
+						<align>top</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[View54ExtendedList_music_subtitle]</label>
+					</control>
+					<control type="textbox"><!-- right plot -->
+						<top>3454</top>
+						<include>PlotNormal66</include>
+						<width>630</width>
+						<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+						<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+					</control>
+				</control>
+			</control>
+			<control type="image">
+				<top>5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<top>190</top>
+				<include>global_bottomshadow5</include>
+			</control>
+		</control>
+		<control type="group"><!-- focusinfo song -->
+			<top>218</top>
+			<visible>Container.Content(songs)</visible>
+			<control type="image">
+				<left>440</left>
+				<top>10</top>
+				<width>1240</width>
+				<height>130</height>
+				<texture flipx="true" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+				<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="0" end="100" time="500"/>
+				</animation>
+				<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+			</control>
+			<!-- CDART -->
+			<control type="group">
+				<animation type="WindowOpen">
+					<effect type="slide" start="-330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+				</animation>
+				<animation type="Visible">
+					<effect type="slide" start="330,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+				</animation>
+				<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+				<animation type="Hidden">
+					<effect type="slide" start="0,0" end="330,0" time="300" tween="cubic" easing="out"/>
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+				<!-- Discart -->
+				<control type="image"><!-- 950 -->
+					<left>30</left>
+					<top>-40</top>
+					<width>230</width>
+					<height>230</height>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="70" end="70" time="0" condition="true">Conditional</animation>
+					<texture diffuse="artworks/extendedlistsmall-cdart-overlay.png">$VAR[art_value_cdart]</texture>
+				</control>
+				<control type="image"><!-- 950 -->
+					<left>30</left>
+					<top>-40</top>
+					<width>230</width>
+					<height>230</height>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<animation effect="fade" start="30" end="70" time="0" condition="true">Conditional</animation>
+					<texture diffuse="artworks/extendedlistsmall-cdart-diffuse.png">$VAR[art_value_cdart]</texture>
+				</control>
+			</control>
+			<control type="image">
+				<top>10</top>
+				<width>440</width>
+				<height>130</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_extendedlist</colordiffuse>
+				<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="0" end="100" time="500"/>
+				</animation>
+				<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+			</control>
+			<control type="image">
+				<left>80</left>
+				<top>10</top>
+				<width>360</width>
+				<height>130</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<animation type="Focus" reversible="true" condition="![Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="0" end="100" time="500"/>
+				</animation>
+				<animation type="UnFocus" reversible="true" condition="[Container(54).OnNext | Container(54).OnPrevious]">
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+			</control>
+			<control type="image">
+				<left>440</left>
+				<top>10</top>
+				<height>130</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="group">
+				<control type="group"><!-- back -->
+					<visible>ListItem.IsParentFolder</visible>
+					<control type="image">
+						<left>310</left>
+						<top>10</top>
+						<width>130</width>
+						<height>130</height>
+						<bordersize>0</bordersize>
+						<fadetime>FanartCrossFadeTime</fadetime>
+						<texture background="true">folderback/DefaultFolderBack.png</texture>
+					</control>
+					<control type="label">
+						<left>460</left>
+						<top>10</top>
+						<width>590</width>
+						<height>22</height>
+						<font>SemiLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$VAR[viewextendedlist-value-title]</label>
+					</control>
+				</control>
+				<control type="image"><!-- artwork -->
+					<left>310</left>
+					<top>10</top>
+					<width>130</width>
+					<height>130</height>
+					<bordersize>0</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<texture background="true" fallback="DefaultAudio.png">$INFO[ListItem.Icon]</texture>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="image"><!-- artwork shadows -->
+					<description>Schatten</description>
+					<left>302</left>
+					<top>10</top>
+					<height>130</height>
+					<include>global_texture_border8_leftv</include>
+				</control>
+				<control type="group"><!-- Detailinfo1 -->
+					<left>460</left>
+					<top>10</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="label"><!-- title -->
+						<width>740</width>
+						<height>26</height>
+						<font>SemiLarge</font>
+						<label>$VAR[View54ExtendedList_musictitle]</label>
+					</control>
+					<control type="group"><!-- Rating -->
+						<top>28</top>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Ratingback-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layoutback</include>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layout</include>
+							<visible>String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-UserRating-color-layout</include>
+							<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>100</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]</label>
+						</control>
+					</control>
+					<control type="group"><!-- left info -->
+						<top>60</top>
+						<control type="label">
+							<height>22</height>
+							<width>630</width>
+							<align>top</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.label2]</label>
+						</control>
+						<control type="label" id="5441">
+							<top>22</top>
+							<height>22</height>
+							<width>630</width>
+							<align>top</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[View54ExtendedList_music_subtitle]</label>
+						</control>
+						<control type="label" id="5441">
+							<top>22</top>
+							<height>22</height>
+							<width>630</width>
+							<align>top</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Comment]</label>
+							<visible>String.IsEmpty(Control.Getlabel(5441))</visible>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Detailinfo2 -->
+					<left>460</left>
+					<top>10</top>
+					<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Detailinfo2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Detailinfo2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Detailinfo2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Detailinfo2)]]</visible>
+					<control type="label"><!-- title -->
+						<width>740</width>
+						<height>26</height>
+						<font>SemiLarge</font>
+						<label>$VAR[viewextendedlist-value-title]</label>
+					</control>
+					<control type="group"><!-- Rating -->
+						<top>28</top>
+						<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Ratingback-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layoutback</include>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layout</include>
+							<visible>String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-UserRating-color-layout</include>
+							<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>95</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+							<visible>String.StartsWith(ListItem.Votes,0)</visible>
+						</control>
+						<control type="label">
+							<left>100</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]</label>
+							<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+						</control>
+					</control>
+					<control type="group"><!-- left info -->
+						<top>60</top>
+						<control type="label">
+							<height>22</height>
+							<width>740</width>
+							<align>top</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[viewextendedlist-value-details1]$VAR[viewextendedlist-value-details2,  |  ,]</label>
+						</control>
+						<control type="label">
+							<top>22</top>
+							<height>22</height>
+							<width>740</width>
+							<align>top</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[viewextendedlist-value-details3]$VAR[viewextendedlist-value-details4,  |  ,]</label>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Detailinfo Handlung -->
+					<left>460</left>
+					<top>15</top>
+					<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodeDetailInfo))]]</visible>
+					<control type="label"><!-- title -->
+						<width>740</width>
+						<height>26</height>
+						<font>SemiLarge</font>
+						<label>$VAR[viewextendedlist-value-title]</label>
+					</control>
+					<control type="group"><!-- Rating -->
+						<top>28</top>
+						<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Ratingback-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layoutback</include>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layout</include>
+							<visible>String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-UserRating-color-layout</include>
+							<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>95</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]]</label>
+							<visible>String.StartsWith(ListItem.Votes,0)</visible>
+						</control>
+						<control type="label">
+							<left>100</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]</label>
+							<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+						</control>
+					</control>
+					<control type="group"><!-- info -->
+						<top>55</top>
+						<control type="textbox"><!-- right plot -->
+							<include>PlotNormal66</include>
+							<width>740</width>
+							<label fallback="31009">$VAR[viewglobal_value_plot]</label>
+							<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+							<visible>!String.StartsWith(ListItem.label,*)</visible>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Detailinfo Handlung2 -->
+					<left>460</left>
+					<top>17</top>
+					<visible>!ListItem.IsParentFolder + [[[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieDetailInfo),Plot2)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowDetailInfo),Plot2)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonDetailInfo),Plot2)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodeDetailInfo),Plot2)]]</visible>
+					<control type="group"><!-- Rating -->
+						<visible>!String.Contains(ListItem.DBTYPE,season)</visible>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Ratingback-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layoutback</include>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-Rating-color-layout</include>
+							<visible>String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>-5</left>
+							<top>-10</top>
+							<width>135</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-small</font>
+							<include>Star-UserRating-color-layout</include>
+							<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>95</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]$INFO[ListItem.Votes, , $LOCALIZE[205]  ]$VAR[viewextendedlist-value-details1,  |  ,]</label>
+							<visible>String.StartsWith(ListItem.Votes,0)</visible>
+						</control>
+						<control type="label">
+							<left>100</left>
+							<width>680</width>
+							<height>22</height>
+							<font>SemiNormal</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$VAR[rating_value_label,  |  ,]$VAR[viewextendedlist-value-details1,  |  ,]</label>
+							<visible>!String.StartsWith(ListItem.Votes,0)</visible>
+						</control>
+					</control>
+					<control type="textbox"><!-- plot -->
+						<top>30</top>
+						<include>PlotNormal88</include>
+						<width>740</width>
+						<textcolor>TextColor2</textcolor>
+						<label fallback="31009">[B]$VAR[viewextendedlist-value-title,, ][/B]$VAR[viewglobal_value_plot]</label>
+						<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+						<visible>!String.StartsWith(ListItem.label,*)</visible>
+					</control>
+				</control>
+				<control type="image"><!-- Last Watched -->
+					<left>1185</left>
+					<top>19</top>
+					<width>30</width>
+					<height>30</height>
+					<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+				</control>
+			</control>
+			<control type="image">
+				<top>5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<top>140</top>
+				<include>global_bottomshadow5</include>
+			</control>
+		</control>
+		<control type="image">
+			<left>1000</left>
+			<top>248</top>
+			<width>250</width>
+			<height>125</height>
+			<include>viewglobal_topelements_logo</include>
+		</control>
+		<control type="scrollbar" id="80"><!-- scrollbar -->
+			<include>scrollbar_vertical</include>
+			<left>1230</left>
+			<top>190</top>
+			<height>420</height>
+			<onleft>54</onleft>
+			<onright>SetFocus(9000)</onright><!-- menue -->
+			<visible allowhiddenfocus="true">Control.IsVisible(54) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+
+</includes>

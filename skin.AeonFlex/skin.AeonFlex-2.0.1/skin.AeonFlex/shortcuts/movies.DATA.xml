@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+	<shortcut>
+		<label>$LOCALIZE[31850]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(video,movieTitles,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31856]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,moviesets,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31852]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,moviegenres,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31853]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,movieyears,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31854]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,movieactors,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31855]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,moviestudios,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31857]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,moviecountries,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31859]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,MovieTags,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31858]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,recentlyaddedmovies,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31848]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videoplaylist)</action>
+	</shortcut>
+</shortcuts>

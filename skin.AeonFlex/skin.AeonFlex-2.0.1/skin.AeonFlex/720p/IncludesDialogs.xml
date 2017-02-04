@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- ####DialogSelect ####-->
+<variable name="dialog_select_previewicon">
+	<value condition="String.IsEqual(Window(home).Property(Selectdialogcategory),editor)">defaultpictures/DefaultAddonLibraryEditor.png</value>
+	<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[283])">DefaultMovies.png</value>
+	<value condition="!ListItem.IsParentFolder + Control.IsVisible(6) + !String.IsEmpty(Container(6).ListItem.Icon)">$INFO[Container(6).ListItem.Icon]</value>
+	<value condition="ListItem.IsParentFolder">DefaultFolderBack.png</value>
+	<value>DefaultAddonMore.png</value>
+</variable>
+
+<include name="dialog_select_standard"><!-- check -->
+	<control type="group"><!-- width 777 -->
+		<left>400</left>
+		<top>155</top>
+		<width>1280</width>
+		<height>720</height>
+		<visible>![Window.IsVisible(virtualkeyboard) | Window.IsVisible(contextmenu) | Window.IsVisible(numericinput) | Window.IsVisible(shutdownmenu)]</visible>
+		<include>animation_dialog_popup</include>
+		<control type="group"><!-- icon -->
+			<left>-360</left>
+			<top>-5</top>
+			<visible>!String.IsEqual(Window(home).Property(Selectdialogcategory),Artworkdownloader)</visible>
+			<control type="image">
+				<description>background menue</description>
+				<width>365</width>
+				<height>365</height>
+				<texture border="5" flipx="true" colordiffuse="ACBackgroundColor">shadows/dialoge_inner.png</texture>
+			</control>
+			<control type="image">
+				<description>background menue</description>
+				<width>365</width>
+				<height>365</height>
+				<texture border="5" flipx="true" colordiffuse="$VAR[AC_value_shadow_color]">shadows/dialoge_shadow-left.png</texture>
+			</control>
+			<control type="image">
+				<width>365</width>
+				<height>365</height>
+				<bordersize>5</bordersize>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio aligny="center" align="center">scale</aspectratio><!-- @ check oben blitzer? -->
+				<texture background="true">$VAR[dialog_select_previewicon]</texture>
+			</control>
+		</control>
+		<control type="group"><!-- icon keep aspect AD postersize  -->
+			<left>-241</left>
+			<top>-5</top>
+			<visible>String.IsEqual(Window(home).Property(Selectdialogcategory),Artworkdownloader)</visible>
+			<control type="image">
+				<description>background menue</description>
+				<width>246</width>
+				<height>365</height>
+				<texture border="5" flipx="true" colordiffuse="ACBackgroundColor">shadows/dialoge_inner.png</texture>
+			</control>
+			<control type="image">
+				<description>background menue</description>
+				<width>246</width>
+				<height>365</height>
+				<texture border="5" flipx="true" colordiffuse="$VAR[AC_value_shadow_color]">shadows/dialoge_shadow-left.png</texture>
+			</control>
+			<control type="image">
+				<width>246</width>
+				<height>365</height>
+				<bordersize>5</bordersize>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio aligny="bottom" align="right">keep</aspectratio><!-- @ check oben blitzer? -->
+				<texture background="true">$VAR[dialog_select_previewicon]</texture>
+			</control>
+		</control>
+		<control type="group">
+			<width>788</width>
+			<height>365</height>
+			<control type="label" id="1">
+				<description>header</description>
+				<label>$LOCALIZE[13406]</label>
+				<include>Hiddencontrol</include>
+			</control>
+			<include content="global_dialog_mid_bg">
+				<param name="global_dialog_mid_bg-left" value="0" />
+				<param name="global_dialog_mid_bg-width" value="798" />
+				<param name="global_dialog_mid_bg-innerwidth" value="624" />
+				<param name="global_dialog_mid_bg-height" value="365" />
+				<param name="global_dialog_mid_bg-headerlabel" value="$INFO[Control.GetLabel(1)]$INFO[Window(Home).Property(SelectdialogcategoryTitle), - ,]" />
+				<param name="global_dialog_mid_headerid" value="-" />
+			</include>
+			<control type="list" id="3"><!-- List -->
+				<left>0</left>
+				<top>53</top>
+				<width>625</width>
+				<height>280</height>
+				<onleft>90</onleft>
+				<onright>90</onright>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<itemlayout width="625" height="40">
+					<control type="image">
+						<left>10</left>
+						<top>39</top>
+						<width>625</width>
+						<height>1</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<width>500</width>
+						<height>41</height>
+						<scroll>false</scroll>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="625" height="40">
+					<control type="image">
+						<height>40</height>
+						<width>624</width>
+						<include>global_listfocustexture</include>
+						<visible>Control.HasFocus(3)</visible>
+					</control>
+					<control type="image">
+						<left>10</left>
+						<top>39</top>
+						<width>624</width>
+						<height>1</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+						<visible>!Control.HasFocus(3)</visible>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<width>500</width>
+						<height>41</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(3)</visible>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<width>500</width>
+						<height>41</height>
+						<scroll>false</scroll>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(3)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="list" id="6"><!-- List -->
+				<left>1</left>
+				<top>53</top>
+				<width>625</width>
+				<height>280</height>
+				<onleft>90</onleft>
+				<onright>90</onright>
+				<onup>6</onup>
+				<ondown>6</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<itemlayout width="625" height="40">
+					<control type="image">
+						<left>10</left>
+						<top>39</top>
+						<width>625</width>
+						<height>1</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<width>500</width>
+						<height>41</height>
+						<scroll>false</scroll>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="625" height="40">
+					<control type="image">
+						<height>40</height>
+						<width>624</width>
+						<include>global_listfocustexture</include>
+						<visible>Control.HasFocus(6)</visible>
+					</control>
+					<control type="image">
+						<left>10</left>
+						<top>39</top>
+						<width>624</width>
+						<height>1</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+						<visible>!Control.HasFocus(6)</visible>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<width>500</width>
+						<height>41</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(6)</visible>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<width>500</width>
+						<height>41</height>
+						<scroll>false</scroll>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(6)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="grouplist" id="90"><!-- Button Menue -->
+				<left>625</left>
+				<top>54</top>
+				<onleft condition="Control.isVisible(6)">6</onleft>
+				<onleft condition="Control.isVisible(3)">3</onleft>
+				<onright condition="Control.isVisible(6)">6</onright>
+				<onright condition="Control.isVisible(3)">3</onright>
+				<onup>90</onup>
+				<ondown>90</ondown>
+				<control type="button" id="5">
+					<description>Manual button</description>
+					<label>-</label>
+					<include>dialog_menuebutton</include>
+					<label>$LOCALIZE[21452]</label>
+				</control>
+				<control type="button" id="7">
+					<description>Cancel button</description>
+					<label>$LOCALIZE[222]</label>
+					<include>dialog_menuebutton</include>
+					<onclick>Dialog.Close(selectdialog)</onclick>
+				</control>
+			</control>
+			<include content="global_dialog_mid_dividershadow-right">
+				<param name="global_dialog_mid_dividershadow-right-left" value="624" />
+				<param name="global_dialog_mid_dividershadow-right-height" value="355" />
+			</include>
+		</control>
+	</control>
+</include>
+
+<include name="dialog_select_userrating">
+	<control type="image"><!-- #### bottom info ####-->
+		<description>bottom floor</description>
+		<top>550</top>
+		<width>1280</width>
+		<height>170</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACFloorColor</colordiffuse>
+		<animation effect="fade" start="0" end="100" time="1200" delay="500" tween="sine" easing="out">WindowOpen</animation>
+		<animation effect="fade" start="100" end="0" time="280" tween="sine" easing="out">WindowClose</animation>
+		<visible>!Window.IsVisible(shutdownmenu)</visible>
+	</control>
+	<control type="group">
+		<visible>!Window.IsVisible(shutdownmenu)</visible>
+		<include>animation_window</include>
+		<control type="group">
+			<top>-100</top>
+			<animation effect="fade" start="0" end="0" condition="true">Conditional</animation>
+			<!-- Top Title-->
+			<control type="group">
+				<left>-2000</left>
+				<top>-2000</top>
+				<control type="label" id="1">
+					<include>Hiddencontrol</include>
+				</control>
+				<control type="label" id="4"><!-- Jarvis -->
+					<include>Hiddencontrol</include>
+				</control>
+			</control>
+			<!-- mids info -->
+			<control type="group">
+				<left>0</left>
+				<top>0</top>
+				<control type="list" id="3"><!-- List -->
+					<left>0</left>
+					<top>0</top>
+					<width>914</width>
+					<height>413</height>
+					<onup condition="!String.IsEmpty(Window(home).Property(Videoratinginfo))">Dialog.close(all)</onup>
+					<onup>ClearProperty(Ratingdialog,home)</onup>
+					<onup>select</onup>
+					<onup>enter</onup>
+					<onunfocus>Skin.SetString(SelectDialog,Standard)</onunfocus>
+					<ondown condition="!String.IsEmpty(Window(home).Property(Videoratinginfo))">Dialog.close(all)</ondown>
+					<ondown>ClearProperty(Ratingdialog,home)</ondown>
+					<ondown>select</ondown>
+					<ondown>enter</ondown>
+					<onleft>3</onleft>
+					<onleft>3</onleft>
+					<onunfocus>ClearProperty(Selectdialogcategory,home)</onunfocus>
+					<itemgap>0</itemgap>
+					<orientation>horizontal</orientation>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="40">
+						<control type="image">
+							<left>10</left>
+							<top>39</top>
+							<width>914</width>
+							<height>1</height>
+							<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+						</control>
+						<control type="label">
+							<left>35</left>
+							<width>800</width>
+							<height>41</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="40">
+						<control type="image">
+							<height>40</height>
+							<width>914</width>
+							<include>global_listfocustexture</include>
+							<visible>Control.HasFocus(3)</visible>
+						</control>
+						<control type="label">
+							<left>35</left>
+							<width>800</width>
+							<height>41</height>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Control.HasFocus(3)</visible>
+						</control>
+						<control type="label">
+							<left>35</left>
+							<width>800</width>
+							<height>41</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!Control.HasFocus(3)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="list" id="6"><!-- List -->
+					<left>0</left>
+					<top>0</top>
+					<width>914</width>
+					<height>413</height>
+					<onleft>6</onleft>
+					<onleft>6</onleft>
+					<onunfocus>ClearProperty(Selectdialogcategory,home)</onunfocus>
+					<itemgap>0</itemgap>
+					<orientation>horizontal</orientation>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="40">
+						<control type="image">
+							<left>10</left>
+							<top>39</top>
+							<width>914</width>
+							<height>1</height>
+							<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+						</control>
+						<control type="label">
+							<left>35</left>
+							<width>800</width>
+							<height>41</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="40">
+						<control type="image">
+							<height>40</height>
+							<width>914</width>
+							<include>global_listfocustexture</include>
+							<visible>Control.HasFocus(6)</visible>
+						</control>
+						<control type="label">
+							<left>35</left>
+							<width>800</width>
+							<height>41</height>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Control.HasFocus(6)</visible>
+						</control>
+						<control type="label">
+							<left>35</left>
+							<width>800</width>
+							<height>41</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!Control.HasFocus(6)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="button" id="5">
+					<include>Hiddencontrol</include>
+					<onleft>6</onleft>
+					<onright>6</onright>
+					<onup>6</onup>
+					<ondown>6</ondown>
+					<onleft>SetFocus(9031)</onleft>
+					<onright>SetProperty(InfobottomBar,Temp,home)</onright>
+					<onright>SetFocus(9031)</onright>
+					<onup>SetFocus(6)</onup>
+					<ondown>SetProperty(InfobottomBar,Temp,home)</ondown>
+					<ondown>SetFocus(9031)</ondown>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<left>190</left>
+			<top>400</top>
+			<animation type="Visible">
+				<effect type="zoom" start="150" end="100"  time="500" tween="cubic" easing="out" center="640,360" />
+				<effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" start="100" end="0" time="200"/>
+				<effect type="zoom" start="100" end="130" time="200" tween="cubic" easing="in" center="640,360"/>
+			</animation>
+			<!-- Rating -->
+			<control type="image">
+				<description>left unfocus</description>
+				<width>40</width>
+				<height>80</height>
+				<texture flipx="true" colordiffuse="TextColor3">arrows/arrow_settings.png</texture>
+			</control>
+			<control type="image">
+				<description>right unfocus</description>
+				<left>860</left>
+				<width>40</width>
+				<height>80</height>
+				<texture colordiffuse="TextColor3">arrows/arrow_settings.png</texture>
+			</control>
+			<control type="list"><!-- liste NF -->
+				<top>-20</top>
+				<left>40</left>
+				<width>800</width>
+				<height>118</height>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>noop</onleft>
+				<onright>noop</onright>
+				<orientation>horizontal</orientation>
+				<focusposition>1</focusposition>
+				<scrolltime tween="sine" easing="out">200</scrolltime>
+				<itemlayout height="118" width="80">
+					<control type="label">
+						<width>100</width>
+						<height>85</height>
+						<align>center</align>
+						<scroll>false</scroll>
+						<textcolor>TextColor3</textcolor>
+						<font>Userratingdialog</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="118" width="80">
+					<control type="label">
+						<width>100</width>
+						<height>85</height>
+						<align>center</align>
+						<scroll>false</scroll>
+						<textcolor>TextColor3</textcolor>
+						<font>Userratingdialog</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="26"><!-- video 1 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="26"><!-- 2 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="27"><!-- 2 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="26"><!-- 3 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="27"><!-- 3 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="27"><!-- 3 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+					</item>
+				</content>
+			</control>
+			<control type="list" id="9000"><!-- liste -->
+				<top>-20</top>
+				<left>40</left>
+				<width>800</width>
+				<height>118</height>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>noop</onleft>
+				<onright>noop</onright>
+				<orientation>horizontal</orientation>
+				<focusposition>1</focusposition>
+				<scrolltime tween="sine" easing="out">200</scrolltime>
+				<itemlayout height="118" width="80">
+					<control type="label">
+						<width>100</width>
+						<height>85</height>
+						<align>center</align>
+						<scroll>false</scroll>
+						<textcolor>$VAR[AC_value_userrating_color]</textcolor>
+						<font>Userratingdialog</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="118" width="80">
+					<control type="label">
+						<width>100</width>
+						<height>85</height>
+						<align>center</align>
+						<scroll>false</scroll>
+						<textcolor>$VAR[AC_value_userrating_color]</textcolor>
+						<font>Userratingdialog</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="26"><!-- video 1 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					<item id="26"><!-- 2 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					<item id="27"><!-- 2 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					<item id="26"><!-- 3 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2)</visible>
+					</item>
+					<item id="27"><!-- 3 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2)</visible>
+					</item>
+					<item id="27"><!-- 3 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2)</visible>
+					</item>
+					
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					<item id="26"><!-- 4 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+					</item>
+					
+					<item id="26"><!-- 5 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+					</item>
+					<item id="26"><!-- 5 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+					</item>
+					<item id="26"><!-- 5 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+					</item>
+					<item id="26"><!-- 5 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+					</item>
+					<item id="26"><!-- 5 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+					</item>
+		
+					
+					<item id="26"><!-- 6 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+					</item>
+					<item id="26"><!-- 6 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+					</item>
+					<item id="26"><!-- 6 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+					</item>
+					<item id="26"><!-- 6 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+					</item>
+					<item id="26"><!-- 6 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+					</item>
+					<item id="26"><!-- 6 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+					</item>
+					
+					
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					<item id="26"><!-- 7 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+					</item>
+					
+					
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					<item id="26"><!-- 8 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+					</item>
+					
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					<item id="26"><!-- 9 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+					</item>
+					
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+					<item id="26"><!-- 10 -->
+						<onclick>noop</onclick>
+						<label>Ñ</label>
+						<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+					</item>
+				</content>
+			</control>
+		</control>
+		<control type="group"><!-- Title classic home -->
+			<left>305</left>
+			<top>580</top>
+			<visible>![Window.IsVisible(home) | Window.IsVisible(1154)] + !Skin.HasSetting(ModernHome)</visible>
+			<control type="label">
+				<description>Titel</description>
+				<width>670</width>
+				<height>40</height>
+				<align>center</align>
+				<font>SemiLarge</font>
+				<label>$LOCALIZE[31071]</label>
+			</control>
+			<control type="label">
+				<description>Titel des zu bewertenden files</description>
+				<top>40</top>
+				<width>670</width>
+				<height>30</height>
+				<align>center</align>
+				<font>RegularLarge</font>
+				<label>$INFO[Window(Home).Property(SelectdialogcategoryTitle)]</label>
+			</control>
+			<control type="label">
+				<description>Aktuelles rating</description>
+				<top>70</top>
+				<width>670</width>
+				<height>30</height>
+				<align>center</align>
+				<font>RegularLarge</font>
+				<textcolor>TextColor2</textcolor>
+				<label fallback="0">$INFO[Container(3).ListItem.Label]</label>
+			</control>
+		</control>
+		<control type="group"><!-- Title modern home -->
+			<visible>[Window.IsVisible(home) | Window.IsVisible(1154)] + Skin.HasSetting(ModernHome)</visible>
+			<control type="image">
+				<top>412</top>
+				<width>1280</width>
+				<height>308</height>
+				<texture>home_modern/background-overlay.png</texture>
+				<colordiffuse>ACModerhomeoverlay2</colordiffuse>
+			</control>
+			<control type="image">
+				<top>412</top>
+				<width>1280</width>
+				<height>308</height>
+				<texture>home_modern/background-overlay.png</texture>
+				<colordiffuse>ACModerhomeoverlay</colordiffuse>
+			</control>
+			<control type="image">
+				<left>-100</left>
+				<top>612</top>
+				<width>1480</width>
+				<height>46</height>
+				<texture>home_modern/menu_bar.png</texture>
+				<colordiffuse>TextColorFocus</colordiffuse>
+				<animation effect="fade" start="0" end="100" time="2000" easing="inout" tween="cubic">WindowOpen</animation>
+				<animation effect="fade" start="0" end="100" time="1500" easing="inout" tween="cubic">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+				<animation effect="fade" start="100" end="0" time="100" easing="inout" tween="cubic">Hidden</animation>
+				
+			</control>
+			<control type="label">
+				<description>Titel</description>
+				<left>40</left>
+				<top>525</top>
+				<height>30</height>
+				<width>1200</width>
+				<align>center</align>
+				<textcolor>TextColorFocus</textcolor>
+				<font>Home-modern-Tagline</font>
+				<label>$LOCALIZE[31071]</label>
+			</control>
+			<control type="label">
+				<description>Titel des zu bewertenden files</description>
+				<left>40</left>
+				<top>555</top>
+				<height>63</height>
+				<width>1200</width>
+				<align>center</align>
+				<font>Mainmenue-modernSmall</font>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[Window(Home).Property(SelectdialogcategoryTitle)]</label>
+				<animation effect="fade" start="0" end="100" time="280" delay="360" tween="sine" easing="in">WindowOpen</animation>
+				<animation effect="fade" start="0" end="100" time="280" delay="360" tween="sine" easing="in">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="180" tween="sine" easing="out">Hidden</animation>
+				<visible>!Window.IsVisible(1154)</visible>
+			</control>
+			<control type="label">
+				<description>Titel des zu bewertenden files</description>
+				<left>40</left>
+				<top>555</top>
+				<height>63</height>
+				<width>1200</width>
+				<align>center</align>
+				<font>Mainmenue-modernSmall</font>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$VAR[value_videoosdstillwatchingtitle]</label>
+				<animation effect="fade" start="0" end="100" time="280" delay="360" tween="sine" easing="in">WindowOpen</animation>
+				<animation effect="fade" start="0" end="100" time="280" delay="360" tween="sine" easing="in">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="180" tween="sine" easing="out">Hidden</animation>
+				<visible>Window.IsVisible(1154)</visible>
+			</control>
+			<control type="label">
+				<description>Aktuelles rating</description>
+				<left>400</left>
+				<top>618</top>
+				<width>466</width>
+				<height>30</height>
+				<align>center</align>
+				<textcolor>TextColorFocus</textcolor>
+				<font>Home-modern-Tagline</font>
+				<label fallback="0">$INFO[Container(3).ListItem.Label]</label>
+				<animation effect="slide" start="0,-20" end="0,0" time="500" delay="2000" tween="sine" easing="out">WindowOpen</animation>
+				<animation effect="slide" start="0,-20" end="0,0" time="500" delay="500" tween="sine" easing="out">Visible</animation>
+				<animation effect="slide" start="0,0" end="0,-20" time="500" tween="sine" easing="out">Hidden</animation>
+			</control>
+		</control>
+	</control>
+</include>
+
+<!-- ####Top Dialoge ####-->
+<include name="dialog_triplebar">
+	<control type="image">
+		<description>hintergrund</description>
+		<top>-4</top>
+		<height>83</height>
+		<width>1285</width>
+		<texture flipy="true" colordiffuse="ACBackgroundColor_light">White.png</texture>
+	</control>
+	<control type="image">
+		<description>hintergrund</description>
+		<top>-4</top>
+		<height>33</height>
+		<width>1285</width>
+		<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+	</control>
+	<control type="image">
+		<description>hintergrund</description>
+		<top>22</top>
+		<height>56</height>
+		<width>1285</width>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+	</control>
+	<control type="image">
+		<description>schatten unten</description>
+		<top>78</top>
+		<width>1285</width>
+		<include>global_bottomshadow5</include>
+	</control>
+</include>
+
+<include name="dialog_progress">
+	<left>10</left>
+	<top>28</top>
+	<width>1260</width>
+	<height>4</height>
+	<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+	<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+	<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+	<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+	
+	
+	
+	
+	<texturebg colordiffuse="TextColor3">dialogs/progress/progress_back.png</texturebg>
+	<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</midtexture>
+	<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</lefttexture>
+	<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</righttexture>
+</include>
+
+<include name="dialog_bar">
+	<control type="image">
+		<description>hintergrund</description>
+		<top>-4</top>
+		<height>40</height>
+		<width>1285</width>
+		<texture colordiffuse="ACBackgroundColor_light">White.png</texture>
+	</control>
+	<control type="image">
+		<description>hintergrund</description>
+		<top>-4</top>
+		<height>40</height>
+		<width>1285</width>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+	</control>
+	<control type="image">
+		<description>Schatten</description>
+		<top>36</top>
+		<width>1285</width>
+		<include>global_bottomshadow5</include>
+	</control>
+</include>
+
+<include name="dialog_label1">
+	<top>5</top>
+	<width>600</width>
+	<height>22</height>
+	<align>left</align>
+	<aligny>center</aligny>
+	<textoffsetx>10</textoffsetx>
+	<font>BreadcumbNormal</font>
+	<wrapmultiline>false</wrapmultiline>
+	<label>$PARAM[DialogHeaderLabel1]</label>
+</include>
+
+<include name="dialog_label2">
+	<left>660</left>
+	<top>5</top>
+	<width>600</width>
+	<height>22</height>
+	<align>right</align>
+	<aligny>center</aligny>
+	<textoffsetx>10</textoffsetx>
+	<font>BreadcumbNormal</font>
+	<wrapmultiline>false</wrapmultiline>
+	<label>$PARAM[DialogHeaderLabel2]</label>
+</include>
+
+<include name="dialog_bottom_button">
+	<width>330</width>
+	<height>40</height>
+	<align>center</align>
+	<textoffsetx>20</textoffsetx>
+	<texture>-</texture>
+	<texturenofocus>-</texturenofocus>
+</include>
+
+<!-- ####Keyboard ####-->
+<include name="dialog_numeric_doublekey">
+	<width>162</width>
+	<height>60</height>
+	<align>center</align>
+	<textwidth>161</textwidth>
+	<texturenofocus colordiffuse="ACBackgroundColor_heavy">dialogs/keyboard/white_caps.png</texturenofocus>
+	<texturefocus colordiffuse="ACSkinColor">dialogs/keyboard/white_caps.png</texturefocus>
+</include>
+
+<include name="dialog_numeric_key">
+	<align>center</align>
+	<aligny>center</aligny>
+	<textoffsetx>8</textoffsetx>
+	<width>80</width>
+	<height>60</height>
+	<texturenofocus colordiffuse="ACBackgroundColor_heavy">dialogs/keyboard/white_caps.png</texturenofocus>
+	<texturefocus colordiffuse="ACSkinColor">dialogs/keyboard/white_caps.png</texturefocus>
+</include>
+
+<include name="dialog_key">
+	<width>50</width>
+	<height>50</height>
+	<align>center</align>
+	<aligny>top</aligny>
+	<textoffsety>10</textoffsety>
+	<textoffsetx>0</textoffsetx>
+	<font>RegularLarge</font>
+	<radioposx>0</radioposx>
+	<radioposy>0</radioposy>
+	<texturefocus colordiffuse="ACSkinColor">dialogs/keyboard/white_caps.png</texturefocus>
+	<texturenofocus colordiffuse="ACBackgroundColor_heavy">dialogs/keyboard/white_caps.png</texturenofocus>
+	<texture colordiffuse="ACBackgroundColor_heavy">dialogs/keyboard/white_caps.png</texture>
+</include>
+
+<include name="dialog_doublekey">
+	<width>100</width>
+	<height>50</height>
+	<align>center</align>
+	<textoffsetx>0</textoffsetx>
+	<radioposx>0</radioposx>
+	<radioposy>0</radioposy>
+	<texturenofocus colordiffuse="ACBackgroundColor_heavy">dialogs/keyboard/white_caps.png</texturenofocus>
+	<texturefocus colordiffuse="ACSkinColor">dialogs/keyboard/white_caps.png</texturefocus>
+</include>
+
+<!-- ####layout Formats ####-->
+<include name="dialog_title">
+	<width>700</width>
+	<height>45</height>
+	<font>SemiBigger</font>
+</include>
+
+<include name="dialog_subtitle"><!-- check abstand top -->
+	<top>60</top>
+	<width>700</width>
+	<height>25</height>
+</include>
+
+<include name="dialog_tagline"><!-- check formatierung alle -->
+	<left>0</left>
+	<top>42</top>
+	<height>40</height>
+	<width>700</width>
+	<font>RegularBig</font>
+	<textcolor>TextColor2</textcolor>
+</include>
+
+	
+<!-- ####infopanel container layouts ####-->
+<include name="infodialog_poster_layout">
+	<left>3</left>
+	<top>3</top>
+	<width>106</width>
+	<height>151</height>
+	<aspectratio>stretch</aspectratio>
+	<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+	<bordersize>8</bordersize>
+</include>
+
+<include name="infodialog_poster_inaktiv">
+	<left>3</left>
+	<top>3</top>
+	<width>106</width>
+	<height>151</height>
+	<bordersize>6</bordersize>
+	<aspectratio scalediffuse="false" aligny="center" align="center">scale</aspectratio>
+	<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+</include>
+
+<include name="infodialog_thumbs_layout">
+	<width>120</width>
+	<height>120</height>
+	<aspectratio>stretch</aspectratio>
+	<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+	<bordersize>8</bordersize>
+</include>
+
+<include name="infodialog_thumbs_inaktiv">
+	<width>120</width>
+	<height>120</height>
+	<aspectratio>stretch</aspectratio>
+	<bordersize>8</bordersize>
+	<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+</include>
+
+<include name="infodialog_cover_thumbs_layout">
+	<width>245</width>
+	<height>245</height>
+	<aspectratio scalediffuse="true">keep</aspectratio>
+	<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+	<bordersize>10</bordersize>
+</include>
+
+<include name="infodialog_cover_thumbs_reflectlayout">
+	<top>226</top>
+	<width>245</width>
+	<height>245</height>
+	<bordersize>8</bordersize>
+	<aspectratio aligny="top" scalediffuse="true">scale</aspectratio>
+</include>
+
+<include name="infodialog_fanart_background">
+	<top>-85</top>
+	<width>1280</width>
+	<height>720</height>
+	<aspectratio scalediffuse="false">scale</aspectratio>
+	<fadetime>FanartCrossFadeTime</fadetime>
+</include>
+
+<include name="infodialog_fanart_background_diffuse">
+	<control type="image">
+		<width>1280</width>
+		<height>110</height>
+		<texture flipy="true">backgrounds/background-smalloverlay.png</texture>
+		<colordiffuse>ACBackgroundColor</colordiffuse>
+		<include>animation_vhoc_fade</include>
+	</control>
+</include>
+
+<include name="Infodialogs_update_indikator">
+	<left>$PARAM[Update_Indikator-left]</left>
+	<top>$PARAM[Update_Indikator-top]</top>
+	<width>$PARAM[Update_Indikator-width]</width>
+	<height>$PARAM[Update_Indikator-height]</height>
+	<texture>buttons/listfocus.png</texture>
+	<colordiffuse>ACRed</colordiffuse>
+	<animation effect="fade" start="20" end="100" time="600" condition="true" pulse="true">Conditional</animation>
+	<animation type="Visible">
+		<effect type="fade" end="100" time="300" tween="sine" easing="in"/>
+		<effect type="zoom" center="auto" end="100" time="500" tween="sine" easing="in"/>
+	</animation>
+	<animation type="Hidden">
+		<effect type="fade" end="0" time="300" tween="sine" easing="out"/>
+		<effect type="zoom" center="auto" end="0" time="500" tween="quadratic" easing="out" reversible="true"/>
+	</animation>
+</include>
+
+<include name="DialogPlayerControlVideo">
+	<control type="group">
+		<left>190</left>
+		<top>130</top>
+		<include>animation_dialog_popup</include>
+		<include content="global_dialog_mid_singlebg">
+			<description>Hintergrund</description>
+			<param name="global_dialog_mid_bg-width" value="900" />
+			<param name="global_dialog_mid_bg-height" value="380" />
+		</include>
+		<control type="image">
+			<left>0</left>
+			<width>246</width>
+			<height>370</height>
+			<aspectratio>stretch</aspectratio>
+			<texture fallback="defaultpictures/DefaultMovies.png" background="true">$VAR[playerart_value_poster]</texture>
+			<include>animation_vhoc_fade</include>
+		</control>
+		<control type="image"><!-- Artwork shadow -->
+			<left>246</left>
+			<height>370</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="group">
+			<left>280</left>
+			<control type="list" id="100">
+				<left>0</left>
+				<top>285</top>
+				<height>200</height>
+				<width>990</width>
+				<ondown>300</ondown>
+				<onup>300</onup>
+				<onleft>600</onleft>
+				<onright>600</onright>
+				<viewtype>list</viewtype>
+				<orientation>horizontal</orientation>
+				<scrolltime>200</scrolltime>
+				<preloaditems>2</preloaditems>
+				<focusposition>2</focusposition>
+				<itemlayout width="55" height="30">
+					<control type="image">
+						<top>22</top>
+						<width>46</width>
+						<height>46</height>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<colordiffuse>TextColor2</colordiffuse>
+					</control>
+				</itemlayout>
+				<focusedlayout width="55" height="30">
+					<control type="image">
+						<top>22</top>
+						<width>46</width>
+						<height>46</height>
+						<colordiffuse>ACSkinColor</colordiffuse>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<animation effect="zoom" center="25,45" start="100" end="140" time="400" easing="out" tween="cubic" reversible="false">Focus</animation>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="13"><!-- playlist -->
+						<label>-</label>
+						<icon>buttons/osd/osd_playlist.png</icon>
+						<onclick>dialog.close(PlayerControls)</onclick>
+						<onclick condition="Player.HasAudio">ActivateWindow(musicplaylist)</onclick>
+						<onclick condition="Player.HasVideo">ActivateWindow(videoplaylist)</onclick>
+					</item>
+					<item id="1"><!-- channeldown -->
+						<label>-</label>
+						<icon>buttons/osd/osd_channeldown.png</icon>
+						<onclick>PlayerControl(ChannelDown)</onclick>
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="2"><!-- skipbwd -->
+						<label>-</label>
+						<icon>buttons/osd/osd_skipbwd.png</icon>
+						<onclick>PlayerControl(Previous)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="3"><!-- rew -->
+						<label>-</label>
+						<icon>buttons/osd/osd_rew.png</icon>
+						<onclick>PlayerControl(Rewind)</onclick>
+					</item>
+					<item id="4"><!-- pause -->
+						<label>-</label>
+						<icon>buttons/osd/osd_pause.png</icon>
+						<onclick>PlayerControl(Play)</onclick>
+						<visible>!Player.Paused</visible>
+					</item>
+					<item id="5"><!-- play -->
+						<label>-</label>
+						<icon>buttons/osd/osd_play.png</icon>
+						<onclick>PlayerControl(Play)</onclick>
+						<visible>Player.Paused</visible>
+					</item>
+					<item id="6"><!-- stop -->
+						<label>-</label>
+						<icon>buttons/osd/osd_stop.png</icon>
+						<onclick>PlayerControl(Stop)</onclick>
+					</item>
+					<item id="7"><!-- ff -->
+						<label>-</label>
+						<icon>buttons/osd/osd_ff.png</icon>
+						<onclick>PlayerControl(Forward)</onclick>
+					</item>
+					<item id="8"><!-- skipfwd -->
+						<label>-</label>
+						<icon>buttons/osd/osd_skipfwd.png</icon>
+						<onclick>PlayerControl(Next)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="9"><!-- channelup -->
+						<label>-</label>
+						<icon>buttons/osd/osd_channelup.png</icon>
+						<onclick>PlayerControl(ChannelUp)</onclick>
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="10"><!-- rec -->
+						<label>-</label>
+						<icon>buttons/osd/osd_rec.png</icon>
+						<onclick>PlayerControl(record)</onclick>
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="11"><!-- repeat -->
+						<label>-</label>
+						<icon>$VAR[value_button_repeat]</icon>
+						<onclick>PlayerControl(Repeat)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="12"><!-- random -->
+						<label>-</label>
+						<icon>$VAR[value_button_random]</icon>
+						<onclick>PlayerControl(Random)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+				</content>
+			</control>
+			<control type="label"><!-- Title -->
+				<left>0</left>
+				<top>5</top>
+				<height>30</height>
+				<width>550</width>
+				<font>RegularLarge</font>
+				<label>$VAR[value_videoosdtitle]</label>
+			</control>
+			<control type="label"><!-- Sub Title -->
+				<left>0</left>
+				<top>30</top>
+				<width>550</width>
+				<height>30</height>
+				<label>$VAR[value_videoosdtitle2]</label>
+			</control>
+			<control type="label">
+				<top>70</top>
+				<width>550</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[VideoPlayer.Genre]</label>
+				<visible>Player.HasVideo</visible>
+			</control>
+			<control type="label">
+				<top>70</top>
+				<width>550</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[MusicPlayer.Genre]</label>
+				<visible>Player.HasAudio</visible>
+			</control>
+			<control type="label">
+				<top>90</top>
+				<width>550</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[value_osd_timeduration]</label>
+			</control>
+			<control type="progress">
+				<left>0</left>
+				<top>119</top>
+				<width>550</width>
+				<height>5</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+			<control type="textbox"><!-- Plot -->
+				<left>0</left>
+				<top>130</top>
+				<width>550</width>
+				<include>PlotNormal154</include>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[value_playerplot]</label>
+				<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="DialogPlayerControlAudio">
+	<control type="group">
+		<left>190</left>
+		<top>130</top>
+		<include>animation_dialog_popup</include>
+		<include content="global_dialog_mid_singlebg">
+			<description>Hintergrund</description>
+			<param name="global_dialog_mid_bg-width" value="1024" />
+			<param name="global_dialog_mid_bg-height" value="380" />
+		</include>
+		<control type="image">
+			<left>0</left>
+			<width>370</width>
+			<height>370</height>
+			<aspectratio>stretch</aspectratio>
+			<texture fallback="defaultpictures/DefaultMovies.png" background="true">$VAR[playerart_value_poster]</texture>
+			<include>animation_vhoc_fade</include>
+		</control>
+		<control type="image"><!-- Artwork shadow -->
+			<left>370</left>
+			<height>370</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="group">
+			<left>404</left>
+			<control type="list" id="100">
+				<left>0</left>
+				<top>285</top>
+				<height>200</height>
+				<width>990</width>
+				<ondown>300</ondown>
+				<onup>300</onup>
+				<onleft>600</onleft>
+				<onright>600</onright>
+				<viewtype>list</viewtype>
+				<orientation>horizontal</orientation>
+				<scrolltime>200</scrolltime>
+				<preloaditems>2</preloaditems>
+				<focusposition>2</focusposition>
+				<itemlayout width="55" height="30">
+					<control type="image">
+						<top>22</top>
+						<width>46</width>
+						<height>46</height>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<colordiffuse>TextColor2</colordiffuse>
+					</control>
+				</itemlayout>
+				<focusedlayout width="55" height="30">
+					<control type="image">
+						<top>22</top>
+						<width>46</width>
+						<height>46</height>
+						<colordiffuse>ACSkinColor</colordiffuse>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<animation effect="zoom" center="25,45" start="100" end="140" time="400" easing="out" tween="cubic" reversible="false">Focus</animation>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="13"><!-- playlist -->
+						<label>-</label>
+						<icon>buttons/osd/osd_playlist.png</icon>
+						<onclick>dialog.close(PlayerControls)</onclick>
+						<onclick condition="Player.HasAudio">ActivateWindow(musicplaylist)</onclick>
+						<onclick condition="Player.HasVideo">ActivateWindow(videoplaylist)</onclick>
+					</item>
+					<item id="1"><!-- channeldown -->
+						<label>-</label>
+						<icon>buttons/osd/osd_channeldown.png</icon>
+						<onclick>PlayerControl(ChannelDown)</onclick>
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="2"><!-- skipbwd -->
+						<label>-</label>
+						<icon>buttons/osd/osd_skipbwd.png</icon>
+						<onclick>PlayerControl(Previous)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="3"><!-- rew -->
+						<label>-</label>
+						<icon>buttons/osd/osd_rew.png</icon>
+						<onclick>PlayerControl(Rewind)</onclick>
+					</item>
+					<item id="4"><!-- pause -->
+						<label>-</label>
+						<icon>buttons/osd/osd_pause.png</icon>
+						<onclick>PlayerControl(Play)</onclick>
+						<visible>!Player.Paused</visible>
+					</item>
+					<item id="5"><!-- play -->
+						<label>-</label>
+						<icon>buttons/osd/osd_play.png</icon>
+						<onclick>PlayerControl(Play)</onclick>
+						<visible>Player.Paused</visible>
+					</item>
+					<item id="6"><!-- stop -->
+						<label>-</label>
+						<icon>buttons/osd/osd_stop.png</icon>
+						<onclick>PlayerControl(Stop)</onclick>
+					</item>
+					<item id="7"><!-- ff -->
+						<label>-</label>
+						<icon>buttons/osd/osd_ff.png</icon>
+						<onclick>PlayerControl(Forward)</onclick>
+					</item>
+					<item id="8"><!-- skipfwd -->
+						<label>-</label>
+						<icon>buttons/osd/osd_skipfwd.png</icon>
+						<onclick>PlayerControl(Next)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="9"><!-- channelup -->
+						<label>-</label>
+						<icon>buttons/osd/osd_channelup.png</icon>
+						<onclick>PlayerControl(ChannelUp)</onclick>
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="10"><!-- rec -->
+						<label>-</label>
+						<icon>buttons/osd/osd_rec.png</icon>
+						<onclick>PlayerControl(record)</onclick>
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="11"><!-- repeat -->
+						<label>-</label>
+						<icon>$VAR[value_button_repeat]</icon>
+						<onclick>PlayerControl(Repeat)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+					<item id="12"><!-- random -->
+						<label>-</label>
+						<icon>$VAR[value_button_random]</icon>
+						<onclick>PlayerControl(Random)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV)</visible>
+					</item>
+				</content>
+			</control>
+			<control type="label"><!-- Title -->
+				<left>0</left>
+				<top>5</top>
+				<height>30</height>
+				<width>550</width>
+				<font>RegularLarge</font>
+				<label>$VAR[value_videoosdtitle]</label>
+			</control>
+			<control type="label"><!-- Sub Title -->
+				<left>0</left>
+				<top>30</top>
+				<width>550</width>
+				<height>30</height>
+				<label>$VAR[value_videoosdtitle2]</label>
+			</control>
+			<control type="fadelabel">
+				<left>0</left>
+				<top>70</top>
+				<width>550</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[VideoPlayer.Genre]</label>
+				<visible>Player.HasVideo</visible>
+			</control>
+			<control type="fadelabel">
+				<left>0</left>
+				<top>70</top>
+				<width>550</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[MusicPlayer.Genre]</label>
+				<visible>Player.HasAudio</visible>
+			</control>
+			<control type="label">
+				<left>0</left>
+				<top>90</top>
+				<width>550</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[value_osd_timeduration]</label>
+			</control>
+			<control type="progress">
+				<left>0</left>
+				<top>119</top>
+				<width>550</width>
+				<height>5</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+			<control type="textbox"><!-- Plot -->
+				<left>0</left>
+				<top>130</top>
+				<width>550</width>
+				<include>PlotNormal154</include>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[value_playerplot]</label>
+				<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+			</control>
+		</control>
+	</control>
+</include>
+
+</includes>

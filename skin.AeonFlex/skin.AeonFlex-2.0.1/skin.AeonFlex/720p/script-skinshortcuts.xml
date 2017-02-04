@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<allowoverlay>no</allowoverlay>
+<defaultcontrol always="true">211</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<posx>0</posx>
+	<posy>0</posy>
+</coordinates>
+<controls>
+<include>CommonBackground</include>
+<control type="button" id="401">
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="404">
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="306">
+	<include>Hiddencontrol</include>
+</control>
+<control type="group">
+	<include>animation_dialog_popup</include>
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>1164</width>
+	<height>443</height>
+	<control type="group" id="200"><!-- Slotsettings left Menue -->
+		<include content="global_dialog_mid_bg">
+			<param name="global_dialog_mid_bg-left" value="240" />
+			<param name="global_dialog_mid_bg-width" value="1164" />
+			<param name="global_dialog_mid_bg-innerwidth" value="574" />
+			<param name="global_dialog_mid_bg-height" value="443" />
+			<param name="global_dialog_mid_bg-headerlabel" value="$VAR[value_settings_midtitle,, - ]$LOCALIZE[31160]" />
+			<param name="global_dialog_mid_headerid" value="-" />
+		</include>
+		<control type="label">
+			<description>titel</description>
+			<width>240</width>
+			<height>50</height>
+			<font>SemiLarge</font>
+			<textoffsetx>10</textoffsetx>
+			<label>$LOCALIZE[31395]</label>
+			<visible>String.IsEqual(Window.Property(groupname), mainmenu)</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<width>240</width>
+			<height>50</height>
+			<font>SemiNormal</font>
+			<textoffsetx>10</textoffsetx>
+			<label>$LOCALIZE[31714] $INFO[Window(home).Property(Subtitle)]</label>
+			<visible>!String.IsEqual(Window.Property(groupname), mainmenu) + !String.IsEqual(Window.Property(groupname), shutdowndialog)</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<width>240</width>
+			<height>50</height>
+			<font>SemiNormal</font>
+			<textoffsetx>10</textoffsetx>
+			<label>$LOCALIZE[31017]</label>
+			<visible>String.IsEqual(Window.Property(groupname), shutdowndialog)</visible>
+		</control>
+		<control type="list" id="211"><!-- id 211 - Current shortcuts -->
+			<top>53</top>
+			<width>240</width>
+			<height>360</height>
+			<onup>211</onup>
+			<ondown>211</ondown>
+			<onleft>noop</onleft>
+			<onright>3001</onright>
+			<orientation>vertical</orientation>
+			<viewtype label="535">list</viewtype>
+			<orientation>vertical</orientation>
+			<focusposition>5</focusposition>
+			<scrolltime>450</scrolltime>
+			<itemlayout width="240" height="40">
+				<control type="label">
+					<left>10</left>
+					<width>230</width>
+					<height>40</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+					<animation effect="fade" start="50" end="100" condition="Control.Hasfocus(211)">Conditional</animation>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>230</width>
+					<height>40</height>
+					<label>[I]$INFO[ListItem.Label] (inaktiv)[/I]</label>
+					<textcolor>TextColor3</textcolor>
+					<visible>String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout width="240" height="40">
+				<control type="image">
+					<width>240</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<animation effect="fade" start="50" end="100" condition="Control.Hasfocus(211)">Conditional</animation>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>230</width>
+					<height>40</height>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>!Control.Hasfocus(211) + !String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>230</width>
+					<height>40</height>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<visible>Control.Hasfocus(211) + !String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>230</width>
+					<height>40</height>
+					<label>[I]$INFO[ListItem.Label] (inaktiv)[/I]</label>
+					<textcolor>TextColor3</textcolor>
+					<visible>String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+	</control>
+	<control type="group" id="100"><!-- Button right Menue --><!-- id's 101, 102, 103 - label of current shortcut type, buttons to change shortcut type -->
+		<left>814</left>
+		<control type="label" id="101">
+			<description>titel</description>
+			<width>340</width>
+			<height>50</height>
+			<font>SemiLarge</font>
+			<textoffsetx>10</textoffsetx>
+		</control>
+		<control type="list" id="111"><!-- id 211 - Current shortcuts -->
+			<top>53</top>
+			<width>340</width>
+			<height>360</height>
+			<onup>111</onup>
+			<ondown>111</ondown>
+			<onleft>3001</onleft>
+			<onright>noop</onright>
+			<orientation>vertical</orientation>
+			<viewtype label="535">list</viewtype>
+			<orientation>vertical</orientation>
+			<focusposition>5</focusposition>
+			<scrolltime>450</scrolltime>
+			<itemlayout width="340" height="40">
+				<control type="label">
+					<left>10</left>
+					<width>330</width>
+					<height>40</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="340" height="40">
+				<control type="image">
+					<width>340</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(111)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>330</width>
+					<height>40</height>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>!Control.Hasfocus(111)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>330</width>
+					<height>40</height>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<visible>Control.Hasfocus(111)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+	</control>
+	<control type="group" id="300"><!-- slot optionen -->
+		<!-- Button Section -->
+		<control type="grouplist" id="3001">
+			<left>240</left>
+			<top>53</top>
+			<width>574</width>
+			<height>360</height>
+			<orientation>vertical</orientation>
+			<itemgap>0</itemgap>
+			<onleft>211</onleft>
+			<onright>111</onright>
+			<onup>30001</onup>
+			<ondown>3001</ondown>
+			<control type="button" id="102">
+				<description>Kategorie ausweahlen</description>
+				<include>skinshortcutsetting_button</include>
+				<onclick>-</onclick>
+				<label>$ADDON[script.skinshortcuts 32043]</label>
+			</control>
+			<control type="button" id="308">
+				<description>Restore shortcuts</description>
+				<include>skinshortcutsetting_button</include>
+				<onclick>noop</onclick>
+				<label>$ADDON[script.skinshortcuts 32028]</label>
+			</control>
+			<control type="button" id="305">
+				<description>Change shortcut label</description>
+				<include>skinshortcutsetting_button</include>
+				<onclick>noop</onclick>
+				<label>$ADDON[script.skinshortcuts 32025]</label>
+			</control>
+			<control type="button" id="307">
+				<description>Change shortcut action</description>
+				<include>skinshortcutsetting_button</include>
+				<onclick>noop</onclick>
+				<label>$ADDON[script.skinshortcuts 32027]</label>
+				<visible>!String.IsEqual(Window.Property(groupname),widgethub)</visible>
+			</control>
+			<control type="button" id="405">
+				<description>Submenue</description>
+				<include>skinshortcutsetting_button</include>
+				<onclick>SetProperty(Subtitle,$INFO[Container(211).ListItem.Label],home)</onclick>
+				<label>$ADDON[script.skinshortcuts 32072]</label>
+				<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+			</control>
+		</control>
+	</control>
+	<include content="global_dialog_mid_dividershadow-left">
+		<param name="global_dialog_mid_dividershadow-left-height" value="433" />
+	</include>
+	<include content="global_dialog_mid_dividershadow-right">
+		<param name="global_dialog_mid_dividershadow-right-left" value="814" />
+		<param name="global_dialog_mid_dividershadow-right-height" value="433" />
+	</include>
+</control>
+</controls>
+</window>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<smartplaylist type="movies">
+    <name>Filme - HD</name>
+    <match>all</match>
+    <rule field="videoresolution" operator="greaterthan">719</rule>
+    <order direction="ascending">title</order>
+	<limit>12</limit>
+</smartplaylist>

@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1124">
+<defaultcontrol always="true">2512</defaultcontrol>
+<controls>
+<control type="image">
+	<width>1280</width>
+	<height>200</height>
+	<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+	<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+	<visible>![Window.IsVisible(DialogConfirm.xml) | Window.IsVisible(extendedprogressdialog) | Window.IsVisible(DialogNotification.xml) | !Player.Muted +  Window.IsVisible(volumebar)]</visible>
+</control>
+<control type="image">
+	<description>widget floor hintergrund</description>
+	<top>550</top>
+	<width>1280</width>
+	<height>170</height>
+	<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+	<colordiffuse>ACFloorColor</colordiffuse>
+	<animation effect="fade" start="0" end="100" time="1200" delay="500" tween="sine" easing="out">Visible</animation>
+	<animation effect="fade" start="100" end="0" time="280" tween="sine" easing="out">Hidden</animation>
+</control>
+<control type="group">
+	<include>animation_window</include>
+	<left>0</left>
+	<control type="panel" id="2512">
+		<left>40</left>
+		<top>50</top>
+		<width>1200</width>
+		<height>630</height>
+		<focusposition>0</focusposition>
+		<onleft>Dialog.close(1124)</onleft>
+		<onright>Dialog.close(1124)</onright>
+		<ondown>SetFocus(5100)</ondown>
+		<onup>nope</onup>
+		<orientation>vertical</orientation>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>300</scrolltime>
+		<visible>!Window.IsVisible(DialogAddonSettings.xml)</visible>
+		<itemlayout condition="!Window.IsVisible(script-rtv-Info.xml)" width="400" height="210">
+			<control type="group">
+				<top>10</top>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>370</width>
+					<height>193</height>
+					<texture>backgrounds/background-homeinfo-overlay.png</texture>
+					<colordiffuse>ACBackgroundColorFull</colordiffuse>
+				</control>
+				<control type="image"><!-- channel border Icon -->
+					<left>4</left>
+					<top>30</top>
+					<width>164</width>
+					<height>100</height>
+					<bordersize>8</bordersize>
+					<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[widget_icon]</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<aspectratio align="center" aligny="bottom" scalediffuse="true">scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>25</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<description>Movie Title</description>
+					<left>10</left>
+					<top>2</top>
+					<width>310</width>
+					<height>20</height>
+					<font>SemiSmall</font>
+					<label>$INFO[ListItem.title]</label>
+				</control>
+				<control type="image">
+					<description>Encrypt status</description>
+					<left>330</left>
+					<top>2</top>
+					<width>32</width>
+					<height>20</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+					<visible>String.EndsWith(ListItem.Label2,(*))</visible>
+				</control>
+				<control type="label">
+					<description>Starttime - Endtime</description>
+					<left>170</left>
+					<top>36</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<label>$INFO[ListItem.Property(StartTime)] - $INFO[ListItem.Property(EndTime)]</label>
+				</control>
+				<control type="label">
+					<description>channel</description>
+					<left>170</left>
+					<top>56</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+				<control type="label">
+					<description>Duration</description>
+					<left>170</left>
+					<top>84</top>
+					<width>200</width>
+					<height>20</height>
+					<label>$INFO[ListItem.Duration,, $LOCALIZE[31026]]</label>
+				</control>
+				<control type="textbox">
+					<description>plot</description>
+					<left>10</left>
+					<top>130</top>
+					<width>350</width>
+					<include>PlotNormal44</include>
+					<label>$INFO[ListItem.Plot]</label>
+				</control>
+			</control>
+		</itemlayout>
+		<itemlayout condition="Window.IsVisible(script-rtv-Info.xml)" width="400" height="630">
+			<control type="group">
+				<top>430</top>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>370</width>
+					<height>193</height>
+					<texture>backgrounds/background-homeinfo-overlay.png</texture>
+					<colordiffuse>ACBackgroundColorFull</colordiffuse>
+				</control>
+				<control type="image"><!-- channel border Icon -->
+					<left>4</left>
+					<top>30</top>
+					<width>164</width>
+					<height>100</height>
+					<bordersize>8</bordersize>
+					<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[widget_icon]</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<aspectratio align="center" aligny="bottom" scalediffuse="true">scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>25</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<description>Movie Title</description>
+					<left>10</left>
+					<top>2</top>
+					<width>310</width>
+					<height>20</height>
+					<font>SemiSmall</font>
+					<label>$INFO[ListItem.title]</label>
+				</control>
+				<control type="image">
+					<description>Encrypt status</description>
+					<left>330</left>
+					<top>2</top>
+					<width>32</width>
+					<height>20</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+					<visible>String.EndsWith(ListItem.Label2,(*))</visible>
+				</control>
+				<control type="label">
+					<description>Starttime - Endtime</description>
+					<left>170</left>
+					<top>36</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<label>$INFO[ListItem.Property(StartTime)] - $INFO[ListItem.Property(EndTime)]</label>
+				</control>
+				<control type="label">
+					<description>channel</description>
+					<left>170</left>
+					<top>56</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+				<control type="label">
+					<description>Duration</description>
+					<left>170</left>
+					<top>84</top>
+					<width>200</width>
+					<height>20</height>
+					<label>$INFO[ListItem.Duration,, $LOCALIZE[31026]]</label>
+				</control>
+				<control type="textbox">
+					<description>plot</description>
+					<left>10</left>
+					<top>130</top>
+					<width>350</width>
+					<include>PlotNormal44</include>
+					<label>$INFO[ListItem.Plot]</label>
+				</control>
+			</control>
+		</itemlayout>
+		<focusedlayout condition="!Window.IsVisible(script-rtv-Info.xml)" width="400" height="210">
+			<control type="group">
+				<top>10</top>
+				<animation type="Focus" reversible="false">
+					<effect type="zoom" center="auto" start="80" end="100" time="400" tween="back" easing="out" />
+					<effect type="fade" start="80" end="100" time="400" />
+				</animation>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>370</width>
+					<height>193</height>
+					<texture>backgrounds/background-homeinfo-overlay.png</texture>
+					<colordiffuse>ACBackgroundColorFull</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>370</width>
+					<height>193</height>
+					<texture>backgrounds/background-homeinfo-overlay.png</texture>
+					<colordiffuse>ACSkinColor</colordiffuse>
+					<animation type="Focus" reversible="false">
+						<effect type="fade" start="0" end="80" time="400" />
+					</animation>
+				</control>
+				<control type="image"><!-- channel border Icon -->
+					<left>4</left>
+					<top>30</top>
+					<width>164</width>
+					<height>100</height>
+					<bordersize>8</bordersize>
+					<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[widget_icon]</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<aspectratio align="center" aligny="bottom" scalediffuse="true">scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>67</left>
+					<top>60</top>
+					<width>33</width>
+					<height>33</height>
+					<texture colordiffuse="ACSkinColor">buttons/listfocus.png</texture>
+					<animation effect="fade" start="20" end="100" time="700" condition="true" pulse="true">Conditional</animation>
+					<visible>Control.HasFocus(2512)</visible>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>25</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<description>Movie Title</description>
+					<left>10</left>
+					<top>2</top>
+					<width>310</width>
+					<height>20</height>
+					<font>SemiSmall</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.title]</label>
+				</control>
+				<control type="image">
+					<description>Encrypt status</description>
+					<left>330</left>
+					<top>2</top>
+					<width>32</width>
+					<height>20</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_isencrypted.png</texture>
+					<visible>String.EndsWith(ListItem.Label2,(*))</visible>
+				</control>
+				<control type="label">
+					<description>Starttime - Endtime</description>
+					<left>170</left>
+					<top>36</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Property(StartTime)] - $INFO[ListItem.Property(EndTime)]</label>
+				</control>
+				<control type="label">
+					<description>channel</description>
+					<left>170</left>
+					<top>56</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+				<control type="label">
+					<description>Duration</description>
+					<left>170</left>
+					<top>84</top>
+					<width>200</width>
+					<height>20</height>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Duration,, $LOCALIZE[31026]]</label>
+				</control>
+				<control type="textbox">
+					<description>plot</description>
+					<left>10</left>
+					<top>130</top>
+					<width>350</width>
+					<textcolor>TextColorFocus</textcolor>
+					<include>PlotNormal44</include>
+					<label>$INFO[ListItem.Plot]</label>
+				</control>
+				
+			</control>
+		</focusedlayout>
+		<focusedlayout condition="Window.IsVisible(script-rtv-Info.xml)" width="400" height="630">
+			<control type="group">
+				<top>430</top>
+				<animation type="Focus" reversible="false">
+					<effect type="zoom" center="auto" start="80" end="100" time="400" tween="back" easing="out" />
+					<effect type="fade" start="80" end="100" time="400" />
+				</animation>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>370</width>
+					<height>193</height>
+					<texture>backgrounds/background-homeinfo-overlay.png</texture>
+					<colordiffuse>ACBackgroundColorFull</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>370</width>
+					<height>193</height>
+					<texture>backgrounds/background-homeinfo-overlay.png</texture>
+					<colordiffuse>ACSkinColor</colordiffuse>
+					<animation type="Focus" reversible="false">
+						<effect type="fade" start="0" end="80" time="400" />
+					</animation>
+				</control>
+				<control type="image"><!-- channel border Icon -->
+					<left>4</left>
+					<top>30</top>
+					<width>164</width>
+					<height>100</height>
+					<bordersize>8</bordersize>
+					<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[widget_icon]</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<aspectratio align="center" aligny="bottom" scalediffuse="true">scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>67</left>
+					<top>60</top>
+					<width>33</width>
+					<height>33</height>
+					<texture colordiffuse="ACSkinColor">buttons/listfocus.png</texture>
+					<animation effect="fade" start="20" end="100" time="700" condition="true" pulse="true">Conditional</animation>
+					<visible>Control.HasFocus(2512)</visible>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>25</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>400</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<description>Movie Title</description>
+					<left>10</left>
+					<top>2</top>
+					<width>310</width>
+					<height>20</height>
+					<font>SemiSmall</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.title]</label>
+				</control>
+				<control type="image">
+					<description>Encrypt status</description>
+					<left>330</left>
+					<top>2</top>
+					<width>32</width>
+					<height>20</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_isencrypted.png</texture>
+					<visible>String.EndsWith(ListItem.Label2,(*))</visible>
+				</control>
+				<control type="label">
+					<description>Starttime - Endtime</description>
+					<left>170</left>
+					<top>36</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Property(StartTime)] - $INFO[ListItem.Property(EndTime)]</label>
+				</control>
+				<control type="label">
+					<description>channel</description>
+					<left>170</left>
+					<top>56</top>
+					<width>200</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+				<control type="label">
+					<description>Duration</description>
+					<left>170</left>
+					<top>84</top>
+					<width>200</width>
+					<height>20</height>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Duration,, $LOCALIZE[31026]]</label>
+				</control>
+				<control type="textbox">
+					<description>plot</description>
+					<left>10</left>
+					<top>130</top>
+					<width>350</width>
+					<textcolor>TextColorFocus</textcolor>
+					<include>PlotNormal44</include>
+					<label>$INFO[ListItem.Plot]</label>
+				</control>
+				
+			</control>
+		</focusedlayout>
+		<content target="pvr">plugin://plugin.service.gto?action=getcontent&amp;ts=$INFO[Window(Home).Property(GTO.timestamp)]</content>
+		<onclick>RunScript(plugin.service.gto,action=infopopup&amp;blob=$INFO[ListItem.Property(BlobId)])</onclick>
+	</control>
+	<control type="group"><!-- Selector open selected Widget-->
+		<animation effect="fade" start="0" end="100" time="500" delay="3000" condition="Window.Previous(Startup)">WindowOpen</animation>
+		<animation effect="fade" start="0" end="100" time="500" delay="1500" condition="!Window.Previous(Startup)">WindowOpen</animation>
+		<animation effect="fade" start="0" end="100" time="600" delay="2700" tween="cubic" easing="inout">Visible</animation>
+		<animation effect="fade" start="100" end="0" time="200" tween="cubic" easing="inout">Hidden</animation>
+		<control type="button" id="5100">
+			<left>490</left>
+			<top>695</top>
+			<width>300</width>
+			<height>27</height>
+			<onleft>2512</onleft>
+			<onright>2512</onright>
+			<onup>2512</onup><!-- widgets back -->
+			<ondown>2512</ondown><!-- Menue -->
+			<font>RegularSmall</font>
+			<align>center</align>
+			<textcolor>TextColor1</textcolor>
+			<focusedcolor>TextColor1</focusedcolor>
+			<texturefocus colordiffuse="ACBackgroundColor_heavy">home/home_widget_selector_focus.png</texturefocus>
+			<texturenofocus colordiffuse="ACBackgroundColor">home/home_widget_selector.png</texturenofocus>
+			<onclick>Addon.OpenSettings(plugin.service.gto)</onclick>
+			<label>Provider</label>
+		</control>
+		<control type="image">
+			<left>520</left>
+			<top>701</top>
+			<width>14</width>
+			<height>14</height>
+			<texture colordiffuse="ACSkinColor">home/home_widget_selector_led.png</texture>
+			<include>animation_vhoc_fade</include>
+		</control>
+	</control>
+</control>
+<include>global_topbar_multidata</include><!-- Topinfo -->
+</controls>
+</window>
+

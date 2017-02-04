@@ -1,0 +1,1632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- AeonKN draft -->
+<variable name="home.value.playertitle">
+	<value condition="Player.HasVideo + !VideoPlayer.Content(episodes)">$INFO[VideoPlayer.Title]</value>
+	<value condition="Player.HasVideo + VideoPlayer.Content(episodes)">$VAR[player_seasonprefix]$INFO[Videoplayer.Season,,x]$VAR[player_episodeprefix]$INFO[Videoplayer.Episode,, ]$INFO[VideoPlayer.Title]</value>
+	<value condition="Player.HasAudio + !Control.HasFocus(603)">$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
+	<value condition="Player.HasAudio + Control.HasFocus(603)">$LOCALIZE[554] $INFO[Container(603).ListItem.Label]</value>
+</variable>
+<variable name="home.value.playersubtitle">
+	<value condition="Player.HasAudio + !Control.HasFocus(603) + !String.IsEmpty(MusicPlayer.Artist)">$INFO[MusicPlayer.Artist ,, | ]$INFO[MusicPlayer.Album]$INFO[MusicPlayer.Year, (,)]</value>
+	<value condition="Player.HasAudio + !Control.HasFocus(603) + String.IsEmpty(MusicPlayer.Artist)">$INFO[MusicPlayer.Genre]</value>
+	<value condition="Player.HasAudio + Control.HasFocus(603)">$INFO[Container(603).ListItem.Label2]</value>
+</variable>
+<variable name="home.value.playerheader">
+	<value condition="Player.HasMedia + !Control.HasFocus(603) + !VideoPlayer.Content(episodes)">$LOCALIZE[31625]</value>
+	<value condition="Player.HasMedia + !Control.HasFocus(603) + VideoPlayer.Content(episodes)">$LOCALIZE[31625] $INFO[VideoPlayer.TvShowTitle, - ,]</value>
+	<value condition="Player.HasMedia + Control.HasFocus(603)">$LOCALIZE[31010]</value>
+</variable>
+<variable name="home.art.value.playerdiscart">
+	<value condition="Player.HasVideo + !String.IsEmpty(Player.Art(discart))">$INFO[Player.Art(discart)]</value>
+	<value condition="Player.HasAudio + !String.StartsWith(Player.Folderpath,http://)">$INFO[Player.Folderpath,,cdart.png]</value>
+</variable>
+<variable name="home.value.music.discography">
+	<value condition="Player.HasAudio + ![Pvr.IsPlayingTv | Pvr.IsPlayingRadio] + System.HasAddon(script.extendedinfo)">plugin://script.extendedinfo?info=discography&amp;&amp;artistname=$INFO[MusicPlayer.Artist]</value>
+	<value></value>
+</variable>
+<include name="home.value.music.trackcontent">
+	<content>
+		<item>
+			<label>1:</label>
+			<label2>$INFO[MusicPlayer.offset(1).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(1).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(1).Album][CR]$INFO[MusicPlayer.offset(1).Duration]</property>
+			<onclick>Playlist.PlayOffset(1)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(1).Artist)</visible>
+		</item>
+		<item>
+			<label>2:</label>
+			<label2>$INFO[MusicPlayer.offset(2).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(2).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(2).Album][CR]$INFO[MusicPlayer.offset(2).Duration]</property>
+			<onclick>Playlist.PlayOffset(2)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(2).Artist)</visible>
+		</item>
+		<item>
+			<label>3:</label>
+			<label2>$INFO[MusicPlayer.offset(3).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(3).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(3).Album][CR]$INFO[MusicPlayer.offset(3).Duration]</property>
+			<onclick>Playlist.PlayOffset(3)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(3).Artist)</visible>
+		</item>
+		<item>
+			<label>4:</label>
+			<label2>$INFO[MusicPlayer.offset(4).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(4).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(4).Album][CR]$INFO[MusicPlayer.offset(4).Duration]</property>
+			<onclick>Playlist.PlayOffset(4)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(4).Artist)</visible>
+		</item>
+		<item>
+			<label>5:</label>
+			<label2>$INFO[MusicPlayer.offset(5).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(5).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(5).Album][CR]$INFO[MusicPlayer.offset(5).Duration]</property>
+			<onclick>Playlist.PlayOffset(5)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(5).Artist)</visible>
+		</item>
+		<item>
+			<label>6:</label>
+			<label2>$INFO[MusicPlayer.offset(6).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(6).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(6).Album][CR]$INFO[MusicPlayer.offset(6).Duration]</property>
+			<onclick>Playlist.PlayOffset(6)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(6).Artist)</visible>
+		</item>
+		<item>
+			<label>7:</label>
+			<label2>$INFO[MusicPlayer.offset(7).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(7).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(7).Album][CR]$INFO[MusicPlayer.offset(7).Duration]</property>
+			<onclick>Playlist.PlayOffset(7)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(7).Artist)</visible>
+		</item>
+		<item>
+			<label>8:</label>
+			<label2>$INFO[MusicPlayer.offset(8).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(8).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(8).Album][CR]$INFO[MusicPlayer.offset(8).Duration]</property>
+			<onclick>Playlist.PlayOffset(8)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(8).Artist)</visible>
+		</item>
+		<item>
+			<label>9:</label>
+			<label2>$INFO[MusicPlayer.offset(9).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(9).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(9).Album][CR]$INFO[MusicPlayer.offset(9).Duration]</property>
+			<onclick>Playlist.PlayOffset(9)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(9).Artist)</visible>
+		</item>
+		<item>
+			<label>10:</label>
+			<label2>$INFO[MusicPlayer.offset(10).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(10).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(10).Album][CR]$INFO[MusicPlayer.offset(10).Duration]</property>
+			<onclick>Playlist.PlayOffset(10)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(10).Artist)</visible>
+		</item>
+		<item>
+			<label>11:</label>
+			<label2>$INFO[MusicPlayer.offset(11).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(11).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(11).Album][CR]$INFO[MusicPlayer.offset(11).Duration]</property>
+			<onclick>Playlist.PlayOffset(11)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(11).Artist)</visible>
+		</item>
+		<item>
+			<label>12:</label>
+			<label2>$INFO[MusicPlayer.offset(12).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(12).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(12).Album][CR]$INFO[MusicPlayer.offset(12).Duration]</property>
+			<onclick>Playlist.PlayOffset(12)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(12).Artist)</visible>
+		</item>
+		<item>
+			<label>13:</label>
+			<label2>$INFO[MusicPlayer.offset(13).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(13).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(13).Album][CR]$INFO[MusicPlayer.offset(13).Duration]</property>
+			<onclick>Playlist.PlayOffset(13)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(13).Artist)</visible>
+		</item>
+		<item>
+			<label>14:</label>
+			<label2>$INFO[MusicPlayer.offset(14).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(14).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(14).Album][CR]$INFO[MusicPlayer.offset(14).Duration]</property>
+			<onclick>Playlist.PlayOffset(14)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(14).Artist)</visible>
+		</item>
+		<item>
+			<label>15:</label>
+			<label2>$INFO[MusicPlayer.offset(15).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(15).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(15).Album][CR]$INFO[MusicPlayer.offset(15).Duration]</property>
+			<onclick>Playlist.PlayOffset(15)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(15).Artist)</visible>
+		</item>
+		<item>
+			<label>16:</label>
+			<label2>$INFO[MusicPlayer.offset(16).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(16).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(16).Album][CR]$INFO[MusicPlayer.offset(16).Duration]</property>
+			<onclick>Playlist.PlayOffset(16)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(16).Artist)</visible>
+		</item>
+		<item>
+			<label>17:</label>
+			<label2>$INFO[MusicPlayer.offset(17).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(17).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(17).Album][CR]$INFO[MusicPlayer.offset(17).Duration]</property>
+			<onclick>Playlist.PlayOffset(17)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(17).Artist)</visible>
+		</item>
+		<item>
+			<label>18:</label>
+			<label2>$INFO[MusicPlayer.offset(18).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(18).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(18).Album][CR]$INFO[MusicPlayer.offset(18).Duration]</property>
+			<onclick>Playlist.PlayOffset(18)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(18).Artist)</visible>
+		</item>
+		<item>
+			<label>19:</label>
+			<label2>$INFO[MusicPlayer.offset(19).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(19).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(19).Album][CR]$INFO[MusicPlayer.offset(19).Duration]</property>
+			<onclick>Playlist.PlayOffset(19)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(19).Artist)</visible>
+		</item>
+		<item>
+			<label>20:</label>
+			<label2>$INFO[MusicPlayer.offset(20).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(20).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(20).Album][CR]$INFO[MusicPlayer.offset(20).Duration]</property>
+			<onclick>Playlist.PlayOffset(20)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(20).Artist)</visible>
+		</item>
+		<item>
+			<label>21:</label>
+			<label2>$INFO[MusicPlayer.offset(21).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(21).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(21).Album][CR]$INFO[MusicPlayer.offset(21).Duration]</property>
+			<onclick>Playlist.PlayOffset(21)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(21).Artist)</visible>
+		</item>
+		<item>
+			<label>22:</label>
+			<label2>$INFO[MusicPlayer.offset(22).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(22).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(22).Album][CR]$INFO[MusicPlayer.offset(22).Duration]</property>
+			<onclick>Playlist.PlayOffset(22)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(22).Artist)</visible>
+		</item>
+		<item>
+			<label>23:</label>
+			<label2>$INFO[MusicPlayer.offset(23).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(23).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(23).Album][CR]$INFO[MusicPlayer.offset(23).Duration]</property>
+			<onclick>Playlist.PlayOffset(23)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(23).Artist)</visible>
+		</item>
+		<item>
+			<label>24:</label>
+			<label2>$INFO[MusicPlayer.offset(24).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(24).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(24).Album][CR]$INFO[MusicPlayer.offset(24).Duration]</property>
+			<onclick>Playlist.PlayOffset(24)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(24).Artist)</visible>
+		</item>
+		<item>
+			<label>25:</label>
+			<label2>$INFO[MusicPlayer.offset(25).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(25).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(25).Album][CR]$INFO[MusicPlayer.offset(25).Duration]</property>
+			<onclick>Playlist.PlayOffset(25)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(25).Artist)</visible>
+		</item>
+		<item>
+			<label>26:</label>
+			<label2>$INFO[MusicPlayer.offset(26).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(26).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(26).Album][CR]$INFO[MusicPlayer.offset(26).Duration]</property>
+			<onclick>Playlist.PlayOffset(26)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(26).Artist)</visible>
+		</item>
+		<item>
+			<label>27:</label>
+			<label2>$INFO[MusicPlayer.offset(27).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(27).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(27).Album][CR]$INFO[MusicPlayer.offset(27).Duration]</property>
+			<onclick>Playlist.PlayOffset(27)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(27).Artist)</visible>
+		</item>
+		<item>
+			<label>28:</label>
+			<label2>$INFO[MusicPlayer.offset(28).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(28).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(28).Album][CR]$INFO[MusicPlayer.offset(28).Duration]</property>
+			<onclick>Playlist.PlayOffset(28)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(28).Artist)</visible>
+		</item>
+		<item>
+			<label>29:</label>
+			<label2>$INFO[MusicPlayer.offset(29).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(29).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(29).Album][CR]$INFO[MusicPlayer.offset(29).Duration]</property>
+			<onclick>Playlist.PlayOffset(29)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(29).Artist)</visible>
+		</item>
+		<item>
+			<label>30:</label>
+			<label2>$INFO[MusicPlayer.offset(30).Title]</label2>
+			<icon>$INFO[MusicPlayer.offset(30).Cover]</icon>
+			<property name="Details">$INFO[MusicPlayer.offset(30).Album][CR]$INFO[MusicPlayer.offset(30).Duration]</property>
+			<onclick>Playlist.PlayOffset(30)</onclick>
+			<visible>!String.IsEmpty(MusicPlayer.offset(30).Artist)</visible>
+		</item>
+	</content>
+</include>
+<include name="home.flaglabel">
+	<left>0</left>
+	<top>0</top>
+	<width>84</width>
+	<height>41</height>
+	<align>center</align>
+	<font>SemiNormal</font>
+</include>
+
+
+<!-- #### Main and Submenue #### -->
+<include name="menu.content">
+	<item id="90">
+		<description>Slot1Default</description>
+		<label fallback="31767">$INFO[Skin.String(Mainslotx1Title)]</label>
+		<label2>Slotx1</label2>
+		<icon fallback="special://skin/extras/windows/shutdown.jpg">$INFO[Skin.String(Mainslotx1Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(shutdownmenu)">$INFO[Skin.String(Mainslotx1Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslotx1WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslotx1WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslotx1WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslotx1WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslotx1WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx1Title))</visible>
+	</item>
+	<item id="91">
+		<description>Slot2Default</description>
+		<label fallback="31755">$INFO[Skin.String(Mainslotx2Title)]</label>
+		<label2>Slotx2</label2>
+		<icon fallback="special://skin/extras/windows/movies.jpg">$INFO[Skin.String(Mainslotx2Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(videos,movietitles,return)">$INFO[Skin.String(Mainslotx2Click)]</property>
+		<property name="WidgetOpenClick" fallback="ActivateWindow(Videos,special://skin/playlists/movies_random.xsp,return)">$INFO[Skin.String(Mainslotx2WidgetOpenClick)]</property>
+		<property name="WidgetContent" fallback="special://skin/playlists/movies_random.xsp">$INFO[Skin.String(Mainslotx2WidgetContent)]</property>
+		<property name="WidgetCategory" fallback="movie">$INFO[Skin.String(Mainslotx2WidgetCategory)]</property>
+		<property name="WidgetTitle" fallback="31775">$INFO[Skin.String(Mainslotx2WidgetTitle)]</property>
+		<property name="WidgetTarget" fallback="videos">$INFO[Skin.String(Mainslotx2WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx2Title))</visible>
+	</item>
+	<item id="92">
+		<description>Slot3Default</description>
+		<label fallback="31753">$INFO[Skin.String(Mainslotx3Title)]</label>
+		<label2>Slotx3</label2>
+		<icon fallback="special://skin/extras/windows/tvshows.jpg">$INFO[Skin.String(Mainslotx3Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(videos,tvshowtitles,return)">$INFO[Skin.String(Mainslotx3Click)]</property>
+		<property name="WidgetOpenClick" fallback="ActivateWindow(Videos,plugin://service.library.data.provider?type=recommendedepisodes,return)">$INFO[Skin.String(Mainslotx3WidgetOpenClick)]</property>
+		<property name="WidgetContent" fallback="plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window(Home).Property(recommendedepisodes)]">$INFO[Skin.String(Mainslotx3WidgetContent)]</property>
+		<property name="WidgetCategory" fallback="episode">$INFO[Skin.String(Mainslotx3WidgetCategory)]</property>
+		<property name="WidgetTitle" fallback="31799">$INFO[Skin.String(Mainslotx3WidgetTitle)]</property>
+		<property name="WidgetTarget" fallback="videos">$INFO[Skin.String(Mainslotx3WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx3Title))</visible>
+	</item>
+	<item id="93">
+		<description>Slot4Default</description>
+		<label fallback="31756">$INFO[Skin.String(Mainslotx4Title)]</label>
+		<label2>Slotx4</label2>
+		<icon fallback="special://skin/extras/windows/livetv.jpg">$INFO[Skin.String(Mainslotx4Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(TVChannels)">$INFO[Skin.String(Mainslotx4Click)]</property>
+		<property name="WidgetOpenClick" fallback="ActivateWindow(TVChannels)">$INFO[Skin.String(Mainslotx4WidgetOpenClick)]</property>
+		<property name="WidgetContent" fallback="pvr://channels/tv/*">$INFO[Skin.String(Mainslotx4WidgetContent)]</property>
+		<property name="WidgetCategory" fallback="pvrcontentall">$INFO[Skin.String(Mainslotx4WidgetCategory)]</property>
+		<property name="WidgetTitle" fallback="31820">$INFO[Skin.String(Mainslotx4WidgetTitle)]</property>
+		<property name="WidgetTarget" fallback="pvr">$INFO[Skin.String(Mainslotx4WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx4Title))</visible>
+	</item>
+	<item id="94">
+		<description>Slot5Default</description>
+		<label fallback="31758">$INFO[Skin.String(Mainslotx5Title)]</label>
+		<label2>Slotx5</label2>
+		<icon fallback="special://skin/extras/windows/music.jpg">$INFO[Skin.String(Mainslotx5Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(Music,Albums,return)">$INFO[Skin.String(Mainslotx5Click)]</property>
+		<property name="WidgetOpenClick" fallback="ActivateWindow(Music,special://skin/playlists/music_albums_recent.xsp,return)">$INFO[Skin.String(Mainslotx5WidgetOpenClick)]</property>
+		<property name="WidgetContent" fallback="special://skin/playlists/music_albums_recent.xsp">$INFO[Skin.String(Mainslotx5WidgetContent)]</property>
+		<property name="WidgetCategory" fallback="album">$INFO[Skin.String(Mainslotx5WidgetCategory)]</property>
+		<property name="WidgetTitle" fallback="31800">$INFO[Skin.String(Mainslotx5WidgetTitle)]</property>
+		<property name="WidgetTarget" fallback="Music">$INFO[Skin.String(Mainslotx5WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx5Title))</visible>
+	</item>
+	<item id="95">
+		<description>Slot6Default</description>
+		<label fallback="31757">$INFO[Skin.String(Mainslotx6Title)]</label>
+		<label2>Slotx6</label2>
+		<icon fallback="special://skin/extras/windows/livetv.jpg">$INFO[Skin.String(Mainslotx6Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(RadioChannels)">$INFO[Skin.String(Mainslotx6Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslotx6WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslotx6WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslotx6WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslotx6WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslotx6WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx6Title))</visible>
+	</item>
+	<item id="96">
+		<description>Slot7Default</description>
+		<label fallback="31765">$INFO[Skin.String(Mainslotx7Title)]</label>
+		<label2>Slotx7</label2>
+		<icon fallback="special://skin/extras/windows/addons.jpg">$INFO[Skin.String(Mainslotx7Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(addonbrowser)">$INFO[Skin.String(Mainslotx7Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslotx7WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslotx7WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslotx7WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslotx7WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslotx7WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx7Title))</visible>
+	</item>
+	<item id="97">
+		<description>Slot8Default</description>
+		<label fallback="31762">$INFO[Skin.String(Mainslotx8Title)]</label>
+		<label2>Slotx8</label2>
+		<icon fallback="special://skin/extras/windows/weather.jpg">$INFO[Skin.String(Mainslotx8Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(weather)">$INFO[Skin.String(Mainslotx8Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslotx8WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslotx8WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslotx8WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslotx8WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslotx8WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx8Title))</visible>
+	</item>
+	<item id="98">
+		<description>Slot9Default</description>
+		<label fallback="31764">$INFO[Skin.String(Mainslotx9Title)]</label>
+		<label2>Slotx9</label2>
+		<icon fallback="special://skin/extras/windows/setting.jpg">$INFO[Skin.String(Mainslotx9Icon)]</icon>
+		<onclick>$INFO[Container(300).ListItem.Property(MainslotClick)]</onclick>
+		<property name="MainslotClick" fallback="ActivateWindow(settings)">$INFO[Skin.String(Mainslotx9Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslotx9WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslotx9WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslotx9WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslotx9WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslotx9WidgetTarget)]</property>
+		<visible>String.IsEmpty(Skin.String(DisableMainslotx9Title))</visible>
+	</item>
+	<item id="1">
+		<description>Slot1</description>
+		<label>$INFO[Skin.String(Mainslot1Title)]</label>
+		<label2>Slot1</label2>
+		<icon>$INFO[Skin.String(Mainslot1Icon)]</icon>
+		<onclick>$INFO[Skin.String(Mainslot1Click)]</onclick>
+		<property name="MainslotClick">$INFO[Skin.String(Mainslot1Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslot1WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslot1WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslot1WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslot1WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslot1WidgetTarget)]</property>
+		<visible>!String.IsEmpty(Skin.String(Mainslot1Title))</visible>
+	</item>
+	<item id="2">
+		<description>Slot2</description>
+		<label>$INFO[Skin.String(Mainslot2Title)]</label>
+		<label2>Slot2</label2>
+		<icon>$INFO[Skin.String(Mainslot2Icon)]</icon>
+		<onclick>$INFO[Skin.String(Mainslot2Click)]</onclick>
+		<property name="MainslotClick">$INFO[Skin.String(Mainslot2Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslot2WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslot2WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslot2WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslot2WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslot2WidgetTarget)]</property>
+		<visible>!String.IsEmpty(Skin.String(Mainslot2Title))</visible>
+	</item>
+	<item id="3">
+		<description>Slot3</description>
+		<label>$INFO[Skin.String(Mainslot3Title)]</label>
+		<label2>Slot3</label2>
+		<icon>$INFO[Skin.String(Mainslot3Icon)]</icon>
+		<onclick>$INFO[Skin.String(Mainslot3Click)]</onclick>
+		<property name="MainslotClick">$INFO[Skin.String(Mainslot3Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslot3WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslot3WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslot3WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslot3WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslot3WidgetTarget)]</property>
+		<visible>!String.IsEmpty(Skin.String(Mainslot3Title))</visible>
+	</item>
+	<item id="4">
+		<description>Slot4</description>
+		<label>$INFO[Skin.String(Mainslot4Title)]</label>
+		<label2>Slot4</label2>
+		<icon>$INFO[Skin.String(Mainslot4Icon)]</icon>
+		<onclick>$INFO[Skin.String(Mainslot4Click)]</onclick>
+		<property name="MainslotClick">$INFO[Skin.String(Mainslot4Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslot4WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslot4WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslot4WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslot4WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslot4WidgetTarget)]</property>
+		<visible>!String.IsEmpty(Skin.String(Mainslot4Title))</visible>
+	</item>
+	<item id="5">
+		<description>Slot5</description>
+		<label2>Slot5</label2>
+		<label>$INFO[Skin.String(Mainslot5Title)]</label>
+		<icon>$INFO[Skin.String(Mainslot5Icon)]</icon>
+		<onclick>$INFO[Skin.String(Mainslot5Click)]</onclick>
+		<property name="MainslotClick">$INFO[Skin.String(Mainslot5Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslot5WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslot5WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslot5WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslot5WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslot5WidgetTarget)]</property>
+		<visible>!String.IsEmpty(Skin.String(Mainslot5Title))</visible>
+	</item>
+	<item id="6">
+		<description>Slot6</description>
+		<label>$INFO[Skin.String(Mainslot6Title)]</label>
+		<label2>Slot6</label2>
+		<icon>$INFO[Skin.String(Mainslot6Icon)]</icon>
+		<onclick>$INFO[Skin.String(Mainslot6Click)]</onclick>
+		<property name="MainslotClick">$INFO[Skin.String(Mainslot6Click)]</property>
+		<property name="WidgetOpenClick">$INFO[Skin.String(Mainslot6WidgetOpenClick)]</property>
+		<property name="WidgetContent">$INFO[Skin.String(Mainslot6WidgetContent)]</property>
+		<property name="WidgetCategory">$INFO[Skin.String(Mainslot6WidgetCategory)]</property>
+		<property name="WidgetTitle">$INFO[Skin.String(Mainslot6WidgetTitle)]</property>
+		<property name="WidgetTarget">$INFO[Skin.String(Mainslot6WidgetTarget)]</property>
+		<visible>!String.IsEmpty(Skin.String(Mainslot6Title))</visible>
+	</item>
+	<item id="13">
+		<description>Play disc button</description>
+		<label>$LOCALIZE[31627]</label>
+		<label2>Play disc button</label2>
+		<icon>$INFO[Skin.String(Mainslot13Icon)]</icon>
+		<onclick>PlayDVD</onclick>
+		<visible>System.HasMediadvd</visible>
+	</item>
+</include>
+
+<include name="submenu.content">
+	<!-- Slot 1 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot1_01Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot1_01Click)]</onclick>
+		<visible>Container(300).HasFocus(1) + !String.IsEmpty(Skin.String(Subslot1_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot1_02Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot1_02Click)]</onclick>
+		<visible>Container(300).HasFocus(1) + !String.IsEmpty(Skin.String(Subslot1_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot1_03Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot1_03Click)]</onclick>
+		<visible>Container(300).HasFocus(1)  + !String.IsEmpty(Skin.String(Subslot1_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot1_04Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot1_04Click)]</onclick>
+		<visible>Container(300).HasFocus(1) + !String.IsEmpty(Skin.String(Subslot1_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot1_05Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot1_05Click)]</onclick>
+		<visible>Container(300).HasFocus(1) + !String.IsEmpty(Skin.String(Subslot1_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot1_06Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot1_06Click)]</onclick>
+		<visible>Container(300).HasFocus(1) + !String.IsEmpty(Skin.String(Subslot1_06Title))</visible>
+	</item>
+	<!-- Slot 2 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot2_01Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot2_01Click)]</onclick>
+		<visible>Container(300).HasFocus(2) + !String.IsEmpty(Skin.String(Subslot2_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot2_02Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot2_02Click)]</onclick>
+		<visible>Container(300).HasFocus(2) + !String.IsEmpty(Skin.String(Subslot2_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot2_03Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot2_03Click)]</onclick>
+		<visible>Container(300).HasFocus(2) + !String.IsEmpty(Skin.String(Subslot2_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot2_04Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot2_04Click)]</onclick>
+		<visible>Container(300).HasFocus(2) + !String.IsEmpty(Skin.String(Subslot2_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot2_05Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot2_05Click)]</onclick>
+		<visible>Container(300).HasFocus(2) + !String.IsEmpty(Skin.String(Subslot2_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot2_06Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot2_06Click)]</onclick>
+		<visible>Container(300).HasFocus(2) + !String.IsEmpty(Skin.String(Subslot2_06Title))</visible>
+	</item>
+	<!-- Slot 3 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot3_01Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot3_01Click)]</onclick>
+		<visible>Container(300).HasFocus(3) + !String.IsEmpty(Skin.String(Subslot3_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot3_02Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot3_02Click)]</onclick>
+		<visible>Container(300).HasFocus(3) + !String.IsEmpty(Skin.String(Subslot3_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot3_03Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot3_03Click)]</onclick>
+		<visible>Container(300).HasFocus(3) + !String.IsEmpty(Skin.String(Subslot3_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot3_04Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot3_04Click)]</onclick>
+		<visible>Container(300).HasFocus(3) + !String.IsEmpty(Skin.String(Subslot3_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot3_05Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot3_05Click)]</onclick>
+		<visible>Container(300).HasFocus(3) + !String.IsEmpty(Skin.String(Subslot3_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot3_06Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot3_06Click)]</onclick>
+		<visible>Container(300).HasFocus(3) + !String.IsEmpty(Skin.String(Subslot3_06Title))</visible>
+	</item>
+	<!-- Slot 4 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot4_01Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot4_01Click)]</onclick>
+		<visible>Container(300).HasFocus(4) + !String.IsEmpty(Skin.String(Subslot4_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot4_02Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot4_02Click)]</onclick>
+		<visible>Container(300).HasFocus(4) + !String.IsEmpty(Skin.String(Subslot4_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot4_03Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot4_03Click)]</onclick>
+		<visible>Container(300).HasFocus(4) + !String.IsEmpty(Skin.String(Subslot4_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot4_04Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot4_04Click)]</onclick>
+		<visible>Container(300).HasFocus(4) + !String.IsEmpty(Skin.String(Subslot4_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot4_05Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot4_05Click)]</onclick>
+		<visible>Container(300).HasFocus(4) + !String.IsEmpty(Skin.String(Subslot4_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot4_06Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot4_06Click)]</onclick>
+		<visible>Container(300).HasFocus(4) + !String.IsEmpty(Skin.String(Subslot4_06Title))</visible>
+	</item>
+	<!-- Slot 5 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot5_01Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot5_01Click)]</onclick>
+		<visible>Container(300).HasFocus(5) + !String.IsEmpty(Skin.String(Subslot5_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot5_02Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot5_02Click)]</onclick>
+		<visible>Container(300).HasFocus(5) + !String.IsEmpty(Skin.String(Subslot5_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot5_03Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot5_03Click)]</onclick>
+		<visible>Container(300).HasFocus(5) + !String.IsEmpty(Skin.String(Subslot5_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot5_04Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot5_04Click)]</onclick>
+		<visible>Container(300).HasFocus(5) + !String.IsEmpty(Skin.String(Subslot5_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot5_05Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot5_05Click)]</onclick>
+		<visible>Container(300).HasFocus(5) + !String.IsEmpty(Skin.String(Subslot5_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot5_06Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot5_06Click)]</onclick>
+		<visible>Container(300).HasFocus(5) + !String.IsEmpty(Skin.String(Subslot5_06Title))</visible>
+	</item>
+	<!-- Slot 6 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot6_01Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot6_01Click)]</onclick>
+		<visible>Container(300).HasFocus(6) + !String.IsEmpty(Skin.String(Subslot6_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot6_02Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot6_02Click)]</onclick>
+		<visible>Container(300).HasFocus(6) + !String.IsEmpty(Skin.String(Subslot6_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot6_03Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot6_03Click)]</onclick>
+		<visible>Container(300).HasFocus(6) + !String.IsEmpty(Skin.String(Subslot6_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot6_04Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot6_04Click)]</onclick>
+		<visible>Container(300).HasFocus(6) + !String.IsEmpty(Skin.String(Subslot6_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot6_05Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot6_05Click)]</onclick>
+		<visible>Container(300).HasFocus(6) + !String.IsEmpty(Skin.String(Subslot6_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot6_06Title)]</label>
+		<onclick>$INFO[Skin.String(Subslot6_06Click)]</onclick>
+		<visible>Container(300).HasFocus(6) + !String.IsEmpty(Skin.String(Subslot6_06Title))</visible>
+	</item>
+
+	<!-- Slot x1 default -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslotx1_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_01Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_01Title)) + !String.IsEqual(Skin.String(Subslotx1_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslotx1_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_02Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_02Title)) + !String.IsEqual(Skin.String(Subslotx1_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx1_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_03Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_03Title)) + !String.IsEqual(Skin.String(Subslotx1_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx1_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_04Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_04Title)) + !String.IsEqual(Skin.String(Subslotx1_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx1_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_05Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_05Title)) + !String.IsEqual(Skin.String(Subslotx1_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx1_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_06Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_06Title)) + !String.IsEqual(Skin.String(Subslotx1_06Title),empty)</visible>
+	</item>
+	
+	<!-- Slot x2 default -->
+	<item id="1">
+		<label fallback="31858">$INFO[Skin.String(Subslotx2_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,recentlyaddedmovies,return)">$INFO[Skin.String(Subslotx2_01Click)]</property>
+		<visible>Container(300).HasFocus(91) + !String.IsEqual(Skin.String(Subslotx2_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31856">$INFO[Skin.String(Subslotx2_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,moviesets,return)">$INFO[Skin.String(Subslotx2_02Click)]</property>
+		<visible>Container(300).HasFocus(91) + !String.IsEqual(Skin.String(Subslotx2_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31852">$INFO[Skin.String(Subslotx2_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,moviegenres,return)">$INFO[Skin.String(Subslotx2_03Click)]</property>
+		<visible>Container(300).HasFocus(91) + !String.IsEqual(Skin.String(Subslotx2_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx2_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx2_04Click)]</property>
+		<visible>Container(300).HasFocus(91) + !String.IsEmpty(Skin.String(Subslotx2_04Title)) + !String.IsEqual(Skin.String(Subslotx2_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx2_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx2_05Click)]</property>
+		<visible>Container(300).HasFocus(91) + !String.IsEmpty(Skin.String(Subslotx2_05Title)) + !String.IsEqual(Skin.String(Subslotx2_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx2_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx2_06Click)]</property>
+		<visible>Container(300).HasFocus(91) + !String.IsEmpty(Skin.String(Subslotx2_06Title)) + !String.IsEqual(Skin.String(Subslotx2_06Title),empty)</visible>
+	</item>
+		
+	<!-- Slot x3 default -->
+	<item id="1">
+		<label fallback="31868">$INFO[Skin.String(Subslotx3_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,recentlyaddedepisodes,return)">$INFO[Skin.String(Subslotx3_01Click)]</property>
+		<visible>Container(300).HasFocus(92) + !String.IsEqual(Skin.String(Subslotx3_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31864">$INFO[Skin.String(Subslotx3_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,tvshowgenres,return)">$INFO[Skin.String(Subslotx3_02Click)]</property>
+		<visible>Container(300).HasFocus(92) + !String.IsEqual(Skin.String(Subslotx3_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31869">$INFO[Skin.String(Subslotx3_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Videos,library://video/inprogressshows.xml,return)">$INFO[Skin.String(Subslotx3_03Click)]</property>
+		<visible>Container(300).HasFocus(92) + !String.IsEqual(Skin.String(Subslotx3_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx3_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx3_04Click)]</property>
+		<visible>Container(300).HasFocus(92) + !String.IsEmpty(Skin.String(Subslotx3_04Title)) + !String.IsEqual(Skin.String(Subslotx3_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx3_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx3_05Click)]</property>
+		<visible>Container(300).HasFocus(92) + !String.IsEmpty(Skin.String(Subslotx3_05Title)) + !String.IsEqual(Skin.String(Subslotx3_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx3_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx3_06Click)]</property>
+		<visible>Container(300).HasFocus(92) + !String.IsEmpty(Skin.String(Subslotx3_06Title)) + !String.IsEqual(Skin.String(Subslotx3_06Title),empty)</visible>
+	</item>		
+	<!-- Slot x4 default -->
+	<item id="1">
+		<label fallback="31895">$INFO[Skin.String(Subslotx4_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(TVSearch)">$INFO[Skin.String(Subslotx4_01Click)]</property>
+		<visible>Container(300).HasFocus(93) + !String.IsEqual(Skin.String(Subslotx4_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31896">$INFO[Skin.String(Subslotx4_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(TVGuide)">$INFO[Skin.String(Subslotx4_02Click)]</property>
+		<visible>Container(300).HasFocus(93) + !String.IsEqual(Skin.String(Subslotx4_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31897">$INFO[Skin.String(Subslotx4_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(TVRecordings)">$INFO[Skin.String(Subslotx4_03Click)]</property>
+		<visible>Container(300).HasFocus(93) + !String.IsEqual(Skin.String(Subslotx4_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label fallback="31898">$INFO[Skin.String(Subslotx4_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(pvrsettings)">$INFO[Skin.String(Subslotx4_04Click)]</property>
+		<visible>Container(300).HasFocus(93) + !String.IsEqual(Skin.String(Subslotx4_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx4_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx4_05Click)]</property>
+		<visible>Container(300).HasFocus(93) + !String.IsEmpty(Skin.String(Subslotx4_05Title)) + !String.IsEqual(Skin.String(Subslotx4_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx4_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx4_06Click)]</property>
+		<visible>Container(300).HasFocus(93) + !String.IsEmpty(Skin.String(Subslotx4_06Title)) + !String.IsEqual(Skin.String(Subslotx4_06Title),empty)</visible>
+	</item>
+	
+	<!-- Slot x5 default -->
+	<item id="1">
+		<label fallback="31879">$INFO[Skin.String(Subslotx5_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,RecentlyPlayedAlbums,return)">$INFO[Skin.String(Subslotx5_01Click)]</property>
+		<visible>Container(300).HasFocus(94) + !String.IsEqual(Skin.String(Subslotx5_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31875">$INFO[Skin.String(Subslotx5_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Genres,return)">$INFO[Skin.String(Subslotx5_02Click)]</property>
+		<visible>Container(300).HasFocus(94) + !String.IsEqual(Skin.String(Subslotx5_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31876">$INFO[Skin.String(Subslotx5_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Artists,return)">$INFO[Skin.String(Subslotx5_03Click)]</property>
+		<visible>Container(300).HasFocus(94) + !String.IsEqual(Skin.String(Subslotx5_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label fallback="31874">$INFO[Skin.String(Subslotx5_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Songs,return)">$INFO[Skin.String(Subslotx5_04Click)]</property>
+		<visible>Container(300).HasFocus(94) + !String.IsEqual(Skin.String(Subslotx5_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label fallback="31871">$INFO[Skin.String(Subslotx5_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Files,return)">$INFO[Skin.String(Subslotx5_05Click)]</property>
+		<visible>Container(300).HasFocus(94) + !String.IsEqual(Skin.String(Subslotx5_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx5_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx5_06Click)]</property>
+		<visible>Container(300).HasFocus(94) + !String.IsEmpty(Skin.String(Subslotx5_06Title)) + !String.IsEqual(Skin.String(Subslotx5_06Title),empty)</visible>
+	</item>		
+	<!-- Slot x6 default -->
+	<item id="1">
+		<label fallback="31901">$INFO[Skin.String(Subslotx6_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radiotimers)">$INFO[Skin.String(Subslotx6_01Click)]</property>
+		<visible>Container(300).HasFocus(95) + !String.IsEqual(Skin.String(Subslotx6_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31903">$INFO[Skin.String(Subslotx6_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radioguide)">$INFO[Skin.String(Subslotx6_02Click)]</property>
+		<visible>Container(300).HasFocus(95) + !String.IsEqual(Skin.String(Subslotx6_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31902">$INFO[Skin.String(Subslotx6_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radiorecordings)">$INFO[Skin.String(Subslotx6_03Click)]</property>
+		<visible>Container(300).HasFocus(95) + !String.IsEqual(Skin.String(Subslotx6_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label fallback="31904">$INFO[Skin.String(Subslotx6_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radiosearch)">$INFO[Skin.String(Subslotx6_04Click)]</property>
+		<visible>Container(300).HasFocus(95) + !String.IsEqual(Skin.String(Subslotx6_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx6_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx6_05Click)]</property>
+		<visible>Container(300).HasFocus(95) + !String.IsEmpty(Skin.String(Subslotx6_05Title)) + !String.IsEqual(Skin.String(Subslotx6_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx6_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx6_06Click)]</property>
+		<visible>Container(300).HasFocus(95) + !String.IsEmpty(Skin.String(Subslotx6_06Title)) + !String.IsEqual(Skin.String(Subslotx6_06Title),empty)</visible>
+	</item>
+	<!-- Slot x7 default -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslotx7_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_01Click)]</property>
+		<visible>Container(300).HasFocus(96) + !String.IsEmpty(Skin.String(Subslotx7_01Title)) + !String.IsEqual(Skin.String(Subslotx7_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslotx7_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_02Click)]</property>
+		<visible>Container(300).HasFocus(96) + !String.IsEmpty(Skin.String(Subslotx7_02Title)) + !String.IsEqual(Skin.String(Subslotx7_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx7_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_03Click)]</property>
+		<visible>Container(300).HasFocus(96) + !String.IsEmpty(Skin.String(Subslotx7_03Title)) + !String.IsEqual(Skin.String(Subslotx7_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx7_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_04Click)]</property>
+		<visible>Container(300).HasFocus(96) + !String.IsEmpty(Skin.String(Subslotx7_04Title)) + !String.IsEqual(Skin.String(Subslotx7_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx7_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_05Click)]</property>
+		<visible>Container(300).HasFocus(96) + !String.IsEmpty(Skin.String(Subslotx7_05Title)) + !String.IsEqual(Skin.String(Subslotx7_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx7_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_06Click)]</property>
+		<visible>Container(300).HasFocus(96) + !String.IsEmpty(Skin.String(Subslotx7_06Title)) + !String.IsEqual(Skin.String(Subslotx7_06Title),empty)</visible>
+	</item>
+	<!-- Slot x8 default -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslotx8_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_01Click)]</property>
+		<visible>Container(300).HasFocus(97) + !String.IsEmpty(Skin.String(Subslotx8_01Title)) + !String.IsEqual(Skin.String(Subslotx8_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslotx8_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_02Click)]</property>
+		<visible>Container(300).HasFocus(97) + !String.IsEmpty(Skin.String(Subslotx8_02Title)) + !String.IsEqual(Skin.String(Subslotx8_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx8_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_03Click)]</property>
+		<visible>Container(300).HasFocus(97) + !String.IsEmpty(Skin.String(Subslotx8_03Title)) + !String.IsEqual(Skin.String(Subslotx8_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx8_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_04Click)]</property>
+		<visible>Container(300).HasFocus(97) + !String.IsEmpty(Skin.String(Subslotx8_04Title)) + !String.IsEqual(Skin.String(Subslotx8_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx8_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_05Click)]</property>
+		<visible>Container(300).HasFocus(97) + !String.IsEmpty(Skin.String(Subslotx8_05Title)) + !String.IsEqual(Skin.String(Subslotx8_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx8_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_06Click)]</property>
+		<visible>Container(300).HasFocus(97) + !String.IsEmpty(Skin.String(Subslotx8_06Title)) + !String.IsEqual(Skin.String(Subslotx8_06Title),empty)</visible>
+	</item>
+	<!-- Slot x9 default -->
+	<item id="1">
+		<label fallback="31912">$INFO[Skin.String(Subslotx9_01Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(skinsettings)">$INFO[Skin.String(Subslotx9_01Click)]</property>
+		<visible>Container(300).HasFocus(98) + !String.IsEqual(Skin.String(Subslotx9_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31913">$INFO[Skin.String(Subslotx9_02Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(1110)">$INFO[Skin.String(Subslotx9_02Click)]</property>
+		<visible>Container(300).HasFocus(98) + !String.IsEqual(Skin.String(Subslotx9_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx9_03Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_03Click)]</property>
+		<visible>Container(300).HasFocus(98) + !String.IsEmpty(Skin.String(Subslotx9_03Title)) + !String.IsEqual(Skin.String(Subslotx9_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx9_04Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_04Click)]</property>
+		<visible>Container(300).HasFocus(98) + !String.IsEmpty(Skin.String(Subslotx9_04Title)) + !String.IsEqual(Skin.String(Subslotx9_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx9_05Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_05Click)]</property>
+		<visible>Container(300).HasFocus(98) + !String.IsEmpty(Skin.String(Subslotx9_05Title)) + !String.IsEqual(Skin.String(Subslotx9_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx9_06Title)]</label>
+		<onclick>$INFO[Container(301).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_06Click)]</property>
+		<visible>Container(300).HasFocus(98) + !String.IsEmpty(Skin.String(Subslotx9_06Title)) + !String.IsEqual(Skin.String(Subslotx9_06Title),empty)</visible>
+	</item>
+	
+</include>
+	
+<include name="submenu.contentx1">
+	<!-- Slot x1 default -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslotx1_01Title)]</label>
+		<onclick>$INFO[Container(302).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx1_01Title)) + !String.IsEqual(Skin.String(Subslotx1_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslotx1_02Title)]</label>
+		<onclick>$INFO[Container(302).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx1_02Title)) + !String.IsEqual(Skin.String(Subslotx1_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx1_03Title)]</label>
+		<onclick>$INFO[Container(302).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx1_03Title)) + !String.IsEqual(Skin.String(Subslotx1_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx1_04Title)]</label>
+		<onclick>$INFO[Container(302).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx1_04Title)) + !String.IsEqual(Skin.String(Subslotx1_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx1_05Title)]</label>
+		<onclick>$INFO[Container(302).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_05Click)]</property>
+		<visible>Container(300).HasFocus(90) + !String.IsEmpty(Skin.String(Subslotx1_05Title)) + !String.IsEqual(Skin.String(Subslotx1_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx1_06Title)]</label>
+		<onclick>$INFO[Container(302).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx1_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx1_06Title)) + !String.IsEqual(Skin.String(Subslotx1_06Title),empty)</visible>
+	</item>
+</include>
+	
+<include name="submenu.contentx2">
+	<!-- Slot x2 default -->
+	<item id="1">
+		<label fallback="31858">$INFO[Skin.String(Subslotx2_01Title)]</label>
+		<onclick>$INFO[Container(303).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,recentlyaddedmovies,return)">$INFO[Skin.String(Subslotx2_01Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx2_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31856">$INFO[Skin.String(Subslotx2_02Title)]</label>
+		<onclick>$INFO[Container(303).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,moviesets,return)">$INFO[Skin.String(Subslotx2_02Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx2_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31852">$INFO[Skin.String(Subslotx2_03Title)]</label>
+		<onclick>$INFO[Container(303).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,moviegenres,return)">$INFO[Skin.String(Subslotx2_03Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx2_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx2_04Title)]</label>
+		<onclick>$INFO[Container(303).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx2_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx2_04Title)) + !String.IsEqual(Skin.String(Subslotx2_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx2_05Title)]</label>
+		<onclick>$INFO[Container(303).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx2_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx2_05Title)) + !String.IsEqual(Skin.String(Subslotx2_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx2_06Title)]</label>
+		<onclick>$INFO[Container(303).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx2_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx2_06Title)) + !String.IsEqual(Skin.String(Subslotx2_06Title),empty)</visible>
+	</item>
+</include>
+	
+<include name="submenu.contentx3">
+	<!-- Slot x3 default -->
+	<item id="1">
+		<label fallback="31868">$INFO[Skin.String(Subslotx3_01Title)]</label>
+		<onclick>$INFO[Container(304).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,recentlyaddedepisodes,return)">$INFO[Skin.String(Subslotx3_01Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx3_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31864">$INFO[Skin.String(Subslotx3_02Title)]</label>
+		<onclick>$INFO[Container(304).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(videos,tvshowgenres,return)">$INFO[Skin.String(Subslotx3_02Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx3_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31869">$INFO[Skin.String(Subslotx3_03Title)]</label>
+		<onclick>$INFO[Container(304).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Videos,library://video/inprogressshows.xml,return)">$INFO[Skin.String(Subslotx3_03Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx3_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx3_04Title)]</label>
+		<onclick>$INFO[Container(304).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx3_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx3_04Title)) + !String.IsEqual(Skin.String(Subslotx3_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx3_05Title)]</label>
+		<onclick>$INFO[Container(304).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx3_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx3_05Title)) + !String.IsEqual(Skin.String(Subslotx3_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx3_06Title)]</label>
+		<onclick>$INFO[Container(304).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx3_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx3_06Title)) + !String.IsEqual(Skin.String(Subslotx3_06Title),empty)</visible>
+	</item>
+</include>
+	
+<include name="submenu.contentx4">
+	<!-- Slot x4 default -->
+	<item id="1">
+		<label fallback="31895">$INFO[Skin.String(Subslotx4_01Title)]</label>
+		<onclick>$INFO[Container(305).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(TVSearch)">$INFO[Skin.String(Subslotx4_01Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx4_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31896">$INFO[Skin.String(Subslotx4_02Title)]</label>
+		<onclick>$INFO[Container(305).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(TVGuide)">$INFO[Skin.String(Subslotx4_02Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx4_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31897">$INFO[Skin.String(Subslotx4_03Title)]</label>
+		<onclick>$INFO[Container(305).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(TVRecordings)">$INFO[Skin.String(Subslotx4_03Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx4_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label fallback="31898">$INFO[Skin.String(Subslotx4_04Title)]</label>
+		<onclick>$INFO[Container(305).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(pvrsettings)">$INFO[Skin.String(Subslotx4_04Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx4_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx4_05Title)]</label>
+		<onclick>$INFO[Container(305).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx4_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx4_05Title)) + !String.IsEqual(Skin.String(Subslotx4_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx4_06Title)]</label>
+		<onclick>$INFO[Container(305).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx4_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx4_06Title)) + !String.IsEqual(Skin.String(Subslotx4_06Title),empty)</visible>
+	</item>
+</include>
+
+<include name="submenu.contentx5">
+	<!-- Slot x5 default -->
+	<item id="1">
+		<label fallback="31879">$INFO[Skin.String(Subslotx5_01Title)]</label>
+		<onclick>$INFO[Container(306).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,RecentlyPlayedAlbums,return)">$INFO[Skin.String(Subslotx5_01Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx5_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31875">$INFO[Skin.String(Subslotx5_02Title)]</label>
+		<onclick>$INFO[Container(306).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Genres,return)">$INFO[Skin.String(Subslotx5_02Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx5_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31876">$INFO[Skin.String(Subslotx5_03Title)]</label>
+		<onclick>$INFO[Container(306).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Artists,return)">$INFO[Skin.String(Subslotx5_03Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx5_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label fallback="31874">$INFO[Skin.String(Subslotx5_04Title)]</label>
+		<onclick>$INFO[Container(306).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Songs,return)">$INFO[Skin.String(Subslotx5_04Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx5_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label fallback="31871">$INFO[Skin.String(Subslotx5_05Title)]</label>
+		<onclick>$INFO[Container(306).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(Music,Files,return)">$INFO[Skin.String(Subslotx5_05Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx5_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx5_06Title)]</label>
+		<onclick>$INFO[Container(306).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx5_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx5_06Title)) + !String.IsEqual(Skin.String(Subslotx5_06Title),empty)</visible>
+	</item>
+</include>
+
+<include name="submenu.contentx6">
+	<!-- Slot x6 default -->
+	<item id="1">
+		<label fallback="31901">$INFO[Skin.String(Subslotx6_01Title)]</label>
+		<onclick>$INFO[Container(307).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radiotimers)">$INFO[Skin.String(Subslotx6_01Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx6_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31903">$INFO[Skin.String(Subslotx6_02Title)]</label>
+		<onclick>$INFO[Container(307).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radioguide)">$INFO[Skin.String(Subslotx6_02Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx6_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label fallback="31902">$INFO[Skin.String(Subslotx6_03Title)]</label>
+		<onclick>$INFO[Container(307).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radiorecordings)">$INFO[Skin.String(Subslotx6_03Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx6_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label fallback="31904">$INFO[Skin.String(Subslotx6_04Title)]</label>
+		<onclick>$INFO[Container(307).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(radiosearch)">$INFO[Skin.String(Subslotx6_04Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx6_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx6_05Title)]</label>
+		<onclick>$INFO[Container(307).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx6_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx6_05Title)) + !String.IsEqual(Skin.String(Subslotx6_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx6_06Title)]</label>
+		<onclick>$INFO[Container(307).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx6_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx6_06Title)) + !String.IsEqual(Skin.String(Subslotx6_06Title),empty)</visible>
+	</item>
+</include>
+
+<include name="submenu.contentx7">
+	<!-- Slot x7 default -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslotx7_01Title)]</label>
+		<onclick>$INFO[Container(308).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx7_01Title)) + !String.IsEqual(Skin.String(Subslotx7_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslotx7_02Title)]</label>
+		<onclick>$INFO[Container(308).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx7_02Title)) + !String.IsEqual(Skin.String(Subslotx7_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx7_03Title)]</label>
+		<onclick>$INFO[Container(308).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx7_03Title)) + !String.IsEqual(Skin.String(Subslotx7_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx7_04Title)]</label>
+		<onclick>$INFO[Container(308).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx7_04Title)) + !String.IsEqual(Skin.String(Subslotx7_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx7_05Title)]</label>
+		<onclick>$INFO[Container(308).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx7_05Title)) + !String.IsEqual(Skin.String(Subslotx7_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx7_06Title)]</label>
+		<onclick>$INFO[Container(308).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx7_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx7_06Title)) + !String.IsEqual(Skin.String(Subslotx7_06Title),empty)</visible>
+	</item>
+</include>
+
+<include name="submenu.contentx8">
+	<!-- Slot x8 default -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslotx8_01Title)]</label>
+		<onclick>$INFO[Container(309).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx8_01Title)) + !String.IsEqual(Skin.String(Subslotx8_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslotx8_02Title)]</label>
+		<onclick>$INFO[Container(309).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx8_02Title)) + !String.IsEqual(Skin.String(Subslotx8_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx8_03Title)]</label>
+		<onclick>$INFO[Container(309).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx8_03Title)) + !String.IsEqual(Skin.String(Subslotx8_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx8_04Title)]</label>
+		<onclick>$INFO[Container(309).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx8_04Title)) + !String.IsEqual(Skin.String(Subslotx8_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx8_05Title)]</label>
+		<onclick>$INFO[Container(309).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx8_05Title)) + !String.IsEqual(Skin.String(Subslotx8_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx8_06Title)]</label>
+		<onclick>$INFO[Container(309).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx8_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx8_06Title)) + !String.IsEqual(Skin.String(Subslotx8_06Title),empty)</visible>
+	</item>
+</include>
+
+<include name="submenu.contentx9">
+	<!-- Slot x9 default -->
+	<item id="1">
+		<label fallback="31912">$INFO[Skin.String(Subslotx9_01Title)]</label>
+		<onclick>$INFO[Container(310).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(skinsettings)">$INFO[Skin.String(Subslotx9_01Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx9_01Title),empty)</visible>
+	</item>
+	<item id="2">
+		<label fallback="31913">$INFO[Skin.String(Subslotx9_02Title)]</label>
+		<onclick>$INFO[Container(310).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick" fallback="ActivateWindow(1110)">$INFO[Skin.String(Subslotx9_02Click)]</property>
+		<visible>!String.IsEqual(Skin.String(Subslotx9_02Title),empty)</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslotx9_03Title)]</label>
+		<onclick>$INFO[Container(310).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx9_03Title)) + !String.IsEqual(Skin.String(Subslotx9_03Title),empty)</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslotx9_04Title)]</label>
+		<onclick>$INFO[Container(310).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx9_04Title)) + !String.IsEqual(Skin.String(Subslotx9_04Title),empty)</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslotx9_05Title)]</label>
+		<onclick>$INFO[Container(310).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx9_05Title)) + !String.IsEqual(Skin.String(Subslotx9_05Title),empty)</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslotx9_06Title)]</label>
+		<onclick>$INFO[Container(310).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslotx9_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslotx9_06Title)) + !String.IsEqual(Skin.String(Subslotx9_06Title),empty)</visible>
+	</item>
+	
+</include>
+	
+<include name="submenu.content1">
+	<!-- Slot 1 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot1_01Title)]</label>
+		<onclick>$INFO[Container(311).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot1_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot1_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot1_02Title)]</label>
+		<onclick>$INFO[Container(311).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot1_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot1_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot1_03Title)]</label>
+		<onclick>$INFO[Container(311).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot1_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot1_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot1_04Title)]</label>
+		<onclick>$INFO[Container(311).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot1_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot1_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot1_05Title)]</label>
+		<onclick>$INFO[Container(311).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot1_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot1_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot1_06Title)]</label>
+		<onclick>$INFO[Container(311).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot1_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot1_06Title))</visible>
+	</item>
+</include>
+
+<include name="submenu.content2">
+	<!-- Slot 2 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot2_01Title)]</label>
+		<onclick>$INFO[Container(312).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot2_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot2_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot2_02Title)]</label>
+		<onclick>$INFO[Container(312).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot2_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot2_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot2_03Title)]</label>
+		<onclick>$INFO[Container(312).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot2_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot2_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot2_04Title)]</label>
+		<onclick>$INFO[Container(312).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot2_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot2_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot2_05Title)]</label>
+		<onclick>$INFO[Container(312).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot2_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot2_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot2_06Title)]</label>
+		<onclick>$INFO[Container(312).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot2_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot2_06Title))</visible>
+	</item>
+</include>
+
+<include name="submenu.content3">
+	<!-- Slot 3 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot3_01Title)]</label>
+		<onclick>$INFO[Container(313).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot3_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot3_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot3_02Title)]</label>
+		<onclick>$INFO[Container(313).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot3_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot3_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot3_03Title)]</label>
+		<onclick>$INFO[Container(313).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot3_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot3_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot3_04Title)]</label>
+		<onclick>$INFO[Container(313).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot3_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot3_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot3_05Title)]</label>
+		<onclick>$INFO[Container(313).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot3_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot3_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot3_06Title)]</label>
+		<onclick>$INFO[Container(313).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot3_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot3_06Title))</visible>
+	</item>
+</include>
+
+<include name="submenu.content4">
+	<!-- Slot 4 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot4_01Title)]</label>
+		<onclick>$INFO[Container(314).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot4_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot4_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot4_02Title)]</label>
+		<onclick>$INFO[Container(314).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot4_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot4_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot4_03Title)]</label>
+		<onclick>$INFO[Container(314).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot4_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot4_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot4_04Title)]</label>
+		<onclick>$INFO[Container(314).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot4_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot4_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot4_05Title)]</label>
+		<onclick>$INFO[Container(314).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot4_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot4_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot4_06Title)]</label>
+		<onclick>$INFO[Container(314).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot4_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot4_06Title))</visible>
+	</item>
+</include>
+
+<include name="submenu.content5">
+	<!-- Slot 5 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot5_01Title)]</label>
+		<onclick>$INFO[Container(315).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot5_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot5_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot5_02Title)]</label>
+		<onclick>$INFO[Container(315).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot5_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot5_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot5_03Title)]</label>
+		<onclick>$INFO[Container(315).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot5_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot5_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot5_04Title)]</label>
+		<onclick>$INFO[Container(315).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot5_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot5_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot5_05Title)]</label>
+		<onclick>$INFO[Container(315).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot5_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot5_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot5_06Title)]</label>
+		<onclick>$INFO[Container(315).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot5_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot5_06Title))</visible>
+	</item>
+</include>
+
+<include name="submenu.content6">
+	<!-- Slot 6 -->
+	<item id="1">
+		<label>$INFO[Skin.String(Subslot6_01Title)]</label>
+		<onclick>$INFO[Container(316).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot6_01Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot6_01Title))</visible>
+	</item>
+	<item id="2">
+		<label>$INFO[Skin.String(Subslot6_02Title)]</label>
+		<onclick>$INFO[Container(316).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot6_02Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot6_02Title))</visible>
+	</item>
+	<item id="3">
+		<label>$INFO[Skin.String(Subslot6_03Title)]</label>
+		<onclick>$INFO[Container(316).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot6_03Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot6_03Title))</visible>
+	</item>
+	<item id="4">
+		<label>$INFO[Skin.String(Subslot6_04Title)]</label>
+		<onclick>$INFO[Container(316).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot6_04Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot6_04Title))</visible>
+	</item>
+	<item id="5">
+		<label>$INFO[Skin.String(Subslot6_05Title)]</label>
+		<onclick>$INFO[Container(316).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot6_05Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot6_05Title))</visible>
+	</item>
+	<item id="6">
+		<label>$INFO[Skin.String(Subslot6_06Title)]</label>
+		<onclick>$INFO[Container(316).ListItem.Property(SubslotClick)]</onclick>
+		<property name="SubslotClick">$INFO[Skin.String(Subslot6_06Click)]</property>
+		<visible>!String.IsEmpty(Skin.String(Subslot6_06Title))</visible>
+	</item>
+</include>
+
+
+</includes>

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">9000</defaultcontrol>
+<menucontrol>8999</menucontrol>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+<include>menucontrol</include>
+<include>CommonBackground</include>
+<control type="group">
+	<include>animation_window</include>
+	<visible>$EXP[HasNotDialogPopup]</visible>
+	<control type="group"><!-- Middle Picture + Helptext -->
+		<left>318</left>
+		<top>60</top>
+		<control type="image">
+			<description>Hintergrund mitte</description>
+			<left>-78</left>
+			<width>1045</width>
+			<height>660</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="image">
+			<description>Hintergrund bild + text</description>
+			<width>910</width>
+			<height>660</height>
+			<include>global_texture_heavy</include>
+		</control>
+		<control type="image">
+			<description>Schatten</description>
+			<left>910</left>
+			<height>660</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-8</left>
+			<height>660</height>
+			<include>global_texture_border8_leftv</include>
+		</control>
+		<control type="image"><!-- background single -->
+			<width>910</width>
+			<height>512</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio>scale</aspectratio>
+			<texture>$VAR[SettingsArt]</texture>
+		</control>
+		<control type="label">
+			<left>23</left>
+			<top>529</top>
+			<width>869</width>
+			<height>45</height>
+			<font>SemiLarge</font>
+			<label>$INFO[Container(9000).ListItem.Property(MainLabel)]</label>
+		</control>
+		<control type="textbox">
+			<left>23</left>
+			<top>570</top>
+			<width>869</width>
+			<include>PlotNormal44</include>
+			<textcolor>TextColor2</textcolor>
+			<label>$INFO[Container(9000).ListItem.Property(SubLabel)]</label>
+		</control>
+	</control>
+	<include>global_rss</include>
+	<control type="image"><!-- Menu -->
+		<description>Hintergrund menue</description>
+		<width>240</width>
+		<height>720</height>
+		<include>global_texture_light</include>
+	</control>
+	<control type="image">
+		<description>Schatten</description>
+		<left>240</left>
+		<height>720</height>
+		<include>global_texture_border8_rightv</include>
+	</control>
+	<include>global_date</include>
+	<control type="list" id="9000">
+		<top>75</top>
+		<width>240</width>
+		<height>660</height>
+		<onup>9000</onup>
+		<ondown>9000</ondown>
+		<onleft>close</onleft>
+		<onright condition="Container(9000).HasFocus(100)">ActivateWindow(PlayerSettings)</onright>
+		<onright condition="Container(9000).HasFocus(101)">ActivateWindow(MediaSettings)</onright>
+		<onright condition="Container(9000).HasFocus(102)">ActivateWindow(ServiceSettings)</onright>
+		<onright condition="Container(9000).HasFocus(103)">ActivateWindow(PVRSettings)</onright>
+		<onright condition="Container(9000).HasFocus(104)">ActivateWindow(InterfaceSettings)</onright>
+		<onright condition="Container(9000).HasFocus(105)">ActivateWindow(skinsettings)</onright>
+		<onright condition="Container(9000).HasFocus(106)">ActivateWindow(profiles)</onright>
+		<onright condition="Container(9000).HasFocus(107)">ActivateWindow(SystemSettings)</onright>
+		<onright condition="Container(9000).HasFocus(108)">ActivateWindow(AddonBrowser)</onright>
+		<viewtype>list</viewtype>
+		<orientation>vertical</orientation>
+		<focusposition>5</focusposition>
+		<scrolltime>450</scrolltime>
+			<itemlayout width="240" height="55">
+				<control type="image">
+					<top>1</top>
+					<width>240</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>5</top>
+					<width>230</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>29</top>
+					<width>230</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<font>RegularSmall</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="240" height="55">
+				<control type="image">
+					<top>1</top>
+					<width>240</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<top>2</top>
+					<width>240</width>
+					<height>54</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(9000)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>5</top>
+					<width>230</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>!Control.Hasfocus(9000)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>29</top>
+					<width>230</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Label2]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>!Control.Hasfocus(9000)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>5</top>
+					<width>230</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<visible>Control.Hasfocus(9000)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>29</top>
+					<width>230</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Label2]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<visible>Control.Hasfocus(9000)</visible>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="100">
+					<description>PlayerSettings button</description>
+					<label>$LOCALIZE[14201]</label>
+					<label2>$LOCALIZE[31124]</label2>
+					<property name="MainLabel">$LOCALIZE[31124]</property>
+					<property name="SubLabel">$LOCALIZE[31125]</property>
+					<onclick>ActivateWindow(PlayerSettings)</onclick>
+				</item>
+				<item id="101">
+					<description>MediaSettings button</description>
+					<label>$LOCALIZE[14203]</label>
+					<label2>$LOCALIZE[31126]</label2>
+					<property name="MainLabel">$LOCALIZE[31126]</property>
+					<property name="SubLabel">$LOCALIZE[31127]</property>
+					<onclick>ActivateWindow(MediaSettings)</onclick>
+				</item>
+				<item id="102">
+					<description>ServiceSettings button</description>
+					<label>$LOCALIZE[14208]</label>
+					<label2>$LOCALIZE[31128]</label2>
+					<property name="MainLabel">$LOCALIZE[31128]</property>
+					<property name="SubLabel">$LOCALIZE[31129]</property>
+					<onclick>ActivateWindow(ServiceSettings)</onclick>
+				</item>
+				<item id="103">
+					<description>PVRSettings button</description>
+					<label>$LOCALIZE[14205]</label>
+					<label2>$LOCALIZE[31130]</label2>
+					<property name="MainLabel">$LOCALIZE[31130]</property>
+					<property name="SubLabel">$LOCALIZE[31131]</property>
+					<onclick>ActivateWindow(PVRSettings)</onclick>
+					<visible>System.HasPVRAddon</visible>
+				</item>
+				<item id="104">
+					<description>InterfaceSettings button</description>
+					<label>$LOCALIZE[31142]</label>
+					<label2>$LOCALIZE[31132]</label2>
+					<property name="MainLabel">$LOCALIZE[31132]</property>
+					<property name="SubLabel">$LOCALIZE[31133]</property>
+					<onclick>ActivateWindow(InterfaceSettings)</onclick>
+				</item>
+				<item id="105">
+					<description>SkinSettings button</description>
+					<label>$LOCALIZE[20077]</label>
+					<label2>$LOCALIZE[31134]</label2>
+					<property name="MainLabel">$LOCALIZE[31134]</property>
+					<property name="SubLabel">$LOCALIZE[31135]</property>
+					<onclick>ActivateWindow(skinsettings)</onclick>
+				</item>
+				<item id="106">
+					<description>ProfilSettings button</description>
+					<label>$LOCALIZE[13200]</label>
+					<label2>$LOCALIZE[31136]</label2>
+					<property name="MainLabel">$LOCALIZE[31136]</property>
+					<property name="SubLabel">$LOCALIZE[31137]</property>
+					<onclick>ActivateWindow(profiles)</onclick>
+				</item>
+				<item id="107">
+					<description>SystemSettings button</description>
+					<label>$LOCALIZE[14209]</label>
+					<label2>$LOCALIZE[31138]</label2>
+					<property name="MainLabel">$LOCALIZE[31138]</property>
+					<property name="SubLabel">$LOCALIZE[31139]</property>
+					<onclick>ActivateWindow(SystemSettings)</onclick>
+				</item>
+				<item id="108">
+					<description>AddonBrowser button</description>
+					<label>$LOCALIZE[24001]</label>
+					<label2>$LOCALIZE[31140]</label2>
+					<property name="MainLabel">$LOCALIZE[31140]</property>
+					<property name="SubLabel">$LOCALIZE[31141]</property>
+					<onclick>ActivateWindow(AddonBrowser)</onclick>
+				</item>
+			</content>
+	</control>
+	<control type="group"><!-- Focus Position grapics -->
+		<left>283</left>
+		<top>20</top>
+		<control type="image">
+			<left>-43</left>
+			<top>17</top>
+			<width>48</width>
+			<height>3</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<animation effect="slide" start="0,0" end="0,55" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(0)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,110" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(1)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,165" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(2)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,220" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(3)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,275" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(4)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,330" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(5)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,385" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(6)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,440" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(7)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,495" time="0" easing="inout" tween="cubic" condition="Container(9000).Row(8)">Conditional</animation>
+		</control>
+		<control type="image">
+			<top>75</top>
+			<width>5</width>
+			<height>516</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(0)</visible>
+		</control>
+		<control type="image">
+			<top>130</top>
+			<width>5</width>
+			<height>461</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(1)</visible>
+		</control>
+		<control type="image">
+			<top>185</top>
+			<width>5</width>
+			<height>406</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(2)</visible>
+		</control>
+		<control type="image">
+			<top>240</top>
+			<width>5</width>
+			<height>351</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(3)</visible>
+		</control>
+		<control type="image">
+			<top>295</top>
+			<width>5</width>
+			<height>296</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(4)</visible>
+		</control>
+		<control type="image">
+			<top>350</top>
+			<width>5</width>
+			<height>241</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(5)</visible>
+		</control>
+		<control type="image">
+			<top>405</top>
+			<width>5</width>
+			<height>186</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(6)</visible>
+		</control>
+		<control type="image">
+			<top>460</top>
+			<width>5</width>
+			<height>131</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(7)</visible>
+		</control>
+		<control type="image">
+			<top>515</top>
+			<width>5</width>
+			<height>79</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			<visible>Container(9000).Row(8)</visible>
+		</control>
+		<control type="image">
+			<top>591</top>
+			<width>53</width>
+			<height>3</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

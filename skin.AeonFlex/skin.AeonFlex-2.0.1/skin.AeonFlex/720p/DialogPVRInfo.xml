@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<onunload>ClearProperty(PlottextReadMode,videos)</onunload>
+<defaultcontrol>5415</defaultcontrol>
+<coordinates>
+	<left>0</left>
+	<top>30</top>
+</coordinates>
+<include>animation_window</include>
+<controls>
+	<control type="Button" id="5415"><!-- focus button -->
+		<include>Hiddencontrol</include>
+		<onleft>ClearProperty(PlottextReadMode,videos)</onleft>
+		<onleft>SetFocus(9000)</onleft>
+		<onright>ClearProperty(PlottextReadMode,videos)</onright>
+		<onright>SetFocus(9000)</onright>
+		<onup>ClearProperty(PlottextReadMode,videos)</onup>
+		<onup>SetFocus(9000)</onup>
+		<ondown>ClearProperty(PlottextReadMode,videos)</ondown>
+		<ondown>SetFocus(9000)</ondown>
+		<onclick>SetProperty(PlottextReadMode,Read,videos)</onclick>
+		<onclick>SetFocus(613)</onclick>
+	</control>
+	<control type="group"><!-- info -->
+		<include>panelbackground</include>
+		<top>23</top>
+		<animation type="Conditional" condition="!Control.HasFocus(5415) + !Control.HasFocus(613) + !Control.HasFocus(9000)">
+			<effect type="slide" end="-350,0" time="800" tween="sine" easing="out" reversible="true"/>
+			<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+		</animation>
+		<animation type="Visible">
+			<effect type="fade" end="100" time="600" tween="sine" easing="in"/>
+			<effect type="slide" end="0,0" time="500" tween="sine" easing="in"/>
+			<effect type="zoom" center="640,360" delay="280" end="100" time="500" tween="sine" easing="in"/>
+		</animation>
+		<animation type="Hidden">
+			<effect type="slide" end="350,0" time="500" tween="quadratic" easing="out" reversible="true"/>
+			<effect type="zoom" center="640,360" end="30" time="500" tween="quadratic" easing="out" reversible="true"/>
+		</animation>
+		<control type="image"><!-- icon -->
+			<width>350</width>
+			<height>550</height>
+			<aspectratio align="center" aligy="bottom">keep</aspectratio>
+			<texture background="true">backgrounds/pvrinfo.jpg</texture>
+		</control>
+		<control type="group"><!-- Top Title-->
+			<left>400</left>
+			<top>23</top>
+			<control type="grouplist">
+				<width>800</width>
+				<height>50</height>
+				<itemgap>10</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<align>top</align>
+					<width>auto</width>
+					<font>ChannelNumber-Bold-Big</font>
+					<height>50</height>
+					<label>$INFO[ListItem.Channelnumber,,.]</label>
+				</control>
+				<control type="label">
+					<align>top</align>
+					<width>700</width>
+					<height>45</height>
+					<font>SemiBigger</font>
+					<label>$INFO[ListItem.Title]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Episodename, - ,]</label>
+				</control>
+			</control>
+			<control type="label">
+				<include>dialog_subtitle</include>
+				<label>$INFO[ListItem.Genre]</label>
+			</control>
+		</control>
+		<control type="group"><!-- mids info -->
+			<left>400</left>
+			<top>15</top>
+			<control type="list" id="49"><!-- List -->
+				<top>100</top>
+				<width>740</width>
+				<height>300</height>
+				<onleft>-</onleft>
+				<onright>-</onright>
+				<onup>49</onup>
+				<ondown>49</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+				<itemlayout height="30">
+					<control type="label">
+						<width>200</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>200</left>
+						<width>490</width>
+						<height>30</height>
+						<textcolor>TextColor1</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="30">
+					<control type="label">
+						<width>200</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>200</left>
+						<width>490</width>
+						<height>30</height>
+						<autoscroll>false</autoscroll>
+						<textcolor>TextColor1</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>!Control.HasFocus(49)</visible>
+					</control>
+					<control type="label">
+						<left>200</left>
+						<width>490</width>
+						<height>30</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<font>RegularNormal</font>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>Control.HasFocus(49)</visible>
+					</control>
+				</focusedlayout>
+				<content>
+					<item>
+						<label>$LOCALIZE[21442]:</label>
+						<label2>$INFO[ListItem.EpisodeName]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(ListItem.EpisodeName)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[20373]:</label>
+						<label2>$INFO[ListItem.Season]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(ListItem.Season)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[20359]:</label>
+						<label2>$INFO[ListItem.Episode]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(ListItem.Episode)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[19148]:</label>
+						<label2>$INFO[ListItem.ChannelName]</label2>
+						<onclick>noop</onclick>
+					</item>
+					<item>
+						<label>$LOCALIZE[142]</label>
+						<label2>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime] ($INFO[ListItem.StartDate])</label2>
+						<onclick>noop</onclick>
+					</item>
+					<item>
+						<label>$LOCALIZE[180]:</label>
+						<label2>$INFO[ListItem.Duration,, $LOCALIZE[31026]]</label2>
+						<onclick>noop</onclick>
+					</item>
+					<item>
+						<label>$LOCALIZE[20417]:</label>
+						<label2>$INFO[ListItem.Writer]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(ListItem.Writer)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[20339]:</label>
+						<label2>$INFO[ListItem.Director]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(ListItem.Director)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[206]:</label>
+						<label2>$INFO[ListItem.Cast]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(ListItem.Cast)</visible>
+					</item>
+				</content>
+			</control>
+			<control type="textbox"><!-- Plot -->
+				<top>400</top>
+				<width>800</width>
+				<include>PlotNormal110</include>
+				<label fallback="31009">$INFO[ListItem.Plot]</label>
+				<autoscroll delay="15000" time="5000" repeat="15000">Control.HasFocus(5415)</autoscroll>
+				<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+				<animation effect="slide" start="0,0" end="0,-60" time="200" condition="!Integer.IsGreater(Container(49).NumItems,4)">Conditional</animation>
+			</control>
+			<control type="textbox"><!-- Plot focus -->
+				<top>125</top>
+				<width>800</width>
+				<pagecontrol>613</pagecontrol>
+				<include>PlotLarge390</include>
+				<label fallback="31009">$INFO[ListItem.Plot]</label>
+				<autoscroll delay="15000" time="5000" repeat="15000">false</autoscroll>
+				<visible>!String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+			</control>
+			<control type="scrollbar" id="613">
+				<left>810</left>
+				<top>125</top>
+				<height>392</height>
+				<showonepage>true</showonepage><!-- include ueberschreibung -->
+				<include>scrollbar_vertical</include>
+				<onleft>ClearProperty(PlottextReadMode,videos)</onleft><!-- back -->
+				<onleft>5415</onleft><!-- back -->
+				<onright>ClearProperty(PlottextReadMode,videos)</onright><!-- back -->
+				<onright>5415</onright><!-- back -->
+				<onup>613</onup>
+				<ondown>613</ondown>
+				<visible allowhiddenfocus="true">Control.HasFocus(613) + !String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+			</control>
+			<control type="image">
+				<texture colordiffuse="ACSkinColor">buttons/plotzoom.png</texture>
+				<left>820</left>
+				<top>400</top>
+				<height>30</height>
+				<width>30</width>
+				<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+				<animation effect="slide" start="0,0" end="0,-60" time="200" condition="!Integer.IsGreater(Container(49).NumItems,4)">Conditional</animation>
+			</control>
+		</control>
+		<control type="image"><!-- separator -->
+			<left>350</left>
+			<height>550</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+	<control type="group"><!-- Ebene1 -->
+		<left>400</left>
+		<top>160</top>
+		<include>animation_dialog_popup</include>
+		<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + $EXP[HasNotDialogPopup]</visible>
+		<control type="image">
+			<description>schatten 3 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height3</height>
+			<visible>!Integer.IsGreater(Container(9000).NumItems,3)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 3 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height3</height>
+			<visible>!Integer.IsGreater(Container(9000).NumItems,3)</visible>
+		</control>
+		<control type="image">
+			<description>schatten 4 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height4</height>
+			<visible>String.IsEqual(Container(9000).NumItems,4)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 4 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height4</height>
+			<visible>String.IsEqual(Container(9000).NumItems,4)</visible>
+		</control>
+		<control type="image">
+			<description>schatten 5 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height5</height>
+			<visible>String.IsEqual(Container(9000).NumItems,5)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 5 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height5</height>
+			<visible>String.IsEqual(Container(9000).NumItems,5)</visible>
+		</control>
+		<control type="image">
+			<description>schatten 6 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height6</height>
+			<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 6 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height6</height>
+			<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+		</control>
+		<control type="image">
+			<description>background header</description>
+			<include>dialog_headerfront_neu</include>
+		</control>
+		<control type="label">
+			<description>header</description>
+			<label>$LOCALIZE[31381]</label>
+			<include>dialog_headertitle_neu</include>
+		</control>
+		<control type="grouplist" id="9000">
+			<left>dialog-border</left>
+			<top>dialog-inner-top</top>
+			<width>dialog-inner-width</width>
+			<height>448</height>
+			<onleft>SetFocus(5415)</onleft>
+			<onright>SetFocus(5415)</onright><!-- close -->
+			<itemgap>0</itemgap>
+			<control type="button" id="4">
+				<description>Find similar</description>
+				<label>$LOCALIZE[19003]</label>
+				<include>dialog_buttonneu</include>
+				<visible>Window.IsActive(PVRGuideInfo) + Control.IsEnabled(4)</visible>
+			</control>
+			<control type="button" id="5">
+				<description>Switch to Channel</description>
+				<label>$LOCALIZE[19165]</label>
+				<include>dialog_buttonneu</include>
+				<visible>Window.IsActive(PVRGuideInfo) + Control.IsEnabled(5)</visible>
+			</control>
+			<control type="button" id="8">
+				<description>Play recording</description>
+				<label>$LOCALIZE[19687]</label>
+				<include>dialog_buttonneu</include>
+				<visible>Window.IsActive(PVRGuideInfo) + Control.IsEnabled(8)</visible>
+			</control>
+			<control type="button" id="5010">
+				<description>Play recording</description>
+				<label>$LOCALIZE[19687]</label>
+				<include>dialog_buttonneu</include>
+				<onclick>Dialog.close(PVRRecordingInfo,true)</onclick>
+				<onclick>Action(select)</onclick>
+				<visible>Window.IsActive(PVRRecordingInfo)</visible>
+			</control>
+			<control type="button" id="6">
+				<description>Record</description>
+				<label>-</label>
+				<include>dialog_buttonneu</include>
+				<visible>Window.IsActive(PVRGuideInfo) + Control.IsEnabled(6)</visible>
+			</control>
+			<control type="button" id="9">
+				<description>timer</description>
+				<label>$LOCALIZE[19061]</label>
+				<include>dialog_buttonneu</include>
+				<visible>Control.IsEnabled(9)</visible>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>

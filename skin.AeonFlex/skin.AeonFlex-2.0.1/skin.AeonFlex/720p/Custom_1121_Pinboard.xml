@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window type="window" id="1121">
+<defaultcontrol always="true">617</defaultcontrol>
+<menucontrol>8888</menucontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onload condition="String.IsEmpty(Skin.string(VideoslotWidgetContent))">SetFocus(8888)</onload>
+<onload condition="!String.IsEmpty(Skin.string(VideoslotWidgetContent))">SetFocus(617)</onload>
+<onload>SetProperty(SlotclickWidget,VideoslotWidgetContent,1110)</onload>
+<onload>SetProperty(SlotclickWidgettarget,VideoslotWidgettarget,1110)</onload>
+<onload>SetProperty(SlotclickWidgettitle,VideoslotWidgetTitle,1110)</onload>
+<onload>SetProperty(SlotclickWidgetCategory,VideoslotWidgetCategory,1110)</onload>
+<onunload>ClearProperty(SlotclickWidget,1110)</onunload>
+<onunload>ClearProperty(SlotclickWidgettarget,1110)</onunload>
+<onunload>ClearProperty(SlotclickWidgettitle,1110)</onunload>
+<onunload>ClearProperty(SlotclickWidgetCategory,1110)</onunload>
+<onload>ClearProperty(Flexpinboardorganisation,videos)</onload>
+<onunload>ClearProperty(Flexpinboardorganisation,videos)</onunload>
+<controls>
+<control type="list" id="6001"><!-- lastwatched show -->
+	<include>Compaircontainer</include>
+	<content target="video">$VAR[videocontent_history_show]</content>
+</control>
+<control type="list" id="6002"><!-- lastwatched pvr -->
+	<include>Compaircontainer</include>
+	<content target="pvr">pvr://channels/tv/*?view=lastplayed</content>
+</control>
+<control type="list" id="6003"><!-- lastwatched movie -->
+	<include>Compaircontainer</include>
+	<content target="video">$VAR[videocontent_history_movie]</content>
+</control>
+<control type="list" id="6004">
+	<include>Compaircontainer</include>
+	<content target="video">$VAR[videocontent_history_episode]</content>
+</control>
+<control type="button" id="8888"><!-- reload -->
+	<description>widget selector "m" Button</description>
+	<include>Hiddencontrol</include>
+	<onfocus>SetProperty(SlotclickWidget,VideoslotWidgetContent,1110)</onfocus>
+	<onfocus>SetProperty(SlotclickWidgettarget,VideoslotWidgettarget,1110)</onfocus>
+	<onfocus>SetProperty(SlotclickWidgettitle,VideoslotWidgetTitle,1110)</onfocus>
+	<onfocus>SetProperty(SlotclickWidgetCategory,VideoslotWidgetCategory,1110)</onfocus>
+	<onfocus>ActivateWindow(1111)</onfocus>
+	<onclick>noop</onclick>
+</control>
+<control type="list" id="648">
+	<include>Compaircontainer</include>
+	<content target="video">videodb://movies/sets/$INFO[Container(617).ListItem.DBID]/</content>
+</control>
+<include>CommonBackground</include>
+<control type="image"><!-- Fanart -->
+	<include>single-bg</include>
+	<include>animation_vhoc_fade</include>
+	<texture>$VAR[PinboardVideowidget_Fanart]</texture>
+</control>
+<control type="group"><!-- videowidget 617 -->
+	<top>85</top>
+	<include>animation_window</include>
+	<visible allowhiddenfocus="true">!Window.IsVisible(selectdialog) + !Window.IsVisible(script-rtv-Info.xml)</visible>
+	<!-- hidden slide UnFocus -->
+	<animation type="Conditional" condition="Window.Isvisible(movieinformation)">
+		<effect type="slide" end="350,60" time="800" tween="sine" easing="out" reversible="true"/>
+		<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+	</animation>
+	<!-- Visible fade Focus -->
+	<animation type="Conditional" condition="Window.IsActive(movieinformation) + !String.IsEqual(Window(home).Property(InfobottomBar),Temp) | String.IsEmpty(Skin.string(VideoslotWidgetContent))">
+		<effect type="fade" delay="280" start="100" end="0" time="280" tween="sine" easing="in" reversible="true"/>
+	</animation>
+	<control type="image">
+		<include>infodialog_fanart_background</include>
+		<texture diffuse="backgrounds/background-fanartoverlay.png">$VAR[PinboardVideowidget_Fanart]</texture>
+	</control>
+	<include>infodialog_fanart_background_diffuse</include>
+	<control type="image">
+		<description>Background bottom diffuse liste</description>
+		<top>450</top>
+		<width>1280</width>
+		<height>100</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor</colordiffuse>
+	</control>
+	<control type="image">
+		<description>Background right liste</description>
+		<left>900</left>
+		<top>310</top>
+		<width>380</width>
+		<height>240</height>
+		<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor_light</colordiffuse>
+	</control>
+	<control type="image">
+		<description>Background right liste doppelt</description>
+		<left>900</left>
+		<top>310</top>
+		<width>380</width>
+		<height>240</height>
+		<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+	</control>
+	<control type="image">
+		<description>Background left thumb</description>
+		<top>310</top>
+		<width>300</width>
+		<height>240</height>
+		<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+	</control>
+	<control type="image">
+		<description>Background Shadow top</description>
+		<top>-5</top>
+		<include>global_topshadow5</include>
+	</control>
+	<control type="image">
+		<description>Background Shadow bottom</description>
+		<top>550</top>
+		<include>global_bottomshadow5</include>
+	</control>
+	<control type="image">
+		<description>list Shadow top</description>
+		<top>302</top>
+		<include>global_topshadow8</include>
+	</control>
+	<control type="image">
+		<description>list Shadow left</description>
+		<left>292</left>
+		<top>310</top>
+		<height>240</height>
+		<include>global_texture_border8_leftv</include>
+	</control>
+	<control type="image">
+		<description>list Shadow right</description>
+		<left>900</left>
+		<top>310</top>
+		<height>240</height>
+		<include>global_texture_border8_rightv</include>
+	</control>
+	<control type="group"><!-- poster -->
+		<left>30</left>
+		<top>140</top>
+		<visible>[String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshowgenres) | String.IsEqual(Skin.string(VideoslotWidgetCategory),moviegenres) | String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Container(617).ListItem.DBTYPE,movie) | String.IsEqual(Container(617).ListItem.DBTYPE,tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),favourite) | String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched) + !String.Contains(Container(617).ListItem.Property(WidgetFanart),live-tv.jpg)]</visible>
+		<include>animation_vhoc_fade</include>
+		<control type="image">
+			<top>341</top>
+			<width>243</width>
+			<height>362</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[Pinboardwidget-FallbackArtwork]</texture>
+		</control>
+		<control type="image">
+			<top>341</top>
+			<width>243</width>
+			<height>362</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[Pinboardwidget-Artwork]</texture>
+		</control>
+		<control type="image">
+			<width>243</width>
+			<height>362</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="bottom">scale</aspectratio>
+			<texture background="true">$VAR[Pinboardwidget-FallbackArtwork]</texture>
+			<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>8</bordersize>
+		</control>
+		<control type="image">
+			<width>243</width>
+			<height>362</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="bottom">scale</aspectratio>
+			<texture background="true">$VAR[Pinboardwidget-Artwork]</texture>
+			<bordersize>8</bordersize>
+		</control>
+	</control>
+	<control type="group"><!-- thumb -->
+		<left>30</left>
+		<top>259</top>
+		<include>animation_vhoc_fade</include>
+		<visible>[String.IsEqual(Skin.string(VideoslotWidgetCategory),album) | String.IsEqual(Skin.string(VideoslotWidgetCategory),song) | String.IsEqual(Skin.string(VideoslotWidgetCategory),addon) | String.IsEqual(Skin.string(VideoslotWidgetCategory),pinboardaddon)]</visible>
+		<control type="image">
+			<top>226</top>
+			<width>243</width>
+			<height>243</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[Pinboardwidget-FallbackArtwork]</texture>
+		</control>
+		<control type="image">
+			<top>226</top>
+			<width>243</width>
+			<height>243</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[Pinboardwidget-Artwork]</texture>
+		</control>
+		<control type="image">
+			<width>243</width>
+			<height>243</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="bottom">scale</aspectratio>
+			<texture background="true">$VAR[Pinboardwidget-FallbackArtwork]</texture>
+			<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>8</bordersize>
+		</control>
+		<control type="image">
+			<width>243</width>
+			<height>243</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="bottom">scale</aspectratio>
+			<texture background="true">$VAR[Pinboardwidget-Artwork]</texture>
+			<bordersize>8</bordersize>
+		</control>
+	</control>
+	<control type="group"><!-- EP thumb/lastwatched -->
+		<left>30</left>
+		<top>359</top>
+		<include>animation_vhoc_fade</include>
+		<visible>String.IsEqual(Container(617).ListItem.DBTYPE,episode) | String.IsEqual(Skin.string(VideoslotWidgetCategory),pvrgoto) | String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched) + String.Contains(Container(617).ListItem.Property(WidgetFanart),live-tv.jpg)</visible>
+		<control type="image">
+			<top>127</top>
+			<width>243</width>
+			<height>143</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[Pinboardwidget-FallbackArtwork]</texture>
+		</control>
+		<control type="image">
+			<top>127</top>
+			<width>243</width>
+			<height>143</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[Pinboardwidget-Artwork]</texture>
+		</control>
+		<control type="image">
+			<width>243</width>
+			<height>143</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="bottom">scale</aspectratio>
+			<texture background="true">$VAR[Pinboardwidget-FallbackArtwork]</texture>
+			<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>8</bordersize>
+		</control>
+		<control type="image">
+			<width>243</width>
+			<height>143</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="bottom">scale</aspectratio>
+			<texture background="true">$VAR[Pinboardwidget-Artwork]</texture>
+			<bordersize>8</bordersize>
+		</control>
+	</control>
+	<control type="group"><!-- list -->
+		<left>300</left>
+		<top>310</top>
+		<control type="image">
+			<width>600</width>
+			<height>240</height>
+			<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor</colordiffuse>
+		</control>
+		<control type="image">
+			<left>490</left>
+			<width>70</width>
+			<height>240</height>
+			<texture>White.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			<include>animation_vhoc_fade</include>
+		</control>
+		<control type="fixedlist" id="617">
+			<width>600</width>
+			<height>240</height>
+			<pagecontrol>-</pagecontrol>
+			<focusposition>1</focusposition>
+			<orientation>vertical</orientation>
+			<scrolltime>450</scrolltime>
+			<preloaditems>2</preloaditems>
+			<onback>noop</onback>
+			<onright condition="String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched)">ReloadSkin()</onright>
+			<onright>noop</onright><!-- back -->
+			<onup>617</onup>
+			<ondown>617</ondown>
+			<itemlayout width="600" height="32">
+				<control type="label"><!-- line1 -->
+					<left>20</left>
+					<top>1</top>
+					<width>450</width>
+					<height>30</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[PinboardVideowidget_Label1]</label>
+				</control>
+				<control type="label"><!-- rating -->
+					<left>483</left>
+					<width>85</width>
+					<height>30</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label fallback="0.0">$INFO[ListItem.Rating]$INFO[ListItem.UserRating, (,)]</label>
+					<visible>[String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Skin.string(VideoslotWidgetCategory),movie) | String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),episode)]</visible>
+				</control>
+				<control type="image">
+					<width>599</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+				</control>
+				<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+					<param name="left">560</param>
+					<param name="top">8</param>
+					<param name="width">30</param>
+					<param name="height">30</param>
+				</include>
+			</itemlayout>
+			<focusedlayout width="600" height="50">
+				<control type="image">
+					<include>global_listfocustexture</include>
+					<visible>Control.HasFocus(617)</visible>
+				</control>
+				<control type="label"><!-- line1 Serie focus-->
+					<left>20</left>
+					<width>450</width>
+					<height>30</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[PinboardVideowidget_Label1]</label>
+					<visible>Control.HasFocus(617)</visible>
+				</control>
+				<control type="label"><!-- line1 unfocus-->
+					<left>20</left>
+					<width>450</width>
+					<height>30</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[PinboardVideowidget_Label1]</label>
+					<visible>!Control.HasFocus(617)</visible>
+				</control>
+				<control type="label">
+					<left>492</left>
+					<top>18</top>
+					<width>80</width>
+					<height>25</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating-smaller</font>
+					<include>Star-Rating-color-layoutback</include>
+					<visible>[String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Skin.string(VideoslotWidgetCategory),movie) | String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),episode)]</visible>
+				</control>
+				<control type="label">
+					<left>492</left>
+					<top>18</top>
+					<width>80</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-smaller</font>
+					<include>Star-Rating-color-layout</include>
+					<visible>String.IsEmpty(ListItem.UserRating) + [String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Skin.string(VideoslotWidgetCategory),movie) | String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),episode)]</visible>
+				</control>
+				<control type="label">
+					<left>492</left>
+					<top>18</top>
+					<width>80</width>
+					<height>25</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<font>Rating-smaller</font>
+					<include>Star-UserRating-color-layout</include>
+					<visible>!String.IsEmpty(ListItem.UserRating) + [String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Skin.string(VideoslotWidgetCategory),movie) | String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),episode)]</visible>
+				</control>
+				<control type="label">
+					<left>483</left>
+					<width>85</width>
+					<height>30</height>
+					<font>SemiNormal</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label fallback="0.0">$VAR[rating_value_label]</label>
+					<visible>Control.HasFocus(617) + [String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Skin.string(VideoslotWidgetCategory),movie) | String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),episode)]</visible>
+				</control>
+				<control type="label">
+					<left>483</left>
+					<width>85</width>
+					<height>30</height>
+					<font>SemiNormal</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label fallback="0.0">$VAR[rating_value_label]</label>
+					<visible>!Control.HasFocus(617) + [String.IsEqual(Container(617).ListItem.DBTYPE,set) | String.IsEqual(Skin.string(VideoslotWidgetCategory),movie) | String.IsEqual(Skin.string(VideoslotWidgetCategory),tvshow) | String.IsEqual(Skin.string(VideoslotWidgetCategory),episode)]</visible>
+				</control>
+				<control type="label"><!-- line2 unfocus-->
+					<left>20</left>
+					<top>29</top>
+					<width>450</width>
+					<height>16</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$VAR[PinboardVideowidget_Label2]</label>
+					<visible>!Control.HasFocus(617)</visible>
+				</control>
+				<control type="label"><!-- line2 focus-->
+					<left>20</left>
+					<top>29</top>
+					<width>450</width>
+					<height>16</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$VAR[PinboardVideowidget_Label2]</label>
+					<visible>Control.HasFocus(617)</visible>
+				</control>
+				<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+					<param name="left">560</param>
+					<param name="top">8</param>
+					<param name="width">30</param>
+					<param name="height">30</param>
+				</include>
+				<control type="label"><!-- line1 -->
+					<left>560</left>
+					<top>8</top>
+					<width>50</width>
+					<height>30</height>
+					<textcolor>TextColorFocus</textcolor>
+					<font>Icons-Small</font>
+					<label>i</label>
+					<visible>String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched)</visible>
+				</control>
+			</focusedlayout>
+			<include condition="String.IsEqual(Skin.string(VideoslotWidgetCategory),pinboardaddon)">PinboardAddonContent</include>
+			<include condition="String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched)">LastwatchedContent</include>
+			<include condition="!String.IsEqual(Skin.string(VideoslotWidgetCategory),pinboardaddon)">PinboardWidgetContent</include>
+			<include condition="String.IsEqual(Skin.string(VideoslotWidgetCategory),pvrgoto)">pinboardwidget_GTO_content</include>
+		</control>
+		<control type="textbox">
+			<left>620</left>
+			<top>10</top>
+			<width>320</width>
+			<autoscroll delay="8000" time="2000" repeat="8000">true</autoscroll>
+			<include>PlotNormal176</include>
+			<include>animation_vhoc_fade</include>
+			<label fallback="31009">$VAR[PinboardVideowidget_Plot]</label>
+		</control>
+		<control type="label"><!-- aktualisieren icon -->
+			<left>610</left>
+			<top>210</top>
+			<width>50</width>
+			<height>20</height>
+			<textcolor>TextColor2</textcolor>
+			<font>Icons-Small</font>
+			<label>i</label>
+			<visible>String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched)</visible>
+		</control>
+		<control type="label">
+			<left>635</left>
+			<top>210</top>
+			<width>320</width>
+			<height>20</height>
+			<label>nach rechts drücken zum aktualisieren</label>
+			<visible>String.IsEqual(Skin.string(VideoslotWidgetCategory),lastwatched)</visible>
+		</control>
+	</control>
+	<control type="image">
+		<include content="Infodialogs_update_indikator">
+			<param name="Update_Indikator-left" value="546" />
+			<param name="Update_Indikator-top" value="68" />
+			<param name="Update_Indikator-width" value="188" />
+			<param name="Update_Indikator-height" value="188" />
+		</include>
+		<visible>Control.HasFocus(5402)</visible>
+	</control>
+</control>
+<include>global_topbar_multidata</include><!-- Topinfo -->
+</controls>
+</window>
+

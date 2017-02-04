@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1113">
+<defaultcontrol always="true">-</defaultcontrol>
+<onunload>ClearProperty(Viewtypepreview,home)</onunload><!-- zoom bei Ansicht einstellen -->
+<onunload>ClearProperty(ViewtypepreviewVisible,home)</onunload><!-- visibles bei Ansicht einstellen -->
+<onunload>ClearProperty(SettingsCategory,1113)</onunload><!-- defaultsetting focus property -->
+<!-- defaultfocus -->
+<onload condition="Skin.HasSetting(enableviewchange) + [String.IsEqual(Window(1113).Property(SettingsCategory),ViewLowList) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewBannerInfo) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewCategory) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewWall) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewExtendedList) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewLandScapeX) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewPoster) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewRightlist) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewSets) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewSimpleList) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewGenreBanner) | String.IsEqual(Window(1113).Property(SettingsCategory),videoinfo) | String.IsEqual(Window(1113).Property(SettingsCategory),view51pvr) | String.IsEqual(Window(1113).Property(SettingsCategory),viewepg)]">SetFocus(9014)</onload><!-- View51LowList -->
+<onload condition="String.IsEqual(Window(1113).Property(SettingsCategory),MusicOSD)">SetFocus(9063)</onload><!-- MusicOSD -->
+<onload condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD)">SetFocus(9014)</onload><!-- VideoOSD -->
+<onload condition="String.IsEqual(Window(1113).Property(SettingsCategory),Widgetchannels)">SetFocus(1116)</onload><!-- Videoinfo -->
+<onload condition="String.IsEqual(Window(1113).Property(SettingsCategory),BackgroundColor)">SetFocus(9521)</onload><!-- Colorselection -->
+<controls>
+<!-- status viewtypes aktelle Auswahl -->
+<include>viewglobal_topbar_viewstatusinfo</include>
+<include condition="Skin.HasSetting(enableviewchange) + [String.IsEqual(Window(1113).Property(SettingsCategory),ViewLowList) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewBannerInfo) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewCategory) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewWall) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewExtendedList) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewLandScapeX) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewPoster) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewRightlist) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewSets) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewSimpleList) | String.IsEqual(Window(1113).Property(SettingsCategory),ViewGenreBanner) | String.IsEqual(Window(1113).Property(SettingsCategory),videoinfo) | String.IsEqual(Window(1113).Property(SettingsCategory),view51pvr) | String.IsEqual(Window(1113).Property(SettingsCategory),viewepg)]">view-settings</include>
+<!-- Infodialogs settings -->
+<include condition="String.IsEqual(Window(1113).Property(SettingsCategory),MusicOSD)">dialogmusicosd_settings</include>
+<include condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD)">dialogvideocosd_settings</include>
+<include condition="String.IsEqual(Window(1113).Property(SettingsCategory),BackgroundColor)">colorsettings</include>
+	
+
+</controls>
+</window>

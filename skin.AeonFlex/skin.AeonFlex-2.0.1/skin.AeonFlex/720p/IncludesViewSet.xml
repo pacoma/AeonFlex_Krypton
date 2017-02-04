@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- #### Viewtype Set ####-->
+<include name="viewmoviesets-contentbig-artwork">
+	<!-- Right bottom info -->
+	<control type="group">
+		<left>0</left>
+		<top>0</top>
+		<visible>!ListItem.IsParentFolder + Control.IsVisible(65)</visible>
+		<include>animation_vhoc_fade</include>
+		<!-- fanart -->
+		<control type="image">
+			<left>671</left>
+			<top>340</top>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(fanart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(SetcontentBigArtwork),Fanart) | String.IsEmpty(Skin.String(SetcontentBigArtwork))</visible>
+		</control>
+		<!-- extra fanart -->
+		<control type="image">
+			<left>671</left>
+			<top>340</top>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Extra-Fanart) | String.IsEmpty(Skin.String(SetcontentBigArtwork))</visible>
+		</control>
+		<!-- extra thumb -->
+		<control type="image">
+			<left>671</left>
+			<top>340</top>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Extra-Thumb)</visible>
+		</control>
+		<!-- clearart -->
+		<control type="image">
+			<left>671</left>
+			<top>340</top>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<left>761</left>
+			<top>370</top>
+			<height>280</height>
+			<width>490</width>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<texture background="true">$INFO[Container(511).ListItem.Art(clearart)]</texture>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Clear-Art)</visible>
+		</control>
+		<!-- clearlogo -->
+		<control type="image">
+			<left>671</left>
+			<top>340</top>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Clear-Logo) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<left>761</left>
+			<top>370</top>
+			<height>280</height>
+			<width>490</width>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<texture background="true">$INFO[Container(511).ListItem.Art(clearlogo)]</texture>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Clear-Logo)</visible>
+		</control>
+		<!-- 8 landscape -->
+		<control type="image">
+			<left>671</left>
+			<top>340</top>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(landscape)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetcontentBigArtwork),Landscape)</visible>
+		</control>
+		<!-- Fallback 6300 -->
+		<control type="group">
+			<!-- Fanart -->
+			<control type="image">
+				<left>671</left>
+				<top>340</top>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(fanart)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(SetcontentBigArtworkFalback),Fanart) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- defaultpicture -->
+			<control type="image">
+				<left>671</left>
+				<top>340</top>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(SetcontentBigArtworkFalback),Defaultpicture) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- clearart -->
+			<control type="image">
+				<left>671</left>
+				<top>340</top>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(SetcontentBigArtworkFalback),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<left>761</left>
+				<top>370</top>
+				<height>280</height>
+				<width>490</width>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<texture background="true">$INFO[Container(511).ListItem.Art(clearart)]</texture>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.Contains(Skin.String(SetcontentBigArtworkFalback),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- clearlogo -->
+			<control type="image">
+				<left>671</left>
+				<top>340</top>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>[String.Contains(Skin.String(SetcontentBigArtworkFalback),Clear-Logo) | String.IsEmpty(Skin.String(SetcontentBigArtworkFalback))] + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<left>761</left>
+				<top>370</top>
+				<height>280</height>
+				<width>490</width>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<texture background="true">$INFO[Container(511).ListItem.Art(clearlogo)]</texture>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(SetcontentBigArtworkFalback),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- landscape -->
+			<control type="image">
+				<left>671</left>
+				<top>340</top>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(landscape)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>[String.Contains(Skin.String(SetcontentBigArtworkFalback),Landscape) | String.IsEmpty(Skin.String(SetcontentBigArtworkFalback))] + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="viewmoviesets-contentsmall-artworks">
+	<!-- left bottom info setcontent -->
+	<control type="group">
+		<left>0</left>
+		<top>0</top>
+		<include>animation_vhoc_fade</include>
+		<visible>!ListItem.IsParentFolder + [Control.HasFocus(511) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)]</visible>
+		<include>animation_vhoc_fade</include>
+		<!-- fanart -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(fanart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(SetcontentSmallArtwork),Fanart)</visible>
+		</control>
+		<!-- extra fanart -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Extra-Fanart)</visible>
+		</control>
+		<!-- extra thumb -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Extra-Thumb)</visible>
+		</control>
+		<!-- clearart -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6302),xx)</visible>
+		</control>
+		<control type="image">
+			<left>20</left>
+			<top>350</top>
+			<height>164</height>
+			<width>285</width>
+			<texture background="true">$INFO[Container(511).ListItem.Art(clearart)]</texture>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Art)</visible>
+		</control>
+		<!-- clearlogo -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>[String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Logo) | String.IsEmpty(Skin.String(SetcontentSmallArtwork))] + !String.IsEqual(Control.Getlabel(6302),xx)</visible>
+		</control>
+		<control type="image">
+			<left>20</left>
+			<top>350</top>
+			<height>164</height>
+			<width>285</width>
+			<texture background="true">$INFO[Container(511).ListItem.Art(clearlogo)]</texture>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Logo) | String.IsEmpty(Skin.String(SetcontentSmallArtwork))</visible>
+		</control>
+		<!-- 8 landscape -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(landscape)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Landscape)</visible>
+		</control>
+		<!-- Fallback 6302 -->
+		<control type="group">
+			<visible>!String.IsEmpty(Skin.String(SetcontentSmallArtwork))</visible>
+			<!-- Fanart -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(fanart)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(SetcontentSmallArtworkFalback),Fanart) + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+			<!-- defaultpicture -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(SetcontentSmallArtworkFalback),Defaultpicture) + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+			<!-- clearart -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Art) + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<top>350</top>
+				<height>164</height>
+				<width>285</width>
+				<texture background="true">$INFO[Container(511).ListItem.Art(clearart)]</texture>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Art) + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+			<!-- clearlogo -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Logo) + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<top>350</top>
+				<height>164</height>
+				<width>285</width>
+				<texture background="true">$INFO[Container(511).ListItem.Art(clearlogo)]</texture>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(SetcontentSmallArtwork),Clear-Logo) + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+			<!-- 8 landscape -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(511).ListItem.Art(landscape)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>[String.Contains(Skin.String(SetcontentSmallArtworkFalback),Landscape) | String.IsEmpty(Skin.String(SetcontentSmallArtworkFalback))] + String.IsEqual(Control.Getlabel(6302),xx)</visible>
+			</control>
+		</control>
+	</control>
+	<!-- left bottom info DB Container -->
+	<control type="group">
+		<visible>!ListItem.IsParentFolder + !Control.HasFocus(511)</visible>
+		<include>animation_vhoc_fade</include>
+		<!-- fanart -->
+		<control type="image">
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(SetListArtwork),Fanart) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- extra fanart -->
+		<control type="image">
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetListArtwork),Extra-Fanart) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- extra thumb -->
+		<control type="image">
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetListArtwork),Extra-Thumb) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- clearart -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(SetListArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<left>20</left>
+			<top>350</top>
+			<height>164</height>
+			<width>285</width>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(SetListArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- clearlogo -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>[String.Contains(Skin.String(SetListArtwork),Clear-Logo) | String.IsEmpty(Skin.String(SetListArtwork))] + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<left>20</left>
+			<top>350</top>
+			<height>164</height>
+			<width>285</width>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<include>viewglobal_topelements_logo</include>
+			<visible>[String.Contains(Skin.String(SetListArtwork),Clear-Logo) | String.IsEmpty(Skin.String(SetListArtwork))] + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- 8 landscape -->
+		<control type="image">
+			<left>0</left>
+			<top>340</top>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[panelart_value_landscape]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(SetListArtwork),Landscape) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- Fallback 6301 -->
+		<control type="group">
+			<!-- Fanart -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>[String.Contains(Skin.String(SetListArtworkFalback),Fanart) | String.IsEmpty(Skin.String(SetListArtworkFalback))] + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<!-- defaultpicture -->
+			<control type="image">
+				<left>0</left>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(SetListArtworkFalback),Defaultpicture) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+</includes>

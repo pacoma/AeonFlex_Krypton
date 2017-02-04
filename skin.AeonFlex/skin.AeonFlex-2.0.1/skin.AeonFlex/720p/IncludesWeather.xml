@@ -1,0 +1,2730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+
+	<variable name="WeatherCurrentViewLabel">
+		<value condition="String.IsEqual(Window(Weather).Property(Weather.CurrentView),current)">$LOCALIZE[33030]</value>
+		<value condition="String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour)">$LOCALIZE[33034]</value>
+		<value condition="String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend)">$LOCALIZE[33037]</value>
+		<value condition="String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly)">$LOCALIZE[33036]</value>
+		<value condition="String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days)">$LOCALIZE[12393]</value>
+		<value condition="String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps)">$LOCALIZE[33035] $INFO[Container(53).ListItem.Label, - ]</value>
+	</variable>
+
+	<variable name="WeatherCurrentStartviewLabel">
+		<value condition="String.IsEqual(Skin.String(WeatherFocus),current)">$LOCALIZE[33030]</value>
+		<value condition="String.IsEqual(Skin.String(WeatherFocus),36hour)">$LOCALIZE[33034]</value>
+		<value condition="String.IsEqual(Skin.String(WeatherFocus),weekend)">$LOCALIZE[33037]</value>
+		<value condition="String.IsEqual(Skin.String(WeatherFocus),hourly)">$LOCALIZE[33036]</value>
+		<value condition="String.IsEqual(Skin.String(WeatherFocus),16days)">$LOCALIZE[33038]</value>
+		<value condition="String.IsEqual(Skin.String(WeatherFocus),maps)">$LOCALIZE[33035]</value>
+		<value>$LOCALIZE[33061]</value>
+	</variable>
+
+	<include name="WeatherViewBackground">
+		<!-- Background -->
+		<control type="group">
+			<left>0</left>
+			<top>0</top>
+			<control type="image">
+				<left>0</left>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1280</width>
+				<height>550</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>240</top>
+				<width>1280</width>
+				<height>310</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>550</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="label">
+				<left>50</left>
+				<top>0</top>
+				<width>900</width>
+				<height>40</height>
+				<font>RegularLarge</font>
+				<label>$INFO[Window(Weather).Property(Location)]</label>
+			</control>
+			<control type="label">
+				<left>50</left>
+				<top>40</top>
+				<width>900</width>
+				<height>40</height>
+				<align>left</align>
+				<aligny>top</aligny>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[WeatherCurrentViewLabel]</label>
+			</control>
+		</control>
+	</include>
+
+	<variable name="WeatherIconPath">
+		<value condition="String.IsEmpty(Skin.String(resource.images.weathericons.path))">resource://resource.images.weathericons.default/</value>
+		<value condition="!String.IsEmpty(Skin.String(resource.images.weathericons.path))">$INFO[Skin.String(resource.images.weathericons.path)]</value>
+	</variable>
+
+
+	<!-- ####Aktuell #########################################################################-->
+	<include name="WeatherScrollbar">
+		<include>scrollbar_vertical</include>
+		<left>630</left>
+		<top>50</top>
+		<width>65</width>
+		<height>465</height>
+	</include>
+	<include name="LoadingLabel">
+		<left>646</left>
+		<top>265</top>
+		<width>188</width>
+		<height>80</height>
+		<align>center</align>
+		<label>$LOCALIZE[31670]</label>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="CurrentDailyDay">
+		<left>-5</left>
+		<top>12</top>
+		<height>20</height>
+		<width>120</width>
+		<align>center</align>
+	</include>
+	<include name="CurrentDailyDate">
+		<left>-5</left>
+		<top>35</top>
+		<height>15</height>
+		<width>120</width>
+		<align>center</align>
+	</include>
+	<include name="CurrentLabel">
+		<left>0</left>
+		<top>0</top>
+		<height>30</height>
+		<width>300</width>
+		<align>right</align>
+		<aligny>center</aligny>
+		<textcolor>TextColor2</textcolor>
+		<texturefocus>-</texturefocus>
+		<texturenofocus>-</texturenofocus>
+	</include>
+	<include name="CurrentValue">
+		<align>left</align>
+		<top>155</top>
+		<textcolor>TextColor1</textcolor>
+		<include>CurrentLabel</include>
+	</include>
+	<include name="CurrentDailyWeekdayBG">
+		<top>0</top>
+		<left>0</left>
+		<width>114</width>
+		<height>243</height>
+		<colordiffuse>30FFFFFF</colordiffuse>
+		<texture border="10">backgrounds/background-weather-weekday.png</texture>
+		<aspectratio>stretch</aspectratio>
+	</include>
+	<include name="CurrentDailyWeekendBG">
+		<top>0</top>
+		<left>0</left>
+		<width>114</width>
+		<height>243</height>
+		<colordiffuse>30FFFFFF</colordiffuse>
+		<texture border="10">backgrounds/background-weather-weekend.png</texture>
+		<aspectratio>stretch</aspectratio>
+	</include>
+	<include name="CurrentDailyIcon">
+		<top>50</top>
+		<height>80</height>
+		<width>113</width>
+		<aspectratio align="center" aligny="top">keep</aspectratio>
+	</include>
+	<include name="CurrentDailyPrecipitation">
+		<left>-5</left>
+		<top>155</top>
+		<height>25</height>
+		<width>120</width>
+		<align>center</align>
+	</include>
+	<include name="CurrentDailyHigh">
+		<left>15</left>
+		<top>185</top>
+		<height>20</height>
+		<width>120</width>
+		<align>center</align>
+		<textcolor>FFFF0000</textcolor>
+	</include>
+	<include name="CurrentDailyLow">
+		<left>15</left>
+		<top>215</top>
+		<height>20</height>
+		<width>120</width>
+		<align>center</align>
+		<textcolor>FF00AFFF</textcolor>
+	</include>
+	<include name="CurrentArrowUp">
+		<left>25</left>
+		<top>185</top>
+		<width>20</width>
+		<height>20</height>
+		<texture>arrows/arrow.png</texture>
+		<colordiffuse>ACRed</colordiffuse>
+		<aspectratio>keep</aspectratio>
+	</include>
+	<include name="CurrentArrowDown">
+		<left>25</left>
+		<top>215</top>
+		<width>20</width>
+		<height>20</height>
+		<texture flipy="true">arrows/arrow.png</texture>
+		<colordiffuse>FF007399</colordiffuse>
+		<aspectratio>keep</aspectratio>
+	</include>
+
+	<include name="Weather.Current">
+		<control type="group">
+			<left>0</left>
+			<top>85</top>
+			<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml) + !Window.IsVisible(selectdialog)</visible>
+			<!-- hidden slide UnFocus -->
+			<animation type="Conditional" condition="!String.IsEqual(Window(Weather).Property(Weather.CurrentView),current)">
+				<effect type="slide" end="-350,0" time="800" tween="sine" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Visible fade Focus -->
+			<animation type="Conditional" condition="![String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1120_Quicknavmenue.xml) | Window.IsVisible(selectdialog)]">
+				<effect type="fade" delay="480" end="100" time="280" tween="sine" easing="in" reversible="true"/>
+			</animation>
+
+			<control type="image">
+				<left>0</left>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1280</width>
+				<height>550</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>240</top>
+				<width>1280</width>
+				<height>310</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>550</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>366</width>
+				<height>550</height>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<texture background="true" fallback="special://skin/extras/windows/weather.jpg">$VAR[WeatherFanartDefault]</texture>
+				<visible>!String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<control type="multiimage">
+				<left>0</left>
+				<top>0</top>
+				<width>366</width>
+				<height>550</height>
+				<timeperimage>6000</timeperimage>
+				<randomize>true</randomize>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<imagepath>$VAR[WeatherFanartDefault]</imagepath>
+				<visible>String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<!-- separators -->
+			<control type="image">
+				<left>366</left>
+				<height>550</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+
+			<!-- akutell -->
+			<control type="group">
+				<left>386</left>
+				<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+				<control type="image">
+					<left>20</left>
+					<top>195</top>
+					<width>30</width>
+					<height>30</height>
+					<texture>arrows/arrow.png</texture>
+					<colordiffuse>ACRed</colordiffuse>
+					<aspectratio>keep</aspectratio>
+				</control>
+				<control type="label">
+					<left>65</left>
+					<top>193</top>
+					<height>30</height>
+					<width>120</width>
+					<aligny>top</aligny>
+					<textcolor>FFFF0000</textcolor>
+					<font>RegularBig</font>
+					<label>$INFO[Window(Weather).Property(Daily.2.HighTemperature)]</label>
+				</control>
+				<control type="image">
+					<left>20</left>
+					<top>235</top>
+					<width>30</width>
+					<height>30</height>
+					<texture flipy="true">arrows/arrow.png</texture>
+					<colordiffuse>FF007399</colordiffuse>
+					<aspectratio>keep</aspectratio>
+				</control>
+				<control type="label">
+					<left>65</left>
+					<top>235</top>
+					<height>30</height>
+					<width>120</width>
+					<aligny>top</aligny>
+					<textcolor>FF00AFFF</textcolor>
+					<label>$INFO[Window(Weather).Property(Daily.2.LowTemperature)]</label>
+				</control>
+				<control type="image">
+					<left>100</left>
+					<top>30</top>
+					<width>220</width>
+					<height>200</height>
+					<texture>$VAR[WeatherIconPath]$INFO[Window.Property(Current.OutlookIcon)]</texture>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+				</control>
+				<control type="label"><!-- wetter condition -->
+					<left>20</left>
+					<top>20</top>
+					<width>900</width>
+					<height>30</height>
+					<align>left</align>
+					<aligny>top</aligny>
+					<label>$INFO[Window(Weather).Property(Current.Condition)]</label>
+					<font>RegularBig</font>
+				</control>
+				<control type="image">
+					<left>535</left>
+					<top>23</top>
+					<width>2</width>
+					<height>230</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line_v.png</texture>
+				</control>
+			</control>
+			<control type="grouplist"><!-- titles -->
+				<left>610</left>
+				<top>40</top>
+				<width>300</width>
+				<itemgap>0</itemgap>
+				<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+				<orientation>vertical</orientation>
+				<control type="label"><!-- taupunkt -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[405]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.DewPoint))</visible>
+				</control>
+				<control type="label"><!-- Luftfeuchtigkeit -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[406]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.Humidity))</visible>
+				</control>
+				<control type="label"><!-- Windrichtung -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[404]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.Wind))</visible>
+				</control>
+				<control type="label"><!-- Niederschlag -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[1448]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.Precipitation))</visible>
+				</control>
+				<control type="label"><!-- Luftdruck  -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[31675]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.Pressure))</visible>
+				</control>
+				<control type="label"><!-- sonnenaufgang -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[33027]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Today.Sunrise))</visible>
+				</control>
+				<control type="label"><!-- sonnenuntergang -->
+					<include>CurrentLabel</include>
+					<label>$LOCALIZE[33028]</label>
+					<visible>!String.IsEmpty(Window(Weather).Property(Today.Sunset))</visible>
+				</control>
+			</control>
+			<control type="grouplist"><!-- aktueller ausblick -->
+				<left>930</left>
+				<top>40</top>
+				<width>300</width>
+				<itemgap>0</itemgap>
+				<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+				<orientation>vertical</orientation>
+				<control type="label"><!-- taupunkt -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Current.DewPoint)]</label>
+				</control>
+				<control type="label"><!-- Humidity -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Current.Humidity)]</label>
+				</control>
+				<control type="label"><!-- Windrichtung -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Current.Wind)]</label>
+				</control>
+				<control type="label"><!-- Niederschlag -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Current.Precipitation)]</label>
+				</control>
+				<control type="label"><!-- Luftdruck  -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Current.Pressure)]</label>
+				</control>
+				<control type="label"><!-- sonnenaufgang -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Today.Sunrise)]</label>
+				</control>
+				<control type="label"><!-- sonnenuntergang -->
+					<include>CurrentValue</include>
+					<label>$INFO[Window(Weather).Property(Today.Sunset)]</label>
+				</control>
+			</control>
+			<control type="label"><!-- loader -->
+				<top>400</top>
+				<include>LoadingLabel</include>
+				<visible>String.IsEmpty(Window(Weather).Property(Daily.IsFetched)) | String.IsEmpty(Window(Weather).Property(Hourly.IsFetched))</visible>
+			</control>
+			<control type="image">
+				<texture>buttons/osd/osd_info.png</texture>
+				<include content="Infodialogs_update_indikator">
+					<param name="Update_Indikator-left" value="646" />
+					<param name="Update_Indikator-top" value="188" />
+					<param name="Update_Indikator-width" value="188" />
+					<param name="Update_Indikator-height" value="188" />
+				</include>
+				<visible>String.IsEmpty(Window(Weather).Property(Daily.IsFetched)) | String.IsEmpty(Window(Weather).Property(Hourly.IsFetched))</visible>
+			</control>
+			<control type="grouplist"><!-- Tag 1 -->
+				<left>396</left>
+				<top>295</top>
+				<width>990</width>
+				<itemgap>18</itemgap>
+				<orientation>horizontal</orientation>
+				<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+				<control type="group">
+					<width>120</width>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekdayBG</include>
+						<visible>!String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[17]) + !String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[11])</visible>
+					</control>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekendBG</include>
+						<visible>String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[17]) | String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[11])</visible>
+					</control>
+					<control type="label"><!-- Tag -->
+						<include>CurrentDailyDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.1.ShortDay)][/B]</label>
+					</control>
+					<control type="label"><!-- Datum -->
+						<include>CurrentDailyDate</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.ShortDate)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>CurrentDailyIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.1.OutlookIcon)]</texture>
+					</control>
+					<control type="image">
+						<include>CurrentArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>CurrentDailyHigh</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>CurrentArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>CurrentDailyLow</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>CurrentDailyPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.Precipitation)]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Tag2 -->
+					<width>120</width>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekdayBG</include>
+						<visible>!String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[16]) + !String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekendBG</include>
+						<visible>String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[16]) | String.IsEqual(Window(Weather).Property(Daily.2.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="label"><!-- Tag -->
+						<include>CurrentDailyDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.2.ShortDay)][/B]</label>
+					</control>
+					<control type="label"><!-- Datum -->
+						<include>CurrentDailyDate</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.ShortDate)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>CurrentDailyIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.2.OutlookIcon)]</texture>
+					</control>
+					<control type="image">
+						<include>CurrentArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>CurrentDailyHigh</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>CurrentArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>CurrentDailyLow</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>CurrentDailyPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.Precipitation)]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Tag 3 -->
+					<width>120</width>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekdayBG</include>
+						<visible>!String.IsEqual(Window(Weather).Property(Daily.3.LongDay),$LOCALIZE[16]) + !String.IsEqual(Window(Weather).Property(Daily.3.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekendBG</include>
+						<visible>String.IsEqual(Window(Weather).Property(Daily.3.LongDay),$LOCALIZE[16]) | String.IsEqual(Window(Weather).Property(Daily.3.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="label"><!-- Tag -->
+						<include>CurrentDailyDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.3.ShortDay)][/B]</label>
+					</control>
+					<control type="label"><!-- Datum -->
+						<include>CurrentDailyDate</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.ShortDate)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>CurrentDailyIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.3.OutlookIcon)]</texture>
+					</control>
+					<control type="image">
+						<include>CurrentArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>CurrentDailyHigh</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>CurrentArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>CurrentDailyLow</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>CurrentDailyPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.Precipitation)]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Tag 4 -->
+					<width>120</width>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekdayBG</include>
+						<visible>!String.IsEqual(Window(Weather).Property(Daily.4.LongDay),$LOCALIZE[16]) + !String.IsEqual(Window(Weather).Property(Daily.4.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekendBG</include>
+						<visible>String.IsEqual(Window(Weather).Property(Daily.4.LongDay),$LOCALIZE[16]) | String.IsEqual(Window(Weather).Property(Daily.4.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="label"><!-- Tag -->
+						<include>CurrentDailyDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.4.ShortDay)][/B]</label>
+					</control>
+					<control type="label"><!-- Datum -->
+						<include>CurrentDailyDate</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.ShortDate)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>CurrentDailyIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.4.OutlookIcon)]</texture>
+					</control>
+					<control type="image">
+						<include>CurrentArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>CurrentDailyHigh</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>CurrentArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>CurrentDailyLow</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>CurrentDailyPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.Precipitation)]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Tag 5 -->
+					<width>120</width>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekdayBG</include>
+						<visible>!String.IsEqual(Window(Weather).Property(Daily.5.LongDay),$LOCALIZE[16]) + !String.IsEqual(Window(Weather).Property(Daily.5.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekendBG</include>
+						<visible>String.IsEqual(Window(Weather).Property(Daily.5.LongDay),$LOCALIZE[16]) | String.IsEqual(Window(Weather).Property(Daily.5.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="label"><!-- Tag -->
+						<include>CurrentDailyDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.5.ShortDay)][/B]</label>
+					</control>
+					<control type="label"><!-- Datum -->
+						<include>CurrentDailyDate</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.ShortDate)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>CurrentDailyIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.5.OutlookIcon)]</texture>
+					</control>
+					<control type="image">
+						<include>CurrentArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>CurrentDailyHigh</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>CurrentArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>CurrentDailyLow</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>CurrentDailyPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.Precipitation)]</label>
+					</control>
+				</control>
+				<control type="group"><!-- Tag 6 -->
+					<width>120</width>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekdayBG</include>
+						<visible>!String.IsEqual(Window(Weather).Property(Daily.6.LongDay),$LOCALIZE[16]) + !String.IsEqual(Window(Weather).Property(Daily.6.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="image"><!-- Texture -->
+						<include>CurrentDailyWeekendBG</include>
+						<visible>String.IsEqual(Window(Weather).Property(Daily.6.LongDay),$LOCALIZE[16]) | String.IsEqual(Window(Weather).Property(Daily.6.LongDay),$LOCALIZE[17])</visible>
+					</control>
+					<control type="label"><!-- Tag -->
+						<include>CurrentDailyDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.6.ShortDay)][/B]</label>
+					</control>
+					<control type="label"><!-- Datum -->
+						<include>CurrentDailyDate</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.ShortDate)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>CurrentDailyIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.6.OutlookIcon)]</texture>
+					</control>
+					<control type="image">
+						<include>CurrentArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>CurrentDailyHigh</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>CurrentArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>CurrentDailyLow</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>CurrentDailyPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.Precipitation)]</label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+
+	<!-- #### 36 Stunden  #########################################################################-->
+	<include name="36HourLabel">
+		<left>0</left>
+		<top>30</top>
+		<width>290</width>
+		<height>49</height>
+		<align>center</align>
+		<aligny>top</aligny>
+		<font>RegularBig</font>
+	</include>
+	<include name="36HourIcon">
+		<left>45</left>
+		<top>105</top>
+		<width>200</width>
+		<height>250</height>
+		<align>center</align>
+		<aligny>top</aligny>
+		<aspectratio>keep</aspectratio>
+	</include>
+	<include name="36HourOutlook">
+		<left>0</left>
+		<top>70</top>
+		<width>290</width>
+		<height>250</height>
+		<align>center</align>
+		<aligny>top</aligny>
+		<textcolor>ACSkinColor</textcolor>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="36HourHighTemp">
+		<left>60</left>
+		<top>390</top>
+		<width>130</width>
+		<height>20</height>
+		<align>center</align>
+		<textcolor>FFFF0000</textcolor>
+	</include>
+	<include name="36HourLowTemp">
+		<left>130</left>
+		<top>390</top>
+		<width>130</width>
+		<height>20</height>
+		<align>center</align>
+		<textcolor>FF00AFFF</textcolor>
+	</include>
+	<include name="36HourArrowUp">
+		<left>83</left>
+		<top>390</top>
+		<width>20</width>
+		<height>20</height>
+		<texture>arrows/arrow.png</texture>
+		<colordiffuse>ACRed</colordiffuse>
+		<aspectratio>keep</aspectratio>
+	</include>
+	<include name="36HourArrowDown">
+		<left>152</left>
+		<top>390</top>
+		<width>20</width>
+		<height>20</height>
+		<texture flipy="true">arrows/arrow.png</texture>
+		<colordiffuse>FF007399</colordiffuse>
+		<aspectratio>keep</aspectratio>
+	</include>
+	<include name="36HourPrecipitationHeading">
+		<control type="label">
+		<left>0</left>
+		<top>440</top>
+		<width>290</width>
+		<height>20</height>
+		<align>center</align>
+		<label>$LOCALIZE[1448]</label>
+		<scrollout>false</scrollout>
+		</control>
+	</include>
+	<include name="36HourPrecipitation">
+		<left>0</left>
+		<top>470</top>
+		<width>290</width>
+		<height>20</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+	</include>
+	<include name="36HourSeparator">
+		<control type="image">
+		<left>290</left>
+		<top>0</top>
+		<width>2</width>
+		<height>500</height>
+		<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line_v.png</texture>
+		</control>
+	</include>
+
+	<include name="Weather.36Hour">
+		<control type="group">
+			<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml) + !Window.IsVisible(selectdialog)</visible>
+			<!-- hidden slide UnFocus -->
+			<animation type="Conditional" condition="!String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour)">
+				<effect type="slide" end="-400,-200" time="800" tween="sine" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Visible fade Focus -->
+			<animation type="Conditional" condition="![String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current)]">
+				<effect type="fade" delay="480" end="100" time="280" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<control type="image">
+				<left>0</left>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1280</width>
+				<height>550</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>240</top>
+				<width>1280</width>
+				<height>310</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>550</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>366</width>
+				<height>550</height>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<texture background="true" fallback="special://skin/extras/windows/weather.jpg">$VAR[WeatherFanartDefault]</texture>
+				<visible>!String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<control type="multiimage">
+				<left>0</left>
+				<top>0</top>
+				<width>366</width>
+				<height>550</height>
+				<timeperimage>6000</timeperimage>
+				<randomize>true</randomize>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<imagepath>$VAR[WeatherFanartDefault]</imagepath>
+				<visible>String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<!-- separators -->
+			<control type="image">
+				<left>366</left>
+				<height>550</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<left>0</left>
+			<top>85</top>
+			<control type="label"><!-- loader -->
+				<top>400</top>
+				<include>LoadingLabel</include>
+				<visible>String.IsEmpty(Window(Weather).Property(36Hour.IsFetched))</visible>
+			</control>
+			<control type="image">
+				<texture>buttons/osd/osd_info.png</texture>
+				<include content="Infodialogs_update_indikator">
+					<param name="Update_Indikator-left" value="646" />
+					<param name="Update_Indikator-top" value="188" />
+					<param name="Update_Indikator-width" value="188" />
+					<param name="Update_Indikator-height" value="188" />
+				</include>
+				<visible>String.IsEmpty(Window(Weather).Property(36Hour.IsFetched))</visible>
+			</control>
+			<control type="grouplist">
+				<visible>!String.IsEmpty(Window(Weather).Property(36Hour.IsFetched))</visible>
+				<left>400</left>
+				<top>50</top>
+				<width>1180</width>
+				<itemgap>0</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="group">
+					<width>290</width>
+					<control type="label"><!-- Tag -->
+						<include>36HourLabel</include>
+						<label>$INFO[Window(Weather).Property(36Hour.1.Heading)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>36HourIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(36Hour.1.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>36HourOutlook</include>
+						<label>$INFO[Window(Weather).Property(36Hour.1.Outlook)]</label>
+					</control>
+					<control type="image">
+						<include>36HourArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>36HourHighTemp</include>
+						<label>$INFO[Window(Weather).Property(36Hour.1.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>36HourArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>36HourLowTemp</include>
+						<label>$INFO[Window(Weather).Property(36Hour.1.LowTemperature)]</label>
+					</control>
+						<include>36HourPrecipitationHeading</include>
+					<control type="label"><!-- Niederschlag -->
+						<include>36HourPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(36Hour.1.Precipitation)]</label>
+					</control>
+					<include>36HourSeparator</include>
+				</control>
+				<control type="group">
+					<width>290</width>
+					<control type="label"><!-- Tag -->
+						<include>36HourLabel</include>
+						<label>$INFO[Window(Weather).Property(36Hour.2.Heading)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>36HourIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(36Hour.2.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>36HourOutlook</include>
+						<label>$INFO[Window(Weather).Property(36Hour.2.Outlook)]</label>
+					</control>
+					<control type="image">
+						<include>36HourArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>36HourHighTemp</include>
+						<label>$INFO[Window(Weather).Property(36Hour.2.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>36HourArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>36HourLowTemp</include>
+						<label>$INFO[Window(Weather).Property(36Hour.2.LowTemperature)]</label>
+					</control>
+					<include>36HourPrecipitationHeading</include>
+					<control type="label"><!-- Niederschlag -->
+						<include>36HourPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(36Hour.2.Precipitation)]</label>
+					</control>
+						<include>36HourSeparator</include>
+					</control>
+				<control type="group">
+					<width>290</width>
+					<control type="label"><!-- Tag -->
+						<include>36HourLabel</include>
+						<label>$INFO[Window(Weather).Property(36Hour.3.Heading)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>36HourIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(36Hour.3.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>36HourOutlook</include>
+						<label>$INFO[Window(Weather).Property(36Hour.3.Outlook)]</label>
+					</control>
+					<control type="image">
+						<include>36HourArrowUp</include>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>36HourHighTemp</include>
+						<label>$INFO[Window(Weather).Property(36Hour.3.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>36HourArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>36HourLowTemp</include>
+						<label>$INFO[Window(Weather).Property(36Hour.3.LowTemperature)]</label>
+					</control>
+						<include>36HourPrecipitationHeading</include>
+					<control type="label"><!-- Niederschlag -->
+						<include>36HourPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(36Hour.3.Precipitation)]</label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+
+	<!-- #### Wochendende  #########################################################################-->
+	<include name="WeekendLabel">
+		<left>0</left>
+		<top>10</top>
+		<width>395</width>
+		<height>49</height>
+		<aligny>top</aligny>
+		<align>center</align>
+		<font>RegularBig</font>
+	</include>
+	<include name="WeekendIcon">
+		<left>0</left>
+		<top>105</top>
+		<width>395</width>
+		<height>250</height>
+		<align>center</align>
+		<aligny>top</aligny>
+		<aspectratio>keep</aspectratio>
+	</include>
+	<include name="WeekendOutlook">
+		<left>0</left>
+		<top>70</top>
+		<width>395</width>
+		<height>250</height>
+		<align>center</align>
+		<aligny>top</aligny>
+		<textcolor>ACSkinColor</textcolor>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="WeekendHighTemp">
+		<left>100</left>
+		<top>390</top>
+		<width>130</width>
+		<height>20</height>
+		<align>center</align>
+		<textcolor>FFFF0000</textcolor>
+	</include>
+	<include name="WeekendArrowUp">
+		<left>123</left>
+		<top>390</top>
+		<width>20</width>
+		<height>20</height>
+		<texture>arrows/arrow.png</texture>
+		<colordiffuse>ACRed</colordiffuse>
+		<aspectratio>keep</aspectratio>
+	</include>
+
+	<include name="WeekendLowTemp">
+		<left>170</left>
+		<top>390</top>
+		<width>130</width>
+		<height>20</height>
+		<align>center</align>
+		<textcolor>FF00AFFF</textcolor>
+	</include>
+
+	<include name="WeekendArrowDown">
+		<left>192</left>
+		<top>390</top>
+		<width>20</width>
+		<height>20</height>
+		<texture flipy="true">arrows/arrow.png</texture>
+		<colordiffuse>FF007399</colordiffuse>
+		<aspectratio>keep</aspectratio>
+	</include>
+	<include name="WeekendPrecipitationHeading">
+		<control type="label">
+		<left>-10</left>
+		<top>440</top>
+		<width>395</width>
+		<height>20</height>
+		<label>$LOCALIZE[1448]</label>
+		<align>center</align>
+		<scrollout>false</scrollout>
+		</control>
+	</include>
+	<include name="WeekendPrecipitation">
+		<left>0</left>
+		<top>470</top>
+		<width>395</width>
+		<height>20</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+	</include>
+
+	<include name="Weather.Weekend">
+		<control type="group">
+			<!-- hidden slide UnFocus -->
+			<animation type="Conditional" condition="!String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend)">
+				<effect type="slide" end="400,200" time="800" tween="sine" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Visible fade Focus -->
+			<animation type="Conditional" condition="![String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1120_Quicknavmenue.xml) | Window.IsVisible(selectdialog)]">
+				<effect type="fade" delay="480" end="100" time="280" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="600" tween="sine" easing="in"/>
+				<effect type="slide" end="0,0" time="500" tween="sine" easing="in"/>
+				<effect type="zoom" center="640,360" delay="280" end="100" time="500" tween="sine" easing="in"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="slide" end="-400,200" time="500" tween="quadratic" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="500" tween="quadratic" easing="out" reversible="true"/>
+			</animation>
+			<control type="image">
+				<left>0</left>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1280</width>
+				<height>550</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>240</top>
+				<width>1280</width>
+				<height>310</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>550</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>366</width>
+				<height>550</height>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<texture background="true" fallback="special://skin/extras/windows/weather.jpg">$VAR[WeatherFanartWeekend]</texture>
+				<visible>!String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<control type="multiimage">
+				<left>0</left>
+				<top>0</top>
+				<width>366</width>
+				<height>550</height>
+				<timeperimage>6000</timeperimage>
+				<randomize>true</randomize>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<imagepath>$VAR[WeatherFanartWeekend]</imagepath>
+				<visible>String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<!-- separators -->
+			<control type="image">
+				<left>366</left>
+				<height>550</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<left>0</left>
+			<top>85</top>
+			<control type="label"><!-- loader -->
+				<top>400</top>
+				<include>LoadingLabel</include>
+				<visible>String.IsEmpty(Window(Weather).Property(Weekend.IsFetched))</visible>
+			</control>
+			<control type="image">
+				<texture>buttons/osd/osd_info.png</texture>
+				<include content="Infodialogs_update_indikator">
+					<param name="Update_Indikator-left" value="646" />
+					<param name="Update_Indikator-top" value="188" />
+					<param name="Update_Indikator-width" value="188" />
+					<param name="Update_Indikator-height" value="188" />
+				</include>
+				<visible>String.IsEmpty(Window(Weather).Property(Weekend.IsFetched))</visible>
+			</control>
+			<control type="grouplist">
+				<visible>!String.IsEmpty(Window(Weather).Property(Weekend.IsFetched))</visible>
+				<left>460</left>
+				<top>30</top>
+				<width>800</width>
+				<itemgap>0</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="group"><!-- Tag1 -->
+					<width>395</width>
+					<control type="label"><!-- Titel -->
+						<include>WeekendLabel</include>
+						<label>$INFO[Window(Weather).Property(Weekend.1.LongDay)]</label>
+					</control>
+					<control type="image"><!-- texture -->
+						<include>WeekendIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Weekend.1.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>WeekendOutlook</include>
+						<label>$INFO[Window(Weather).Property(Weekend.1.Outlook)]</label>
+					</control>
+					<control type="image">
+						<include>WeekendArrowUp</include>
+						</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>WeekendHighTemp</include>
+						<label>$INFO[Window(Weather).Property(Weekend.1.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>WeekendArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>WeekendLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Weekend.1.LowTemperature)]</label>
+					</control>
+					<include>WeekendPrecipitationHeading</include>
+					<control type="label"><!-- Niederschlag -->
+						<include>WeekendPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Weekend.1.Precipitation)]</label>
+					</control>
+					<control type="image">
+						<left>395</left>
+						<top>0</top>
+						<width>2</width>
+						<height>500</height>
+						<texture>backgrounds/line_v.png</texture>
+					</control>
+				</control>
+				<control type="group"><!-- Domigo -->
+					<width>465</width>
+					<control type="label"><!-- Tag -->
+						<include>WeekendLabel</include>
+						<label>$INFO[Window(Weather).Property(Weekend.2.LongDay)]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>WeekendIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Weekend.2.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>WeekendOutlook</include>
+						<label>$INFO[Window(Weather).Property(Weekend.2.Outlook)]</label>
+					</control>
+					<control type="image">
+						<include>WeekendArrowUp</include>
+						</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>WeekendHighTemp</include>
+						<label>$INFO[Window(Weather).Property(Weekend.2.HighTemperature)]</label>
+					</control>
+					<control type="image">
+						<include>WeekendArrowDown</include>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>WeekendLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Weekend.2.LowTemperature)]</label>
+					</control>
+					<include>WeekendPrecipitationHeading</include>
+					<control type="label"><!-- Niederschlag -->
+						<include>WeekendPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Weekend.2.Precipitation)]</label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+
+		<!-- ####Stunde EM Stunde #########################################################################-->
+	<include name="HourlyHeading">
+		<top>10</top>
+		<height>49</height>
+		<align>left</align>
+		<aligny>top</aligny>
+		<font>SemiNormal</font>
+	</include>
+	<include name="HourlyTime">
+		<left>0</left>
+		<top>0</top>
+		<width>110</width>
+		<height>80</height>
+		<textcolor>ACSkinColor</textcolor>
+	</include>
+	<include name="HourlyTempFeelsLike">
+		<left>450</left>
+		<top>0</top>
+		<width>90</width>
+		<height>80</height>
+	</include>
+	<include name="HourlyListHumidity">
+		<left>600</left>
+		<top>0</top>
+		<width>90</width>
+		<height>80</height>
+	</include>
+	<include name="HourlyPrecipitation">
+		<left>800</left>
+		<top>0</top>
+		<width>90</width>
+		<height>80</height>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="HourlyListWind">
+		<left>975</left>
+		<top>0</top>
+		<width>150</width>
+		<height>80</height>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="HourlyOutlookIcon">
+		<left>165</left>
+		<top>0</top>
+		<width>64</width>
+		<height>80</height>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+	</include>
+	<include name="HourlyOutlook">
+		<left>240</left>
+		<top>0</top>
+		<width>240</width>
+		<height>80</height>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="HourlyHorizontalSeparator">
+		<control type="image">
+			<left>0</left>
+			<top>0</top>
+			<width>1090</width>
+			<height>2</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+		</control>
+	</include>
+
+	<include name="Weather.Hourly">
+		<control type="group">
+			<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml) + !Window.IsVisible(selectdialog)</visible>
+			<!-- hidden slide UnFocus -->
+			<animation type="Conditional" condition="!String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly)">
+				<effect type="slide" end="-200,200" time="800" tween="sine" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Visible fade Focus -->
+			<animation type="Conditional" condition="![String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1120_Quicknavmenue.xml) | Window.IsVisible(selectdialog)]">
+				<effect type="fade" delay="480" end="100" time="280" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Background -->
+			<top>85</top>
+			<control type="multiimage">
+				<left>0</left>
+				<top>-85</top>
+				<width>1280</width>
+				<height>720</height>
+				<timeperimage>6000</timeperimage>
+				<randomize>true</randomize>
+				<aspectratio aligny="center">keep</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<imagepath diffuse="backgrounds/background-fanartoverlay.png">$VAR[WeatherFanartHourly]</imagepath>
+				<visible>String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>-85</top>
+				<width>1280</width>
+				<height>720</height>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<texture background="true" diffuse="backgrounds/background-fanartoverlay.png" fallback="special://skin/extras/windows/weather.jpg">$VAR[WeatherFanartHourly]</texture>
+				<visible>!String.Contains(Skin.String(resource.images.weatherfanart.name),Multi)</visible>
+			</control>
+			<!-- Fanartdiffuse -->
+			<include>infodialog_fanart_background_diffuse</include>
+			<!-- Background left -->
+			<control type="image">
+				<left>0</left>
+				<top>250</top>
+				<width>485</width>
+				<height>300</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<!-- Background right double -->
+			<control type="image">
+				<left>555</left>
+				<top>250</top>
+				<width>725</width>
+				<height>300</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="image">
+				<top>450</top>
+				<width>1280</width>
+				<height>100</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<!-- Background Shadow -->
+			<control type="image">
+				<left>0</left>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>550</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<!-- List Background -->
+			<control type="image">
+				<left>485</left>
+				<top>250</top>
+				<width>70</width>
+				<height>300</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<include>animation_vhoc_fade</include>
+			</control>
+			<control type="label"><!-- loader -->
+				<top>450</top>
+				<include>LoadingLabel</include>
+				<visible>String.IsEmpty(Window(Weather).Property(Hourly.IsFetched))</visible>
+			</control>
+			<control type="image">
+				<texture>buttons/osd/osd_info.png</texture>
+				<include content="Infodialogs_update_indikator">
+					<param name="Update_Indikator-left" value="646" />
+					<param name="Update_Indikator-top" value="288" />
+					<param name="Update_Indikator-width" value="188" />
+					<param name="Update_Indikator-height" value="188" />
+				</include>
+				<visible>String.IsEmpty(Window(Weather).Property(Hourly.IsFetched))</visible>
+			</control>
+			<control type="group">
+				<left>50</left>
+				<top>85</top>
+				<visible>!String.IsEmpty(Window(Weather).Property(Hourly.IsFetched))</visible>
+				<control type="group">
+					<top>165</top>
+					<control type="label"><!-- Titel Stunde -->
+						<left>0</left>
+						<width>70</width>
+						<include>HourlyHeading</include>
+						<label>$LOCALIZE[31014]</label>
+					</control>
+					<control type="label"><!-- Stunde -->
+						<left>165</left>
+						<width>200</width>
+						<include>HourlyHeading</include>
+						<label>$LOCALIZE[33020]</label>
+					</control>
+					<control type="label"><!-- Titel Temp -->
+						<left>450</left>
+						<width>130</width>
+						<include>HourlyHeading</include>
+						<label>$LOCALIZE[401]</label>
+					</control>
+					<control type="label"><!-- Temp -->
+						<left>600</left>
+						<width>140</width>
+						<include>HourlyHeading</include>
+						<label>$LOCALIZE[406]</label>
+					</control>
+					<control type="label"><!-- Titel Niederschlag -->
+						<left>800</left>
+						<width>130</width>
+						<include>HourlyHeading</include>
+						<label>$LOCALIZE[1448]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<left>975</left>
+						<width>130</width>
+						<include>HourlyHeading</include>
+						<label>$LOCALIZE[404]</label>
+					</control>
+				</control>
+				<control type="grouplist" id="600">
+					<top>200</top>
+					<width>1090</width>
+					<height>240</height>
+					<itemgap>0</itemgap>
+					<orientation>vertical</orientation>
+					<onleft>50</onleft>
+					<onright>6000</onright>
+					<onup>600</onup>
+					<ondown>600</ondown>
+					<pagecontrol>6000</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<control type="group"><!-- Stunde 1 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.1.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.1.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.1.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.1.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.1.Outlook)]$INFO[Window(Weather).Property(Hourly.1.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.1.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.1.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.1.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.1.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.1.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.1.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 2 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.2.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.2.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.2.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.2.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.2.Outlook)]$INFO[Window(Weather).Property(Hourly.2.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.2.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.2.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.2.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.2.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.2.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.2.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 3 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.3.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.3.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.3.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.3.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.3.Outlook)]$INFO[Window(Weather).Property(Hourly.3.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.3.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.3.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.3.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.3.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.3.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.3.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 4 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.4.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.4.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.4.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.4.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.4.Outlook)]$INFO[Window(Weather).Property(Hourly.4.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.4.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.4.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.4.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.4.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.4.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.4.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 5 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.5.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.5.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.5.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.5.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.5.Outlook)]$INFO[Window(Weather).Property(Hourly.5.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.5.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.5.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.5.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.5.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.5.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.5.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 6 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.6.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.6.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.6.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.6.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.6.Outlook)]$INFO[Window(Weather).Property(Hourly.6.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.6.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.6.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.6.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.6.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.6.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.6.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 7 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.7.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.7.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.7.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.7.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.7.Outlook)]$INFO[Window(Weather).Property(Hourly.7.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.7.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.7.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.7.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.7.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.7.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.7.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 8 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.8.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.8.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.8.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.8.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.8.Outlook)]$INFO[Window(Weather).Property(Hourly.8.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.8.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.8.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.8.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.8.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.8.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.8.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 9 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.9.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.9.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.9.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.9.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.9.Outlook)]$INFO[Window(Weather).Property(Hourly.9.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.9.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.9.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.9.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.9.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.9.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.9.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 10 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.10.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.10.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.10.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.10.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.10.Outlook)]$INFO[Window(Weather).Property(Hourly.10.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.10.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.10.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.10.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.10.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.10.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.10.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 11 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.11.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.11.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.11.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.11.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.11.Outlook)]$INFO[Window(Weather).Property(Hourly.11.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.11.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.11.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.11.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.11.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.11.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.11.WindSpeed)]</label>
+						</control>
+					</control>
+					<include>HourlyHorizontalSeparator</include>
+					<control type="group"><!-- Stunde 12 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Hourly.12.Time))</visible>
+						<height>80</height>
+						<control type="label"><!-- Datum und Zeit -->
+							<include>HourlyTime</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.12.Time)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Hourly.12.ShortDate)][/COLOR]</label>
+						</control>
+						<control type="image"><!-- icon -->
+							<include>HourlyOutlookIcon</include>
+							<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Hourly.12.OutlookIcon)]</texture>
+						</control>
+						<control type="label"><!-- Sonnenaufgang -->
+							<include>HourlyOutlook</include>
+							<label>$INFO[Window(Weather).Property(Hourly.12.Outlook)]$INFO[Window(Weather).Property(Hourly.12.Sunrise),[CR]$LOCALIZE[33027]: ,]$INFO[Window(Weather).Property(Hourly.12.Sunset),[CR]$LOCALIZE[33028]: ,]</label>
+						</control>
+						<control type="label"><!-- Temperatur -->
+							<include>HourlyTempFeelsLike</include>
+							<label>[B]$INFO[Window(Weather).Property(Hourly.12.Temperature)][/B]</label>
+						</control>
+						<control type="label"><!-- Luftfeuchtigkeit -->
+							<include>HourlyListHumidity</include>
+							<label>$INFO[Window(Weather).Property(Hourly.12.Humidity)]</label>
+						</control>
+						<control type="label"><!-- Niederschlag -->
+							<include>HourlyPrecipitation</include>
+							<label>$INFO[Window(Weather).Property(Hourly.12.Precipitation)]</label>
+						</control>
+						<control type="label"><!-- Windrichtung -->
+							<include>HourlyListWind</include>
+							<label>$INFO[Window(Weather).Property(Hourly.12.WindDirection)][CR]$INFO[Window(Weather).Property(Hourly.12.WindSpeed)]</label>
+						</control>
+					</control>
+				</control>
+				<control type="scrollbar" id="6000">
+					<left>1190</left>
+					<top>200</top>
+					<height>247</height>
+					<include>WeatherScrollbar</include>
+					<onleft>SetFocus(51)</onleft>
+					<onright>SetFocus(51)</onright>
+				</control>
+			</control>
+		</control>
+	</include>
+
+		<!-- ####16 Tage #########################################################################-->
+	<include name="DailyHeading">
+		<top>10</top>
+		<height>49</height>
+		<align>left</align>
+		<aligny>top</aligny>
+		<font>SemiNormal</font>
+	</include>
+	<include name="DailyListDay">
+		<left>0</left>
+		<top>0</top>
+		<width>110</width>
+		<height>80</height>
+		<textcolor>ACSkinColor</textcolor>
+	</include>
+	<include name="DailyListHighTemp">
+		<left>450</left>
+		<top>0</top>
+		<width>90</width>
+		<height>80</height>
+	</include>
+	<include name="DailyListLowTemp">
+		<left>600</left>
+		<top>0</top>
+		<width>90</width>
+		<height>80</height>
+	</include>
+	<include name="DailyListPrecipitation">
+		<left>750</left>
+		<top>0</top>
+		<width>90</width>
+		<height>80</height>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="DailyListWind">
+		<left>975</left>
+		<top>0</top>
+		<width>175</width>
+		<height>80</height>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="DailyListOutlookIcon">
+		<left>165</left>
+		<top>0</top>
+		<width>64</width>
+		<height>80</height>
+		<aspectratio align="left" aligny="center">keep</aspectratio>
+	</include>
+	<include name="DailyListOutlook">
+		<left>240</left>
+		<top>0</top>
+		<width>140</width>
+		<height>80</height>
+		<wrapmultiline>true</wrapmultiline>
+	</include>
+	<include name="DailyHorizontalSeparator">
+		<control type="image">
+		<left>0</left>
+		<top>0</top>
+		<width>1090</width>
+		<height>2</height>
+		<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+		</control>
+	</include>
+
+	<include name="Weather.Daily">
+		<control type="group">
+			<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml) + !Window.IsVisible(selectdialog)</visible>
+			<include>WeatherViewBackground</include>
+			<left>0</left>
+			<top>85</top>
+			<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+			<!-- hidden slide UnFocus -->
+			<animation type="Conditional" condition="!String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days)">
+				<effect type="slide" end="-380,400" time="800" tween="sine" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Visible fade Focus -->
+			<animation type="Conditional" condition="![String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current)]">
+				<effect type="fade" delay="480" end="100" time="280" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<control type="group">
+				<left>50</left>
+				<top>85</top>
+				<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+				<control type="group">
+					<control type="label"><!-- Titel Stunde -->
+						<left>0</left>
+						<width>70</width>
+						<include>DailyHeading</include>
+						<label>$LOCALIZE[552]</label>
+					</control>
+					<control type="label"><!-- Stunde -->
+						<left>165</left>
+						<width>200</width>
+						<include>DailyHeading</include>
+						<label>$LOCALIZE[33020]</label>
+					</control>
+					<control type="label"><!-- Max -->
+						<left>450</left>
+						<width>130</width>
+						<include>DailyHeading</include>
+						<label>$LOCALIZE[393]</label>
+					</control>
+					<control type="label"><!-- Min -->
+						<left>600</left>
+						<width>130</width>
+						<include>DailyHeading</include>
+						<label>$LOCALIZE[391]</label>
+					</control>
+					<control type="label"><!-- Titel Niederschlag -->
+						<left>750</left>
+						<width>130</width>
+						<include>DailyHeading</include>
+						<label>$LOCALIZE[1448]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<left>975</left>
+						<width>130</width>
+						<include>DailyHeading</include>
+						<label>$LOCALIZE[404]</label>
+					</control>
+				</control>
+				<control type="grouplist" id="700">
+					<left>0</left>
+					<top>40</top>
+					<width>1090</width>
+					<height>405</height>
+					<itemgap>0</itemgap>
+					<orientation>vertical</orientation>
+					<onleft>9900</onleft>
+					<onright>70000</onright>
+					<onup>700</onup>
+					<ondown>700</ondown>
+					<pagecontrol>70000</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<control type="group"><!-- Tag 1 -->
+						<visible>!String.IsEmpty(Window(Weather).Property(Daily.1.ShortDay))</visible>
+						<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.1.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.1.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.1.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.1.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.1.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.1.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 2 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.2.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.2.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.2.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.2.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.2.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.2.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.2.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 3 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.3.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.3.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.3.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.3.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.3.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.3.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.3.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 4 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.4.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.4.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.4.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.4.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.4.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.4.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.4.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 5 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.5.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.5.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.5.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.5.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.5.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.5.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.5.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 6 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.6.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.6.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.6.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.6.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.6.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.6.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.6.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 7 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.7.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.7.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.7.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.7.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.7.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.7.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.7.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.7.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.7.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.7.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 8 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.8.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.8.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.8.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.8.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.8.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.8.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.8.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.8.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.8.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.8.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 9 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.9.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.9.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.9.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.9.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.9.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.9.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.9.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.9.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.9.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.9.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 10 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.10.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.10.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.10.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.10.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.10.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.10.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.10.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.10.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.10.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.10.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 11 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.11.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.11.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.11.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.11.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.11.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.11.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.11.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.11.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.11.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.11.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 12 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.12.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.12.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.12.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.12.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.12.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.12.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.12.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.12.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.12.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.12.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 13 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.13.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.13.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.13.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.13.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.13.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.13.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.13.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.13.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.13.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.13.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 14 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.14.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.14.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.14.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.14.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.14.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.14.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.14.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.14.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.14.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.14.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 15 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.15.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.15.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.15.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.15.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.15.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.15.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.15.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.15.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.15.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.15.WindSpeed)]</label>
+					</control>
+				</control>
+				<include>DailyHorizontalSeparator</include>
+				<control type="group"><!-- Tag 16 -->
+					<visible>!String.IsEmpty(Window(Weather).Property(Daily.16.ShortDay))</visible>
+					<height>82</height>
+					<control type="label"><!-- Tag / Datum -->
+						<include>DailyListDay</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.16.ShortDay)][/B][CR][COLOR=TextColor1]$INFO[Window(Weather).Property(Daily.16.ShortDate)][/COLOR]</label>
+					</control>
+					<control type="image"><!-- icon -->
+						<include>DailyListOutlookIcon</include>
+						<texture>$VAR[WeatherIconPath]$INFO[Window(Weather).Property(Daily.16.OutlookIcon)]</texture>
+					</control>
+					<control type="label"><!-- ausblick -->
+						<include>DailyListOutlook</include>
+						<label>$INFO[Window(Weather).Property(Daily.16.Outlook)]</label>
+					</control>
+					<control type="label"><!-- hoechsttemperatur -->
+						<include>DailyListHighTemp</include>
+						<label>[B]$INFO[Window(Weather).Property(Daily.16.HighTemperature)][/B]</label>
+					</control>
+					<control type="label"><!-- tiefsttemperatur -->
+						<include>DailyListLowTemp</include>
+						<label>$INFO[Window(Weather).Property(Daily.16.LowTemperature)]</label>
+					</control>
+					<control type="label"><!-- Niederschlag -->
+						<include>DailyListPrecipitation</include>
+						<label>$INFO[Window(Weather).Property(Daily.16.Precipitation)]</label>
+					</control>
+					<control type="label"><!-- Windrichtung -->
+						<include>DailyListWind</include>
+						<label>$INFO[Window(Weather).Property(Daily.16.WindDirection)][CR]$INFO[Window(Weather).Property(Daily.16.WindSpeed)]</label>
+					</control>
+				</control>
+			</control>
+				<control type="scrollbar" id="70000">
+					<description>Scroll Bar</description>
+					<left>1190</left>
+					<top>40</top>
+					<height>402</height>
+					<include>WeatherScrollbar</include>
+					<onleft>SetProperty(Weather.CurrentView,temp)</onleft>
+					<onleft>SetFocus(51)</onleft>
+					<onright>SetProperty(Weather.CurrentView,temp)</onright>
+					<onright>SetFocus(51)</onright>
+				</control>
+			</control>
+		</control>
+	</include>
+
+	<!-- #### Karten #########################################################################-->
+	<include name="Weather.Maps">
+		<control type="group">
+			<left>0</left>
+			<top>85</top>
+			<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml) + !Window.IsVisible(selectdialog)</visible>
+			<visible>Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.1.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+			<!-- hidden slide UnFocus -->
+			<animation type="Conditional" condition="!String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps)">
+				<effect type="slide" end="400,-200" time="800" tween="sine" easing="out" reversible="true"/>
+				<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- Visible fade Focus -->
+			<animation type="Conditional" condition="![String.IsEqual(Window(Weather).Property(Weather.CurrentView),16days) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),hourly) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),weekend) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),36hour) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current) | String.IsEqual(Window(Weather).Property(Weather.CurrentView),current) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1120_Quicknavmenue.xml) | Window.IsVisible(selectdialog)]">
+				<effect type="fade" delay="480" end="100" time="280" tween="sine" easing="in" reversible="true"/>
+			</animation>
+			<!-- <visible>String.IsEqual(Window(Weather).Property(Weather.CurrentView),maps)</visible>-->
+			<control type="group" id="5200">
+				<left>0</left>
+				<control type="list" id="53">
+					<viewtype label="535">list</viewtype>
+					<left>0</left>
+					<top>0</top>
+					<width>1280</width>
+					<height>500</height>
+					<scrolltime>200</scrolltime>
+					<preloaditems>2</preloaditems>
+					<pagecontrol>5001</pagecontrol>
+					<orientation>horizontal</orientation>
+					<itemlayout height="500" width="1280">
+						<control type="image">
+							<height>500</height>
+							<width>1280</width>
+							<texture>$INFO[ListItem.Icon]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<height>500</height>
+							<width>1280</width>
+							<texture>$INFO[ListItem.Property(Layer)]</texture>
+							<aspectratio>scale</aspectratio>
+							<colordiffuse>70FFFFFF</colordiffuse>
+						</control>
+					</itemlayout>
+					<focusedlayout height="500" width="1280">
+						<control type="image">
+							<height>500</height>
+							<width>1280</width>
+							<texture>$INFO[ListItem.Icon]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<height>500</height>
+							<width>1280</width>
+							<texture>$INFO[ListItem.Property(Layer)]</texture>
+							<aspectratio>scale</aspectratio>
+							<colordiffuse>70FFFFFF</colordiffuse>
+						</control>
+					</focusedlayout>
+					<content>
+						<item>
+							<label>$INFO[Window(Weather).Property(Map.1.Heading)]</label>
+							<label2>$INFO[Window(Weather).Property(Map.1.Legend)]</label2>
+							<icon>$INFO[Window(Weather).Property(Map.1.Area)]</icon>
+							<property name="Layer">$INFO[Window(Weather).Property(Map.1.Layer)]</property>
+							<onclick>noop</onclick>
+							<visible>Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.1.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+						</item>
+						<item>
+							<label>$INFO[Window(Weather).Property(Map.2.Heading)]</label>
+							<label2>$INFO[Window(Weather).Property(Map.2.Legend)]</label2>
+							<icon>$INFO[Window(Weather).Property(Map.2.Area)]</icon>
+							<property name="Layer">$INFO[Window(Weather).Property(Map.2.Layer)]</property>
+							<onclick>noop</onclick>
+							<visible>Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.2.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+						</item>
+						<item>
+							<label>$INFO[Window(Weather).Property(Map.3.Heading)]</label>
+							<label2>$INFO[Window(Weather).Property(Map.3.Legend)]</label2>
+							<icon>$INFO[Window(Weather).Property(Map.3.Area)]</icon>
+							<property name="Layer">$INFO[Window(Weather).Property(Map.3.Layer)]</property>
+							<onclick>noop</onclick>
+							<visible>Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.3.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+						</item>
+						<item>
+							<label>$INFO[Window(Weather).Property(Map.4.Heading)]</label>
+							<label2>$INFO[Window(Weather).Property(Map.4.Legend)]</label2>
+							<icon>$INFO[Window(Weather).Property(Map.4.Area)]</icon>
+							<property name="Layer">$INFO[Window(Weather).Property(Map.4.Layer)]</property>
+							<onclick>noop</onclick>
+							<visible>Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.4.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+						</item>
+						<item>
+							<label>$INFO[Window(Weather).Property(Map.5.Heading)]</label>
+							<label2>$INFO[Window(Weather).Property(Map.5.Legend)]</label2>
+							<icon>$INFO[Window(Weather).Property(Map.5.Area)]</icon>
+							<property name="Layer">$INFO[Window(Weather).Property(Map.5.Layer)]</property>
+							<onclick>noop</onclick>
+							<visible>Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.5.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+						</item>
+					</content>
+				</control>
+				<control type="scrollbar" id="5001">
+					<include>scrollbar_horizontal</include>
+					<left>20</left>
+					<top>465</top>
+					<width>1240</width>
+					<onup>SetProperty(Weather.CurrentView,temp)</onup>
+					<onup>SetFocus(51)</onup>
+					<ondown>SetProperty(Weather.CurrentView,temp)</ondown>
+					<ondown>SetFocus(51)</ondown>
+				</control>
+				<!-- Background double -->
+				<control type="image">
+					<left>0</left>
+					<top>500</top>
+					<width>1280</width>
+					<height>50</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				</control>
+				<control type="image">
+					<top>500</top>
+					<width>1280</width>
+					<height>50</height>
+					<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+				</control>
+				<!-- Background Shadow -->
+				<control type="image">
+					<left>0</left>
+					<top>-5</top>
+					<include>global_topshadow5</include>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>500</top>
+					<include>global_bottomshadow5</include>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>550</top>
+					<include>global_bottomshadow5</include>
+				</control>
+				<control type="grouplist">
+					<left>20</left>
+					<top>500</top>
+					<width>1240</width>
+					<height>50</height>
+					<itemgap>20</itemgap>
+					<aligny>center</aligny>
+					<orientation>horizontal</orientation>
+					<control type="image">
+						<width>20</width>
+						<height>50</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture colordiffuse="TextColor1" flipx="true">arrows/arrow_settings.png</texture>
+						<visible>!Container(53).HasPrevious</visible>
+					</control>
+					<control type="image">
+						<width>20</width>
+						<height>50</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture colordiffuse="ACSkinColor" flipx="true">arrows/arrow_settings.png</texture>
+						<visible>Container(53).HasPrevious</visible>
+					</control>
+					<control type="label">
+						<width>1160</width>
+						<height>50</height>
+						<font>RegularLarge</font>
+						<align>center</align>
+						<label>$INFO[Container(53).ListItem.Label,Karte: ,]</label>
+						<scroll>false</scroll>
+						<scrollout>false</scrollout>
+					</control>
+					<control type="image">
+						<width>20</width>
+						<height>50</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture colordiffuse="TextColor1">arrows/arrow_settings.png</texture>
+						<visible>!Container(53).HasNext</visible>
+					</control>
+					<control type="image">
+						<width>20</width>
+						<height>50</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture colordiffuse="ACSkinColor">arrows/arrow_settings.png</texture>
+						<visible>Container(53).HasNext</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	</includes>

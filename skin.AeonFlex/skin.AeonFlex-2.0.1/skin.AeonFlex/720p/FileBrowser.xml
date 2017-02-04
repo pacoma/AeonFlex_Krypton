@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>450</defaultcontrol>
+<coordinates>
+<system>1</system>
+<left>0</left>
+<top>0</top>
+</coordinates>
+<controls>
+	<include>CommonBackground</include>
+	<control type="label" id="412">
+		<label>-</label>
+		<include>Hiddencontrol</include>
+	</control>
+<control type="group">
+	<include>animation_window</include>
+	<control type="group"><!-- right group -->
+		<left>855</left>
+		<top>75</top>
+		<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml)</visible>
+		<control type="image">
+			<description>Hintergrund rechts</description>
+			<width>425</width>
+			<height>720</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="image">
+			<description>schatten oben</description>
+			<top>-8</top>
+			<width>425</width>
+			<include>global_topshadow8</include>
+		</control>
+		<control type="image"><!-- reflect -->
+			<left>55</left>
+			<top>350</top>
+			<width>320</width>
+			<height>320</height>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="left" aligny="top">keep</aspectratio>
+			<texture border="8" flipy="true" fallback="DefaultFile.png" diffuse="borders/poster-reflect.png" background="true">$INFO[Control.GetLabel(412)]</texture>
+		</control>
+		<control type="image">
+			<left>55</left>
+			<top>70</top>
+			<width>320</width>
+			<height>320</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
+			<texture background="true">$VAR[value_commonbackground]</texture>
+			<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>8</bordersize>
+			<visible>String.Contains(Control.GetLabel(412),special://skin/extras/overlays/)</visible>
+		</control>
+		<control type="image">
+			<left>55</left>
+			<top>70</top>
+			<width>320</width>
+			<height>320</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
+			<texture background="true" colordiffuse="ACBackgroundColorFull">$INFO[Control.GetLabel(412)]</texture>
+			<bordersize>8</bordersize>
+			<visible>String.Contains(Control.GetLabel(412),special://skin/extras/overlays/)</visible>
+		</control>
+		<control type="image">
+			<left>55</left>
+			<top>70</top>
+			<width>320</width>
+			<height>320</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
+			<texture fallback="DefaultFile.png" background="true">$INFO[Control.GetLabel(412)]</texture>
+			<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>8</bordersize>
+			<visible>!String.Contains(Control.GetLabel(412),special://skin/extras/overlays/)</visible>
+		</control>
+	</control>
+	<control type="group"><!-- left group -->
+		<top>75</top>
+		<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml)</visible>
+		<control type="image">
+			<description>schatten oben</description>
+			<top>-8</top>
+			<width>855</width>
+			<include>global_topshadow8</include>
+		</control>
+		<control type="image">
+			<description>Hintergrund links</description>
+			<width>855</width>
+			<height>720</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="image">
+			<description>Schatten</description>
+			<left>855</left>
+			<height>605</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="image">
+			<description>schatten unten fuer animation mit menu</description>
+			<left>855</left>
+			<top>605</top>
+			<height>45</height>
+			<include>global_texture_border8_rightv</include>
+			<animation effect="fade" time="2700" delay="700" start="100" end="0" tween="cubic" easing="out">WindowOpen</animation>
+		</control>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<width>855</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label" id="411">
+			<description>titel</description>
+			<left>45</left>
+			<width>800</width>
+			<include>global_label_title</include>
+		</control>
+		<control type="label">
+			<description>Header left Numitems</description>
+			<left>280</left>
+			<top>23</top>
+			<width>555</width>
+			<height>23</height>
+			<align>right</align>
+			<textcolor>TextColorFocus</textcolor>
+			<label>$LOCALIZE[31001]: $INFO[Container(450).NumItems] - $LOCALIZE[31000]: $INFO[Container(450).CurrentPage]/$INFO[Container(450).NumPages]</label>
+			<visible>Control.HasFocus(450)</visible>
+		</control>
+		<control type="label">
+			<description>Header left Numitems</description>
+			<left>280</left>
+			<top>23</top>
+			<width>555</width>
+			<height>23</height>
+			<align>right</align>
+			<textcolor>TextColorFocus</textcolor>
+			<label>$LOCALIZE[31001]: $INFO[Container(451).NumItems] - $LOCALIZE[31000]: $INFO[Container(451).CurrentPage]/$INFO[Container(451).NumPages]</label>
+			<visible>Control.HasFocus(451)</visible>
+		</control>
+		<control type="list" id="450">
+			<viewtype label="list">list</viewtype>
+			<top>83</top>
+			<width>855</width>
+			<height>480</height>
+			<pagecontrol>80</pagecontrol>
+			<onleft>413</onleft>
+			<onright condition="Integer.IsGreater(Container(450).NumPages,1)">80</onright>
+			<onright condition="!Integer.IsGreater(Container(450).NumPages,1)">413</onright>
+			<orientation>vertical</orientation>
+			<scrolltime>450</scrolltime>
+			<preloaditems>2</preloaditems>
+			<itemlayout height="40">
+				<control type="image">
+					<left>10</left>
+					<top>39</top>
+					<width>835</width>
+					<height>1</height>
+					<texture>backgrounds/line.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<left>45</left>
+					<width>760</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>756</left>
+					<width>85</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>!String.IsEmpty(ListItem.Size) + !String.IsEqual(ListItem.Size,0 B)</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="image">
+					<width>855</width>
+					<height>41</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(450)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>39</top>
+					<width>835</width>
+					<height>1</height>
+					<texture>backgrounds/line.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+					<visible>!Control.Hasfocus(450)</visible>
+				</control>
+				<control type="label">
+					<left>45</left>
+					<width>760</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.Hasfocus(450)</visible>
+				</control>
+				<control type="label">
+					<left>756</left>
+					<width>85</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>!Control.Hasfocus(450) + !String.IsEmpty(ListItem.Size) + !String.IsEqual(ListItem.Size,0 B)</visible>
+				</control>
+				<control type="label">
+					<left>45</left>
+					<width>760</width>
+					<height>41</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.Hasfocus(450)</visible>
+				</control>
+				<control type="label">
+					<left>756</left>
+					<width>85</width>
+					<height>41</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>Control.Hasfocus(450) + !String.IsEmpty(ListItem.Size) + !String.IsEqual(ListItem.Size,0 B)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>825</left>
+			<top>83</top>
+			<height>480</height>
+			<onleft>450</onleft>
+			<onright>450</onright>
+			<visible allowhiddenfocus="true">Control.HasFocus(80)</visible>
+		</control>
+		<control type="list" id="451">
+			<viewtype label="list">list</viewtype>
+			<top>83</top>
+			<width>855</width>
+			<height>480</height>
+			<pagecontrol>80</pagecontrol>
+			<onleft>413</onleft>
+			<onright>413</onright>
+			<orientation>vertical</orientation>
+			<scrolltime>450</scrolltime>
+			<preloaditems>2</preloaditems>
+			<itemlayout height="40">
+				<control type="image">
+					<left>10</left>
+					<top>39</top>
+					<width>835</width>
+					<height>1</height>
+					<texture>backgrounds/line.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<left>45</left>
+					<width>760</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>756</left>
+					<width>85</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>!String.IsEmpty(ListItem.Size) + !String.IsEqual(ListItem.Size,0 B)</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="image">
+					<width>855</width>
+					<height>41</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(451)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>39</top>
+					<width>835</width>
+					<height>1</height>
+					<texture>backgrounds/line.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+					<visible>!Control.Hasfocus(451)</visible>
+				</control>
+				<control type="label">
+					<left>45</left>
+					<width>760</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.Hasfocus(451)</visible>
+				</control>
+				<control type="label">
+					<left>756</left>
+					<width>85</width>
+					<height>41</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>!Control.Hasfocus(451) + !String.IsEmpty(ListItem.Size) + !String.IsEqual(ListItem.Size,0 B)</visible>
+				</control>
+				<control type="label">
+					<left>45</left>
+					<width>760</width>
+					<height>41</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.Hasfocus(451)</visible>
+				</control>
+				<control type="label">
+					<left>756</left>
+					<width>85</width>
+					<height>41</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>Control.Hasfocus(451) + !String.IsEmpty(ListItem.Size) + !String.IsEqual(ListItem.Size,0 B)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+	
+	</control>
+	<control type="group"><!-- button menue -->
+		<top>680</top>
+		<visible>![Window.IsVisible(virtualkeyboard) | Window.IsVisible(DialogMediaFilter.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(numericinput) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1120_Quicknavmenue.xml) | Window.IsVisible(selectdialog)]</visible>
+		<control type="image">
+			<description>hintergrund menue</description>
+			<width>1280</width>
+			<height>40</height>
+			<include>global_texture_focus</include>
+		</control>
+		<control type="image">
+			<description>schatten oben</description>
+			<top>-5</top>
+			<include>global_topshadow5</include>
+		</control>
+		<control type="grouplist" id="9001">
+			<itemgap>0</itemgap>
+			<width>1280</width>
+			<onup>451</onup>
+			<ondown>451</ondown>
+			<orientation>horizontal</orientation>
+			<control type="button" id="413">
+				<description>OK button</description>
+				<width>320</width>
+				<include>background_bottom_button</include>
+				<label>$LOCALIZE[186]</label>
+			</control>
+			<control type="button" id="414">
+				<description>Cancel button</description>
+				<width>320</width>
+				<include>background_bottom_button</include>
+				<label>$LOCALIZE[222]</label>
+			</control>
+			<control type="button" id="415">
+				<description>Create folder button</description>
+				<width>320</width>
+				<include>background_bottom_button</include>
+				<label>$LOCALIZE[119]</label>
+			</control>
+			<control type="button" id="416">
+				<description>Flip Image button</description>
+				<width>320</width>
+				<include>background_bottom_button</include>
+				<label>$LOCALIZE[749]</label>
+			</control>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>5</left>
+			<top>68</top>
+			<height>580</height>
+			<onleft>9900</onleft>
+			<onright>51</onright>
+			<visible allowhiddenfocus="true">Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</control>
+	
+</controls>
+</window>

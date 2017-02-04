@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<controls>
+<control type="label" id="5358">
+	<left>-100</left>
+	<top>-100</top>
+	<width>1</width>
+	<height>1</height>
+	<label>-</label>
+	<font>-</font>
+	<texturenofocus>-</texturenofocus>
+	<texturefocus>-</texturefocus>
+	<label>$INFO[Window(home).Property(InfobottomBar)]</label>
+</control>
+<control type="group"><!-- default -->
+	<visible>![Window.IsVisible(DialogConfirm.xml) | Window.IsVisible(DialogNotification.xml) | !Player.Muted + Window.IsVisible(volumebar) | Window.IsVisible(extendedprogressdialog)]</visible>
+	<visible>!Window.IsVisible(movieinformation) + !Window.IsVisible(DialogMusicInfo.xml)</visible>
+	<visible>Window.IsVisible(Home) + !Skin.HasSetting(ModernHome)</visible>
+	<include>animation_topdialog_popup</include>
+	<include>dialog_bar</include>
+	<control type="label">
+		<include>dialog_label1</include>
+		<include content="dialog_label1">
+			<param name="DialogHeaderLabel1" value="$LOCALIZE[10213]" />
+		</include>
+	</control>
+	<control type="label">
+		<include content="dialog_label2">
+			<param name="DialogHeaderLabel2" value="$LOCALIZE[31277]" />
+		</include>
+	</control>
+</control>
+
+<control type="group">
+	<visible>Window.IsVisible(Home) + Skin.HasSetting(ModernHome)</visible>
+	<control type="group"><!-- progress kreis -->
+		<visible>Window.IsVisible(Home) + Skin.HasSetting(ModernHome)</visible>
+		<include>animation_vhoc_fade</include>
+		<control type="label">
+			<left>590</left>
+			<top>330</top>
+			<width>100</width>
+			<height>100</height>
+			<align>center</align>
+			<textcolor>TextColor3</textcolor>
+			<font>Caching-progressicon</font>
+			<label>Ņ</label>
+			<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+		</control>
+		<control type="label">
+			<left>590</left>
+			<top>330</top>
+			<width>100</width>
+			<height>100</height>
+			<align>center</align>
+			<textcolor>ACSkinColor</textcolor>
+			<font>Caching-progressicon</font>
+			<label>œ</label>
+			<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+		</control>
+		<control type="label">
+			<top>410</top>
+			<width>1280</width>
+			<height>100</height>
+			<aligny>top</aligny>
+			<align>center</align>
+			<textcolor>TextColorFocus</textcolor>
+			<label>$LOCALIZE[10213][CR]$LOCALIZE[31277]</label>
+		</control>
+	</control>
+</control>
+
+
+
+
+<control type="group"><!-- infodialoge -->
+	<visible>Window.IsVisible(movieinformation) | Window.IsVisible(DialogMusicInfo.xml)</visible>
+	<control type="image">
+		<width>1280</width>
+		<height>720</height>
+		<texture>White.png</texture>
+		<colordiffuse>ACBackgroundColor_light</colordiffuse>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" start="0" end="100" time="300" tween="cubic" easing="out" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" delay="500" start="100" end="0" time="600" tween="cubic" easing="out" />
+		</animation>
+	</control>
+	<control type="group">
+		<include>animation_vhoc_fade</include>
+		<control type="image">
+			<description>Logo</description>
+			<left>555</left>
+			<top>180</top>
+			<width>170</width>
+			<height>170</height>
+			<texture colordiffuse="ACSkinColor">logo_flex_sw.png</texture>
+		</control>
+		<control type="image">
+			<left>555</left>
+			<top>180</top>
+			<width>170</width>
+			<height>170</height>
+			<texture colordiffuse="TextColor1">logo_flex_text.png</texture>
+		</control>
+		<control type="label">
+			<description>Titel</description>
+			<left>40</left>
+			<top>330</top>
+			<width>1200</width>
+			<height>60</height>
+			<font>SemiLarge</font>
+			<align>center</align>
+			<label>$LOCALIZE[10213]</label>
+		</control>
+		<control type="textbox">
+			<description>Subtitel</description>
+			<left>40</left>
+			<top>380</top>
+			<width>1200</width>
+			<include>PlotNormal44</include>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>Extendedinfo</label>
+			<visible>String.IsEqual(Window(home).Property(InfobottomBar),ExtendedInfo)</visible>
+		</control>
+		<control type="textbox">
+			<description>Subtitel</description>
+			<left>40</left>
+			<top>410</top>
+			<width>1200</width>
+			<include>PlotNormal44</include>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>$LOCALIZE[31277]</label>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+<defaultcontrol always="true">1000</defaultcontrol>
+<onunload>ClearProperty(ExtendedInfoSearchString,home)</onunload>
+<coordinates>
+	<system>1</system>
+	<left>370</left>
+	<top>100</top>
+</coordinates>
+<controls>
+	<control type="group">
+		<include>animation_window</include>
+		<control type="group" id="54111">
+			<visible>false</visible>
+			<control type="list" id="750">
+				<include>Compaircontainer</include>
+			</control>
+		</control>
+		<control type="group" id="50112">
+			<visible>false</visible>
+			<control type="list" id="150">
+				<include>Compaircontainer</include>
+			</control>
+		</control>
+		<control type="group" id="50113">
+			<visible>false</visible>
+			<control type="list" id="850">
+				<include>Compaircontainer</include>
+			</control>
+		</control>
+		<control type="group">
+			<visible>false</visible>
+			<control type="list" id="1050">
+				<include>Compaircontainer</include>
+			</control>
+		</control>
+		<control type="group">
+			<visible>false</visible>
+			<control type="list" id="450">
+				<include>Compaircontainer</include>
+			</control>
+		</control>
+	</control>	
+		<!-- Darsteller 1000 -->
+	<control type="group" id="50111">
+		<left>0</left>
+		<top>190</top>
+		<include>animation_dialog_popup</include>
+		<control type="group">
+			<width>788</width>
+			<height>365</height>
+			<control type="group">
+				<include content="global_dialog_mid_bg">
+					<param name="global_dialog_mid_bg-left" value="0" />
+					<param name="global_dialog_mid_bg-width" value="798" />
+					<param name="global_dialog_mid_bg-innerwidth" value="624" />
+					<param name="global_dialog_mid_bg-height" value="365" />
+					<param name="global_dialog_mid_bg-headerlabel" value="$LOCALIZE[31067] $INFO[Window.Property(Title)]" />
+					<param name="global_dialog_mid_headerid" value="-" />
+				</include>
+				<control type="list" id="1000"><!-- List -->
+					<top>53</top>
+					<width>625</width>
+					<height>280</height>
+					<onleft>90</onleft>
+					<onright>90</onright>
+					<itemgap>0</itemgap>
+					<pagecontrol>-</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemlayout width="625" height="40">
+						<control type="image">
+							<left>10</left>
+							<top>39</top>
+							<width>625</width>
+							<height>1</height>
+							<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<width>500</width>
+							<height>41</height>
+							<scroll>false</scroll>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout width="625" height="40">
+						<control type="image">
+							<height>40</height>
+							<width>625</width>
+							<include>global_listfocustexture</include>
+							<visible>Control.HasFocus(1000)</visible>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>39</top>
+							<width>625</width>
+							<height>1</height>
+							<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+							<visible>!Control.HasFocus(1000)</visible>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<width>500</width>
+							<height>41</height>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Control.HasFocus(1000)</visible>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<width>500</width>
+							<height>41</height>
+							<scroll>false</scroll>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!Control.HasFocus(1000)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<control type="group"><!-- Button Menue -->
+				<left>625</left>
+				<top>54</top>
+				<control type="grouplist" id="90">
+					<onleft>1000</onleft>
+					<onright>1000</onright>
+					<onup>90</onup>
+					<ondown>90</ondown>
+					<control type="button" id="7">
+						<description>Cancel button</description>
+						<label>$LOCALIZE[222]</label>
+						<include>dialog_menuebutton</include>
+						<onclick>Close</onclick>
+					</control>
+				</control>
+			</control>
+			<include content="global_dialog_mid_dividershadow-right">
+				<param name="global_dialog_mid_dividershadow-right-left" value="624" />
+				<param name="global_dialog_mid_dividershadow-right-height" value="355" />
+			</include>
+		</control>
+		<control type="group"><!-- icon  -->
+			<left>-240</left>
+			<top>-5</top>
+			<control type="image">
+				<description>background menue</description>
+				<width>246</width>
+				<height>365</height>
+				<texture border="5" flipx="true" colordiffuse="ACBackgroundColor">shadows/dialoge_inner.png</texture>
+			</control>
+			<control type="image">
+				<description>background menue</description>
+				<width>246</width>
+				<height>365</height>
+				<texture border="5" flipx="true" colordiffuse="$VAR[AC_value_shadow_color]">shadows/dialoge_shadow-left.png</texture>
+			</control>
+			<control type="image">
+				<width>246</width>
+				<height>365</height>
+				<bordersize>5</bordersize>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio aligny="center" align="center">scale</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultActor.png">$INFO[Container(1000).ListItem.Thumb]</texture>
+			</control>
+		</control>
+		<include content="global_dialog_mid_dividershadow-right">
+			<param name="global_dialog_mid_dividershadow-right-left" value="0" />
+			<param name="global_dialog_mid_dividershadow-right-height" value="355" />
+		</include>
+	</control>
+</controls>
+</window>

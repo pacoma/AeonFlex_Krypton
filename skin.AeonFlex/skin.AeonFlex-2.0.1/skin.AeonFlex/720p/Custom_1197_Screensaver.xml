@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1197">
+<defaultcontrol>119</defaultcontrol>
+<visible>System.ScreenSaverActive + !Window.IsVisible(fullscreenvideo)</visible>
+<zorder>3</zorder>
+<controls>
+<control type="button" id="119">
+	<description>focus button</description>
+	<onclick>Dialog.close(1197)</onclick>
+	<width>1920</width>
+	<height>1080</height>
+	<include>Hiddencontrol</include>
+	<onup>Dialog.close(1197)</onup>
+	<ondown>Dialog.close(1197)</ondown>
+	<onleft>Dialog.close(1197)</onleft>
+	<onright>Dialog.close(1197)</onright>
+</control>
+<control type="group">
+	<visible>Skin.HasSetting(AKNScreensaver)</visible>
+	<depth>1.3</depth>
+	<control type="image">
+		<description>hintergrund</description>
+		<width>1280</width>
+		<height>720</height>
+		<texture colordiffuse="ACBackgroundColor_heavy">White.png</texture>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" start="0" end="100" delay="100" time="1250" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		</animation>
+	</control>
+	<control type="group"><!-- clock slideshow-->
+		<description>Uhr</description>
+		<left>440</left>
+		<top>160</top>
+		<visible>!String.IsEqual(skin.string(ClockLayout),Progress) | String.IsEmpty(skin.string(ClockLayout))</visible>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" start="0" end="100" delay="100" time="1250" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		</animation>
+		<control type="image">
+			<description>Ziffernblatt</description>
+			<width>400</width>
+			<height>400</height>
+			<texture colordiffuse="$VAR[ClockZifferncolor]">$VAR[ClockPath]zahlen.png</texture>
+			<align>center</align>
+			<aligny>center</aligny>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="0" end="43" time="0" />
+			</animation>
+		</control>
+		<control type="image">
+			<width>400</width>
+			<height>400</height>
+			<texture>$VAR[ClockPath]schrauben.png</texture>
+		</control>
+		<control type="image">
+			<description>Stundenzeiger</description>
+			<width>400</width>
+			<height>400</height>
+			<texture colordiffuse="$VAR[ClockZeigercolor]">$VAR[clockSZ]</texture>
+			<align>center</align>
+			<aligny>center</aligny>
+		</control>
+		<control type="image">
+			<description>Minutenzeiger</description>
+			<width>400</width>
+			<height>400</height>
+			<texture colordiffuse="$VAR[ClockZeigercolor]">$VAR[clockMZ]</texture>
+			<align>center</align>
+			<aligny>center</aligny>
+		</control>
+		<control type="image">
+			<description>sekundenzeiger</description>
+			<width>400</width>
+			<height>400</height>
+			<texture colordiffuse="$VAR[ClockSekundenZeigercolor]">$VAR[clockSCZ]</texture>
+			<align>center</align>
+			<aligny>center</aligny>
+		</control>
+	</control>
+	<control type="group">
+		<top>550</top>
+		<description>center Title</description>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" delay="1000" time="600" start="0" end="100" tween="cubic" easing="out" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" time="100" start="100" end="0" tween="cubic" easing="out" />
+		</animation>
+		<control type="label">
+			<description>titel</description>
+			<width>1280</width>
+			<height>30</height>
+			<font>RegularNormal</font>
+			<textcolor>TextColor1</textcolor>
+			<align>center</align>
+			<label>Aeon flex $VAR[flex_value_skinversion]</label>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<top>30</top>
+			<width>1280</width>
+			<height>30</height>
+			<font>LightBig</font>
+			<textcolor>TextColor1</textcolor>
+			<align>center</align>
+			<label>« $LOCALIZE[31015] »</label>
+		</control>
+	</control>
+	<control type="group"><!-- progress slideshow -->
+		<left>140</left>
+		<top>20</top>
+		<width>1000</width>
+		<height>700</height>
+		<visible>String.IsEqual(skin.string(ClockLayout),Progress)</visible>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" start="0" end="100" delay="1250" time="1250" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		</animation>
+		<control type="label">
+			<width>1000</width>
+			<height>700</height>
+			<align>center</align>
+			<textcolor>TextColor3</textcolor>
+			<font>screensaver-progressicon</font>
+			<label>Ņ</label>
+			<animation effect="fade" start="30" end="100" time="6000" pulse="true" condition="true">Conditional</animation>
+		</control>
+		<control type="label">
+			<width>1000</width>
+			<height>700</height>
+			<align>center</align>
+			<textcolor>ACSkinColor</textcolor>
+			<font>screensaver-progressicon</font>
+			<label>$VAR[value_slideshowprogressicon]</label>
+			<animation effect="fade" start="30" end="100" time="6000" pulse="true" condition="true">Conditional</animation>
+		</control>
+		<control type="label">
+			<width>1000</width>
+			<height>700</height>
+			<align>center</align>
+			<textcolor>ACSkinColor</textcolor>
+			<font>screensaver-progressicon</font>
+			<label>œ</label>
+			<animation effect="fade" start="30" end="100" time="1800" pulse="true" condition="true">Conditional</animation>
+		</control>
+	</control>
+	<control type="videowindow">
+		<description>Fake preview fuer zeitlabels</description>
+		<left>-5</left>
+		<top>-5</top>
+		<width>5</width>
+		<height>5</height>
+		<visible>Player.HasVideo</visible>
+	</control>
+	<control type="group"><!-- nowplaying -->
+		<top>600</top>
+		<visible>Player.HasMedia</visible>
+		<control type="grouplist"><!-- Video -->
+			<left>40</left>
+			<width>1200</width>
+			<height>100</height>
+			<itemgap>0</itemgap>
+			<align>center</align>
+			<visible>Player.HasVideo</visible>
+			<orientation>horizontal</orientation>
+			<control type="label">
+				<width>40</width>
+				<height>45</height>
+				<font>Icons-Small</font>
+				<label>$VAR[Player_Statusicon]</label>
+			</control>
+			<control type="label">
+				<description>Serien Titel episoden</description>
+				<width>auto</width>
+				<height>45</height>
+				<align>center</align>
+				<label>$INFO[VideoPlayer.TVShowTitle,, ]$INFO[VideoPlayer.Title]</label>
+			</control>
+		</control>
+		<control type="grouplist">
+			<left>40</left>
+			<top>40</top>
+			<width>1200</width>
+			<height>35</height>
+			<itemgap>0</itemgap>
+			<align>center</align>
+			<visible>Player.HasVideo</visible>
+			<orientation>horizontal</orientation>
+			<control type="label">
+				<description>Subtitel Episoden</description>
+				<width>auto</width>
+				<height>35</height>
+				<align>center</align>
+				<font>RegularSmall</font>
+				<label>$VAR[player_episodeprefix]$INFO[VideoPlayer.Episode,,. ]</label>
+				<visible>VideoPlayer.Content(episodes)</visible>
+			</control>
+			<control type="label">
+				<description>Subtitel Episoden Zeit</description>
+				<width>auto</width>
+				<height>35</height>
+				<align>center</align>
+				<font>RegularSmall</font>
+				<label>$INFO[Player.Time]$INFO[Player.Duration,/,]</label>
+				<visible>VideoPlayer.Content(episodes)</visible>
+			</control>
+			<control type="label">
+				<description>Zeit Film/Dateien</description>
+				<width>1200</width>
+				<height>35</height>
+				<align>center</align>
+				<font>RegularSmall</font>
+				<label>$INFO[Player.Time]$INFO[Player.Duration,/,]</label>
+				<visible>!VideoPlayer.Content(episodes)</visible>
+			</control>
+		</control>
+		<control type="grouplist"><!-- audio -->
+			<left>40</left>
+			<width>1200</width>
+			<height>100</height>
+			<itemgap>0</itemgap>
+			<align>center</align>
+			<visible>Player.HasAudio</visible>
+			<orientation>horizontal</orientation>
+			<control type="label">
+				<width>40</width>
+				<height>45</height>
+				<font>Icons-Small</font>
+				<label>$VAR[Player_Statusicon]</label>
+			</control>
+			<control type="label">
+				<description>Titel</description>
+				<width>auto</width>
+				<height>45</height>
+				<scrollspeed>50</scrollspeed>
+				<scroll>true</scroll>
+				<label>$INFO[MusicPlayer.TrackNumber,, ]$INFO[MusicPlayer.Title]</label>
+			</control>
+		</control>
+		<control type="label">
+			<description>Subtitel</description>
+			<left>40</left>
+			<top>40</top>
+			<width>1200</width>
+			<height>35</height>
+			<align>center</align>
+			<font>RegularSmall</font>
+			<label>$INFO[MusicPlayer.Artist]</label>
+			<visible>Player.HasAudio</visible>
+		</control>
+		<control type="grouplist">
+			<left>40</left>
+			<top>95</top>
+			<width>1200</width>
+			<height>100</height>
+			<itemgap>0</itemgap>
+			<align>left</align>
+			<visible>Player.HasAudio</visible>
+			<animation effect="slide" start="0,0" end="0,-45" time="0" condition="String.IsEmpty(MusicPlayer.Artist)">Conditional</animation><!-- slide epty artist -->
+			<control type="label">
+				<description>Subtitel Zeit</description>
+				<width>1200</width>
+				<height>35</height>
+				<align>center</align>
+				<font>RegularSmall</font>
+				<label>$INFO[Player.Time]$INFO[Player.Duration, / ,]</label>
+				<visible>[Integer.IsGreater(Player.TimeRemaining,20) + !String.IsEmpty(MusicPlayer.offset(1).Title)] | String.IsEmpty(MusicPlayer.offset(1).Title)</visible>
+			</control>
+			<control type="label">
+				<description>Subtitel naechstes 20 Sek. vorm Ende wenn vorhanden</description>
+				<width>1200</width>
+				<height>45</height>
+				<align>center</align>
+				<label>Folgt: $INFO[MusicPlayer.offset(1).Title]</label>
+				<visible>!Integer.IsGreater(Player.TimeRemaining,20) + !String.IsEmpty(MusicPlayer.offset(1).Title)</visible>
+			</control>
+		</control>
+	</control>
+	<control type="group">
+		<description>Info links Date/Wetter</description>
+		<top>350</top>
+		<left>100</left>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" delay="1000" time="600" start="0" end="100" tween="cubic" easing="out" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" time="100" start="100" end="0" tween="cubic" easing="out" />
+		</animation>
+		<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
+		<control type="label">
+			<description>Datum</description>
+			<width>500</width>
+			<height>20</height>
+			<font>LightLarge</font>
+			<label>$VAR[flex_value_systemdate]</label>
+		</control>
+		<control type="label">
+			<description>Wetter Standort</description>
+			<top>20</top>
+			<width>500</width>
+			<height>30</height>
+			<font>RegularNormal</font>
+			<label>$INFO[Window(Weather).Property(Current.Location)]</label>
+		</control>
+	</control>
+	<control type="group">
+		<description>Info rechts Wetter temp/ausblick</description>
+		<top>350</top>
+		<left>680</left>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" delay="1000" time="600" start="0" end="100" tween="cubic" easing="out" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" time="100" start="100" end="0" tween="cubic" easing="out" />
+		</animation>
+		<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
+		<control type="label">
+			<description>Temperatur</description>
+			<align>right</align>
+			<width>500</width>
+			<height>20</height>
+			<font>LightLarge</font>
+			<label>$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+		</control>
+		<control type="label">
+			<description>Ausblick</description>
+			<top>20</top>
+			<width>500</width>
+			<height>30</height>
+			<font>RegularNormal</font>
+			<align>right</align>
+			<label>$INFO[Window(Weather).Property(Current.Condition)]</label>
+		</control>
+	</control>
+</control>
+</controls>
+</window>
+

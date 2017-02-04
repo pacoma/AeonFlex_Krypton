@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">9000</defaultcontrol>
+<controls>
+<include>CommonBackground</include>
+<control type="group">
+	<left>96</left>
+	<top>85</top>
+	<include>animation_dialog_popup</include>
+	<visible>$EXP[HasNotDialogPopup] + !Window.isVisible(profilesettings)</visible>
+	<include content="global_dialog_mid_singlebg">
+		<param name="global_dialog_mid_bg-width" value="1087" />
+		<param name="global_dialog_mid_bg-height" value="443" />
+	</include>
+	<control type="group"><!-- left Menue -->
+		<control type="label">
+			<description>Button menue header</description>
+			<width>240</width>
+			<height>49</height>
+			<textoffsetx>10</textoffsetx>
+			<font>SemiBig</font>
+			<label>$LOCALIZE[31160]</label>
+		</control>
+		<control type="list" id="9000"><!-- Button Section -->
+			<top>73</top>
+			<width>240</width>
+			<height>100</height>
+			<onleft>9010</onleft>
+			<onright>9010</onright>
+			<onup>9000</onup>
+			<ondown>9000</ondown>
+			<itemlayout height="41">
+				<control type="label">
+					<width>240</width>
+					<height>41</height>
+					<textoffsetx>10</textoffsetx>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="41">
+				<control type="image">
+					<width>240</width>
+					<height>41</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.HasFocus(9000)</visible>
+				</control>
+				<control type="label">
+					<description>Focuslabel</description>
+					<width>240</width>
+					<height>41</height>
+					<textoffsetx>10</textoffsetx>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.HasFocus(9000)</visible>
+				</control>
+				<control type="label">
+					<description>UnFocuslabel</description>
+					<width>240</width>
+					<height>41</height>
+					<textoffsetx>10</textoffsetx>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.HasFocus(9000)</visible>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="1">
+					<label>$LOCALIZE[20096]</label>
+					<onclick>noop</onclick>
+					<icon>-</icon>
+				</item>
+				<item id="2">
+					<label>$LOCALIZE[13200]</label>
+					<onclick>noop</onclick>
+					<icon>-</icon>
+				</item>
+			</content>
+		</control>
+	</control>
+	<control type="group"><!-- infos mitte -->
+		<left>240</left>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<width>674</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>30</left>
+			<width>604</width>
+			<include>global_label_title</include>
+			<label>$LOCALIZE[13200] - $LOCALIZE[5]</label>
+		</control>
+		<control type="group" id="9010">
+			<top>73</top>
+			<control type="grouplist" id="9001"><!-- login -->
+				<width>674</width>
+				<height>373</height>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onup>9001</onup>
+				<ondown>9001</ondown>
+				<visible>Container(9000).Hasfocus(1)</visible>
+				<control type="radiobutton" id="4">
+					<description>enable login screen</description>
+					<width>674</width>
+					<textwidth>500</textwidth>
+					<textoffsetx>30</textoffsetx>
+					<radioposx>585</radioposx>
+					<label>$LOCALIZE[20096]</label>
+				</control>
+				<control type="button" id="5">
+					<description>auto login</description>
+					<width>674</width>
+					<textwidth>500</textwidth>
+					<textoffsetx>30</textoffsetx>
+					<label>$LOCALIZE[33084]</label>
+					<label2>$INFO[System.ProfileAutoLogin]</label2>
+					<enable>!System.HasLoginScreen</enable>
+				</control>
+			</control>
+			<control type="list" id="2"><!-- profiles -->
+				<width>674</width>
+				<height>329</height>
+				<orientation>vertical</orientation>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>9010</onup>
+				<ondown>9010</ondown>
+				<visible>Container(9000).Hasfocus(2)</visible>
+				<viewtype label="21371">list</viewtype>
+				<itemlayout height="41">
+					<control type="label">
+						<width>605</width>
+						<height>41</height>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>10</textoffsety>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="41">
+					<control type="image">
+						<width>674</width>
+						<height>41</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.HasFocus(2)</visible>
+					</control>
+					<control type="label">
+						<description>Focuslabel</description>
+						<width>605</width>
+						<height>41</height>
+						<textoffsetx>30</textoffsetx>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(2)</visible>
+					</control>
+					<control type="label">
+						<description>UnFocuslabel</description>
+						<width>605</width>
+						<height>41</height>
+						<textoffsetx>30</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(2)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- icon und details rechts -->
+		<left>914</left>
+		<top>53</top>
+		<control type="image"><!-- reflect -->
+			<left>15</left>
+			<top>110</top>
+			<width>120</width>
+			<height>120</height>
+			<bordersize>5</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<aspectratio align="left" aligny="top">keep</aspectratio>
+			<texture border="5" flipy="true" fallback="DefaultUser.png" diffuse="borders/poster-reflect.png" background="true">$INFO[Container(2).Listitem.Icon]</texture>
+		</control>
+		<control type="image">
+			<left>15</left>
+			<width>120</width>
+			<height>120</height>
+			<aspectratio scalediffuse="true" align="left">keep</aspectratio>
+			<texture fallback="DefaultUser.png" background="true">$INFO[Container(2).Listitem.Icon]</texture>
+			<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>5</bordersize>
+		</control>
+		<control type="label">
+			<top>180</top>
+			<width>163</width>
+			<height>20</height>
+			<textoffsetx>10</textoffsetx>
+			<font>SemiSmall</font>
+			<label>$LOCALIZE[31319]</label>
+		</control>
+		<control type="label">
+			<description>description area</description>
+			<top>200</top>
+			<width>163</width>
+			<height>20</height>
+			<textoffsetx>10</textoffsetx>
+			<font>RegularSmall</font>
+			<label>$INFO[Container(2).ListItem.Label]</label>
+		</control>
+		<control type="label">
+			<top>230</top>
+			<width>163</width>
+			<height>20</height>
+			<textoffsetx>10</textoffsetx>
+			<font>SemiSmall</font>
+			<label>$LOCALIZE[31016]</label>
+		</control>
+		<control type="label">
+			<description>description area</description>
+			<top>250</top>
+			<width>163</width>
+			<height>20</height>
+			<textoffsetx>10</textoffsetx>
+			<font>RegularSmall</font>
+			<label fallback="NA">$INFO[Container(2).ListItem.Label2]</label>
+		</control>
+	</control>
+	<control type="image">
+		<left>232</left>
+		<height>433</height>
+		<include>global_texture_border8_leftv</include>
+	</control>
+	<include content="global_dialog_mid_dividershadow-right">
+		<param name="global_dialog_mid_dividershadow-right-left" value="914" />
+		<param name="global_dialog_mid_dividershadow-right-height" value="433" />
+	</include>
+</control>
+</controls>
+</window>

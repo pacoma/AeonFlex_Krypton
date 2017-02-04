@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window type="dialog" id="1193">
+<visible>Window.IsVisible(fullscreenvideo)</visible>
+<controls>
+<control type="group">
+	<visible>!VideoPlayer.Content(LiveTV) + !Window.IsActive(seekbar) + !Integer.IsGreater(VideoPlayer.Time,10)</visible>
+	<visible>[Player.Playing + !Skin.HasSetting(StillwatchingOSDoverlay) + !Window.IsVisible(Custom_1113_Settings_Dialogs.xml)]</visible>
+	<include>StillwatchingWidget</include>
+</control>
+<control type="group">
+	<left>0</left>
+	<top>0</top>
+	<visible>[[String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + Window.IsVisible(Custom_1113_Settings_Dialogs.xml)] | !String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024])] + ![Window.IsVisible(osdvideosettings) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(SubtitleSearch)]</visible>
+	<animation effect="slide" end="0,100" time="230" condition="[Window.IsVisible(DialogConfirm.xml) | Window.IsVisible(extendedprogressdialog) | Window.IsVisible(DialogNotification.xml) | !Player.Muted +  Window.IsVisible(volumebar)]">Conditional</animation>
+	<animation effect="slide" end="10,10" time="0" condition="String.IsEqual(skin.string(FSLogo),1)">Conditional</animation>
+	<animation effect="slide" end="20,10" time="0" condition="String.IsEqual(skin.string(FSLogo),2)">Conditional</animation>
+	<animation effect="slide" end="30,10" time="0" condition="String.IsEqual(skin.string(FSLogo),3)">Conditional</animation>
+	<animation effect="slide" end="40,10" time="0" condition="String.IsEqual(skin.string(FSLogo),4)">Conditional</animation>
+	<animation effect="slide" end="40,10" time="0" condition="String.IsEmpty(skin.string(FSLogo))">Conditional</animation>
+	<animation effect="slide" end="50,10" time="0" condition="String.IsEqual(skin.string(FSLogo),5)">Conditional</animation>
+
+	<animation effect="slide" end="10,30" time="0" condition="String.IsEqual(skin.string(FSLogo),6)">Conditional</animation>
+	<animation effect="slide" end="20,30" time="0" condition="String.IsEqual(skin.string(FSLogo),7)">Conditional</animation>
+	<animation effect="slide" end="30,30" time="0" condition="String.IsEqual(skin.string(FSLogo),8)">Conditional</animation>
+	<animation effect="slide" end="40,30" time="0" condition="String.IsEqual(skin.string(FSLogo),9)">Conditional</animation>
+	<animation effect="slide" end="50,30" time="0" condition="String.IsEqual(skin.string(FSLogo),10)">Conditional</animation>
+
+	<animation effect="slide" end="1020,10" time="0" condition="String.IsEqual(skin.string(FSLogo),11)">Conditional</animation>
+	<animation effect="slide" end="1010,10" time="0" condition="String.IsEqual(skin.string(FSLogo),12)">Conditional</animation>
+	<animation effect="slide" end="1000,10" time="0" condition="String.IsEqual(skin.string(FSLogo),13)">Conditional</animation>
+	<animation effect="slide" end="990,10" time="0" condition="String.IsEqual(skin.string(FSLogo),14)">Conditional</animation>
+	<animation effect="slide" end="980,10" time="0" condition="String.IsEqual(skin.string(FSLogo),15)">Conditional</animation>
+
+	<animation effect="slide" end="1020,30" time="0" condition="String.IsEqual(skin.string(FSLogo),16)">Conditional</animation>
+	<animation effect="slide" end="1010,30" time="0" condition="String.IsEqual(skin.string(FSLogo),17)">Conditional</animation>
+	<animation effect="slide" end="1000,30" time="0" condition="String.IsEqual(skin.string(FSLogo),18)">Conditional</animation>
+	<animation effect="slide" end="990,30" time="0" condition="String.IsEqual(skin.string(FSLogo),19)">Conditional</animation>
+	<animation effect="slide" end="980,30" time="0" condition="String.IsEqual(skin.string(FSLogo),20)">Conditional</animation>
+	<control type="image">
+		<width>250</width>
+		<height>100</height>
+		<aspectratio align="left" aligny="bottom">stretch</aspectratio>
+		<texture>$VAR[playerart_value_logo]</texture>
+		<visible>!Skin.HasSetting(noFSLogoOnInfo) + !String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024]) + !Integer.IsGreater(skin.string(FSLogo),10)</visible>
+	</control>
+	<control type="image">
+		<width>250</width>
+		<height>100</height>
+		<aspectratio align="right" aligny="bottom">stretch</aspectratio>
+		<texture>$VAR[playerart_value_logo]</texture>
+		<visible>!Skin.HasSetting(noFSLogoOnInfo) + !String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024]) + Integer.IsGreater(skin.string(FSLogo),10)</visible>
+	</control>
+	<control type="image"><!-- nur bei info -->
+		<width>250</width>
+		<height>100</height>
+		<aspectratio align="left" aligny="bottom">keep</aspectratio>
+		<texture>$VAR[playerart_value_logo]</texture>
+		<visible>!String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024]) + Skin.HasSetting(noFSLogoOnInfo) + [Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Window.IsVisible(fullscreeninfo)]</visible>
+	</control>
+	<control type="image"><!-- nur bei info und was laeuft -->
+		<width>250</width>
+		<height>100</height>
+		<aspectratio align="left" aligny="bottom">keep</aspectratio>
+		<texture>$VAR[playerart_value_logo]</texture>
+		<visible>!String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024]) + Skin.HasSetting(noFSLogoOnInfo) + Player.Playing + !Skin.HasSetting(StillwatchingOSDoverlay) + !Integer.IsGreater(VideoPlayer.Time,10)</visible>
+	</control>
+</control>
+</controls>
+</window>
+

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>20</defaultcontrol>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<include>CommonBackground</include>
+	<control type="group"><!-- Left Panel -->
+		<left>0</left>
+		<top>85</top>
+		<width>620</width>
+		<height>647</height>
+		<animation effect="slide" start="-640" end="0" time="600" tween="cubic" easing="out">WindowOpen</animation>
+		<animation effect="slide" start="0" end="-640" time="600" tween="cubic" easing="out">WindowClose</animation>
+		<animation effect="slide" start="-640" end="0" time="600" tween="cubic" easing="out">Visible</animation>
+		<animation effect="slide" start="0" end="-640" time="600" tween="cubic" easing="out">Hidden</animation>
+		<animation effect="fade" time="200" start="75" end="100" reversible="false" condition="Control.HasFocus(20)">Conditional</animation>
+		<animation effect="fade" time="200" start="100" end="75" reversible="false" condition="Control.HasFocus(21)">Conditional</animation>
+		<visible>$EXP[HasNotDialogPopup]</visible>
+		<control type="image">
+			<description>background left</description>
+			<width>620</width>
+			<height>720</height>
+			<include>global_texture_heavy</include>
+		</control>
+		<control type="image">
+			<description>schatten oben</description>
+			<top>-8</top>
+			<width>620</width>
+			<include>global_topshadow8</include>
+		</control>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<width>620</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label" id="101">
+			<description>titel</description>
+			<left>20</left>
+			<width>475</width>
+			<include>global_label_title</include>
+		</control>
+		<control type="label">
+			<description>Header right Numitems</description>
+			<left>305</left>
+			<top>600</top>
+			<width>300</width>
+			<height>22</height>
+			<align>right</align>
+			<label>$LOCALIZE[31001]: $INFO[Container(20).NumItems] - $LOCALIZE[31002]:  $INFO[Container(20).CurrentPage]/$INFO[Container(20).NumPages]</label>
+		</control>
+		<control type="list" id="20"><!-- Left list -->
+			<viewtype label="list">list</viewtype>
+			<top>65</top>
+			<width>620</width>
+			<height>515</height>
+			<scrolltime>450</scrolltime>
+			<onleft>close</onleft>
+			<onright>21</onright>
+			<onup>20</onup>
+			<ondown>20</ondown>
+			<itemlayout width="620" height="50">
+				<control type="image">
+					<width>620</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>500</width>
+					<height>50</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>517</left>
+					<width>85</width>
+					<height>50</height>
+					<align>right</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="620" height="50">
+				<control type="image">
+					<width>620</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					<visible>!Control.HasFocus(20)</visible>
+				</control>
+				<control type="image">
+					<width>620</width>
+					<height>50</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.HasFocus(20)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>500</width>
+					<height>50</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.HasFocus(20)</visible>
+				</control>
+				<control type="label">
+					<left>517</left>
+					<width>85</width>
+					<height>50</height>
+					<align>right</align>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>Control.HasFocus(20)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>500</width>
+					<height>50</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.HasFocus(20)</visible>
+				</control>
+				<control type="label">
+					<left>517</left>
+					<width>85</width>
+					<height>50</height>
+					<align>right</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>!Control.HasFocus(20)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+	</control>
+	<control type="group"><!-- Right Panel -->
+		<left>660</left>
+		<top>85</top>
+		<width>620</width>
+		<height>647</height>
+		<animation effect="slide" start="640" end="0" time="300" tween="cubic" easing="out">WindowOpen</animation>
+		<animation effect="slide" start="0" end="640" time="300" tween="cubic" easing="out">WindowClose</animation>
+		<animation effect="slide" start="640" end="0" time="300" tween="cubic" easing="out">Visible</animation>
+		<animation effect="slide" start="0" end="640" time="300" tween="cubic" easing="out">Hidden</animation>
+		<animation effect="fade" time="200" start="75" end="100" reversible="false" condition="Control.HasFocus(21)">Conditional</animation>
+		<animation effect="fade" time="200" start="100" end="75" reversible="false" condition="Control.HasFocus(20)">Conditional</animation>
+		<visible>$EXP[HasNotDialogPopup]</visible>
+		<control type="image">
+			<description>background right</description>
+			<width>620</width>
+			<height>720</height>
+			<include>global_texture_heavy</include>
+		</control>
+		<control type="image">
+			<description>schatten oben</description>
+			<top>-8</top>
+			<width>620</width>
+			<include>global_topshadow8</include>
+		</control>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<width>620</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label" id="102">
+			<description>titel</description>
+			<left>20</left>
+			<width>475</width>
+			<include>global_label_title</include>
+		</control>
+		<control type="label">
+			<description>Header right Numitems</description>
+			<left>305</left>
+			<top>600</top>
+			<width>300</width>
+			<height>22</height>
+			<align>right</align>
+			<label>$LOCALIZE[31001]: $INFO[Container(21).NumItems] - $LOCALIZE[31002]:  $INFO[Container(21).CurrentPage]/$INFO[Container(21).NumPages]</label>
+		</control>
+		<control type="list" id="21"><!-- Right list -->
+			<viewtype label="list">list</viewtype>
+			<top>65</top>
+			<width>620</width>
+			<height>515</height>
+			<scrolltime>450</scrolltime>
+			<onleft>20</onleft>
+			<onright>close</onright>
+			<onup>21</onup>
+			<ondown>21</ondown>
+			<itemlayout width="620" height="50">
+				<control type="image">
+					<width>620</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>500</width>
+					<height>50</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>517</left>
+					<width>85</width>
+					<height>50</height>
+					<align>right</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="620" height="50">
+				<control type="image">
+					<width>620</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					<visible>!Control.HasFocus(21)</visible>
+				</control>
+				<control type="image">
+					<width>620</width>
+					<height>50</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.HasFocus(21)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>500</width>
+					<height>50</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.HasFocus(21)</visible>
+				</control>
+				<control type="label">
+					<left>517</left>
+					<width>85</width>
+					<height>50</height>
+					<align>right</align>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>Control.HasFocus(21)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>500</width>
+					<height>50</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.HasFocus(21)</visible>
+				</control>
+				<control type="label">
+					<left>517</left>
+					<width>85</width>
+					<height>50</height>
+					<align>right</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Size]</label>
+					<visible>!Control.HasFocus(21)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+	</control>
+	<include>global_topbar_multidata</include>
+</controls>
+</window>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol always="true">100</defaultcontrol>
+<onload>Control.SetFocus(100,3)</onload>
+<controls>
+	<control type="button" id="500">
+		<label>12006</label>
+		<include>Hiddencontrol</include>
+		<font>-</font>
+	</control>
+	<control type="group">
+		<left>380</left>
+		<top>585</top>
+		<include>animation_osd_vhoc_bottombarslide</include>
+		<visible>![Window.IsVisible(osdvideosettings) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(selectdialog) | Window.IsVisible(sliderdialog) | Window.IsVisible(OSDAudioDSPSettings) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)]</visible>
+		<include content="global_dialog_mid_singlebg">
+			<description>Hintergrund</description>
+			<param name="global_dialog_mid_bg-width" value="495" />
+			<param name="global_dialog_mid_bg-height" value="110" />
+		</include>
+		<control type="list" id="100">
+			<viewtype>list</viewtype>
+			<left>15</left>
+			<top>35</top>
+			<height>200</height>
+			<width>490</width>
+			<onleft>101</onleft>
+			<onright>102</onright>
+			<onup>Close</onup>
+			<ondown>Control.SetFocus(101,3)</ondown>
+			<orientation>horizontal</orientation>
+			<scrolltime>300</scrolltime>
+			<preloaditems>2</preloaditems>
+			<focusposition>3</focusposition>
+			<animation effect="slide" start="0" end="32.5" time="0" condition="String.Contains(Container(100).NumItems,5)">Conditional</animation>
+			<animation effect="slide" start="0" end="65" time="0" condition="String.Contains(Container(100).NumItems,4)">Conditional</animation>
+			<animation effect="slide" start="0" end="97.5" time="0" condition="String.Contains(Container(100).NumItems,3)">Conditional</animation>
+			<animation effect="slide" start="0" end="130" time="0" condition="String.Contains(Container(100).NumItems,2)">Conditional</animation>
+			<animation effect="slide" start="0" end="162.5" time="0" condition="String.Contains(Container(100).NumItems,1)">Conditional</animation>
+			<visible allowhiddenfocus="true">!Control.HasFocus(101)</visible>
+			<animation type="Visible">
+				<effect type="fade" start="0" end="100" time="180" delay="250" tween="sine" easing="out"/>
+				<effect type="slide" start="0,-30" end="0,0" time="200" delay="250" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+				<effect type="slide" end="0,30" time="300" tween="sine" easing="out" />
+			</animation>
+			<itemlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<colordiffuse>TextColor2</colordiffuse>
+				</control>
+			</itemlayout>
+			<focusedlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<colordiffuse>ACSkinColor</colordiffuse>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<animation effect="zoom" center="25,45" start="100" end="140" time="400" easing="out" tween="cubic" reversible="false">Focus</animation>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="10"><!-- playlist -->
+					<label>$LOCALIZE[559]</label>
+					<icon>buttons/osd/osd_playlist.png</icon>
+					<onclick>dialog.close(musicosd)</onclick>
+					<onclick>ActivateWindow(musicplaylist)</onclick>
+				</item>
+				<item id="24"><!-- rec -->
+					<label>$LOCALIZE[36428]</label>
+					<icon>buttons/osd/osd_rec.png</icon>
+					<onclick>PlayerControl(Record)</onclick>
+					<visible>Player.CanRecord</visible>
+				</item>
+				<item id="23"><!-- - canal -->
+					<label>$LOCALIZE[31631]</label>
+					<icon>buttons/osd/osd_channeldown.png</icon>
+					<onclick>PlayerControl(Previous)</onclick>
+					<visible>MusicPlayer.Content(LiveTV)</visible>
+				</item>
+				<item id="23"><!-- skipbwd -->
+					<label>$LOCALIZE[31628]</label>
+					<icon>buttons/osd/osd_skipbwd.png</icon>
+					<onclick>PlayerControl(Previous)</onclick>
+					<visible>!MusicPlayer.Content(LiveTV)</visible>
+				</item>
+				<item id="19"><!-- rew -->
+					<label>$LOCALIZE[210]</label>
+					<icon>buttons/osd/osd_rew.png</icon>
+					<onclick>PlayerControl(Rewind)</onclick>
+				</item>
+				<item id="20"><!-- playpause -->
+					<label>$LOCALIZE[559]</label>
+					<icon>$VAR[value_button_playpause]</icon>
+					<onclick>PlayerControl(Play)</onclick>
+				</item>
+				<item id="21"><!-- ff -->
+					<label>$LOCALIZE[209]</label>
+					<icon>buttons/osd/osd_ff.png</icon>
+					<onclick>PlayerControl(Forward)</onclick>
+				</item>
+				<item id="17"><!-- skipfwd -->
+					<label>$LOCALIZE[31629]</label>
+					<icon>buttons/osd/osd_skipfwd.png</icon>
+					<onclick>PlayerControl(Next)</onclick>
+					<visible>!MusicPlayer.Content(LiveTV)</visible>
+				</item>
+				<item id="17"><!-- + canal -->
+					<label>$LOCALIZE[31630]</label>
+					<icon>buttons/osd/osd_channelup.png</icon>
+					<onclick>PlayerControl(Next)</onclick>
+					<visible>MusicPlayer.Content(LiveTV)</visible>
+				</item>
+				<item id="22"><!-- stop -->
+					<label>$LOCALIZE[36044]</label>
+					<icon>buttons/osd/osd_stop.png</icon>
+					<onclick>PlayerControl(Stop)</onclick>
+				</item>
+			</content>
+		</control>
+		<control type="list" id="101">
+			<viewtype>list</viewtype>
+			<left>15</left>
+			<top>35</top>
+			<height>200</height>
+			<width>455</width>
+			<onleft>101</onleft>
+			<onright>101</onright>
+			<onup>Control.SetFocus(100,3)</onup>
+			<ondown>close</ondown>
+			<orientation>horizontal</orientation>
+			<orientation>horizontal</orientation>
+			<scrolltime>300</scrolltime>
+			<preloaditems>2</preloaditems>
+			<focusposition>3</focusposition>
+			<animation type="Visible">
+				<effect type="fade" start="0" end="100" time="180" delay="250" tween="sine" easing="out"/>
+				<effect type="slide" start="0,-30" end="0,0" time="200" delay="250" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+				<effect type="slide" end="0,30" time="300" tween="sine" easing="out" />
+			</animation>
+			<visible allowhiddenfocus="true">Control.HasFocus(101)</visible>
+			<itemlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<colordiffuse>TextColor2</colordiffuse>
+				</control>
+			</itemlayout>
+			<focusedlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<colordiffuse>ACSkinColor</colordiffuse>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<animation effect="zoom" center="25,45" start="100" end="140" time="400" easing="out" tween="cubic" reversible="false">Focus</animation>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="24"><!-- settings -->
+					<label>$LOCALIZE[31619]</label>
+					<icon>buttons/osd/osd_gensettings.png</icon>
+					<onclick>ActivateWindow(OSDAudioDSPSettings)</onclick>
+					<visible>system.getbool(audiooutput.dspaddonsenabled)</visible>
+				</item>
+				<item id="46"><!-- epg -->
+					<label>$LOCALIZE[22020]</label>
+					<icon>buttons/osd/osd_epg.png</icon>
+					<onclick>ActivateWindow(PVROSDGuide)</onclick>
+					<visible>MusicPlayer.Content(LiveTV)</visible>
+				</item>
+				<item id="11"><!-- repeat -->
+					<label>$VAR[value_button_repeatlabel]</label>
+					<icon>$VAR[value_button_repeat]</icon>
+					<onclick>PlayerControl(Repeat)</onclick>
+				</item>
+				<item id="12"><!-- random -->
+					<label>$LOCALIZE[191]</label>
+					<icon>$VAR[value_button_random]</icon>
+					<onclick>PlayerControl(Random)</onclick>
+				</item><!--
+				<item id="26"> viz 
+					<label>$LOCALIZE[250] $LOCALIZE[21417]</label>
+					<icon>-</icon>
+					<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
+				</item>
+				<item id="29">
+					<label>$LOCALIZE[31618]</label>
+					<icon>-</icon>
+					<onclick>ActivateWindow(122)</onclick>
+					<visible>Visualisation.HasPresets</visible>
+				</item>
+				<item id="59">
+					<label>$LOCALIZE[12006]</label>
+					<icon>-</icon>
+					<onclick>Sendclick(500)</onclick>
+					<animation effect="fade" start="100" end="50" time="75" condition="!Visualisation.HasPresets">Conditional</animation>
+				</item>
+				<item id="590">
+					<label>$LOCALIZE[31617]</label>
+					<icon>-</icon>
+					<onclick>Close</onclick>
+					<onclick>RunScript($INFO[Skin.String(LyricScript_Path)])</onclick>
+					<visible>!String.IsEmpty(Skin.String(LyricScript_Path))</visible>
+				</item>-->
+				<item id="15"><!-- mute -->
+					<label>$LOCALIZE[31616]</label>
+					<icon>buttons/osd/osd_mute.png</icon>
+					<onclick>Mute</onclick>
+				</item>	
+				<item id="16"><!-- mute -->
+					<label>$LOCALIZE[31614]</label>
+					<icon>buttons/osd/osd_volup.png</icon>
+					<onclick>VolumeUp</onclick>
+				</item>
+				<item id="16"><!-- mute -->
+					<label>$LOCALIZE[31615]</label>
+					<icon>buttons/osd/osd_voldown.png</icon>
+					<onclick>VolumeDown</onclick>
+				</item>
+				<item id="4"><!-- settings -->
+					<label>$LOCALIZE[10004]</label>
+					<icon>buttons/osd/osd_gensettings.png</icon>
+					<onclick>SetProperty(SettingsCategory,MusicOSD,1113)</onclick>
+					<onclick>ActivateWindow(1113)</onclick>
+				</item>
+			</content>
+		</control>
+		<control type="progress" id="23">
+			<description>Progressbar</description>
+			<top>-1</top>
+			<width>485</width>
+			<height>22</height>
+			<info>Player.Progress</info>
+			<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+			<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+			<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+			<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+		</control>
+		<control type="label"><!-- icons label -->
+			<width>485</width>
+			<height>20</height>
+			<align>center</align>
+			<textoffsetx>20</textoffsetx>
+			<font>RegularNormal</font>
+			<label>« $INFO[System.CurrentControl] »</label>
+			<textcolor>TextColorFocus</textcolor>
+		</control>
+	</control>
+	</controls>
+</window>

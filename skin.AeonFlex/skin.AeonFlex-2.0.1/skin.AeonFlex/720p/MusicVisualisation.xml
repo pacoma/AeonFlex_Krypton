@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>-</defaultcontrol>
+	<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+	<controls>
+		<include>MusicvizAudioBackground</include>
+		<control type="group"><!-- infos MCE -->
+			<visible>[Player.ShowInfo | Skin.HasSetting(nopermanentmusicinfo)] + ![Window.IsActive(PlayerControls) | Window.IsVisible(osdvideosettings) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(selectdialog) | Window.IsVisible(sliderdialog) | Window.IsVisible(OSDAudioDSPSettings)]</visible>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="fade" start="0" end="100" delay="2000" time="950" tween="quadratic" easing="out" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+			</animation>
+			<animation type="Visible" reversible="false">
+				<effect type="fade" start="0" end="100" time="650" tween="cubic" easing="inout" />
+			</animation>
+			<animation type="Hidden" reversible="false">
+				<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+			</animation>
+			<control type="image">
+				<description>Vignette zum Abdunkeln der Ecken</description>
+				<left>480</left>
+				<top>80</top>
+				<width>830</width>
+				<height>597</height>
+				<texture colordiffuse="B8FFFFFF">musicviz/musicviz-info-overlay.png</texture>
+				<visible>!Skin.HasSetting(Colorswitch)</visible>
+			</control>
+			<control type="image">
+				<description>Vignette zum Abdunkeln der Ecken Invers</description>
+				<left>480</left>
+				<top>100</top>
+				<width>830</width>
+				<height>550</height>
+				<texture colordiffuse="CC000000">musicviz/musicviz-info-overlay.png</texture>
+				<visible>Skin.HasSetting(Colorswitch)</visible>
+			</control>
+			<control type="group"><!-- cover  -->
+				<left>450</left>
+				<top>190</top>
+				<control type="image">
+					<include>animation_cdart</include>
+					<left>-120</left>
+					<top>10</top>
+					<width>210</width>
+					<height>210</height>
+					<texture diffuse="artworks/cdart-diffuse-small.png" background="true">$INFO[Player.Folderpath,,cdart.png]</texture>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+				</control>
+				<control type="image">
+					<include>animation_vhoc_fade</include>
+					<include>infodialog_cover_thumbs_layout</include>
+					<texture fallback="DefaultAudio.png" background="true">$VAR[playerart_value_poster]</texture>
+				</control>
+			</control>
+			<control type="group">
+				<left>720</left>
+				<top>160</top>
+				<control type="label" id="1">
+					<description>Titel</description>
+					<top>40</top>
+					<width>500</width>
+					<height>25</height>
+					<textcolor>$VAR[MusicVizLight]</textcolor>
+					<label>$LOCALIZE[31625]</label>
+				</control>
+				<control type="label">
+					<description>Song Titel</description>
+					<top>70</top>
+					<width>500</width>
+					<height>25</height>
+					<font>SemiBigger</font>
+					<textcolor>$VAR[MusicVizHeavy]</textcolor>
+					<label>$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</label>
+				</control>
+				<control type="label">
+					<description>Interpret</description>
+					<top>100</top>
+					<width>500</width>
+					<height>25</height>
+					<font>SemiBig</font>
+					<textcolor>$VAR[MusicVizMedium]</textcolor>
+					<label>$INFO[MusicPlayer.Artist]</label>
+				</control>
+				<control type="group"><!-- Rating -->
+					<left>-10</left>
+					<top>115</top>
+					<control type="label" id="1">
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Player-Star-Ratingback-label]</label>
+						<font>Rating</font>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label" id="1">
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Player-Star-Rating-label]</label>
+						<font>Rating</font>
+						<include>Star-Rating-color-layout</include>
+						<visible>String.IsEmpty(MusicPlayer.UserRating)</visible>
+					</control>
+					<control type="label" id="1">
+						<width>135</width>
+						<height>25</height>
+						<label>$VAR[Player-Star-Rating-label]</label>
+						<font>Rating</font>
+						<include>Star-UserRating-color-layout</include>
+						<visible>!String.IsEmpty(MusicPlayer.UserRating)</visible>
+					</control>
+				</control>
+				<control type="label">
+					<description>Album</description>
+					<top>160</top>
+					<width>500</width>
+					<height>25</height>
+					<textcolor>$VAR[MusicVizMedium]</textcolor>
+					<label>$INFO[MusicPlayer.Album]</label>
+				</control>
+				<control type="label">
+					<description>Aktuelle Zeit</description>
+					<top>180</top>
+					<width>500</width>
+					<height>25</height>
+					<textcolor>$VAR[MusicVizHeavy]</textcolor>
+					<label>$INFO[Player.Duration] / $INFO[MusicPlayer.Time]</label>
+				</control>
+				<control type="label">
+					<description>Naechster titel</description>
+					<top>220</top>
+					<width>500</width>
+					<height>45</height>
+					<scroll>false</scroll>
+					<textcolor>$VAR[MusicVizMedium]</textcolor>
+					<label>$LOCALIZE[19031]:[CR]$INFO[MusicPlayer.offset(1).Artist,, -]$INFO[MusicPlayer.offset(1).Title]</label>
+					<visible>MusicPlayer.HasNext</visible>
+					<animation effect="fade" time="200">VisibleChange</animation>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<visible>Skin.HasSetting(nopermanentmusicinfo) | Player.ShowInfo + ![Window.IsVisible(osdvideosettings) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(selectdialog) | Window.IsVisible(sliderdialog) | Window.IsVisible(OSDAudioDSPSettings)]</visible>
+			<include>MusicTopinfo</include>
+		</control>
+		<control type="group">
+			<visible>!Skin.HasSetting(nopermanentmusicinfo) + ![Window.IsVisible(osdvideosettings) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(selectdialog) | Window.IsVisible(sliderdialog) | Window.IsVisible(OSDAudioDSPSettings)]</visible>
+			<include>MusicTopinfo</include>
+		</control>
+</controls>
+</window>

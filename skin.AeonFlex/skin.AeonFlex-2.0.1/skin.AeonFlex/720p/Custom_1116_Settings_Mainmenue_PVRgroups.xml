@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window type="dialog" id="1116">
+<defaultcontrol always="true">619</defaultcontrol>
+<onunload>Skin.SetString($INFO[Window(1117).Property(SlotclickWidget)],$INFO[Skin.string(PVRWidgetchannelgroup)])</onunload>
+<onunload>Skin.SetString($INFO[Window(1117).Property(SlotclickWidgettitle)],$INFO[Skin.string(PVRWidgetchannelgroupTitle)])</onunload>
+<onunload>ClearProperty(SlotclickWidget),1117)</onunload>
+<onunload>ClearProperty(SlotclickWidgettitle),1117)</onunload>
+<controls>
+<control type="list" id="648">
+	<include>Compaircontainer</include>
+	<content>pvr://channels/tv/</content>
+</control>
+<control type="group">
+	<left>183</left>
+	<top>110</top>
+	<include>animation_dialog_popup</include>
+	<include content="global_dialog_mid_bg">
+		<param name="global_dialog_mid_bg-left" value="0" />
+		<param name="global_dialog_mid_bg-width" value="914" />
+		<param name="global_dialog_mid_bg-innerwidth" value="904" />
+		<param name="global_dialog_mid_bg-height" value="490" />
+		<param name="global_dialog_mid_bg-headerlabel" value="$LOCALIZE[31361]" />
+		<param name="global_dialog_mid_headerid" value="-" />
+	</include>
+	<control type="list" id="619">
+		<top>65</top>
+		<width>457</width>
+		<height>350</height>
+		<onleft>Dialog.Close(1116)</onleft>
+		<onright>621</onright>
+		<ondown>619</ondown>
+		<onup>619</onup>
+		<scrolltime>400</scrolltime>
+		<itemlayout width="447" height="35">
+			<control type="image">
+				<left>-30</left>
+				<top>1</top>
+				<width>470</width>
+				<height>2</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<width>340</width>
+				<height>35</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="457" height="35">
+			<control type="image">
+				<width>457</width>
+				<height>35</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.Hasfocus(619)</visible>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<width>340</width>
+				<height>35</height>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.Hasfocus(619)</visible>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<width>340</width>
+				<height>35</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.Hasfocus(619)</visible>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="1">
+				<label>$INFO[Container(648).ListItem.Label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(0).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(0).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItem.Label)</visible>
+			</item>
+			<item id="2">
+				<label>$INFO[Container(648).ListItemNoWrap(1).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(1).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(1).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(1).Label)</visible>
+			</item>
+			<item id="3">
+				<label>$INFO[Container(648).ListItemNoWrap(2).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(2).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(2).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(2).Label)</visible>
+			</item>
+			<item id="4">
+				<label>$INFO[Container(648).ListItemNoWrap(3).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(3).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(3).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(3).Label)</visible>
+			</item>
+			<item id="5">
+				<label>$INFO[Container(648).ListItemNoWrap(4).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(4).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(4).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(4).Label)</visible>
+			</item>
+			<item id="6">
+				<label>$INFO[Container(648).ListItemNoWrap(5).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(5).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(5).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(5).Label)</visible>
+			</item>
+			<item id="7">
+				<label>$INFO[Container(648).ListItemNoWrap(6).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(6).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(6).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(6).Label)</visible>
+			</item>
+			<item id="8">
+				<label>$INFO[Container(648).ListItemNoWrap(7).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(7).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(7).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(7).Label)</visible>
+			</item>
+			<item id="9">
+				<label>$INFO[Container(648).ListItemNoWrap(8).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(8).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(8).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(8).Label)</visible>
+			</item>
+			<item id="10">
+				<label>$INFO[Container(648).ListItemNoWrap(9).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(9).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(9).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(9).Label)</visible>
+			</item>
+			<item id="11">
+				<label>$INFO[Container(648).ListItemNoWrap(10).label]</label>
+				<icon>-</icon>
+				<onclick>skin.setstring(PVRWidgetchannelgroup,$INFO[Container(648).ListItemNoWrap(10).FilenameandPath])</onclick>
+				<onclick>skin.setstring(PVRWidgetchannelgroupTitle,$INFO[Container(648).ListItemNoWrap(10).Label])</onclick>
+				<visible>!String.IsEmpty(Container(648).ListItemNoWrap(10).Label)</visible>
+			</item>
+		</content>
+	</control>
+	<control type="image">
+		<left>457</left>
+		<top>25</top>
+		<width>2</width>
+		<height>400</height>
+		<align>left</align>
+		<texture colordiffuse="$VAR[AC_value_shadow_color]" flipx="true">backgrounds/divider_v.png</texture>
+	</control>
+	<control type="list" id="621">
+		<left>457</left>
+		<top>65</top>
+		<width>447</width>
+		<height>350</height>
+		<onleft>619</onleft>
+		<onright>Dialog.Close(1116)</onright>
+		<ondown>621</ondown>
+		<onup>621</onup>
+		<orientation>vertical</orientation>
+		<scrolltime>400</scrolltime>
+		<itemlayout width="447" height="35">
+			<control type="image">
+				<left>-30</left>
+				<top>1</top>
+				<width>470</width>
+				<height>2</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<width>340</width>
+				<height>35</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="447" height="35">
+			<control type="image">
+				<width>457</width>
+				<height>35</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.Hasfocus(621)</visible>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<width>340</width>
+				<height>35</height>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.Hasfocus(621)</visible>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<width>340</width>
+				<height>35</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.Hasfocus(621)</visible>
+			</control>
+		</focusedlayout>
+		<content>$INFO[Skin.string(PVRWidgetchannelgroup)]</content>
+	</control>
+	<control type="image"><!-- fallback -->
+		<left>624</left>
+		<top>165</top>
+		<width>100</width>
+		<height>100</height>
+		<texture colordiffuse="ACRed">buttons/osd/osd_info.png</texture>
+		<visible>String.IsEmpty(Skin.String(PVRWidgetchannelgroupTitle))</visible>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include content="global_dialogtitle_bg">
+			<param name="global_dialogtitle_bg-left" value="0" />
+			<param name="global_dialogtitle_bg-top" value="435" />
+			<param name="global_dialogtitle_bg-width" value="904" />
+			<param name="global_dialogtitle_bg-height" value="50" />
+		</include>
+	</control>
+	<control type="image"><!-- footer -->
+		<description>Hintergrund titel</description>
+		<top>430</top>
+		<width>904</width>
+		<include>global_texture_title</include>
+	</control>
+	<control type="label">
+		<left>500</left>
+		<top>430</top>
+		<width>414</width>
+		<textoffsetx>30</textoffsetx><!-- include ueberschreibung -->
+		<align>right</align><!-- include ueberschreibung -->
+		<include>global_label_title</include>
+		<label>$INFO[Container(621).NumItems]</label>
+	</control>
+</control>
+</controls>
+</window>

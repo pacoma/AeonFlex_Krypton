@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1125">
+<defaultcontrol always="true">9031</defaultcontrol>
+<onunload>ClearProperty(CustomInfo.CategoryContent,home)</onunload>
+<onunload>ClearProperty(CustomInfo.Categorytitle,home)</onunload>
+<onunload>ClearProperty(CustomInfo.Categorytype,home)</onunload>
+<onunload>ClearProperty(CustomInfo.Categorytarget,home)</onunload>
+<onunload>ClearProperty(CustomInfo.Categorylabel,home)</onunload>
+<controls>
+<include>CommonBackground</include>
+<include>CustomInfoBackground</include>
+	<control type="label" id="3074"><!-- MPAA String.IsEmpty Condition -->
+		<label>$VAR[widget_flagsvalue_mpaa]</label>
+		<include>Hiddencontrol</include>
+	</control>
+<control type="label" id="11251">
+	<description>String.IsEmpty conditions</description>
+	<include>Hiddencontrol</include>
+	<label>$VAR[custominfopanel_value_info5_label]</label>
+</control>
+<control type="label" id="11252">
+	<description>String.IsEmpty conditions</description>
+	<include>Hiddencontrol</include>
+	<label>$VAR[custominfopanel_value_info6_label]</label>
+</control>
+<control type="label" id="11253">
+	<description>String.IsEmpty conditions</description>
+	<include>Hiddencontrol</include>
+	<label>$VAR[custominfopanel_value_info7_label]</label>
+</control>
+<control type="button" id="9031"><!-- hidden nav button info -->
+	<include>Hiddencontrol</include>
+	<onleft condition="String.IsEqual(Window(home).Property(Infovisible),Temp)">ClearProperty(Infovisible,home)</onleft>
+	<onleft condition="String.IsEmpty(Window(home).Property(Infovisible))">SetProperty(Infovisible,Temp,home)</onleft>
+	<onright condition="String.IsEqual(Window(home).Property(Infovisible),Temp)">ClearProperty(Infovisible,home)</onright>
+	<onright condition="String.IsEmpty(Window(home).Property(Infovisible))">SetProperty(Infovisible,Temp,home)</onright>
+	<oninfo>Dialog.close(1125)</oninfo>
+	<onup>SetFocus(9032)</onup>
+	<ondown>SetFocus(9032)</ondown>
+	<onclick>SetFocus(9032)</onclick>
+</control>
+	
+<control type="group">
+	<visible>!Window.Isvisible(movieinformation) + !Window.Isvisible(DialogMusicInfo.xml)</visible>
+	<control type="group">
+		<top>-408</top>
+		<animation effect="slide" start="0,0" end="0,408" time="300" delay="300" easing="out" tween="sine">WindowOpen</animation>
+		<animation effect="slide" start="0,408" end="0,0" time="200" easing="in" tween="sine">WindowClose</animation>
+		<visible>!Window.IsVisible(selectdialog) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
+		<control type="image">
+			<description>background</description>
+			<top>400</top>
+			<width>1280</width>
+			<height>35</height>
+			<texture>backgrounds/background-overlay-diffuse.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="image">
+			<description>background</description>
+			<top>400</top>
+			<width>1280</width>
+			<height>25</height>
+			<texture flipy="true">backgrounds/background-overlay-diffuse.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="grouplist" id="9032"><!-- Menue -->
+			<description>info menue</description>
+			<left>0</left>
+			<top>400</top>
+			<width>1280</width>
+			<height>322</height>
+			<oninfo>Dialog.close(1125)</oninfo>
+			<onup>9031</onup>
+			<ondown>510</ondown>
+			<oninfo>Dialog.Close(all)</oninfo>
+			<orientation>horizontal</orientation>
+			<itemgap>0</itemgap>
+			<control type="button" id="310">
+				<description>Extended info</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[31385]</label>
+				<onfocus>ClearProperty(Selectdialogcategory,home)</onfocus>
+				<onclick>SetProperty(InfobottomBar,ExtendedInfo,home)</onclick>
+				<onclick condition="String.IsEqual(Container(510).ListItem.DBTYPE,movie)">SetProperty(ExtendedInfoSearchString,$INFO[Container(510).Listitem.Title],home)</onclick>
+				<onclick condition="String.IsEqual(Container(510).ListItem.DBTYPE,tvshow)">SetProperty(ExtendedInfoSearchString,$INFO[Container(510).Listitem.TVShowTitle],home)</onclick>
+				<onclick condition="String.IsEqual(Container(510).ListItem.DBTYPE,movie)">RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[Container(510).ListItem.DBID],name=$INFO[Container(510).Listitem.Title])</onclick>
+				<onclick condition="String.IsEqual(Container(510).ListItem.DBTYPE,tvshow)">RunScript(script.extendedinfo,info=extendedtvinfo,dbid=$INFO[Container(510).ListItem.DBID],name=$INFO[Container(510).Listitem.TVShowTitle])</onclick>
+				<visible>System.HasAddon(script.extendedinfo)</visible>
+			</control>
+			<control type="button" id="306">
+				<description>Play Trailer</description>
+				<label>$LOCALIZE[20410]</label>
+				<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+				<width>320</width>
+				<include>dialog_buttonneu</include>
+				<onclick>SetProperty(WindowTrailer,$INFO[Container(510).ListItem.Label,Trailer: ,],Home)</onclick>
+				<onclick>Dialog.close(1125)</onclick>
+				<onclick>PlayMedia($INFO[Container(510).ListItem.Trailer],1)</onclick>
+				<onclick>SetFocus(9930)</onclick>
+				<visible>!String.IsEmpty(Container(510).ListItem.Trailer) + !Skin.HasSetting(fullscreentrailer)</visible>
+			</control>
+			<control type="button" id="318">
+				<description>Play Trailer</description>
+				<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+				<width>320</width>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[20410]</label>
+				<onclick>Dialog.close(1125)</onclick>
+				<onclick>PlayMedia($INFO[Container(510).ListItem.Trailer])</onclick>
+				<visible>!String.IsEmpty(Container(510).ListItem.Trailer) + Skin.HasSetting(fullscreentrailer)</visible>
+			</control>
+			<control type="button" id="3154">
+				<description>CinemaVision</description>
+				<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+				<width>320</width>
+				<include>dialog_buttonneu</include>
+				<label>$INFO[System.AddonTitle(script.cinemavision)]</label>
+				<onclick>Dialog.Close(MovieInformation)</onclick>
+				<onclick>RunScript(script.cinema.experience,movieid=$INFO[Container(510).ListItem.DBID])</onclick>
+				<visible>System.HasAddon(script.cinemavision) + String.IsEqual(Container(510).ListItem.DBTYPE,movie)</visible>
+			</control>
+		</control>
+		<control type="image">
+			<description>bottom shadow</description>
+			<top>400</top>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="image">
+			<description>bottom shadow</description>
+			<top>435</top>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="image">
+			<description>background</description>
+			<width>1280</width>
+			<height>400</height>
+			<texture>backgrounds/background-homeinfo-overlay.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="image">
+			<description>background</description>
+			<width>1280</width>
+			<height>400</height>
+			<texture>backgrounds/background-homeinfo-overlay.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="label">
+			<description>Default Title</description>
+			<left>30</left>
+			<top>49</top>
+			<width>1000</width>
+			<height>40</height>
+			<font>SemiBigger</font>
+			<label>$VAR[custom_info_Title]</label>
+		</control>
+		<control type="group">
+			<animation effect="slide" start="0,0" end="-358,0" time="200" condition="String.IsEqual(Window(home).Property(Infovisible),Temp)">Conditional</animation>
+			<control type="group"><!-- video Artwork -->
+				<left>38</left>
+				<top>90</top>
+				<control type="image"><!-- Poster back  -->
+					<left>10</left>
+					<top>2</top>
+					<width>198</width>
+					<height>289</height>
+					<aspectratio scalediffuse="true">stretch</aspectratio>
+					<texture background="true">defaultpictures/DefaultMovies.png</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+				</control>
+				<control type="image"><!-- Poster  -->
+					<left>10</left>
+					<top>2</top>
+					<width>198</width>
+					<height>289</height>
+					<aspectratio scalediffuse="true">stretch</aspectratio>
+					<texture background="true">$INFO[Container(510).ListItem.Icon]</texture>
+					<bordersize>8</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+				</control>
+				<include content="watched_overlayBG"><!-- watched_overlay -->
+					<param name="left">173</param>
+					<param name="top">8</param>
+					<param name="width">30</param>
+					<param name="height">30</param>
+				</include>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw.</description>
+					<left>173</left>
+					<top>8</top>
+					<width>30</width>
+					<height>30</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlay30</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$VAR[WatchedOverlayFlag]</label>
+				</control>
+				<control type="image"><!-- fanart back  -->
+					<left>872</left>
+					<top>55</top>
+					<width>316</width>
+					<height>185</height>
+					<aspectratio scalediffuse="true">stretch</aspectratio>
+					<texture background="true">defaultpictures/DefaultMovieExtrathumb.png</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<include>homevideofadeout</include>
+				</control>
+				<control type="image"><!-- fanart -->
+					<left>872</left>
+					<top>55</top>
+					<width>316</width>
+					<height>185</height>
+					<aspectratio scalediffuse="true">stretch</aspectratio>
+					<texture background="true">$INFO[Container(510).ListItem.Art(fanart)]</texture>
+					<bordersize>8</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<include>homevideofadeout</include>
+				</control>
+			</control>
+			<control type="group">
+				<top>75</top>
+				<left>271</left>
+				<control type="image">
+					<left>88</left>
+					<top>0</top>
+					<width>2</width>
+					<height>300</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider_v.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>10</top>
+					<width>94</width>
+					<height>300</height>
+					<texture>backgrounds/background-gradient.png</texture>
+					<colordiffuse>TextColor3</colordiffuse>
+					<animation effect="fade" start="30" end="30" time="0" condition="true">Conditional</animation>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>0</top>
+					<width>2</width>
+					<height>300</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider_v.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+			</control>
+			<control type="grouplist">
+				<left>276</left>
+				<top>95</top>
+				<orientation>vertical</orientation>
+				<itemgap>3.5</itemgap>
+				<control type="image">
+					<include>flags_image_texture</include>
+					<texture>flags/3d/3d.png</texture>
+					<visible>!String.StartsWith(Container(510).ListItem.StereoscopicMode,mono) + String.IsEqual(Container(510).ListItem.DBTYPE,movie)</visible>
+				</control>
+				<control type="image"><!-- Mpaa -->
+					<include>widget_flagimge</include>
+					<texture>$VAR[widget_flagsvalue_mpaa]</texture>
+					<visible>!String.IsEmpty(Control.GetLabel(3074))</visible>
+				</control>
+				<control type="image"><!-- videocodec -->
+					<include>widget_flagimge</include>
+					<texture>$INFO[Container(510).ListItem.VideoCodec,flags/videocodec/,.png]</texture>
+					<visible>!String.IsEmpty(Container(510).ListItem.VideoCodec)</visible>
+				</control>
+				<control type="image"><!-- videores -->
+					<include>widget_flagimge</include>
+					<texture>$INFO[Container(510).ListItem.VideoResolution,flags/resolution/,.png]</texture>
+					<visible>!String.IsEmpty(Container(510).ListItem.VideoResolution)</visible>
+				</control>
+				<control type="image"><!-- videoaspect -->
+					<include>widget_flagimge</include>
+					<texture>$INFO[Container(510).ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+					<visible>!String.IsEmpty(Container(510).ListItem.VideoAspect)</visible>
+				</control>
+				<control type="image"> <!--StudioLogo -->
+					<include>widget_flagimge</include>
+					<texture fallback="flags/defaultstudio.png">resource://resource.images.studios.coloured/$INFO[Container(510).ListItem.Studio,,.png]</texture>
+					<visible>!String.IsEqual(Container(510).ListItem.DBTYPE,movie)</visible>
+				</control>
+			</control>
+			<control type="group"><!-- details -->
+				<left>396</left>
+				<control type="label"><!-- Rating -->
+					<left>-5</left>
+					<top>80</top>
+					<width>130</width>
+					<height>25</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>80</top>
+					<width>130</width>
+					<height>25</height>
+					<label>$VAR[Widget-Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-Rating-color-layout</include>
+					<visible>String.IsEmpty(Container(510).ListItem.UserRating)</visible>
+				</control>
+				<control type="label">
+					<left>-5</left>
+					<top>80</top>
+					<width>130</width>
+					<height>25</height>
+					<label>$VAR[Widget-Star-Rating-label]</label>
+					<font>Rating-small</font>
+					<include>Star-UserRating-color-layout</include>
+					<visible>!String.IsEmpty(Container(510).ListItem.UserRating)</visible>
+				</control>
+				<control type="grouplist">
+					<left>110</left>
+					<top>85</top>
+					<width>auto</width>
+					<orientation>horizontal</orientation>
+					<itemgap>3</itemgap>
+					<control type="label">
+						<width>auto</width>
+						<include>home.flaglabel</include>
+						<label>$VAR[widget_rating_value_label]</label>
+						<visible>!String.IsEqual(Container(510).ListItem.DBType,album)</visible>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<include>home.flaglabel</include>
+						<label>$VAR[custom_info_dateprefix,  |  ,]$VAR[custom_info_video_date]</label>
+						<visible>!String.IsEqual(Container(510).ListItem.DBType,album)</visible>
+					</control>
+					<control type="label"><!-- Date -->
+						<width>auto</width>
+						<align>left</align>
+						<include>home.flaglabel</include>
+						<label>$INFO[Container(510).ListItem.Date,  |  ,]</label>
+						<visible>!String.IsEmpty(Container(510).ListItem.Date) + String.IsEqual(Container(510).ListItem.DBType,album)</visible>
+					</control>
+					<control type="label"><!-- Duration -->
+						<width>auto</width>
+						<include>home.flaglabel</include>
+						<label>$INFO[Container(510).ListItem.Duration,  |  , $LOCALIZE[31026]]</label>
+						<visible>!String.IsEmpty(Container(510).ListItem.Duration)</visible>
+					</control>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>145</top>
+					<width>550</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>122</top>
+					<width>500</width>
+					<height>25</height>
+					<texture>backgrounds/background-gradient.png</texture>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>120</top>
+					<width>550</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<description>label</description>
+					<top>122</top>
+					<width>500</width>
+					<height>20</height>
+					<label fallback="31008">[COLOR=TextColor2]$VAR[custominfopanel_value_info4_title][/COLOR] $VAR[custominfopanel_value_info4_label]</label>
+				</control>
+				<control type="textbox">
+					<description>Plot box</description>
+					<top>150</top>
+					<width>500</width>
+					<include>PlotNormal176</include>
+					<label fallback="31009">$INFO[Container(510).ListItem.Plot]$INFO[Container(510).ListItem.Property(Album_Description)]</label>
+					<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+				</control>
+			</control>
+			<control type="group"><!-- details2 -->
+				<left>1290</left>
+				<animation effect="slide" start="0,0" end="-358,0" time="200" condition="String.IsEqual(Window(home).Property(Infovisible),Temp)">Conditional</animation>
+					<control type="list">
+						<top>146</top>
+						<width>480</width>
+						<height>360</height>
+						<onleft>5415</onleft>
+						<onright>5415</onright>
+						<onup>5415</onup>
+						<ondown>5415</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+						<itemlayout height="30">
+							<control type="label">
+								<width>150</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>150</left>
+								<width>330</width>
+								<height>30</height>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>150</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>150</left>
+								<width>330</width>
+								<height>30</height>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$VAR[custominfopanel_value_info1_title]</label>
+								<label2>$VAR[custominfopanel_value_info1_label]</label2>
+								<onclick>noop</onclick>
+							</item>
+							<item>
+								<label>$VAR[custominfopanel_value_info2_title]</label>
+								<label2>$VAR[custominfopanel_value_info2_label]</label2>
+								<onclick>noop</onclick>
+							</item>
+							<item>
+								<label>$VAR[custominfopanel_value_info3_title]</label>
+								<label2>$VAR[custominfopanel_value_info3_label]</label2>
+								<onclick>noop</onclick>
+							</item>
+							<item>
+								<label>$VAR[custominfopanel_value_info4_title]</label>
+								<label2>$VAR[custominfopanel_value_info4_label]</label2>
+								<onclick>noop</onclick>
+							</item>
+							<item>
+								<label>$VAR[custominfopanel_value_info5_title]</label>
+								<label2>$VAR[custominfopanel_value_info5_label]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEqual(Control.Getlabel(11251),xxx)</visible>
+							</item>
+							<item>
+								<label>$VAR[custominfopanel_value_info6_title]</label>
+								<label2>$VAR[custominfopanel_value_info6_label]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEqual(Control.Getlabel(11252),xxx)</visible>
+							</item>
+							<item>
+								<label>$VAR[custominfopanel_value_info7_title]</label>
+								<label2>$VAR[custominfopanel_value_info7_label]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEqual(Control.Getlabel(11253),xxx)</visible>
+							</item>
+						</content>
+					</control>
+			</control>
+			<control type="image"><!-- details2 logo -->
+				<left>1443</left>
+				<top>60</top>
+				<width>165</width>
+				<height>85</height>
+				<aspectratio aligny="top" align="right">keep</aspectratio>
+				<include>animation_vhc_fade</include>
+				<texture>$VAR[custominfopanel_art_value_logo]</texture>
+			</control>
+		</control>
+		<control type="image"><!-- setting arrows -->
+			<left>10</left>
+			<top>180</top>
+			<width>25</width>
+			<height>64</height>
+			<texture flipx="true">arrows/arrow_settings.png</texture>
+			<colordiffuse>TextColor2</colordiffuse>
+			<animation effect="fade" start="20" end="90" time="700" condition="true" pulse="true">Conditional</animation>
+			<visible>Control.HasFocus(9031)</visible>
+			<animation effect="fade" start="0" end="100" time="150" delay="500" condition="true">Visible</animation>
+		</control>
+		<control type="image"><!-- setting arrows -->
+			<left>1245</left>
+			<top>180</top>
+			<width>25</width>
+			<height>64</height>
+			<texture>arrows/arrow_settings.png</texture>
+			<colordiffuse>TextColor2</colordiffuse>
+			<animation effect="fade" start="20" end="90" time="700" condition="true" pulse="true">Conditional</animation>
+			<visible>Control.HasFocus(9031)</visible>
+			<animation effect="fade" start="0" end="100" time="150" delay="500" condition="true">Visible</animation>
+		</control>
+	</control>
+	<!-- bottom -->
+	<control type="image">
+		<left>0</left>
+		<top>650</top>
+		<width>1280</width>
+		<height>70</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACFloorColor</colordiffuse>
+		<animation effect="fade" start="0" end="100" time="1200" delay="300" tween="sine" easing="out">WindowOpen</animation>
+		<animation effect="fade" start="100" end="0" time="280" tween="sine" easing="out">WindowClose</animation>
+	</control>
+	<control type="image">
+		<left>0</left>
+		<top>550</top>
+		<width>1280</width>
+		<height>170</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACFloorColor</colordiffuse>
+		<animation effect="fade" start="0" end="100" time="1200" delay="300" tween="sine" easing="out">WindowOpen</animation>
+		<animation effect="fade" start="100" end="0" time="280" tween="sine" easing="out">WindowClose</animation>
+	</control>
+	<control type="fixedlist" id="510">
+		<left>50</left>
+		<top>530</top>
+		<width>1212</width>
+		<height>230</height>
+		<focusposition>0</focusposition>
+		<ondown>9031</ondown>
+		<onup>9032</onup>
+		<orientation>horizontal</orientation>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>300</scrolltime>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="slide" start="0,-80" end="0,0" time="200" delay="300" tween="cubic" easing="out" />
+			<effect type="fade" start="0" end="100" time="200" delay="700" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="200"/>
+			<effect type="slide" start="0,0" end="0,80" time="200" tween="cubic" easing="in"/>
+		</animation>
+		<animation type="Visible" reversible="false">
+			<effect type="slide" start="0,-80" end="0,0" delay="200" time="200" tween="cubic" easing="out" />
+			<effect type="fade" start="0" end="100" delay="200" time="200"/>
+		</animation>
+		<animation type="Hidden" reversible="false">
+			<effect type="fade" start="100" end="0" time="200"/>
+			<effect type="slide" start="0,0" end="0,80" time="200" tween="cubic" easing="in"/>
+		</animation>
+		<itemlayout width="101" height="157">
+			<control type="image"><!-- reflect fallback -->
+				<left>4</left>
+				<top>148</top>
+				<width>93</width>
+				<height>140</height>
+				<texture flipy="true" diffuse="home/home_reflect.png" background="true">defaultpictures/DefaultMovies.png</texture>
+				<aspectratio align="center" aligny="top">scale</aspectratio>
+			</control>
+			<control type="image"><!-- reflect video -->
+				<left>4</left>
+				<top>148</top>
+				<width>93</width>
+				<height>140</height>
+				<texture flipy="true" diffuse="home/home_reflect.png" background="true">$INFO[ListItem.Icon]</texture>
+				<aspectratio align="center" aligny="top">scale</aspectratio>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image"><!-- poster fallback -->
+				<left>4</left>
+				<top>8</top>
+				<width>93</width>
+				<height>140</height>
+				<texture diffuse="home/home_matte_poster.png" background="true">defaultpictures/DefaultMovies.png</texture>
+				<aspectratio align="center" aligny="bottom">stretch</aspectratio>
+			</control>
+			<control type="image"><!-- poster -->
+				<left>4</left>
+				<top>8</top>
+				<width>93</width>
+				<height>140</height>
+				<texture diffuse="home/home_matte_poster.png" background="true">$INFO[ListItem.Icon]</texture>
+				<aspectratio align="center" aligny="bottom">stretch</aspectratio>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image"><!-- Dimmer -->
+				<left>4</left>
+				<top>8</top>
+				<width>93</width>
+				<height>140</height>
+				<texture colordiffuse="ACInaktivItems" diffuse="home/home_matte_poster.png">White.png</texture>
+			</control>
+			<include content="watched_overlayBG"><!-- watched_overlay -->
+				<param name="left">68</param>
+				<param name="top">6</param>
+				<param name="width">30</param>
+				<param name="height">30</param>
+			</include>
+			<control type="label">
+				<description>Media Overlay - neu, angefangene usw.</description>
+				<left>68</left>
+				<top>6</top>
+				<width>30</width>
+				<height>30</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<font>IconOverlay30</font>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$VAR[WatchedOverlayFlag]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="101" height="157">
+			<control type="group">
+				<animation type="Focus" reversible="false">
+					<effect type="zoom" center="auto" start="80" end="100" time="400" tween="back" easing="out" />
+					<effect type="fade" start="80" end="100" time="400" />
+				</animation>
+				<control type="image"><!-- reflect fallback -->
+					<left>4</left>
+					<top>148</top>
+					<width>93</width>
+					<height>140</height>
+					<texture flipy="true" diffuse="home/home_reflect.png" background="true">defaultpictures/DefaultMovies.png</texture>
+					<aspectratio align="center" aligny="top">scale</aspectratio>
+				</control>
+				<control type="image"><!-- reflect video -->
+					<left>4</left>
+					<top>148</top>
+					<width>93</width>
+					<height>140</height>
+					<texture flipy="true" diffuse="home/home_reflect.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="center" aligny="top">scale</aspectratio>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image"><!-- poster fallback -->
+					<left>4</left>
+					<top>8</top>
+					<width>93</width>
+					<height>140</height>
+					<texture diffuse="home/home_matte_poster.png" background="true">defaultpictures/DefaultMovies.png</texture>
+					<aspectratio align="center" aligny="bottom">stretch</aspectratio>
+				</control>
+				<control type="image"><!-- poster -->
+					<left>4</left>
+					<top>8</top>
+					<width>93</width>
+					<height>140</height>
+					<texture diffuse="home/home_matte_poster.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="center" aligny="bottom">stretch</aspectratio>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image"><!-- Dimmer -->
+					<left>4</left>
+					<top>8</top>
+					<width>93</width>
+					<height>140</height>
+					<texture colordiffuse="ACInaktivItems" diffuse="home/home_matte_poster.png">White.png</texture>
+					<include>animation_dimmer</include>
+				</control>
+				<control type="image">
+					<left>21</left>
+					<top>65</top>
+					<width>66</width>
+					<height>66</height>
+					<texture colordiffuse="ACSkinColor">buttons/listfocus.png</texture>
+					<animation effect="fade" start="20" end="100" time="700" condition="true" pulse="true">Conditional</animation>
+					<visible>Control.HasFocus(510)</visible>
+				</control>
+				<include content="watched_overlayBG"><!-- watched_overlay -->
+					<param name="left">68</param>
+					<param name="top">6</param>
+					<param name="width">30</param>
+					<param name="height">30</param>
+				</include>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw.</description>
+					<left>68</left>
+					<top>6</top>
+					<width>30</width>
+					<height>30</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlay30</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$VAR[WatchedOverlayFlag]</label>
+				</control>
+			</control>
+		</focusedlayout>
+			<content target="$INFO[Window(Home).Property(CustomInfo.Categorytarget)]">$INFO[Window(home).Property(CustomInfo.CategoryContent)]</content>
+			<onclick>Dialog.close(1125)</onclick>
+			<onclick condition="!String.IsEmpty(Container(510).ListItem.Duration))">PlayMedia("$INFO[ListItem.FilenameandPath]")</onclick><!-- episode/film -->
+			<onclick condition="String.IsEmpty(Container(510).ListItem.Duration)">ActivateWindow(videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick><!-- serie -->
+	</control>
+	<control type="label"><!-- similar -->
+		<left>50</left>
+		<top>690</top>
+		<width>1000</width>
+		<height>20</height>
+		<font>SemiBig</font>
+		<label>$INFO[Container(510).ListItem.Label]</label>
+		<include>animation_vhc_fade</include>
+		<visible>Control.HasFocus(510)</visible>
+	</control>
+	<include>global_topbar_multidata</include>
+</control>
+</controls>
+</window>
+

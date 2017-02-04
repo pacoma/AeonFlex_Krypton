@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<!-- #### Viewtype GenreBanner  ####-->
+
+<include name="View52GenreBanner_video">
+	<control type="group">
+		<visible>Control.IsVisible(52)</visible>
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<control type="image">
+			<description>hintergrund</description>
+			<top>85</top>
+			<width>1280</width>
+			<height>205</height>
+			<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+		</control>
+		<control type="image">
+			<top>85</top>
+			<include>global_bottomshadow5</include>
+		</control>
+		<control type="image">
+			<description>hintergrund</description>
+			<top>620</top>
+			<width>1280</width>
+			<height>100</height>
+			<texture diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+		</control>
+		<control type="panel" id="52">
+			<viewtype label="$LOCALIZE[31225]">Wide Icon</viewtype>
+			<left>30</left>
+			<top>98</top>
+			<width>1240</width>
+			<height>548</height>
+			<onleft>SetFocus(9000)</onleft><!--menue-->
+			<onright>80</onright>
+			<pagecontrol>80</pagecontrol>
+			<scrolltime>450</scrolltime>
+			<preloaditems>2</preloaditems>
+			<include>OnInfoContent</include>
+			<animation effect="slide" start="0,0" end="-10,0" time="400" tween="cubic" easing="inout" condition="Control.HasFocus(80)">Conditional</animation>
+			<visible>!String.Contains(Container.FolderPath,plugin) + Container.Content(genres) + [String.Contains(Skin.String(GenreViewtype),GenreBanner) | !String.IsEmpty(Window(home).Property(Viewtypepreview))]</visible>
+			<itemlayout height="137" width="620">
+				<control type="image">
+					<description>back</description>
+					<width>590</width>
+					<height>117</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">folderback/FolderBackBanner.png</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+					<visible>ListItem.IsParentFolder</visible>
+				</control>
+				<control type="image">
+					<description>fallback + border</description>
+					<width>590</width>
+					<height>117</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">resource://resource.images.moviegenrefanart.flex/moviegenres_banner/default.jpg</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Fallback BannerText</description>
+					<width>590</width>
+					<height>117</height>
+					<textoffsetx>30</textoffsetx>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<font>SemiBig</font>
+					<visible>!ListItem.IsParentFolder + !Skin.HasSetting(GenreTextlabelOverlay)</visible>
+				</control>
+				<control type="image">
+					<description>banner</description>
+					<width>590</width>
+					<height>117</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">$VAR[art_value_banner]</texture>
+					<bordersize>8</bordersize>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="image">
+					<description>textdiffuse</description>
+					<width>590</width>
+					<height>117</height>
+					<bordersize>8,8,150,8</bordersize>
+					<texture flipx="true" colordiffuse="ACSkinColor">backgrounds/background-smalloverlay-v.png</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>!ListItem.IsParentFolder + Skin.HasSetting(GenreTextlabelOverlay)</visible>
+				</control>
+				<control type="label">
+					<description>label BannerText</description>
+					<width>590</width>
+					<height>117</height>
+					<textoffsetx>30</textoffsetx>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<font>SemiBig</font>
+					<visible>!ListItem.IsParentFolder + Skin.HasSetting(GenreTextlabelOverlay)</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>117</height>
+					<bordersize>8</bordersize>
+					<texture colordiffuse="ACInaktivItems">White.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+			</itemlayout>
+			<focusedlayout height="137" width="620">
+				<control type="group">
+					<animation effect="zoom" center="215,53" start="100" end="105" time="280" tween="cubic" easing="inout" reversible="false">Focus</animation>
+					<animation effect="zoom" center="215,53" start="105" end="100" time="280" tween="cubic" easing="inout" reversible="false">UnFocus</animation>
+					<control type="image">
+						<description>back</description>
+						<width>590</width>
+						<height>117</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">folderback/FolderBackBanner.png</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+						<visible>ListItem.IsParentFolder</visible>
+					</control>
+					<control type="image">
+						<description>fallback + border</description>
+						<width>590</width>
+						<height>117</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">resource://resource.images.moviegenrefanart.flex/moviegenres_banner/default.jpg</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+						<visible>!ListItem.IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<description>Fallback BannerText</description>
+						<width>590</width>
+						<height>117</height>
+						<textoffsetx>30</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<font>SemiBig</font>
+						<visible>!ListItem.IsParentFolder + !Skin.HasSetting(GenreTextlabelOverlay)</visible>
+					</control>
+					<control type="image">
+						<description>banner</description>
+						<width>590</width>
+						<height>117</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$VAR[art_value_banner]</texture>
+						<bordersize>8</bordersize>
+						<visible>!ListItem.IsParentFolder</visible>
+					</control>
+					<control type="image">
+						<description>textdiffuse</description>
+						<width>590</width>
+						<height>117</height>
+						<bordersize>8,8,150,8</bordersize>
+						<texture flipx="true" colordiffuse="ACSkinColor">backgrounds/background-smalloverlay-v.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>!ListItem.IsParentFolder + Skin.HasSetting(GenreTextlabelOverlay)</visible>
+					</control>
+					<control type="label">
+						<description>label BannerText</description>
+						<width>590</width>
+						<height>117</height>
+						<textoffsetx>30</textoffsetx>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<font>SemiBig</font>
+						<visible>!ListItem.IsParentFolder + Skin.HasSetting(GenreTextlabelOverlay)</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>117</height>
+						<bordersize>8</bordersize>
+						<texture colordiffuse="ACInaktivItems">White.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="80"><!--Scrollbar -->
+			<left>1240</left>
+			<top>92</top>
+			<height>548</height>
+			<include>scrollbar_vertical</include>
+			<onleft>52</onleft>
+			<onright>9000</onright><!--menue-->
+			<visible allowhiddenfocus="true">Control.IsVisible(52) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+</includes>

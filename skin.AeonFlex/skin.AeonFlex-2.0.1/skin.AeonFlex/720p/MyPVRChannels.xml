@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol>50</defaultcontrol>
+<menucontrol>9000</menucontrol>
+<views>50,51,52,53,54</views>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<control type="label" id="29">
+		<description>Current Category</description>
+		<include>Hiddencontrol</include>
+		<visible>false</visible>
+	</control>
+	<control type="label" id="30">
+		<description>Current Sub Category</description>
+		<include>Hiddencontrol</include>
+		<visible>false</visible>
+	</control>
+	<control type="image" id="9924"><!-- Fake Visible info panel Landscape -->
+		<include>Hiddencontrol</include>
+		<animation effect="fade" start="0" end="100" time="150" delay="1000" condition="String.Contains(skin.string(ChannelLandscapeEXinfopanel_seconds),1)">Visible</animation>
+		<animation effect="fade" start="0" end="100" time="150" delay="2000" condition="String.Contains(skin.string(ChannelLandscapeEXinfopanel_seconds),2)">Visible</animation>
+		<animation effect="fade" start="0" end="100" time="150" delay="3000" condition="String.Contains(skin.string(ChannelLandscapeEXinfopanel_seconds),3)">Visible</animation>
+		<animation effect="fade" start="0" end="100" time="150" delay="4000" condition="String.Contains(skin.string(ChannelLandscapeEXinfopanel_seconds),4)">Visible</animation>
+		<animation effect="fade" start="0" end="100" time="150" delay="5000" condition="String.Contains(skin.string(ChannelLandscapeEXinfopanel_seconds),6)">Visible</animation>
+		<visible>![Container.OnNext | Container.OnPrevious] + Control.IsVisible(51)</visible>
+	</control>
+	<include>CommonBackground</include>
+	
+	<control type="group"><!-- background Visualization -->
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<visible>Skin.HasSetting(Channelview_background_video)</visible>
+		<control type="videowindow">
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasVideo</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+		<control type="visualisation">
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasAudio</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+	</control>
+	<control type="group">
+		<visible>$EXP[HasNoInfoDialog]</visible>
+		<include>View50Leftlist_pvr</include>
+		<include>View53Leftlist2_pvr</include>
+		<include>View52List_pvr</include>
+		<include>View54List_pvr</include>
+		<include>View51LandScapeX_pvr</include>
+	</control>
+	<include>pvr_sidebarmenue</include>
+	<include>global_topbar_multidata</include>
+</controls>
+</window>

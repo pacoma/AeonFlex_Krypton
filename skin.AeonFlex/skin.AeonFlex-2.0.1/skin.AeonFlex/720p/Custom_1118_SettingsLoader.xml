@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1118">
+<defaultcontrol always="true">119</defaultcontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>ClearProperty(RefreshList3,Home)</onunload>
+<!-- Reset Tempstring Menuekategorien -->
+<onunload>ClearProperty(MenueProperties,home)</onunload>
+<!-- Alarm Reset -->
+<onunload>CancelAlarm(WindowLoad,silent)</onunload>
+<onunload>CancelAlarm(Beginnloading,silent)</onunload>
+<onunload>CancelAlarm(Nextstep,silent)</onunload>
+<controls>
+<control type="button" id="119"><!-- focus button -->
+	<onclick>noop</onclick>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Widgetchannelgroupselect) | String.IsEqual(Window(home).Property(MenueProperties),Widgetradioselect)">AlarmClock(Beginnloading,SetFocus(352),0:02,true)</onfocus><!-- widget -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">AlarmClock(Beginnloading,SetFocus(120),0:02,true)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Reload)">AlarmClock(Beginnloading,SetFocus(350),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx1Reset)">AlarmClock(Beginnloading,SetFocus(120),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx2Reset)">AlarmClock(Beginnloading,SetFocus(121),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx3Reset)">AlarmClock(Beginnloading,SetFocus(122),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx4Reset)">AlarmClock(Beginnloading,SetFocus(123),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx5Reset)">AlarmClock(Beginnloading,SetFocus(124),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx6Reset)">AlarmClock(Beginnloading,SetFocus(125),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx7Reset)">AlarmClock(Beginnloading,SetFocus(126),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx8Reset)">AlarmClock(Beginnloading,SetFocus(127),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx9Reset)">AlarmClock(Beginnloading,SetFocus(128),0:02,true)</onfocus>
+
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot1Reset)">AlarmClock(Beginnloading,SetFocus(1200),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot2Reset)">AlarmClock(Beginnloading,SetFocus(1210),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot3Reset)">AlarmClock(Beginnloading,SetFocus(1220),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot4Reset)">AlarmClock(Beginnloading,SetFocus(1230),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot5Reset)">AlarmClock(Beginnloading,SetFocus(1240),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot6Reset)">AlarmClock(Beginnloading,SetFocus(1250),0:02,true)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot13Reset)">AlarmClock(Beginnloading,SetFocus(1329),0:02,true)</onfocus>
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="120"><!-- slot 1 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx1Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx1WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx1_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(121)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx1Reset)">SetFocus(142)</onfocus><!-- slot1 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="121"><!-- slot 2 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx2Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx2WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx2_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(122)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx2Reset)">SetFocus(142)</onfocus><!-- slot2 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="122"><!-- slot 3 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx3Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx3WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx3_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(123)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx3Reset)">SetFocus(142)</onfocus><!-- slot3 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="123"><!-- slot 4 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx4Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx4WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx4_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(124)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx4Reset)">SetFocus(142)</onfocus><!-- slot4 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="124"><!-- slot 5 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx5Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx5WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx5_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(125)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx5Reset)">SetFocus(142)</onfocus><!-- slot5 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="125"><!-- slot 6 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx6Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx6WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx6_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(126)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx6Reset)">SetFocus(142)</onfocus><!-- slot6 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="126"><!-- slot 7 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx7Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx7WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx7_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(127)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx7Reset)">SetFocus(142)</onfocus><!-- slot7 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="127"><!-- slot 8 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx8Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx8WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx8_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(128)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx8Reset)">SetFocus(142)</onfocus><!-- slot8 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="128"><!-- slot 9 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(DisableMainslotx9Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9Title)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9Click)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslotx9WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslotx9_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1200)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slotx9Reset)">SetFocus(142)</onfocus><!-- slot9 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<!-- Defaults 29 -->
+<control type="button" id="1200"><!-- slot 1 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(Mainslot1Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslot1Title)</onfocus>
+	<onfocus>Skin.reset(Mainslot1Click)</onfocus>
+	<onfocus>Skin.reset(Mainslot1WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslot1WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslot1WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslot1WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslot1_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot1_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot1_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslot1_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslot1_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslot1_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslot1_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslot1_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1210)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot1Reset)">SetFocus(142)</onfocus><!-- slot1 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="1210"><!-- slot 2 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(Mainslot2Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslot2Title)</onfocus>
+	<onfocus>Skin.reset(Mainslot2Click)</onfocus>
+	<onfocus>Skin.reset(Mainslot2WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslot2WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslot2WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslot2WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslot2_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot2_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot2_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslot2_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslot2_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslot2_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslot2_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslot2_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslot2_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslot2_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslot2_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslot2_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1220)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot2Reset)">SetFocus(142)</onfocus><!-- slot2 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="1220"><!-- slot 3 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(Mainslot3Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslot3Title)</onfocus>
+	<onfocus>Skin.reset(Mainslot3Click)</onfocus>
+	<onfocus>Skin.reset(Mainslot3WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslot3WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslot3WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslot3WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslot3_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot3_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot3_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslot3_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslot3_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslot3_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslot3_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslot3_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslot3_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslot3_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslot3_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslot3_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1230)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot3Reset)">SetFocus(142)</onfocus><!-- slot3 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="1230"><!-- slot 4 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(Mainslot4Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslot4Title)</onfocus>
+	<onfocus>Skin.reset(Mainslot4Click)</onfocus>
+	<onfocus>Skin.reset(Mainslot4WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslot4WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslot4WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslot4WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslot4_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot4_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot4_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslot4_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslot4_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslot4_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslot4_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslot4_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslot4_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslot4_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslot4_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslot4_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1240)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot4Reset)">SetFocus(142)</onfocus><!-- slot4 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="1240"><!-- slot 5 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(Mainslot5Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslot5Title)</onfocus>
+	<onfocus>Skin.reset(Mainslot5Click)</onfocus>
+	<onfocus>Skin.reset(Mainslot5WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslot5WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslot5WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslot5WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslot5_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot5_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot5_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslot5_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslot5_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslot5_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslot5_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslot5_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslot5_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslot5_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslot5_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslot5_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1250)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot5Reset)">SetFocus(142)</onfocus><!-- slot5 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="1250"><!-- slot 6 reset -->
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(Mainslot6Icon)</onfocus>
+	<onfocus>Skin.reset(Mainslot6Title)</onfocus>
+	<onfocus>Skin.reset(Mainslot6Click)</onfocus>
+	<onfocus>Skin.reset(Mainslot6WidgetContent)</onfocus>
+	<onfocus>Skin.reset(Mainslot6WidgetTarget)</onfocus>
+	<onfocus>Skin.reset(Mainslot6WidgetTitle)</onfocus>
+	<onfocus>Skin.reset(Mainslot6WidgetCategory)</onfocus>
+	<onfocus>Skin.reset(Subslot6_01Title)</onfocus>
+	<onfocus>Skin.reset(Subslot6_01Click)</onfocus>
+	<onfocus>Skin.reset(Subslot6_02Title)</onfocus>
+	<onfocus>Skin.reset(Subslot6_02Click)</onfocus>
+	<onfocus>Skin.reset(Subslot6_03Title)</onfocus>
+	<onfocus>Skin.reset(Subslot6_03Click)</onfocus>
+	<onfocus>Skin.reset(Subslot6_04Title)</onfocus>
+	<onfocus>Skin.reset(Subslot6_04Click)</onfocus>
+	<onfocus>Skin.reset(Subslot6_05Title)</onfocus>
+	<onfocus>Skin.reset(Subslot6_05Click)</onfocus>
+	<onfocus>Skin.reset(Subslot6_06Title)</onfocus>
+	<onfocus>Skin.reset(Subslot6_06Click)</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(1329)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot6Reset)">SetFocus(142)</onfocus><!-- slot6 reset -->
+	<include>Hiddencontrol</include>
+</control>
+
+<control type="button" id="1329"><!-- slot 13 dvd build -->
+	<include>Hiddencontrol</include>
+	<onfocus>Skin.SetString(Mainslot9Icon,special://skin/extras/windows/dvd.jpg)</onfocus><!-- background -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">SetFocus(142)</onfocus><!-- menue löschen -->
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),Slot13Reset)">SetFocus(142)</onfocus><!-- slot13 reset -->
+</control>
+
+<control type="button" id="142"><!-- close -->
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+	<include>Hiddencontrol</include>
+	<onclick>noop</onclick>
+	<onfocus>Dialog.Close(1118)</onfocus>
+</control>
+
+<control type="button" id="350"><!-- reload skin -->
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+	<include>Hiddencontrol</include>
+	<onclick>noop</onclick>
+	<onfocus>Dialog.Close(1118)</onfocus>
+	<onfocus>ReloadSkin()</onfocus>
+	<onfocus condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">ActivateWindow(1110)</onfocus>
+</control>
+
+<control type="button" id="352"><!-- channel widget -->
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+	<include>Hiddencontrol</include>
+	<onclick>Dialog.Close(1118)</onclick>
+	<onclick condition="String.IsEqual(Window(home).Property(MenueProperties),Widgetchannelgroupselect)">ActivateWindow(1116)</onclick>
+	<onclick condition="String.IsEqual(Window(home).Property(MenueProperties),Widgetradioselect)">ActivateWindow(1117)</onclick>
+</control>
+
+<!-- background -->
+<control type="image">
+	<description>Hintergrund</description>
+	<width>1280</width>
+	<height>720</height>
+	<include>global_texture_heavy</include>
+	<animation effect="fade" delay="300" start="0" end="100" time="280" tween="cubic" easing="out">WindowOpen</animation>
+	<animation effect="fade" start="100" end="0" time="800" tween="cubic" easing="out">WindowClose</animation>
+</control>
+<control type="group">
+	<animation type="WindowClose" reversible="false">
+		<effect type="fade" time="900" start="100" end="0" tween="cubic" easing="out" />
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="slide" time="900" start="0,0" end="0,520" tween="back" easing="out" />
+		<effect type="fade" time="900" start="100" end="0" tween="cubic" easing="out" />
+	</animation>
+	<control type="group"><!-- Text -->
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" delay="100" time="600" start="0" end="100" tween="cubic" easing="out" />
+		</animation>
+		<control type="image"><!-- Logo texture -->
+			<left>555</left>
+			<top>180</top>
+			<width>170</width>
+			<height>170</height>
+			<texture colordiffuse="ACSkinColor">logo_flex_sw.png</texture>
+			<animation effect="rotatey" delay="1500" center="640,0" start="0" end="360" time="4000" loop="true" condition="!String.IsEmpty(Control.GetLabel(915))">Conditional</animation>
+		 </control>
+		 <control type="image">
+			<left>555</left>
+			<top>180</top>
+			<width>170</width>
+			<height>170</height>
+			<texture colordiffuse="TextColor1">logo_flex_text.png</texture>
+			<animation effect="rotatey" delay="1500" center="640,0" start="0"end="360" time="4000" loop="true" condition="!String.IsEmpty(Control.GetLabel(915))">Conditional</animation>
+		 </control>
+		<control type="label"><!-- loadings text -->
+			<description>Titel</description>
+			<left>40</left>
+			<top>330</top>
+			<width>1200</width>
+			<height>60</height>
+			<font>SemiLarge</font>
+			<align>center</align>
+			<label>$VAR[value_defaultloader_title]</label>
+		</control>
+		<control type="label">
+			<description>Subtitel step</description>
+			<left>40</left>
+			<top>410</top>
+			<width>1200</width>
+			<height>22</height>
+			<align>center</align>
+			<label>$VAR[value_defaultloader_reset1]</label>
+		</control>
+		<control type="textbox" id="915">
+			<description>Subtitel step</description>
+			<left>40</left>
+			<top>430</top>
+			<width>1200</width>
+			<include>PlotNormal88</include>
+			<align>center</align>
+			<label>$VAR[value_defaultloader_reset2]</label>
+		</control>
+	</control>
+	<control type="button" id="10">
+		<onclick>noop</onclick>
+		<include>Hiddencontrol</include>
+		<onfocus>AlarmClock(WindowLoad,SetFocus(11),00:05,silent)</onfocus>
+	</control>
+	<control type="button" id="11">
+		<include>Hiddencontrol</include>
+		<onclick>noop</onclick>
+		<onfocus>Dialog.Close(1118)</onfocus>
+		<onfocus>ActivateWindow(Home)</onfocus>
+	</control>
+</control>
+
+</controls>
+</window>

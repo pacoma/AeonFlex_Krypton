@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>9000</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<left>0</left>
+	<top>0</top>
+</coordinates>
+<controls>
+<control type="textbox" id="9">
+	<description>text</description>
+	<left>-100</left>
+	<top>-100</top>
+	<width>90</width>
+	<height>90</height>
+	<include>HiddenControl</include>
+</control>
+<control type="group"><!-- ja/nein und OK Layout -->
+	<visible>![Window.IsVisible(extendedprogressdialog) | Window.IsVisible(DialogNotification.xml) | !Player.Muted + Window.IsVisible(volumebar)]</visible>
+	<visible>Window.Is(yesnodialog) | Window.Is(okdialog)</visible>
+	<include>animation_topdialog_popup</include>
+	<top>-20</top>
+	<include>dialog_triplebar</include>
+	<control type="grouplist" id="9000">
+		<left>450</left>
+		<top>50</top>
+		<width>380</width>
+		<align>center</align>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>
+		<control type="button" id="11">
+			<description>Ja button</description>
+			<width>180</width>
+			<height>29</height>
+			<align>center</align>
+			<font>RegularSmall</font>
+			<label>$LOCALIZE[107]</label>
+			<onclick condition="String.IsEqual(Window(home).Property(MenueProperties),ResetMenue)">ActivateWindow(1118)</onclick><!-- load default menue -->
+		</control>
+		<control type="button" id="10">
+			<description>no button</description>
+			<width>180</width>
+			<height>29</height>
+			<align>center</align>
+			<font>RegularSmall</font>
+			<label>$LOCALIZE[106]</label>
+		</control>
+	</control>
+	<control type="grouplist">
+		<orientation>horizontal</orientation>
+		<top>24</top>
+		<width>1280</width>
+		<align>center</align>
+		<itemgap>20</itemgap>
+		<control type="label" id="1">
+			<description>titel</description>
+			<width min="100" max="600">auto</width>
+			<height>20</height>
+			<font>SemiNormal</font>
+			<textcolor>TextColor1</textcolor>
+			<label></label>
+		</control>
+		<control type="label">
+			<description>text</description>
+			<width min="100" max="600">auto</width>
+			<height>20</height>
+			<textcolor>TextColor1</textcolor>
+			<label>$INFO[Control.GetLabel(9)]</label>
+		</control>
+	</control>
+</control>
+<control type="group"><!-- progress Layout -->
+	<include>animation_topdialog_popup</include>
+	<include>dialog_bar</include>
+	<visible>Window.Is(progressdialog)</visible>
+	<visible>![Window.IsVisible(extendedprogressdialog) | Window.IsVisible(DialogNotification.xml) | !Player.Muted + Window.IsVisible(volumebar)]</visible>
+	<animation effect="slide" end="0,-70" time="200" condition="Window.IsVisible(FullscreenVideo) | Window.IsVisible(Visualisation)">conditional</animation>
+	<control type="progress" id="32">
+		<include>dialog_progress</include>
+		<info>System.Progressbar</info>
+	</control>
+	<control type="label">
+		<include content="dialog_label1">
+			<param name="DialogHeaderLabel1" value="$INFO[Control.GetLabel(1),, ($LOCALIZE[31020])] [COLOR=TextColor2]$INFO[Control.GetLabel(32), - ,%][/COLOR]" />
+		</include>
+	</control>
+	<control type="label">
+		<include content="dialog_label2">
+			<param name="DialogHeaderLabel2" value="$INFO[Control.GetLabel(9)]" />
+		</include>
+	</control>
+</control>
+</controls>
+</window>

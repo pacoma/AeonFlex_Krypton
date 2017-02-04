@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- flex 2.0 -->
+<defaultcontrol always="true">51</defaultcontrol>
+<menucontrol>8999</menucontrol>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<views>51</views>
+<controls>
+	<include>menucontrol</include>
+	<include>CommonBackground</include>
+	<!-- ViewTypes -->
+	<control type="group">
+		<visible>![Window.IsVisible(pictureinfo) | Window.IsActive(selectdialog)]</visible>
+		<include>animation_window</include>
+		<include>View51LowList_pictures</include>
+	</control>
+	<include>viewglobal_sortletter</include><!-- Scrolllabel -->
+	<include>global_topbar_multidata</include><!-- Topinfo -->
+	<control type="group"><!-- Menue -->
+		<left>157</left>
+		<top>160</top>
+		<include>animation_dialog_popup</include>
+		<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + $EXP[HasNotDialogPopup]</visible>
+		<control type="image">
+			<description>schatten 5 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height5</height>
+			<visible>Integer.IsLessOrEqual(Container(9000).NumItems,5)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 5 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height5</height>
+			<visible>Integer.IsLessOrEqual(Container(9000).NumItems,5)</visible>
+		</control>
+		<control type="image">
+			<description>schatten 6 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height6</height>
+			<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 6 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height6</height>
+			<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+		</control>
+		<control type="image">
+			<description>schatten 7 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height7</height>
+			<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 7 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height7</height>
+			<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+		</control>
+		<control type="image">
+			<description>schatten 8 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height8</height>
+			<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 8 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height8</height>
+			<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+		</control>
+		<control type="image">
+			<description>background header</description>
+			<include>dialog_headerfront_neu</include>
+		</control>
+		<control type="label">
+			<description>header</description>
+			<label>$LOCALIZE[31395]</label>
+			<include>dialog_headertitle_neu</include>
+		</control>
+		<control type="grouplist" id="9000"><!-- 5-10 -->
+			<left>dialog-border</left>
+			<top>dialog-inner-top</top>
+			<width>dialog-inner-width</width>
+			<height>448</height>
+			<onleft>SetFocus(51)</onleft><!-- close and back -->
+			<onright>SetFocus(51)</onright>
+			<onup>9000</onup>
+			<ondown>9000</ondown>
+			<onback>51</onback>
+			<itemgap>0</itemgap>
+			<control type="button" id="3">
+				<description>Sort by button</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[103]</label>
+				<visible>Control.IsEnabled(3)</visible>
+			</control>
+			<control type="togglebutton" id="4">
+				<description>Sort asc</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[31005]</label>
+				<altlabel>$LOCALIZE[31004]</altlabel>
+				<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+			</control>
+			<control type="edit" id="19">
+				<description>Filter</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[587]</label>
+				<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+			</control>
+			<control type="radiobutton" id="20">
+				<description>Filter</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[587]</label>
+				<selected>Container.Filtered</selected>
+				<onclick>right</onclick>
+				<onclick>Filter</onclick>
+				<visible>Container.CanFilterAdvanced</visible>
+			</control>
+			<control type="button" id="6">
+				<description>Slideshow</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[108]</label>
+				<visible>Control.IsEnabled(6)</visible>
+			</control>
+			<control type="button" id="7">
+				<description>Recursive Slideshow</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[361]</label>
+				<visible>Control.IsEnabled(7)</visible>
+			</control>
+			<control type="radiobutton" id="9">
+				<description>Randomize Slideshow</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[13319]</label>
+				<visible>Control.IsEnabled(9)</visible>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>

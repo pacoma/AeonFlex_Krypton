@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<variable name="AKNvalue_landscapeXLandscape">
+	<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value><!-- moviegenres -->
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value><!-- tvgenres -->
+	
+	<value condition="Container.Content(seasons) + Integer.IsGreater(ListItem.Season,9)">$INFO[ListItem.Path,,season]$INFO[ListItem.Season,,-landscape.jpg]</value>
+	<value condition="Container.Content(seasons) + Integer.IsGreater(ListItem.Season,0)">$INFO[ListItem.Path,,season0]$INFO[ListItem.Season,,-landscape.jpg]</value>
+	<value condition="Container.Content(seasons) + [String.IsEqual(ListItem.Season,0) | String.Contains(ListItem.Label,Specials)]">$INFO[ListItem.Path,,season-specials-landscape.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+	
+	
+	<value condition="!Container.Content(seasons) + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+	<value condition="!Container.Content(seasons) + String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(fanart)]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+</variable>
+
+<variable name="art_value_landscape_fallbackimage">
+	<value condition="ListItem.IsParentFolder">folderback/FolderBackExtrathumb.png</value>
+	<value condition="Container.Content(genres)">resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/default.jpg</value>
+	<value condition="Container.Content(seasons)">defaultpictures/DefaultSeasonExtrathumb.png</value>
+	<value>defaultpictures/DefaultMovieExtrathumb.png</value>
+</variable>
+
+<include name="landscapeview_artwordimension">
+	<left>35</left>
+	<top>1</top>
+	<width>212</width>
+	<height>126</height>
+	<bordersize>8</bordersize>
+	<aspectratio scalediffuse="false" aligny="center" align="center">stretch</aspectratio>
+</include>
+
+<include name="landscapeview_overlaydimesion">
+	<left>209</left>
+	<top>9</top>
+	<width>30</width>
+	<height>30</height>
+</include>
+
+<include name="landscapeview_lastwatcheddimesion">
+	<left>48</left>
+	<top>5</top>
+	<width>30</width>
+	<height>30</height>
+	<visible>!Skin.HasSetting(DisableLastwatchedHistory)</visible>
+</include>
+
+<include name="View64LandScapeX_video">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<visible>Control.IsVisible(64)</visible>
+		<control type="image" id="9924"><!-- Fake Visible info panel Landscape -->
+			<include>Hiddencontrol</include>
+			<animation effect="fade" start="0" end="100" time="150" delay="1000" condition="String.Contains(skin.string(LandscapeEXinfopanel_seconds),1)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="2000" condition="String.Contains(skin.string(LandscapeEXinfopanel_seconds),2)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="3000" condition="String.Contains(skin.string(LandscapeEXinfopanel_seconds),3)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="4000" condition="String.Contains(skin.string(LandscapeEXinfopanel_seconds),4)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="5000" condition="String.Contains(skin.string(LandscapeEXinfopanel_seconds),6)">Visible</animation>
+			<visible>![Container.OnNext | Container.OnPrevious] + Control.IsVisible(64)</visible>
+		</control>
+		<control type="group"><!-- Infopanel -->
+			<top>85</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<visible>[[String.IsEqual(skin.string(LandscapeEXInfopanel),auto) + Control.IsVisible(9924)] | String.IsEqual(skin.string(LandscapeEXInfopanel),alwayson)] | !String.IsEmpty(Window(home).Property(Viewtypepreview)) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml) | String.IsEmpty(Skin.String(LandscapeEXInfopanel))</visible>
+			<animation effect="slide" start="0,-600" end="0,0" time="500" tween="sine" easing="out">Visible</animation>
+			<animation effect="slide" start="0,0" end="0,-600" time="500" tween="sine" easing="out">Hidden</animation>
+			<control type="image">
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<width>1280</width>
+				<height>480</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+			</control>
+			<include>viewlandscapeex-topelements</include>
+			<control type="image">
+				<description>schatten links</description>
+				<left>450</left>
+				<height>235</height>
+				<include>global_texture_border5_leftv</include>
+				<visible>!Container.Content(genres)</visible>
+			</control>
+			<control type="image">
+				<description>schatten rechts</description>
+				<left>825</left>
+				<height>235</height>
+				<include>global_texture_border5_rightv</include>
+				<visible>!Container.Content(genres)</visible>
+			</control>
+		</control>
+		<control type="group"><!-- list -->
+			<top>300</top>
+			<control type="image">
+				<top>20</top>
+				<width>1280</width>
+				<height>360</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor_light">White.png</texture>
+			</control>
+			<control type="image">
+				<top>15</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<top>345</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="panel" id="64">
+				<viewtype label="$LOCALIZE[31227]">icon</viewtype>
+				<left>55</left>
+				<top>50</top>
+				<width>1190</width>
+				<height>269</height>
+				<onup>9900</onup>
+				<onleft>SetFocus(9000)</onleft>
+				<include>OnInfoContent</include>
+				<onright condition="Integer.IsGreater(Container(64).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(64).NumPages,1)">SetFocus(9000)</onright>
+				<scrolltime>400</scrolltime>
+				<preloaditems>2</preloaditems>
+				<pagecontrol>80</pagecontrol>
+				<visible>!String.Contains(Container.FolderPath,plugin) + [[Container.Content(movies) + String.Contains(Skin.String(PLS_FilmViewtype),LandScapeX) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(movies) + String.Contains(Skin.String(FilmViewtype),LandScapeX) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(TVViewtype),LandScapeX) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(PLS_TVViewtype),LandScapeX) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(episodes) + String.Contains(Skin.String(EpisodeViewtype),LandScapeX) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(episodes) + String.Contains(Skin.String(PLS_EpisodeViewtype),LandScapeX) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(seasons) + String.Contains(Skin.String(StaffelViewtype),LandScapeX)] | [Container.Content(sets) + String.Contains(Skin.String(SetViewtype),LandScapeX)] | [Container.Content(genres) + String.Contains(Skin.String(GenreViewtype),LandScapeX)]] | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+				<!-- default landscape -->
+				<itemlayout condition="String.IsEmpty(Skin.String(LandscapeEXContentIcons)) | Container.Content(genres) | Container.Content(episodes) | Container.Content(seasons)" height="134" width="218">
+					<control type="group">
+						<control type="image">
+							<include>landscapeview_artwordimension</include>
+							<texture background="true">$VAR[art_value_landscape_fallbackimage]</texture>
+							<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						</control>
+						<control type="label">
+							<description>Fallback Text Season</description>
+							<left>53</left>
+							<top>33</top>
+							<width>176</width>
+							<height>60</height>
+							<textcolor>TextColor2</textcolor>
+							<align>center</align>
+							<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+							<font>SemiLarge</font>
+							<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+						</control>
+						<control type="image">
+							<description>Landscape</description>
+							<include>landscapeview_artwordimension</include>
+							<texture background="true">$VAR[AKNvalue_landscapeXLandscape]</texture>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="image">
+							<include>landscapeview_lastwatcheddimesion</include>
+							<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+							<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+						</control>
+						<control type="image">
+							<description>Dimmer</description>
+							<include>landscapeview_artwordimension</include>
+							<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+						</control>
+						<include content="watched_overlayBG"><!-- watched_overlay -->
+							<param name="left">212</param>
+							<param name="top">6</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+						<control type="label">
+							<description>Media Overlay - neu, angefangene usw.</description>
+							<left>212</left>
+							<top>6</top>
+							<width>30</width>
+							<height>30</height>
+							<aligny>top</aligny>
+							<align>right</align>
+							<font>IconOverlay30</font>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorFocus</selectedcolor>
+							<label>$VAR[WatchedOverlayFlag]</label>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="String.IsEmpty(Skin.String(LandscapeEXContentIcons)) | Container.Content(genres) | Container.Content(episodes) | Container.Content(seasons)" height="134" width="218">
+					<control type="group">
+						<animation effect="zoom" center="119,57" start="100" end="108" time="380" reversible="false">Focus</animation>
+						<animation effect="zoom" center="119,57" start="108" end="100" time="380" reversible="false">UnFocus</animation>
+						<control type="image">
+							<include>landscapeview_artwordimension</include>
+							<texture background="true">$VAR[art_value_landscape_fallbackimage]</texture>
+							<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						</control>
+						<control type="label">
+							<description>Fallback Text Season</description>
+							<left>53</left>
+							<top>33</top>
+							<width>176</width>
+							<height>60</height>
+							<textcolor>TextColor2</textcolor>
+							<align>center</align>
+							<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+							<font>SemiLarge</font>
+							<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+						</control>
+						<control type="image">
+							<description>Landscape</description>
+							<include>landscapeview_artwordimension</include>
+							<texture background="true">$VAR[AKNvalue_landscapeXLandscape]</texture>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="image">
+							<include>landscapeview_lastwatcheddimesion</include>
+							<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+							<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+						</control>
+						<control type="image">
+							<description>Dimmer</description>
+							<include>landscapeview_artwordimension</include>
+							<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+							<include>animation_dimmer</include>
+						</control>
+						<include content="watched_overlayBG"><!-- watched_overlay -->
+							<param name="left">212</param>
+							<param name="top">6</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+						<control type="label">
+							<description>Media Overlay - neu, angefangene usw.</description>
+							<left>212</left>
+							<top>6</top>
+							<width>30</width>
+							<height>30</height>
+							<aligny>top</aligny>
+							<align>right</align>
+							<font>IconOverlay30</font>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorFocus</selectedcolor>
+							<label>$VAR[WatchedOverlayFlag]</label>
+						</control>
+					</control>
+				</focusedlayout>
+				<!-- default logo -->
+				<itemlayout condition="!Container.Content(genres) + !Container.Content(episodes) + !Container.Content(seasons) + String.IsEqual(Skin.String(LandscapeEXContentIcons),logo)" height="134" width="218">
+					<control type="image"><!-- back -->
+						<description>back</description>
+						<left>118</left>
+						<top>46</top>
+						<width>35</width>
+						<height>35</height>
+						<texture>arrows/arrow.png</texture>
+						<visible>ListItem.IsParentFolder</visible>
+					</control>
+					<control type="group">
+						<visible>!ListItem.IsParentFolder</visible>
+						<animation effect="fade" start="80" end="80" time="0" condition="true">Conditional</animation>
+						<animation effect="zoom" center="119,57" start="80" end="80" time="0" condition="true">Conditional</animation>
+						<control type="image">
+							<left>40</left>
+							<top>-1</top>
+							<width>202</width>
+							<height>119</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture background="true">$VAR[art_value_logo]</texture>
+							<colordiffuse>black</colordiffuse>
+							<animation effect="fade" start="20" end="20" time="0" condition="true">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>43</left>
+							<top>2</top>
+							<width>196</width>
+							<height>113</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture background="true" fallback="logo_flex_sw.png">$VAR[art_value_logo]</texture>
+						</control>
+						<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+							<param name="left">232</param>
+							<param name="top">8</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="!Container.Content(genres) + !Container.Content(episodes) + !Container.Content(seasons) + String.IsEqual(Skin.String(LandscapeEXContentIcons),Logo)" height="134" width="200">
+					<control type="image"><!-- back -->
+						<description>back</description>
+						<left>118</left>
+						<top>46</top>
+						<width>35</width>
+						<height>35</height>
+						<texture>arrows/arrow.png</texture>
+						<visible>ListItem.IsParentFolder</visible>
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" center="auto" start="80" end="120" time="400" tween="back" easing="out" />
+							<effect type="fade" start="80" end="100" time="400" />
+						</animation>
+					</control>
+					<control type="group">
+						<visible>!ListItem.IsParentFolder</visible>
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" center="119,57" start="80" end="100" time="400" tween="back" easing="out" />
+							<effect type="fade" start="60" end="100" time="400" />
+							<effect type="rotatey" delay="1500" center="119.5,0" start="0"end="360" time="4000" loop="true"  />
+						</animation>
+						<animation type="UnFocus" reversible="false">
+							<effect type="zoom" center="119,57" start="100" end="80" time="400" tween="back" easing="out" />
+							<effect type="fade" start="100" end="60" time="400" />
+						</animation>
+						<control type="image">
+							<left>40</left>
+							<top>-1</top>
+							<width>202</width>
+							<height>119</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture background="true">$VAR[art_value_logo]</texture>
+							<colordiffuse>black</colordiffuse>
+							<animation effect="fade" start="20" end="20" time="0" condition="true">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>43</left>
+							<top>2</top>
+							<width>196</width>
+							<height>113</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture background="true" fallback="logo_flex_sw.png">$VAR[art_value_logo]</texture>
+						</control>
+						<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+							<param name="left">232</param>
+							<param name="top">8</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="80">
+				<include>scrollbar_vertical</include>
+				<left>1180</left>
+				<top>45</top>
+				<height>261</height>
+				<onleft>64</onleft>
+				<onright>SetFocus(9000)</onright>
+				<include>animation_vhoc_fade</include>
+				<visible allowhiddenfocus="true">Control.IsVisible(64) + Control.HasFocus(80)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+</includes>

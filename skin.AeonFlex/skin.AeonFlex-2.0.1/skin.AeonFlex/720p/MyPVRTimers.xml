@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Aeon 2.0 -->
+<defaultcontrol always="true">50</defaultcontrol>
+<views>50</views>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<include>CommonBackground</include>
+	<control type="group"><!-- default group -->
+		<include>animation_window</include>
+		<visible>![Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting) | Window.IsActive(Custom_1123_PVRSwitchTimer.xml)]</visible>
+		<control type="group">
+			<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+			<visible>Control.IsVisible(50)</visible>
+			<control type="group"><!-- info search values focus-->
+				<top>585</top>
+				<visible>Skin.HasSetting(ViewTimer_infobar)</visible>
+				<include>PVR_PVRCommonInfo</include>
+				<animation type="Visible">
+					<effect type="fade" end="100" time="280" tween="sine" easing="out"/>
+					<effect type="slide" start="0,135" end="0,0" time="280" tween="sine" easing="out"/>
+				</animation>
+				<animation type="Hidden">
+					<effect type="fade" end="0" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+					<effect type="slide" start="0,0" end="0,720" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+				</animation>
+			</control>
+			<include>PVR_background</include>
+			<control type="panel" id="50">
+				<left>0</left>
+				<top>130</top>
+				<width>1280</width>
+				<height>440</height>
+				<onup>50</onup>
+				<ondown>50</ondown>
+				<onleft>close</onleft>
+				<onright>73</onright>
+				<pagecontrol>73</pagecontrol>
+				<scrolltime>350</scrolltime>
+				<itemlayout height="40" width="1280">
+					<control type="label">
+						<width>239</width>
+						<height>38</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="image">
+						<left>160</left>
+						<width>1120</width>
+						<height>3</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+					</control>
+					<control type="label">
+						<left>250</left>
+						<width>300</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Date]</label>
+					</control>
+					<control type="label">
+						<left>570</left>
+						<top>1</top>
+						<width>400</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>990</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor3">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>990</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1040</left>
+						<top>1</top>
+						<width>200</width>
+						<height>38</height>
+						<align>left</align>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Comment]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40" width="1280">
+					<control type="image">
+						<left>240</left>
+						<top>1</top>
+						<width>1040</width>
+						<height>38</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.Hasfocus(50)</visible>
+					</control>
+					<control type="image">
+						<left>160</left>
+						<width>1120</width>
+						<height>3</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+						<visible>!Control.Hasfocus(50)</visible>
+					</control>
+					<control type="label">
+						<left>0</left>
+						<top>0</top>
+						<width>239</width>
+						<height>38</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="group">
+						<visible>!Control.Hasfocus(50)</visible>
+						<control type="label">
+							<left>250</left>
+							<width>300</width>
+							<height>38</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Date]</label>
+						</control>
+						<control type="label">
+							<left>570</left>
+							<top>1</top>
+							<width>400</width>
+							<height>38</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="image">
+							<left>990</left>
+							<top>10</top>
+							<width>30</width>
+							<height>20</height>
+							<texture colordiffuse="TextColor3">pvr/pvr_isrecording_back.png</texture>
+							<visible>ListItem.IsRecording</visible>
+						</control>
+						<control type="image">
+							<left>990</left>
+							<top>10</top>
+							<width>30</width>
+							<height>20</height>
+							<texture>pvr/pvr_isrecording_front.png</texture>
+							<visible>ListItem.IsRecording</visible>
+						</control>
+						<control type="label">
+							<left>1040</left>
+							<top>1</top>
+							<width>200</width>
+							<height>38</height>
+							<align>left</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Comment]</label>
+						</control>
+					</control>
+					<control type="group">
+						<visible>Control.Hasfocus(50)</visible>
+						<control type="label">
+							<left>250</left>
+							<width>300</width>
+							<height>38</height>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.Date]</label>
+						</control>
+						<control type="label">
+							<left>570</left>
+							<top>1</top>
+							<width>400</width>
+							<height>38</height>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="image">
+							<left>990</left>
+							<top>10</top>
+							<width>30</width>
+							<height>20</height>
+							<texture colordiffuse="TextColorFocus">pvr/pvr_isrecording_back.png</texture>
+							<visible>ListItem.IsRecording</visible>
+						</control>
+						<control type="image">
+							<left>990</left>
+							<top>10</top>
+							<width>30</width>
+							<height>20</height>
+							<texture>pvr/pvr_isrecording_front.png</texture>
+							<visible>ListItem.IsRecording</visible>
+						</control>
+						<control type="label">
+							<left>1040</left>
+							<top>1</top>
+							<width>200</width>
+							<height>38</height>
+							<align>left</align>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.Comment]</label>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="image">
+				<top>60</top>
+				<left>240</left>
+				<height>510</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="scrollbar" id="73">
+				<include>scrollbar_vertical</include>
+				<left>1245</left>
+				<top>135</top>
+				<height>430</height>
+				<onleft>50</onleft>
+				<onright>50</onright>
+				<ondown>73</ondown>
+				<onup>73</onup>
+				<visible>Control.IsVisible(50)</visible>
+			</control>
+		</control>
+	</control>
+	<include>global_topbar_multidata</include>
+	<include>pvr_sidebarmenue</include><!-- sidebar 9000/90002 -->
+</controls>
+</window>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- flex 2.0 -->
+<defaultcontrol always="true">9000</defaultcontrol>
+<menucontrol>8999</menucontrol>
+<onunload>ClearProperty(Weather.CurrentBackground,home)</onunload><!-- background property -->
+<onload condition="String.IsEmpty(Skin.String(WeatherFocus))">ClearProperty(Weather.CurrentBackground,home)</onload><!-- background focusproperty -->
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),current)">SetProperty(Weather.CurrentBackground,current,home)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),36hour)">SetProperty(Weather.CurrentBackground,36hour,home)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),weekend)">SetProperty(Weather.CurrentBackground,weekend,home)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),hourly)">SetProperty(Weather.CurrentBackground,hourly,home)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),16days)">SetProperty(Weather.CurrentBackground,current,home)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),maps)">SetProperty(Weather.CurrentBackground,current,home)</onload>
+<onload condition="String.IsEmpty(Skin.String(WeatherFocus))">SetProperty(Weather.CurrentView,temp)</onload><!-- focusproperty -->
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),current)">SetProperty(Weather.CurrentView,current)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),36hour)">SetProperty(Weather.CurrentView,36hour)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),weekend)">SetProperty(Weather.CurrentView,weekend)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),hourly)">SetProperty(Weather.CurrentView,hourly)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),16days)">SetProperty(Weather.CurrentView,16days)</onload>
+<onload condition="String.IsEqual(Skin.String(WeatherFocus),maps)">SetProperty(Weather.CurrentView,maps)</onload>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<control type="button" id="3"><!-- location button -->
+		<description>Location</description>
+		<visible>false</visible>
+	</control>
+	<control type="Button" id="9000"><!-- defaultfocus button -->
+		<include>Hiddencontrol</include>
+		<onfocus condition="String.IsEmpty(Skin.String(WeatherFocus))">SetFocus(51)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),menue)">SetFocus(51)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),current)">SetFocus(7001)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),36hour)">SetFocus(7001)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),weekend)">SetFocus(7001)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),hourly)">SetFocus(6000)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),16days)">SetFocus(70000)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(WeatherFocus),maps)">SetFocus(5001)</onfocus>
+	</control>
+	<control type="Button" id="7001"><!-- hidden tempbutton currentweather ohne navigationselement -->
+		<include>Hiddencontrol</include>
+		<onleft>SetProperty(Weather.CurrentView,temp)</onleft>
+		<onleft>SetFocus(51)</onleft>
+		<onright>SetProperty(Weather.CurrentView,temp)</onright>
+		<onright>SetFocus(51)</onright>
+		<onup>SetProperty(Weather.CurrentView,temp)</onup>
+		<onup>SetFocus(51)</onup>
+		<ondown>SetProperty(Weather.CurrentView,temp)</ondown>
+		<ondown>SetFocus(51)</ondown>
+	</control>
+	<include>menucontrol</include>
+	<include>CommonBackground</include>
+	<include>CommonFanartBackground-weather</include>
+	<include>global_topbar_multidata</include>
+	<control type="group"><!-- views -->
+		<include>animation_vhoc_fade</include>
+		<include>Weather.Current</include>
+		<include>Weather.36Hour</include>
+		<include>Weather.Hourly</include>
+		<include>Weather.Weekend</include>
+		<include>Weather.Daily</include>
+		<include>Weather.Maps</include>
+	</control>
+	<control type="group"><!-- menue -->
+		<left>410</left>
+		<top>145</top>
+		<control type="group"><!-- Ebene1 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(51).HasFocus + String.IsEqual(Window.Property(Weather.CurrentView),temp) + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>Integer.IsLessOrEqual(Container(51).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>Integer.IsLessOrEqual(Container(51).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(51).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(51).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(51).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(51).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 7 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(51).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 7 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(51).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31338]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="51">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>ActivateWindow(home)</onleft><!-- close -->
+				<onright>ActivateWindow(home)</onright><!-- close -->
+				<onback>noop</onback>
+				<itemgap>0</itemgap>
+				<control type="button" id="300"><!-- Current -->
+					<label>$LOCALIZE[31674]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>SetFocus(7001)</onclick><!-- hidden temp button for Nav -->
+					<onfocus>SetProperty(Weather.CurrentBackground,current,home)</onfocus>
+					<onfocus>SetProperty(Weather.CurrentView,temp)</onfocus>
+					<onclick>SetProperty(Weather.CurrentView,current)</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3)) + Weather.IsFetched</visible>
+				</control>
+				<control type="button" id="301"><!-- 36Hour -->
+					<label>$LOCALIZE[31671]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>SetFocus(7001)</onclick><!-- hidden temp button for Nav -->
+					<onfocus>SetProperty(Weather.CurrentView,temp)</onfocus>
+					<onfocus>SetProperty(Weather.CurrentBackground,36hour,home)</onfocus>
+					<onclick>SetProperty(Weather.CurrentView,36hour)</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3)) + Weather.IsFetched</visible>
+				</control>
+				<control type="button" id="302"><!-- Weekend -->
+					<label>$LOCALIZE[33037]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>SetFocus(7001)</onclick><!-- hidden temp button for Nav -->
+					<onfocus>SetProperty(Weather.CurrentView,temp)</onfocus>
+					<onfocus>SetProperty(Weather.CurrentBackground,weekend,home)</onfocus>
+					<onclick>SetProperty(Weather.CurrentView,weekend)</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3)) + Weather.IsFetched</visible>
+				</control>
+				<control type="button" id="303"><!-- Hourly -->
+					<label>$LOCALIZE[33036]</label>
+					<include>dialog_buttonneu</include>
+					<onright>SetFocus(6000)</onright>
+					<onfocus>SetProperty(Weather.CurrentView,temp)</onfocus>
+					<onfocus>SetProperty(Weather.CurrentBackground,hourly,home)</onfocus>
+					<onclick>SetProperty(Weather.CurrentView,hourly)</onclick>
+					<onclick>6000</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3)) + Weather.IsFetched</visible>
+				</control>
+				<control type="button" id="304"><!-- 16 Days -->
+					<label>$LOCALIZE[31671]</label>
+					<include>dialog_buttonneu</include>
+					<onfocus>SetProperty(Weather.CurrentView,temp)</onfocus>
+					<onfocus>SetProperty(Weather.CurrentBackground,current,home)</onfocus>
+					<onclick>SetProperty(Weather.CurrentView,16days)</onclick>
+					<onclick>SetFocus(70000)</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3)) + Weather.IsFetched</visible>
+				</control>
+				<control type="button" id="305"><!-- Maps -->
+					<label>$LOCALIZE[33035]</label>
+					<include>dialog_buttonneu</include>
+					<onfocus>SetProperty(Weather.CurrentView,temp)</onfocus>
+					<onfocus>SetProperty(Weather.CurrentBackground,current,home)</onfocus>
+					<onclick>SetProperty(Weather.CurrentView,maps)</onclick>
+					<onclick>SetFocus(5001)</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3)) + Weather.IsFetched + !String.IsEmpty(Window(Weather).Property(Map.1.Area)) + !String.IsEmpty(Window(Weather).Property(Map.IsFetched))</visible>
+				</control>
+				<control type="button" id="307">
+					<font>SemiNormal</font>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[10004]</label>
+					<onclick>SetProperty(Weather.CurrentBackground,current,home)</onclick>
+					<onclick>SetFocus(52)</onclick>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Ebene2 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(52).HasFocus + String.IsEqual(Window.Property(Weather.CurrentView),temp) + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten 2 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height2</height>
+				<visible>Integer.IsLessOrEqual(Container(52).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 2 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height2</height>
+				<visible>Integer.IsLessOrEqual(Container(52).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 3 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(52).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 3 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(52).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(52).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(52).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31338]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="52">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>SetFocus(51)</onleft>
+				<onright>SetFocus(51)</onright>
+				<onup>52</onup>
+				<ondown>52</ondown>
+				<onback>noop</onback>
+				<itemgap>0</itemgap>
+				<control type="button" id="2">
+					<description>Refresh button</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[103]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(3))</visible>
+				</control>
+				<control type="button" id="333">
+					<description>Change weather location</description>
+					<label>$INFO[Window(Weather).Property(Location)]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>Weather.LocationNext</onclick>
+					<visible>!String.IsEmpty(Window(Weather).Property(Location)) + !String.IsEmpty(Control.GetLabel(3))</visible>
+				</control>
+				<control type="button" id="4">
+					<description>Settings button</description>
+					<label>$LOCALIZE[14208]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>ActivateWindow(ServiceSettings)</onclick>
+				</control>
+				<control type="button" id="14">
+					<description>Startansicht button</description>
+					<label>$LOCALIZE[31300]</label>
+					<label2>$VAR[WeatherCurrentStartviewLabel]</label2>
+					<include>dialog_buttonneu</include>
+					<onclick>Skin.SetString(WeatherFocus,menue)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),menue)">Skin.SetString(WeatherFocus,current)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),current)">Skin.SetString(WeatherFocus,36hour)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),36hour)">Skin.SetString(WeatherFocus,weekend)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),weekend)">Skin.SetString(WeatherFocus,hourly)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),hourly)">Skin.SetString(WeatherFocus,16days)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),16days)">Skin.SetString(WeatherFocus,maps)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(WeatherFocus),maps)">Skin.SetString(WeatherFocus,menue)</onclick>
+					<visible>!String.IsEmpty(Control.GetLabel(3))</visible>
+				</control>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>

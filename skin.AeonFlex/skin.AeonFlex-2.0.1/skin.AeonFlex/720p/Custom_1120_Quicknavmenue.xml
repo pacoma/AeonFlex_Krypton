@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1120">
+<defaultcontrol always="true">9000</defaultcontrol>
+<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu|shutdowndialog)</onload>
+<controls>
+<!-- Flex 2.0 Dialoge -->
+<control type="group">
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>dialog-outer-width</width>
+	<height>425</height>
+	<include>animation_dialog_popup</include>
+	<visible allowhiddenfocus="true">!Window.IsVisible(shutdownmenu) + Control.HasFocus(9000)</visible>
+	<control type="image">
+		<description>schatten bis 2 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height2</height>
+		<visible>Integer.IsLessOrEqual(Container(9000).NumItems,2)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund bis 2 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height2</height>
+		<visible>Integer.IsLessOrEqual(Container(9000).NumItems,2)</visible>
+	</control>
+	<control type="image">
+		<description>schatten bis 3 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height3</height>
+		<visible>String.IsEqual(Container(9000).NumItems,3)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund bis 3 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height3</height>
+		<visible>String.IsEqual(Container(9000).NumItems,3)</visible>
+	</control>
+	<control type="image">
+		<description>schatten bis 4 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height4</height>
+		<visible>String.IsEqual(Container(9000).NumItems,4)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund bis 4 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height4</height>
+		<visible>String.IsEqual(Container(9000).NumItems,4)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 5 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height5</height>
+		<visible>String.IsEqual(Container(9000).NumItems,5)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 5 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height5</height>
+		<visible>String.IsEqual(Container(9000).NumItems,5)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 6 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height6</height>
+		<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 6 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height6</height>
+		<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 7 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height7</height>
+		<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 7 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height7</height>
+		<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 8 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height8</height>
+		<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 8 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height8</height>
+		<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 9 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height9</height>
+		<visible>String.IsEqual(Container(9000).NumItems,9)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 9 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height9</height>
+		<visible>String.IsEqual(Container(9000).NumItems,9)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 10 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+		<visible>String.IsEqual(Container(9000).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 10 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+		<visible>String.IsEqual(Container(9000).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 10+ elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+		<visible>Integer.IsGreater(Container(9000).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 10+ elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+		<visible>Integer.IsGreater(Container(9000).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include>dialog_headerfront_neu</include>
+	</control>
+	<control type="label" id="0">
+		<description>header</description>
+		<label>$LOCALIZE[31395]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="list" id="9000"><!-- List -->
+		<left>dialog-border</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>350</height>
+		<onleft condition="String.IsEqual(Container(9000).ListItem.property(hasSubmenu),True)">SetFocus(9001)</onleft>
+		<onright condition="String.IsEqual(Container(9000).ListItem.property(hasSubmenu),True)">SetFocus(9001)</onright>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>20</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="image">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.HasFocus(9000)</visible>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>20</textoffsetx>
+				<scroll>false</scroll>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.HasFocus(9000)</visible>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>20</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.HasFocus(9000)</visible>
+			</control>
+			<control type="image">
+				<left>400</left>
+				<top>7</top>
+				<width>21</width>
+				<height>21</height>
+				<texture colordiffuse="TextColorFocus">arrows/arrow_right.png</texture>
+				<visible>Control.HasFocus(9000) + String.IsEqual(ListItem.property(hasSubmenu),True)</visible>
+			</control>
+		</focusedlayout>
+			<content>
+				<item>
+					<label>Pinboard</label>
+					<onclick>Dialog.Close(all)</onclick>
+					<onclick>ActivateWindow(1121)</onclick>
+				</item>
+				<include>skinshortcuts-mainmenu</include>
+			</content>
+	</control>
+</control>
+
+<control type="group">
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>dialog-outer-width</width>
+	<height>425</height>
+	<animation type="conditional" condition="!Control.HasFocus(9000)">
+		<effect type="slide" start="-40,0" end="0,0" delay="280" time="280" easing="inout" tween="cubic"/>
+		<effect type="fade" start="0" end="100" delay="280" time="250"/>
+	</animation>
+	<animation type="conditional" condition="Control.HasFocus(9000)">
+		<effect type="slide" start="0,0" end="40,0" time="280" easing="inout" tween="cubic"/>
+		<effect type="fade" start="100" end="0" time="280" easing="out" tween="cubic"/>
+	</animation>
+	<control type="image">
+		<description>schatten bis 2 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height2</height>
+		<visible>Integer.IsLessOrEqual(Container(9001).NumItems,2)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund bis 2 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height2</height>
+		<visible>Integer.IsLessOrEqual(Container(9001).NumItems,2)</visible>
+	</control>
+	<control type="image">
+		<description>schatten bis 3 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height3</height>
+		<visible>String.IsEqual(Container(9001).NumItems,3)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund bis 3 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height3</height>
+		<visible>String.IsEqual(Container(9001).NumItems,3)</visible>
+	</control>
+	<control type="image">
+		<description>schatten bis 4 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height4</height>
+		<visible>String.IsEqual(Container(9001).NumItems,4)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund bis 4 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height4</height>
+		<visible>String.IsEqual(Container(9001).NumItems,4)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 5 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height5</height>
+		<visible>String.IsEqual(Container(9001).NumItems,5)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 5 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height5</height>
+		<visible>String.IsEqual(Container(9001).NumItems,5)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 6 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height6</height>
+		<visible>String.IsEqual(Container(9001).NumItems,6)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 6 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height6</height>
+		<visible>String.IsEqual(Container(9001).NumItems,6)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 7 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height7</height>
+		<visible>String.IsEqual(Container(9001).NumItems,7)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 7 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height7</height>
+		<visible>String.IsEqual(Container(9001).NumItems,7)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 8 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height8</height>
+		<visible>String.IsEqual(Container(9001).NumItems,8)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 8 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height8</height>
+		<visible>String.IsEqual(Container(9001).NumItems,8)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 9 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height9</height>
+		<visible>String.IsEqual(Container(9001).NumItems,9)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 9 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height9</height>
+		<visible>String.IsEqual(Container(9001).NumItems,9)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 10 elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+		<visible>String.IsEqual(Container(9001).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 10 elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+		<visible>String.IsEqual(Container(9001).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>schatten 10+ elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+		<visible>Integer.IsGreater(Container(9001).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>hintergrund 10+ elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+		<visible>Integer.IsGreater(Container(9001).NumItems,10)</visible>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include>dialog_headerfront_neu</include>
+	</control>
+	<control type="label" id="0">
+		<description>header</description>
+		<label>$INFO[Container(9000).ListItem.Label]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="list" id="9001"><!-- List -->
+		<left>dialog-border</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>350</height>
+		<onleft>SetFocus(9000)</onleft>
+		<onright>SetFocus(9000)</onright>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>20</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="image">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.HasFocus(9001)</visible>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>20</textoffsetx>
+				<scroll>false</scroll>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.HasFocus(9001)</visible>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>20</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.HasFocus(9001)</visible>
+			</control>
+		</focusedlayout>
+			<content>
+				<include>skinshortcuts-submenu</include>
+			</content>
+	</control>
+</control>
+</controls>
+</window>
+

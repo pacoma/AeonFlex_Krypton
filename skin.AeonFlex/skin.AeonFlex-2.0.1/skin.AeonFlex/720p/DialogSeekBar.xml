@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<visible>Player.Seeking | Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | Player.Forwarding | Player.Rewinding</visible>
+<visible>!VideoPlayer.Content(livetv)</visible>
+<controls>
+	<control type="group">
+		<left>426</left>
+		<top>-1</top>
+		<animation effect="slide" start="0,-70" end="0,0" time="280" easing="inout" tween="cubic">WindowOpen</animation>
+		<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+		<animation effect="fade" end="100" time="0" condition="Player.Paused + !Window.IsVisible(Custom_1113_Settings_Dialogs.xml)">Conditional</animation>
+		<animation effect="fade" start="100" end="0" time="0" condition="Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml) | Window.IsVisible(script-nextup-notification-NextUpInfo.xml)">Conditional</animation>
+		<control type="image">
+			<width>442</width>
+			<height>60</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/bar-shadow.png</texture>
+		</control>
+		<control type="image">
+			<width>442</width>
+			<height>60</height>
+			<texture colordiffuse="ACBackgroundColor">backgrounds/bar.png</texture>
+		</control>
+		<control type="group"><!-- progress kreis -->
+			<left>70</left>
+			<top>6</top>
+			<width>50</width>
+			<height>50</height>
+			<control type="label">
+				<width>auto</width>
+				<height>36</height>
+				<textcolor>TextColor3</textcolor>
+				<font>Seekbar-progressicon</font>
+				<label>Ņ</label>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>36</height>
+				<textcolor>ACSkinColor</textcolor>
+				<font>Seekbar-progressicon</font>
+				<label>$VAR[value_playerprogressicon]</label>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>36</height>
+				<textcolor>ACSkinColor</textcolor>
+				<font>Seekbar-progressicon</font>
+				<label>$VAR[value_playerprogressinlay]</label>
+			</control>
+		</control>
+		<control type="label">
+			<description>Seekbar Label</description>
+			<left>135</left>
+			<top>7</top>
+			<width>270</width>
+			<height>20</height>
+			<font>SemiBig</font>
+			<label>$VAR[value_SeekLabel]</label>
+			<visible>!Player.Paused | !String.IsEmpty(Player.SeekStepSize)</visible>
+		</control>
+		<control type="label">
+			<description>Seekbar Label</description>
+			<left>135</left>
+			<top>7</top>
+			<width>270</width>
+			<height>20</height>
+			<font>SemiBig</font>
+			<label>$LOCALIZE[112]</label>
+			<visible>String.IsEmpty(Player.SeekStepSize) + Player.Paused</visible>
+		</control>
+		<control type="fadelabel">
+			<description>Elapsed Time Label</description>
+			<left>135</left>
+			<top>28</top>
+			<width>240</width>
+			<height>20</height>
+			<pauseatend>5000</pauseatend>
+			<scrollout>false</scrollout>
+			<label>$INFO[Player.Time] - $INFO[Player.Duration]</label>
+			<label>$VAR[value_videoosdstillwatchingtitle]</label>
+			<visible>!Player.Seeking</visible>
+		</control>
+		<control type="label">
+			<description>Seek Time Label</description>
+			<left>135</left>
+			<top>28</top>
+			<width>240</width>
+			<height>20</height>
+			<label>$INFO[Player.SeekTime] - $INFO[Player.Duration]</label>
+			<visible>Player.Seeking</visible>
+		</control>
+		<control type="progress" id="230">
+			<description>Progressbar</description>
+			<left>-100</left>
+			<top>-100</top>
+			<width>90</width>
+			<height>15</height>
+			<info>Player.Progress</info>
+		</control>
+	</control>
+</controls>
+</window>

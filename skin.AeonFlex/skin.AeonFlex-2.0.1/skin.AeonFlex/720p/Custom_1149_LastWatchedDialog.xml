@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1149">
+<defaultcontrol allways="true">9000</defaultcontrol>
+<zorder>3</zorder>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<controls>
+<control type="list" id="510"><!-- content -->
+	<include>Compaircontainer</include>
+	<content target="Container(9000).ListItem.Property(target)">$INFO[Container(9000).ListItem.Property(content)]</content>
+</control>
+<control type="list" id="511"><!-- content -->
+	<include>Compaircontainer</include>
+	<content sortby="lastplayed" sortorder="descending" target="pvr">pvr://channels/tv/*?view=lastplayed</content>
+</control>
+<control type="list" id="6004">
+	<include>Compaircontainer</include>
+	<content target="video">$VAR[videocontent_history_episode]</content>
+</control>
+<include condition="String.IsEqual(Skin.String(LastwatchedHistoryDialog),Dialog)">widgetlastwatched_infodialog</include>
+<include condition="String.IsEqual(Skin.String(LastwatchedHistoryDialog),Panel)">widgetlastwatched_infopanel</include>
+</controls>
+</window>
+

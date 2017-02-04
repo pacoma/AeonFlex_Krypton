@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<smartplaylist type="tvshows">
+    <name>Serie - Sortiert nach Abspieldatum</name>
+    <match>all</match>
+    <limit>12</limit>
+    <order direction="descending">lastplayed</order>
+</smartplaylist>

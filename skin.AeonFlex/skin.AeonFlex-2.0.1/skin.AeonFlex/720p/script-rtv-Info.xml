@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- plugin.widget.gto - InfoWindow for 'German Telecast Offers' - START -->
+<window>
+<defaultcontrol always="true">22</defaultcontrol>
+<include>dialogeffect</include>
+<controls>
+	<control type="group" id="576757">
+		<top>-408</top>
+		<animation effect="slide" start="0,0" end="0,388" time="300" delay="700" easing="out" tween="sine">WindowOpen</animation>
+		<animation effect="slide" start="0,388" end="0,0" time="200" easing="in" tween="sine">WindowClose</animation>
+		<control type="image">
+			<description>background</description>
+			<top>330</top>
+			<width>1280</width>
+			<height>35</height>
+			<texture>backgrounds/background-overlay-diffuse.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="image">
+			<description>background</description>
+			<top>330</top>
+			<width>1280</width>
+			<height>25</height>
+			<texture flipy="true">backgrounds/background-overlay-diffuse.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="grouplist" id="9032"><!-- Menue -->
+			<description>info menue</description>
+			<left>0</left>
+			<top>330</top>
+			<width>1280</width>
+			<height>322</height>
+			<onup>9031</onup>
+			<ondown>50</ondown>
+			<oninfo>Dialog.Close(all)</oninfo>
+			<orientation>horizontal</orientation>
+			<itemgap>0</itemgap>
+			<control type="button" id="20">
+				<description>Switchtimer button</description>
+				<width>320</width><!-- include ueberschreibung -->
+				<include>dialog_buttonneu</include>
+				<label>$ADDON[plugin.service.gto 30107]</label>
+				<visible>System.HasAddon(service.kn.switchtimer)</visible>
+				<onclick>RunScript(service.kn.switchtimer,action=add,channel=$INFO[Window(Home).Property(GTO.Info.Channel)],icon=$INFO[Window(Home).Property(GTO.Info.Logo)],date=$INFO[Window(Home).Property(GTO.Info.Date)],title=$INFO[Window(Home).Property(GTO.Info.Title)])</onclick>
+				<visible>!String.IsEmpty(Window(Home).Property(GTO.Info.isInFuture))</visible>
+			</control>
+			<control type="button" id="21">
+				<description>Switch button</description>
+				<width>320</width><!-- include ueberschreibung -->
+				<include>dialog_buttonneu</include>
+				<label>$ADDON[plugin.service.gto 30108]</label>
+				<onclick>RunScript(plugin.service.gto,action=switch_channel&amp;pvrid=$INFO[Window(Home).Property(GTO.Info.ChannelID)])</onclick>
+				<onclick>PreviousMenu</onclick>
+				<visible>!String.IsEmpty(Window(Home).Property(GTO.Info.isRunning))</visible>
+			</control>
+			<control type="button" id="221">
+				<description>Switch button</description>
+				<width>320</width><!-- include ueberschreibung -->
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[31368]</label>
+				<onclick>RunScript(plugin.service.gto,action=switch_channel&amp;pvrid=$INFO[Window(Home).Property(GTO.Info.ChannelID)])</onclick>
+				<onclick>PreviousMenu</onclick>
+				<visible>!String.IsEmpty(Window(Home).Property(GTO.Info.ChannelID))</visible>
+			</control>
+			<control type="button" id="22">
+				<description>Cancel button</description>
+				<width>320</width><!-- include ueberschreibung -->
+				<include>dialog_buttonneu</include>
+				<label>$ADDON[plugin.service.gto 30119]</label>
+				<onclick>PreviousMenu</onclick>
+			</control>
+		</control>
+		<control type="image">
+			<description>bottom shadow</description>
+			<top>330</top>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="image">
+			<description>bottom shadow</description>
+			<top>365</top>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="image">
+			<description>background</description>
+			<width>1280</width>
+			<height>330</height>
+			<texture>backgrounds/background-homeinfo-overlay.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="image">
+			<description>background</description>
+			<width>1280</width>
+			<height>330</height>
+			<texture>backgrounds/background-homeinfo-overlay.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="label">
+			<description>Default Title</description>
+			<left>35</left>
+			<top>29</top>
+			<width>1000</width>
+			<height>40</height>
+			<font>SemiBigger</font>
+			<label>[COLOR=TextColor3]$INFO[Window(Home).Property(GTO.Info.Channel),, - ][/COLOR]$INFO[Window(Home).Property(GTO.Info.Title)]</label>
+		</control>
+		<control type="label">
+			<description>Default subtitle</description>
+			<left>35</left>
+			<top>63</top>
+			<width>1000</width>
+			<height>25</height>
+			<label>$ADDON[plugin.service.gto 30100]</label>
+			<textcolor>TextColor2</textcolor>
+		</control>
+		<control type="image"><!-- provider thumb  -->
+			<left>960</left>
+			<top>29</top>
+			<width>300</width>
+			<height>80</height>
+			<aspectratio aligny="top" align="right">keep</aspectratio>
+			<texture border="1">$INFO[Window(Home).Property(GTO.Info.Logo)]</texture>
+			<fadetime>FanartCrossFadeTime</fadetime>
+		</control>
+		<control type="group">
+			<control type="group"><!-- video Artwork -->
+				<left>30</left>
+				<top>90</top>
+				<control type="image"><!-- thumb back  -->
+					<top>2</top>
+					<width>316</width>
+					<height>185</height>
+					<aspectratio scalediffuse="true">stretch</aspectratio>
+					<texture background="true">defaultpictures/DefaultMovies.png</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+				</control>
+				<control type="image"><!-- thumb  -->
+					<top>2</top>
+					<width>316</width>
+					<height>185</height>
+					<aspectratio scalediffuse="true">scale</aspectratio>
+					<texture background="true">$INFO[Window(Home).Property(GTO.Info.Picture)]</texture>
+					<bordersize>8</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+				</control>
+			</control>
+			<control type="group"><!-- details -->
+				<left>396</left>
+				<control type="grouplist">
+					<left>0</left>
+					<top>85</top>
+					<width>auto</width>
+					<orientation>horizontal</orientation>
+					<itemgap>3</itemgap>
+					<control type="image">
+						<description>Encrypt status</description>
+						<width>32</width>
+						<height>41</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+						<visible>String.EndsWith(Window(Home).Property(GTO.Info.Channel),(*))</visible>
+					</control>
+					<control type="label">
+						<width>8</width>
+						<include>home.flaglabel</include>
+						<label> </label>
+						<visible>String.EndsWith(Window(Home).Property(GTO.Info.Channel),(*))</visible>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<include>home.flaglabel</include>
+						<label>$INFO[Window(Home).Property(GTO.Info.StartTime)]$INFO[Window(Home).Property(GTO.Info.EndTime), - ,]</label>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<include>home.flaglabel</include>
+						<label>$INFO[Window(Home).Property(GTO.Info.RunTime),  |  , $LOCALIZE[31026]]</label>
+					</control>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>145</top>
+					<width>550</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>122</top>
+					<width>500</width>
+					<height>25</height>
+					<texture>backgrounds/background-gradient.png</texture>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>120</top>
+					<width>550</width>
+					<height>2</height>
+					<align>left</align>
+					<texture flipx="true">backgrounds/divider.png</texture>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="label">
+					<description>label</description>
+					<top>122</top>
+					<width>500</width>
+					<height>20</height>
+					<label fallback="31008">$INFO[Window(Home).Property(GTO.Info.Genre)]</label>
+				</control>
+				<control type="textbox">
+					<description>Plot box</description>
+					<top>150</top>
+					<width>500</width>
+					<include>PlotNormal132</include>
+					<label fallback="31009">$INFO[Window(Home).Property(GTO.Info.Description)]</label>
+					<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+				</control>
+				<control type="label">
+					<description>cast title</description>
+					<left>550</left>
+					<top>122</top>
+					<width>500</width>
+					<height>20</height>
+					<label>$LOCALIZE[20337]</label>
+					<visible>!String.IsEmpty(Window(Home).Property(GTO.Info.Cast))</visible>
+				</control>
+				<control type="textbox">
+					<description>cast box</description>
+					<left>550</left>
+					<top>150</top>
+					<width>300</width>
+					<include>PlotNormal132</include>
+					<label fallback="31008">$INFO[Window(Home).Property(GTO.Info.Cast)]</label>
+					<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+					<visible>!String.IsEmpty(Window(Home).Property(GTO.Info.Cast))</visible>
+				</control>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>

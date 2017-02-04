@@ -1,0 +1,246 @@
+<includes><!-- AeonKN draft  -->
+	<default type="image">
+		<left>0</left>
+		<top>0</top>
+	</default>
+
+	<default type="label">
+		<left>0</left>
+		<top>0</top>
+		<height>25</height>
+		<align>left</align>
+		<aligny>center</aligny>
+		<font>RegularNormal</font>
+		<textcolor>TextColor1</textcolor>
+		<selectedcolor>TextColorSelect</selectedcolor>
+		<scrollspeed>20</scrollspeed>
+		<scroll>true</scroll>
+	</default>
+	<!-- Background color textures as default -->
+	<default type="button">
+		<left>0</left>
+		<top>0</top>
+		<width>1040</width>
+		<height>40</height>
+		<font>RegularNormal</font>
+		<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<pulseonselect>false</pulseonselect>
+		<textoffsetx>50</textoffsetx>
+		<align>left</align>
+		<aligny>center</aligny>
+		<scroll>true</scroll>
+		<orientation>horizontal</orientation>
+	</default>
+
+	<default type="togglebutton">
+		<left>0</left>
+		<top>0</top>
+		<width>1040</width>
+		<height>40</height>
+		<font>RegularNormal</font>
+		<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<alttexturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</alttexturefocus>
+		<alttexturenofocus>-</alttexturenofocus>
+		<pulseonselect>false</pulseonselect>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<textoffsetx>50</textoffsetx>
+		<scroll>true</scroll>
+	</default>
+
+	<default type="radiobutton">
+		<left>0</left>
+		<top>0</top>
+		<width>1040</width>
+		<height>40</height>
+		<font>RegularNormal</font>
+		<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<align>left</align>
+		<aligny>center</aligny>
+		<pulseonselect>false</pulseonselect>
+		<textwidth>800</textwidth>
+		<radioposx>930</radioposx>
+		<radiowidth>77</radiowidth>
+		<radioheight>65</radioheight>
+		<textoffsetx>50</textoffsetx>
+		<textureradioon>buttons/radiobutton_on.png</textureradioon>
+		<textureradioondisabled>buttons/radiobutton_on.png</textureradioondisabled>
+		<textureradiooff>buttons/radiobutton.png</textureradiooff>
+		<textureradiooffdisabled>buttons/radiobutton.png</textureradiooffdisabled>
+		<scroll>true</scroll>
+	</default>
+
+	<default type="progress">
+		<reveal>true</reveal>
+		<texturebg colordiffuse="TextColor2">dialogs/progress/progress_back.png</texturebg>
+		<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</midtexture>
+		<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</lefttexture>
+		<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</righttexture>
+		<overlaytexture>-</overlaytexture>
+	</default>
+
+	<default type="fadelabel">
+		<left>0</left>
+		<top>0</top>
+		<width>180</width>
+		<align>left</align>
+		<font>RegularNormal</font>
+		<textcolor>TextColor1</textcolor>
+		<scroll>true</scroll>
+		<scrollout>false</scrollout>
+	</default>
+
+	<default type="rss">
+		<left>0</left>
+		<top>0</top>
+		<urlset>1</urlset>
+		<align>left</align>
+		<aligny>top</aligny>
+		<font>RegularNormal</font>
+		<textcolor>TextColor1</textcolor>
+		<headlinecolor>TextColor1</headlinecolor>
+		<highlightcolor>ACSkinColor</highlightcolor>
+		<titlecolor>ACSkinColor</titlecolor>
+	</default>
+
+	<default type="textbox">
+		<left>0</left>
+		<top>0</top>
+		<width>410</width>
+		<height>270</height>
+		<spinwidth>16</spinwidth>
+		<spinheight>16</spinheight>
+		<spinposx>640</spinposx>
+		<spinposy>520</spinposy>
+		<align>left</align>
+		<spinfont/>
+		<textcolor>TextColor1</textcolor>
+		<textureup>-</textureup>
+		<texturedown>-</texturedown>
+		<textureupfocus>-</textureupfocus>
+		<texturedownfocus>-</texturedownfocus>
+		<image>-</image>
+		<font>RegularNormal</font>
+	</default>
+
+	<default type="spincontrol">
+		<left>0</left>
+		<top>0</top>
+		<width>1040</width>
+		<height>40</height>
+		<font>RegularNormal</font>
+		<inaktivcolor>TextColor3</inaktivcolor>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<texturenofocus>-</texturenofocus>
+		<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+		<textureup>buttons/spinup.png</textureup>
+		<texturedown>buttons/spindown.png</texturedown>
+		<textureupdisabled>buttons/spinup.png</textureupdisabled>
+		<texturedowndisabled>buttons/spindown.png</texturedowndisabled>
+		<textureupfocus>buttons/spinup_focus.png</textureupfocus>
+		<texturedownfocus>buttons/spindown_focus.png</texturedownfocus>
+		<pulseonselect>false</pulseonselect>
+		<spinposx>31</spinposx>
+		<spinwidth>40</spinwidth>
+		<spinheight>65</spinheight>
+		<textoffsetx>50</textoffsetx>
+		<aligny>center</aligny>
+		<align>left</align>
+		<reverse>yes</reverse>
+	</default>
+
+	<default type="spincontrolex">
+		<left>0</left>
+		<top>0</top>
+		<width>1040</width>
+		<height>40</height>
+		<font>RegularNormal</font>
+		<inaktivcolor>TextColor3</inaktivcolor>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<texturenofocus>-</texturenofocus>
+		<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+		<textureup>buttons/spinup.png</textureup>
+		<texturedown>buttons/spindown.png</texturedown>
+		<textureupdisabled>buttons/spinup.png</textureupdisabled>
+		<texturedowndisabled>buttons/spindown.png</texturedowndisabled>
+		<textureupfocus>buttons/spinup_focus.png</textureupfocus>
+		<texturedownfocus>buttons/spindown_focus.png</texturedownfocus>
+		<pulseonselect>false</pulseonselect>
+		<spinposx>31</spinposx>
+		<spinwidth>40</spinwidth>
+		<spinheight>65</spinheight>
+		<textoffsetx>50</textoffsetx>
+		<aligny>center</aligny>
+		<align>left</align>
+		<reverse>yes</reverse>
+	</default>
+
+	<default type="sliderex">
+		<left>0</left>
+		<top>0</top>
+		<height>40</height>
+		<texturenofocus>-</texturenofocus>
+		<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+		<sliderwidth>150</sliderwidth>
+		<sliderheight>49</sliderheight>
+		<texturesliderbar>buttons/sliderback.png</texturesliderbar>
+		<textureslidernib>buttons/slidernub.png</textureslidernib>
+		<textureslidernibfocus>buttons/slidernubf.png</textureslidernibfocus>
+		<font>RegularNormal</font>
+		<inaktivcolor>TextColor3</inaktivcolor>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<textoffsetx>50</textoffsetx>
+		<aligny>center</aligny>
+		<align>left</align>
+	</default>
+
+	<default type="edit">
+		<left>0</left>
+		<top>0</top>
+		<width>300</width>
+		<height>35</height>
+		<texturenofocus>-</texturenofocus>
+		<texturefocus colordiffuse="ACSkinColor">backgrounds/background-titles.png</texturefocus>
+		<font>RegularNormal</font>
+		<inaktivcolor>TextColor3</inaktivcolor>
+		<textcolor>TextColor1</textcolor>
+		<focusedcolor>TextColorFocus</focusedcolor>
+		<disabledcolor>TextColor3</disabledcolor>
+		<textoffsetx>50</textoffsetx>
+		<align>center</align>
+		<aligny>center</aligny>
+		<pulseonselect>false</pulseonselect>
+	</default>
+
+	<default type="slider">
+		<controloffsetx>75</controloffsetx>
+		<controloffsety>0</controloffsety>
+	</default>
+
+	<default type="mover">
+		<pulseonselect>false</pulseonselect>
+	</default>
+
+	<default type="resize">
+		<pulseonselect>false</pulseonselect>
+	</default>
+
+	</includes>

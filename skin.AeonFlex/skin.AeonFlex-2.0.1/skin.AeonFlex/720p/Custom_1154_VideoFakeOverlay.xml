@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1154">
+<defaultcontrol always="true">3112</defaultcontrol>
+<onunload>ClearProperty(Videoinfo,home)</onunload>
+<onunload>ClearProperty(Videoratinginfo,home)</onunload>
+<onunload>ClearProperty(Ratingdialog,home)</onunload>
+<controls>
+<control type="group"><!-- aktuelle playliste Hidden Control -->
+	<top>-200</top>
+	<description>aktuelle playliste - container autoscroll bis match aktueller titel, offset 1 = neachstes</description>
+	<animation type="Conditional" condition="true">
+		<effect type="fade" start="0" end="0" time="0" />
+	</animation>
+	<control type="button" id="3112">
+		<include>HiddenControl</include>
+		<onfocus condition="!Container(222).Scrolling">AlarmClock(Beginnloading,SetFocus(222),0:01,true)</onfocus>
+		<onfocus condition="Container(222).Scrolling">AlarmClock(Beginnloading,SetFocus(3113),0:01,true)</onfocus>
+	</control>
+	<control type="button" id="3113">
+		<include>HiddenControl</include>
+		<onfocus condition="!Container(222).Scrolling">AlarmClock(Beginnloading,SetFocus(222),0:01,true)</onfocus>
+		<onfocus condition="Container(222).Scrolling">AlarmClock(Beginnloading,SetFocus(3112),0:01,true)</onfocus>
+	</control>
+	<control type="list" id="222">
+		<width>1800</width>
+		<height>270</height>
+		<orientation>horizontal</orientation>
+		<viewtype>list</viewtype>
+		<onfocus>Action(info)</onfocus>
+		<autoscroll time="10" delay="50" repeat="50">!String.IsEqual(Container(222).ListItem.FilenameAndPath,Player.FilenameAndPath)</autoscroll>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime tween="sine" easing="out">10</scrolltime>
+		<itemlayout width="400" height="70">
+			<control type="label">
+				<width>400</width>
+				<height>70</height>
+				<label>$INFO[ListItem.Title]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="400" height="70">
+			<control type="label">
+				<width>400</width>
+				<height>70</height>
+				<label>$INFO[ListItem.Title]</label>
+			</control>
+		</focusedlayout>
+		<content target="video">$VAR[NPPlaylist]</content>
+	</control>
+</control>
+<control type="image"><!-- overlay -->
+	<description>hintergrund videowindow schwarz</description>
+	<width>1280</width>
+	<height>720</height>
+	<texture colordiffuse="black">White.png</texture>
+</control>
+<control type="videowindow">
+	<width>1280</width>
+	<height>720</height>
+</control>
+<control type="group"><!-- progress kreis -->
+	<left>590</left>
+	<top>330</top>
+	<width>100</width>
+	<height>100</height>
+	<visible>!Window.IsVisible(movieinformation)</visible>
+	<animation delay="300" effect="fade" time="200">Visible</animation>
+	<animation effect="fade" delay="200" time="150">Hidden</animation>
+	<control type="label" id="1">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>TextColor3</textcolor>
+		<font>Caching-progressicon</font>
+		<label>Ņ</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>Ō</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+		<visible>Control.HasFocus(3112)</visible>
+	</control>
+	<control type="label">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>ŉ</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+		<visible>Control.HasFocus(3113)</visible>
+	</control>
+	<control type="label">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>ņ</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+		<visible>Control.HasFocus(222)</visible>
+	</control>
+	<control type="label">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>$VAR[value_playerprogressinlay]</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+</control>
+</controls>
+</window>
+

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+	<shortcut>
+		<label>$LOCALIZE[31863]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,tvshowtitles,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31864]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,tvshowgenres,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31865]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,tvshowyears,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31866]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,tvshowactors,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31867]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,tvshowstudios,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31869]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,inprogressshowstvshows,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31868]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,recentlyaddedepisodes,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31848]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videoplaylist)</action>
+	</shortcut>
+	
+	
+	
+</shortcuts>

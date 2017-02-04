@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- AeonKN draft kopie -->
+<defaultcontrol always="true">10</defaultcontrol>
+<views>10,11,12,13</views>
+<menucontrol>9000</menucontrol>
+<onload>ClearProperty(CustomTimer,home)</onload>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<include>CommonBackground</include>
+	<control type="group"><!-- Visualization -->
+		<visible>Skin.HasSetting(ViewEPG_background_video)</visible>
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<control type="videowindow">
+			<left>0</left>
+			<top>0</top>
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasVideo</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+		<control type="visualisation">
+			<left>0</left>
+			<top>0</top>
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasAudio</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+	</control>
+	<control type="group"><!-- default group -->
+		<include>animation_window</include>
+		<visible>![Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+		<control type="label" id="29">
+			<description>Current Category</description>
+			<include>Hiddencontrol</include>
+			<visible>false</visible>
+		</control>
+		<control type="label" id="30">
+			<description>Current Sub Category</description>
+			<include>Hiddencontrol</include>
+			<visible>false</visible>
+		</control>
+		<!-- ViewTypes -->
+		<control type="group" id="50">
+			<visible>$EXP[HasNoInfoDialog]</visible>
+			<include>ViewEPGTimeline</include><!-- 10 -->
+			<include>ViewLiveTVGuideNow</include><!-- 11 -->
+			<include>ViewLiveTVGuideNext</include><!-- 12 -->
+			<include>ViewLiveTVGuideChannel</include><!-- 13 -->
+		</control>
+	</control>
+	<include>global_topbar_multidata</include>
+	<include>pvr_sidebarmenue</include><!-- sidebar 9000/90002 -->
+</controls>
+</window>

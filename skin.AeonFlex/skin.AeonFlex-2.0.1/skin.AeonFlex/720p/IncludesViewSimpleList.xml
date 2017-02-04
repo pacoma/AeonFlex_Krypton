@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- #### Viewtype SimpleList ####-->
+<variable name="viewSimpleList-value-wildcard1-thumbartwork">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Fanart) + !String.IsEqual(Control.Getlabel(6300),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Extra-Fanart) + !String.IsEqual(Control.Getlabel(6300),xx)">$INFO[Control.GetLabel(5300)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Extra-Thumb) + !String.IsEqual(Control.Getlabel(6300),xx)">$INFO[Control.GetLabel(5301)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Landscape) + !String.IsEqual(Control.Getlabel(6300),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="String.IsEmpty(Skin.String(SimpleListFallbackRow1)) + String.IsEqual(Control.Getlabel(6300),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Fanart) + String.IsEqual(Control.Getlabel(6300),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Landscape) + String.IsEqual(Control.Getlabel(6300),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Defaultpicture) + String.IsEqual(Control.Getlabel(6300),xx)">defaultpictures/DefaultMovieExtrathumb.png</value>
+	<value>-</value>
+</variable>
+<variable name="viewSimpleList-value-wildcard1-cleardiffuse">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Clear-Art) + !String.IsEqual(Control.Getlabel(6300),xx)">White.png</value>
+	<value condition="String.IsEmpty(Skin.String(SimpleListRow1)) + !String.IsEqual(Control.Getlabel(6300),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Clear-Logo) + !String.IsEqual(Control.Getlabel(6300),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)">White.png</value>
+	<value>-</value>
+</variable>
+<variable name="viewSimpleList-value-wildcard1-clearartwork">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Clear-Art) + !String.IsEqual(Control.Getlabel(6300),xx)">$VAR[art_value_clearart]</value>
+	<value condition="String.IsEmpty(Skin.String(SimpleListRow1)) + !String.IsEqual(Control.Getlabel(6300),xx)">$VAR[art_value_logo]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow1),Clear-Logo) + !String.IsEqual(Control.Getlabel(6300),xx)">$VAR[art_value_logo]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)">$VAR[art_value_clearart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow1),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)">$VAR[art_value_logo]</value>
+	<value>-</value>
+</variable>
+
+<variable name="viewSimpleList-value-wildcard2-thumbartwork">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Fanart) + !String.IsEqual(Control.Getlabel(6301),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Extra-Fanart) + !String.IsEqual(Control.Getlabel(6301),xx)">$INFO[Control.GetLabel(5300)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Extra-Thumb) + !String.IsEqual(Control.Getlabel(6301),xx)">$INFO[Control.GetLabel(5301)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Landscape) + !String.IsEqual(Control.Getlabel(6301),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Fanart) + String.IsEqual(Control.Getlabel(6301),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Landscape) + String.IsEqual(Control.Getlabel(6301),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Defaultpicture) + String.IsEqual(Control.Getlabel(6301),xx)">defaultpictures/DefaultMovieExtrathumb.png</value>
+	<value>-</value>
+</variable>
+<variable name="viewSimpleList-value-wildcard2-cleardiffuse">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Clear-Logo) + !String.IsEqual(Control.Getlabel(6301),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Clear-Art) + String.IsEqual(Control.Getlabel(6301),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Clear-Logo) + String.IsEqual(Control.Getlabel(6301),xx)">White.png</value>
+	<value>-</value>
+</variable>
+<variable name="viewSimpleList-value-wildcard2-clearartwork">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)">$VAR[art_value_clearart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow2),Clear-Logo) + !String.IsEqual(Control.Getlabel(6301),xx)">$VAR[art_value_logo]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Clear-Art) + String.IsEqual(Control.Getlabel(6301),xx)">$VAR[art_value_clearart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow2),Clear-Logo) + String.IsEqual(Control.Getlabel(6301),xx)">$VAR[art_value_logo]</value>
+	<value>-</value>
+</variable>
+
+<variable name="viewSimpleList-value-wildcard3-thumbartwork">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Fanart) + !String.IsEqual(Control.Getlabel(6302),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEmpty(Skin.String(SimpleListRow3)) + !String.IsEqual(Control.Getlabel(6302),xx)">$INFO[Control.GetLabel(5300)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Extra-Fanart) + !String.IsEqual(Control.Getlabel(6302),xx)">$INFO[Control.GetLabel(5300)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Extra-Thumb) + !String.IsEqual(Control.Getlabel(6302),xx)">$INFO[Control.GetLabel(5301)]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Landscape) + !String.IsEqual(Control.Getlabel(6302),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="String.IsEmpty(Skin.String(SimpleListFallbackRow3)) + String.IsEqual(Control.Getlabel(6302),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Fanart) + String.IsEqual(Control.Getlabel(6302),xx)">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Landscape) + String.IsEqual(Control.Getlabel(6302),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Defaultpicture) + String.IsEqual(Control.Getlabel(6302),xx)">defaultpictures/DefaultMovieExtrathumb.png</value>
+	<value>-</value>
+</variable>
+<variable name="viewSimpleList-value-wildcard3-cleardiffuse">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Clear-Art) + !String.IsEqual(Control.Getlabel(6302),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Clear-Logo) + !String.IsEqual(Control.Getlabel(6302),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Clear-Art) + String.IsEqual(Control.Getlabel(6302),xx)">White.png</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Clear-Logo) + String.IsEqual(Control.Getlabel(6302),xx)">White.png</value>
+	<value>-</value>
+</variable>
+<variable name="viewSimpleList-value-wildcard3-clearartwork">
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Clear-Art) + !String.IsEqual(Control.Getlabel(6302),xx)">$VAR[art_value_clearart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListRow3),Clear-Logo) + !String.IsEqual(Control.Getlabel(6302),xx)">$VAR[art_value_logo]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Clear-Art) + String.IsEqual(Control.Getlabel(6302),xx)">$VAR[art_value_clearart]</value>
+	<value condition="String.IsEqual(Skin.String(SimpleListFallbackRow3),Clear-Logo) + String.IsEqual(Control.Getlabel(6302),xx)">$VAR[art_value_logo]</value>
+	<value>-</value>
+</variable>
+
+
+<!-- Include SimpleListTop -->
+<include name="viewSimpleList_video_panelelements">
+	<control type="group">
+		<visible>!ListItem.IsParentFolder</visible>
+		<control type="image">
+			<width>363</width>
+			<height>220</height>
+			<texture diffuse="artworks/Infopanel_vertical_square_diffuse.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			<visible>String.Contains(Skin.String(SimpleListRow1),Plot) | String.Contains(Skin.String(SimpleListRow1),Info) | String.Contains(Skin.String(SimpleListRow1),Content)</visible>
+		</control>
+		<control type="image">
+			<top>220</top>
+			<width>363</width>
+			<height>220</height>
+			<texture background="true">White.png</texture>
+			<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			<visible>String.IsEmpty(Skin.String(SimpleListRow2)) | String.Contains(Skin.String(SimpleListRow2),Plot) | String.Contains(Skin.String(SimpleListRow2),Info) | String.Contains(Skin.String(SimpleListRow2),Content)</visible>
+		</control>
+		<control type="image">
+			<top>440</top>
+			<width>363</width>
+			<height>220</height>
+			<texture diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			<visible>String.Contains(Skin.String(SimpleListRow3),Plot) | String.Contains(Skin.String(SimpleListRow3),Info) | String.Contains(Skin.String(SimpleListRow3),Content)</visible>
+		</control>
+		<control type="image"><!-- back clarartwork wildcard1-->
+			<top>50</top>
+			<width>363</width>
+			<height>170</height>
+			<texture colordiffuse="ACBackgroundColorClearart" diffuse="artworks/Infopanel_vertical_square_diffuse.png">$VAR[viewSimpleList-value-wildcard1-cleardiffuse]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+		<control type="image"><!-- back clarartwork wildcard2-->
+			<top>220</top>
+			<width>363</width>
+			<height>170</height>
+			<texture colordiffuse="ACBackgroundColorClearart" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[viewSimpleList-value-wildcard2-cleardiffuse]</texture>
+		</control>
+		<control type="image"><!-- back clarartwork wildcard3-->
+			<top>440</top>
+			<width>363</width>
+			<height>170</height>
+			<texture colordiffuse="ACBackgroundColorClearart" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[viewSimpleList-value-wildcard3-cleardiffuse]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+		<control type="image"><!-- artwork wildcard1-->
+			<width>363</width>
+			<height>220</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse.png">$VAR[viewSimpleList-value-wildcard1-thumbartwork]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+		<control type="image"><!-- clarartwork wildcard1-->
+			<width>363</width>
+			<height>220</height>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<bordersize>32</bordersize>
+			<texture background="true">$VAR[viewSimpleList-value-wildcard1-clearartwork]</texture>
+		</control>
+		<control type="image"><!-- artwork wildcard2-->
+			<top>220</top>
+			<width>363</width>
+			<height>220</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true">$VAR[viewSimpleList-value-wildcard2-thumbartwork]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+		<control type="image"><!-- clarartwork wildcard2 -->
+			<top>220</top>
+			<width>363</width>
+			<height>220</height>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<bordersize>32</bordersize>
+			<texture background="true">$VAR[viewSimpleList-value-wildcard2-clearartwork]</texture>
+		</control>
+		<control type="image"><!-- artwork wildcard3-->
+			<top>440</top>
+			<width>363</width>
+			<height>220</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[viewSimpleList-value-wildcard3-thumbartwork]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+		<control type="image"><!-- clarartwork wildcard3 -->
+			<top>440</top>
+			<width>363</width>
+			<height>220</height>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<bordersize>32</bordersize>
+			<texture background="true">$VAR[viewSimpleList-value-wildcard3-clearartwork]</texture>
+		</control>
+		<control type="grouplist"><!-- Info -->
+			<left>25</left>
+			<top>25</top>
+			<width>380</width>
+			<height>180</height>
+			<orientation>vertical</orientation>
+			<itemgap>5</itemgap>
+			<include>viewglobal_topelements_textinfo</include>
+			<visible>String.Contains(Skin.String(SimpleListRow1),Info) | String.Contains(Skin.String(SimpleListRow2),Info) | String.Contains(Skin.String(SimpleListRow3),Info)</visible>
+			<animation effect="slide" end="0,220" time="0" reversible="false" condition="String.Contains(Skin.String(SimpleListRow2),Info)">Conditional</animation>
+			<animation effect="slide" end="0,440" time="0" reversible="false" condition="String.Contains(Skin.String(SimpleListRow3),Info)">Conditional</animation>
+		</control>
+		<control type="textbox"><!-- plot -->
+			<left>25</left>
+			<top>25</top>
+			<width>323</width>
+			<include>PlotNormal176</include>
+			<include>viewglobal_topelements_plot</include>
+			<visible>String.Contains(Skin.String(SimpleListRow1),Plot) | String.IsEmpty(Skin.String(SimpleListRow2)) | String.Contains(Skin.String(SimpleListRow2),Plot) | String.Contains(Skin.String(SimpleListRow3),Plot)</visible>
+			<animation effect="slide" end="0,220" time="0" reversible="false" condition="String.IsEmpty(Skin.String(SimpleListRow2)) | String.Contains(Skin.String(SimpleListRow2),Plot)">Conditional</animation>
+			<animation effect="slide" end="0,440" time="0" reversible="false" condition="String.Contains(Skin.String(SimpleListRow3),Plot)">Conditional</animation>
+		</control>
+		<control type="group"><!-- content -->
+			<top>15</top>
+			<visible>String.Contains(Skin.String(SimpleListRow1),Content) | String.Contains(Skin.String(SimpleListRow2),Content) | String.Contains(Skin.String(SimpleListRow3),Content)</visible>
+			<animation effect="slide" end="0,220" time="0" reversible="false" condition="String.Contains(Skin.String(SimpleListRow2),Content)">Conditional</animation>
+			<animation effect="slide" end="0,440" time="0" reversible="false" condition="String.Contains(Skin.String(SimpleListRow3),Content)">Conditional</animation>
+			<control type="label">
+				<left>5</left>
+				<width>313</width>
+				<height>22</height>
+				<label>[COLOR=TextColor2]$LOCALIZE[31088]:[/COLOR] $VAR[videocontent_similarlabel]</label>
+				<font>SemiNormal</font>
+			</control>
+			<control type="fixedlist" id="5363">
+				<viewtype>list</viewtype>
+				<top>30</top>
+				<width>363</width>
+				<height>157</height>
+				<onleft>6661</onleft><!-- back -->
+				<onright>66</onright><!-- DB list -->
+				<onup>5363</onup>
+				<ondown>5363</ondown>
+				<focusposition>0</focusposition>
+				<orientation>vertical</orientation>
+				<scrolltime>450</scrolltime>
+				<visible allowhiddenfocus="true">[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+				<itemlayout width="363" height="30">
+					<control type="label">
+						<left>25</left>
+						<top>0</top>
+						<width>313</width>
+						<height>30</height>
+						<scroll>false</scroll>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]$INFO[ListItem.Episode, (,)]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="363" height="30">
+					<control type="image">
+						<width>363</width>
+						<height>30</height>
+						<include>global_listdiffusefocustexture_flip</include>
+						<visible>Control.HasFocus(5363)</visible>
+					</control>
+					<control type="label">
+						<left>25</left>
+						<top>0</top>
+						<width>313</width>
+						<height>30</height>
+						<font>RegularNormal</font>
+						<align>left</align>
+						<aligny>center</aligny>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]$INFO[ListItem.Episode, (,)]</label>
+						<visible>!Control.HasFocus(5363)</visible>
+					</control>
+					<control type="label">
+						<left>25</left>
+						<top>0</top>
+						<width>313</width>
+						<height>30</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label]$INFO[ListItem.Episode, (,)]</label>
+						<visible>Control.HasFocus(5363)</visible>
+					</control>
+				</focusedlayout>
+				<content limit="$VAR[videocontent_similar_limit]" sortby="$VAR[videocontent_similar_sort]" target="video">$VAR[videocontent_similar]</content>
+				<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">PlayMedia("$INFO[ListItem.FilenameandPath]")</onclick><!-- check -->
+				<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow)">ActivateWindow(videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick><!-- check -->
+			</control>
+		</control>
+	</control>
+	<control type="group">
+		<visible>ListItem.IsParentFolder</visible>
+		<control type="image">
+			<top>0</top>
+			<left>0</left>
+			<width>363</width>
+			<height>720</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true">folderback/FolderBackBasic.png</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+	</control>
+</include>
+	
+
+</includes>

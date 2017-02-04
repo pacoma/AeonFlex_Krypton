@@ -1,0 +1,1784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1198">
+<visible>!Window.IsVisible(startup)</visible>
+<controls>
+	<!-- Global debug grid -->
+	<control type="image">
+		<left>0</left>
+		<top>0</top>
+		<width>1280</width>
+		<height>720</height>
+		<texture>debuggrid720.png</texture>
+		<colordiffuse>88ffffff</colordiffuse>
+		<visible>Skin.HasSetting(DebugGrid)</visible>
+	</control>
+	<!-- Debug Info -->
+	<control type="group">
+		<visible>Skin.HasSetting(HideDebugInfo)</visible>		<!-- -->
+		<control type="grouplist">
+			<left>10</left>
+			<top>0</top>
+			<align>left</align>
+			<width>780</width>
+			<height>450</height>
+			<itemgap>5</itemgap>
+			<!-- aktive Window -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>$INFO[System.CurrentWindow,Actives Fenster: ,]</label>
+			</control>
+			<!-- Custom window labels -->
+			<!-- Custom window labels -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1101</label>
+				<visible>Window.IsVisible(1101)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1102</label>
+				<visible>Window.IsVisible(1102)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1103</label>
+				<visible>Window.IsVisible(1103)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1104</label>
+				<visible>Window.IsVisible(1104)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1105</label>
+				<visible>Window.IsVisible(1105)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1106</label>
+				<visible>Window.IsVisible(1106)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1107</label>
+				<visible>Window.IsVisible(1107)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1108</label>
+				<visible>Window.IsVisible(1108)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1109</label>
+				<visible>Window.IsVisible(1109)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1110</label>
+				<visible>Window.IsVisible(1110)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1111</label>
+				<visible>Window.IsVisible(1111)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1112</label>
+				<visible>Window.IsVisible(1112)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1113</label>
+				<visible>Window.IsVisible(1113)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1114</label>
+				<visible>Window.IsVisible(1114)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1115</label>
+				<visible>Window.IsVisible(1115)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1116</label>
+				<visible>Window.IsVisible(1116)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1117</label>
+				<visible>Window.IsVisible(1117)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1118</label>
+				<visible>Window.IsVisible(1118)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1119</label>
+				<visible>Window.IsVisible(1119)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1120</label>
+				<visible>Window.IsVisible(1120)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1121</label>
+				<visible>Window.IsVisible(1121)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1122</label>
+				<visible>Window.IsVisible(1122)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1123</label>
+				<visible>Window.IsVisible(1123)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1124</label>
+				<visible>Window.IsVisible(1124)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1125</label>
+				<visible>Window.IsVisible(1125)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1126</label>
+				<visible>Window.IsVisible(1126)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1127</label>
+				<visible>Window.IsVisible(1127)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1128</label>
+				<visible>Window.IsVisible(1128)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1129</label>
+				<visible>Window.IsVisible(1129)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1130</label>
+				<visible>Window.IsVisible(1130)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1131</label>
+				<visible>Window.IsVisible(1131)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1132</label>
+				<visible>Window.IsVisible(1132)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1133</label>
+				<visible>Window.IsVisible(1133)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1134</label>
+				<visible>Window.IsVisible(1134)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1135</label>
+				<visible>Window.IsVisible(1135)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1136</label>
+				<visible>Window.IsVisible(1136)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1137</label>
+				<visible>Window.IsVisible(1137)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1138</label>
+				<visible>Window.IsVisible(1138)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1139</label>
+				<visible>Window.IsVisible(1139)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1140</label>
+				<visible>Window.IsVisible(1140)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1141</label>
+				<visible>Window.IsVisible(1141)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1142</label>
+				<visible>Window.IsVisible(1142)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1143</label>
+				<visible>Window.IsVisible(1143)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1144</label>
+				<visible>Window.IsVisible(1144)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1145</label>
+				<visible>Window.IsVisible(1145)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1146</label>
+				<visible>Window.IsVisible(1146)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1147</label>
+				<visible>Window.IsVisible(1147)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1148</label>
+				<visible>Window.IsVisible(1148)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1149</label>
+				<visible>Window.IsVisible(1149)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1150</label>
+				<visible>Window.IsVisible(1150)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1151</label>
+				<visible>Window.IsVisible(1151)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1152</label>
+				<visible>Window.IsVisible(1152)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1153</label>
+				<visible>Window.IsVisible(1153)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1154</label>
+				<visible>Window.IsVisible(1154)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1155</label>
+				<visible>Window.IsVisible(1155)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1156</label>
+				<visible>Window.IsVisible(1156)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1157</label>
+				<visible>Window.IsVisible(1157)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1158</label>
+				<visible>Window.IsVisible(1158)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1159</label>
+				<visible>Window.IsVisible(1159)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1160</label>
+				<visible>Window.IsVisible(1160)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1161</label>
+				<visible>Window.IsVisible(1161)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1162</label>
+				<visible>Window.IsVisible(1162)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1163</label>
+				<visible>Window.IsVisible(1163)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1164</label>
+				<visible>Window.IsVisible(1164)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1165</label>
+				<visible>Window.IsVisible(1165)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1166</label>
+				<visible>Window.IsVisible(1166)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1167</label>
+				<visible>Window.IsVisible(1167)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1168</label>
+				<visible>Window.IsVisible(1168)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1169</label>
+				<visible>Window.IsVisible(1169)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1170</label>
+				<visible>Window.IsVisible(1170)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1171</label>
+				<visible>Window.IsVisible(1171)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1172</label>
+				<visible>Window.IsVisible(1172)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1173</label>
+				<visible>Window.IsVisible(1173)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1174</label>
+				<visible>Window.IsVisible(1174)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1175</label>
+				<visible>Window.IsVisible(1175)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1176</label>
+				<visible>Window.IsVisible(1176)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1177</label>
+				<visible>Window.IsVisible(1177)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1178</label>
+				<visible>Window.IsVisible(1178)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1179</label>
+				<visible>Window.IsVisible(1179)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1180</label>
+				<visible>Window.IsVisible(1180)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1181</label>
+				<visible>Window.IsVisible(1181)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1182</label>
+				<visible>Window.IsVisible(1182)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1183</label>
+				<visible>Window.IsVisible(1183)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1184</label>
+				<visible>Window.IsVisible(1184)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1185</label>
+				<visible>Window.IsVisible(1185)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1186</label>
+				<visible>Window.IsVisible(1186)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1187</label>
+				<visible>Window.IsVisible(1187)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1188</label>
+				<visible>Window.IsVisible(1188)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1189</label>
+				<visible>Window.IsVisible(1189)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1190</label>
+				<visible>Window.IsVisible(1190)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1191</label>
+				<visible>Window.IsVisible(1191)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1192</label>
+				<visible>Window.IsVisible(1192)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1193</label>
+				<visible>Window.IsVisible(1193)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1195</label>
+				<visible>Window.IsVisible(1195)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1196</label>
+				<visible>Window.IsVisible(1196)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1197</label>
+				<visible>Window.IsVisible(1197)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1198</label>
+				<visible>Window.IsVisible(1198)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1199</label>
+				<visible>Window.IsVisible(1199)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRRadioRDSInfo.xml</label>
+				<visible>Window.IsVisible(DialogPVRRadioRDSInfo.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRInfo.xml</label>
+				<visible>Window.IsVisible(DialogPVRInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogAudioDSPManager.xml</label>
+				<visible>Window.IsVisible(DialogAudioDSPManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogSettings.xml</label>
+				<visible>Window.IsVisible(DialogSettings.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>EventLog.xml</label>
+				<visible>Window.IsVisible(EventLog.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogAudioDSPManager.xml</label>
+				<visible>Window.IsVisible(DialogAudioDSPManager.xml)</visible>
+			</control>
+			<!-- Scripts -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-cu-lrclyrics-main.xml</label>
+				<visible>Window.IsVisible(script-cu-lrclyrics-main.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-script.extendedinfo-DialogInfo.xml</label>
+				<visible>Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-script.extendedinfo-DialogVideoInfo.xml</label>
+				<visible>Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-script.extendedinfo-SlideShow.xml</label>
+				<visible>Window.IsVisible(script-script.extendedinfo-SlideShow.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-script.extendedinfo-VideoList.xml</label>
+				<visible>Window.IsVisible(script-script.extendedinfo-VideoList.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-globalsearch-main.xml</label>
+				<visible>Window.IsVisible(script-globalsearch-main.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-globalsearch-infodialog.xml</label>
+				<visible>Window.IsVisible(script-globalsearch-infodialog.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-RSS_Editor-rssEditor.xml</label>
+				<visible>Window.IsVisible(script-RSS_Editor-rssEditor.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>script-RSS_Editor-setEditor.xml</label>
+				<visible>Window.IsVisible(script-RSS_Editor-setEditor.xml)</visible>
+			</control>
+			<!-- Kodi Window labels -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>AddonBrowser.xml</label>
+				<visible>Window.IsVisible(AddonBrowser.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPrograms.xml</label>
+				<visible>Window.IsVisible(MyPrograms.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>CustomSettings.xml</label>
+				<visible>Window.IsVisible(CustomSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>FileManager.xml</label>
+				<visible>Window.IsVisible(FileManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>Home.xml</label>
+				<visible>Window.IsVisible(Home.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>LoginScreen.xml</label>
+				<visible>Window.IsVisible(LoginScreen.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyMusicNav.xml</label>
+				<visible>Window.IsVisible(MyMusicNav.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyMusicPlaylist.xml</label>
+				<visible>Window.IsVisible(MyMusicPlaylist.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyMusicPlaylistEditor.xml</label>
+				<visible>Window.IsVisible(MyMusicPlaylistEditor.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyMusicSongs.xml</label>
+				<visible>Window.IsVisible(MyMusicSongs.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPics.xml</label>
+				<visible>Window.IsVisible(MyPics.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPVR.xml</label>
+				<visible>Window.IsVisible(MyPVR.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyVideoNav.xml</label>
+				<visible>Window.IsVisible(MyVideoNav.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyVideoPlaylist.xml</label>
+				<visible>Window.IsVisible(MyVideoPlaylist.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyWeather.xml</label>
+				<visible>Window.IsVisible(MyWeather.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>Settings.xml</label>
+				<visible>Window.IsVisible(Settings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SettingsCategory.xml</label>
+				<visible>Window.IsVisible(SettingsCategory.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SettingsProfile.xml</label>
+				<visible>Window.IsVisible(SettingsProfile.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SkinSettings.xml</label>
+				<visible>Window.IsVisible(SkinSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>VideoFullScreen.xml</label>
+				<visible>Window.IsVisible(VideoFullScreen.xml)</visible>
+			</control>
+			<!-- Dialog labels -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogAddonInfo.xml</label>
+				<visible>Window.IsVisible(DialogAddonInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogAddonSettings.xml</label>
+				<visible>Window.IsVisible(DialogAddonSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogAlbumInfo.xml</label>
+				<visible>Window.IsVisible(DialogAlbumInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogBusy.xml</label>
+				<visible>Window.IsVisible(DialogBusy.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogButtonMenu.xml</label>
+				<visible>Window.IsVisible(DialogButtonMenu.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogContentSettings.xml</label>
+				<visible>Window.IsVisible(DialogContentSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogContextMenu.xml</label>
+				<visible>Window.IsVisible(DialogContextMenu.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>ExtendedProgressBar.xml</label>
+				<visible>Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogFavourites.xml</label>
+				<visible>Window.IsVisible(DialogFavourites.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogFileStacking.xml</label>
+				<visible>Window.IsVisible(DialogFileStacking.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogFullScreenInfo.xml</label>
+				<visible>Window.IsVisible(DialogFullScreenInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogKaiToast.xml</label>
+				<visible>Window.IsVisible(DialogKaiToast.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogKaraokeSongSelector.xml</label>
+				<visible>Window.IsVisible(DialogKaraokeSongSelector.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogKaraokeSongSelectorLarge.xml</label>
+				<visible>Window.IsVisible(DialogKaraokeSongSelectorLarge.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogKeyboard.xml</label>
+				<visible>Window.IsVisible(DialogKeyboard.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogMediaFilter.xml</label>
+				<visible>Window.IsVisible(DialogMediaFilter.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogMediaSource.xml</label>
+				<visible>Window.IsVisible(DialogMediaSource.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogMuteBug.xml</label>
+				<visible>Window.IsVisible(DialogMuteBug.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogNetworkSetup.xml</label>
+				<visible>Window.IsVisible(DialogNetworkSetup.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogNumeric.xml</label>
+				<visible>Window.IsVisible(DialogNumeric.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogOk.xml</label>
+				<visible>Window.IsVisible(DialogOk.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPeripheralManager.xml</label>
+				<visible>Window.IsVisible(DialogPeripheralManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPeripheralSettings.xml</label>
+				<visible>Window.IsVisible(DialogPeripheralSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPictureInfo.xml</label>
+				<visible>Window.IsVisible(DialogPictureInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogProgress.xml</label>
+				<visible>Window.IsVisible(DialogProgress.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRChannelManager.xml</label>
+				<visible>Window.IsVisible(DialogPVRChannelManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRChannelsOSD.xml</label>
+				<visible>Window.IsVisible(DialogPVRChannelsOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRGroupManager.xml</label>
+				<visible>Window.IsVisible(DialogPVRGroupManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRGuideInfo.xml</label>
+				<visible>Window.IsVisible(DialogPVRGuideInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRGuideOSD.xml</label>
+				<visible>Window.IsVisible(DialogPVRGuideOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRGuideSearch.xml</label>
+				<visible>Window.IsVisible(DialogPVRGuideSearch.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPVRSearch.xml</label>
+				<visible>Window.IsVisible(MyPVRSearch.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPVRGuide.xml</label>
+				<visible>Window.IsVisible(MyPVRGuide.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPVRRecordings.xml</label>
+				<visible>Window.IsVisible(MyPVRRecordings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRInfo.xml</label>
+				<visible>Window.IsVisible(DialogPVRInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogPVRTimerSettings.xml</label>
+				<visible>Window.IsVisible(DialogPVRTimerSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogSeekbar.xml</label>
+				<visible>Window.IsVisible(DialogSeekbar.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogSelect.xml</label>
+				<visible>Window.IsVisible(DialogSelect.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogSlider.xml</label>
+				<visible>Window.IsVisible(DialogSlider.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogSongInfo.xml</label>
+				<visible>Window.IsVisible(DialogSongInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogTextViewer.xml</label>
+				<visible>Window.IsVisible(DialogTextViewer.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogVideoInfo.xml</label>
+				<visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogVolumeBar.xml</label>
+				<visible>Window.IsVisible(DialogVolumeBar.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>DialogYesNo.xml</label>
+				<visible>Window.IsVisible(DialogYesNo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>FileBrowser.xml</label>
+				<visible>Window.IsVisible(FileBrowser.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>LockSettings.xml</label>
+				<visible>Window.IsVisible(LockSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MusicKaraokeLyrics.xml</label>
+				<visible>Window.IsVisible(MusicKaraokeLyrics.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MusicOSD.xml</label>
+				<visible>Window.IsVisible(MusicOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MusicOverlay.xml</label>
+				<visible>Window.IsVisible(MusicOverlay.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MusicVisualisation.xml</label>
+				<visible>Window.IsVisible(MusicVisualisation.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>PlayerControls.xml</label>
+				<visible>Window.IsVisible(PlayerControls.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>ProfileSettings.xml</label>
+				<visible>Window.IsVisible(ProfileSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SettingsScreenCalibration.xml</label>
+				<visible>Window.IsVisible(SettingsScreenCalibration.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SettingsSystemInfo.xml</label>
+				<visible>Window.IsVisible(SettingsSystemInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SlideShow.xml</label>
+				<visible>Window.IsVisible(SlideShow.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SmartPlaylistEditor.xml</label>
+				<visible>Window.IsVisible(SmartPlaylistEditor.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>SmartPlaylistRule.xml</label>
+				<visible>Window.IsVisible(SmartPlaylistRule.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>MyPVRChannels.xml</label>
+				<visible>Window.IsVisible(MyPVRChannels.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>VideoOSD.xml</label>
+				<visible>Window.IsVisible(VideoOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>VideoOSDBookmarks.xml</label>
+				<visible>Window.IsVisible(VideoOSDBookmarks.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>VideoOSDSettings.xml</label>
+				<visible>Window.IsVisible(VideoOSDSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>VideoOverlay.xml</label>
+				<visible>Window.IsVisible(VideoOverlay.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<align>left</align>
+				<label>VisualisationPresetList.xml</label>
+				<visible>Window.IsVisible(VisualisationPresetList.xml)</visible>
+			</control>
+		</control>
+
+		<!-- Control label -->
+		<control type="label">
+			<right>10</right>
+			<top>0</top>
+			<width>1270</width>
+			<height>21</height>
+			<align>right</align>
+			<textcolor>FF0000FF</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<label>$INFO[System.CurrentControl]$INFO[ListItem.Path, - ,]</label>
+		</control>
+		<!-- Folder Name label -->
+		<control type="label">
+			<right>10</right>
+			<top>26</top>
+			<width>1270</width>
+			<height>21</height>
+			<textcolor>FFFF0000</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<align>right</align>
+			<label>$INFO[Container.FolderName,$LOCALIZE[19076]: ,]</label>
+		</control>
+		<!-- Folder Path label -->
+		<control type="label">
+			<right>10</right>
+			<top>52</top>
+			<width>1270</width>
+			<height>21</height>
+			<textcolor>FFFF0000</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<align>right</align>
+			<label>$INFO[Container.FolderPath,$LOCALIZE[15311] ,]</label>
+		</control>
+	</control>
+
+
+
+<control type="group">
+	<include>HomeBackground</include>
+	<top>3355</top>
+	<control type="grouplist">
+		<left>20</left>
+		<top>25</top>
+		<width>auto</width>
+		<height>720</height>
+		<orientation>horizontal</orientation>
+		<itemgap>30</itemgap>
+		<control type="textbox">
+			<width>200</width>
+			<include>PlotLarge390</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotLarge390   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotLarge290</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotLarge290   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal110</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal110   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal66</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal66   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal88</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal88   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+	</control>
+		
+	<control type="grouplist">
+		<left>3420</left>
+		<top>25</top>
+		<width>auto</width>
+		<height>720</height>
+		<orientation>horizontal</orientation>
+		<itemgap>30</itemgap>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal44</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal44   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal132</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal132   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal154</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal154   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal176</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal176   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal308</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal308   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+	</control>
+		
+	<control type="grouplist">
+		<left>3420</left>
+		<top>25</top>
+		<width>auto</width>
+		<height>720</height>
+		<orientation>horizontal</orientation>
+		<itemgap>30</itemgap>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal462</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal462   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotNormal352</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotNormal352   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		<control type="textbox">
+			<left>0</left>
+			<width>200</width>
+			<include>PlotOSDLarge120</include>
+			<pagecontrol>613</pagecontrol>
+			<label fallback="31009">PlotOSDLarge120   [CR]Lorem ipsum aliquyam sadipscing amget, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label>
+			<autoscroll delay="1000" time="5000" repeat="15000">false</autoscroll>
+		</control>
+		
+	
+	
+	</control>
+	
+</control>
+</controls>
+</window>

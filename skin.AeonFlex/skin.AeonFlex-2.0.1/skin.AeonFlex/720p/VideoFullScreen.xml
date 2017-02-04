@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>-</defaultcontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>SetProperty(RefreshList3,1,Home)</onunload>
+<controls>
+<!-- live-TV Dialog -->
+<control type="group" id="1">
+	<left>0</left>
+	<top>0</top>
+	<visible>VideoPlayer.Content(LiveTV) + Player.ShowInfo + ![Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDAudioDSPSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVROSDGuide) | Window.IsVisible(SliderDialog) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml) | Window.IsVisible(VideoOSD)]</visible>
+	<include>animation_osd_vhoc_bottombarslide</include>
+	<include>DialogFulscreeninfo-bottom</include>
+</control>
+<control type="group" id="1"><!-- progress kreis -->
+	<left>590</left>
+	<top>330</top>
+	<width>100</width>
+	<height>100</height>
+	<visible>Player.Caching | Window.IsVisible(seekbar)</visible>
+	<animation delay="300" effect="fade" time="200">Visible</animation>
+	<animation effect="fade" delay="200" time="150">Hidden</animation>
+	<control type="label" id="1">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>TextColor3</textcolor>
+		<font>Caching-progressicon</font>
+		<label>Ņ</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label" id="1">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>$VAR[value_playerprogressicon]</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label" id="1">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>$VAR[value_playerprogressinlay]</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+</control>
+</controls>
+</window>

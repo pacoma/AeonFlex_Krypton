@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<variable name="art_value_fallbackbanner">
+	<value condition="ListItem.IsParentFolder">folderback/FolderBackBanner.png</value>
+	<value condition="Container.Content(seasons)">defaultpictures/DefaultSeasonBanner.png</value>
+	<value condition="Container.Content(genres)">defaultpictures/DefaultMovieBanner.png</value>
+	<value>defaultpictures/DefaultMovieBanner.png</value>
+</variable>
+
+<include name="View53BannerInfo_video">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<visible>Control.IsVisible(53)</visible>
+		<control type="image" id="9923"><!-- Fake Visible info panel Bannerinfo -->
+			<include>Hiddencontrol</include>
+			<animation effect="fade" start="0" end="100" time="150" delay="1000" condition="String.IsEqual(skin.string(Bannerinfopanel_seconds),1)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="2000" condition="String.IsEqual(skin.string(Bannerinfopanel_seconds),2)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="3000" condition="String.IsEqual(skin.string(Bannerinfopanel_seconds),3)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="4000" condition="String.IsEqual(skin.string(Bannerinfopanel_seconds),4)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="5000" condition="String.IsEqual(skin.string(Bannerinfopanel_seconds),5)">Visible</animation>
+			<animation effect="fade" start="0" end="100" time="150" delay="6000" condition="String.IsEqual(skin.string(Bannerinfopanel_seconds),6)">Visible</animation>
+			<visible>![Container.OnNext | Container.OnPrevious] + Control.IsVisible(53)</visible>
+		</control>
+		<control type="group"><!-- Infopanel -->
+			<top>85</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<visible>[String.IsEqual(skin.string(Bannerinfopanel),auto) + Control.IsVisible(9923)] | String.IsEmpty(skin.string(Bannerinfopanel)) | String.IsEqual(skin.string(Bannerinfopanel),alwayson) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)</visible>
+			<animation effect="slide" start="0,-600" end="0,0" time="500" tween="sine" easing="out">Visible</animation>
+			<animation effect="slide" start="0,0" end="0,-600" time="500" tween="sine" easing="out">Hidden</animation>
+			<control type="image">
+				<description>hintergrund</description>
+				<width>1280</width>
+				<height>205</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+			</control>
+			<control type="image">
+				<description>background double</description>
+				<top>105</top>
+				<width>1280</width>
+				<height>100</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor">White.png</texture>
+			</control>
+			<include>viewbannerinfo_video_topelements</include>
+			<control type="image">
+				<description>schatten oben</description>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<description>schatten unten</description>
+				<top>205</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="image">
+				<description>schatten links</description>
+				<left>450</left>
+				<height>205</height>
+				<include>global_texture_border5_leftv</include>
+				<visible>!Container.Content(genres)</visible>
+			</control>
+			<control type="image">
+				<description>schatten rechts</description>
+				<left>825</left>
+				<height>205</height>
+				<include>global_texture_border5_rightv</include>
+				<visible>!Container.Content(genres)</visible>
+			</control>
+		</control>
+		<control type="group"><!-- list -->
+			<top>290</top>
+			<control type="image">
+				<description>hintergrund</description>
+				<width>1280</width>
+				<height>265</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png" colordiffuse="ACBackgroundColor_light">White.png</texture>
+			</control>
+			<control type="image">
+				<description>schatten oben</description>
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="panel" id="53">
+				<viewtype label="$LOCALIZE[31226]">Wide Icon</viewtype>
+				<left>95</left>
+				<top>8</top>
+				<width>1210</width>
+				<height>350</height>
+				<onup>53</onup>
+				<ondown>53</ondown>
+				<include>OnInfoContent</include>
+				<onleft>SetFocus(9000)</onleft><!-- Menue -->
+				<onright condition="!Integer.IsGreater(Container(53).NumPages,1)">9000</onright><!-- Menue -->
+				<onright condition="Integer.IsGreater(Container(53).NumPages,1)">80</onright>
+				<pagecontrol>80</pagecontrol>
+				<scrolltime>450</scrolltime>
+				<preloaditems>2</preloaditems>
+				<animation effect="fade" start="100" end="20" time="200" condition="Window.IsVisible(radiorecordings)">Conditional</animation>
+				<visible>!String.Contains(Container.FolderPath,plugin) + [[Container.Content(movies) + String.Contains(Skin.String(PLS_FilmViewtype),BannerInfo) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(movies) + String.Contains(Skin.String(FilmViewtype),BannerInfo) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(TVViewtype),BannerInfo) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(PLS_TVViewtype),BannerInfo) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(sets) + String.Contains(Skin.String(SetViewtype),BannerInfo)] | [Container.Content(genres) + String.Contains(Skin.String(GenreViewtype),BannerInfo)]] | [Container.Content(seasons) + String.Contains(Skin.String(StaffelViewtype),BannerInfo)] | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+				<itemlayout condition="String.IsEmpty(Skin.String(BannerinfoListRows))" height="89" width="367"><!-- 3 rows  -->
+					<control type="group">
+						<control type="image">
+							<width>356</width>
+							<height>83</height>
+							<aspectratio>stretch</aspectratio>
+							<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6_banner.png</bordertexture>
+							<bordersize>5</bordersize>
+							<texture background="true">$VAR[art_value_fallbackbanner]</texture>
+						</control>
+						<control type="label">
+							<left>148</left>
+							<top>16</top>
+							<width>62</width>
+							<height>42</height>
+							<textcolor>TextColor2</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+							<font>SemiLarge</font>
+							<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+						</control>
+						<control type="image">
+							<description>Banner</description>
+							<width>356</width>
+							<height>83</height>
+							<bordersize>5</bordersize>
+							<aspectratio>stretch</aspectratio>
+							<texture background="true">$VAR[art_value_banner]</texture>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="image">
+							<left>8</left>
+							<top>8</top>
+							<width>30</width>
+							<height>30</height>
+							<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+							<colordiffuse>ACRed</colordiffuse>
+							<aspectratio align="center" aligny="center">keep</aspectratio>
+							<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+						</control>
+						<control type="image">
+							<width>356</width>
+							<height>83</height>
+							<bordersize>5</bordersize>
+							<texture colordiffuse="ACInaktivItems">White.png</texture>
+						</control>
+						<include content="watched_overlayBG"><!-- watched_overlay -->
+							<param name="left">323</param>
+							<param name="top">2</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+						<control type="label">
+							<description>Media Overlay - neu, angefangene usw.</description>
+							<left>323</left>
+							<top>2</top>
+							<width>30</width>
+							<height>30</height>
+							<aligny>top</aligny>
+							<align>right</align>
+							<font>IconOverlay30</font>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorFocus</selectedcolor>
+							<label>$VAR[WatchedOverlayFlag]</label>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="String.IsEmpty(Skin.String(BannerinfoListRows))" height="89" width="367">
+					<control type="group">
+						<animation effect="zoom" center="178,36" start="100" end="103" time="280" tween="cubic" easing="inout" reversible="false">Focus</animation>
+						<animation effect="zoom" center="178,36" start="103" end="100" time="280" tween="cubic" easing="inout" reversible="false">UnFocus</animation>
+						<control type="image">
+							<width>356</width>
+							<height>83</height>
+							<aspectratio>stretch</aspectratio>
+							<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6_banner.png</bordertexture>
+							<bordersize>5</bordersize>
+							<texture background="true">$VAR[art_value_fallbackbanner]</texture>
+						</control>
+						<control type="label">
+							<left>148</left>
+							<top>16</top>
+							<width>62</width>
+							<height>42</height>
+							<textcolor>TextColor2</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+							<font>SemiLarge</font>
+							<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+						</control>
+						<control type="image">
+							<description>Banner</description>
+							<width>356</width>
+							<height>83</height>
+							<bordersize>5</bordersize>
+							<aspectratio>stretch</aspectratio>
+							<texture background="true">$VAR[art_value_banner]</texture>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="image">
+							<left>8</left>
+							<top>8</top>
+							<width>30</width>
+							<height>30</height>
+							<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+							<colordiffuse>ACRed</colordiffuse>
+							<aspectratio align="center" aligny="center">keep</aspectratio>
+							<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+						</control>
+						<control type="image">
+							<width>356</width>
+							<height>83</height>
+							<bordersize>5</bordersize>
+							<texture colordiffuse="ACInaktivItems">White.png</texture>
+							<include>animation_dimmer</include>
+						</control>
+						<include content="watched_overlayBG"><!-- watched_overlay -->
+							<param name="left">323</param>
+							<param name="top">2</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+						<control type="label">
+							<description>Media Overlay - neu, angefangene usw.</description>
+							<left>323</left>
+							<top>2</top>
+							<width>30</width>
+							<height>30</height>
+							<aligny>top</aligny>
+							<align>right</align>
+							<font>IconOverlay30</font>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorFocus</selectedcolor>
+							<label>$VAR[WatchedOverlayFlag]</label>
+						</control>
+					</control>
+				</focusedlayout>
+				<itemlayout condition="String.IsEqual(Skin.String(BannerinfoListRows),2)" height="122" width="550"><!-- 2 rows  -->
+					<control type="group">
+						<control type="image">
+							<width>530</width>
+							<height>106</height>
+							<aspectratio>stretch</aspectratio>
+							<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6_banner.png</bordertexture>
+							<bordersize>5</bordersize>
+							<texture background="true">$VAR[art_value_fallbackbanner]</texture>
+						</control>
+						<control type="label">
+							<left>221</left>
+							<top>24</top>
+							<width>90</width>
+							<height>62</height>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>TextColor2</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+							<font>SemiBig</font>
+							<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+						</control>
+						<control type="image">
+							<description>Banner</description>
+							<width>530</width>
+							<height>106</height>
+							<bordersize>5</bordersize>
+							<texture>$VAR[art_value_banner]</texture>
+							<aspectratio>stretch</aspectratio>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="image">
+							<left>8</left>
+							<top>8</top>
+							<width>30</width>
+							<height>30</height>
+							<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+							<colordiffuse>ACRed</colordiffuse>
+							<aspectratio align="center" aligny="center">keep</aspectratio>
+							<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+						</control>
+						<control type="image">
+							<width>530</width>
+							<height>106</height>
+							<bordersize>5</bordersize>
+							<texture colordiffuse="ACInaktivItems">White.png</texture>
+						</control>
+						<include content="watched_overlayBG"><!-- watched_overlay -->
+							<param name="left">490</param>
+							<param name="top">2</param>
+							<param name="width">38</param>
+							<param name="height">38</param>
+						</include>
+						<control type="label">
+							<description>Media Overlay - neu, angefangene usw.</description>
+							<left>490</left>
+							<top>2</top>
+							<width>38</width>
+							<height>38</height>
+							<aligny>top</aligny>
+							<align>right</align>
+							<font>IconOverlay38</font>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorFocus</selectedcolor>
+							<label>$VAR[WatchedOverlayFlag]</label>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="String.IsEqual(Skin.String(BannerinfoListRows),2)" height="122" width="550">
+					<control type="group">
+						<animation effect="zoom" center="215,53" start="100" end="105" time="280" tween="cubic" easing="inout" reversible="false">Focus</animation>
+						<animation effect="zoom" center="215,53" start="105" end="100" time="280" tween="cubic" easing="inout" reversible="false">UnFocus</animation>
+						<control type="image">
+							<width>530</width>
+							<height>106</height>
+							<aspectratio>stretch</aspectratio>
+							<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6_banner.png</bordertexture>
+							<bordersize>5</bordersize>
+							<texture background="true">$VAR[art_value_fallbackbanner]</texture>
+						</control>
+						<control type="label">
+							<left>221</left>
+							<top>24</top>
+							<width>90</width>
+							<height>62</height>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>TextColor2</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+							<font>SemiBig</font>
+							<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+						</control>
+						<control type="image">
+							<description>Banner</description>
+							<width>530</width>
+							<height>106</height>
+							<bordersize>5</bordersize>
+							<texture>$VAR[art_value_banner]</texture>
+							<aspectratio>stretch</aspectratio>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="image">
+							<left>8</left>
+							<top>8</top>
+							<width>30</width>
+							<height>30</height>
+							<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+							<colordiffuse>ACRed</colordiffuse>
+							<aspectratio align="center" aligny="center">keep</aspectratio>
+							<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+						</control>
+						<control type="image">
+							<width>530</width>
+							<height>106</height>
+							<bordersize>5</bordersize>
+							<texture colordiffuse="ACInaktivItems">White.png</texture>
+							<include>animation_dimmer</include>
+						</control>
+						<include content="watched_overlayBG"><!-- watched_overlay -->
+							<param name="left">490</param>
+							<param name="top">2</param>
+							<param name="width">38</param>
+							<param name="height">38</param>
+						</include>
+						<control type="label">
+							<description>Media Overlay - neu, angefangene usw.</description>
+							<left>490</left>
+							<top>2</top>
+							<width>38</width>
+							<height>38</height>
+							<aligny>top</aligny>
+							<align>right</align>
+							<font>IconOverlay38</font>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorFocus</selectedcolor>
+							<label>$VAR[WatchedOverlayFlag]</label>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="80"><!-- scrollbar -->
+				<include>scrollbar_vertical</include>
+				<left>1210</left>
+				<top>5</top>
+				<height>350</height>
+				<onleft>53</onleft>
+				<onright>SetFocus(9000)</onright><!-- menue -->
+				<visible allowhiddenfocus="true">Control.IsVisible(53) + Control.HasFocus(80)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+</includes>

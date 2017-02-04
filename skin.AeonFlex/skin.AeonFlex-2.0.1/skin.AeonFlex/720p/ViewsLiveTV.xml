@@ -1,0 +1,4120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- AeonKN draft kopie -->
+
+<variable name="value_pvrchannelicon">
+	<value condition="Control.IsVisible(10)">$INFO[Container(10).ListItem.Icon]</value>
+	<value condition="Control.IsVisible(14)">$INFO[Container(14).ListItem.Icon]</value>
+	<value condition="Control.IsVisible(15)">$INFO[VideoPlayer.Cover]</value>
+	<value condition="Control.IsVisible(16)">$INFO[Container(16).ListItem.Icon]</value>
+	<value condition="Control.IsVisible(17)">$INFO[Container(17).ListItem.Icon]</value>
+	<value condition="Control.IsVisible(71)">$INFO[Container(71).ListItem.Icon]</value>
+</variable>
+
+<include name="PVR_PVRCommonInfo">
+	<control type="group">
+		<control type="image"><!-- Background right-->
+			<description>Hintergrund Dialog</description>
+			<top>-15</top>
+			<width>1280</width>
+			<height>440</height>
+			<include>global_texture_heavy</include>
+		</control>
+		<control type="image"><!-- thumb  -->
+			<left>20</left>
+			<top>0</top>
+			<width>120</width>
+			<height>120</height>
+			<aspectratio scalediffuse="true">keep</aspectratio>
+			<texture background="true" fallback="defaultpictures/DefaultChannel.png">$VAR[value_pvrchannelicon]</texture>
+			<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+			<bordersize>8</bordersize>
+			<fadetime>FanartCrossFadeTime</fadetime>
+		</control>
+		<control type="label"><!-- title -->
+			<left>170</left>
+			<top>-5</top>
+			<width>1090</width>
+			<height>30</height>
+			<textcolor>TextColor1</textcolor>
+			<font>SemiBig</font>
+			<label>$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, - ,]</label>
+		</control>
+		<control type="label"><!-- zeit/Datum/Genre -->
+			<left>170</left>
+			<top>25</top>
+			<width>1090</width>
+			<height>25</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$LOCALIZE[142] [COLOR=TextColor1]$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime] ($INFO[ListItem.StartDate]) - [/COLOR]$LOCALIZE[180]: [COLOR=TextColor1]$INFO[ListItem.Duration] - [/COLOR]$LOCALIZE[515]: [COLOR=TextColor1]$INFO[ListItem.Genre][/COLOR]</label>
+			<visible>!Control.IsVisible(14)</visible>
+		</control>
+		<control type="label"><!-- zeit/Datum/Genre -->
+			<left>170</left>
+			<top>25</top>
+			<width>1090</width>
+			<height>25</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$LOCALIZE[142] [COLOR=TextColor1]$INFO[ListItem.Date][/COLOR]</label>
+			<visible>Control.IsVisible(14) + !String.IsEmpty(ListItem.Date)</visible>
+		</control>
+		<control type="image">
+			<left>170</left>
+			<top>55</top>
+			<width>825</width>
+			<height>2</height>
+			<align>left</align>
+			<texture flipx="true" colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+		</control>
+		<control type="textbox" id="400">
+			<left>170</left>
+			<top>60</top>
+			<width>1090</width>
+			<include>PlotNormal66</include>
+			<label>$INFO[ListItem.Plot]</label>
+			<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+		</control>
+	</control>
+</include>
+
+<!-- ####  EPG   #### -->
+<include name="ViewEPGTimeline">
+	<control type="group">
+		<visible>Control.IsVisible(10)</visible>
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<control type="group"><!-- info search values focus-->
+			<top>585</top>
+			<visible>[Skin.HasSetting(ViewEPG_infobar) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)]</visible>
+			<include>PVR_PVRCommonInfo</include>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="280" tween="sine" easing="out"/>
+				<effect type="slide" start="0,135" end="0,0" time="280" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" end="0" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+				<effect type="slide" start="0,0" end="0,720" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+			</animation>
+		</control>
+		<include>PVR_background</include>
+		<control type="image">
+			<left>154</left>
+			<top>140</top>
+			<width>86</width>
+			<height>25</height>
+			<include>global_listfocustexture</include>
+		</control>
+		<control type="epggrid" id="10">
+			<viewtype label="19032">list</viewtype>
+			<left>0</left>
+			<top>140</top>
+			<width>1280</width>
+			<height>430</height>
+			<onleft>9000</onleft>
+			<onright>9900</onright>
+			<onup>10</onup>
+			<onfocus>SetProperty(PlottextNext,$INFO[ListItem.NextPlot],videos)</onfocus>
+			<ondown>10</ondown>
+			<onback>9900</onback>
+			<pagecontrol>10</pagecontrol>
+			<scrolltime>350</scrolltime>
+			<timeblocks>40</timeblocks>
+			<rulerunit>6</rulerunit>
+			<progresstexture border="5">pvr/pvr_epgprogressindicator.png</progresstexture>
+			<rulerlayout height="30" width="40">
+				<control type="image">
+					<width>154</width>
+					<height>25</height>
+					<include>global_listfocustexture</include>
+				</control>
+				<control type="label" id="2">
+					<left>20</left>
+					<top>-1</top>
+					<width>40</width>
+					<height>28</height>
+					<font>RegularSmall</font>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</rulerlayout>
+			<channellayout height="40" width="240">
+				<control type="label" id="1">
+					<left>0</left>
+					<top>0</top>
+					<width>239</width>
+					<height>40</height>
+					<textoffsety>7</textoffsety>
+					<textoffsetx>20</textoffsetx>
+					<aligny>top</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>240</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+			</channellayout>
+			<focusedchannellayout height="40" width="240">
+				<control type="image" id="1">
+					<width>240</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<animation effect="fade" start="100" end="50" time="50" condition="!Control.Hasfocus(10)">conditional</animation>
+				</control>
+				<control type="label" id="1">
+					<left>0</left>
+					<top>0</top>
+					<width>240</width>
+					<height>40</height>
+					<textoffsety>7</textoffsety>
+					<textoffsetx>20</textoffsetx>
+					<aligny>top</aligny>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+			</focusedchannellayout>
+			<itemlayout height="40" width="50">
+				<control type="image" id="14">
+					<left>0</left>
+					<top>1</top>
+					<width>48</width>
+					<height>38</height>
+					<texture colordiffuse="ACBackgroundColor_heavy">buttons/button_focus.png</texture>
+				</control>
+				<control type="image" id="2">
+					<left>0</left>
+					<top>1</top>
+					<width>48</width>
+					<height>38</height>
+					<aspectratio>stretch</aspectratio>
+					<texture border="3">flags/epggenres/$INFO[ListItem.Property(GenreType)].png</texture>
+					<colordiffuse>50FFFAF0</colordiffuse>
+					<visible>!String.IsEmpty(ListItem.Property(GenreType))</visible>
+				</control>
+				<control type="label" id="1">
+					<left>22</left>
+					<top>1</top>
+					<width>42</width>
+					<height>38</height>
+					<textcolor>TextColor1</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<animation effect="slide" start="-20,0" end="-20,0" condition="!ListItem.HasTimer + !ListItem.IsRecording" time="0">conditional</animation>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>2</top>
+					<width>18</width>
+					<height>18</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>2</top>
+					<width>18</width>
+					<height>18</height>
+					<texture>pvr/pvr_isrecording_front.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>2</top>
+					<width>18</width>
+					<height>18</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_hastimer.png</texture>
+					<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40" width="50">
+				<control type="image" id="14">
+					<top>1</top>
+					<width>48</width>
+					<height>38</height>
+					<include>global_listfocustexture</include>
+					<animation effect="fade" start="100" end="50" time="50" condition="!Control.Hasfocus(10)">conditional</animation>
+				</control>
+				<control type="image" id="2">
+					<left>0</left>
+					<top>1</top>
+					<width>48</width>
+					<height>38</height>
+					<aspectratio>stretch</aspectratio>
+					<texture border="3">flags/epggenres/$INFO[ListItem.Property(GenreType)].png</texture>
+					<visible>!String.IsEmpty(ListItem.Property(GenreType))</visible>
+				</control>
+				<control type="label" id="1">
+					<left>22</left>
+					<top>1</top>
+					<width>42</width>
+					<height>38</height>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<animation effect="slide" start="-20,0" end="-20,0" condition="!ListItem.HasTimer + !ListItem.IsRecording" time="0">conditional</animation>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>2</top>
+					<width>18</width>
+					<height>18</height>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_isrecording_back.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>2</top>
+					<width>18</width>
+					<height>18</height>
+					<texture>pvr/pvr_isrecording_front.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>2</left>
+					<top>2</top>
+					<width>18</width>
+					<height>18</height>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_hastimer.png</texture>
+					<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="image"><!-- shadows -->
+			<description>schatten links</description>
+			<left>240</left>
+			<top>60</top>
+			<height>510</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+</include>
+
+<!-- ####  EPG jetzt  #### -->
+<include name="ViewLiveTVGuideNow">
+	<control type="group">
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<visible>Control.IsVisible(11)</visible>
+		<control type="group"><!-- info search values focus-->
+			<top>585</top>
+			<visible>Skin.HasSetting(ViewEPG_infobar) + Control.HasFocus(11)</visible>
+			<include>PVR_PVRCommonInfo</include>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="280" tween="sine" easing="out"/>
+				<effect type="slide" start="0,135" end="0,0" time="280" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" end="0" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+				<effect type="slide" start="0,0" end="0,720" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+			</animation>
+		</control>
+		<include>PVR_background</include>
+		<control type="list" id="11">
+			<viewtype label="19030">list</viewtype>
+			<left>0</left>
+			<top>130</top>
+			<width>1280</width>
+			<height>440</height>
+			<onup>11</onup>
+			<ondown>11</ondown>
+			<onleft>9900</onleft>
+			<onright>80</onright>
+			<pagecontrol>80</pagecontrol>
+			<scrolltime>350</scrolltime>
+			<itemlayout height="40">
+				<control type="label">
+					<left>0</left>
+					<top>0</top>
+					<width>239</width>
+					<height>40</height>
+					<textoffsety>7</textoffsety>
+					<textoffsetx>20</textoffsetx>
+					<aligny>top</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>240</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="label">
+					<left>260</left>
+					<top>0</top>
+					<width>140</width>
+					<height>40</height>
+					<textcolor>TextColor2</textcolor>
+					<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+				</control>
+				<control type="label">
+					<left>400</left>
+					<top>1</top>
+					<width>590</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture>pvr/pvr_isrecording_front.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<label>$LOCALIZE[19043]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>20</width>
+					<height>20</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_hastimer.png</texture>
+					<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$LOCALIZE[31379]</label>
+					<visible>ListItem.HasTimer</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="image">
+					<width>240</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<animation effect="fade" start="100" end="50" time="50" condition="true">conditional</animation>
+				</control>
+				<control type="image">
+					<left>240</left>
+					<width>1040</width>
+					<height>40</height>
+					<aspectratio>stretch</aspectratio>
+					<include>global_listfocustexture</include>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="group">
+					<visible>Control.HasFocus(11)</visible>
+					<control type="label">
+						<width>239</width>
+						<height>40</height>
+						<textoffsety>7</textoffsety>
+						<textoffsetx>20</textoffsetx>
+						<aligny>top</aligny>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="label">
+						<left>260</left>
+						<top>0</top>
+						<width>140</width>
+						<height>40</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+					</control>
+					<control type="label">
+						<left>400</left>
+						<top>1</top>
+						<width>590</width>
+						<height>38</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="progress">
+						<left>400</left>
+						<top>33</top>
+						<width>590</width>
+						<height>4</height>
+						<texturebg colordiffuse="FFAAAAAA">dialogs/progress/progress_mid_small_bg.png</texturebg>
+						<midtexture>dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture>-</lefttexture>
+						<righttexture>-</righttexture>
+						<overlaytexture></overlaytexture>
+						<info>ListItem.Progress</info>
+						<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColorFocus">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<label>$LOCALIZE[19043]</label>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>20</width>
+						<height>20</height>
+						<texture colordiffuse="TextColorFocus">pvr/pvr_hastimer.png</texture>
+						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$LOCALIZE[31379]</label>
+						<visible>ListItem.HasTimer</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!Control.HasFocus(11)</visible>
+					<control type="label">
+						<left>0</left>
+						<top>0</top>
+						<width>239</width>
+						<height>40</height>
+						<textoffsety>7</textoffsety>
+						<textoffsetx>20</textoffsetx>
+						<aligny>top</aligny>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="label">
+						<left>260</left>
+						<top>0</top>
+						<width>140</width>
+						<height>40</height>
+						<textcolor>TextColor2</textcolor>
+						<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+					</control>
+					<control type="label">
+						<left>400</left>
+						<top>1</top>
+						<width>590</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<label>$LOCALIZE[19043]</label>
+						<textcolor>TextColor2</textcolor>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>20</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor1">pvr/pvr_hastimer.png</texture>
+						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$LOCALIZE[31379]</label>
+						<visible>ListItem.HasTimer</visible>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>1245</left>
+			<top>135</top>
+			<height>430</height>
+			<onleft>11</onleft>
+			<onright>Container.SetViewMode(12)</onright>
+			<onright>SetFocus(12)</onright>
+		</control>
+		<control type="image"><!-- shadows -->
+			<description>schatten links</description>
+			<left>240</left>
+			<top>60</top>
+			<height>510</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+</include>
+
+<!-- ####  EPG next   #### -->
+<include name="ViewLiveTVGuideNext">
+	<control type="group">
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<visible>Control.IsVisible(12)</visible>
+		<control type="group"><!-- info search values focus-->
+			<top>585</top>
+			<visible>Skin.HasSetting(ViewEPG_infobar) + Control.HasFocus(12)</visible>
+			<include>PVR_PVRCommonInfo</include>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="280" tween="sine" easing="out"/>
+				<effect type="slide" start="0,135" end="0,0" time="280" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" end="0" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+				<effect type="slide" start="0,0" end="0,720" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+			</animation>
+		</control>
+		<include>PVR_background</include>
+		<control type="list" id="12">
+			<viewtype label="19031">list</viewtype>
+			<left>0</left>
+			<top>130</top>
+			<width>1280</width>
+			<height>440</height>
+			<onup>12</onup>
+			<ondown>12</ondown>
+			<onleft>9900</onleft>
+			<onright>80</onright>
+			<pagecontrol>80</pagecontrol>
+			<scrolltime>350</scrolltime>
+			<itemlayout height="40">
+				<control type="label">
+					<textcolor>TextColor2</textcolor>
+					<left>0</left>
+					<top>0</top>
+					<width>239</width>
+					<height>40</height>
+					<textoffsety>7</textoffsety>
+					<textoffsetx>20</textoffsetx>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>240</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="label">
+					<left>260</left>
+					<top>0</top>
+					<width>140</width>
+					<height>40</height>
+					<textcolor>TextColor2</textcolor>
+					<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+				</control>
+				<control type="label">
+					<left>400</left>
+					<top>1</top>
+					<width>590</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture>pvr/pvr_isrecording_front.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<label>$LOCALIZE[19043]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>20</width>
+					<height>20</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_hastimer.png</texture>
+					<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$LOCALIZE[31379]</label>
+					<visible>ListItem.HasTimer</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="image">
+					<width>240</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<animation effect="fade" start="100" end="50" time="50" condition="true">conditional</animation>
+				</control>
+				<control type="image">
+					<left>240</left>
+					<width>1040</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+				</control>
+				<control type="group">
+					<visible>Control.HasFocus(12)</visible>
+					<control type="label">
+						<width>239</width>
+						<height>40</height>
+						<textoffsety>7</textoffsety>
+						<textoffsetx>20</textoffsetx>
+						<aligny>top</aligny>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>240</width>
+						<height>3</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+					</control>
+					<control type="label">
+						<left>260</left>
+						<top>0</top>
+						<width>140</width>
+						<height>40</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+					</control>
+					<control type="label">
+						<left>400</left>
+						<top>1</top>
+						<width>590</width>
+						<height>38</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColorFocus">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$LOCALIZE[19043]</label>
+						<textcolor>TextColorFocus</textcolor>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>20</width>
+						<height>20</height>
+						<texture colordiffuse="TextColorFocus">pvr/pvr_hastimer.png</texture>
+						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$LOCALIZE[31379]</label>
+						<visible>ListItem.HasTimer</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!Control.HasFocus(12)</visible>
+					<control type="label">
+						<textcolor>TextColor2</textcolor>
+						<width>239</width>
+						<height>40</height>
+						<textoffsety>7</textoffsety>
+						<textoffsetx>20</textoffsetx>
+						<aligny>top</aligny>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="label">
+						<left>260</left>
+						<top>0</top>
+						<width>140</width>
+						<height>40</height>
+						<textcolor>TextColor2</textcolor>
+						<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+					</control>
+					<control type="label">
+						<left>400</left>
+						<top>1</top>
+						<width>590</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<label>$LOCALIZE[19043]</label>
+						<textcolor>TextColor2</textcolor>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1080</left>
+						<top>10</top>
+						<width>20</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor1">pvr/pvr_hastimer.png</texture>
+						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+					</control>
+					<control type="label">
+						<left>1120</left>
+						<top>1</top>
+						<width>110</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$LOCALIZE[31379]</label>
+						<visible>ListItem.HasTimer</visible>
+					</control>
+				</control>
+			
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>1245</left>
+			<top>135</top>
+			<height>430</height>
+			<onleft>12</onleft>
+			<onright>Container.SetViewMode(11)</onright>
+			<onright>SetFocus(11)</onright>
+		</control>
+		<control type="image">
+			<description>schatten rechts</description>
+			<left>240</left>
+			<top>60</top>
+			<height>510</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+</include>
+
+<!-- ####  EPG  kanal   #### -->
+<include name="ViewLiveTVGuideChannel">
+	<control type="group">
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<visible>Control.IsVisible(13)</visible>
+		<include>PVR_background</include>
+		<control type="group"><!-- info search values focus-->
+			<top>585</top>
+			<visible>Skin.HasSetting(ViewEPG_infobar) + Control.HasFocus(13)</visible>
+			<include>PVR_PVRCommonInfo</include>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="280" tween="sine" easing="out"/>
+				<effect type="slide" start="0,135" end="0,0" time="280" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" end="0" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+				<effect type="slide" start="0,0" end="0,720" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+			</animation>
+		</control>
+		<control type="list" id="13">
+			<viewtype label="19029">list</viewtype>
+			<left>0</left>
+			<top>130</top>
+			<width>1280</width>
+			<height>440</height>
+			<onup>13</onup>
+			<ondown>13</ondown>
+			<onleft>9900</onleft>
+			<onright>75</onright>
+			<pagecontrol>75</pagecontrol>
+			<scrolltime>350</scrolltime>
+			<itemlayout height="40">
+				<control type="label">
+					<textcolor>TextColor2</textcolor>
+					<left>0</left>
+					<top>0</top>
+					<width>239</width>
+					<height>40</height>
+					<textoffsety>7</textoffsety>
+					<textoffsetx>20</textoffsetx>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>240</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="label">
+					<left>260</left>
+					<top>0</top>
+					<width>140</width>
+					<height>40</height>
+					<textcolor>TextColor2</textcolor>
+					<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+				</control>
+				<control type="label">
+					<left>400</left>
+					<top>1</top>
+					<width>590</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture>pvr/pvr_isrecording_front.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<label>$LOCALIZE[19043]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>20</width>
+					<height>20</height>
+					<texture colordiffuse="TextColor1">pvr/pvr_hastimer.png</texture>
+					<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$LOCALIZE[31379]</label>
+					<visible>ListItem.HasTimer</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="image">
+					<width>240</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<animation effect="fade" start="100" end="50" time="50" condition="true">conditional</animation>
+				</control>
+				<control type="image">
+					<left>240</left>
+					<width>1040</width>
+					<height>40</height>
+					<aspectratio>stretch</aspectratio>
+					<include>global_listfocustexture</include>
+				</control>
+				<control type="label">
+					<left>0</left>
+					<top>0</top>
+					<width>239</width>
+					<height>40</height>
+					<textoffsety>7</textoffsety>
+					<textoffsetx>20</textoffsetx>
+					<aligny>top</aligny>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>240</width>
+					<height>3</height>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="label">
+					<left>260</left>
+					<top>0</top>
+					<width>140</width>
+					<height>40</height>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<label fallback=" - ">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+				</control>
+				<control type="label">
+					<left>400</left>
+					<top>1</top>
+					<width>590</width>
+					<height>38</height>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_isrecording_back.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>30</width>
+					<height>20</height>
+					<texture>pvr/pvr_isrecording_front.png</texture>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$LOCALIZE[19043]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<visible>ListItem.IsRecording</visible>
+				</control>
+				<control type="image">
+					<left>1080</left>
+					<top>10</top>
+					<width>20</width>
+					<height>20</height>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_hastimer.png</texture>
+					<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+				</control>
+				<control type="label">
+					<left>1120</left>
+					<top>1</top>
+					<width>110</width>
+					<height>38</height>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$LOCALIZE[31379]</label>
+					<visible>ListItem.HasTimer</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="75">
+			<include>scrollbar_vertical</include>
+			<left>1245</left>
+			<top>135</top>
+			<height>430</height>
+			<onleft>13</onleft>
+			<onright>31</onright>
+			<ondown>75</ondown>
+			<onup>75</onup>
+		</control>
+	</control>
+</include>
+
+<!-- ####  landscapeex   #### -->
+<!-- ####  channelstatus   #### -->
+<variable name="value_pvrstatus1">
+	<value condition="PVR.IsRecording">$INFO[PVR.NowRecordingDateTime,, ]$INFO[PVR.NowRecordingChannel,, ]$INFO[PVR.NowRecordingTitle]</value>
+	<value>[I][COLOR=TextColor3]$LOCALIZE[31363][/COLOR][/I]</value>
+</variable>
+
+<variable name="value_pvrstatus2">
+	<value condition="!PVR.IsRecording + Pvr.HasTimer">$INFO[PVR.NextRecordingDateTime,, ]$INFO[PVR.NextRecordingChannel,, ]$INFO[PVR.NextRecordingTitle]</value>
+	<value>[I][COLOR=TextColor3]$LOCALIZE[31362][/COLOR][/I]</value>
+</variable>
+
+<variable name="value_pvrstatus3">
+	<value condition="![String.IsEqual(Skin.String(SwitchTimerActiveItems),0) | String.IsEmpty(Skin.String(SwitchTimerActiveItems))]">$INFO[Skin.string(t0:date),, ]$INFO[Skin.string(t0:channel),, ]$INFO[Skin.string(t0:title)][CR]$INFO[Skin.string(t1:date),, ]$INFO[Skin.string(t1:channel),, ]$INFO[Skin.string(t1:title)][CR]$INFO[Skin.string(t2:date),, ]$INFO[Skin.string(t2:channel),, ]$INFO[Skin.string(t2:title)][CR]$INFO[Skin.string(t3:date),, ]$INFO[Skin.string(t3:channel),, ]$INFO[Skin.string(t3:title)][CR]$INFO[Skin.string(t4:date),, ]$INFO[Skin.string(t4:channel),, ]$INFO[Skin.string(t4:title)][CR]$INFO[Skin.string(t5:date),, ]$INFO[Skin.string(t5:channel),, ]$INFO[Skin.string(t5:title)][CR]$INFO[Skin.string(t6:date),, ]$INFO[Skin.string(t6:channel),, ]$INFO[Skin.string(t6:title)][CR]$INFO[Skin.string(t7:date),, ]$INFO[Skin.string(t7:channel),, ]$INFO[Skin.string(t7:title)][CR]$INFO[Skin.string(t8:date),, ]$INFO[Skin.string(t8:channel),, ]$INFO[Skin.string(t8:title)][CR]$INFO[Skin.string(t9:date),, ]$INFO[Skin.string(t9:channel),, ]$INFO[Skin.string(t9:title)]</value>
+	<value>[I][COLOR=TextColor3]$LOCALIZE[31364][/COLOR][/I]</value>
+</variable>
+
+<variable name="value_pvr-timerstatus">
+	<value condition="ListItem.IsRecording">pvr/pvr_isrecording_inv.png</value>
+	<value condition="ListItem.HasTimer + !ListItem.IsRecording + !ListItem.HasTimerSchedule">pvr/pvr_hastimer.png</value>
+	<value condition="ListItem.HasTimerSchedule + !ListItem.IsRecording">pvr/pvr_hastimer.png</value>
+	<value condition="ListItem.HasRecording + !ListItem.IsRecording + !ListItem.HasTimer">pvr/pvr_hastimer.png</value>
+	<value>-</value>
+</variable>
+
+<variable name="value_pvr-encrypstatus">
+	<value condition="ListItem.IsEncrypted">pvr/pvr_isencrypted.png</value>
+	<value>-</value>
+</variable>
+
+<include name="View51LandScapeX_pvr">
+	<control type="group"><!-- default group -->
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<include>animation_window</include>
+		<!-- Top Info Title -->
+		<control type="group">
+			<top>-20</top>
+			<visible>!ListItem.IsParentFolder + ![Window.IsActive(pvrrecordinginfo) | Window.IsVisible(pvrguideinfo)]  + Control.IsVisible(51)</visible>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1280</width>
+				<height>230</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<!-- title ohne rightlist/lowlist-->
+			<control type="group">
+				<left>30</left>
+				<top>58</top>
+				<control type="label"><!-- titel -->
+					<left>0</left>
+					<top>0</top>
+					<width>750</width>
+					<height>40</height>
+					<font>SemiBigger</font>
+					<label>$INFO[ListItem.ChannelNumber,,. ]$INFO[ListItem.Label]$INFO[ListItem.Title, | ,]</label>
+				</control>
+			</control>
+		</control>
+		
+		<visible>Control.IsVisible(51)</visible>
+		<control type="group">
+			<left>0</left>
+			<top>0</top>
+			<visible>!ListItem.IsParentFolder + [[String.IsEqual(skin.string(ChannelLandscapeEXInfopanel),auto) + Control.IsVisible(9924)] | ControlGroup(9014).HasFocus | String.IsEqual(skin.string(ChannelLandscapeEXInfopanel),alwayson)]</visible>
+			<animation effect="slide" start="0,-600" end="0,0" time="500" tween="sine" easing="out">Visible</animation>
+			<animation effect="slide" start="0,0" end="0,-600" time="500" tween="sine" easing="out">Hidden</animation>
+			<!-- Background -->
+			<control type="group">
+				<left>0</left>
+				<top>85</top>
+				<control type="image">
+					<left>0</left>
+					<top>-5</top>
+					<include>global_topshadow5</include>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>1280</width>
+					<height>480</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+				</control>
+				<control type="image">
+					<description>schatten links</description>
+					<left>455</left>
+					<width>1</width><!-- include ueberschreibung -->
+					<height>235</height>
+					<include>global_texture_border5_leftv</include>
+					<visible>!Container.Content(genres)</visible>
+				</control>
+				<control type="image">
+					<description>schatten rechts</description>
+					<left>825</left>
+					<width>1</width><!-- include ueberschreibung -->
+					<height>235</height>
+					<include>global_texture_border5_rightv</include>
+				</control>
+			</control>
+			<control type="group">
+				<animation effect="fade" start="0" end="100" time="280" reversible="false" condition="![Container(51).OnNext | Container(51).OnPrevious]">Conditional</animation>
+				<animation effect="fade" start="100" end="0" time="50" reversible="false" condition="[Container(51).OnNext | Container(51).OnPrevious]">Conditional</animation>
+					<!-- Info -->
+					<control type="group">
+						<control type="grouplist">
+							<left>100</left>
+							<top>104</top>
+							<orientation>vertical</orientation>
+							<itemgap>5</itemgap>
+							<include>viewglobal_topelements_textinfo</include>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow1),Info)</visible>
+						</control>
+						<control type="grouplist">
+							<left>475</left>
+							<top>104</top>
+							<orientation>vertical</orientation>
+							<itemgap>5</itemgap>
+							<include>viewglobal_topelements_textinfo</include>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow2),Info)</visible>
+						</control>
+						<control type="grouplist">
+							<left>845</left>
+							<top>104</top>
+							<orientation>vertical</orientation>
+							<itemgap>5</itemgap>
+							<include>viewglobal_topelements_textinfo</include>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow3),Info)</visible>
+						</control>
+					</control>
+					
+					<!-- plot -->
+					<control type="group">
+						<control type="textbox">
+							<left>100</left>
+							<top>102</top>
+							<width>320</width>
+							<include>PlotNormal176</include>
+							<include>viewglobal_topelements_plot</include>
+							<visible>String.Contains(Skin.String(ChannelLandscapeEXRow1),Plot)</visible>
+						</control>
+						<control type="textbox">
+							<left>475</left>
+							<top>102</top>
+							<width>320</width>
+							<include>PlotNormal176</include>
+							<include>viewglobal_topelements_plot</include>
+							<visible>String.Contains(Skin.String(ChannelLandscapeEXRow2),Plot)</visible>
+						</control>
+						<control type="textbox">
+							<left>845</left>
+							<top>102</top>
+							<width>320</width>
+							<include>PlotNormal176</include>
+							<include>viewglobal_topelements_plot</include>
+							<visible>String.Contains(Skin.String(ChannelLandscapeEXRow3),Plot)</visible>
+						</control>
+					</control>
+					
+					<!-- recordings -->
+					<control type="group">
+						<control type="grouplist">
+							<left>100</left>
+							<top>102</top>
+							<orientation>vertical</orientation>
+							<itemgap>5</itemgap>
+							<visible>String.Contains(Skin.String(ChannelLandscapeEXRow1),PVRinfo)</visible>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]$LOCALIZE[19158]: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$VAR[value_pvrstatus1]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]$LOCALIZE[19157]: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$VAR[value_pvrstatus2]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]Umschalttimer: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$INFO[Skin.string(t0:date),, - ]$INFO[Skin.string(t0:channel),, - ]$INFO[Skin.string(t0:title)]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$INFO[Skin.string(t1:date),, - ]$INFO[Skin.string(t1:channel),, - ]$INFO[Skin.string(t1:title)]</label>
+							</control>
+						</control>
+
+						<control type="grouplist">
+							<left>475</left>
+							<top>102</top>
+							<orientation>vertical</orientation>
+							<itemgap>5</itemgap>
+							<visible>String.Contains(Skin.String(ChannelLandscapeEXRow2),PVRinfo)</visible>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]$LOCALIZE[19158]: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$VAR[value_pvrstatus1]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]$LOCALIZE[19157]: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$VAR[value_pvrstatus2]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]Umschalttimer: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$INFO[Skin.string(t0:date),, - ]$INFO[Skin.string(t0:channel),, - ]$INFO[Skin.string(t0:title)]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$INFO[Skin.string(t1:date),, - ]$INFO[Skin.string(t1:channel),, - ]$INFO[Skin.string(t1:title)]</label>
+							</control>
+						</control>
+						
+						<control type="grouplist">
+							<left>845</left>
+							<top>102</top>
+							<orientation>vertical</orientation>
+							<itemgap>5</itemgap>
+							<visible>String.Contains(Skin.String(ChannelLandscapeEXRow3),PVRinfo)</visible>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]$LOCALIZE[19158]: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$VAR[value_pvrstatus1]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]$LOCALIZE[19157]: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$VAR[value_pvrstatus2]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>[COLOR=TextColor2]Umschalttimer: [/COLOR]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$INFO[Skin.string(t0:date),, - ]$INFO[Skin.string(t0:channel),, - ]$INFO[Skin.string(t0:title)]</label>
+							</control>
+							<control type="label">
+								<include>viewglobal_topelements_textinfo_label</include>
+								<label>$INFO[Skin.string(t1:date),, - ]$INFO[Skin.string(t1:channel),, - ]$INFO[Skin.string(t1:title)]</label>
+							</control>
+						</control>
+					</control>
+					
+					<!-- logo -->
+					<control type="group">
+						<top>106</top>
+						<control type="image">
+							<left>100</left>
+							<width>306</width>
+							<height>174</height>
+							<aspectratio scalediffuse="true">keep</aspectratio>
+							<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+							<bordersize>8</bordersize>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow1),Logo) + !Skin.HasSetting(borderlessPVRIcons)</visible>
+						</control>
+						<control type="image">
+							<left>485</left>
+							<width>306</width>
+							<height>174</height>
+							<aspectratio scalediffuse="true">keep</aspectratio>
+							<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+							<bordersize>8</bordersize>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow2),Logo) + !Skin.HasSetting(borderlessPVRIcons)</visible>
+						</control>
+						<control type="image">
+							<left>862</left>
+							<width>306</width>
+							<height>174</height>
+							<aspectratio scalediffuse="true">keep</aspectratio>
+							<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+							<bordersize>8</bordersize>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow3),Logo) + !Skin.HasSetting(borderlessPVRIcons)</visible>
+						</control>
+						<control type="image">
+							<left>100</left>
+							<width>306</width>
+							<height>174</height>
+							<aspectratio scalediffuse="true">keep</aspectratio>
+							<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordersize>8</bordersize>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow1),Logo) + Skin.HasSetting(borderlessPVRIcons)</visible>
+						</control>
+						<control type="image">
+							<left>485</left>
+							<width>306</width>
+							<height>174</height>
+							<aspectratio scalediffuse="true">keep</aspectratio>
+							<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordersize>8</bordersize>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow2),Logo) + Skin.HasSetting(borderlessPVRIcons)</visible>
+						</control>
+						<control type="image">
+							<left>862</left>
+							<width>306</width>
+							<height>174</height>
+							<aspectratio scalediffuse="true">keep</aspectratio>
+							<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordersize>8</bordersize>
+							<visible>String.IsEqual(Skin.String(ChannelLandscapeEXRow3),Logo) + Skin.HasSetting(borderlessPVRIcons)</visible>
+						</control>
+					</control>
+				<include>animation_vhoc_fade</include>
+			</control>
+		</control>
+			
+		<!-- Background list -->
+		<control type="group">
+			<left>0</left>
+			<top>300</top>
+			<!-- Background list -->
+			<control type="image">
+				<left>0</left>
+				<top>20</top>
+				<width>1280</width>
+				<height>360</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>15</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>345</top>
+				<include>global_bottomshadow5</include>
+			</control>
+		</control>
+
+		<!-- list -->
+		<control type="panel" id="51">
+			<viewtype label="$LOCALIZE[31227]">icon</viewtype>
+			<left>55</left>
+			<top>350</top>
+			<width>1190</width>
+			<height>269</height>
+			<onleft>PreviousChannelGroup</onleft>
+			<onright condition="Integer.IsGreater(Container(51).NumPages,1)">80</onright>
+			<onright condition="!Integer.IsGreater(Container(51).NumPages,1)">ActivateWindow(1122)</onright>
+			<scrolltime>400</scrolltime>
+			<preloaditems>2</preloaditems>
+			<pagecontrol>80</pagecontrol>
+			<itemlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmen) | String.IsEmpty(Skin.string(ChannelLandscapeEXstyle))" height="134" width="218">
+				<!-- back -->
+				<control type="group">
+					<visible>ListItem.IsParentFolder</visible>
+					<control type="image">
+						<left>35</left>
+						<top>1</top>
+						<width>212</width>
+						<height>126</height>
+						<texture background="true">folderback/FolderBackExtrathumb.png</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">stretch</aspectratio>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image"><!-- thumb -->
+						<left>35</left>
+						<top>1</top>
+						<width>212</width>
+						<height>126</height>
+						<texture background="true" fallback="defaultpictures/DefaultChannel.png" >$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">keep</aspectratio>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmen) | String.IsEmpty(Skin.string(ChannelLandscapeEXstyle))" height="134" width="200">
+				<!-- back -->
+				<control type="group">
+					<visible>ListItem.IsParentFolder</visible>
+					<animation effect="zoom" center="119,57" start="100" end="108" time="380" reversible="false">Focus</animation>
+					<animation effect="zoom" center="119,57" start="108" end="100" time="380" reversible="false">UnFocus</animation>
+					<control type="image">
+						<left>35</left>
+						<top>1</top>
+						<width>212</width>
+						<height>126</height>
+						<texture background="true">folderback/FolderBackExtrathumb.png</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">stretch</aspectratio>
+						<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<!-- Dimmer -->
+					<control type="image">
+						<left>35</left>
+						<top>1</top>
+						<width>212</width>
+						<height>126</height>
+						<bordersize>8</bordersize>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="zoom" center="119,57" start="100" end="108" time="380" reversible="false">Focus</animation>
+					<animation effect="zoom" center="119,57" start="108" end="100" time="380" reversible="false">UnFocus</animation>
+					<control type="image"><!-- thumb -->
+						<left>35</left>
+						<top>1</top>
+						<width>212</width>
+						<height>126</height>
+						<texture background="true" fallback="defaultpictures/DefaultChannel.png" >$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">keep</aspectratio>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+				</control>
+			</focusedlayout>
+			
+			<itemlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmen2)" height="134" width="180">
+				<!-- back -->
+				<control type="group">
+					<visible>ListItem.IsParentFolder</visible>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>170</width>
+						<height>105</height>
+						<texture background="true">folderback/FolderBackExtrathumb.png</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">stretch</aspectratio>
+						<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>6</bordersize>
+					</control>
+					<!-- Dimmer -->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>170</width>
+						<height>105</height>
+						<bordersize>6</bordersize>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image"><!-- thumb -->
+						<left>0</left>
+						<top>0</top>
+						<width>170</width>
+						<height>105</height>
+						<texture background="true" fallback="defaultpictures/DefaultChannel.png" >$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">keep</aspectratio>
+						<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>6</bordersize>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmen2)" height="134" width="180">
+				<!-- back -->
+				<control type="group">
+					<visible>ListItem.IsParentFolder</visible>
+					<animation effect="zoom" center="119,57" start="100" end="108" time="380" reversible="false">Focus</animation>
+					<animation effect="zoom" center="119,57" start="108" end="100" time="380" reversible="false">UnFocus</animation>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>170</width>
+						<height>105</height>
+						<texture background="true">folderback/FolderBackExtrathumb.png</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">stretch</aspectratio>
+						<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>6</bordersize>
+					</control>
+					<!-- Dimmer -->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>170</width>
+						<height>105</height>
+						<bordersize>6</bordersize>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="zoom" center="119,57" start="100" end="108" time="380" reversible="false">Focus</animation>
+					<animation effect="zoom" center="119,57" start="108" end="100" time="380" reversible="false">UnFocus</animation>
+					<control type="image"><!-- thumb -->
+						<left>0</left>
+						<top>0</top>
+						<width>170</width>
+						<height>105</height>
+						<texture background="true" fallback="defaultpictures/DefaultChannel.png" >$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false" aligny="center" align="center">keep</aspectratio>
+						<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>6</bordersize>
+					</control>
+				</control>
+			
+			</focusedlayout>
+			
+			<!-- borderless 3 groessen -->
+			<itemlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmenlos1)" height="134" width="218">
+				<!-- back -->
+				<control type="image">
+					<left>118</left>
+					<top>46</top>
+					<width>35</width>
+					<height>35</height>
+					<texture>arrows/arrow.png</texture>
+					<visible>ListItem.IsParentFolder</visible>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="fade" start="60" end="60" time="0" condition="true">Conditional</animation>
+					<animation effect="zoom" center="119,57" start="80" end="80" time="0" condition="true">Conditional</animation>
+					<control type="image">
+						<left>43</left>
+						<top>2</top>
+						<width>196</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>43</left>
+						<top>2</top>
+						<width>196</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmenlos1)" height="134" width="200">
+				<!-- back -->
+				<control type="image">
+					<left>118</left>
+					<top>46</top>
+					<width>35</width>
+					<height>35</height>
+					<texture>arrows/arrow.png</texture>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" center="auto" start="80" end="120" time="400" tween="back" easing="out" />
+						<effect type="fade" start="80" end="100" time="400" />
+					</animation>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" center="119,57" start="80" end="100" time="400" tween="back" easing="out" />
+						<effect type="fade" start="60" end="100" time="400" />
+						<effect type="rotatey" delay="1500" center="119.5,0" start="0"end="360" time="4000" loop="true"  />
+					</animation>
+					<animation type="UnFocus" reversible="false">
+						<effect type="zoom" center="119,57" start="100" end="80" time="400" tween="back" easing="out" />
+						<effect type="fade" start="100" end="60" time="400" />
+					</animation>
+					<control type="image">
+						<left>43</left>
+						<top>2</top>
+						<width>196</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>43</left>
+						<top>2</top>
+						<width>196</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</focusedlayout>
+		
+			<itemlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmenlos2)" height="134" width="180">
+				<!-- back -->
+				<control type="image">
+					<left>118</left>
+					<top>46</top>
+					<width>35</width>
+					<height>35</height>
+					<texture>arrows/arrow.png</texture>
+					<visible>ListItem.IsParentFolder</visible>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="fade" start="60" end="60" time="0" condition="true">Conditional</animation>
+					<animation effect="zoom" center="119,57" start="80" end="80" time="0" condition="true">Conditional</animation>
+					<control type="image">
+						<left>2</left>
+						<top>2</top>
+						<width>175</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>2</left>
+						<top>2</top>
+						<width>175</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmenlos2)" height="134" width="180">
+				<!-- back -->
+				<control type="image">
+					<left>118</left>
+					<top>46</top>
+					<width>35</width>
+					<height>35</height>
+					<texture>arrows/arrow.png</texture>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" center="auto" start="80" end="120" time="400" tween="back" easing="out" />
+						<effect type="fade" start="80" end="100" time="400" />
+					</animation>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" center="119,57" start="80" end="100" time="400" tween="back" easing="out" />
+						<effect type="fade" start="60" end="100" time="400" />
+						<effect type="rotatey" delay="1500" center="119.5,0" start="0"end="360" time="4000" loop="true"  />
+					</animation>
+					<animation type="UnFocus" reversible="false">
+						<effect type="zoom" center="119,57" start="100" end="80" time="400" tween="back" easing="out" />
+						<effect type="fade" start="100" end="60" time="400" />
+					</animation>
+					<control type="image">
+						<left>2</left>
+						<top>2</top>
+						<width>175</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>2</left>
+						<top>2</top>
+						<width>175</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</focusedlayout>
+		
+			<itemlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmenlos3)" height="134" width="155">
+				<!-- back -->
+				<control type="image">
+					<left>118</left>
+					<top>46</top>
+					<width>35</width>
+					<height>35</height>
+					<texture>arrows/arrow.png</texture>
+					<visible>ListItem.IsParentFolder</visible>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="fade" start="60" end="60" time="0" condition="true">Conditional</animation>
+					<animation effect="zoom" center="119,57" start="80" end="80" time="0" condition="true">Conditional</animation>
+					<control type="image">
+						<left>5</left>
+						<top>2</top>
+						<width>145</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>5</left>
+						<top>2</top>
+						<width>145</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="String.IsEqual(Skin.string(ChannelLandscapeEXstyle),Rahmenlos3)" height="134" width="155">
+				<!-- back -->
+				<control type="image">
+					<left>118</left>
+					<top>46</top>
+					<width>35</width>
+					<height>35</height>
+					<texture>arrows/arrow.png</texture>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" center="auto" start="80" end="120" time="400" tween="back" easing="out" />
+						<effect type="fade" start="80" end="100" time="400" />
+					</animation>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" center="119,57" start="80" end="100" time="400" tween="back" easing="out" />
+						<effect type="fade" start="60" end="100" time="400" />
+						<effect type="rotatey" delay="1500" center="119.5,0" start="0"end="360" time="4000" loop="true"  />
+					</animation>
+					<animation type="UnFocus" reversible="false">
+						<effect type="zoom" center="119,57" start="100" end="80" time="400" tween="back" easing="out" />
+						<effect type="fade" start="100" end="60" time="400" />
+					</animation>
+					<control type="image">
+						<left>5</left>
+						<top>2</top>
+						<width>145</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<left>5</left>
+						<top>2</top>
+						<width>145</width>
+						<height>113</height>
+						<aspectratio aligny="center">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<include>animation_dimmer</include>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>1180</left>
+			<top>345</top>
+			<height>261</height>
+			<onleft>51</onleft>
+			<onright>ActivateWindow(1122)</onright>
+			<include>animation_vhoc_fade</include>
+			<visible allowhiddenfocus="true">Control.IsVisible(51) + Control.HasFocus(80)</visible>
+		</control>
+	
+		<control type="group">
+			<top>30</top>
+			<left>25</left>
+			<animation effect="zoom" end="80" center="0,720" time="400" reversible="true" condition="!String.IsEmpty(Window(home).Property(ViewtypepreviewVisible))">Conditional</animation>
+			<visible>!ListItem.IsParentFolder</visible>
+			<control type="group">
+				<control type="progress" id="24756">
+					<description>Disk usage bar</description>
+					<left>105</left>
+					<top>573</top>
+					<width>320</width>
+					<height>4</height>
+					<info>PVR.backenddiskspaceprogr</info>
+					<visible>false</visible>
+				</control>
+				<control type="image">
+					<left>-25</left>
+					<top>510</top>
+					<width>1280</width>
+					<height>180</height>
+					<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACFloorColor</colordiffuse>
+				</control>
+				<control type="image">
+					<left>-30</left>
+					<top>650</top>
+					<height>42</height>
+					<width>1685</width>
+					<texture>backgrounds/background-smalloverlay.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+				</control>
+				<control type="grouplist"><!-- flags -->
+					<left>30</left>
+					<top>645</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<orientation>horizontal</orientation>
+					<itemgap>22</itemgap>
+					<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(621)">Conditional</animation>
+					<control type="image">
+						<include>flags_image_texture</include>
+						<texture>flags/pvr/numrecords.png</texture><!-- recordingsnumbers -->
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+					</control>
+					<control type="image">
+						<include>flags_image_texture</include>
+						<texture>flags/pvr/numrecordingtimer.png</texture><!-- numrecordingtimer -->
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+					</control>
+					<control type="image">
+						<include>flags_image_texture</include>
+						<texture>flags/pvr/numswitchtimer.png</texture><!-- switchtimer -->
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+					</control>
+					<control type="image">
+						<include>flags_image_texture</include>
+						<texture>flags/pvr/numchannels.png</texture><!-- numchannels -->
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+					</control>
+					<control type="image">
+						<include>flags_image_texture</include>
+						<texture>flags/pvr/discspace.png</texture><!-- discspace -->
+					</control>
+				</control>
+				<control type="grouplist"><!-- text flags -->
+					<left>40</left>
+					<top>645</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<orientation>horizontal</orientation>
+					<itemgap>0</itemgap>
+					<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(621)">Conditional</animation>
+					<control type="label"><!-- divider -->
+						<width>37</width>
+						<height>50</height>
+						<align>left</align>
+						<label></label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- recordingsnumbers -->
+						<width>84</width>
+						<height>50</height>
+						<align>left</align>
+						<label>$INFO[Pvr.BackendRecordings]</label>
+						<font>SemiNormal</font>
+						<visible>!String.Contains(Pvr.BackendRecordings,unbekannt)</visible>
+					</control>
+					<control type="label"><!-- recordingsnumbers -->
+						<width>84</width>
+						<height>50</height>
+						<align>left</align>
+						<label>$NUMBER[0]</label>
+						<font>SemiNormal</font>
+						<visible>String.Contains(Pvr.BackendRecordings,unbekannt)</visible>
+					</control>
+					<control type="label"><!-- divider -->
+						<width>45</width>
+						<height>50</height>
+						<align>left</align>
+						<label></label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- numrecordingtimer -->
+						<width>84</width>
+						<height>50</height>
+						<align>left</align>
+						<label fallback="0">$INFO[Pvr.BackendTimers]</label>
+						<font>SemiNormal</font>
+						<visible>!String.Contains(Pvr.BackendTimers,unbekannt)</visible>
+					</control>
+					<control type="label"><!-- numrecordingtimer -->
+						<width>84</width>
+						<height>50</height>
+						<align>left</align>
+						<label fallback="0">$NUMBER[0]</label>
+						<font>SemiNormal</font>
+						<visible>String.Contains(Pvr.BackendTimers,unbekannt)</visible>
+					</control>
+					<control type="label"><!-- divider -->
+						<width>38</width>
+						<height>50</height>
+						<align>left</align>
+						<label></label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- switchtimer -->
+						<width>74</width>
+						<height>50</height>
+						<align>left</align>
+						<label fallback="0.0">$INFO[Skin.String(SwitchTimerActiveItems)]</label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- divider -->
+						<width>55</width>
+						<height>50</height>
+						<align>left</align>
+						<label></label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- numchannels -->
+						<width>94</width>
+						<height>50</height>
+						<align>left</align>
+						<label>$INFO[Pvr.BackendChannels]</label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- divider -->
+						<width>7</width>
+						<height>50</height>
+						<align>left</align>
+						<label></label>
+						<font>SemiNormal</font>
+					</control>
+					<control type="label"><!-- discspace -->
+						<width>84</width>
+						<height>50</height>
+						<align>center</align>
+						<label fallback="0">$INFO[Control.GetLabel(24756)]</label>
+						<font>SemiNormal</font>
+						<visible>!String.Contains(Control.GetLabel(24756),100)</visible>
+					</control>
+					<control type="label"><!-- !discspace fallback -->
+						<width>84</width>
+						<height>50</height>
+						<align>center</align>
+						<label fallback="0">?</label>
+						<font>SemiNormal</font>
+						<visible>String.Contains(Control.GetLabel(24756),100)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="View50Leftlist_pvr">
+	<control type="group"><!-- id50 channel list ohne signal -->
+		<animation effect="slide" time="700" start="-850,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+		<animation effect="slide" time="700" start="0,0" end="-860,0" tween="cubic" easing="out">WindowClose</animation>
+		<animation effect="slide" time="700" start="-850,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+		<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+		<visible>Control.IsVisible(50)</visible>
+		<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+		<!-- Background -->
+		<control type="image">
+			<description>Hintergrund</description>
+			<width>530</width>
+			<height>720</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<top>35</top>
+			<width>530</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>20</left>
+			<top>35</top>
+			<width>200</width>
+			<include>global_label_title</include>
+			<label>$LOCALIZE[31611]</label>
+			<visible>Pvr.HasTVChannels</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>20</left>
+			<top>35</top>
+			<width>200</width>
+			<include>global_label_title</include>
+			<label>$LOCALIZE[31632]</label>
+			<visible>Pvr.HasRadioChannels</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>200</left>
+			<top>35</top>
+			<width>320</width>
+			<include>global_label_title</include>
+			<align>right</align>
+			<label>$INFO[Control.GetLabel(28)]</label>
+		</control>
+		<control type="image">
+			<description>Schatten</description>
+			<left>530</left>
+			<height>720</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<!-- list -->
+		<control type="list" id="50">
+			<viewtype label="list1">Wide Icon</viewtype>
+			<left>0</left>
+			<top>95</top>
+			<width>530</width>
+			<height>589</height>
+			<itemgap>0</itemgap>
+			<onup>50</onup>
+			<ondown>50</ondown>
+			<onleft>PreviousChannelGroup</onleft><!-- ChannelGroup -->
+			<onright condition="Integer.IsGreater(Container(50).NumPages,1)">80</onright>
+			<onright condition="!Integer.IsGreater(Container(50).NumPages,1)">ActivateWindow(1122)</onright>
+			<viewtype>list</viewtype>
+			<orientation>vertical</orientation>
+			<focusposition>1</focusposition>
+			<scrolltime>450</scrolltime>
+			<movement>2</movement>
+			<pagecontrol>80</pagecontrol>
+			<itemlayout width="520" height="65">
+				<control type="image">
+					<left>-65</left>
+					<top>1</top>
+					<width>580</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="label">
+					<left>35</left>
+					<top>10</top>
+					<width>70</width>
+					<height>25</height>
+					<align>right</align>
+					<font>ChannelNumber-Large</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.ChannelNumber]</label>
+				</control>
+				<control type="label">
+					<left>115</left>
+					<top>8</top>
+					<width>360</width>
+					<height>25</height>
+					<font>SemiLarge</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="image">
+					<left>487</left>
+					<top>15</top>
+					<width>25</width>
+					<height>15</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+				</control>
+				<control type="image">
+					<left>487</left>
+					<top>35</top>
+					<width>25</width>
+					<height>15</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+				</control>
+				<control type="label">
+					<left>115</left>
+					<top>32</top>
+					<width>360</width>
+					<height>20</height>
+					<font>RegularNormal</font>
+					<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+					<textcolor>TextColor2</textcolor>
+				</control>
+				<control type="progress">
+					<left>118</left>
+					<top>54</top>
+					<width>394</width>
+					<height>6</height>
+					<info>ListItem.Progress</info>
+					<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+					<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+					<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+					<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+					<visible>ListItem.HasEpg</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout width="520" height="65">
+				<control type="image">
+					<top>3</top>
+					<width>530</width>
+					<height>60</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(50)</visible>
+				</control>
+				<control type="image">
+					<left>-65</left>
+					<top>1</top>
+					<width>580</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="group"><!-- focus -->
+					<visible>Control.Hasfocus(50)</visible>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>360</width>
+						<height>25</height>
+						<font>SemiLarge</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>15</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColorFocus">$VAR[value_pvr-timerstatus]</texture>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>35</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColorFocus">$VAR[value_pvr-encrypstatus]</texture>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>32</top>
+						<width>360</width>
+						<height>20</height>
+						<font>RegularNormal</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+						<textcolor>TextColorFocus</textcolor>
+					</control>
+					<control type="progress">
+						<left>118</left>
+						<top>54</top>
+						<width>394</width>
+						<height>6</height>
+						<info>ListItem.Progress</info>
+						<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+						<midtexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</lefttexture>
+						<righttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</righttexture>
+						<visible>ListItem.HasEpg</visible>
+					</control>
+				</control>
+				<control type="group"><!-- unfocus -->
+					<visible>!Control.Hasfocus(50)</visible>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>360</width>
+						<height>25</height>
+						<font>SemiLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>15</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>35</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>32</top>
+						<width>360</width>
+						<height>20</height>
+						<font>RegularNormal</font>
+						<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+						<textcolor>TextColor2</textcolor>
+					</control>
+					<control type="progress">
+						<left>118</left>
+						<top>54</top>
+						<width>394</width>
+						<height>6</height>
+						<info>ListItem.Progress</info>
+						<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+						<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+						<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+						<visible>ListItem.HasEpg</visible>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="label">
+			<left>0</left>
+			<top>690</top>
+			<width>520</width>
+			<height>20</height>
+			<align>right</align>
+			<font>RegularNormal</font>
+			<label>[COLOR=TextColor2]$LOCALIZE[31986]:[/COLOR] $INFO[Pvr.BackendChannels]</label>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>530</left>
+			<top>75</top>
+			<height>589</height>
+			<onup>80</onup>
+			<ondown>80</ondown>
+			<onleft>50</onleft>
+			<onright>ActivateWindow(1122)</onright><!-- custom ChannelGroup -->
+			<include>animation_vhoc_fade</include>
+			<visible allowhiddenfocus="true">Control.IsVisible(50) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+
+<include name="View53Leftlist2_pvr">
+	<control type="group"><!-- id53 channel list ohne signal -->
+		<animation effect="slide" time="700" start="-850,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+		<animation effect="slide" time="700" start="0,0" end="-860,0" tween="cubic" easing="out">WindowClose</animation>
+		<animation effect="slide" time="700" start="-850,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+		<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+		<visible>Control.IsVisible(53)</visible>
+		<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+		<!-- Background -->
+		<control type="image">
+			<description>Hintergrund</description>
+			<width>530</width>
+			<height>720</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<top>35</top>
+			<width>530</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>20</left>
+			<top>35</top>
+			<width>200</width>
+			<include>global_label_title</include>
+			<label>$LOCALIZE[31611]</label>
+			<visible>Pvr.HasTVChannels</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>20</left>
+			<top>35</top>
+			<width>200</width>
+			<include>global_label_title</include>
+			<label>$LOCALIZE[31632]</label>
+			<visible>Pvr.HasRadioChannels</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>200</left>
+			<top>35</top>
+			<width>320</width>
+			<include>global_label_title</include>
+			<align>right</align>
+			<label>$INFO[Control.GetLabel(28)]</label>
+		</control>
+		<control type="image">
+			<description>Schatten</description>
+			<left>530</left>
+			<height>720</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<!-- list -->
+		<control type="list" id="53">
+			<viewtype label="list2">Wide Icon</viewtype>
+			<left>0</left>
+			<top>95</top>
+			<width>530</width>
+			<height>589</height>
+			<itemgap>0</itemgap>
+			<onup>53</onup>
+			<ondown>53</ondown>
+			<onleft>PreviousChannelGroup</onleft><!-- ChannelGroup -->
+			<onright condition="Integer.IsGreater(Container(53).NumPages,1)">80</onright>
+			<onright condition="!Integer.IsGreater(Container(53).NumPages,1)">ActivateWindow(1122)</onright>
+			<viewtype>list</viewtype>
+			<orientation>vertical</orientation>
+			<focusposition>1</focusposition>
+			<scrolltime>450</scrolltime>
+			<movement>2</movement>
+			<pagecontrol>80</pagecontrol>
+			<itemlayout width="520" height="35">
+				<control type="image">
+					<left>-65</left>
+					<top>1</top>
+					<width>580</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="label">
+					<left>35</left>
+					<top>10</top>
+					<width>70</width>
+					<height>25</height>
+					<align>right</align>
+					<font>ChannelNumber-Bold-Large</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.ChannelNumber]</label>
+				</control>
+				<control type="label">
+					<left>115</left>
+					<top>8</top>
+					<width>340</width>
+					<height>25</height>
+					<font>RegularLarge</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="image">
+					<left>487</left>
+					<top>10</top>
+					<width>25</width>
+					<height>15</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+				</control>
+				<control type="image">
+					<left>460</left>
+					<top>10</top>
+					<width>25</width>
+					<height>15</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+				</control>
+			</itemlayout>
+			<focusedlayout width="520" height="65">
+				<control type="image">
+					<top>3</top>
+					<width>530</width>
+					<height>60</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(53)</visible>
+				</control>
+				<control type="image">
+					<left>-65</left>
+					<top>1</top>
+					<width>580</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+					<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+				</control>
+				<control type="image">
+					<left>25</left>
+					<top>12</top>
+					<width>35</width>
+					<height>20</height>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="left">keep</aspectratio>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+					<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+				</control>
+				<control type="group"><!-- focus -->
+					<visible>Control.Hasfocus(53)</visible>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>360</width>
+						<height>25</height>
+						<font>SemiLarge</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>10</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColorFocus">$VAR[value_pvr-timerstatus]</texture>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>35</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColorFocus">$VAR[value_pvr-encrypstatus]</texture>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>32</top>
+						<width>360</width>
+						<height>20</height>
+						<font>RegularNormal</font>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+						<textcolor>TextColorFocus</textcolor>
+					</control>
+					<control type="progress">
+						<left>118</left>
+						<top>54</top>
+						<width>394</width>
+						<height>6</height>
+						<info>ListItem.Progress</info>
+						<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+						<midtexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</lefttexture>
+						<righttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</righttexture>
+						<visible>ListItem.HasEpg</visible>
+					</control>
+				</control>
+				<control type="group"><!-- unfocus -->
+					<visible>!Control.Hasfocus(53)</visible>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>360</width>
+						<height>25</height>
+						<font>SemiLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>10</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+					</control>
+					<control type="image">
+						<left>487</left>
+						<top>35</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>32</top>
+						<width>380</width>
+						<height>20</height>
+						<font>RegularNormal</font>
+						<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+						<textcolor>TextColor2</textcolor>
+					</control>
+					<control type="progress">
+						<left>118</left>
+						<top>54</top>
+						<width>394</width>
+						<height>6</height>
+						<info>ListItem.Progress</info>
+						<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+						<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+						<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+						<visible>ListItem.HasEpg</visible>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="label">
+			<left>0</left>
+			<top>690</top>
+			<width>520</width>
+			<height>20</height>
+			<align>right</align>
+			<font>RegularNormal</font>
+			<label>[COLOR=TextColor2]$LOCALIZE[31986]:[/COLOR] $INFO[Pvr.BackendChannels]</label>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>530</left>
+			<top>75</top>
+			<height>589</height>
+			<onup>80</onup>
+			<ondown>80</ondown>
+			<onleft>53</onleft>
+			<onright>ActivateWindow(1122)</onright><!-- custom ChannelGroup -->
+			<include>animation_vhoc_fade</include>
+			<visible allowhiddenfocus="true">Control.IsVisible(53) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+
+<include name="View52List_pvr">
+	<control type="group"><!-- default group -->
+		<include>animation_window</include>
+		<control type="image">
+			<description>schatten oben</description>
+			<left>0</left>
+			<top>67</top>
+			<include>global_topshadow8</include>
+			<animation effect="fade" start="0" end="100" delay="1000" time="1280" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="100" tween="cubic" easing="out">WindowClose</animation>
+			<visible>Control.IsVisible(52)</visible>
+		</control>
+		<control type="group"><!-- right group textinfo -->
+			<left>855</left>
+			<top>75</top>
+			<visible>Control.IsVisible(52)</visible>
+			<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+			<animation effect="slide" start="855,0" end="0,0" time="1000" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" start="0,0" end="855,0" time="1000" tween="cubic" easing="out">WindowClose</animation>
+			<animation effect="slide" start="800,0" end="0,0" time="1000" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" start="100" end="0" time="400">Hidden</animation>
+			<control type="image">
+				<description>Background top</description>
+				<width>425</width>
+				<height>320</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background bottom</description>
+				<top>320</top>
+				<width>425</width>
+				<height>425</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="group"><!-- icon -->
+				<include>animation_vhoc_fade</include>
+				<top>40</top>
+				<control type="image"><!-- reflect -->
+					<left>10</left>
+					<top>270</top>
+					<width>320</width>
+					<height>250</height>
+					<bordersize>10</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+					<texture border="10" flipy="true" fallback="defaultpictures/DefaultChannel.png" diffuse="borders/poster-reflect.png" background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>40</top>
+					<width>320</width>
+					<height>250</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>10</bordersize>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>40</top>
+					<width>320</width>
+					<height>250</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<bordersize>10</bordersize>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+			</control>
+			<control type="group">
+				<left>20</left>
+				<top>360</top>
+				<visible>ListItem.HasEpg</visible>
+				<control type="grouplist">
+					<width>300</width>
+					<height>20</height>
+					<itemgap>5</itemgap>
+					<orientation>horizontal</orientation>
+					<control type="image">
+						<width>15</width>
+						<height>20</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor3">pvr/pvr_hastimer.png</texture>
+						<visible>Container(52).ListItem.HasTimer + !Container(52).ListItem.IsRecording</visible>
+					</control>
+					<control type="group">
+						<width>23</width>
+						<height>20</height>
+						<visible>Container(52).ListItem.IsRecording</visible>
+						<control type="image">
+							<width>23</width>
+							<height>20</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+						</control>
+						<control type="image">
+							<width>23</width>
+							<height>20</height>
+							<aspectratio>keep</aspectratio>
+							<texture>pvr/pvr_isrecording_front.png</texture>
+						</control>
+					</control>
+					<control type="image">
+						<width>32</width>
+						<height>20</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor3">pvr/pvr_isencrypted.png</texture>
+						<visible>Container(52).ListItem.IsEncrypted</visible>
+					</control>
+					<control type="label">
+						<width>160</width>
+						<height>20</height>
+						<label>$INFO[Container(52).ListItem.StartTime]$INFO[Container(52).ListItem.EndTime, / ]</label>
+					</control>
+				</control>
+				<control type="label">
+					<left>240</left>
+					<width>150</width>
+					<height>20</height>
+					<align>right</align>
+					<font>RegularNormal</font>
+					<label>$VAR[flex_value_systemdate]</label>
+				</control>
+				<control type="label">
+					<top>32</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiLarge</font>
+					<label>$INFO[Container(52).ListItem.Title]$INFO[Container(52).ListItem.EpisodeName, ,]$INFO[Container(52).ListItem.Episode, (,)]</label>
+				</control>
+				<control type="label">
+					<top>62</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.Genre]</label>
+				</control>
+				<control type="textbox">
+					<top>82</top>
+					<width>400</width>
+					<include>PlotNormal66</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.Plot]</label>
+					<autoscroll delay="15000" time="3000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="label">
+					<top>164</top>
+					<width>400</width>
+					<height>20</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.NextStartTime]$INFO[Container(52).ListItem.NextEndTime, / ]</label>
+				</control>
+				<control type="label">
+					<top>184</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiLarge</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.NextTitle]</label>
+				</control>
+				<control type="textbox">
+					<top>204</top>
+					<width>400</width>
+					<include>PlotNormal66</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.NextPlot]</label>
+					<autoscroll delay="15000" time="3000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- left group -->
+			<top>75</top>
+			<visible>Control.IsVisible(52)</visible>
+			<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+			<animation effect="slide" time="700" start="-860,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" time="700" start="0,0" end="-860,0" tween="cubic" easing="out">WindowClose</animation>
+			<animation effect="slide" time="700" start="-860,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>855</width>
+				<height>720</height>
+				<include>global_texture_heavy</include>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<left>855</left>
+				<height>720</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="image">
+				<description>hintergrund titel</description>
+				<width>855</width>
+				<include>global_texture_title</include>
+			</control>
+			<control type="label">
+				<description>titel</description>
+				<left>45</left>
+				<width>810</width>
+				<include>global_label_title</include>
+				<label>$INFO[Control.GetLabel(28)]</label>
+			</control>
+			<control type="list" id="52"><!-- List -->
+				<viewtype label="list3">list</viewtype>
+				<left>0</left>
+				<top>83</top>
+				<width>855</width>
+				<height>485</height>
+				<pagecontrol>80</pagecontrol>
+				<onup>52</onup>
+				<ondown>52</ondown>
+				<onleft>PreviousChannelGroup</onleft><!-- ChannelGroup -->
+				<onright condition="Integer.IsGreater(Container(52).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(52).NumPages,1)">ActivateWindow(1122)</onright>
+				<orientation>vertical</orientation>
+				<scrolltime>450</scrolltime>
+				<preloaditems>2</preloaditems>
+				<itemlayout width="835" height="35">
+					<control type="image">
+						<left>10</left>
+						<top>1</top>
+						<width>885</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>600</width>
+						<height>25</height>
+						<font>RegularLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>800</left>
+						<top>10</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+					</control>
+					<control type="image">
+						<left>770</left>
+						<top>10</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+					</control>
+				</itemlayout>
+				<focusedlayout width="835" height="68">
+					<control type="image">
+						<top>3</top>
+						<width>855</width>
+						<height>65</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.Hasfocus(52)</visible>
+					</control>
+					<control type="image">
+						<left>10</left>
+						<top>1</top>
+						<width>885</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="group"><!-- focus -->
+						<visible>Control.Hasfocus(52)</visible>
+						<control type="label">
+							<left>35</left>
+							<top>10</top>
+							<width>70</width>
+							<height>25</height>
+							<align>right</align>
+							<font>ChannelNumber-Bold-Large</font>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.ChannelNumber]</label>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>8</top>
+							<width>600</width>
+							<height>25</height>
+							<font>SemiLarge</font>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>10</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColorFocus">$VAR[value_pvr-timerstatus]</texture>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>35</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColorFocus">$VAR[value_pvr-encrypstatus]</texture>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>32</top>
+							<width>600</width>
+							<height>20</height>
+							<font>RegularNormal</font>
+							<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+						</control>
+						<control type="progress">
+							<left>118</left>
+							<top>54</top>
+							<width>710</width>
+							<height>6</height>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+							<midtexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</midtexture>
+							<lefttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</lefttexture>
+							<righttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</righttexture>
+							<visible>ListItem.HasEpg</visible>
+						</control>
+					</control>
+					<control type="group"><!-- unfocus -->
+						<visible>!Control.Hasfocus(52)</visible>
+						<control type="label">
+							<left>35</left>
+							<top>10</top>
+							<width>70</width>
+							<height>25</height>
+							<align>right</align>
+							<font>ChannelNumber-Bold-Large</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.ChannelNumber]</label>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>8</top>
+							<width>600</width>
+							<height>25</height>
+							<font>SemiLarge</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>10</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>35</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>32</top>
+							<width>600</width>
+							<height>20</height>
+							<font>RegularNormal</font>
+							<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+							<textcolor>TextColor2</textcolor>
+						</control>
+						<control type="progress">
+							<left>118</left>
+							<top>54</top>
+							<width>710</width>
+							<height>6</height>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+							<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+							<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+							<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+							<visible>ListItem.HasEpg</visible>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="80">
+				<include>scrollbar_vertical</include>
+				<left>825</left>
+				<top>80</top>
+				<height>470</height>
+				<onleft>52</onleft>
+				<onright>ActivateWindow(1122)</onright><!-- custom ChannelGroup -->
+				<visible allowhiddenfocus="true">Control.HasFocus(80)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="View54List_pvr">
+	<control type="group"><!-- default group -->
+		<include>animation_window</include>
+		<control type="image">
+			<description>schatten oben</description>
+			<left>0</left>
+			<top>67</top>
+			<include>global_topshadow8</include>
+			<animation effect="fade" start="0" end="100" delay="1000" time="1280" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="100" tween="cubic" easing="out">WindowClose</animation>
+			<visible>Control.IsVisible(54)</visible>
+		</control>
+		<control type="group"><!-- right group textinfo -->
+			<left>855</left>
+			<top>75</top>
+			<visible>Control.IsVisible(54)</visible>
+			<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+			<animation effect="slide" start="855,0" end="0,0" time="1000" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" start="0,0" end="855,0" time="1000" tween="cubic" easing="out">WindowClose</animation>
+			<animation effect="slide" start="800,0" end="0,0" time="1000" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" start="100" end="0" time="400">Hidden</animation>
+			<control type="image">
+				<description>Background top</description>
+				<width>425</width>
+				<height>320</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background bottom</description>
+				<top>320</top>
+				<width>425</width>
+				<height>425</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="group"><!-- icon -->
+				<include>animation_vhoc_fade</include>
+				<top>40</top>
+				<control type="image"><!-- reflect -->
+					<left>10</left>
+					<top>270</top>
+					<width>320</width>
+					<height>250</height>
+					<bordersize>10</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+					<texture border="10" flipy="true" fallback="defaultpictures/DefaultChannel.png" diffuse="borders/poster-reflect.png" background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>40</top>
+					<width>320</width>
+					<height>250</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>10</bordersize>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>40</top>
+					<width>320</width>
+					<height>250</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<bordersize>10</bordersize>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+			</control>
+			<control type="group">
+				<left>20</left>
+				<top>360</top>
+				<visible>ListItem.HasEpg</visible>
+				<control type="grouplist">
+					<width>300</width>
+					<height>20</height>
+					<itemgap>5</itemgap>
+					<orientation>horizontal</orientation>
+					<control type="image">
+						<width>15</width>
+						<height>20</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor3">pvr/pvr_hastimer.png</texture>
+						<visible>Container(54).ListItem.HasTimer + !Container(54).ListItem.IsRecording</visible>
+					</control>
+					<control type="group">
+						<width>23</width>
+						<height>20</height>
+						<visible>Container(54).ListItem.IsRecording</visible>
+						<control type="image">
+							<width>23</width>
+							<height>20</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+						</control>
+						<control type="image">
+							<width>23</width>
+							<height>20</height>
+							<aspectratio>keep</aspectratio>
+							<texture>pvr/pvr_isrecording_front.png</texture>
+						</control>
+					</control>
+					<control type="image">
+						<width>32</width>
+						<height>20</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor3">pvr/pvr_isencrypted.png</texture>
+						<visible>Container(54).ListItem.IsEncrypted</visible>
+					</control>
+					<control type="label">
+						<width>160</width>
+						<height>20</height>
+						<label>$INFO[Container(54).ListItem.StartTime]$INFO[Container(54).ListItem.EndTime, / ]</label>
+					</control>
+				</control>
+				<control type="label">
+					<left>240</left>
+					<width>150</width>
+					<height>20</height>
+					<align>right</align>
+					<font>RegularNormal</font>
+					<label>$VAR[flex_value_systemdate]</label>
+				</control>
+				<control type="label">
+					<top>32</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiLarge</font>
+					<label>$INFO[Container(54).ListItem.Title]$INFO[Container(54).ListItem.EpisodeName, ,]$INFO[Container(54).ListItem.Episode, (,)]</label>
+				</control>
+				<control type="label">
+					<top>62</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(54).ListItem.Genre]</label>
+				</control>
+				<control type="textbox">
+					<top>82</top>
+					<width>400</width>
+					<include>PlotNormal66</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(54).ListItem.Plot]</label>
+					<autoscroll delay="15000" time="3000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="label">
+					<top>164</top>
+					<width>400</width>
+					<height>20</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(54).ListItem.NextStartTime]$INFO[Container(54).ListItem.NextEndTime, / ]</label>
+				</control>
+				<control type="label">
+					<top>184</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiLarge</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(54).ListItem.NextTitle]</label>
+				</control>
+				<control type="textbox">
+					<top>204</top>
+					<width>400</width>
+					<include>PlotNormal66</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(54).ListItem.NextPlot]</label>
+					<autoscroll delay="15000" time="3000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- left group -->
+			<top>75</top>
+			<visible>Control.IsVisible(54)</visible>
+			<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+			<animation effect="slide" time="700" start="-860,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" time="700" start="0,0" end="-860,0" tween="cubic" easing="out">WindowClose</animation>
+			<animation effect="slide" time="700" start="-860,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>855</width>
+				<height>720</height>
+				<include>global_texture_heavy</include>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<left>855</left>
+				<height>720</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="image">
+				<description>hintergrund titel</description>
+				<width>855</width>
+				<include>global_texture_title</include>
+			</control>
+			<control type="label">
+				<description>titel</description>
+				<left>45</left>
+				<width>810</width>
+				<include>global_label_title</include>
+				<label>$INFO[Control.GetLabel(28)]</label>
+			</control>
+			<control type="list" id="54"><!-- List -->
+				<viewtype label="list4">list</viewtype>
+				<left>0</left>
+				<top>83</top>
+				<width>855</width>
+				<height>485</height>
+				<pagecontrol>80</pagecontrol>
+				<onup>54</onup>
+				<ondown>54</ondown>
+				<onleft>PreviousChannelGroup</onleft><!-- ChannelGroup -->
+				<onright condition="Integer.IsGreater(Container(54).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(54).NumPages,1)">ActivateWindow(1122)</onright>
+				<orientation>vertical</orientation>
+				<scrolltime>450</scrolltime>
+				<preloaditems>2</preloaditems>
+				<itemlayout width="835" height="68">
+					<control type="image">
+						<left>10</left>
+						<top>1</top>
+						<width>885</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>600</width>
+						<height>25</height>
+						<font>SemiLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>800</left>
+						<top>10</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+					</control>
+					<control type="image">
+						<left>800</left>
+						<top>35</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>32</top>
+						<width>600</width>
+						<height>20</height>
+						<font>RegularNormal</font>
+						<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+						<textcolor>TextColor2</textcolor>
+					</control>
+					<control type="progress">
+						<left>118</left>
+						<top>54</top>
+						<width>710</width>
+						<height>6</height>
+						<info>ListItem.Progress</info>
+						<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+						<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+						<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+						<visible>ListItem.HasEpg</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout width="835" height="68">
+					<control type="image">
+						<top>3</top>
+						<width>855</width>
+						<height>65</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.Hasfocus(54)</visible>
+					</control>
+					<control type="image">
+						<left>10</left>
+						<top>1</top>
+						<width>885</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="group"><!-- focus -->
+						<visible>Control.Hasfocus(54)</visible>
+						<control type="label">
+							<left>35</left>
+							<top>10</top>
+							<width>70</width>
+							<height>25</height>
+							<align>right</align>
+							<font>ChannelNumber-Bold-Large</font>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.ChannelNumber]</label>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>8</top>
+							<width>600</width>
+							<height>25</height>
+							<font>SemiLarge</font>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>10</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColorFocus">$VAR[value_pvr-timerstatus]</texture>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>35</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColorFocus">$VAR[value_pvr-encrypstatus]</texture>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>32</top>
+							<width>600</width>
+							<height>20</height>
+							<font>RegularNormal</font>
+							<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+						</control>
+						<control type="progress">
+							<left>118</left>
+							<top>54</top>
+							<width>710</width>
+							<height>6</height>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+							<midtexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</midtexture>
+							<lefttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</lefttexture>
+							<righttexture colordiffuse="TextColorFocus">dialogs/progress/progress_mid_small.png</righttexture>
+							<visible>ListItem.HasEpg</visible>
+						</control>
+					</control>
+					<control type="group"><!-- unfocus -->
+						<visible>!Control.Hasfocus(54)</visible>
+						<control type="label">
+							<left>35</left>
+							<top>10</top>
+							<width>70</width>
+							<height>25</height>
+							<align>right</align>
+							<font>ChannelNumber-Bold-Large</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.ChannelNumber]</label>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>8</top>
+							<width>600</width>
+							<height>25</height>
+							<font>SemiLarge</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>10</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor2">$VAR[value_pvr-timerstatus]</texture>
+						</control>
+						<control type="image">
+							<left>800</left>
+							<top>35</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor2">$VAR[value_pvr-encrypstatus]</texture>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>32</top>
+							<width>600</width>
+							<height>20</height>
+							<font>RegularNormal</font>
+							<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+							<textcolor>TextColor2</textcolor>
+						</control>
+						<control type="progress">
+							<left>118</left>
+							<top>54</top>
+							<width>710</width>
+							<height>6</height>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="TextColor2">dialogs/progress/progress_mid_small_bg.png</texturebg>
+							<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</midtexture>
+							<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</lefttexture>
+							<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_small.png</righttexture>
+							<visible>ListItem.HasEpg</visible>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="80">
+				<include>scrollbar_vertical</include>
+				<left>825</left>
+				<top>80</top>
+				<height>470</height>
+				<onleft>54</onleft>
+				<onright>ActivateWindow(1122)</onright><!-- custom ChannelGroup -->
+				<visible allowhiddenfocus="true">Control.HasFocus(80)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="View52List_pvr_alt">
+	<control type="group"><!-- default group -->
+		<include>animation_window</include>
+		<control type="image">
+			<description>schatten oben</description>
+			<left>0</left>
+			<top>67</top>
+			<include>global_topshadow8</include>
+			<animation effect="fade" start="0" end="100" delay="1000" time="1280" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="100" tween="cubic" easing="out">WindowClose</animation>
+			<visible>Control.IsVisible(52)</visible>
+		</control>
+		<control type="group"><!-- right group textinfo -->
+			<left>855</left>
+			<top>75</top>
+			<visible>Control.IsVisible(52)</visible>
+			<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+			<animation effect="slide" start="855,0" end="0,0" time="1000" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" start="0,0" end="855,0" time="1000" tween="cubic" easing="out">WindowClose</animation>
+			<animation effect="slide" start="800,0" end="0,0" time="1000" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" start="100" end="0" time="400">Hidden</animation>
+			<control type="image">
+				<description>Background top</description>
+				<width>425</width>
+				<height>320</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background bottom</description>
+				<top>320</top>
+				<width>425</width>
+				<height>425</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="group"><!-- icon -->
+				<include>animation_vhoc_fade</include>
+				<top>40</top>
+				<control type="image"><!-- reflect -->
+					<left>10</left>
+					<top>270</top>
+					<width>320</width>
+					<height>250</height>
+					<bordersize>10</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+					<texture border="10" flipy="true" fallback="defaultpictures/DefaultChannel.png" diffuse="borders/poster-reflect.png" background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>40</top>
+					<width>320</width>
+					<height>250</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+					<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>10</bordersize>
+					<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>40</top>
+					<width>320</width>
+					<height>250</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannelLogo.png" background="true">$INFO[ListItem.Icon]</texture>
+					<bordersize>10</bordersize>
+					<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+				</control>
+			</control>
+			<control type="group">
+				<left>20</left>
+				<top>360</top>
+				<control type="grouplist">
+					<width>300</width>
+					<height>20</height>
+					<itemgap>5</itemgap>
+					<orientation>horizontal</orientation>
+					<control type="image">
+						<width>15</width>
+						<height>20</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor3">pvr/pvr_hastimer.png</texture>
+						<visible>Container(52).ListItem.HasTimer + !Container(52).ListItem.IsRecording</visible>
+					</control>
+					<control type="group">
+						<width>23</width>
+						<height>20</height>
+						<visible>Container(52).ListItem.IsRecording</visible>
+						<control type="image">
+							<width>23</width>
+							<height>20</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor1">pvr/pvr_isrecording_back.png</texture>
+						</control>
+						<control type="image">
+							<left>20</left>
+							<width>23</width>
+							<height>20</height>
+							<aspectratio>keep</aspectratio>
+							<texture>pvr/pvr_isrecording_front.png</texture>
+						</control>
+					</control>
+					<control type="image">
+						<width>32</width>
+						<height>20</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor3">pvr/pvr_isencrypted.png</texture>
+						<visible>Container(52).ListItem.IsEncrypted</visible>
+					</control>
+					<control type="label">
+						<width>160</width>
+						<height>20</height>
+						<label>$INFO[Container(52).ListItem.StartTime]$INFO[Container(52).ListItem.EndTime, / ]</label>
+					</control>
+				</control>
+				<control type="label">
+					<left>240</left>
+					<width>150</width>
+					<height>20</height>
+					<align>right</align>
+					<font>RegularNormal</font>
+					<label>$VAR[flex_value_systemdate]</label>
+				</control>
+				<control type="label">
+					<top>32</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiLarge</font>
+					<label>$INFO[Container(52).ListItem.Title]$INFO[Container(52).ListItem.EpisodeName, ,]$INFO[Container(52).ListItem.Episode, (,)]</label>
+				</control>
+				<control type="label">
+					<top>62</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiNormal</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.Genre]</label>
+				</control>
+				<control type="textbox">
+					<top>82</top>
+					<width>400</width>
+					<include>PlotNormal66</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.Plot]</label>
+					<autoscroll delay="15000" time="3000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="label">
+					<top>164</top>
+					<width>400</width>
+					<height>20</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.NextStartTime]$INFO[Container(52).ListItem.NextEndTime, / ]</label>
+				</control>
+				<control type="label">
+					<top>184</top>
+					<width>400</width>
+					<height>20</height>
+					<font>SemiLarge</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.NextTitle]</label>
+				</control>
+				<control type="textbox">
+					<top>204</top>
+					<width>400</width>
+					<include>PlotNormal66</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[Container(52).ListItem.NextPlot]</label>
+					<autoscroll delay="15000" time="3000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- left group -->
+			<top>75</top>
+			<visible>Control.IsVisible(52)</visible>
+			<visible>![Window.IsActive(SelectDialog) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+			<animation effect="slide" time="700" start="-860,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" time="700" start="0,0" end="-860,0" tween="cubic" easing="out">WindowClose</animation>
+			<animation effect="slide" time="700" start="-860,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>855</width>
+				<height>720</height>
+				<include>global_texture_heavy</include>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<left>855</left>
+				<height>720</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="image">
+				<description>hintergrund titel</description>
+				<width>855</width>
+				<include>global_texture_title</include>
+			</control>
+			<control type="label">
+				<description>titel</description>
+				<left>45</left>
+				<width>810</width>
+				<include>global_label_title</include>
+				<label>$INFO[Control.GetLabel(28)]</label>
+			</control>
+			<control type="list" id="52"><!-- List -->
+				<viewtype label="Liste">list</viewtype>
+				<left>0</left>
+				<top>83</top>
+				<width>855</width>
+				<height>485</height>
+				<pagecontrol>80</pagecontrol>
+				<onup>52</onup>
+				<ondown>52</ondown>
+				<onleft>PreviousChannelGroup</onleft><!-- ChannelGroup -->
+				<onright condition="Integer.IsGreater(Container(52).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(52).NumPages,1)">ActivateWindow(1122)</onright>
+				<orientation>vertical</orientation>
+				<scrolltime>450</scrolltime>
+				<preloaditems>2</preloaditems>
+				<itemlayout condition="String.IsEqual(Channelview52,large)" width="835" height="68">
+					<control type="image">
+						<left>-65</left>
+						<top>1</top>
+						<width>885</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Large</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>600</width>
+						<height>25</height>
+						<font>SemiLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<animation effect="slide" end="32" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+					</control>
+					<control type="image">
+						<left>115</left>
+						<top>15</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+						<visible>ListItem.IsEncrypted + Control.Hasfocus(50)</visible>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>32</top>
+						<width>400</width>
+						<height>20</height>
+						<font>RegularNormal</font>
+						<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+						<textcolor>TextColor2</textcolor>
+						<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+					</control>
+					<control type="progress">
+						<left>118</left>
+						<top>54</top>
+						<width>400</width>
+						<height>4</height>
+						<info>ListItem.Progress</info>
+						<colordiffuse>FFAAAAAA</colordiffuse>
+						<reveal>false</reveal>
+						<texturebg>-</texturebg>
+						<midtexture>dialogs/progress/progress_mid_small.png</midtexture>
+						<lefttexture>-</lefttexture>
+						<righttexture>-</righttexture>
+						<overlaytexture></overlaytexture>
+						<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+						<visible>ListItem.HasEpg</visible>
+					</control>
+				</itemlayout>
+				<itemlayout condition="![String.IsEqual(Channelview52,large) | String.IsEmpty(Skin.string(Channelview52))]" width="835" height="35">
+					<control type="image">
+						<left>10</left>
+						<top>1</top>
+						<width>885</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<top>10</top>
+						<width>70</width>
+						<height>25</height>
+						<align>right</align>
+						<font>ChannelNumber-Bold-Large</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.ChannelNumber]</label>
+					</control>
+					<control type="label">
+						<left>115</left>
+						<top>8</top>
+						<width>600</width>
+						<height>25</height>
+						<font>RegularLarge</font>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<animation effect="slide" end="32" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+					</control>
+					<control type="image">
+						<left>115</left>
+						<top>15</top>
+						<width>25</width>
+						<height>15</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+					<visible>ListItem.IsEncrypted + Control.Hasfocus(50)</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout width="835" height="68">
+					<control type="image">
+						<top>3</top>
+						<width>855</width>
+						<height>65</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.Hasfocus(52)</visible>
+					</control>
+					<control type="image">
+						<left>10</left>
+						<top>1</top>
+						<width>815</width>
+						<height>2</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="image">
+						<left>25</left>
+						<top>12</top>
+						<width>35</width>
+						<height>20</height>
+						<texture fallback="defaultpictures/DefaultChannel.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+					</control>
+					<control type="group"><!-- focus -->
+						<visible>Control.Hasfocus(52)</visible>
+						<control type="label">
+							<left>35</left>
+							<top>10</top>
+							<width>70</width>
+							<height>25</height>
+							<align>right</align>
+							<font>ChannelNumber-Bold-Large</font>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.ChannelNumber]</label>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>8</top>
+							<width>600</width>
+							<height>25</height>
+							<font>SemiLarge</font>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<textcolor>TextColorFocus</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="slide" end="32" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>115</left>
+							<top>15</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColorFocus">pvr/pvr_isencrypted.png</texture>
+							<visible>ListItem.IsEncrypted</visible>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>32</top>
+							<width>600</width>
+							<height>20</height>
+							<font>RegularNormal</font>
+							<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+						</control>
+						<control type="progress">
+							<left>118</left>
+							<top>54</top>
+							<width>600</width>
+							<height>4</height>
+							<reveal>false</reveal>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="FFAAAAAA">dialogs/progress/progress_mid_small_bg.png</texturebg>
+							<midtexture>dialogs/progress/progress_mid_small.png</midtexture>
+							<lefttexture>-</lefttexture>
+							<righttexture>-</righttexture>
+							<overlaytexture></overlaytexture>
+							<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+							<visible>ListItem.HasEpg</visible>
+						</control>
+					</control>
+					<control type="group"><!-- unfocus -->
+						<visible>!Control.Hasfocus(52)</visible>
+						<control type="label">
+							<left>35</left>
+							<top>10</top>
+							<width>70</width>
+							<height>25</height>
+							<align>right</align>
+							<font>ChannelNumber-Bold-Large</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.ChannelNumber]</label>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>8</top>
+							<width>600</width>
+							<height>25</height>
+							<font>SemiLarge</font>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="slide" end="32" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>115</left>
+							<top>15</top>
+							<width>25</width>
+							<height>15</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+							<visible>!ListItem.IsEncrypted + Control.Hasfocus(50)</visible>
+						</control>
+						<control type="label">
+							<left>115</left>
+							<top>32</top>
+							<width>600</width>
+							<height>20</height>
+							<font>RegularNormal</font>
+							<label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, / , ]$INFO[ListItem.Title]$INFO[ListItem.EpisodeName, (,)]</label>
+							<textcolor>TextColor2</textcolor>
+							<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+						</control>
+						<control type="progress">
+							<left>118</left>
+							<top>54</top>
+							<width>600</width>
+							<height>4</height>
+							<reveal>false</reveal>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="FFAAAAAA">dialogs/progress/progress_mid_small_bg.png</texturebg>
+							<midtexture>dialogs/progress/progress_mid_small.png</midtexture>
+							<lefttexture>-</lefttexture>
+							<righttexture>-</righttexture>
+							<overlaytexture></overlaytexture>
+							<overlaytexture></overlaytexture>
+							<animation effect="slide" end="25" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+							<visible>ListItem.HasEpg</visible>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="80">
+				<include>scrollbar_vertical</include>
+				<left>825</left>
+				<top>80</top>
+				<height>470</height>
+				<onleft>51</onleft>
+				<onright>ActivateWindow(1122)</onright><!-- custom ChannelGroup -->
+				<visible allowhiddenfocus="true">Control.HasFocus(80)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+
+</includes>

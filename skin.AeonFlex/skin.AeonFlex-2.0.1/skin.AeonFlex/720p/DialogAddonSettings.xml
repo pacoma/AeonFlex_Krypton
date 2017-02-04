@@ -1,0 +1,135 @@
+<window id="140"><!-- flex 2.0 -->
+<defaultcontrol always="true">9</defaultcontrol>
+<controls>
+<control type="group">
+	<include>animation_dialog_popup</include>
+	<left>96</left>
+	<top>85</top>
+	<visible>!Window.IsActive(selectdialog) + !Window.IsActive(virtualkeyboard) + !Window.IsVisible(shutdownmenu)</visible>
+	<control type="group"><!-- Addonsettings -->
+		<include content="global_dialog_mid_bg">
+			<param name="global_dialog_mid_bg-left" value="240" />
+			<param name="global_dialog_mid_bg-width" value="1087" />
+			<param name="global_dialog_mid_bg-innerwidth" value="674" />
+			<param name="global_dialog_mid_bg-height" value="443" />
+			<param name="global_dialog_mid_bg-headerlabel" value="-" />
+			<param name="global_dialog_mid_headerid" value="20" />
+		</include>
+		<control type="grouplist" id="2">
+			<left>240</left>
+			<top>53</top>
+			<width>674</width>
+			<height>373</height>
+			<itemgap>0</itemgap>
+			<pagecontrol>-</pagecontrol>
+			<onup>9</onup>
+			<ondown>9001</ondown>
+			<onleft>9</onleft>
+			<onright>9001</onright>
+		</control>
+		<control type="button" id="3">
+			<textwidth>500</textwidth>
+			<textoffsetx>30</textoffsetx>
+			<oninfo>close</oninfo>
+		</control>
+		<control type="radiobutton" id="4">
+			<radioposx>585</radioposx>
+			<textoffsetx>30</textoffsetx>
+			<textwidth>500</textwidth>
+			<oninfo>close</oninfo>
+		</control>
+		<control type="spincontrolex" id="5">
+			<subtype>text</subtype>
+			<textoffsetx>30</textoffsetx>
+			<spinposx>11</spinposx>
+			<spinwidth>40</spinwidth>
+			<spinheight>65</spinheight>
+			<textwidth>500</textwidth>
+			<oninfo>close</oninfo>
+		</control>
+		<control type="image" id="6">
+			<height>2</height>
+			<texture>-</texture>
+		</control>
+		<control type="label" id="7">
+			<textoffsetx>30</textoffsetx>
+			<height>40</height>
+			<label>-</label>
+			<textwidth>460</textwidth>
+		</control>
+		<control type="sliderex" id="8">
+			<texturenofocus>-</texturenofocus>
+			<textwidth>600</textwidth>
+			<controloffsetx>520</controloffsetx>
+			<textoffsetx>22</textoffsetx>
+			<sliderwidth>145</sliderwidth>
+			<oninfo>close</oninfo>
+		</control>
+	</control>
+	<control type="group" id="9001"><!-- Button right Menue -->
+		<left>914</left>
+		<top>53</top>
+		<control type="button" id="10">
+			<description>OK Button</description>
+			<include>dialog_menuebutton</include>
+			<label>$LOCALIZE[186]</label>
+			<onleft>2</onleft>
+			<onright>9</onright>
+			<onup>12</onup>
+			<ondown>11</ondown>
+			<oninfo>close</oninfo>
+		</control>
+		<control type="button" id="11">
+			<description>Cancel Button</description>
+			<top>41</top>
+			<include>dialog_menuebutton</include>
+			<label>$LOCALIZE[222]</label>
+			<onleft>2</onleft>
+			<onright>9</onright>
+			<onup>10</onup>
+			<ondown>12</ondown>
+			<oninfo>close</oninfo>
+		</control>
+		<control type="button" id="12">
+			<description>Defaults Button</description>
+			<top>82</top>
+			<include>dialog_menuebutton</include>
+			<label>$LOCALIZE[409]</label>
+			<onleft>2</onleft>
+			<onright>9</onright>
+			<onup>11</onup>
+			<ondown>10</ondown>
+			<oninfo>close</oninfo>
+		</control>
+	</control>
+	<control type="group"><!-- Addon Menue -->
+		<!-- Button Section -->
+		<control type="grouplist" id="9">
+			<top>53</top>
+			<width>240</width>
+			<height>360</height>
+			<orientation>vertical</orientation>
+			<itemgap>0</itemgap>
+			<onup>9</onup>
+			<ondown>9</ondown>
+			<onleft>10</onleft>
+			<onright>2</onright>
+		</control>
+		<!-- Defaultbuttons -->
+		<control type="button" id="13">
+			<width>240</width>
+			<height>40</height>
+			<textoffsetx>20</textoffsetx>
+			<oninfo>close</oninfo>
+		</control>
+	</control>
+	<include content="global_dialog_mid_dividershadow-left">
+		<param name="global_dialog_mid_dividershadow-left-height" value="433" />
+	</include>
+	<include content="global_dialog_mid_dividershadow-right">
+		<param name="global_dialog_mid_dividershadow-right-left" value="914" />
+		<param name="global_dialog_mid_dividershadow-right-height" value="433" />
+	</include>
+</control>
+</controls>
+</window>

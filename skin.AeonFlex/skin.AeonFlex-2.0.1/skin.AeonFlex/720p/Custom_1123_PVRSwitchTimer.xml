@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1123">
+<defaultcontrol always="true">50</defaultcontrol>
+<onload condition="String.IsEqual(Container(50).NumItems,0)">SetFocus(2352)</onload>
+<controls>
+<control type="group">
+	<include>animation_window</include>
+	<left>0</left>
+	<top>50</top>
+	<control type="group">
+		<include>PVR_background</include>
+		<control type="label">
+			<description>titel</description>
+			<left>260</left>
+			<top>60</top>
+			<width>200</width>
+			<include>global_label_title</include>
+			<label>$LOCALIZE[19019]</label>
+		</control>
+		<control type="panel" id="50">
+			<top>130</top>
+			<width>1280</width>
+			<height>440</height>
+			<onup>50</onup>
+			<ondown>50</ondown>
+			<onleft>close</onleft>
+			<onright>close</onright>
+			<pagecontrol>-</pagecontrol>
+			<scrolltime>350</scrolltime>
+			<itemlayout height="40" width="1280">
+				<control type="label">
+					<width>239</width>
+					<height>38</height>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.label]</label>
+				</control>
+				<control type="image">
+					<left>160</left>
+					<width>1120</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<left>260</left>
+					<top>10</top>
+					<width>80</width>
+					<height>28</height>
+					<aspectratio aligny="center" align="left">keep</aspectratio>
+					<texture fallback="defaultpictures/DefaultChannel.png">$INFO[ListItem.Icon]</texture>
+				</control>
+				<control type="label">
+					<left>340</left>
+					<width>290</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Property(TimerChannel)]</label>
+				</control>
+				<control type="label">
+					<left>640</left>
+					<top>1</top>
+					<width>500</width>
+					<height>38</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Property(TimerProgrammTitle)]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40" width="1280">
+				<control type="image">
+					<left>240</left>
+					<top>1</top>
+					<width>1040</width>
+					<height>40</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(50)</visible>
+				</control>
+				<control type="label">
+					<width>239</width>
+					<height>38</height>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>TextColor1</textcolor>
+					<label>$INFO[ListItem.label]</label>
+				</control>
+				<control type="group">
+					<visible>!Control.Hasfocus(50)</visible>
+					<control type="image">
+						<left>160</left>
+						<width>1120</width>
+						<height>3</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+					</control>
+					<control type="image">
+						<left>260</left>
+						<top>10</top>
+						<width>80</width>
+						<height>28</height>
+						<aspectratio aligny="center" align="left">keep</aspectratio>
+						<texture fallback="defaultpictures/DefaultChannel.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="label">
+						<left>340</left>
+						<width>290</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Property(TimerChannel)]</label>
+					</control>
+					<control type="label">
+						<left>640</left>
+						<top>1</top>
+						<width>500</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Property(TimerProgrammTitle)]</label>
+					</control>
+				</control>
+				<control type="group">
+					<visible>Control.Hasfocus(50)</visible>
+					<control type="image">
+						<left>260</left>
+						<top>10</top>
+						<width>80</width>
+						<height>28</height>
+						<aspectratio aligny="center" align="left">keep</aspectratio>
+						<texture fallback="defaultpictures/DefaultChannel.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="label">
+						<left>340</left>
+						<width>290</width>
+						<height>38</height>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Property(TimerChannel)]</label>
+					</control>
+					<control type="label">
+						<left>640</left>
+						<top>1</top>
+						<width>500</width>
+						<height>38</height>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$INFO[ListItem.Property(TimerProgrammTitle)]</label>
+					</control>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="1">
+					<label>$INFO[Skin.string(t0:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t0:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t0:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t0)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t0:title))</visible>
+				</item>
+				<item id="2">
+					<label>$INFO[Skin.string(t1:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t1:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t1:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t1)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t1:title))</visible>
+				</item>
+				<item id="3">
+					<label>$INFO[Skin.string(t2:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t2:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t2:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t2)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t2:title))</visible>
+				</item>
+				<item id="4">
+					<label>$INFO[Skin.string(t3:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t3:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t3:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t3)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t3:title))</visible>
+				</item>
+				<item id="5">
+					<label>$INFO[Skin.string(t4:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t4:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t4:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t4)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t4:title))</visible>
+				</item>
+				<item id="6">
+					<label>$INFO[Skin.string(t5:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t5:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t5:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t5)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t5:title))</visible>
+				</item>
+				<item id="7">
+					<label>$INFO[Skin.string(t6:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t6:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t6:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t6)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t6:title))</visible>
+				</item>
+				<item id="8">
+					<label>$INFO[Skin.string(t7:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t7:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t7:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t7)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t7:title))</visible>
+				</item>
+				<item id="9">
+					<label>$INFO[Skin.string(t8:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t8:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t8:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t8)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t8:title))</visible>
+				</item>
+				<item id="10">
+					<label>$INFO[Skin.string(t9:date)]</label>
+					<icon>$INFO[Skin.string(t0:icon)]</icon>
+					<property name="TimerChannel">$INFO[Skin.string(t9:channel)]</property>
+					<property name="TimerProgrammTitle">$INFO[Skin.string(t9:title)]</property>
+					<onclick>RunScript(service.kn.switchtimer,action=del,timer=t9)</onclick>
+					<visible>!String.IsEmpty(Skin.string(t9:title))</visible>
+				</item>
+			</content>
+		</control>
+		<control type="label">
+			<left>20</left>
+			<top>530</top>
+			<width>200</width>
+			<height>38</height>
+			<align>left</align>
+			<label>$VAR[switchtimer_value_numitems] $LOCALIZE[31001]</label>
+			<textcolor>TextColor1</textcolor>
+		</control>
+		<control type="group"><!-- fallback wenn empty -->
+			<visible>String.IsEqual(Container(50).NumItems,0)</visible>
+			<top>300</top>
+			<control type="image">
+				<include content="Infodialogs_update_indikator">
+					<param name="Update_Indikator-left" value="720" />
+					<param name="Update_Indikator-top" value="0" />
+					<param name="Update_Indikator-width" value="80" />
+					<param name="Update_Indikator-height" value="80" />
+				</include>
+			</control>
+			<control type="label">
+				<left>240</left>
+				<top>120</top>
+				<width>1040</width>
+				<height>20</height>
+				<label>$LOCALIZE[31362]</label>
+				<font>SemiLarge</font>
+				<align>center</align>
+			</control>
+		</control>
+		<control type="button" id="2352">
+			<width>1280</width>
+			<height>720</height>
+			<label>-</label>
+			<font>-</font>
+			<texturenofocus>-</texturenofocus>
+			<texturefocus>-</texturefocus>
+			<onleft>close</onleft>
+			<onright>close</onright>
+			<onup>close</onup>
+			<ondown>close</ondown>
+		</control>
+		<control type="image">
+			<left>240</left>
+			<top>60</top>
+			<height>510</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+</control>
+</controls>
+</window>
+

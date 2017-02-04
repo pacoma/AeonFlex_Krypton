@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">11</defaultcontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>ClearProperty(RefreshList3,Home)</onunload>
+<onunload>ClearProperty(Progresstep,Home)</onunload>
+<onload>SetProperty(GlobalYear,$INFO[System.Date(yyyy)],home)</onload><!-- datumsproperty last watched -->
+<onload condition="System.HasAddon(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
+<onload condition="System.HasAddon(enable.smartish.widgets)">Skin.SetBool(enable.smartish.widgets)</onload><!-- smartish.widgets script -->
+<onload condition="!System.HasAddon(enable.smartish.widgets)">Skin.reset(enable.smartish.widgets)</onload><!-- smartish.widgets script -->
+<onunload>CancelAlarm(nextstep,true)</onunload>
+<onunload>CancelAlarm(nextsteploader,true)</onunload>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+<!-- Hidden lastwatched contents -->
+<control type="list" id="6002">
+	<include>Compaircontainer</include>
+	<content target="video">$VAR[videocontent_history_episode]</content>
+</control>
+<control type="list" id="6001"><!-- lastwatched show -->
+	<include>Compaircontainer</include>
+	<content target="video">special://skin/playlists/tvshow_last_watched.xsp</content>
+</control>
+<control type="list" id="6003"><!-- lastwatched movie -->
+	<include>Compaircontainer</include>
+	<content target="video">special://skin/playlists/movies_Zuletzt gesehene.xsp</content>
+</control>
+<control type="label" id="230">
+	<description>progress Label</description>
+	<include>Hiddencontrol</include>
+	<label>$INFO[Window(home).Property(Progresstep)]</label>
+</control>
+<control type="button" id="11">
+	<description>trigger</description>
+	<include>Hiddencontrol</include>
+	<onfocus>ClearProperty(Progresstep,home)</onfocus>
+	<onfocus>AlarmClock(nextstep,SetFocus(12),0:01,true)</onfocus>
+</control>
+<control type="button" id="12"><!-- last watched reset -->
+	<onclick>noop</onclick>
+	<onfocus>SetProperty(Progresstep,20,home)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode0TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode1TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode2TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode3TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode4TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode5TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode6TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode7TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode8TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode9TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode10TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode11TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode12TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode13TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode14TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode15TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode16TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode17TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode18TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode19TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode20TvShow)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode0Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode1Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode2Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode3Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode4Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode5Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode6Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode7Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode8Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode9Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode10Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode11Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode12Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode13Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode14Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode15Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode16Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode17Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode18Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode19Season)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode20Season)</onfocus>
+	<onfocus>AlarmClock(nextsteploader,SetFocus(13),0:01,true)</onfocus>
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="13"><!-- last watched step -->
+	<onclick>noop</onclick>
+	<onfocus>SetProperty(Progresstep,40,home)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode0Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode1Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode2Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode3Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode4Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode5Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode6Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode7Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode8Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode9Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode10Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode11Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode12Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode13Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode14Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode15Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode16Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode17Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode18Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode19Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode20Episode)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode0Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode1Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode2Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode3Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode4Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode5Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode6Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode7Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode8Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode9Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode10Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode11Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode12Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode13Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode14Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode15Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode16Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode17Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode18Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode19Date)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.reset(LastwatchedEpisode20Date)</onfocus>
+	<onfocus>AlarmClock(nextsteploader,SetFocus(14),0:01,true)</onfocus>
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="14"><!-- last watched stringset tvshow -->
+	<onfocus>SetProperty(Progresstep,60,home)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode0TvShow,$INFO[Container(6002).ListItemNoWrap.TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode1TvShow,$INFO[Container(6002).ListItemNoWrap(1).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode2TvShow,$INFO[Container(6002).ListItemNoWrap(2).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode3TvShow,$INFO[Container(6002).ListItemNoWrap(3).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode4TvShow,$INFO[Container(6002).ListItemNoWrap(4).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode5TvShow,$INFO[Container(6002).ListItemNoWrap(5).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode6TvShow,$INFO[Container(6002).ListItemNoWrap(6).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode7TvShow,$INFO[Container(6002).ListItemNoWrap(7).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode8TvShow,$INFO[Container(6002).ListItemNoWrap(8).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode9TvShow,$INFO[Container(6002).ListItemNoWrap(9).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode10TvShow,$INFO[Container(6002).ListItemNoWrap(10).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode11TvShow,$INFO[Container(6002).ListItemNoWrap(11).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode12TvShow,$INFO[Container(6002).ListItemNoWrap(12).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode13TvShow,$INFO[Container(6002).ListItemNoWrap(13).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode14TvShow,$INFO[Container(6002).ListItemNoWrap(14).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode15TvShow,$INFO[Container(6002).ListItemNoWrap(15).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode16TvShow,$INFO[Container(6002).ListItemNoWrap(16).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode17TvShow,$INFO[Container(6002).ListItemNoWrap(17).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode18TvShow,$INFO[Container(6002).ListItemNoWrap(18).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode19TvShow,$INFO[Container(6002).ListItemNoWrap(19).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode20TvShow,$INFO[Container(6002).ListItemNoWrap(20).TVShowTitle])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode0Season,$INFO[Container(6002).ListItemNoWrap.Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode1Season,$INFO[Container(6002).ListItemNoWrap(1).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode2Season,$INFO[Container(6002).ListItemNoWrap(2).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode3Season,$INFO[Container(6002).ListItemNoWrap(3).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode4Season,$INFO[Container(6002).ListItemNoWrap(4).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode5Season,$INFO[Container(6002).ListItemNoWrap(5).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode6Season,$INFO[Container(6002).ListItemNoWrap(6).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode7Season,$INFO[Container(6002).ListItemNoWrap(7).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode8Season,$INFO[Container(6002).ListItemNoWrap(8).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode9Season,$INFO[Container(6002).ListItemNoWrap(9).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode10Season,$INFO[Container(6002).ListItemNoWrap(10).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode11Season,$INFO[Container(6002).ListItemNoWrap(11).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode12Season,$INFO[Container(6002).ListItemNoWrap(12).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode13Season,$INFO[Container(6002).ListItemNoWrap(13).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode14Season,$INFO[Container(6002).ListItemNoWrap(14).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode15Season,$INFO[Container(6002).ListItemNoWrap(15).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode16Season,$INFO[Container(6002).ListItemNoWrap(16).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode17Season,$INFO[Container(6002).ListItemNoWrap(17).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode18Season,$INFO[Container(6002).ListItemNoWrap(18).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode19Season,$INFO[Container(6002).ListItemNoWrap(19).Season])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode20Season,$INFO[Container(6002).ListItemNoWrap(20).Season])</onfocus>
+	<onfocus>AlarmClock(nextsteploader,SetFocus(15),0:01,true)</onfocus>
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="15"><!-- last watched stringset tvshow2 -->
+	<onfocus>SetProperty(Progresstep,80,home)</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode0Episode,$INFO[Container(6002).ListItemNoWrap.Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode1Episode,$INFO[Container(6002).ListItemNoWrap(1).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode2Episode,$INFO[Container(6002).ListItemNoWrap(2).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode3Episode,$INFO[Container(6002).ListItemNoWrap(3).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode4Episode,$INFO[Container(6002).ListItemNoWrap(4).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode5Episode,$INFO[Container(6002).ListItemNoWrap(5).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode6Episode,$INFO[Container(6002).ListItemNoWrap(6).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode7Episode,$INFO[Container(6002).ListItemNoWrap(7).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode8Episode,$INFO[Container(6002).ListItemNoWrap(8).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode9Episode,$INFO[Container(6002).ListItemNoWrap(9).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode10Episode,$INFO[Container(6002).ListItemNoWrap(10).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode11Episode,$INFO[Container(6002).ListItemNoWrap(11).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode12Episode,$INFO[Container(6002).ListItemNoWrap(12).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode13Episode,$INFO[Container(6002).ListItemNoWrap(13).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode14Episode,$INFO[Container(6002).ListItemNoWrap(14).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode15Episode,$INFO[Container(6002).ListItemNoWrap(15).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode16Episode,$INFO[Container(6002).ListItemNoWrap(16).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode17Episode,$INFO[Container(6002).ListItemNoWrap(17).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode18Episode,$INFO[Container(6002).ListItemNoWrap(18).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode19Episode,$INFO[Container(6002).ListItemNoWrap(19).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode20Episode,$INFO[Container(6002).ListItemNoWrap(20).Episode])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode0Date,$INFO[Container(6002).ListItemNoWrap.LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode1Date,$INFO[Container(6002).ListItemNoWrap(1).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode2Date,$INFO[Container(6002).ListItemNoWrap(2).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode3Date,$INFO[Container(6002).ListItemNoWrap(3).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode4Date,$INFO[Container(6002).ListItemNoWrap(4).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode5Date,$INFO[Container(6002).ListItemNoWrap(5).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode6Date,$INFO[Container(6002).ListItemNoWrap(6).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode7Date,$INFO[Container(6002).ListItemNoWrap(7).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode8Date,$INFO[Container(6002).ListItemNoWrap(8).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode9Date,$INFO[Container(6002).ListItemNoWrap(9).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode10Date,$INFO[Container(6002).ListItemNoWrap(10).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode11Date,$INFO[Container(6002).ListItemNoWrap(11).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode12Date,$INFO[Container(6002).ListItemNoWrap(12).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode13Date,$INFO[Container(6002).ListItemNoWrap(13).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode14Date,$INFO[Container(6002).ListItemNoWrap(14).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode15Date,$INFO[Container(6002).ListItemNoWrap(15).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode16Date,$INFO[Container(6002).ListItemNoWrap(16).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode17Date,$INFO[Container(6002).ListItemNoWrap(17).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode18Date,$INFO[Container(6002).ListItemNoWrap(18).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode19Date,$INFO[Container(6002).ListItemNoWrap(19).LastPlayed])</onfocus>
+	<onfocus condition="!Skin.HasSetting(DisableLastwatchedHistory)">Skin.SetString(LastwatchedEpisode20Date,$INFO[Container(6002).ListItemNoWrap(20).LastPlayed])</onfocus>
+	<onfocus>AlarmClock(nextsteploader,SetFocus(16),0:01,true)</onfocus>
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="16">
+	<description>trigger</description>
+	<include>Hiddencontrol</include>
+	<onfocus>SetProperty(Progresstep,100,home)</onfocus>
+	<onfocus>AlarmClock(nextsteploader,SetFocus(20),0:01,true)</onfocus>
+</control>
+<control type="button" id="20">
+	<description>trigger</description>
+	<include>Hiddencontrol</include>
+	<onfocus>SetProperty(Progresstep,100,home)</onfocus>
+	<onfocus>ReplaceWindow($INFO[System.StartupWindow])</onfocus>
+</control>
+<control type="button" id="33">
+	<description>trigger</description>
+	<width>1280</width>
+	<height>720</height>
+	<label>-</label>
+	<texturenofocus>-</texturenofocus>
+	<texturefocus>-</texturefocus>
+	<onup>ReplaceWindow($INFO[System.StartupWindow])</onup>
+	<ondown>ReplaceWindow($INFO[System.StartupWindow])</ondown>
+	<onleft>ReplaceWindow($INFO[System.StartupWindow])</onleft>
+	<onright>ReplaceWindow($INFO[System.StartupWindow])</onright>
+	<onfocus>ReplaceWindow($INFO[System.StartupWindow])</onfocus>
+	<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
+</control>
+<control type="group"><!-- progress kreis -->
+	<left>565</left>
+	<top>380</top>
+	<width>150</width>
+	<height>100</height>
+	<animation delay="300" effect="fade" time="200">Visible</animation>
+	<animation effect="fade" delay="200" time="150">Hidden</animation>
+	<control type="label">
+		<width>150</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>TextColor3</textcolor>
+		<font>startup-progressicon</font>
+		<label>Ņ</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label">
+		<width>150</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>startup-progressicon</font>
+		<label>$VAR[value_playerprogressicon]</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label">
+		<width>150</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>startup-progressicon</font>
+		<label>$VAR[value_playerprogressinlay]</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+</control>
+ <control type="image"><!-- logo text -->
+	<left>555</left>
+	<top>420</top>
+	<width>170</width>
+	<height>170</height>
+	<texture colordiffuse="TextColor1">logo_flex_text.png</texture>
+	<animation effect="fade" start="0" end="100" time="300" delay="300" easing="out" tween="sine">WindowOpen</animation>
+ </control>
+<control type="textbox">
+	<description>Subtitel</description>
+	<left>40</left>
+	<top>560</top>
+	<width>1200</width>
+	<include>PlotNormal132</include>
+	<align>center</align>
+	<label>[CR]...$LOCALIZE[31276]...[CR]$INFO[Window(home).Property(Progresstep),,%]</label>
+</control>
+</controls>
+</window>

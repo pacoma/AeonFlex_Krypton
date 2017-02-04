@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol always="true">55</defaultcontrol>
+<menucontrol>8999</menucontrol>
+<views>50,51,52,53,54,55,56,57,58,60,64,65,66</views>
+<onload condition="container.content(movies) + Window.Previous(fullscreenvideo)">AlarmClock(Delayload,ReloadSkin(),00:01,true)</onload>
+<onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
+<onload>SetProperty(RefreshList3,1,Home)</onload><!-- last watched refresh -->
+<!--<onload condition="String.IsEmpty(Container.Viewmode)">SetFocus(8889)</onload> verhindert teils den focus auf views???
+Fallback Focus meldung view fehlt 
+<onload condition="String.Contains(Container.FolderPath,plugin)">Container.SetViewMode(55)</onload>
+<onload condition="String.IsEqual(Container.Viewmode,root)">SetFocus(55)</onload>-->
+<onload>ClearProperty(ViewtypepreviewVisible,home)</onload><!-- visibles bei Ansicht einstellen -->
+<onload>ClearProperty(Viewtypepreview,home)</onload><!-- visibles bei Ansicht einstellen -->
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<include>menucontrol</include>
+	<include>viewglobal_video_hiddencontrols</include><!-- HiddenLabels -->
+	<control type="button" id="3">
+		<description>Sort by button</description>
+		<include>Hiddencontrol</include>
+		<visible>Control.IsEnabled(3)</visible>
+	</control>
+	<include>CommonBackground</include>
+	<include>CommonBackgroundFanart</include>
+	<control type="group">
+		<include>animation_window</include>
+		<control type="group"><!-- Poster/Bannerinfo/Landscape titel -->
+			<visible>[Control.IsVisible(53) | Control.IsVisible(58) + !Skin.HasSetting(noWalllist) | Control.IsVisible(60) | Control.IsVisible(64) | Control.IsVisible(52) + !Skin.HasSetting(GenreTextlabelOverlay)]</visible>
+			<include>global_toptitle</include>
+		</control>
+		<include>global_toptitle_View65Sets</include><!-- setview titel -->
+		<include>global_toptitle_View57Category</include><!-- categoryview titel -->
+		<control type="group"><!-- Flagbar -->
+			<description>Flagbar hintergrund</description>
+			<top>30</top>
+			<control type="image"><!-- List Diffuse Background -->
+				<description>List Diffuse Background view 50</description>
+				<left>800</left>
+				<top>-30</top>
+				<width>480</width>
+				<height>750</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+				<visible>Control.IsVisible(50) | Control.IsVisible(55)</visible>
+			</control>
+			<control type="image">
+				<description>Flagbar hintergrund</description>
+				<top>510</top>
+				<width>1685</width>
+				<height>180</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACFloorColor</colordiffuse>
+				<visible>!Control.IsVisible(65) + !Control.IsVisible(57)</visible>
+			</control>
+		</control>
+		<control type="group"><!-- Views -->
+			<top>30</top>
+			<visible>$EXP[HasNoInfoDialog]</visible>
+			<include>View55Root</include><!-- basic view -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.IsEmpty(Skin.String(PLS_FilmViewtype)) | String.IsEmpty(Skin.String(FilmViewtype)) | String.IsEmpty(Skin.String(TVViewtype)) | String.IsEmpty(Skin.String(PLS_TVViewtype)) | String.IsEmpty(Skin.String(EpisodeViewtype)) | String.IsEmpty(Skin.String(PLS_EpisodeViewtype)) | String.IsEmpty(Skin.String(StaffelViewtype)) | String.IsEmpty(Skin.String(SetViewtype)) | String.IsEmpty(Skin.String(GenreViewtype)) | String.IsEmpty(Skin.String(AlbumViewtype)) | String.IsEmpty(Skin.String(ArtistViewtype)) | String.IsEmpty(Skin.String(SongViewtype))] | Skin.HasSetting(enableviewchange)">View50RootView</include><!-- default list view -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.IsEqual(Skin.String(PLS_FilmViewtype),Lowlist) | String.IsEqual(Skin.String(FilmViewtype),Lowlist) | String.IsEqual(Skin.String(TVViewtype),Lowlist) | String.IsEqual(Skin.String(PLS_TVViewtype),Lowlist) | String.IsEqual(Skin.String(EpisodeViewtype),Lowlist) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),Lowlist) | String.IsEqual(Skin.String(StaffelViewtype),Lowlist) | String.IsEqual(Skin.String(SetViewtype),Lowlist) | String.IsEqual(Skin.String(GenreViewtype),Lowlist)] | Skin.HasSetting(enableviewchange)">View51LowList_video</include><!-- Lowlist rootview addons -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + String.Contains(Skin.String(GenreViewtype),GenreBanner) | Skin.HasSetting(enableviewchange)" >View52GenreBanner_video</include><!-- Bannergenre -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),BannerInfo) | String.Contains(Skin.String(FilmViewtype),BannerInfo) | String.Contains(Skin.String(TVViewtype),BannerInfo) | String.Contains(Skin.String(PLS_TVViewtype),BannerInfo) | String.Contains(Skin.String(SetViewtype),BannerInfo) | String.Contains(Skin.String(GenreViewtype),BannerInfo) | String.Contains(Skin.String(StaffelViewtype),BannerInfo)] | Skin.HasSetting(enableviewchange)" >View53BannerInfo_video</include><!-- Bannerinfo -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),ExtendedList) | String.Contains(Skin.String(FilmViewtype),ExtendedList) | String.Contains(Skin.String(TVViewtype),ExtendedList) | String.Contains(Skin.String(PLS_TVViewtype),ExtendedList) | String.Contains(Skin.String(EpisodeViewtype),ExtendedList) | String.Contains(Skin.String(PLS_EpisodeViewtype),ExtendedList) | String.Contains(Skin.String(SetViewtype),ExtendedList) | String.Contains(Skin.String(StaffelViewtype),ExtendedList)] | Skin.HasSetting(enableviewchange)" >View54ExtendedList_video</include><!-- Exdended List -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),Rightlist) | String.Contains(Skin.String(FilmViewtype),Rightlist) | String.Contains(Skin.String(TVViewtype),Rightlist) | String.Contains(Skin.String(PLS_TVViewtype),Rightlist) | String.Contains(Skin.String(EpisodeViewtype),Rightlist) | String.Contains(Skin.String(PLS_EpisodeViewtype),Rightlist) | String.Contains(Skin.String(StaffelViewtype),Rightlist) | String.Contains(Skin.String(SetViewtype),Rightlist) | String.Contains(Skin.String(GenreViewtype),Rightlist)] | Skin.HasSetting(enableviewchange)" >view56RightList_video</include><!-- rightlist -->
+			<include>View57Category_video</include><!-- Categorylist -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),Wall) | String.Contains(Skin.String(FilmViewtype),Wall) | String.Contains(Skin.String(TVViewtype),Wall) | String.Contains(Skin.String(PLS_TVViewtype),Wall) | String.Contains(Skin.String(GenreViewtype),Wall) | String.Contains(Skin.String(SetViewtype),Wall)] | Skin.HasSetting(enableviewchange)" >view58Wall_video</include><!-- rightlist -->
+			
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),Poster) | String.Contains(Skin.String(FilmViewtype),Poster) | String.Contains(Skin.String(TVViewtype),Poster) | String.Contains(Skin.String(PLS_TVViewtype),Poster) | String.Contains(Skin.String(SetViewtype),Poster) | String.Contains(Skin.String(GenreViewtype),Poster) | String.Contains(Skin.String(StaffelViewtype),Poster)] | Skin.HasSetting(enableviewchange)" >View60Poster_video</include><!-- Poster -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),LandScapeX) | String.Contains(Skin.String(FilmViewtype),LandScapeX) | String.Contains(Skin.String(TVViewtype),LandScapeX) | String.Contains(Skin.String(PLS_TVViewtype),LandScapeX) | String.Contains(Skin.String(EpisodeViewtype),LandScapeX) | String.Contains(Skin.String(PLS_EpisodeViewtype),LandScapeX) | String.Contains(Skin.String(StaffelViewtype),LandScapeX) | String.Contains(Skin.String(SetViewtype),LandScapeX) | String.Contains(Skin.String(GenreViewtype),LandScapeX)] | Skin.HasSetting(enableviewchange)" >View64LandScapeX_video</include><!-- Landscape -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + String.Contains(Skin.String(SetViewtype),Sets) | Skin.HasSetting(enableviewchange)" >View65Sets_video</include><!-- Sets -->
+			<include condition="!String.Contains(Container.FolderPath,plugin) + [String.Contains(Skin.String(PLS_FilmViewtype),Simplelist) | String.Contains(Skin.String(FilmViewtype),Simplelist) | String.Contains(Skin.String(TVViewtype),Simplelist) | String.Contains(Skin.String(PLS_TVViewtype),Simplelist) | String.Contains(Skin.String(SetViewtype),Simplelist) | String.Contains(Skin.String(StaffelViewtype),Simplelist)] | Skin.HasSetting(enableviewchange)">View66SimpleList_video</include><!-- SimpleList -->
+		</control>
+		<control type="group"><!-- Language/Subtitle Language -->
+			<description>Sprachen und Untertitelflags</description>
+			<animation effect="slide" end="-980,0" time="0" condition="Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(56)">Conditional</animation>
+			<include>animation_viewtype_preview_fade</include>
+			<visible>!ListItem.IsParentFolder + !Window.IsActive(Custom_1113_Settings_Dialogs.xml)</visible>
+			<visible>$EXP[HasNoInfoDialog]</visible>
+			<visible>$EXP[HasNotDialogPopup]</visible>
+			<left>1020</left>
+			<top>50</top>
+			<include>viewglobal_video_languages</include>
+		</control>
+		<control type="group"><!-- Flags -->
+			<description>Flags</description>
+			<top>30</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<visible>!ListItem.IsCollection + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+			<animation effect="slide" end="25,0" time="0" condition="Control.IsVisible(51) | Control.IsVisible(60) | Control.IsVisible(56)">Conditional</animation>
+			<control type="image">
+				<left>-30</left>
+				<top>650</top>
+				<height>42</height>
+				<width>1685</width>
+				<texture>backgrounds/background-smalloverlay.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="grouplist">
+				<left>40</left>
+				<top>645</top>
+				<orientation>horizontal</orientation>
+				<itemgap>22</itemgap>
+				<include>global_flagbar</include>
+			</control>
+		</control>
+		<include>viewglobal_sortletter</include><!-- Scrolllabel -->
+	</control>
+	<control type="group" id="8888"><!-- Menue -->
+		<include>animation_videomenuepositions</include>
+		<control type="group"><!-- ebene1 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten bis 3 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height3</height>
+				<visible>Integer.IsLessOrEqual(Container(9000).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 3 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height3</height>
+				<visible>Integer.IsLessOrEqual(Container(9000).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>schatten bis 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9000).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9000).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten bis 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9000).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9000).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 7 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 7 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 8 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 8 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31395]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9000"><!-- 5-10 -->
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>ClearProperty(Viewtypepreview,home)</onleft><!-- close and back -->
+				<onleft>SetFocus(50)</onleft><!-- close and back -->
+				<onright>ClearProperty(Viewtypepreview,home)</onright><!-- close and back -->
+				<onright>SetFocus(50)</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<onback>ClearProperty(Viewtypepreview,home)</onback><!-- close and back -->
+				<onback>50</onback>
+				<itemgap>0</itemgap>
+				<control type="radiobutton" id="14">
+					<description>Watched Toggle</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[20367]</label>
+					<visible>Control.IsEnabled(14) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)]</visible>
+				</control>
+				<control type="button" id="32">
+					<description>Ansicht</description>
+					<onclick>SetProperty(Viewtypepreview,on,home)</onclick>
+					<onclick>SetFocus(90321)</onclick>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[457]</label>
+					<visible>!String.Contains(Container.FolderPath,plugin) + Skin.HasSetting(enableviewchange) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(genres)]</visible>
+				</control>
+				<control type="button" id="203">
+					<font>SemiNormal</font>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31303]</label>
+					<onclick>SetFocus(9001)</onclick>
+				</control>
+				<control type="button" id="1209">
+					<font>SemiNormal</font>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[10004]</label>
+					<onclick>SetFocus(9002)</onclick>
+				</control>
+				<control type="button" id="233">
+					<description>Sort by button</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31003]: $INFO[Container.SortMethod]</label>
+					<onclick>Container.NextSortMethod</onclick>
+					<visible>Control.IsEnabled(3)</visible>
+				</control>
+				<control type="togglebutton" id="4">
+					<description>Sort asc</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31005]</label>
+					<altlabel>$LOCALIZE[31004]</altlabel>
+					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+					<visible>Control.IsEnabled(4)</visible>
+				</control>
+				<control type="button" id="8">
+					<description>Search</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[137]</label>
+					<visible>Control.IsEnabled(8)</visible>
+				</control>
+				<control type="button" id="1238">
+					<description>Search</description>
+					<include>dialog_buttonneu</include>
+					<label>Globale Search</label>
+					<onclick condition="Skin.HasSetting(globalsearchmode) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]">RunScript(script.globalsearch,tvshows=true)</onclick>
+					<onclick condition="Skin.HasSetting(globalsearchmode) + Container.Content(movies)">RunScript(script.globalsearch,movies=true)</onclick>
+					<onclick condition="!Skin.HasSetting(globalsearchmode)">RunScript(script.globalsearch)</onclick>
+					<visible>System.HasAddon(script.globalsearch)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- ebene2 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9001).HasFocus + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten bis 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>Integer.IsLessOrEqual(Container(9001).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>Integer.IsLessOrEqual(Container(9001).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9001).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9001).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9001).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9001).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 7 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9001).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 7 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9001).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 8 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9001).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 8 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9001).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31303]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9001"><!-- 4-7 -->
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>SetFocus(9000)</onleft>
+				<onright>SetFocus(9000)</onright>
+				<onup>9001</onup>
+				<ondown>9001</ondown>
+				<onback>SetFocus(9000)</onback>
+				<itemgap>0</itemgap>
+				<control type="edit" id="19">
+					<description>Filter</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[587]</label>
+					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+				</control>
+				<control type="radiobutton" id="98">
+					<description>Filter</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[587]</label>
+					<selected>Container.Filtered</selected>
+					<onclick>right</onclick>
+					<onclick>Filter</onclick>
+					<visible>Container.CanFilterAdvanced</visible>
+				</control>
+				<control type="radiobutton" id="11">
+					<description>Unlock Shares</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[20336]</label>
+					<onclick>mastermode</onclick>
+					<selected>system.ismaster</selected>
+					<visible>system.haslocks</visible>
+				</control>
+				<control type="togglebutton" id="20">
+					<description>Update library</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[653]</label>
+					<altlabel>$LOCALIZE[13353]</altlabel>
+					<usealttexture>library.isscanningvideo</usealttexture>
+					<visible>Control.IsEnabled(20) + [Library.HasContent(Movies) | Library.HasContent(TVShows)]</visible>
+				</control>
+				<control type="button" id="204">
+					<description>Clean library</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[334]</label>
+					<onclick>CleanLibrary(video)</onclick>
+					<visible>Library.HasContent(Movies) | Library.HasContent(TVShows)</visible>
+				</control>
+				<control type="button" id="208">
+					<description>Export library</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[14248]</label>
+					<onclick>exportlibrary(video,true,thumbs,overwrite,actorthumbs)</onclick>
+					<visible>Library.HasContent(Movies) | Library.HasContent(TVShows)</visible>
+				</control>
+				<control type="button" id="209">
+					<description>Artworkorganizer</description>
+					<include>dialog_buttonneu</include>
+					<label>Artworkorganizer</label>
+					<onclick>RunScript(script.artworkorganizer)</onclick>
+					<visible>Library.HasContent(Movies)</visible>
+					<visible>System.HasAddon(script.artworkorganizer) + [Container.Content(sets) | Container.Content(movies)]</visible>
+				</control>
+				<control type="button" id="219">
+					<description>history</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31013]</label>
+					<onclick>ActivateWindow(startup)</onclick>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- ebene3 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9002).HasFocus + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten 3 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height3</height>
+			</control>
+			<control type="image">
+				<description>hintergrund 3 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height3</height>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[10004]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9002">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>SetFocus(9000)</onleft>
+				<onright>SetFocus(9000)</onright>
+				<onup>9002</onup>
+				<ondown>9002</ondown>
+				<onback>SetFocus(9000)</onback>
+				<itemgap>0</itemgap>
+				<control type="radiobutton" id="90021">
+					<description>Ansichts auswahl und einstellung an/aus</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31299]</label>
+					<onclick>Skin.ToggleSetting(enableviewchange)</onclick>
+					<onclick>ReloadSkin()</onclick>
+					<selected>Skin.HasSetting(enableviewchange)</selected>
+					<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(genres)]</visible>
+				</control>
+				<control type="button" id="90022">
+					<description>Ansicht einstellen</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31302]</label>
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31220])">SetProperty(SettingsCategory,ViewLowList,1113)</onclick><!-- View51LowList -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31225])">SetProperty(SettingsCategory,ViewGenreBanner,1113)</onclick><!-- View52GenreBanner -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31226])">SetProperty(SettingsCategory,ViewBannerInfo,1113)</onclick><!-- View53BannerInfo -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31228])">SetProperty(SettingsCategory,ViewExtendedList,1113)</onclick><!-- View54ExtendedList -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31222])">SetProperty(SettingsCategory,ViewRightlist,1113)</onclick><!-- View56Rightlist -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31224])">SetProperty(SettingsCategory,ViewCategory,1113)</onclick><!-- View57Category -->
+					<onclick condition="String.IsEqual(Container.Viewmode,Wall)">SetProperty(SettingsCategory,ViewWall,1113)</onclick><!-- View58Wall -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31223])">SetProperty(SettingsCategory,ViewPoster,1113)</onclick><!-- View60Poster -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31227])">SetProperty(SettingsCategory,ViewLandScapeX,1113)</onclick><!-- View64LandScapeX -->
+					<onclick condition="String.IsEqual(Container.Viewmode,Sets)">SetProperty(SettingsCategory,ViewSets,1113)</onclick><!-- View65Sets -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31221])">SetProperty(SettingsCategory,ViewSimpleList,1113)</onclick><!-- View66SimpleList -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31220])">SetProperty(ViewtypepreviewVisible,on,home)</onclick><!-- viewsetting zoom LowList -->
+					<onclick condition="String.IsEqual(Container.Viewmode,$LOCALIZE[31228])">SetProperty(ViewtypepreviewVisible,on,home)</onclick><!-- viewsetting zoom ExtendedList -->
+					<onclick>ActivateWindow(1113)</onclick>
+					<visible>Skin.HasSetting(enableviewchange) + !Control.IsVisible(50) + !String.Contains(Container.FolderPath,plugin)</visible>
+					<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Container.Content(tags) | String.IsEqual(Container.Viewmode,$LOCALIZE[31224]) | String.IsEqual(Container.Viewmode,$LOCALIZE[31225])]</visible><!-- + Kategorien Ansicht und Videogenre Banner -->
+				</control>
+				<control type="radiobutton" id="90023">
+					<description>Trailer Fenster/Vollbild</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31304]</label>
+					<onclick>Skin.ToggleSetting(fullscreentrailer)</onclick>
+					<selected>Skin.HasSetting(fullscreentrailer)</selected>
+				</control>
+			</control>
+		</control>
+	</control>
+	<include condition="!Skin.HasSetting(ModernHome)">classic_trailerwindow</include><!-- Trailer -->
+	<include condition="Skin.HasSetting(ModernHome)">modern_trailerwindow</include>
+	<include>viewglobal_viewselectionerror</include><!-- fallbackinfo nonview -->
+	<include>viewglobal_viewtypeselection</include><!-- Viewsettings -->
+	<include>global_topbar_multidata</include><!-- Topinfo $VAR[art_value_landscape]-->
+</controls>
+</window>

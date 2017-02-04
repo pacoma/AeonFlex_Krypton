@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="animation_cdart">
+		<animation effect="rotate" end="-360" center="auto" time="8000" loop="true" reversible="false" condition="true">Conditional</animation>
+	</include>
+	
+	<include name="animation_viewsettingvisible">
+		<animation effect="fade" start="50" end="100" time="700">Visible</animation>
+	</include>
+	
+	
+	<include name="animation_topinfopopup">
+		<animation effect="slide" start="0,-350" end="0,0" time="300" delay="700" easing="out" tween="sine" reversible="false">WindowOpen</animation>
+		<animation effect="slide" start="0,0" end="0,-350" time="200" easing="in" tween="sine" reversible="false">WindowClose</animation>
+		<animation effect="slide" start="0,-350" end="0,0" time="300" delay="700" easing="out" tween="sine" reversible="false">Visible</animation>
+		<animation effect="slide" start="0,0" end="0,-350" time="200" easing="in" tween="sine" reversible="false">Hidden</animation>
+	</include>
+	
+	<include name="animation_topinfopopup2">
+		<animation effect="slide" start="0,0" end="0,488" time="300" delay="700" easing="out" tween="sine" reversible="true">Visible</animation>
+		<animation effect="slide" start="0,488" end="0,0" time="200" easing="in" tween="sine" reversible="true">Hidden</animation>
+	</include>
+	
+	<include name="animation_bottominfopopup">
+		<animation effect="slide" start="0,382" end="0,0" time="300" delay="700" easing="out" tween="sine">WindowOpen</animation>
+		<animation effect="slide" start="0,0" end="0,382" time="200" easing="in" tween="sine">WindowClose</animation>
+		<animation effect="slide" start="0,382" end="0,0" time="300" delay="700" easing="out" tween="sine">Visible</animation>
+		<animation effect="slide" start="0,0" end="0,382" time="200" easing="in" tween="sine">Hidden</animation>
+	</include>
+
+
+	
+	<include name="animation_dimmer">
+		<animation effect="fade" time="200" start="100" end="0">Focus</animation>
+		<animation effect="fade" time="200" start="0" end="100">UnFocus</animation>
+	</include>
+
+
+	<include name="animation_home_fade">
+		<animation effect="fade" start="0" end="100" time="400" delay="600">WindowOpen</animation>
+		<animation effect="fade" start="0" end="100" time="400" delay="400">Visible</animation>
+		<animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+	</include>
+
+	<include name="animation_home_fadeinout">
+		<animation effect="fade" start="0" end="100" time="500" delay="1000" condition="Window.Previous(Startup)">WindowOpen</animation>
+		<animation effect="fade" start="0" end="100" time="500" delay="100" condition="!Window.Previous(Startup)">WindowOpen</animation>
+		<animation effect="fade" time="200">WindowClose</animation>
+		<animation effect="fade" start="0" end="100" time="500" delay="100" tween="cubic" easing="inout">Visible</animation>
+		<animation effect="fade" start="100" end="0" time="200" tween="cubic" easing="inout">Hidden</animation>
+	</include>
+	
+	<!-- Hide View on Info Animation -->
+	<include name="animation_hiddenview">
+		<animation effect="slide" start="0,0" end="0,800" time="400" tween="cubic" easing="in" condition="!Control.IsVisible(66) + [Window.IsActive(Custom_1123_PVRSwitchTimer.xml) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting) | Window.IsVisible(pictureinfo) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(movieinformation) | Window.IsVisible(AddonInformation) | Window.IsActive(selectdialog) | Window.IsVisible(virtualkeyboard) | Window.IsVisible(numericinput) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-globalsearch-main.xml) | Window.IsVisible(Custom_1121_Pinboard.xml) | Window.IsVisible(Custom_1125_Info.xml) | Window.IsVisible(Custom_1122_PVR_Quicknav.xml) | Control.HasFocus(9930) + Player.HasVideo + !Skin.HasSetting(fullscreentrailer)]">Conditional</animation>
+		
+		<animation type="Conditional" condition="Control.IsVisible(66) + [Window.IsActive(Custom_1123_PVRSwitchTimer.xml) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting) | Window.IsVisible(pictureinfo) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(movieinformation) | Window.IsVisible(AddonInformation) | Window.IsActive(selectdialog) | Window.IsVisible(virtualkeyboard) | Window.IsVisible(numericinput) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-globalsearch-main.xml) | Window.IsVisible(Custom_1121_Pinboard.xml) | Window.IsVisible(Custom_1125_Info.xml) | Window.IsVisible(Custom_1122_PVR_Quicknav.xml) | Control.HasFocus(9930) + Player.HasVideo + !Skin.HasSetting(fullscreentrailer)]">
+			<effect type="slide" start="0,0" end="-900,0" time="400" tween="cubic" easing="in" />
+			<effect type="fade" start="100" end="0" time="300"/>
+		</animation>
+	</include>
+	
+
+	
+	<include name="animation_videomenuepositions">
+		<animation effect="fade" end="100" time="0" condition="ControlGroup(8888).HasFocus + String.IsEmpty(Window(home).Property(ViewtypepreviewVisible)) + !Window.IsVisible(Custom_1120_Quicknavmenue.xml) + !Window.IsVisible(Custom_1113_Settings_Dialogs.xml)">Conditional</animation>
+		<animation effect="slide" end="370,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(55)">Conditional</animation><!-- View55root -->
+		<animation effect="slide" end="370,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(50)">Conditional</animation><!-- View50 -->
+		<animation effect="slide" end="530,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(51)">Conditional</animation><!-- View51LowList -->
+		<animation effect="slide" end="430,133" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(52)">Conditional</animation><!-- View52GenreBanner -->
+		<animation effect="slide" end="430,133" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(53)">Conditional</animation><!-- View53BannerInfo -->
+		<animation effect="slide" end="615,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(54)">Conditional</animation><!-- View54ExtendedList -->
+		<animation effect="slide" end="530,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(56)">Conditional</animation><!-- View56Rightlist -->
+		<animation effect="slide" end="175,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(57)">Conditional</animation><!-- View57Category -->
+		<animation effect="slide" end="530,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(58)">Conditional</animation><!-- View58Wall -->
+		<animation effect="slide" end="430,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(60)">Conditional</animation><!-- View60Poster -->
+		<animation effect="slide" end="430,133" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(64)">Conditional</animation><!-- View64LandScapeX -->
+		<animation effect="slide" end="175,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(65)">Conditional</animation><!-- View65Sets -->
+		<animation effect="slide" end="755,150" time="0" condition="String.IsEmpty(Window(home).Property(Viewtypepreview)) + Control.IsVisible(66)">Conditional</animation><!-- View66SimpleList -->
+		<animation effect="slide" end="409,157" time="0" condition="!String.IsEmpty(Window(home).Property(Viewtypepreview))">Conditional</animation><!-- Slidestop - Viewchange -->
+	</include>
+	
+	<include name="animation_vhoc_fade">
+		<animation effect="fade" time="500">WindowOpen</animation>
+		<animation effect="fade" time="200">Visible</animation>
+		<animation effect="fade" time="200">WindowClose</animation>
+		<animation effect="fade" time="200">Hidden</animation>
+	</include>
+
+	<include name="animation_vhc_fade">
+		<animation effect="fade" time="200">Visible</animation>
+		<animation effect="fade" time="200">WindowClose</animation>
+		<animation effect="fade" time="200">Hidden</animation>
+	</include>
+	
+	
+	<include name="animation_home_fanart_fade">
+		<animation effect="fade" start="0" end="100" time="600" tween="sine" easing="out">Visible</animation>
+		<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+		<animation effect="fade" start="100" end="0" time="200" tween="sine" easing="out">Hidden</animation>
+	</include>
+
+	<include name="animation_window">
+		<animation type="WindowOpen" reversible="false">
+			<effect type="zoom" start="150" end="100" time="500" tween="cubic" easing="out" center="640,360" />
+			<effect type="fade" start="0" end="100" time="500"/>
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="200"/>
+			<effect type="zoom" start="100" end="130" time="200" tween="cubic" easing="in" center="640,360"/>
+		</animation>
+		<animation effect="fade" time="350">Visible</animation>
+		<animation effect="fade" time="300">Hidden</animation>
+		<animation effect="slide" start="0,0" end="0,-1000" time="300" condition="Window.IsVisible(playercontrols)">Conditional</animation>
+	</include>
+
+	<include name="animation_osd_vhoc_bottombarslide">
+		<animation effect="slide" time="400" start="0,200" end="0,0" easing="out" tween="cubic">WindowOpen</animation>
+		<animation effect="slide" time="400" start="0,200" end="0,0" easing="out" tween="cubic">Visible</animation>
+		<animation effect="slide" time="400" start="0,0" end="0,200" easing="in" tween="cubic">WindowClose</animation>
+		<animation effect="slide" time="400" start="0,0" end="0,200" easing="in" tween="cubic">Hidden</animation>
+	</include>
+
+	<!-- dialoge -->
+	<include name="animation_topdialog_popup">
+		<animation effect="slide" start="0,-100" end="0" time="500" easing="inout" tween="cubic">WindowOpen</animation>
+		<animation effect="slide" start="0,-100" end="0,0" time="500" easing="inout" tween="cubic">Visible</animation>
+		<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+		<animation effect="slide" start="0,0" end="0,-100" time="300" easing="inout" tween="cubic">Hidden</animation>
+	</include>
+
+	<include name="animation_dialog_popup">
+		<animation type="WindowOpen">
+			<effect type="slide" start="-40,0" end="0,0" time="280" easing="inout" tween="cubic"/>
+			<effect type="fade" start="0" end="100" time="250"/>
+		</animation>
+		<animation type="Visible">
+			<effect type="slide" start="-40,0" end="0,0" delay="280" time="280" easing="inout" tween="cubic"/>
+			<effect type="fade" start="0" end="100" delay="280" time="250"/>
+		</animation>
+		<animation type="WindowClose">
+			<effect type="slide" start="0,0" end="40,0" time="280" easing="inout" tween="cubic"/>
+			<effect type="fade" start="100" end="0" time="250"/>
+		</animation>
+		<animation type="Hidden">
+			<effect type="slide" start="0,0" end="40,0" time="280" easing="inout" tween="cubic"/>
+			<effect type="fade" start="100" end="0" time="250"/>
+		</animation>
+	</include>
+
+	<!-- Vietypeselection -->
+	<include name="animation_viewtype_preview_fade">
+		<animation effect="fade" delay="100" start="100" end="0" time="280" reversible="false" tween="cubic" easing="in" condition="!String.IsEmpty(Window(home).Property(Viewtypepreview))">Conditional</animation>
+	</include>
+
+
+</includes>

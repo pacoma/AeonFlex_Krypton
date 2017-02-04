@@ -1,0 +1,1833 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">9100</defaultcontrol>
+<menucontrol>8999</menucontrol>
+<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mode=single&amp;mainmenuID=9000&amp;group=mainmenu|shutdowndialog)</onunload>
+<!-- addonstatus check -->
+<onunload condition="!System.HasAddon(service.smartish.widgets)">Skin.reset(enable.smartish.widgets)</onunload><!-- smartish.widgets -->
+<onunload condition="System.HasAddon(service.smartish.widgets)">Skin.SetBool(enable.smartish.widgets)</onunload><!-- smartish.widgets -->
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+	<include>menucontrol</include>
+	<include>CommonBackground</include>
+	<control type="group">
+		<visible>![Window.IsVisible(virtualkeyboard) | Window.IsVisible(DialogMediaFilter.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(numericinput) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1120_Quicknavmenue.xml) | Window.IsVisible(selectdialog) |  Window.IsVisible(AddonSettings) | Window.IsActive(PVRChannelManager) | Window.IsActive(script-RSS_Editor-rssEditor.xml) | Window.IsVisible(addonsettings) | Window.IsVisible(script-skinshortcuts.xml) | Window.IsVisible(FileBrowser.xml) | Window.IsVisible(Custom_1118_SettingsLoader.xml)]</visible>
+		<include>animation_window</include>
+		<control type="image"><!-- Middle background -->
+			<description>Hintergrund mitte</description>
+			<left>240</left>
+			<top>60</top>
+			<width>1045</width>
+			<height>660</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="group"><!-- Middle Picture Helptext menue -->
+			<left>318</left>
+			<top>60</top>
+			<visible>Control.HasFocus(9100)</visible>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>910</width>
+				<height>720</height>
+				<include>global_texture_light</include>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<left>910</left>
+				<height>720</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<left>-8</left>
+				<height>720</height>
+				<include>global_texture_border8_leftv</include>
+			</control>
+			<control type="image">
+				<width>910</width>
+				<height>512</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<texture background="true">$INFO[Container(9100).ListItem.Property(EntrySlideshowPath)]</texture>
+			</control>
+		</control>
+		<control type="group"><!-- screensaver clock preview-->
+			<description>Uhr</description>
+			<left>440</left>
+			<top>500</top>
+			<visible>Control.HasFocus(90031) + !String.IsEqual(skin.string(ClockLayout),Progress)</visible>
+			<animation type="Visible" reversible="false">
+				<effect type="fade" start="0" end="100" delay="600" time="1250" tween="cubic" easing="inout" />
+			</animation>
+			<animation type="Hidden" reversible="false">
+				<effect type="fade" start="100" end="0" time="0" tween="cubic" easing="inout" />
+			</animation>
+			<control type="image">
+				<description>Ziffernblatt</description>
+				<width>200</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[ClockZifferncolor]">$VAR[ClockPath]zahlen.png</texture>
+				<align>center</align>
+				<aligny>center</aligny>
+				<animation type="Conditional" condition="true">
+					<effect type="fade" start="0" end="43" time="0" />
+				</animation>
+			</control>
+			<control type="image">
+				<width>200</width>
+				<height>200</height>
+				<texture>$VAR[ClockPath]schrauben.png</texture>
+			</control>
+			<control type="image">
+				<description>Stundenzeiger</description>
+				<width>200</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[ClockZeigercolor]">$VAR[clockSZ]</texture>
+			</control>
+			<control type="image">
+				<description>Minutenzeiger</description>
+				<width>200</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[ClockZeigercolor]">$VAR[clockMZ]</texture>
+			</control>
+			<control type="image">
+				<description>sekundenzeiger</description>
+				<width>200</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[ClockSekundenZeigercolor]">$VAR[clockSCZ]</texture>
+			</control>
+		</control>
+		<control type="group"><!-- screensaver progress preview -->
+			<left>40</left>
+			<top>225</top>
+			<width>1000</width>
+			<height>700</height>
+			<visible>Control.HasFocus(90031) + String.IsEqual(skin.string(ClockLayout),Progress)</visible>
+			<animation type="Visible" reversible="false">
+				<effect type="fade" start="0" end="100" delay="600" time="1250" tween="cubic" easing="inout" />
+			</animation>
+			<animation type="Hidden" reversible="false">
+				<effect type="fade" start="100" end="0" time="0" tween="cubic" easing="inout" />
+			</animation>
+			<control type="label">
+				<width>1000</width>
+				<height>700</height>
+				<align>center</align>
+				<textcolor>TextColor3</textcolor>
+				<font>startup-progressicon</font>
+				<label>Ņ</label>
+				<animation effect="fade" start="30" end="100" time="6000" pulse="true" condition="true">Conditional</animation>
+			</control>
+			<control type="label">
+				<width>1000</width>
+				<height>700</height>
+				<align>center</align>
+				<textcolor>ACSkinColor</textcolor>
+				<font>startup-progressicon</font>
+				<label>$VAR[value_slideshowprogressicon]</label>
+				<animation effect="fade" start="30" end="100" time="6000" pulse="true" condition="true">Conditional</animation>
+			</control>
+			<control type="label">
+				<width>1000</width>
+				<height>700</height>
+				<align>center</align>
+				<textcolor>ACSkinColor</textcolor>
+				<font>startup-progressicon</font>
+				<label>œ</label>
+				<animation effect="fade" start="30" end="100" time="1800" pulse="true" condition="true">Conditional</animation>
+			</control>
+		</control>
+		<control type="grouplist" id="9002"><!-- backgrounds 9002 -->
+			<left>240</left>
+			<top>120</top>
+			<width>1040</width>
+			<height>520</height>
+			<onleft>SetFocus(9100)</onleft>
+			<onright>SetFocus(9100)</onright>
+			<itemgap>7.9</itemgap>
+			<visible allowhiddenfocus="true">ControlGroup(9002).HasFocus</visible>
+			<control type="button" id="90020"><!-- reset -->
+				<label>$LOCALIZE[31285]</label>
+				<onclick>Skin.reset(EnableNowplayingBG)</onclick>
+				<onclick>Skin.reset(AKNScreensaver)</onclick>
+				<onclick>Skin.reset(resource.images.skinbackgrounds.path)</onclick>
+				<onclick>Skin.SetString(Commonbackground.settings,special://skin/extras/windows/setting.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.video,special://skin/extras/windows/video.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.livetv,special://skin/extras/windows/livetv.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.music,special://skin/extras/windows/music.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.favorites,special://skin/extras/windows/favorites.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.pictures,special://skin/extras/windows/pictures.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.addons,special://skin/extras/windows/addons.jpg)</onclick>
+				<onclick>Skin.SetString(Commonbackground.shutdown,special://skin/extras/windows/shutdown.jpg)</onclick>
+				<onclick>SetFocus(9100)</onclick>
+				<onclick>Notification($LOCALIZE[31028]...,$LOCALIZE[31286])</onclick>
+			</control>´
+			<control type="label" id="90022">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>Home</label>
+			</control>
+			<control type="radiobutton" id="90023">
+				<label>$LOCALIZE[31177]</label>
+				<onclick>Skin.ToggleSetting(EnableNowplayingBG)</onclick>
+				<selected>Skin.HasSetting(EnableNowplayingBG)</selected>
+			</control>
+			<control type="label" id="90026">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31181]</label>
+			</control>
+			<control type="button" id="90027">
+				<description>Fenster-Hintergruende</description>
+				<label>$LOCALIZE[31168]</label>
+				<onclick>ActivateWindow(1119)</onclick>
+			</control>
+			<control type="button" id="90028">
+				<description>weathericons</description>
+				<label>$LOCALIZE[31182]</label>
+				<label2>$INFO[Skin.String(resource.images.weathericons.name)]</label2>
+				<onclick>RunScript(script.image.resource.select,type=resource.images.weathericons&amp;property=resource.images.weathericons)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Current.Location)) + System.HasAddon(script.image.resource.select)</visible>
+			</control>
+			<control type="radiobutton" id="90030">
+				<label>$LOCALIZE[31184]</label>
+				<onclick>Skin.ToggleSetting(AKNScreensaver)</onclick>
+				<selected>Skin.HasSetting(AKNScreensaver)</selected>
+			</control>
+			<control type="button" id="90031">
+				<label>Slideshowlayout</label>
+				<label2>$INFO[Skin.String(ClockLayout)]</label2>
+				<onclick>skin.SetString(ClockLayout,Default)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ClockLayout),Default)">skin.setstring(ClockLayout,Retro)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ClockLayout),Retro)">skin.setstring(ClockLayout,Modern)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ClockLayout),Modern)">skin.setstring(ClockLayout,SBB)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ClockLayout),SBB)">skin.setstring(ClockLayout,Progress)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ClockLayout),Progress)">skin.setstring(ClockLayout,Default)</onclick>
+				<visible>Skin.HasSetting(AKNScreensaver)</visible>
+			</control>
+		</control>
+			
+		<control type="grouplist" id="9003"><!-- home 9003 -->
+			<visible allowhiddenfocus="true">ControlGroup(9003).HasFocus</visible>
+			<left>240</left>
+			<top>120</top>
+			<width>1040</width>
+			<height>580</height>
+			<onleft>9100</onleft>
+			<onright>83</onright>
+			<onup>9003</onup>
+			<ondown>9003</ondown>
+			<itemgap>0</itemgap>
+			<pagecontrol>83</pagecontrol>
+			<control type="button" id="9030"><!-- reset -->
+				<label>$LOCALIZE[31285]</label>
+				<colordiffuse>FFDAA520</colordiffuse>
+				<onclick>Skin.reset(nonowplayingpanel)</onclick>
+				<onclick>Skin.reset(nohomecdart)</onclick>
+				<onclick>Skin.reset(nonexttracks)</onclick>
+				<onclick>Skin.reset(nohometime)</onclick>
+				<onclick>Skin.reset(nohometotals)</onclick>
+				<onclick>SetFocus(9100)</onclick>
+				<onclick>Notification($LOCALIZE[31279]...,$LOCALIZE[31280])</onclick>
+			</control>
+			<control type="button" id="9037"><!-- menue anpassen -->
+				<label>$LOCALIZE[31194]</label>
+				<onclick>ActivateWindow(1110)</onclick>
+			</control>
+			<control type="radiobutton" id="9038"><!-- menue layout -->
+				<label>$LOCALIZE[31195]</label>
+				<onclick>SetProperty(MenueProperties,Reload,home)</onclick>
+				<onclick>Skin.ToggleSetting(ModernHome)</onclick>
+				<onclick>ActivateWindow(1118)</onclick>
+				<selected>Skin.HasSetting(ModernHome)</selected>
+			</control>
+			<control type="label" id="9039">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31138]</label>
+			</control>
+			<control type="button" id="9040"><!-- infopanel -->
+				<label>$LOCALIZE[31332]</label>
+				<label2>$INFO[Skin.string(Widgetinfo)]</label2>
+				<onclick condition="String.IsEmpty(Skin.string(Widgetinfo))">Skin.SetString(Widgetinfo,off)</onclick>
+				<onclick condition="String.IsEqual(Skin.string(Widgetinfo),off)">Skin.SetString(Widgetinfo,video)</onclick>
+				<onclick condition="String.IsEqual(Skin.string(Widgetinfo),video)">Skin.SetString(Widgetinfo,music)</onclick>
+				<onclick condition="String.IsEqual(Skin.string(Widgetinfo),music)">Skin.SetString(Widgetinfo,video-music)</onclick>
+				<onclick condition="String.IsEqual(Skin.string(Widgetinfo),video-music)">Skin.SetString(Widgetinfo,off)</onclick>
+			</control>
+			<control type="radiobutton" id="9041"><!-- Nowplaying -->
+				<label>$LOCALIZE[31193]</label>
+				<onclick>Skin.ToggleSetting(nonowplayingpanel)</onclick>
+				<selected>!Skin.HasSetting(nonowplayingpanel)</selected>
+			</control>
+			<control type="radiobutton" id="9042"><!-- CDart -->
+				<label>$LOCALIZE[31165]</label>
+				<onclick>Skin.ToggleSetting(nohomecdart)</onclick>
+				<selected>!Skin.HasSetting(nohomecdart)</selected>
+			</control>
+			<control type="radiobutton" id="9043"><!-- Wetter+Zeit -->
+				<label>$LOCALIZE[31191]</label>
+				<onclick condition="!String.IsEmpty(Weather.Plugin)">Skin.ToggleSetting(nohometime)</onclick>
+				<onclick condition="String.IsEmpty(Weather.Plugin)">Notification($LOCALIZE[31190],$LOCALIZE[31029])</onclick>
+				<selected>!Skin.HasSetting(nohometime)</selected>
+			</control>
+			<control type="radiobutton" id="9044"><!-- Status -->
+				<label>$LOCALIZE[31192]</label>
+				<onclick>Skin.ToggleSetting(nohometotals)</onclick>
+				<selected>!Skin.HasSetting(nohometotals)</selected>
+			</control>
+			<control type="radiobutton" id="9045"><!-- mtaste -->
+				<label>$LOCALIZE[31185]</label>
+				<onclick>Skin.ToggleSetting(nohomewidgetselector)</onclick>
+				<selected>Skin.HasSetting(nohomewidgetselector)</selected>
+			</control>
+		</control>
+
+		<control type="group"><!-- farbe 9004 -->
+			<visible allowhiddenfocus="true">ControlGroup(9004).HasFocus</visible>
+			<control type="grouplist" id="9004">
+				<left>240</left>
+				<top>120</top>
+				<width>1040</width>
+				<height>594</height>
+				<onleft>9100</onleft>
+				<onright>9100</onright>
+				<onup>9004</onup>
+				<ondown>9004</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<control type="button" id="90040"><!-- reset -->
+					<label>$LOCALIZE[31285]</label>
+					<colordiffuse>FFDAA520</colordiffuse>
+					<onclick>Skin.reset(starratingcolor)</onclick>
+					<onclick>Skin.reset(userratingcolor)</onclick>
+					<onclick>Skin.reset(shadowcolor)</onclick>
+					<onclick>Skin.reset(progresscolor)</onclick>
+					<onclick>Skin.reset(customBackgroundOverlay)</onclick>
+				</control>
+				<control type="button" id="90047">
+					<label>Ratingset $INFO[Skin.string(RatingSet)]</label>
+					<onclick>Skin.Setstring(RatingSet,1)</onclick>
+					<onclick condition="String.IsEqual(Skin.string(RatingSet),1)">Skin.Setstring(RatingSet,2)</onclick>
+					<onclick condition="String.IsEqual(Skin.string(RatingSet),2)">Skin.Setstring(RatingSet,3)</onclick>
+					<onclick condition="String.IsEqual(Skin.string(RatingSet),3)">Skin.reset(RatingSet)</onclick>
+				</control>
+				<control type="radiobutton" id="90041">
+					<label>$LOCALIZE[31565]</label>
+					<onclick condition="!String.IsEmpty(Skin.string(customBackgroundOverlay))">Skin.reset(customBackgroundOverlay)</onclick>
+					<onclick condition="String.IsEmpty(Skin.string(customBackgroundOverlay))">Skin.SetFile(customBackgroundOverlay,.png,special://skin/extras/overlays/)</onclick>
+					<selected>!String.IsEmpty(Skin.String(customBackgroundOverlay))</selected>
+				</control>
+				<control type="button" id="90042">
+					<label>$LOCALIZE[31570]</label>
+					<onclick>SetProperty(SettingsCategory,BackgroundColor,1113)</onclick>
+					<onclick>SetProperty(Viewtypepreview,on,home)</onclick>
+					<onclick>SetProperty(ColordialogTitle,$LOCALIZE[31570],skinsettings)</onclick>
+					<onclick>SetProperty(TextcolorString,starratingcolor,skinsettings)</onclick>
+					<onclick>ActivateWindow(1113)</onclick>
+				</control>
+				<control type="button" id="90043">
+					<label>$LOCALIZE[31571]</label>
+					<onclick>SetProperty(SettingsCategory,BackgroundColor,1113)</onclick>
+					<onclick>SetProperty(Viewtypepreview,on,home)</onclick>
+					<onclick>SetProperty(ColordialogTitle,$LOCALIZE[31571],skinsettings)</onclick>
+					<onclick>SetProperty(TextcolorString,userratingcolor,skinsettings)</onclick>
+					<onclick>ActivateWindow(1113)</onclick>
+				</control>
+				<control type="button" id="90045">
+					<label>$LOCALIZE[31573]</label>
+					<onclick>SetProperty(SettingsCategory,BackgroundColor,1113)</onclick>
+					<onclick>SetProperty(Viewtypepreview,on,home)</onclick>
+					<onclick>SetProperty(ColordialogTitle,$LOCALIZE[31573],skinsettings)</onclick>
+					<onclick>SetProperty(TextcolorString,shadowcolor,skinsettings)</onclick>
+					<onclick>ActivateWindow(1113)</onclick>
+				</control>
+				<control type="button" id="90046">
+					<label>$LOCALIZE[31574]</label>
+					<onclick>SetProperty(SettingsCategory,BackgroundColor,1113)</onclick>
+					<onclick>SetProperty(Viewtypepreview,on,home)</onclick>
+					<onclick>SetProperty(ColordialogTitle,$LOCALIZE[31574],skinsettings)</onclick>
+					<onclick>SetProperty(TextcolorString,progresscolor,skinsettings)</onclick>
+					<onclick>ActivateWindow(1113)</onclick>
+				</control>
+			</control>
+			<control type="group">
+				<left>1100</left>
+				<top>230</top>
+				<width>1040</width>
+				<height>594</height>
+				<control type="label">
+					<description>Rating value</description>
+					<width>135</width>
+					<height>30</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<description>Rating value</description>
+					<width>135</width>
+					<height>30</height>
+					<label>$VAR[Star-Rating-Settings-label]</label>
+					<font>Rating</font>
+					<include>Star-Rating-color-layout</include>
+				</control>
+				<control type="label">
+					<description>StarRating value</description>
+					<top>40</top>
+					<width>135</width>
+					<height>30</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<font>Rating</font>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<description>StarRating value</description>
+					<top>40</top>
+					<width>135</width>
+					<height>30</height>
+					<label>$VAR[Star-Rating-Settings-label]</label>
+					<font>Rating</font>
+					<include>Star-UserRating-color-layout</include>
+				</control>
+				<control type="image">
+					<left>8</left>
+					<top>100</top>
+					<width>118</width>
+					<height>20</height>
+					<texture>White.png</texture>
+					<include>skinsetting_colorbutton</include>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<control type="image">
+					<left>8</left>
+					<top>140</top>
+					<width>118</width>
+					<height>20</height>
+					<texture>White.png</texture>
+					<include>skinsetting_colorbutton</include>
+					<colordiffuse>$VAR[AC_value_progresscolor]</colordiffuse>
+				</control>
+			</control>
+		</control>
+
+		<control type="group"><!-- watched flags 9005/9006/9007/9008 -->
+			<visible allowhiddenfocus="true">[ControlGroup(9005).HasFocus | ControlGroup(9006).HasFocus | Control.HasFocus(9007) | Control.HasFocus(9008)]</visible>
+			<control type="grouplist" id="9005"><!-- reset 9005 -->
+				<left>240</left>
+				<top>120</top>
+				<width>1040</width>
+				<height>240</height>
+				<onleft>9100</onleft>
+				<onright>9100</onright>
+				<onup>9100</onup>
+				<ondown>9007</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<control type="button" id="1311">
+					<label>$LOCALIZE[31285]</label>
+					<colordiffuse>FFDAA520</colordiffuse>
+					<onclick>Skin.reset(watched_overlay_color)</onclick>
+					<onclick>Skin.reset(ongoing_overlay_color)</onclick>
+					<onclick>Skin.reset(new_overlay_color)</onclick>
+					<onclick>Skin.reset(set_overlay_color)</onclick>
+					<onclick>Skin.reset(OverlaySet)</onclick>
+					<onclick>SetFocus(9100)</onclick>
+					<onclick>Notification($LOCALIZE[31028]...,$LOCALIZE[31286])</onclick>
+				</control>
+			</control>
+			<control type="group">
+				<top>110</top>
+				<left>240</left>
+				<control type="group"><!-- flagcolor selection 9006 -->
+					<top>60</top>
+					<include>skinsetting_selectorback</include>
+					<control type="label">
+						<left>50</left>
+						<top>78</top>
+						<width>940</width>
+						<height>30</height>
+						<label>$VAR[value_skinsettings_overlay_label] $VAR[value_skinsettings_overlay_color,[COLOR=TextColor3]- $LOCALIZE[31200]: [/COLOR],]</label>
+					</control>
+					<control type="grouplist" id="9006">
+						<left>50</left>
+						<top>37</top>
+						<width>9100</width>
+						<height>30</height>
+						<onleft>9100</onleft>
+						<onup>9005</onup>
+						<ondown>9007</ondown>
+						<itemgap>7.9</itemgap>
+						<orientation>horizontal</orientation>
+						<control type="button" id="210">
+							<description>rest single</description>
+							<label>-</label>
+							<texturenofocus>skinsettings/colorselector_icon_nocolor.png</texturenofocus>
+							<texturefocus>skinsettings/colorselector_icon_nocolorfocus.png</texturefocus>
+							<include>skinsetting_colorbutton</include>
+							<onclick>Skin.reset($INFO[Window(home).Property(OverlayColor)])</onclick>
+						</control>
+						<!-- reds -->
+						<control type="button" id="211">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFDEC437</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFDEC437)</onclick>
+						</control>
+						<control type="button" id="212">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFEE7F4B</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFEE7F4B)</onclick>
+						</control>
+						<control type="button" id="213">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFFE5442</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFFE5442)</onclick>
+						</control>
+						<control type="button" id="214">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFFF665E</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFFF665E)</onclick>
+						</control>
+						<control type="button" id="215">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFD1428D</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFD1428D)</onclick>
+						</control>
+						<control type="button" id="216">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFC61672</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFC61672)</onclick>
+						</control>
+						<control type="button" id="217">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF76579d</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF76579d)</onclick>
+						</control>
+						<control type="button" id="218">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF622F86</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF622F86)</onclick>
+						</control>
+						<control type="button" id="219">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF3d5588</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF3d5588)</onclick>
+						</control>
+						<control type="button" id="220">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF3d7aca</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF3d7aca)</onclick>
+						</control>
+						<control type="button" id="221">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF5096dc</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF5096dc)</onclick>
+						</control>
+						<control type="button" id="223">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF439EF8</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF439EF8)</onclick>
+						</control>
+						<control type="button" id="224">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF00838a</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF00838a)</onclick>
+						</control>
+						<control type="button" id="225">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF4ebd88</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF4ebd88)</onclick>
+						</control>
+						<control type="button" id="226">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF67b346</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF67b346)</onclick>
+						</control>
+						<control type="button" id="227">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF00ba6e</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF00ba6e)</onclick>
+						</control>
+						<control type="button" id="228">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FFBC7B26</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FFBC7B26)</onclick>
+						</control>
+						<control type="button" id="229">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF855619</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF855619)</onclick>
+						</control>
+						<control type="button" id="230">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF50403A</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF50403A)</onclick>
+						</control>
+						<control type="button" id="231">
+							<label>-</label>
+							<include>skinsetting_colorbutton</include>
+							<colordiffuse>FF645c59</colordiffuse>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)],FF645c59)</onclick>
+						</control>
+						<control type="button" id="232">
+							<texturenofocus>skinsettings/skinsetting_colorstring.png</texturenofocus>
+							<texturefocus>skinsettings/skinsetting_colorstringFO.png</texturefocus>
+							<width>150</width>
+							<height>30</height>
+							<label>-</label>
+							<label>$LOCALIZE[31199]</label>
+							<onclick>Skin.SetString($INFO[Window(home).Property(OverlayColor)])</onclick>
+							<onclick>SetFocus(9007)</onclick>
+						</control>
+					
+					</control>
+				</control>
+				
+				<!-- Preview -->
+				<control type="image"><!-- Floor -->
+					<left>0</left>
+					<top>465</top>
+					<width>1040</width>
+					<height>95</height>
+					<texture>backgrounds/background-overlay-diffuse.png</texture>
+					<colordiffuse>ACFloorColor</colordiffuse>
+				</control>
+				<control type="image"><!-- setting arrows -->
+					<left>330</left>
+					<top>340</top>
+					<width>50</width>
+					<height>100</height>
+					<texture flipx="true">arrows/arrow_settings.png</texture>
+					<colordiffuse>TextColor2</colordiffuse>
+					<animation effect="fade" start="20" end="90" time="700" condition="true" pulse="true">Conditional</animation>
+					<visible>Control.HasFocus(9007)</visible>
+					<animation effect="fade" start="0" end="100" time="150" delay="500" condition="true">Visible</animation>
+					<visible>![Container(9007).OnNext | Container(9007).OnPrevious]</visible>
+				</control>
+				<control type="image">
+					<left>660</left>
+					<top>340</top>
+					<width>50</width>
+					<height>100</height>
+					<texture>arrows/arrow_settings.png</texture>
+					<colordiffuse>TextColor2</colordiffuse>
+					<animation effect="fade" start="20" end="90" time="700" condition="true" pulse="true">Conditional</animation>
+					<visible>Control.HasFocus(9007)</visible>
+					<animation effect="fade" start="0" end="100" time="150" delay="500" condition="true">Visible</animation>
+					<visible>![Container(9007).OnNext | Container(9007).OnPrevious]</visible>
+				</control>
+				<control type="group"><!-- preview Flagstatus texture 4 set -->
+					<left>712</left>
+					<top>195</top>
+					<visible allowhiddenfocus="true">Control.HasFocus(9008)</visible>
+					<animation effect="fade" start="0" end="100" time="180" condition="Control.HasFocus(9008)">Conditional</animation><!-- -->
+					<control type="image">
+						<description>Poster</description>
+						<width>198</width>
+						<height>289</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$INFO[Container(9007).ListItem.Icon]</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<description>set flag</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<texture colordiffuse="$VAR[set_overlay_color]">overlays/watched_bg.png</texture>
+					</control>
+					<control type="label"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<aligny>top</aligny>
+						<align>right</align>
+						<font>IconPreviewOverlay</font>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$VAR[value_skinsettings_overlaypreview_set]</label>
+					</control>
+				</control>
+				<control type="group"><!-- preview Flagstatus texture 3 watched -->
+					<left>612</left>
+					<top>215</top>
+					<visible allowhiddenfocus="true">Control.HasFocus(9008)</visible>
+					<animation effect="fade" start="0" end="100" time="180" condition="Control.HasFocus(9008)">Conditional</animation><!-- -->
+					<control type="image">
+						<description>Poster</description>
+						<width>198</width>
+						<height>289</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$INFO[Container(9007).ListItem.Icon]</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<description>set flag</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<texture colordiffuse="$VAR[watched_overlay_color]">overlays/watched_bg.png</texture>
+					</control>
+					<control type="label"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<aligny>top</aligny>
+						<align>right</align>
+						<font>IconPreviewOverlay</font>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$VAR[value_skinsettings_overlaypreview_watched]</label>
+					</control>
+				</control>
+				<control type="group"><!-- preview Flagstatus texture 2 new -->
+					<left>512</left>
+					<top>235</top>
+					<visible allowhiddenfocus="true">Control.HasFocus(9008)</visible>
+					<animation effect="fade" start="0" end="100" time="180" condition="Control.HasFocus(9008)">Conditional</animation><!-- -->
+					<control type="image">
+						<description>Poster</description>
+						<width>198</width>
+						<height>289</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$INFO[Container(9007).ListItem.Icon]</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<description>set flag</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<texture colordiffuse="$VAR[new_overlay_color]">overlays/watched_bg.png</texture>
+					</control>
+					<control type="label"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<aligny>top</aligny>
+						<align>right</align>
+						<font>IconPreviewOverlay</font>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$VAR[value_skinsettings_overlaypreview_new]</label>
+					</control>
+				</control>
+				<control type="group"><!-- preview Flagstatus texture 1 ongoing -->
+					<left>412</left>
+					<top>255</top>
+					<visible allowhiddenfocus="true">Control.HasFocus(9008)</visible>
+					<animation effect="fade" start="0" end="100" time="180" condition="Control.HasFocus(9008)">Conditional</animation><!-- -->
+					<control type="image">
+						<description>Poster</description>
+						<width>198</width>
+						<height>289</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$INFO[Container(9007).ListItem.Icon]</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<description>set flag</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<texture colordiffuse="$VAR[ongoing_overlay_color]">overlays/watched_bg.png</texture>
+					</control>
+					<control type="label"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>154</left>
+						<top>3</top>
+						<width>40</width>
+						<height>40</height>
+						<aligny>top</aligny>
+						<align>right</align>
+						<font>IconPreviewOverlay</font>
+						<textcolor>TextColorFocus</textcolor>
+						<label>$VAR[value_skinsettings_overlaypreview_ongoing]</label>
+					</control>
+				</control>
+			
+				<control type="list" id="9007"><!-- Flagauswahl -->
+					<left>312</left>
+					<top>245</top>
+					<height>360</height>
+					<width>320</width>
+					<onup>SetFocus(9005)</onup><!-- reset -->
+					<ondown>9008</ondown><!-- markierungsauswahl -->
+					<onleft>9007</onleft>
+					<onright>9007</onright>
+					<viewtype>list</viewtype>
+					<orientation>horizontal</orientation>
+					<scrolltime tween="back" easing="out">500</scrolltime>
+					<focusposition>0</focusposition>
+					<visible allowhiddenfocus="true">!Control.HasFocus(9008)</visible>
+					<animation effect="fade" start="0" end="100" time="180" condition="!Control.HasFocus(9008)">Conditional</animation><!-- -->
+					<itemlayout width="200" height="330">
+					</itemlayout>
+					<focusedlayout width="254" height="330">
+						<control type="group">
+							<left>100</left>
+							<control type="image">
+								<description>Poster</description>
+								<width>198</width>
+								<height>289</height>
+								<aspectratio>stretch</aspectratio>
+								<texture fallback="defaultpictures/DefaultMovies.png" background="true">$INFO[ListItem.Icon]</texture>
+								<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+								<bordersize>8</bordersize>
+							</control>
+							<control type="image">
+								<description>ongoing flag</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<texture colordiffuse="$VAR[ongoing_overlay_color]">overlays/watched_bg.png</texture>
+								<visible>Container(9007).HasFocus(1)</visible>
+							</control>
+							<control type="label">
+								<description>Media Overlay ongoing</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<aligny>top</aligny>
+								<align>right</align>
+								<font>IconPreviewOverlay</font>
+								<textcolor>TextColorFocus</textcolor>
+								<label>$VAR[value_skinsettings_overlaypreview_ongoing]</label>
+								<visible>Container(9007).HasFocus(1)</visible>
+							</control>
+							<control type="image">
+								<description>new flag</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<texture colordiffuse="$VAR[new_overlay_color]">overlays/watched_bg.png</texture>
+								<visible>Container(9007).HasFocus(2)</visible>
+							</control>
+							<control type="label">
+								<description>Media Overlay new</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<aligny>top</aligny>
+								<align>right</align>
+								<font>IconPreviewOverlay</font>
+								<textcolor>TextColorFocus</textcolor>
+								<label>$VAR[value_skinsettings_overlaypreview_new]</label>
+								<visible>Container(9007).HasFocus(2)</visible>
+							</control>
+							<control type="image">
+								<description>watched flag</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<texture colordiffuse="$VAR[watched_overlay_color]">overlays/watched_bg.png</texture>
+								<visible>Container(9007).HasFocus(3)</visible>
+							</control>
+							<control type="label">
+								<description>Media Overlay watched</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<aligny>top</aligny>
+								<align>right</align>
+								<font>IconPreviewOverlay</font>
+								<textcolor>TextColorFocus</textcolor>
+								<label>$VAR[value_skinsettings_overlaypreview_watched]</label>
+								<visible>Container(9007).HasFocus(3)</visible>
+							</control>
+							<control type="image">
+								<description>set flag</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<texture colordiffuse="$VAR[set_overlay_color]">overlays/watched_bg.png</texture>
+								<visible>Container(9007).HasFocus(4)</visible>
+							</control>
+							<control type="label">
+								<description>Media Overlay set</description>
+								<left>154</left>
+								<top>3</top>
+								<width>40</width>
+								<height>40</height>
+								<aligny>top</aligny>
+								<align>right</align>
+								<font>IconPreviewOverlay</font>
+								<textcolor>TextColorFocus</textcolor>
+								<label>$VAR[value_skinsettings_overlaypreview_set]</label>
+								<visible>Container(9007).HasFocus(4)</visible>
+							</control>
+						</control>
+					</focusedlayout>
+					<content>
+						<item id="1"><!-- ongoing -->
+							<label>-</label>
+							<icon>$INFO[Window(Home).Property(LatestMovie.1.Thumb)]</icon>
+							<onclick>SetProperty(OverlayColor,ongoing_overlay_color,home)</onclick>
+							<onclick>SetFocus(9006)</onclick>
+						</item>
+						<item id="2"><!-- new -->
+							<label>-</label>
+							<icon>$INFO[Window(Home).Property(LatestMovie.2.Thumb)]</icon>
+							<onclick>SetProperty(OverlayColor,new_overlay_color,home)</onclick>
+							<onclick>SetFocus(9006)</onclick>
+						</item>
+						<item id="3"><!-- watched -->
+							<label>-</label>
+							<icon>$INFO[Window(Home).Property(LatestMovie.3.Thumb)]</icon>
+							<onclick>SetProperty(OverlayColor,watched_overlay_color,home)</onclick>
+							<onclick>SetFocus(9006)</onclick>
+						</item>
+						<item id="4"><!-- set -->
+							<label>-</label>
+							<icon>$INFO[Window(Home).Property(LatestMovie.4.Thumb)]</icon>
+							<onclick>SetProperty(OverlayColor,set_overlay_color,home)</onclick>
+							<onclick>SetFocus(9006)</onclick>
+						</item>
+					</content>
+				</control>
+
+				
+				
+				<!-- watched flag selection 9008 -->
+				<control type="group">
+					<left>0</left>
+					<top>533</top>
+					<include>skinsetting_selectorback</include>
+					<control type="list" id="9008">
+						<left>20</left>
+						<top>32</top>
+						<width>1210</width>
+						<height>80</height>
+						<onleft>9100</onleft>
+						<onup>9007</onup>
+						<ondown>9100</ondown>
+						<orientation>horizontal</orientation>
+						<focusposition>0</focusposition>
+						<itemlayout width="165" height="40">
+							<control type="label">
+								<width>165</width>
+								<height>40</height>
+								<align>center</align>
+								<aligny>center</aligny>
+								<font>IconOverlay_big</font>
+								<textcolor>TextColorFocus</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout width="165" height="40">
+							<control type="image">
+								<width>165</width>
+								<height>40</height>
+								<texture>skinsettings/skinsetting_border_focus.png</texture>
+								<visible>Control.Hasfocus(9008)</visible>
+							</control>
+							<control type="label">
+								<width>165</width>
+								<height>40</height>
+								<align>center</align>
+								<aligny>center</aligny>
+								<font>IconOverlay_big</font>
+								<textcolor>TextColorFocus</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item id="1">
+								<label>ABCD</label>
+								<icon>-</icon>
+								<onclick>Skin.reset(OverlaySet)</onclick>
+								<onclick>SetFocus(9007)</onclick>
+							</item>
+							<item id="2">
+								<label>GHIJ</label>
+								<icon>-</icon>
+								<onclick>Skin.SetString(OverlaySet,2)</onclick>
+								<onclick>SetFocus(9007)</onclick>
+							</item>
+							<item id="3">
+								<label>MNOP</label>
+								<icon>-</icon>
+								<onclick>Skin.SetString(OverlaySet,3)</onclick>
+								<onclick>SetFocus(9007)</onclick>
+							</item>
+							<item id="4">
+								<label>STUV</label>
+								<icon>-</icon>
+								<onclick>Skin.SetString(OverlaySet,4)</onclick>
+								<onclick>SetFocus(9007)</onclick>
+							</item>
+							<item id="5">
+								<label>abcd</label>
+								<icon>-</icon>
+								<onclick>Skin.SetString(OverlaySet,5)</onclick>
+								<onclick>SetFocus(9007)</onclick>
+							</item>
+							<item id="6">
+								<label>ghij</label>
+								<icon>-</icon>
+								<onclick>Skin.SetString(OverlaySet,6)</onclick>
+								<onclick>SetFocus(9007)</onclick>
+							</item>
+						</content>
+					</control>
+				</control>
+			</control>
+			
+			<!-- selection helptext -->
+			<control type="group">
+				<left>260</left>
+				<top>400</top>
+				<animation effect="fade" time="400">Visible</animation>
+				<animation effect="fade" time="50">Hidden</animation>
+				<visible>Control.Hasfocus(9007) | Control.Hasfocus(9008) | ControlGroup(9006).HasFocus</visible>
+				<control type="image">
+					<width>45</width>
+					<height>45</height>
+					<texture colordiffuse="TextColor2">buttons/osd/osd_info.png</texture>
+					<aspectratio>keep</aspectratio>
+					<animation effect="fade" start="20" end="100" time="700" condition="true" pulse="true">Conditional</animation>
+				</control>
+				<control type="textbox">
+					<left>55</left>
+					<width>240</width>
+					<include>PlotNormal176</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$LOCALIZE[31216]</label>
+					<visible>Control.Hasfocus(9008)</visible>
+				</control>
+				<control type="textbox">
+					<left>55</left>
+					<width>240</width>
+					<include>PlotNormal176</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$LOCALIZE[31217]</label>
+					<visible>ControlGroup(9006).HasFocus</visible>
+				</control>
+				<control type="textbox">
+					<left>55</left>
+					<width>240</width>
+					<include>PlotNormal176</include>
+					<textcolor>TextColor2</textcolor>
+					<label>$LOCALIZE[31218]</label>
+					<visible>Control.Hasfocus(9007)</visible>
+				</control>
+			</control>
+		</control>
+
+		<control type="group"><!-- optional 9015 -->
+			<visible allowhiddenfocus="true">ControlGroup(9015).HasFocus</visible>
+			<control type="grouplist" id="9015">
+				<left>240</left>
+				<top>120</top>
+				<width>1040</width>
+				<height>525</height>
+				<onleft>9100</onleft>
+				<onright>noop</onright>
+				<onup>9015</onup>
+				<ondown>9015</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>83</pagecontrol>
+				<control type="label" id="9150">
+					<width>1040</width>
+					<height>40</height>
+					<textoffsetx>50</textoffsetx>
+					<font>SemiNormal</font>
+					<label>$LOCALIZE[31158]</label>
+				</control>
+				<control type="radiobutton" id="9151"><!-- ansichten anpassen/wechseln ein/aus -->
+					<label>$LOCALIZE[31299]</label>
+					<onclick>Skin.ToggleSetting(enableviewchange)</onclick>
+					<onclick>ReloadSkin()</onclick>
+					<selected>Skin.HasSetting(enableviewchange)</selected>
+				</control>
+				<control type="button" id="9152"><!-- shutdownmenue anpassen -->
+					<label>$LOCALIZE[31238]</label>
+					<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=shutdowndialog)</onclick>
+				</control>
+				<control type="button" id="9153"><!-- quicknav menue anpassen -->
+					<label>$LOCALIZE[31236]</label>
+					<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+				</control>
+				<control type="radiobutton" id="9154"><!-- History -->
+					<label>$LOCALIZE[31244]</label>
+					<onclick>Skin.ToggleSetting(DisableLastwatchedHistory)</onclick>
+					<selected>!Skin.HasSetting(DisableLastwatchedHistory)</selected>
+				</control>
+				<control type="button" id="9155"><!-- lastwatched startup -->
+					<label>$LOCALIZE[31245]</label>
+					<label2>$INFO[Skin.String(LastwatchedHistoryDialog)]</label2>
+					<onclick>Skin.SetString(LastwatchedHistoryDialog,disable)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(LastwatchedHistoryDialog),Disable)">Skin.SetString(LastwatchedHistoryDialog,Dialog)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(LastwatchedHistoryDialog),Dialog)">Skin.SetString(LastwatchedHistoryDialog,Panel)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(LastwatchedHistoryDialog),Panel)">Skin.SetString(LastwatchedHistoryDialog,Disable)</onclick>
+				</control>
+				<control type="button" id="9156"><!-- playlisten -->
+					<label>$LOCALIZE[31243]</label>
+					<onclick>ActivateWindow(videos,special://skin/playlists/)</onclick>
+				</control>
+				<control type="button" id="9157"><!-- Similarsort -->
+					<label>$LOCALIZE[31241]</label>
+					<label2>$INFO[Skin.String(ContentSort)]</label2>
+					<onclick>Skin.SetString(ContentSort,Playliste)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(ContentSort),Playliste)">Skin.SetString(ContentSort,Bewertung)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(ContentSort),Bewertung)">Skin.SetString(ContentSort,Aufgenommen)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(ContentSort),Aufgenommen)">Skin.SetString(ContentSort,Abgespielt)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(ContentSort),Abgespielt)">Skin.SetString(ContentSort,Zufall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(ContentSort),Zufall)">Skin.SetString(ContentSort,Jahr)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(ContentSort),Jahr)">Skin.SetString(ContentSort,Playliste)</onclick>
+				</control>
+				<control type="button" id="9158"><!-- SimilarLimit -->
+					<label>$LOCALIZE[31242]</label>
+					<label2>$INFO[Skin.String(SimilarLimit)]</label2>
+					<onclick>Skin.SetString(SimilarLimit,20)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),20)">Skin.SetString(SimilarLimit,19)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),19)">Skin.SetString(SimilarLimit,18)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),18)">Skin.SetString(SimilarLimit,17)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),17)">Skin.SetString(SimilarLimit,16)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),16)">Skin.SetString(SimilarLimit,15)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),15)">Skin.SetString(SimilarLimit,14)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),14)">Skin.SetString(SimilarLimit,13)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),13)">Skin.SetString(SimilarLimit,12)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),12)">Skin.SetString(SimilarLimit,11)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),11)">Skin.SetString(SimilarLimit,10)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),10)">Skin.SetString(SimilarLimit,9)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),9)">Skin.SetString(SimilarLimit,8)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),8)">Skin.SetString(SimilarLimit,7)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),7)">Skin.SetString(SimilarLimit,6)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),6)">Skin.SetString(SimilarLimit,5)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),5)">Skin.SetString(SimilarLimit,4)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),4)">Skin.SetString(SimilarLimit,3)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),3)">Skin.SetString(SimilarLimit,2)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),2)">Skin.SetString(SimilarLimit,1)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(SimilarLimit),1)">Skin.SetString(SimilarLimit,20)</onclick>
+				</control>
+				<control type="button" id="9159"><!-- musik pfad -->
+					<label>$LOCALIZE[31301]</label>
+					<label2>$INFO[Skin.String(Music_Folder_Path)]</label2>
+					<onclick>Skin.SetPath(Music_Folder_Path)</onclick>
+				</control>
+				<control type="image" id="9160">
+					<width>1040</width>
+					<height>2</height>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+					<texture>backgrounds/line.png</texture>
+				</control>
+				<control type="button" id="9161"><!-- reset -->
+					<label>$LOCALIZE[31237]</label>
+					<textcolor>red</textcolor>
+					<onclick>skin.reset(FilmViewtype)</onclick>
+					<onclick>skin.reset(PLS_FilmViewtype)</onclick>
+					<onclick>skin.reset(TVViewtype)</onclick>
+					<onclick>skin.reset(PLS_TVViewtype)</onclick>
+					<onclick>skin.reset(StaffelViewtype)</onclick>
+					<onclick>skin.reset(EpisodeViewtype)</onclick>
+					<onclick>skin.reset(PLS_EpisodeViewtype)</onclick>
+					<onclick>skin.reset(GenreViewtype)</onclick>
+					<onclick>skin.reset(AlbumViewtype)</onclick>
+					<onclick>skin.reset(ArtistViewtype)</onclick>
+					<onclick>skin.reset(SongViewtype)</onclick>
+					<onclick>SetProperty(MenueProperties,Reload,home)</onclick>
+					<onclick>ActivateWindow(1118)</onclick>
+				</control>
+				<control type="button" id="9162"><!-- menue reset -->
+					<label>$LOCALIZE[31239]</label>
+					<textcolor>red</textcolor>
+					<onclick>RunScript(script.skinshortcuts,type=resetall)</onclick>
+					<onclick>SetProperty(MenueProperties,ResetMenue,home)</onclick><!-- Defaultsettings window -->
+				</control>
+				<control type="button" id="9164"><!-- reset -->
+					<label>$LOCALIZE[31240]</label>
+					<textcolor>red</textcolor>
+					<onclick>Skin.resetSettings</onclick>
+				</control>
+			</control>
+		</control>
+
+		<control type="grouplist" id="9016"><!-- scripts 9016/9017 -->
+			<visible allowhiddenfocus="true">ControlGroup(9016).HasFocus</visible>
+			<left>240</left>
+			<top>120</top>
+			<width>1040</width>
+			<height>600</height>
+			<onleft>9100</onleft>
+			<onright>noop</onright>
+			<onup>9016</onup>
+			<ondown>9016</ondown>
+			<itemgap>0</itemgap>
+			<pagecontrol>-</pagecontrol>
+			<control type="label" id="90161">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>Artworks</label>
+			</control>
+			<control type="radiobutton" id="90164"><!-- genrebackgrounds -->
+				<label>Resource.images.moviegenrefanart.flex</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="System.HasAddon(resource.images.moviegenrefanart.flex)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<onclick condition="!System.HasAddon(resource.images.moviegenrefanart.flex)">InstallAddon(resource.images.moviegenrefanart.flex)</onclick>
+				<selected>System.HasAddon(resource.images.moviegenrefanart.flex)</selected>
+			</control>
+			<control type="radiobutton" id="90165"><!-- wetter backgrounds -->
+				<label>Resource.images.weatherfanart.multi</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="System.HasAddon(resource.images.weatherfanart.multi)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<onclick condition="!System.HasAddon(resource.images.weatherfanart.multi)">InstallAddon(resource.images.weatherfanart.multi)</onclick>
+				<selected>System.HasAddon(resource.images.weatherfanart.multi)</selected>
+			</control>
+			<control type="radiobutton" id="90166"><!-- musicgenrefanart -->
+				<label>Resource.images.musicgenrefanart.coloured</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="System.HasAddon(resource.images.musicgenrefanart.coloured)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<onclick condition="!System.HasAddon(resource.images.musicgenrefanart.coloured)">InstallAddon(resource.images.musicgenrefanart.coloured)</onclick>
+				<selected>System.HasAddon(resource.images.musicgenrefanart.coloured)</selected>
+			</control>
+			<control type="radiobutton" id="90167"><!-- musicgenreicons -->
+				<label>Resource.images.musicgenreicons.poster</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="System.HasAddon(resource.images.musicgenreicons.poster)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<onclick condition="!System.HasAddon(resource.images.musicgenreicons.poster)">InstallAddon(resource.images.musicgenreicons.poster)</onclick>
+				<selected>System.HasAddon(resource.images.musicgenreicons.poster)</selected>
+			</control>
+			<control type="radiobutton" id="90168"><!-- country flags -->
+				<label>Resource.images.languageflags.colour</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="System.HasAddon(resource.images.languageflags.colour)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<onclick condition="!System.HasAddon(resource.images.languageflags.colour)">InstallAddon(resource.images.languageflags.colour)</onclick>
+				<selected>System.HasAddon(resource.images.languageflags.colour)</selected>
+			</control>
+			<control type="radiobutton" id="90169"><!-- studio flags -->
+				<label>Resource.images.studios.coloured</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="System.HasAddon(resource.images.studios.coloured)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<onclick condition="!System.HasAddon(resource.images.studios.coloured)">InstallAddon(resource.images.studios.coloured)</onclick>
+				<selected>System.HasAddon(resource.images.studios.coloured)</selected>
+			</control>
+			<control type="image" id="90170">
+				<width>1040</width>
+				<height>2</height>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				<texture>backgrounds/line.png</texture>
+			</control>
+			<control type="radiobutton" id="90171"><!-- Artwork downloader -->
+				<label>Artwork downloader</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.artwork.downloader)">InstallAddon(script.artwork.downloader)</onclick>
+				<onclick condition="System.HasAddon(script.artwork.downloader)">Addon.OpenSettings(script.artwork.downloader)</onclick>
+				<selected>System.HasAddon(script.artwork.downloader)</selected>
+			</control>
+			<control type="radiobutton" id="90172"><!-- Artwork downloader auto -->
+				<label>Artwork downloader $LOCALIZE[31251]</label>
+				<onclick>Skin.Togglesetting(libraryautoartworkupdate)</onclick>
+				<selected>!Skin.HasSetting(libraryautoartworkupdate)</selected>
+				<visible>System.HasAddon(script.artwork.downloader)</visible>
+			</control>
+			<control type="radiobutton" id="90173"><!-- Artwork downloader auto context -->
+				<label>Context Addon $LOCALIZE[31253]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(context.flex.artwork.downloader.auto)">InstallAddon(context.flex.artwork.downloader.auto)</onclick>
+				<onclick condition="System.HasAddon(context.flex.artwork.downloader.auto)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<selected>System.HasAddon(context.flex.artwork.downloader.auto)</selected>
+				<visible>System.HasAddon(script.artwork.downloader)</visible>
+			</control>
+			<control type="radiobutton" id="90174"><!-- Artwork downloader gui context -->
+				<label>Context Addon $LOCALIZE[31252]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(context.flex.artwork.downloader.gui)">InstallAddon(context.flex.artwork.downloader.gui)</onclick>
+				<onclick condition="System.HasAddon(context.flex.artwork.downloader.gui)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<selected>System.HasAddon(context.flex.artwork.downloader.gui)</selected>
+				<visible>System.HasAddon(script.artwork.downloader)</visible>
+			</control>
+			<control type="radiobutton" id="90175"><!-- artworkorganizer -->
+				<label>Artworkorganizer</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.artworkorganizer)">InstallAddon(script.artworkorganizer)</onclick>
+				<onclick condition="System.HasAddon(script.artworkorganizer)">Addon.OpenSettings(script.artworkorganizer)</onclick>
+				<selected>System.HasAddon(script.artworkorganizer)</selected>
+				<visible>System.HasAddon(script.artwork.downloader)</visible>
+			</control>
+			<control type="radiobutton" id="90176"><!-- Movie Set Artwork Automator -->
+				<label>Movie Set Artwork Automator</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.moviesetart)">InstallAddon(script.moviesetart)</onclick>
+				<onclick condition="System.HasAddon(script.moviesetart)">Addon.OpenSettings(script.moviesetart)</onclick>
+				<selected>System.HasAddon(script.moviesetart)</selected>
+			</control>
+		</control>
+
+		<control type="grouplist" id="9017"><!-- programme 9017 -->
+			<visible allowhiddenfocus="true">ControlGroup(9017).HasFocus</visible>
+			<left>240</left>
+			<top>120</top>
+			<width>1040</width>
+			<height>600</height>
+			<onleft>9100</onleft>
+			<onright>noop</onright>
+			<onup>9017</onup>
+			<ondown>9017</ondown>
+			<itemgap>0</itemgap>
+			<pagecontrol>-</pagecontrol>
+			<control type="label" id="9171">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31257]</label>
+			</control>
+			<control type="radiobutton" id="9170"><!-- ressource selector -->
+				<label>$LOCALIZE[31255]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+				<onclick condition="System.HasAddon(script.image.resource.select)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<selected>System.HasAddon(script.image.resource.select)</selected>
+			</control>
+			<control type="radiobutton" id="9171"><!-- Moviesetinfos -->
+				<label>Moviesetinfo script</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.skin.info.service)">InstallAddon(script.skin.info.service)</onclick>
+				<onclick condition="System.HasAddon(script.skin.info.service)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<selected>System.HasAddon(script.skin.info.service)</selected>
+			</control>
+			<control type="radiobutton" id="9172"><!-- wetter -->
+				<label>Weather provider (openweathermap)</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(weather.openweathermap.extended)">InstallAddon(weather.openweathermap.extended)</onclick>
+				<onclick condition="System.HasAddon(weather.openweathermap.extended)">Addon.OpenSettings(weather.openweathermap.extended)</onclick>
+				<selected>System.HasAddon(weather.openweathermap.extended)</selected>
+			</control>
+			<control type="label" id="9173">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31258]</label>
+			</control>
+			<control type="radiobutton" id="9174"><!-- global search -->
+				<label>Globale Search</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+				<onclick condition="System.HasAddon(script.globalsearch)">Addon.OpenSettings(script.globalsearch)</onclick>
+				<selected>System.HasAddon(script.globalsearch)</selected>
+			</control>
+			<control type="radiobutton" id="9175"><!-- global search -->
+				<label>$LOCALIZE[31256]</label>
+				<onclick condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(globalsearchmode)">Skin.SetBool(globalsearchmode)</onclick>
+				<onclick condition="System.HasAddon(script.globalsearch) + Skin.HasSetting(globalsearchmode)">Skin.reset(globalsearchmode)</onclick>
+				<selected>Skin.HasSetting(globalsearchmode)</selected>
+				<visible>System.HasAddon(script.globalsearch)</visible>
+			</control>
+			<control type="radiobutton" id="9176"><!-- ExtendedInfo -->
+				<label>ExtendedInfo</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
+				<onclick condition="System.HasAddon(script.extendedinfo)">Addon.OpenSettings(script.extendedinfo)</onclick>
+				<selected>System.HasAddon(script.extendedinfo)</selected>
+			</control>
+
+		</control>
+
+		<control type="grouplist" id="9018"><!-- helferscripte 9018 -->
+			<visible allowhiddenfocus="true">ControlGroup(9018).HasFocus</visible>
+			<left>240</left>
+			<top>120</top>
+			<width>1040</width>
+			<height>600</height>
+			<onleft>9100</onleft>
+			<onright>noop</onright>
+			<onup>9018</onup>
+			<ondown>9018</ondown>
+			<itemgap>0</itemgap>
+			<pagecontrol>-</pagecontrol>
+			<control type="label" id="90182">
+				<width>1040</width>
+				<height>40</height>
+				<textoffsetx>50</textoffsetx>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31171]</label>
+			</control>
+			<control type="radiobutton" id="90183"><!-- libraryeditor -->
+				<label>Libraryeditor</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.libraryeditor)">InstallAddon(script.libraryeditor)</onclick>
+				<onclick condition="System.HasAddon(script.libraryeditor)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<selected>System.HasAddon(script.libraryeditor)</selected>
+			</control>
+			<control type="radiobutton" id="90185"><!-- Cinemavision -->
+				<label>Cinemavision</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.cinemavision)">InstallAddon(script.cinemavision)</onclick>
+				<onclick condition="System.HasAddon(script.cinemavision)">Addon.OpenSettings(script.cinemavision)</onclick>
+				<selected>System.HasAddon(script.cinemavision)</selected>
+			</control>
+			<control type="radiobutton" id="90189"><!-- play album -->
+				<label>$LOCALIZE[31263]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.playalbum)">InstallAddon(script.playalbum)</onclick>
+				<onclick condition="System.HasAddon(script.playalbum)">Notification($LOCALIZE[31028]...,$LOCALIZE[31289])</onclick>
+				<selected>System.HasAddon(script.playalbum)</selected>
+			</control>
+			<control type="radiobutton" id="90190"><!-- pvr Timer -->
+				<label>$LOCALIZE[31264]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(service.kn.switchtimer)">InstallAddon(service.kn.switchtimer)</onclick>
+				<onclick condition="System.HasAddon(service.kn.switchtimer)">Addon.OpenSettings(service.kn.switchtimer)</onclick>
+				<selected>System.HasAddon(service.kn.switchtimer)</selected>
+			</control>
+			<control type="radiobutton" id="90191"><!-- next aired -->
+				<label>$LOCALIZE[31262]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
+				<onclick condition="System.HasAddon(script.tv.show.next.aired)">Addon.OpenSettings(script.tv.show.next.aired)</onclick>
+				<selected>System.HasAddon(script.tv.show.next.aired)</selected>
+			</control>
+			<control type="radiobutton" id="90192"><!-- nextup -->
+				<label>$LOCALIZE[31265]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(service.nextup.notification)">InstallAddon(service.nextup.notification)</onclick>
+				<onclick condition="System.HasAddon(service.nextup.notification)">Addon.OpenSettings(service.nextup.notification)</onclick>
+				<selected>System.HasAddon(service.nextup.notification)</selected>
+			</control>
+		<!--	<control type="radiobutton" id="90193"> nextup setting 
+				<label>$LOCALIZE[31265]</label>
+				<onclick>Skin.ToggleSetting(enable.service.nextup.notification)</onclick>
+				<visible>System.HasAddon(service.nextup.notification)</visible>
+				<selected>Skin.HasSetting(enable.service.nextup.notification)</selected>
+			</control>-->
+			<control type="radiobutton" id="90194"><!-- watchedstates nfo -->
+				<label>$LOCALIZE[31266]</label>
+				<include>skinsetting_radiobutton</include>
+				<onclick condition="!System.HasAddon(service.nfo.watchedstate.updater_axbmcuser)">InstallAddon(service.nfo.watchedstate.updater_axbmcuser)</onclick>
+				<onclick condition="System.HasAddon(service.nfo.watchedstate.updater_axbmcuser)">Addon.OpenSettings(service.nfo.watchedstate.updater_axbmcuser)</onclick>
+				<selected>System.HasAddon(service.nfo.watchedstate.updater_axbmcuser)</selected>
+			</control>
+		</control>
+
+		<control type="image">
+			<description>Hintergrund links Setting Menue</description>
+			<width>240</width>
+			<height>720</height>
+			<include>global_texture_heavy</include>
+		</control>
+		<control type="image"><!-- middle Setting header -->
+			<description>hintergrund titel</description>
+			<left>240</left>
+			<top>60</top>
+			<width>1040</width>
+			<include>global_texture_title</include>
+			<visible>!Control.HasFocus(9100)</visible>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>290</left>
+			<top>60</top>
+			<width>900</width>
+			<include>global_label_title</include>
+			<label>$VAR[value_settings_midtitle]</label>
+			<visible>!Control.HasFocus(9100)</visible>
+		</control>
+		<control type="image"><!-- shadow left above right grouplists -->
+			<description>Schatten</description>
+			<left>240</left>
+			<height>720</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<include>global_date</include>
+		<control type="list" id="9100"><!-- Settings Menue -->
+			<left>0</left>
+			<top>75</top>
+			<width>240</width>
+			<height>660</height>
+			<orientation>vertical</orientation>
+			<itemgap>0</itemgap>
+			<onup>9100</onup>
+			<ondown>9100</ondown>
+			<onleft>close</onleft>
+			<onright condition="Container(9100).HasFocus(12)">SetFocus(9002)</onright><!-- Hintergründe -->
+			<onright condition="Container(9100).HasFocus(13)">SetFocus(9003)</onright><!-- Hauptmenue -->
+			<onright condition="Container(9100).HasFocus(14)">SetFocus(9004)</onright><!-- Farbe -->
+			<onright condition="Container(9100).HasFocus(15)">SetFocus(9015)</onright><!-- Reset -->
+			<onright condition="Container(9100).HasFocus(16)">SetFocus(9005)</onright><!-- watched -->
+			<onright condition="Container(9100).HasFocus(18)">SetFocus(9016)</onright><!-- scripts -->
+			<onright condition="Container(9100).HasFocus(19)">SetFocus(9017)</onright><!-- programme -->
+			<onright condition="Container(9100).HasFocus(20)">SetFocus(9018)</onright><!-- helferscripte -->
+			<onright condition="Container(9100).HasFocus(320)">ActivateWindow(InterfaceSettings)</onright><!-- Interface -->
+			<viewtype>list</viewtype>
+			<orientation>vertical</orientation>
+			<focusposition>1</focusposition>
+			<scrolltime>450</scrolltime>
+			<movement>2</movement>
+			<itemlayout width="240" height="50">
+				<control type="image">
+					<left>0</left>
+					<top>1</top>
+					<width>240</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>5</top>
+					<width>230</width>
+					<height>50</height>
+					<aligny>top</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>28</top>
+					<width>230</width>
+					<height>22</height>
+					<aligny>top</aligny>
+					<font>RegularSmall</font>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="240" height="50">
+				<control type="image">
+					<width>240</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+				</control>
+				<control type="image">
+					<top>1</top>
+					<width>240</width>
+					<height>50</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.Hasfocus(9100)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>5</top>
+					<width>230</width>
+					<height>50</height>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>!Control.Hasfocus(9100)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>28</top>
+					<width>230</width>
+					<height>22</height>
+					<aligny>top</aligny>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Label2]</label>
+					<textcolor>TextColor2</textcolor>
+					<visible>!Control.Hasfocus(9100)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>5</top>
+					<width>230</width>
+					<height>50</height>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<visible>Control.Hasfocus(9100)</visible>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>28</top>
+					<width>230</width>
+					<height>22</height>
+					<aligny>top</aligny>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Label2]</label>
+					<textcolor>TextColorFocus</textcolor>
+					<visible>Control.Hasfocus(9100)</visible>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="12"><!-- Hintergründe -->
+					<label>$LOCALIZE[31147]</label>
+					<label2>$LOCALIZE[31148]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/appearance.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31149]</property>
+					<property name="SubLabel">$LOCALIZE[31150]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9002)</onclick>
+				</item>
+				<item id="13"><!-- Hauptmenue -->
+					<label>Home</label>
+					<label2>$LOCALIZE[31151]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/home.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31152]</property>
+					<property name="SubLabel">$LOCALIZE[31153]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9003)</onclick>
+				</item>
+				<item id="14"><!-- Farben -->
+					<label>$LOCALIZE[31154]</label>
+					<label2>$LOCALIZE[31155]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/farben.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31156]</property>
+					<property name="SubLabel">$LOCALIZE[31157]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9004)</onclick>
+				</item>
+				<item id="15"><!-- optionales --><!-- neue titel und texte -->
+					<label>$LOCALIZE[31158]</label>
+					<label2>$LOCALIZE[31159]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/zusatzfeatures.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31160]</property>
+					<property name="SubLabel">$LOCALIZE[31161]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9015)</onclick>
+				</item>
+				<item id="16"><!-- watched -->
+					<label>$LOCALIZE[31162]</label>
+					<label2>$LOCALIZE[31163]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/statusmarkierungen.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31162]</property>
+					<property name="SubLabel">$LOCALIZE[31164]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9005)</onclick>
+				</item>
+				<item id="18"><!-- scripts -->
+					<label>$LOCALIZE[31169]</label>
+					<label2>$LOCALIZE[31172]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/artworkaddons.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31169]</property>
+					<property name="SubLabel">$LOCALIZE[31173]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9016)</onclick>
+				</item>
+				<item id="19"><!-- programme -->
+					<label>$LOCALIZE[31170]</label>
+					<label2>$LOCALIZE[31172]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/programme.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31170]</property>
+					<property name="SubLabel">$LOCALIZE[31174]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9017)</onclick>
+				</item>
+				<item id="20"><!-- helfer -->
+					<label>$LOCALIZE[31171]</label>
+					<label2>$LOCALIZE[31172]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/helferscript.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31171]</property>
+					<property name="SubLabel">$LOCALIZE[31175]</property>
+					<icon>-</icon>
+					<onclick>SetFocus(9018)</onclick>
+				</item>
+				<item id="320"><!-- oberflaeche -->
+					<label>$LOCALIZE[31142]</label>
+					<label2>$LOCALIZE[31132]</label2>
+					<property name="EntrySlideshowPath">special://skin/extras/skinsettings/helferscript.jpg</property>
+					<property name="MainLabel">$LOCALIZE[31132]</property>
+					<property name="SubLabel">$LOCALIZE[31180]</property>
+					<icon>-</icon>
+					<onclick>ActivateWindow(InterfaceSettings)</onclick>
+				</item>
+			</content>
+		</control>
+		
+		<control type="group"><!-- Focus Position grapics -->
+			<left>283</left>
+			<top>75</top>
+			<visible>Control.HasFocus(9100)</visible>
+			<control type="image">
+				<left>-43</left>
+				<top>22</top>
+				<width>48</width>
+				<height>3</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<animation effect="slide" start="0,0" end="0,0" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(0)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,50" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(1)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,100" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(2)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,150" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(3)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,200" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(4)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,250" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(5)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,300" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(6)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,350" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(7)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,400" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(8)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,450" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(9)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,500" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(10)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,550" time="0" easing="inout" tween="cubic" condition="Container(9100).Row(11)">Conditional</animation>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>25</top>
+				<width>5</width>
+				<height>516</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(0)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>75</top>
+				<width>5</width>
+				<height>466</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(1)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>125</top>
+				<width>5</width>
+				<height>416</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(2)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>175</top>
+				<width>5</width>
+				<height>366</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(3)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>225</top>
+				<width>5</width>
+				<height>316</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(4)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>275</top>
+				<width>5</width>
+				<height>266</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(5)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>325</top>
+				<width>5</width>
+				<height>216</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(6)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>375</top>
+				<width>5</width>
+				<height>166</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(7)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>425</top>
+				<width>5</width>
+				<height>116</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(8)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>475</top>
+				<width>5</width>
+				<height>66</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(9)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>525</top>
+				<width>5</width>
+				<height>16</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(10)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>544</top>
+				<width>5</width>
+				<height>28</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+				<visible>Container(9100).Row(11)</visible>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>541</top>
+				<width>53</width>
+				<height>3</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">White.png</texture>
+			</control>
+		</control>
+		
+		<control type="group"><!-- Short Help -->
+			<left>0</left>
+			<top>0</top>
+			<visible>Control.HasFocus(9100) | Control.HasFocus(20)</visible>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="600" tween="sine" easing="in"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" end="0" time="400" tween="quadratic" easing="out"/>
+			</animation>
+			<control type="label">
+				<left>341</left>
+				<top>589</top>
+				<width>869</width>
+				<height>45</height>
+				<font>SemiLarge</font>
+				<label>$INFO[Container(9100).ListItem.Property(MainLabel)]</label>
+			</control>
+			<control type="label">
+				<left>341</left>
+				<top>630</top>
+				<width>869</width>
+				<height>90</height>
+				<aligny>top</aligny>
+				<wrapmultiline>true</wrapmultiline>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[Container(9100).ListItem.Property(SubLabel)]</label>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>
+
+
+

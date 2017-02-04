@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window type="dialog">
+<defaultcontrol always="true">3</defaultcontrol>
+<onunload>ClearProperty(SelectdialogcategoryTitle,home)</onunload>
+<onunload>ClearProperty(Ratingdialog,home)</onunload>
+<controls>
+	<include condition="!Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(movieinformation)">dialog_select_standard</include>
+	<include condition="Window.IsVisible(DialogMusicInfo.xml)">dialog_select_userrating</include>
+	<include condition="Window.IsVisible(movieinformation) + String.IsEmpty(Window(home).Property(Ratingdialog))">dialog_select_standard</include>
+	<include condition="Window.IsVisible(movieinformation) + !String.IsEmpty(Window(home).Property(Ratingdialog))">dialog_select_userrating</include><!-- -->
+</controls>
+</window>

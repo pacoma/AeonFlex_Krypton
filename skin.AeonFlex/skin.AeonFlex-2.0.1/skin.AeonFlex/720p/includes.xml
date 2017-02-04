@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="Hiddencontrol">
+		<left>-20</left>
+		<top>-20</top>
+		<width>1</width>
+		<height>1</height>
+		<label>-</label>
+		<font>-</font>
+		<texturenofocus>-</texturenofocus>
+		<texturefocus>-</texturefocus>
+	</include>
+
+	<include file="defaults.xml" />
+	<include file="script-skinshortcuts-includes.xml"/>
+	<include condition="!Skin.HasSetting(ModernHome)" file="IncludesHomeClassic.xml"/>
+	<include condition="Skin.HasSetting(ModernHome)" file="IncludesHomeModern.xml"/>
+	<include file="IncludesGlobals.xml" />
+	<include file="IncludesWeather.xml" />
+	<include file="includesDateVars.xml" />
+	<include file="IncludesHome.xml" />
+	<include file="IncludesWidgets.xml" />
+	<include file="IncludesMyNAV.xml" />
+	<include file="IncludesInfodialogs.xml" />
+	<include condition="Skin.HasSetting(enableviewchange)" file="IncludesViewsettings.xml" />
+	<include file="View55Root.xml" /><!-- root view -->
+	
+	<include condition="String.IsEmpty(Skin.String(PLS_FilmViewtype)) | String.IsEmpty(Skin.String(FilmViewtype)) | String.IsEmpty(Skin.String(TVViewtype)) | String.IsEmpty(Skin.String(PLS_TVViewtype)) | String.IsEmpty(Skin.String(EpisodeViewtype)) | String.IsEmpty(Skin.String(PLS_EpisodeViewtype)) | String.IsEmpty(Skin.String(StaffelViewtype)) | String.IsEmpty(Skin.String(SetViewtype)) | String.IsEmpty(Skin.String(GenreViewtype)) | String.IsEmpty(Skin.String(AlbumViewtype)) | String.IsEmpty(Skin.String(ArtistViewtype)) | String.IsEmpty(Skin.String(SongViewtype)) | Skin.HasSetting(enableviewchange)" file="View50FileMode.xml" /><!-- root view -->
+	<include file="View51LowList.xml" /><!-- 51 Lowlist ohne - root view addons -->
+	<include file="IncludesViewLowlist.xml" />
+	<include condition="String.IsEqual(Skin.String(GenreViewtype),GenreBanner) | Skin.HasSetting(enableviewchange)" file="View52GenreBanner.xml" /><!-- 52 GenreBanner -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),BannerInfo) | String.IsEqual(Skin.String(FilmViewtype),BannerInfo) | String.IsEqual(Skin.String(TVViewtype),BannerInfo) | String.IsEqual(Skin.String(PLS_TVViewtype),BannerInfo) | String.IsEqual(Skin.String(SetViewtype),BannerInfo) | String.IsEqual(Skin.String(GenreViewtype),BannerInfo) | String.IsEqual(Skin.String(StaffelViewtype),BannerInfo) | Skin.HasSetting(enableviewchange)" file="View53BannerInfo.xml"/><!-- 53 Bannerinfo -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),BannerInfo) | String.IsEqual(Skin.String(FilmViewtype),BannerInfo) | String.IsEqual(Skin.String(TVViewtype),BannerInfo) | String.IsEqual(Skin.String(PLS_TVViewtype),BannerInfo) | String.IsEqual(Skin.String(SetViewtype),BannerInfo) | String.IsEqual(Skin.String(GenreViewtype),BannerInfo) | String.IsEqual(Skin.String(StaffelViewtype),BannerInfo) | Skin.HasSetting(enableviewchange)" file="IncludesViewBannerinfo.xml" />
+	
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),ExtendedList) | String.IsEqual(Skin.String(FilmViewtype),ExtendedList) | String.IsEqual(Skin.String(TVViewtype),ExtendedList) | String.IsEqual(Skin.String(PLS_TVViewtype),ExtendedList) | String.IsEqual(Skin.String(EpisodeViewtype),ExtendedList) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),ExtendedList) | String.IsEqual(Skin.String(SetViewtype),ExtendedList) | String.IsEqual(Skin.String(StaffelViewtype),ExtendedList) | String.IsEqual(Skin.String(AlbumViewtype),ExtendedList) | String.IsEqual(Skin.String(ArtistViewtype),ExtendedList) | String.IsEqual(Skin.String(SongViewtype),ExtendedList) | Skin.HasSetting(enableviewchange)" file="View54ExtendedList.xml" /><!-- 54 Extended List -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),ExtendedList) | String.IsEqual(Skin.String(FilmViewtype),ExtendedList) | String.IsEqual(Skin.String(TVViewtype),ExtendedList) | String.IsEqual(Skin.String(PLS_TVViewtype),ExtendedList) | String.IsEqual(Skin.String(EpisodeViewtype),ExtendedList) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),ExtendedList) | String.IsEqual(Skin.String(SetViewtype),ExtendedList) | String.IsEqual(Skin.String(StaffelViewtype),ExtendedList) | String.IsEqual(Skin.String(AlbumViewtype),ExtendedList) | String.IsEqual(Skin.String(ArtistViewtype),ExtendedList) | String.IsEqual(Skin.String(SongViewtype),ExtendedList) | Skin.HasSetting(enableviewchange)" file="IncludesViewExtendedList.xml" />
+
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Rightlist) | String.IsEqual(Skin.String(FilmViewtype),Rightlist) | String.IsEqual(Skin.String(TVViewtype),Rightlist) | String.IsEqual(Skin.String(PLS_TVViewtype),Rightlist) | String.IsEqual(Skin.String(EpisodeViewtype),Rightlist) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),Rightlist) | String.IsEqual(Skin.String(StaffelViewtype),Rightlist) | String.IsEqual(Skin.String(SetViewtype),Rightlist) | String.IsEqual(Skin.String(GenreViewtype),Rightlist) | String.IsEqual(Skin.String(AlbumViewtype),Rightlist) | String.IsEqual(Skin.String(ArtistViewtype),Rightlist) | String.IsEqual(Skin.String(SongViewtype),Rightlist) | Skin.HasSetting(enableviewchange)" file="View56Rightlist.xml" /><!-- 56 rightlist -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Rightlist) | String.IsEqual(Skin.String(FilmViewtype),Rightlist) | String.IsEqual(Skin.String(TVViewtype),Rightlist) | String.IsEqual(Skin.String(PLS_TVViewtype),Rightlist) | String.IsEqual(Skin.String(EpisodeViewtype),Rightlist) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),Rightlist) | String.IsEqual(Skin.String(StaffelViewtype),Rightlist) | String.IsEqual(Skin.String(SetViewtype),Rightlist) | String.IsEqual(Skin.String(GenreViewtype),Rightlist) | String.IsEqual(Skin.String(AlbumViewtype),Rightlist) | String.IsEqual(Skin.String(ArtistViewtype),Rightlist) | String.IsEqual(Skin.String(SongViewtype),Rightlist) | Skin.HasSetting(enableviewchange)" file="IncludesViewRightlist.xml" />
+
+	<include file="View57Category.xml" /><!-- 57 Categorylist -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Wall) | String.IsEqual(Skin.String(FilmViewtype),Wall) | String.IsEqual(Skin.String(TVViewtype),Wall) | String.IsEqual(Skin.String(PLS_TVViewtype),Wall) | String.IsEqual(Skin.String(SetViewtype),Wall) | String.IsEqual(Skin.String(GenreViewtype),Wall) | Skin.HasSetting(enableviewchange)" file="View58Wall.xml" /><!-- 58 wall -->
+
+	<include file="IncludesViewCategory.xml" />
+	
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Poster) | String.IsEqual(Skin.String(FilmViewtype),Poster) | String.IsEqual(Skin.String(TVViewtype),Poster) | String.IsEqual(Skin.String(PLS_TVViewtype),Poster) | String.IsEqual(Skin.String(SetViewtype),Poster) | String.IsEqual(Skin.String(GenreViewtype),Poster) | String.IsEqual(Skin.String(StaffelViewtype),Poster) | Skin.HasSetting(enableviewchange)" file="View60Poster.xml" /><!-- 60 Poster -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Poster) | String.IsEqual(Skin.String(FilmViewtype),Poster) | String.IsEqual(Skin.String(TVViewtype),Poster) | String.IsEqual(Skin.String(PLS_TVViewtype),Poster) | String.IsEqual(Skin.String(SetViewtype),Poster) | String.IsEqual(Skin.String(GenreViewtype),Poster) | String.IsEqual(Skin.String(StaffelViewtype),Poster) | Skin.HasSetting(enableviewchange)" file="IncludesViewPosterlist.xml" />
+	
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),LandScapeX) | String.IsEqual(Skin.String(FilmViewtype),LandScapeX) | String.IsEqual(Skin.String(TVViewtype),LandScapeX) | String.IsEqual(Skin.String(PLS_TVViewtype),LandScapeX) | String.IsEqual(Skin.String(EpisodeViewtype),LandScapeX) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),LandScapeX) | String.IsEqual(Skin.String(StaffelViewtype),LandScapeX) | String.IsEqual(Skin.String(SetViewtype),LandScapeX) | String.IsEqual(Skin.String(GenreViewtype),LandScapeX) | Skin.HasSetting(enableviewchange)" file="View64LandScapeX.xml" /><!-- 64 Landscape -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),LandScapeX) | String.IsEqual(Skin.String(FilmViewtype),LandScapeX) | String.IsEqual(Skin.String(TVViewtype),LandScapeX) | String.IsEqual(Skin.String(PLS_TVViewtype),LandScapeX) | String.IsEqual(Skin.String(EpisodeViewtype),LandScapeX) | String.IsEqual(Skin.String(PLS_EpisodeViewtype),LandScapeX) | String.IsEqual(Skin.String(StaffelViewtype),LandScapeX) | String.IsEqual(Skin.String(SetViewtype),LandScapeX) | String.IsEqual(Skin.String(GenreViewtype),LandScapeX) | Skin.HasSetting(enableviewchange)" file="IncludesViewLandscape.xml" />
+
+	<include condition="String.IsEqual(Skin.String(SetViewtype),Sets) | Skin.HasSetting(enableviewchange)" file="View65Sets.xml" /><!-- 65 Sets -->
+	<include condition="String.IsEqual(Skin.String(SetViewtype),Sets) | Skin.HasSetting(enableviewchange)" file="IncludesViewSet.xml" />
+	
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Simplelist) | String.IsEqual(Skin.String(FilmViewtype),Simplelist) | String.IsEqual(Skin.String(TVViewtype),Simplelist) | String.IsEqual(Skin.String(PLS_TVViewtype),Simplelist) | String.IsEqual(Skin.String(SetViewtype),Simplelist) | String.IsEqual(Skin.String(StaffelViewtype),Simplelist) | Skin.HasSetting(enableviewchange)" file="View66SimpleList.xml" /><!-- 66 SimpleList -->
+	<include condition="String.IsEqual(Skin.String(PLS_FilmViewtype),Simplelist) | String.IsEqual(Skin.String(FilmViewtype),Simplelist) | String.IsEqual(Skin.String(TVViewtype),Simplelist) | String.IsEqual(Skin.String(PLS_TVViewtype),Simplelist) | String.IsEqual(Skin.String(SetViewtype),Simplelist) | String.IsEqual(Skin.String(StaffelViewtype),Simplelist) | Skin.HasSetting(enableviewchange)" file="IncludesViewSimpleList.xml" />
+	
+	<include file="IncludesArtworks.xml" />
+	<include file="IncludesPVR.xml" />
+	<include file="ViewsLiveTV.xml" />
+	<include file="IncludesDialogs.xml" />
+	<include file="IncludesFlags.xml" /><!-- flags/watched overlays -->
+	<include file="IncludesColors.xml" /><!-- colors -->
+	<include file="IncludesBackgroundBuilding.xml" /><!-- backgrounds -->
+	<include file="IncludesOSD.xml" />
+	<include file="IncludesSettings.xml" />
+	<include file="IncludesAnimations.xml" />
+	
+	<constant name="FanartCrossFadeTime">350</constant>
+	<constant name="PanelartworksCrossFadeTime">200</constant>
+	<constant name="ArtworksFalseCrossFadeTime">0</constant>
+	<constant name="Scrollspeed">50</constant>
+	
+	<constant name="dialog-height-top">40</constant>
+	<constant name="dialog-border">5</constant>
+	<constant name="dialog-inner-top">55</constant>
+	<constant name="dialog-inner-width">446</constant>
+	<constant name="dialog-outer-width">456</constant><!-- dialog-inner-width + dialog-border -->
+	<constant name="dialog-itemheight">35</constant><!-- itemhoehe - Gesamt = Item*Anzahl + 75 Abstand -->
+	<constant name="dialog-height1">110</constant>
+	<constant name="dialog-height2">145</constant>
+	<constant name="dialog-height3">180</constant>
+	<constant name="dialog-height4">215</constant>
+	<constant name="dialog-height5">250</constant>
+	<constant name="dialog-height6">285</constant>
+	<constant name="dialog-height7">320</constant>
+	<constant name="dialog-height8">355</constant>
+	<constant name="dialog-height9">390</constant>
+	<constant name="dialog-height10">425</constant>
+	<constant name="dialog-height11">460</constant>
+	<constant name="dialog-height12">495</constant>
+	<constant name="dialog-height13">530</constant>
+	<constant name="dialog-height14">565</constant>
+	<constant name="dialog-height15">600</constant>
+	<constant name="dialog-height16">635</constant>
+	<constant name="dialog-height17">670</constant>
+	<constant name="dialog-height18">705</constant>
+	<constant name="dialog-height19">740</constant>
+	
+	<include name="PlotLarge390">
+		<height max="390">auto</height>
+		<font>PlotLarge15</font>
+	</include>
+	<include name="PlotLarge290">
+		<height max="290">auto</height>
+		<font>PlotLarge11</font>
+	</include>
+	<include name="PlotNormal110">
+		<height max="110">auto</height>
+		<font>PlotNormal5</font>
+	</include>
+	<include name="PlotNormal66">
+		<height max="66">auto</height>
+		<font>PlotNormal3</font>
+	</include>
+	<include name="PlotNormal88">
+		<height max="88">auto</height>
+		<font>PlotNormal4</font>
+	</include>
+	<include name="PlotNormal44">
+		<height max="44">auto</height>
+		<font>PlotNormal2</font>
+	</include>
+	<include name="PlotNormal132">
+		<font>PlotNormal6</font>
+		<height max="132">auto</height>
+	</include>
+	<include name="PlotNormal154">
+		<font>PlotNormal7</font>
+		<height max="154">auto</height>
+	</include>
+	<include name="PlotNormal176">
+		<font>PlotNormal8</font>
+		<height max="176">auto</height>
+	</include>
+	<include name="PlotNormal308">
+		<height max="312">auto</height>
+		<font>PlotNormal12</font>
+	</include>
+	<include name="PlotNormal462">
+		<font>PlotNormal6</font>
+		<height max="462">auto</height>
+	</include>
+	<include name="PlotNormal352">
+		<font>PlotNormal8</font>
+		<height max="352">auto</height>
+	</include>
+	<include name="PlotOSDLarge120">
+		<height max="120">auto</height>
+		<font>PlotOSDLarge5</font>
+	</include>
+</includes>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- AeonKN draft kopie -->
+<defaultcontrol always="true">50</defaultcontrol>
+<menucontrol>9000</menucontrol>
+<views>50</views>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+	<controls>
+	<control type="image" id="557"><!-- Flags HiddenCondition Studio -->
+		<include>Hiddencontrol</include>
+		<texture fallback="leer.png">resource://resource.images.studios.coloured/$INFO[ListItem.Studio,,.png]</texture><!-- jarvis -->
+	</control>
+	<include>CommonBackground</include>
+	<control type="group"><!-- Visualization -->
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<visible>Control.IsVisible(50)</visible>
+		<control type="videowindow">
+			<left>0</left>
+			<top>0</top>
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasVideo</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+		<control type="visualisation">
+			<left>0</left>
+			<top>0</top>
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasAudio</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+	</control>
+	<control type="group"><!-- default group -->
+		<include>animation_window</include>
+		<visible>![Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+		<control type="group">
+			<top>30</top>
+			<visible>Control.IsVisible(50)</visible>
+			<control type="group">
+				<animation effect="slide" start="0,300" end="0,0"  time="500" tween="sine" easing="out">WindowOpen</animation>
+				<animation effect="slide" start="0,300" end="0,0"  time="500" tween="sine" easing="out">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+				<visible>!Window.IsVisible(PVRRecordingInfo)</visible>
+				<control type="image">
+					<description>Hintergrund</description>
+					<top>650</top>
+					<width>1280</width>
+					<height>42</height>
+					<include>global_texture_light</include>
+				</control>
+				<control type="image">
+					<left>-30</left>
+					<top>650</top>
+					<height>42</height>
+					<width>1280</width>
+					<texture>backgrounds/background-smalloverlay.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+				</control>
+				<control type="grouplist"><!-- flags -->
+					<left>40</left>
+					<top>645</top>
+					<orientation>horizontal</orientation>
+					<itemgap>22</itemgap>
+					<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(621)">Conditional</animation>
+					<include>global_flagbar</include>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+			</control>
+			<control type="group"><!-- default group -->
+				<animation effect="fade" time="400">VisibleChange</animation>
+				<visible>Control.IsVisible(50) + !Window.IsVisible(PVRRecordingInfo)</visible>
+				<control type="group">
+					<animation effect="slide" time="500" start="-800,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+					<animation effect="slide" time="500" start="-800,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+					<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+					<control type="image">
+						<top>57</top>
+						<width>640</width>
+						<include>global_topshadow8</include>
+					</control>
+					<!-- Background left-->
+					<control type="image">
+						<description>Hintergrund</description>
+						<top>65</top>
+						<width>640</width>
+						<height>585</height>
+						<include>global_texture_light</include>
+					</control>
+					<control type="image">
+						<top>650</top>
+						<include>global_bottomshadow8</include>
+					</control>
+					<control type="list" id="50">
+						<viewtype>list</viewtype>
+						<left>0</left>
+						<top>65</top>
+						<width>640</width>
+						<height>584</height>
+						<pagecontrol>80</pagecontrol>
+						<onleft>noop</onleft>
+						<onright>80</onright>
+						<orientation>vertical</orientation>
+						<scrolltime>450</scrolltime>
+						<preloaditems>2</preloaditems>
+						<itemlayout height="40">
+							<control type="image">
+								<left>10</left>
+								<top>39</top>
+								<width>835</width>
+								<height>1</height>
+								<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+							</control>
+							<control type="label">
+								<left>45</left>
+								<top>0</top>
+								<width>760</width>
+								<height>41</height>
+								<font>RegularLarge</font>
+								<textcolor>TextColor2</textcolor>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
+							</control>
+							<control type="label">
+								<left>430</left>
+								<top>0</top>
+								<width>160</width>
+								<height>40</height>
+								<font>RegularLarge</font>
+								<align>right</align>
+								<textcolor>TextColor2</textcolor>
+								<label>$INFO[ListItem.Date]</label>
+							</control>
+							<include content="watched_overlay_listLabel"><!-- watched_overlay --><!-- check @pacoma -->
+								<param name="left">600</param>
+								<param name="top">8</param>
+								<param name="width">30</param>
+								<param name="height">30</param>
+							</include>
+						</itemlayout>
+						<focusedlayout height="40">
+							<control type="image">
+								<width>640</width>
+								<height>40</height>
+								<include>global_listfocustexture</include>
+								<animation effect="fade" start="100" end="30" time="0" condition="!Control.Hasfocus(50)">conditional</animation>
+							</control>
+							<control type="label">
+								<left>45</left>
+								<top>0</top>
+								<width>760</width>
+								<height>41</height>
+								<font>RegularLarge</font>
+								<textcolor>TextColorFocus</textcolor>
+								<selectedcolor>TextColorSelectFO</selectedcolor>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
+								<visible>Control.HasFocus(50)</visible>
+							</control>
+							<control type="label">
+								<left>45</left>
+								<top>0</top>
+								<width>760</width>
+								<height>41</height>
+								<font>RegularLarge</font>
+								<textcolor>TextColor2</textcolor>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
+								<visible>!Control.HasFocus(50)</visible>
+							</control>
+							<control type="label">
+								<left>430</left>
+								<top>0</top>
+								<width>160</width>
+								<height>40</height>
+								<font>RegularLarge</font>
+								<align>right</align>
+								<textcolor>TextColor2</textcolor>
+								<label>$INFO[ListItem.Date]</label>
+								<visible>!Control.HasFocus(50)</visible>
+							</control>
+							<control type="label">
+								<left>430</left>
+								<top>0</top>
+								<width>160</width>
+								<height>40</height>
+								<font>RegularLarge</font>
+								<align>right</align>
+								<textcolor>TextColorFocus</textcolor>
+								<selectedcolor>TextColorSelectFO</selectedcolor>
+								<label>$INFO[ListItem.Date]</label>
+								<visible>Control.HasFocus(50)</visible>
+							</control>
+							<include content="watched_overlay_listLabel"><!-- watched_overlay --><!-- check @pacoma -->
+								<param name="left">600</param>
+								<param name="top">8</param>
+								<param name="width">30</param>
+								<param name="height">30</param>
+							</include>
+						</focusedlayout>
+					</control>
+					<control type="scrollbar" id="80">
+						<include>scrollbar_vertical</include>
+						<left>610</left>
+						<top>65</top>
+						<height>584</height>
+						<onleft>50</onleft>
+						<onright>50</onright>
+						<visible allowhiddenfocus="true">Control.HasFocus(80)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- info -->
+					<left>640</left>
+					<top>0</top>
+					<animation effect="slide" time="1000" start="600,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+					<animation effect="slide" time="1000" start="600,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+					<animation effect="fade" time="400" start="100" end="0">Hidden</animation>
+					<visible>Control.IsVisible(50) + !Window.IsVisible(PVRRecordingInfo)</visible>
+					<control type="image">
+						<description>Hintergrund oben</description>
+						<top>-70</top>
+						<width>640</width>
+						<height>720</height>
+						<include>global_texture_light</include>
+					</control>
+					<control type="image">
+						<description>Hintergrund unten</description>
+						<top>245</top>
+						<width>640</width>
+						<height>405</height>
+						<include>global_texture_light</include>
+					</control>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-8</left>
+						<top>-70</top>
+						<height>720</height>
+						<include>global_texture_border8_leftv</include>
+					</control>
+					<control type="group"><!-- info -->
+						<visible>!ListItem.IsParentFolder</visible>
+						<control type="group"><!-- icon -->
+							<include>animation_vhoc_fade</include>
+							<control type="image"><!-- reflect -->
+								<left>105</left>
+								<top>237</top>
+								<width>320</width>
+								<height>220</height>
+								<bordersize>8</bordersize>
+								<fadetime>FanartCrossFadeTime</fadetime>
+								<aspectratio align="left" aligny="top">keep</aspectratio>
+								<texture border="8" flipy="true" diffuse="borders/poster-reflect.png" background="true">$VAR[value_commonbackground]</texture>
+							</control>
+							<control type="image">
+								<left>105</left>
+								<top>33</top>
+								<width>320</width>
+								<height>220</height>
+								<aspectratio align="left" aligny="bottom">keep</aspectratio>
+								<texture background="true">$VAR[value_commonbackground]</texture>
+								<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+								<bordersize>8</bordersize>
+							</control>
+						</control>
+						<control type="textbox">
+							<left>105</left>
+							<top>290</top>
+							<width>400</width>
+							<include>PlotNormal176</include>
+							<label>$INFO[ListItem.Date,,[CR][CR]]$INFO[ListItem.Plot]</label>
+							<autoscroll delay="20000" time="3000" repeat="20000">true</autoscroll>
+						</control>
+						<control type="label">
+							<description>Disk usage text</description>
+							<left>105</left>
+							<top>550</top>
+							<width>320</width>
+							<height>20</height>
+							<label>$INFO[PVR.backenddiskspace]</label>
+							<visible>!Integer.IsGreater(PVR.backenddiskspaceprogr,100)</visible>
+						</control>
+						<control type="progress">
+							<description>Disk usage bar</description>
+							<left>105</left>
+							<top>573</top>
+							<width>320</width>
+							<height>4</height>
+							<info>PVR.backenddiskspaceprogr</info>
+							<texturebg colordiffuse="TextColor2">dialogs/progress/progress_back.png</texturebg>
+							<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</midtexture>
+							<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</lefttexture>
+							<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/progress_mid_big.png</righttexture>
+							<visible>!Integer.IsGreater(PVR.backenddiskspaceprogr,100)</visible>
+						</control>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!-- menue -->
+		<include>global_topbar_multidata</include>
+	</control>
+	<include>pvr_sidebarmenue</include><!-- sidebar 9000/90002 -->
+</controls>
+</window>

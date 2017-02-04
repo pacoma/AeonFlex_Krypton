@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1112">
+<defaultcontrol always="true">90100</defaultcontrol>
+<controls>
+<control type="group">
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>dialog-outer-width</width>
+	<height>425</height>
+	<include>animation_dialog_popup</include>
+	<control type="image">
+		<description>schatten 10+ elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+	</control>
+	<control type="image">
+		<description>hintergrund 10+ elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include>dialog_headerfront_neu</include>
+	</control>
+	<control type="label" id="0">
+		<description>header</description>
+		<label>$LOCALIZE[31771]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="list" id="90100"><!-- List -->
+		<left>dialog-border</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>350</height>
+		<onleft>noop</onleft>
+		<onright>noop</onright>
+		<onup>90100</onup>
+		<ondown>90100</ondown>
+		<itemgap>0</itemgap>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>30</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="image">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.HasFocus(90101) | Control.HasFocus(90100)</visible>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>30</textoffsetx>
+				<scroll>false</scroll>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<!-- 
+			<control type="button">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>Hiddencontrol</include>
+				<onclick>SendClick(90101)</onclick>
+			</control>-->
+		</focusedlayout>
+			<content>
+				<include>menu_ordercontent</include>
+			</content>
+	</control>
+</control>
+</controls>
+</window>
+
+
+

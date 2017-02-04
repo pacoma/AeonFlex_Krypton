@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<smartplaylist type="movies">
+    <name>Filme - Empfehlungen2015</name>
+    <match>all</match>
+    <rule field="playcount" operator="lessthan">
+        <value>1</value>
+    </rule>
+    <rule field="rating" operator="greaterthan">
+        <value>4</value>
+    </rule>
+    <rule field="year" operator="greaterthan">
+        <value>2014</value>
+    </rule>
+    <limit>12</limit>
+    <order direction="ascending">random</order>
+</smartplaylist>

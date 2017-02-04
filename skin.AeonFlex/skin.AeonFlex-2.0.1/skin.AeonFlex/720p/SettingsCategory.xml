@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>3</defaultcontrol>
+<menucontrol>8999</menucontrol>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+<include>menucontrol</include>
+<include>CommonBackground</include>
+<control type="group">
+	<include>animation_window</include>
+	<visible>$EXP[HasNotDialogPopup]</visible>
+	<control type="group"><!-- mitte -->
+		<left>240</left>
+		<top>60</top>
+		<control type="image">
+			<description>Hintergrund mitte</description>
+			<width>1040</width>
+			<height>660</height>
+			<include>global_texture_default</include>
+		</control>
+		<control type="image">
+			<description>hintergrund titel</description>
+			<width>1040</width>
+			<include>global_texture_title</include>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>40</left>
+			<width>900</width>
+			<include>global_label_title</include>
+			<label>$VAR[value_settings_midtitle]</label>
+		</control>
+		<control type="image">
+			<description>Hintergrund Beschreibung</description>
+			<top>570</top>
+			<width>1040</width>
+			<height>90</height>
+			<include>global_texture_focus</include>
+		</control>
+		<control type="textbox" id="6">
+			<description>Description Text</description>
+			<left>50</left>
+			<top>580</top>
+			<width>940</width>
+			<include>PlotNormal44</include>
+			<align>left</align>
+			<aligny>top</aligny>
+			<textcolor>TextColorFocus</textcolor>
+			<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+		</control>
+	</control>
+	<include>global_rss</include>
+	<control type="group"><!-- Menu -->
+		<control type="image">
+			<description>Hintergrund Menu</description>
+			<width>240</width>
+			<height>720</height>
+			<include>global_texture_light</include>
+		</control>
+		<include>global_date</include>
+		<control type="label">
+			<include>settings_title</include>
+			<label>$LOCALIZE[31160]</label>
+		</control>
+		<control type="group"><!-- Menuelevel 9000 -->
+			<left>-300</left>
+			<animation effect="slide" start="0,0" end="300,0" time="300" easing="out" tween="cubic" condition="ControlGroup(9000).HasFocus">Conditional</animation>
+			<control type="grouplist" id="9000">
+				<top>120</top>
+				<width>240</width>
+				<height>660</height>
+				<orientation>vertical</orientation>
+				<itemgap>0</itemgap>
+				<onleft>3</onleft>
+				<onright>3</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<onback>3</onback>
+				<control type="button" id="20"><!-- Setting level -->
+					<width>240</width>
+					<height>40</height>
+					<textoffsetx>20</textoffsetx>
+					<label>$LOCALIZE[10037]</label>
+					<onclick>SettingsLevelChange</onclick>
+				</control>
+				<control type="button" id="21"><!-- Reset level -->
+					<width>240</width>
+					<height>40</height>
+					<textoffsetx>20</textoffsetx>
+					<label>$LOCALIZE[10035]</label>
+					<onclick>SettingsReset</onclick>
+				</control>
+			</control>
+		</control>
+		<control type="grouplist" id="3"><!-- Menue -->
+			<top>120</top>
+			<width>240</width>
+			<height>660</height>
+			<orientation>vertical</orientation>
+			<itemgap>0</itemgap>
+			<onleft>close</onleft>
+			<onright>5</onright>
+			<onup>3</onup>
+			<ondown>1000</ondown>
+			<animation effect="slide" start="0,0" end="-300,0" time="300" easing="out" tween="cubic" condition="ControlGroup(9000).HasFocus">Conditional</animation>
+		</control>
+		<control type="button" id="10">
+			<description>Default menue button</description>
+			<width>240</width>
+			<height>40</height>
+			<textoffsety>7</textoffsety>
+			<textoffsetx>20</textoffsetx>
+			<onclick>SetFocus(800)</onclick>
+		</control>
+		<control type="group">
+			<description>Einstellungslevel navigationsanzeige</description>
+			<left>20</left>
+			<top>680</top>
+			<control type="button" id="1000">
+				<description>focus navigationsbutton fuer levelchange</description>
+				<include>Hiddencontrol</include>
+				<onup>SetFocus(3)</onup>
+				<onclick>SetFocus(9000)</onclick>
+			</control>
+			<control type="image">
+				<width>30</width>
+				<height>30</height>
+				<texture flipy="true" colordiffuse="TextColor3">arrows/arrow_up.png</texture>
+				<visible>!ControlGroup(9000).HasFocus + !Control.HasFocus(1000)</visible>
+			</control>
+			<control type="image">
+				<width>30</width>
+				<height>30</height>
+				<texture colordiffuse="ACSkinColor">arrows/arrow_up.png</texture>
+				<visible>ControlGroup(9000).HasFocus | Control.HasFocus(1000)</visible>
+			</control>
+			<control type="label">
+				<left>40</left>
+				<top>5</top>
+				<width>190</width>
+				<height>30</height>
+				<aligny>top</aligny>
+				<font>RegularSmall</font>
+				<label>$INFO[Control.GetLabel(20)]</label>
+				<textcolor>TextColor2</textcolor>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- Setting Grouplist -->
+		<left>240</left>
+		<control type="grouplist" id="5">
+			<top>120</top>
+			<width>1040</width>
+			<height>482</height>
+			<itemgap>0</itemgap>
+			<onup>5</onup>
+			<ondown>5</ondown>
+			<onleft>3</onleft>
+			<onright>80</onright>
+			<pagecontrol>80</pagecontrol>
+		</control>
+		<control type="button" id="7">
+		</control>
+		<control type="radiobutton" id="8">
+		</control>
+		<control type="spincontrolex" id="9">
+		</control>
+		<control type="sliderex" id="13">
+		</control>
+		<control type="label" id="14">
+			<description>Default Label</description>
+			<textoffsetx>50</textoffsetx>
+			<width>1040</width>
+			<label>-</label>
+			<font>SemiNormal</font>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>1000</left>
+			<top>137</top>
+			<height>464</height>
+			<onleft>5</onleft>
+			<onright>3</onright>
+			<animation effect="fade" time="200">Visible</animation>
+			<animation effect="fade" time="50">Hidden</animation>
+		</control>
+	</control>
+	<control type="image">
+		<description>Schatten rechts menue ueber linker settingliste</description>
+		<left>240</left>
+		<height>720</height>
+		<include>global_texture_border8_rightv</include>
+	</control>
+</control>
+</controls>
+</window>

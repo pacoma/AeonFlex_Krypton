@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window type="dialog" id="1111">
+<defaultcontrol always="true">8000</defaultcontrol>
+<onunload>ClearProperty(CustomMainslotIcon,1110)</onunload>
+<controls>
+<control type="list" id="648">
+	<include>Compaircontainer</include>
+	<include>PinboardAddonContent</include>
+</control>
+<control type="group">
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>dialog-outer-width</width>
+	<height>425</height>
+	<include>animation_dialog_popup</include>
+	<control type="image">
+		<description>schatten 10+ elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+	</control>
+	<control type="image">
+		<description>hintergrund 10+ elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include>dialog_headerfront_neu</include>
+	</control>
+	<control type="label" id="0">
+		<description>header</description>
+		<label>$LOCALIZE[31733]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="list" id="8000"><!-- List -->
+		<left>dialog-border</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>350</height>
+		<onleft condition="Window.IsVisible(home)">SetProperty(MenueProperties,Reload,home)</onleft>
+		<onleft>Dialog.Close(1111)</onleft>
+		<onleft condition="!Window.IsVisible(home)">ReloadSkin()</onleft>
+		<onleft condition="!Window.IsVisible(home)">SetFocus(617)</onleft>
+		<onleft condition="Window.IsVisible(home)">ActivateWindow(1118)</onleft>
+		<onright condition="Window.IsVisible(home)">SetProperty(MenueProperties,Reload,home)</onright>
+		<onright>Dialog.Close(1111)</onright>
+		<onright condition="!Window.IsVisible(home)">ReloadSkin()</onright>
+		<onright condition="!Window.IsVisible(home)">SetFocus(617)</onright>
+		<onright condition="Window.IsVisible(home)">ActivateWindow(1118)</onright>
+		<onup>8000</onup>
+		<ondown>8000</ondown>
+		<itemgap>0</itemgap>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="label">
+				<left>10</left>
+				<width>60</width>
+				<height>dialog-itemheight</height>
+				<scroll>false</scroll>
+				<font>Icons-Small</font>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textoffsetx>60</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="image">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.HasFocus(8000)</visible>
+			</control>
+			<control type="label">
+				<left>10</left>
+				<width>60</width>
+				<height>dialog-itemheight</height>
+				<scroll>false</scroll>
+				<font>Icons-Small</font>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textoffsetx>60</textoffsetx>
+				<scroll>false</scroll>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="2">
+				<include>widgetclick_neu_Film</include>
+			</item>
+			<item id="3">
+				<include>widgetclick_zufall_Film</include>
+			</item>
+			<item id="4">
+				<include>widgetclick_laufend_Film</include>
+			</item>
+			<item id="5">
+				<include>widgetclick_neu_Episode</include>
+			</item>
+			<item id="6">
+				<include>widgetclick_zufall_Episode</include>
+			</item>
+			<item id="7">
+				<include>widgetclick_laufend_Serien</include>
+			</item>
+			<item id="28">
+				<include>widgetclick_Beliebteste_Serien</include>
+			</item>
+			<item id="8">
+				<include>widgetclick_neu_Albums</include>
+			</item>
+			<item id="9">
+				<include>widgetclick_zufall_Songs</include>
+			</item>
+			<item id="10">
+				<include>widgetclick_laufend_Albums</include>
+			</item>
+			<include condition="System.HasAddon(script.extendedinfo)">pinboardwidgetclick_favourites</include>
+			<item id="13">
+				<include>widgetclick_addon_pinboard</include>
+				<onclick condition="Window.IsVisible(Custom_1121_Pinboard.xml)">ReloadSkin()</onclick>
+				<visible>!Window.IsVisible(home) + !String.IsEqual(Container(648).NumItems,0) | Window.IsVisible(home)</visible>
+			</item>
+			<item id="14">
+				<include>widgetclick_addon_Video</include>
+			</item>
+			<item id="15">
+				<include>widgetclick_addon_Musik</include>
+			</item>
+			<item id="16">
+				<include>widgetclick_addon_Programme</include>
+			</item>
+			<item id="17">
+				<include>widgetclick_addon_Bilder</include>
+			</item>
+			<item id="18">
+				<include>widgetclick_last_Serien</include>
+			</item>
+			<item id="19">
+				<include>widgetclick_last_Episoden</include>
+			</item>
+			<item id="20">
+				<include>widgetclick_Moviesets_new</include>
+			</item>
+			<item id="21">
+				<include>widgetclick_Beliebteste_Filme</include>
+			</item>
+			<item id="22">
+				<include>widgetclick_Empfehlungen_2015</include>
+			</item>
+			<item id="23">
+				<include>widgetclick_Empfehlungen_2016</include>
+			</item>
+			<item id="24">
+				<include>widgetclick_HD_Filme</include>
+			</item>
+			<item id="25">
+				<include>widgetclick_Genres_Filme</include>
+			</item>
+			<item id="26">
+				<include>widgetclick_Genres_Serie</include>
+			</item>
+			<include condition="Window.IsVisible(Custom_1121_Pinboard.xml)">pinboardwidgetclick_lastwatched</include>
+			<item id="127">
+				<include>widgetclick_custom1</include>
+				<visible>!String.IsEmpty(Skin.string(CustomWidgetSelectorTitle1))</visible>
+			</item>
+			<item id="122">
+				<include>widgetclick_custom2</include>
+				<visible>!String.IsEmpty(Skin.string(CustomWidgetSelectorTitle2))</visible>
+			</item>
+			<include condition="!Window.IsVisible(Custom_1121_Pinboard.xml)">pinboardwidget_homeclicks</include>
+			<include condition="System.HasAddon(plugin.service.gto)">pinboardwidget_GTO</include>
+		</content>
+	</control>
+</control>
+</controls>
+</window>
+
+
+

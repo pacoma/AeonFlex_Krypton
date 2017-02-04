@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">2</defaultcontrol>
+<controls>
+<control type="group">
+	<left>183</left>
+	<top>145</top>
+	<include>animation_dialog_popup</include>
+	<include content="global_dialog_mid_bg">
+		<param name="global_dialog_mid_bg-left" value="0" />
+		<param name="global_dialog_mid_bg-width" value="914" />
+		<param name="global_dialog_mid_bg-innerwidth" value="904" />
+		<param name="global_dialog_mid_bg-height" value="375" />
+		<param name="global_dialog_mid_bg-headerlabel" value="$LOCALIZE[298]$INFO[ListItem.Label, ,]$INFO[ListItem.Label2, (,)]" />
+		<param name="global_dialog_mid_headerid" value="-" />
+	</include>
+	<control type="label">
+		<left>614</left>
+		<top>295</top>
+		<width>275</width>
+		<height>35</height>
+		<font>RegularSmall</font>
+		<align>right</align>
+		<textcolor>$VAR[AC_value_textcolor_dialog]</textcolor>
+		<label>[COLOR=$VAR[AC_value_textcolor_dialog]]$LOCALIZE[31001]: [/COLOR]$INFO[Container(11).NumItems] [COLOR=$VAR[AC_value_textcolor_dialog]]$LOCALIZE[31000]: [/COLOR]$INFO[Container(11).CurrentPage]/$INFO[Container(11).NumPages]</label>
+	</control>
+	<control type="panel" id="11"><!-- bookmark liste -->
+		<left>20</left>
+		<top>65</top>
+		<width>879</width>
+		<height>320</height>
+		<onleft>2</onleft>
+		<onright>80</onright>
+		<ondown>2</ondown>
+		<onup>2</onup>
+		<orientation>horizontal</orientation>
+		<scrolltime>400</scrolltime>
+		<focusposition>3</focusposition>
+		<itemlayout height="194" width="293">
+			<control type="image">
+				<width>267</width>
+				<height>150</height>
+				<aspectratio>scale</aspectratio>
+				<bordersize>10</bordersize>
+				<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<texture background="true" fallback="defaultpictures/DefaultMovieExtrathumb.png">$INFO[ListItem.Art(thumb)]</texture>
+			</control>
+			<control type="image">
+				<width>267</width>
+				<height>150</height>
+				<bordersize>10</bordersize>
+				<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+			</control>
+			<control type="label">
+				<left>10</left>
+				<top>164</top>
+				<width>267</width>
+				<height>30</height>
+				<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout height="494" width="293">
+			<control type="group">
+				<animation effect="zoom" center="135,76" start="100" end="108" time="380" reversible="false">Focus</animation>
+				<animation effect="zoom" center="135,76" start="108" end="100" time="380" reversible="false">UnFocus</animation>
+				<control type="image">
+					<width>267</width>
+					<height>150</height>
+					<aspectratio>scale</aspectratio>
+					<bordersize>10</bordersize>
+					<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<texture background="true" fallback="defaultpictures/DefaultMovieExtrathumb.png">$INFO[ListItem.Art(thumb)]</texture>
+				</control>
+				<control type="image">
+					<width>267</width>
+					<height>150</height>
+					<bordersize>10</bordersize>
+					<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+					<include>animation_dimmer</include>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>164</top>
+					<width>267</width>
+					<height>30</height>
+					<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
+				</control>
+			</control>
+		</focusedlayout>
+	</control>
+	<control type="image">
+		<description>hintergrund menue</description>
+		<top>325</top>
+		<width>904</width>
+		<height>40</height>
+		<include>global_texture_focus</include>
+	</control>
+	<control type="grouplist" id="9000">
+		<left>0</left>
+		<top>325</top>
+		<width>904</width>
+		<height>50</height>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>11</onup>
+		<ondown>11</ondown>
+		<control type="button" id="2"><!-- Create Bookmark -->
+			<width>300</width>
+			<height>40</height>
+			<label>$LOCALIZE[294]</label>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+		</control>
+		<control type="button" id="3"><!-- Clear Bookmark -->
+			<width>300</width>
+			<height>40</height>
+			<label>$LOCALIZE[296]</label>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+		</control>
+		<control type="button" id="4"><!-- Clear Bookmark Episodes -->
+			<width>304</width>
+			<height>40</height>
+			<align>right</align>
+			<textoffsetx>20</textoffsetx>
+			<label>$LOCALIZE[20406]</label>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<visible>VideoPlayer.Content(episodes)</visible>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

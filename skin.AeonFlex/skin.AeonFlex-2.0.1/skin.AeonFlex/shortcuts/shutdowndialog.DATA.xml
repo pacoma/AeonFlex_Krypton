@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+	<shortcut>
+		<label>Pinboard</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(1121)</action>
+		<visible>!Window.IsVisible(Custom_1121_Pinboard.xml)</visible>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31924]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>Quit</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31928]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>Reboot</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31926]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ShutDown</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31929]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>Hibernate</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31930]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>Suspend</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31931]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>AlarmClock(shutdowntimer,XBMC.Shutdown())</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31932]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>CancelAlarm(shutdowntimer)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31925]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>System.LogOff</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31915]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(systemInfo)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31909]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Profiles)</action>
+		<visible>!String.IsEqual(System.ProfileCount,1)</visible>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31633]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>EjectTray()</action>
+		<visible>System.HasMediadvd</visible>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31288]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>XBMC.ReloadSkin()</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31914]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(filemanager)</action>
+	</shortcut>
+</shortcuts>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="2901"><!-- flex 2.0 -->
+<defaultcontrol>100</defaultcontrol>
+<onload>Control.SetFocus(100,3)</onload><!-- setting dialog focusreset -->
+<onload condition="String.Contains(Container(100).NumItems,0)">Control.SetFocus(101,3)</onload><!-- setting dialog focusreset -->
+<controls>
+<control type="group"><!-- aktuelle playliste Hidden Controls -->
+	<top>-200</top>
+	<description>aktuelle playliste - container autoscroll bis match aktueller titel, offset 1 = neachstes</description>
+	<visible>[VideoPlayer.Content(episodes) | VideoPlayer.Content(movies)]</visible>
+	<animation type="Conditional" condition="true">
+		<effect type="fade" start="0" end="0" time="0" />
+	</animation>
+	<control type="list" id="222">
+		<width>1800</width>
+		<height>270</height>
+		<orientation>horizontal</orientation>
+		<viewtype>list</viewtype>
+		<autoscroll time="10" delay="50" repeat="50">!String.IsEqual(Container(222).ListItem.FilenameAndPath,Player.FilenameAndPath)</autoscroll>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime tween="sine" easing="out">10</scrolltime>
+		<itemlayout width="400" height="70">
+			<control type="label">
+				<width>400</width>
+				<height>70</height>
+				<label>$INFO[ListItem.Title]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="400" height="70">
+			<control type="label">
+				<width>400</width>
+				<height>70</height>
+				<label>$INFO[ListItem.Title]</label>
+			</control>
+		</focusedlayout>
+		<content target="video">$VAR[NPPlaylist]</content>
+	</control>
+</control>
+<control type="group">
+	<left>327</left>
+	<top>585</top>
+	<include>animation_osd_vhoc_bottombarslide</include>
+	<visible>![Window.IsVisible(osdvideosettings) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(videobookmarks) | Window.IsVisible(sliderdialog) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml) | Window.IsVisible(Custom_1123_PVRSwitchTimer.xml) | Window.IsVisible(DialogPlayerProcessInfo.xml)]</visible>
+	<control type="group">
+		<animation effect="slide" start="0" end="32.5" time="0" condition="String.Contains(Container(100).NumItems,8)">Conditional</animation>
+		<animation effect="slide" start="0" end="65" time="0" condition="String.Contains(Container(100).NumItems,7)">Conditional</animation>
+		<animation effect="slide" start="0" end="97.5" time="0" condition="String.Contains(Container(100).NumItems,6)">Conditional</animation>
+		<animation effect="slide" start="0" end="130" time="0" condition="String.Contains(Container(100).NumItems,5)">Conditional</animation>
+		<visible allowhiddenfocus="true">!Control.HasFocus(101)</visible>
+		<animation type="Visible">
+			<effect type="fade" start="0" end="100" time="180" delay="250" tween="sine" easing="out"/>
+			<effect type="slide" start="0,-30" end="0,0" time="200" delay="250" tween="sine" easing="out"/>
+		</animation>
+		<animation type="Hidden">
+			<effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+			<effect type="slide" end="0,30" time="300" tween="sine" easing="out" />
+		</animation>
+		<control type="group">
+			<visible>String.IsEqual(Container(100).NumItems,9)</visible>
+			<include content="global_dialog_mid_singlebg">
+				<description>Hintergrund</description>
+				<param name="global_dialog_mid_bg-width" value="625" />
+				<param name="global_dialog_mid_bg-height" value="110" />
+			</include>
+			<control type="progress" id="23">
+				<description>Progressbar</description>
+				<top>-1</top>
+				<width>615</width>
+				<height>25</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+		</control>
+		<control type="group">
+			<visible>String.IsEqual(Container(100).NumItems,8)</visible>
+			<include content="global_dialog_mid_singlebg">
+				<description>Hintergrund</description>
+				<param name="global_dialog_mid_bg-width" value="560" />
+				<param name="global_dialog_mid_bg-height" value="110" />
+			</include>
+			<control type="progress" id="23">
+				<description>Progressbar</description>
+				<top>-1</top>
+				<width>550</width>
+				<height>25</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+		</control>
+		<control type="group">
+			<visible>String.IsEqual(Container(100).NumItems,7)</visible>
+			<include content="global_dialog_mid_singlebg">
+				<description>Hintergrund</description>
+				<param name="global_dialog_mid_bg-width" value="495" />
+				<param name="global_dialog_mid_bg-height" value="110" />
+			</include>
+			<control type="progress" id="23">
+				<description>Progressbar</description>
+				<top>-1</top>
+				<width>485</width>
+				<height>25</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+		</control>
+		<control type="group">
+			<visible>String.IsEqual(Container(100).NumItems,6)</visible>
+			<include content="global_dialog_mid_singlebg">
+				<description>Hintergrund</description>
+				<param name="global_dialog_mid_bg-width" value="430" />
+				<param name="global_dialog_mid_bg-height" value="110" />
+			</include>
+			<control type="progress" id="23">
+				<description>Progressbar</description>
+				<top>-1</top>
+				<width>420</width>
+				<height>25</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+		</control>
+		<control type="group">
+			<visible>Integer.IsLessOrEqual(Container(100).NumItems,5)</visible>
+			<include content="global_dialog_mid_singlebg">
+				<description>Hintergrund</description>
+				<param name="global_dialog_mid_bg-width" value="365" />
+				<param name="global_dialog_mid_bg-height" value="110" />
+			</include>
+			<control type="progress" id="23">
+				<description>Progressbar</description>
+				<top>-1</top>
+				<width>355</width>
+				<height>25</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+		</control>
+		<control type="list" id="100"><!-- Content -->
+			<viewtype>list</viewtype>
+			<left>15</left>
+			<top>37</top>
+			<height>200</height>
+			<width>585</width>
+			<onleft>100</onleft>
+			<onright>100</onright>
+			<align>center</align>
+			<onup>Close</onup>
+			<ondown>Control.SetFocus(101,3)</ondown>
+			<orientation>horizontal</orientation>
+			<scrolltime>300</scrolltime>
+			<preloaditems>2</preloaditems>
+			<focusposition>3</focusposition>
+			<visible allowhiddenfocus="true">!Control.HasFocus(101)</visible>
+			<animation type="Visible">
+				<effect type="fade" start="0" end="100" time="180" delay="250" tween="sine" easing="out"/>
+				<effect type="slide" start="0,-30" end="0,0" time="200" delay="250" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+				<effect type="slide" end="0,30" time="300" tween="sine" easing="out" />
+			</animation>
+			<itemlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<colordiffuse>TextColor2</colordiffuse>
+				</control>
+			</itemlayout>
+			<focusedlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<colordiffuse>ACSkinColor</colordiffuse>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<animation effect="zoom" center="25,45" start="100" end="140" time="400" easing="out" tween="cubic" reversible="false">Focus</animation>
+				</control>
+			</focusedlayout>
+			<content>
+				<include condition="!VideoPlayer.Content(LiveTV)">dialogvideoosdbuttonsmain</include>
+				<include condition="VideoPlayer.Content(LiveTV)">dialogpvroosdbuttonsmain</include>
+				<item id="1"><!-- Focus -5 info -->
+					<label>Video Rating</label>
+					<icon>buttons/osd/osd_rating.png</icon>
+					<onclick>SetProperty(Videoratinginfo,ON,home)</onclick>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(1154)</onclick>
+					<visible>String.IsEqual(Container(222).ListItem.FilenameAndPath,Player.FilenameAndPath) + !System.HasMediadvd + !Player.IsInternetStream + !VideoPlayer.HasMenu + [VideoPlayer.Content(episodes) | VideoPlayer.Content(movies)]</visible>
+				</item>
+				<item id="1"><!-- Focus -5 info -->
+					<label>Video info</label>
+					<icon>buttons/osd/osd_info.png</icon>
+					<onclick>SetProperty(Videoinfo,ON,home)</onclick>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(1154)</onclick>
+					<visible>String.IsEqual(Container(222).ListItem.FilenameAndPath,Player.FilenameAndPath) + !System.HasMediadvd + !Player.IsInternetStream + !VideoPlayer.HasMenu + [VideoPlayer.Content(episodes) | VideoPlayer.Content(movies)]</visible>
+				</item>
+			</content>
+		</control>
+	</control>
+	<control type="label"><!-- icons label -->
+		<width>625</width>
+		<height>20</height>
+		<align>center</align>
+		<textoffsetx>20</textoffsetx>
+		<font>RegularNormal</font>
+		<label>« $INFO[System.CurrentControl] »</label>
+		<textcolor>TextColor1</textcolor>
+		<visible>!Control.HasFocus(101)</visible>
+		<animation type="Visible">
+			<effect type="fade" start="0" end="100" time="180" delay="250" tween="sine" easing="out"/>
+			<effect type="slide" start="0,-30" end="0,0" time="200" delay="250" tween="sine" easing="out"/>
+		</animation>
+		<animation type="Hidden">
+			<effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+			<effect type="slide" end="0,30" time="300" tween="sine" easing="out" />
+		</animation>
+	</control>
+	<control type="group">
+		<visible allowhiddenfocus="true">Control.HasFocus(101)</visible>
+		<animation type="Visible">
+			<effect type="fade" start="0" end="100" time="180" delay="250" tween="sine" easing="out"/>
+			<effect type="slide" start="0,-30" end="0,0" time="200" delay="250" tween="sine" easing="out"/>
+		</animation>
+		<animation type="Hidden">
+			<effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+			<effect type="slide" end="0,30" time="300" tween="sine" easing="out" />
+		</animation>
+		<include content="global_dialog_mid_singlebg">
+			<description>Hintergrund</description>
+			<param name="global_dialog_mid_bg-width" value="625" />
+			<param name="global_dialog_mid_bg-height" value="110" />
+		</include>
+		<control type="progress" id="23">
+			<description>Progressbar</description>
+			<top>-1</top>
+			<width>615</width>
+			<height>25</height>
+			<info>Player.Progress</info>
+			<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+			<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+			<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+			<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+		</control>
+		<control type="list" id="101">
+			<viewtype>list</viewtype>
+			<left>15</left>
+			<top>37</top>
+			<height>200</height>
+			<width>585</width>
+			<onleft>101</onleft>
+			<onright>101</onright>
+			<onup>Control.SetFocus(100,3)</onup>
+			<ondown>noop</ondown>
+			<orientation>horizontal</orientation>
+			<orientation>horizontal</orientation>
+			<scrolltime>300</scrolltime>
+			<preloaditems>2</preloaditems>
+			<focusposition>3</focusposition>
+			<visible allowhiddenfocus="true">Control.HasFocus(101)</visible>
+			<itemlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<colordiffuse>TextColor2</colordiffuse>
+				</control>
+			</itemlayout>
+			<focusedlayout width="65" height="90">
+				<control type="image">
+					<left>5</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<colordiffuse>ACSkinColor</colordiffuse>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<animation effect="zoom" center="25,45" start="100" end="140" time="400" easing="out" tween="cubic" reversible="false">Focus</animation>
+				</control>
+			</focusedlayout>
+			<content>
+				<include condition="!VideoPlayer.Content(LiveTV)">dialogvideoosdbuttonssub</include>
+				<include condition="VideoPlayer.Content(LiveTV)">dialogpvroosdbuttonssub</include>
+			</content>
+		</control>
+		<control type="label"><!-- icons label -->
+			<left>130</left>
+			<width>365</width>
+			<height>20</height>
+			<align>center</align>
+			<textoffsetx>20</textoffsetx>
+			<font>RegularNormal</font>
+			<label>« $INFO[System.CurrentControl] »</label>
+			<textcolor>TextColor1</textcolor>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

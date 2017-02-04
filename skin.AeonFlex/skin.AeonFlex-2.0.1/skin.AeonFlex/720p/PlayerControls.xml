@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="114"><!-- Aeon MQ 6 -->
+<defaultcontrol always="true">100</defaultcontrol>
+<visible>Player.HasMedia + Window.IsActive(PlayerControls)</visible>
+<controls>
+	<include condition="Player.HasVideo">DialogPlayerControlVideo</include>
+	<include condition="Player.HasAudio">DialogPlayerControlAudio</include>
+</controls>
+</window>

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<include name="SetsLabel">
+	<width>282</width>
+	<height>13</height>
+	<aligny>top</aligny>
+	<textcolor>TextColor2</textcolor>
+</include>
+<include name="SetsValue">
+	<width>282</width>
+	<height>13</height>
+	<aligny>top</aligny>
+</include>
+<variable name="viewglobal_value_plotmoviesets">
+	<value condition="!Control.HasFocus(511)">$VAR[viewglobal_value_plot]</value>
+	<value condition="Control.HasFocus(511)">$INFO[Container(511).ListItem.Plot]</value>
+</variable>
+
+<include name="View65Sets_video">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<visible>Control.IsVisible(65)</visible>
+		<control type="group"><!-- background bottom -->
+			<top>340</top>
+			<control type="image">
+				<description>schatten oben</description>
+				<top>-8</top>
+				<include>global_topshadow8</include>
+			</control>
+			<control type="image">
+				<width>1280</width>
+				<height>380</height>
+				<texture colordiffuse="ACBackgroundColor_light" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			</control>
+			<control type="image">
+				<width>900</width>
+				<height>380</height>
+				<texture colordiffuse="ACBackgroundColor_heavy" flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			</control>
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>380</height>
+				<texture colordiffuse="ACBackgroundColor" flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			</control>
+			<control type="image">
+				<description>floor hintergrund contents</description>
+				<top>-180</top>
+				<width>1685</width>
+				<height>180</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACFloorColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>separator</description>
+				<left>332</left>
+				<height>173</height>
+				<include>global_texture_border5_rightv</include>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="image">
+				<description>separator</description>
+				<top>415</top>
+				<width>667</width>
+				<height>1</height>
+				<texture colordiffuse="$VAR[AC_value_shadow_color]">shadows/shadow8_top.png</texture>
+			</control>
+		</control>
+		<control type="group"><!-- info -->
+			<visible>!ListItem.IsParentFolder</visible>
+			<control type="group">
+				<left>352</left>
+				<top>359</top>
+				<control type="label">
+					<description>infoline 1</description>
+					<include>SetsLabel</include>
+					<label>$VAR[viewglobal_value_videoinfo5_title]</label>
+				</control>
+				<control type="label">
+					<description>infoline 1</description>
+					<top>20</top>
+					<include>SetsLabel</include>
+					<label>$VAR[viewglobal_value_videoinfo5_label]</label>
+					<visible>!Control.HasFocus(511)</visible>
+				</control>
+				<control type="label">
+					<description>genre bei focus content</description>
+					<top>20</top>
+					<include>SetsValue</include>
+					<label fallback="31009">$INFO[Container(511).ListItem.Genre]</label>
+					<visible>Control.HasFocus(511)</visible>
+				</control>
+				<control type="label">
+					<description>infoline 2</description>
+					<top>50</top>
+					<include>SetsLabel</include>
+					<label>$VAR[viewglobal_value_videoinfo6_title]</label>
+				</control>
+				<control type="label">
+					<description>infoline 2</description>
+					<top>70</top>
+					<include>SetsValue</include>
+					<label>$VAR[viewglobal_value_videoinfo6_label]</label>
+					<visible>!Control.HasFocus(511)</visible>
+				</control>
+				<control type="label">
+					<description>Studio bei focus content</description>
+					<top>70</top>
+					<include>SetsValue</include>
+					<label fallback="31009">$INFO[Container(511).ListItem.Studio]</label>
+					<visible>Control.HasFocus(511)</visible>
+				</control>
+				<control type="label">
+					<description>infoline 3</description>
+					<top>100</top>
+					<include>SetsLabel</include>
+					<label>$VAR[viewglobal_value_videoinfo4_title]</label>
+				</control>
+				<control type="label">
+					<description>infoline 3</description>
+					<top>120</top>
+					<include>SetsValue</include>
+					<label>$VAR[viewglobal_value_videoinfo4_label]</label>
+					<visible>!Control.HasFocus(511)</visible>
+				</control>
+				<control type="label">
+					<description>Country bei focus content</description>
+					<top>120</top>
+					<include>SetsValue</include>
+					<label>$INFO[Container(511).ListItem.Country]</label>
+					<visible>Control.HasFocus(511) + !String.IsEmpty(Container(511).ListItem.Country)</visible>
+				</control>
+				<control type="label">
+					<description>Country bei focus content</description>
+					<top>120</top>
+					<include>SetsValue</include>
+					<label>[I][COLOR=TextColor3]31009[/COLOR][/I]</label>
+					<visible>Control.HasFocus(511) + String.IsEmpty(Container(511).ListItem.Country)</visible>
+				</control>
+			</control>
+			<control type="textbox">
+				<description>Plot</description>
+				<left>30</left>
+				<top>545</top>
+				<width>606</width>
+				<include>PlotNormal110</include>
+				<label>$VAR[viewglobal_value_plotmoviesets]</label>
+				<autoscroll delay="8000" time="2000" repeat="8000">!Skin.HasSetting(noinfoplotscroll)</autoscroll>
+			</control>
+		</control>
+		<control type="group"><!-- Artworks -->
+			<include>animation_vhoc_fade</include>
+			<include>viewmoviesets-contentbig-artwork</include>
+			<visible>Control.HasFocus(511) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)</visible>
+		</control>
+		<include>viewmoviesets-contentsmall-artworks</include>
+		<control type="group"><!-- Right List + Poster Focus -->
+			<animation effect="slide" start="0,0" end="700,0" time="250" tween="sine" easing="out" condition="Control.HasFocus(511) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)">Conditional</animation>
+			<top>50</top>
+			<control type="group"><!-- Poster Art -->
+				<left>676</left>
+				<top>265</top>
+				<include>animation_vhoc_fade</include>
+				<control type="image"><!-- reflect -->
+					<top>332</top>
+					<width>218</width>
+					<height>319</height>
+					<bordersize>10</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="top">stretch</aspectratio>
+					<texture border="10" flipy="true" diffuse="borders/poster-reflect.png" fallback="defaultpictures/DefaultMovies.png" background="true">$VAR[art_value_poster]</texture>
+				</control>
+				<control type="image">
+					<top>32</top>
+					<width>218</width>
+					<height>319</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[art_value_poster]</texture>
+					<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>10</bordersize>
+				</control>
+			</control>
+			<control type="fixedlist" id="65"><!-- List -->
+				<viewtype label="Sets">list</viewtype>
+				<left>900</left>
+				<top>298</top>
+				<width>380</width>
+				<height>322</height>
+				<onleft>SetFocus(9000)</onleft><!-- menue -->
+				<onright condition="Integer.IsGreater(Container(65).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(65).NumPages,1)">511</onright>
+				<orientation>vertical</orientation>
+				<pagecontrol>80</pagecontrol>
+				<scrolltime>400</scrolltime>
+				<preloaditems>2</preloaditems>
+				<include>OnInfoContent</include>
+				<focusposition>3</focusposition>
+				<visible>!String.Contains(Container.FolderPath,plugin) + Container.Content(sets) + [String.Contains(Skin.String(SetViewtype),Sets) | !String.IsEmpty(Window(home).Property(Viewtypepreview))]</visible>
+				<itemlayout height="40">
+					<control type="image">
+						<width>380</width>
+						<height>1</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<height>40</height>
+						<width>340</width>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>TextColor2</textcolor>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40">
+					<control type="image">
+						<width>380</width>
+						<height>40</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.HasFocus(65)</visible>
+					</control>
+					<control type="image">
+						<left>360</left>
+						<top>4</top>
+						<width>15</width>
+						<height>30</height>
+						<texture>arrows/arrow_settings.png</texture>
+						<colordiffuse>TextColorFocus</colordiffuse>
+						<include>animation_vhoc_fade</include>
+						<animation effect="fade" start="20" end="80" time="700" condition="true" pulse="true">Conditional</animation>
+						<visible>String.StartsWith(ListItem.Path,videodb://movies/sets) + !Control.HasFocus(80)</visible>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<height>40</height>
+						<width>330</width>
+						<font>RegularLarge</font>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>TextColor2</textcolor>
+						<visible>!Control.HasFocus(65)</visible>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<height>40</height>
+						<width>330</width>
+						<font>RegularLarge</font>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<visible>Control.HasFocus(65)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="80"><!-- scrollbar -->
+				<include>scrollbar_vertical</include>
+				<left>1245</left>
+				<top>293</top>
+				<height>340</height>
+				<onleft>65</onleft>
+				<onright>511</onright>
+				<visible allowhiddenfocus="true">Control.IsVisible(65) + Control.HasFocus(80)</visible>
+			</control>
+			<control type="image">
+				<left>900</left>
+				<top>290</top>
+				<height>367</height>
+				<include>global_texture_border5_rightv</include>
+			</control>
+		</control>
+		<control type="image">
+			<description>separator Poster</description>
+			<left>670</left>
+			<top>340</top>
+			<height>367</height>
+			<include>global_texture_border5_rightv</include>
+		</control>
+		<control type="list" id="511"><!-- Movies in Set list -->
+			<viewtype>list</viewtype>
+			<left>30</left>
+			<top>100</top>
+			<width>1260</width>
+			<height>370</height>
+			<ondown>65</ondown>
+			<orientation>horizontal</orientation>
+			<scrolltime>350</scrolltime>
+			<focusposition>2</focusposition>
+			<preloaditems>2</preloaditems>
+			<visible>!ListItem.IsParentFolder</visible>
+			<itemlayout height="220" width="152">
+				<control type="group">
+					<control type="image"><!-- reflect -->
+						<top>189</top>
+						<width>142</width>
+						<height>205</height>
+						<bordersize>8</bordersize>
+						<fadetime>FanartCrossFadeTime</fadetime>
+						<aspectratio align="center" aligny="top">stretch</aspectratio>
+						<texture border="2" flipy="true" diffuse="borders/poster-reflect.png" fallback="defaultpictures/DefaultMovies.png" background="true">$VAR[art_value_poster]</texture>
+					</control>
+					<control type="image">
+						<width>142</width>
+						<height>205</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">defaultpictures/DefaultMovies.png</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<width>142</width>
+						<height>205</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$VAR[art_value_poster]</texture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image"><!-- inaktiv -->
+						<width>142</width>
+						<height>205</height>
+						<bordersize>8</bordersize>
+						<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+					</control>
+					<include content="watched_overlayBG"><!-- watched_overlay -->
+						<param name="left">106</param>
+						<param name="top">6</param>
+						<param name="width">30</param>
+						<param name="height">30</param>
+					</include>
+					<control type="label">
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>106</left>
+						<top>6</top>
+						<width>30</width>
+						<height>30</height>
+						<aligny>top</aligny>
+						<align>right</align>
+						<font>IconOverlay30</font>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorFocus</selectedcolor>
+						<label>$VAR[WatchedOverlayFlag]</label>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout height="220" width="152">
+				<control type="group">
+					<animation effect="zoom" start="100" end="115" center="75,216" time="400" tween="cubic" easing="out" reversible="false">Focus</animation>
+					<control type="image">
+						<top>189</top>
+						<width>142</width>
+						<height>205</height>
+						<bordersize>8</bordersize>
+						<fadetime>FanartCrossFadeTime</fadetime>
+						<aspectratio align="center" aligny="top">stretch</aspectratio>
+						<texture border="2" flipy="true" diffuse="borders/poster-reflect.png" fallback="defaultpictures/DefaultMovies.png" background="true">$VAR[art_value_poster]</texture>
+					</control>
+					<control type="image">
+						<width>142</width>
+						<height>205</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">defaultpictures/DefaultMovies.png</texture>
+						<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<width>142</width>
+						<height>205</height>
+						<aspectratio>stretch</aspectratio>
+						<texture background="true">$VAR[art_value_poster]</texture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image"><!-- inaktiv -->
+						<width>142</width>
+						<height>205</height>
+						<bordersize>8</bordersize>
+						<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+						<include>animation_dimmer</include>
+					</control>
+					<include content="watched_overlayBG"><!-- watched_overlay -->
+						<param name="left">106</param>
+						<param name="top">6</param>
+						<param name="width">30</param>
+						<param name="height">30</param>
+					</include>
+					<control type="label">
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>106</left>
+						<top>6</top>
+						<width>30</width>
+						<height>30</height>
+						<aligny>top</aligny>
+						<align>right</align>
+						<font>IconOverlay30</font>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorFocus</selectedcolor>
+						<label>$VAR[WatchedOverlayFlag]</label>
+					</control>
+				</control>
+			</focusedlayout>
+				<content sortby="sorttitle" target="video">videodb://movies/sets/$INFO[ListItem.DBID]/</content>
+		</control>
+	</control>
+</include>
+</includes>

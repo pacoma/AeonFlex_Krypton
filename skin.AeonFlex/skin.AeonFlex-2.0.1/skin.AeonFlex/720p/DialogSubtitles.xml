@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window type="dialog">
+<coordinates>
+<system>1</system>
+<left>0</left>
+<top>0</top>
+</coordinates>
+<controls>
+<control type="group">
+	<include>animation_window</include>
+	<animation effect="fade" start="100" end="0" time="200" condition="Window.IsActive(virtualkeyboard)">Conditional</animation>
+	<visible>![Player.Forwarding | Player.Rewinding | Window.IsVisible(shutdownmenu)] + [!String.IsEmpty(VideoPlayer.Title) | Window.IsActive(virtualkeyboard) | !String.IsEmpty(VideoPlayer.TVShowTitle)]</visible>
+	<control type="group">
+		<left>0</left>
+		<top>0</top>
+		<control type="group">
+			<left>0</left>
+			<top>85</top>
+			<control type="image">
+				<top>-5</top>
+				<include>global_topshadow5</include>
+			</control>
+			<control type="image">
+				<description>Hintergrund menue</description>
+				<width>240</width>
+				<height>550</height>
+				<include>global_texture_light</include>
+			</control>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>1280</width>
+				<height>550</height>
+				<include>global_texture_default</include>
+			</control>
+			<control type="image">
+				<top>550</top>
+				<include>global_bottomshadow5</include>
+			</control>
+			<control type="image">
+				<description>hintergrund titel</description>
+				<left>240</left>
+				<width>1040</width>
+				<include>global_texture_title</include>
+			</control>
+			<control type="label">
+				<description>titel</description>
+				<left>290</left>
+				<width>1040</width>
+				<include>global_label_title</include>
+				<label>$INFO[Player.Filename]</label>
+				<animation effect="slide" start="0,0" end="-20,0" time="300" condition="Control.HasFocus(121)">Conditional</animation>
+			</control>
+			<control type="group" id="130"><!-- local info -->
+				<visible>!VideoPlayer.HasSubtitles</visible>
+				<control type="label">
+					<left>20</left>
+					<top>35</top>
+					<width>200</width>
+					<height>30</height>
+					<label>$LOCALIZE[31076]</label>
+					<font>RegularSmall</font>
+					<textcolor>TextColor2</textcolor>
+				</control>
+			</control>
+			<control type="image" id="110"><!-- logo -->
+				<left>30</left>
+				<top>500</top>
+				<width>200</width>
+				<height>50</height>
+				<aspectratio>keep</aspectratio>
+				<align>left</align>
+				<aligny>bottom</aligny>
+				<texture>-</texture>
+			</control>
+			<control type="group" id="250"><!-- left menue -->
+				<control type="label">
+					<description>header</description>
+					<label>$LOCALIZE[31160]</label>
+					<textcolor>TextColor1</textcolor>
+					<left>20</left>
+					<top>10</top>
+					<width>220</width>
+					<height>40</height>
+					<font>SemiLarge</font>
+				</control>
+				<control type="list" id="150">
+					<top>85</top>
+					<width>240</width>
+					<height>400</height>
+					<onleft>120</onleft>
+					<onright>120</onright>
+					<onup>150</onup>
+					<ondown>150</ondown>
+					<viewtype label="535">list</viewtype>
+					<scrolltime>200</scrolltime>
+					<itemlayout width="240" height="40">
+						<control type="label">
+							<width>240</width>
+							<height>40</height>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>TextColor2</textcolor>
+							<info>ListItem.Label</info>
+						</control>
+					</itemlayout>
+					<focusedlayout width="240" height="40">
+						<control type="image">
+							<width>240</width>
+							<height>40</height>
+							<include>global_listfocustexture</include>
+							<visible>Control.Hasfocus(150)</visible>
+						</control>
+						<control type="label">
+							<width>240</width>
+							<height>40</height>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>TextColor2</textcolor>
+							<info>ListItem.Label</info>
+							<visible>!Control.Hasfocus(150)</visible>
+						</control>
+						<control type="label">
+							<width>240</width>
+							<height>40</height>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<info>ListItem.Label</info>
+							<visible>Control.Hasfocus(150)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<control type="group"><!-- mids info -->
+				<left>240</left>
+				<!-- ** Required ** Do not change <id> or <type> ergebnisse -->
+				<control type="label" id="140">
+					<description>textarea</description>
+					<left>50</left>
+					<top>50</top>
+					<width>780</width>
+					<height>40</height>
+					<wrapmultiline>false</wrapmultiline>
+					<animation effect="slide" start="0,0" end="-20,0" time="300" condition="Control.HasFocus(121)">Conditional</animation>
+				</control>
+				<!-- Infoscript Language Info -->
+				<control type="group">
+					<left>500</left>
+					<top>45</top>
+					<include>viewglobal_video_languages</include>
+					<include>animation_vhoc_fade</include>
+				</control>
+				<!-- ** Required ** Do not change <id> or <type> -->
+				<control type="image">
+					<left>260</left>
+					<top>85</top>
+					<width>40</width>
+					<height>360</height>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+					<texture>White.png</texture>
+					<animation effect="slide" start="0,0" end="-20,0" time="300" condition="Control.HasFocus(121)">Conditional</animation>
+					<visible>!String.IsEmpty(Container(120).ListItem.Label)</visible>
+				</control>
+				<control type="image">
+					<left>886</left>
+					<top>85</top>
+					<width>85</width>
+					<height>360</height>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+					<texture>White.png</texture>
+					<animation effect="slide" start="0,0" end="-20,0" time="300" condition="Control.HasFocus(121)">Conditional</animation>
+					<visible>!String.IsEmpty(Container(120).ListItem.Label)</visible>
+				</control>
+				<!-- ** Required ** Do not change <id> or <type> -->
+				<control type="list" id="120">
+					<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+					<animation effect="slide" start="0,0" end="-25,0" time="300" condition="Control.HasFocus(121)">Conditional</animation>
+					<left>0</left>
+					<top>84</top>
+					<width>1040</width>
+					<height>360</height>
+					<onleft>150</onleft>
+					<onright condition="Integer.IsGreater(Container(120).NumPages,1)">121</onright>
+					<onright condition="!Integer.IsGreater(Container(120).NumPages,1)">160</onright>
+					<onup>120</onup>
+					<ondown>120</ondown>
+					<viewtype label="535">list</viewtype>
+					<pagecontrol>121</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="40">
+						<control type="label">
+							<left>50</left>
+							<top>0</top>
+							<width>200</width>
+							<height>40</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<left>310</left>
+							<top>0</top>
+							<width>560</width>
+							<height>40</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>
+						<control type="image">
+							<left>265</left>
+							<top>0</top>
+							<width>30</width>
+							<height>40</height>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<texture>resource://resource.images.languageflags.colour/$INFO[ListItem.Thumb].png</texture>
+						</control>
+						<control type="image">
+							<left>892</left>
+							<top>13</top>
+							<width>89</width>
+							<height>15</height>
+							<texture>rating$INFO[ListItem.ActualIcon].png</texture>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<colordiffuse>TextColor2</colordiffuse>
+						</control>
+						<control type="image">
+							<left>987</left>
+							<top>5</top>
+							<width>44</width>
+							<height>30</height>
+							<texture>flags/subtitle_sync.png</texture>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<visible>ListItem.property(sync)</visible>
+						</control>
+						<control type="image">
+							<left>987</left>
+							<top>5</top>
+							<width>44</width>
+							<height>30</height>
+							<texture>flags/cc.png</texture>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<visible>ListItem.property(hearing_imp)</visible>
+						</control>
+					</itemlayout>
+					<focusedlayout height="40">
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>1040</width>
+							<height>40</height>
+							<include>global_listfocustexture</include>
+							<animation effect="fade" start="100" end="40" time="100" condition="Control.HasFocus(121)">conditional</animation>
+							<animation effect="slide" start="0,0" end="20,0" time="300" condition="Control.HasFocus(121)">Conditional</animation>
+							<visible>Control.HasFocus(120)</visible>
+						</control>
+						<control type="label">
+							<left>50</left>
+							<top>0</top>
+							<width>200</width>
+							<height>40</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!Control.HasFocus(120)</visible>
+						</control>
+						<control type="label">
+							<left>310</left>
+							<top>0</top>
+							<width>560</width>
+							<height>40</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label2]</label>
+							<visible>!Control.HasFocus(120)</visible>
+						</control>
+						<control type="label">
+							<left>50</left>
+							<top>0</top>
+							<width>200</width>
+							<height>40</height>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Control.HasFocus(120)</visible>
+						</control>
+						<control type="label">
+							<left>310</left>
+							<top>0</top>
+							<width>560</width>
+							<height>40</height>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Label2]</label>
+							<visible>Control.HasFocus(120)</visible>
+						</control>
+						<control type="image">
+							<left>265</left>
+							<top>0</top>
+							<width>30</width>
+							<height>40</height>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<texture>resource://resource.images.languageflags.colour/$INFO[ListItem.Thumb].png</texture>
+						</control>
+						<control type="image">
+							<left>892</left>
+							<top>13</top>
+							<width>89</width>
+							<height>15</height>
+							<texture>rating$INFO[ListItem.ActualIcon].png</texture>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<colordiffuse>TextColorFocus</colordiffuse>
+						</control>
+						<control type="image">
+							<left>987</left>
+							<top>5</top>
+							<width>44</width>
+							<height>30</height>
+							<texture>flags/subtitle_sync.png</texture>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<visible>ListItem.property(sync)</visible>
+						</control>
+						<control type="image">
+							<left>987</left>
+							<top>5</top>
+							<width>44</width>
+							<height>30</height>
+							<texture>flags/cc.png</texture>
+							<aspectratio align="left" aligny="center">keep</aspectratio>
+							<visible>ListItem.property(hearing_imp)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+				<!-- ** Required ** Do not change <id> or <type> manual search -->
+				<control type="button" id="160">
+					<description>Manual search button</description>
+					<left>0</left>
+					<top>510</top>
+					<width>1040</width>
+					<height>40</height>
+					<texturefocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturefocus>
+					<texturenofocus colordiffuse="ACSkinColor">buttons/button_focus.png</texturenofocus>
+					<label>$LOCALIZE[24120]</label>
+					<align>right</align>
+					<onleft>150</onleft>
+					<onright>150</onright>
+					<onup>150</onup>
+					<ondown>150</ondown>
+				</control>
+				<control type="scrollbar" id="121">
+					<left>1000</left>
+					<top>84</top>
+					<width>25</width>
+					<height>370</height>
+					<include>scrollbar_vertical</include>
+					<onleft>120</onleft>
+					<onright>160</onright>
+					<ondown>121</ondown>
+					<onup>121</onup>
+					<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+					<visible allowhiddenfocus="true">Control.HasFocus(121)</visible>
+				</control>
+				<!--separators -->
+				<control type="image">
+					<height>550</height>
+					<include>global_texture_border8_rightv</include>
+				</control>
+			</control>
+		</control>
+	</control>
+	<control type="label" id="100">
+		<description>header label</description>
+		<left>-20</left>
+		<top>-20</top>
+		<width>1</width>
+		<height>1</height>
+		<label>-</label>
+		<font>-</font>
+		<visible>false</visible>
+	</control>
+</control>
+</controls>
+</window>

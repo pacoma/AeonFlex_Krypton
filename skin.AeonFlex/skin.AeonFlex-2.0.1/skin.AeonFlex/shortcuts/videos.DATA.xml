@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+	<shortcut>
+		<label>$LOCALIZE[31850]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Videos,MovieTitles,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31863]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Videos,TvShowTitles,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31848]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(10025,special://videoplaylists/,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31846]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(videos,files,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31889]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Videos,Addons,return)</action>
+	</shortcut>
+</shortcuts>

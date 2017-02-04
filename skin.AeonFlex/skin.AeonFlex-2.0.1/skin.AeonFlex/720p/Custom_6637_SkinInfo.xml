@@ -1,0 +1,133 @@
+<window id="6637" type="dialog"><!-- AeonKN draft -->
+<defaultcontrol>9911</defaultcontrol>
+<controls>
+	<control type="group">
+		<left>0</left>
+		<top>-50</top>
+		<animation effect="slide" start="0,-350" end="0,0" time="300" delay="700" easing="out" tween="sine">WindowOpen</animation>
+		<animation effect="slide" start="0,0" end="0,-350" time="200" easing="in" tween="sine">WindowClose</animation>
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<control type="button" id="9911">
+			<include>Hiddencontrol</include>
+			<onleft>Dialog.Close(6637)</onleft>
+			<onright>Dialog.Close(6637)</onright>
+			<onup>Dialog.Close(6637)</onup>
+			<ondown>Dialog.Close(6637)</ondown>
+		</control>
+		<control type="image">
+			<description>shadow bottom</description>
+			<top>385</top>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="image">
+			<description>backdrop</description>
+			<width>1280</width>
+			<height>385</height>
+			<texture>backgrounds/background-homeinfo-overlay.png</texture>
+			<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+		</control>
+		<control type="group">
+			<left>50</left>
+			<top>78</top>
+			<control type="label">
+				<description>Titel systeminfo</description>
+				<width>445</width>
+				<height>30</height>
+				<font>BoldLarge</font>
+				<label>$LOCALIZE[470]</label>
+			</control>
+			<control type="image">
+				<top>32</top>
+				<width>445</width>
+				<height>2</height>
+				<align>left</align>
+				<texture flipx="true">backgrounds/divider.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="textbox">
+				<top>52</top>
+				<width>545</width>
+				<include>PlotNormal176</include>
+				<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				<label>$LOCALIZE[31998]</label>
+			</control>
+		</control>
+		<control type="group">
+			<left>680</left>
+			<top>78</top>
+			<control type="label">
+				<description>Titel realeasnote</description>
+				<width>445</width>
+				<height>30</height>
+				<font>BoldLarge</font>
+				<label>$LOCALIZE[31999]</label>
+			</control>
+			<control type="image">
+				<left>-20</left>
+				<top>32</top>
+				<width>345</width>
+				<height>2</height>
+				<align>left</align>
+				<texture flipx="true">backgrounds/divider.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="textbox">
+				<top>52</top>
+				<width>445</width>
+				<include>PlotNormal176</include>
+				<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				<label>[B]Version 2.0.1 RC[/B][CR]- Krypton Beta.[CR][B]Getestet:[/B][CR]- mit Krypton Beta 3[CR][B]Plattformen:[/B][CR]- Windows 10[CR]- Libreelec[CR]- Lubuntu 16.04</label>
+			</control>
+		</control>
+		<!-- right group -->
+		<control type="group">
+			<left>1100</left>
+			<top>71</top>
+			<control type="image">
+				<left>20</left>
+				<top>40</top>
+				<width>100</width>
+				<height>100</height>
+				<texture colordiffuse="ACSkinColor">logo_flex_sw.png</texture>
+			 </control>
+			<control type="image">
+				<left>20</left>
+				<top>40</top>
+				<width>100</width>
+				<height>100</height>
+				<texture colordiffuse="TextColor1">logo_flex_text.png</texture>
+			 </control>
+			<control type="label">
+				<description>Skin version</description>
+				<top>155</top>
+				<width>140</width>
+				<height>25</height>
+				<align>center</align>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[flex_value_skinversion]</label>
+			</control>
+			<control type="label">
+				<description>Skin developer</description>
+				<top>174</top>
+				<width>140</width>
+				<height>50</height>
+				<align>center</align>
+				<aligny>top</aligny>
+				<wrapmultiline>true</wrapmultiline>
+				<label>by Pacoma feat.[CR]Marc0810</label>
+			</control>
+		</control>
+		<control type="image">
+			<left>649</left>
+			<height>385</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+		<control type="image">
+			<left>1043</left>
+			<width>8</width>
+			<height>385</height>
+			<include>global_texture_border8_leftv</include>
+		</control>
+	</control>
+</controls>
+</window>

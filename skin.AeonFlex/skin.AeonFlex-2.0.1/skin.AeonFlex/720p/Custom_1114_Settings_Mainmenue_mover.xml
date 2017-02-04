@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1114">
+<defaultcontrol always="true">90100</defaultcontrol>
+<onunload>ClearProperty(StringToEdit.Label,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Icon,home)</onunload>
+<onunload>ClearProperty(StringToEdit.MainslotClick,home)</onunload>
+<onunload>ClearProperty(StringToEdit.MainslotWidgetContent,home)</onunload>
+<onunload>ClearProperty(StringToEdit.MainslotWidgetTarget,home)</onunload>
+<onunload>ClearProperty(StringToEdit.MainslotWidgetOpenClick,home)</onunload>
+<onunload>ClearProperty(StringToEdit.MainslotWidgetTitle,home)</onunload>
+<onunload>ClearProperty(StringToEdit.MainslotWidgetCategory,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_01Title,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_01Click,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_02Title,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_02Click,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_03Title,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_03Click,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_04Title,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_04Click,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_05Title,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_05Click,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_06Title,home)</onunload>
+<onunload>ClearProperty(StringToEdit.Subslot_06Click,home)</onunload>
+
+<onunload>ClearProperty(ItemToEdit.Label,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Icon,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.MainslotClick,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.MainslotWidgetContent,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.MainslotWidgetTarget,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.MainslotWidgetOpenClick,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.MainslotWidgetTitle,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.MainslotWidgetCategory,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_01Title,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_01Click,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_02Title,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_02Click,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_03Title,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_03Click,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_04Title,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_04Click,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_05Title,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_05Click,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_06Title,home)</onunload>
+<onunload>ClearProperty(ItemToEdit.Subslot_06Click,home)</onunload>
+
+<onunload>ClearProperty(ItemToMove.Label,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Icon,home)</onunload>
+<onunload>ClearProperty(ItemToMove.MainslotClick,home)</onunload>
+<onunload>ClearProperty(ItemToMove.MainslotWidgetContent,home)</onunload>
+<onunload>ClearProperty(ItemToMove.MainslotWidgetTarget,home)</onunload>
+<onunload>ClearProperty(ItemToMove.MainslotWidgetOpenClick,home)</onunload>
+<onunload>ClearProperty(ItemToMove.MainslotWidgetTitle,home)</onunload>
+<onunload>ClearProperty(ItemToMove.MainslotWidgetCategory,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_01Title,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_01Click,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_02Title,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_02Click,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_03Title,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_03Click,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_04Title,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_04Click,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_05Title,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_05Click,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_06Title,home)</onunload>
+<onunload>ClearProperty(ItemToMove.Subslot_06Click,home)</onunload>
+
+<onunload>ClearProperty(StringToMove.Label,home)</onunload>
+<onunload>ClearProperty(StringToMove.Icon,home)</onunload>
+<onunload>ClearProperty(StringToMove.MainslotClick,home)</onunload>
+<onunload>ClearProperty(StringToMove.MainslotWidgetContent,home)</onunload>
+<onunload>ClearProperty(StringToMove.MainslotWidgetTarget,home)</onunload>
+<onunload>ClearProperty(StringToMove.MainslotWidgetOpenClick,home)</onunload>
+<onunload>ClearProperty(StringToMove.MainslotWidgetTitle,home)</onunload>
+<onunload>ClearProperty(StringToMove.MainslotWidgetCategory,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_01Title,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_01Click,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_02Title,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_02Click,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_03Title,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_03Click,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_04Title,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_04Click,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_05Title,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_05Click,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_06Title,home)</onunload>
+<onunload>ClearProperty(StringToMove.Subslot_06Click,home)</onunload>
+<controls>
+<control type="button" id="90101">
+	<include>Hiddencontrol</include>
+	<onleft>90101</onleft>
+	<onright>90101</onright>
+	<onup>Control.Move(90100,-1)</onup>
+	<ondown>Control.Move(90100,1)</ondown>
+	
+	<!-- neuer platz schreiben -->
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Label)],$INFO[Window(home).Property(StringOld.Label)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Icon)],$INFO[Window(home).Property(StringOld.Icon)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.MainslotClick)],$INFO[Window(home).Property(StringOld.MainslotClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.WidgetOpenClick)],$INFO[Window(home).Property(StringOld.WidgetOpenClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.WidgetContent)],$INFO[Window(home).Property(StringOld.WidgetContent)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.WidgetCategory)],$INFO[Window(home).Property(StringOld.WidgetCategory)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.WidgetTitle)],$INFO[Window(home).Property(StringOld.WidgetTitle)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.WidgetTarget)],$INFO[Window(home).Property(StringOld.WidgetTarget)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_01Title)],$INFO[Window(home).Property(StringOld.Subslot_01Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_01Click)],$INFO[Window(home).Property(StringOld.Subslot_01Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_02Title)],$INFO[Window(home).Property(StringOld.Subslot_02Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_02Click)],$INFO[Window(home).Property(StringOld.Subslot_02Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_03Title)],$INFO[Window(home).Property(StringOld.Subslot_03Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_03Click)],$INFO[Window(home).Property(StringOld.Subslot_03Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_04Title)],$INFO[Window(home).Property(StringOld.Subslot_04Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_04Click)],$INFO[Window(home).Property(StringOld.Subslot_04Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_05Title)],$INFO[Window(home).Property(StringOld.Subslot_05Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_05Click)],$INFO[Window(home).Property(StringOld.Subslot_05Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_06Title)],$INFO[Window(home).Property(StringOld.Subslot_06Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemNew.Subslot_06Click)],$INFO[Window(home).Property(StringOld.Subslot_06Click)],home)</onfocus>
+	
+	<!-- alter platz schreiben -->
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Label)],$INFO[Window(home).Property(StringNew.Label)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Icon)],$INFO[Window(home).Property(StringNew.Icon)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.MainslotClick)],$INFO[Window(home).Property(StringNew.MainslotClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.WidgetOpenClick)],$INFO[Window(home).Property(StringNew.WidgetOpenClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.WidgetContent)],$INFO[Window(home).Property(StringNew.WidgetContent)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.WidgetCategory)],$INFO[Window(home).Property(StringNew.WidgetCategory)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.WidgetTitle)],$INFO[Window(home).Property(StringNew.WidgetTitle)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.WidgetTarget)],$INFO[Window(home).Property(StringNew.WidgetTarget)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_01Title)],$INFO[Window(home).Property(StringNew.Subslot_01Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_01Click)],$INFO[Window(home).Property(StringNew.Subslot_01Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_02Title)],$INFO[Window(home).Property(StringNew.Subslot_02Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_02Click)],$INFO[Window(home).Property(StringNew.Subslot_02Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_03Title)],$INFO[Window(home).Property(StringNew.Subslot_03Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_03Click)],$INFO[Window(home).Property(StringNew.Subslot_03Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_04Title)],$INFO[Window(home).Property(StringNew.Subslot_04Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_04Click)],$INFO[Window(home).Property(StringNew.Subslot_04Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_05Title)],$INFO[Window(home).Property(StringNew.Subslot_05Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_05Click)],$INFO[Window(home).Property(StringNew.Subslot_05Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_06Title)],$INFO[Window(home).Property(StringNew.Subslot_06Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(ItemOld.Subslot_06Click)],$INFO[Window(home).Property(StringNew.Subslot_06Click)],home)</onfocus>
+
+	
+	
+<!-- 
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Label)],$INFO[Window(home).Property(ItemToMove.Label)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Icon)],$INFO[Window(home).Property(ItemToMove.Icon)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.MainslotClick)],$INFO[Window(home).Property(ItemToMove.MainslotClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.MainslotWidgetContent)],$INFO[Window(home).Property(ItemToMove.MainslotWidgetContent)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.MainslotWidgetTarget)],$INFO[Window(home).Property(ItemToMove.MainslotWidgetTarget)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.MainslotWidgetOpenClick)],$INFO[Window(home).Property(ItemToMove.MainslotWidgetOpenClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.MainslotWidgetTitle)],$INFO[Window(home).Property(ItemToMove.MainslotWidgetTitle)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.MainslotWidgetCategory)],$INFO[Window(home).Property(ItemToMove.MainslotWidgetCategory)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_01Title)],$INFO[Window(home).Property(ItemToMove.Subslot_01Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_01Click)],$INFO[Window(home).Property(ItemToMove.Subslot_01Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_02Title)],$INFO[Window(home).Property(ItemToMove.Subslot_02Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_02Click)],$INFO[Window(home).Property(ItemToMove.Subslot_02Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_03Title)],$INFO[Window(home).Property(ItemToMove.Subslot_03Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_03Click)],$INFO[Window(home).Property(ItemToMove.Subslot_03Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_04Title)],$INFO[Window(home).Property(ItemToMove.Subslot_04Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_04Click)],$INFO[Window(home).Property(ItemToMove.Subslot_04Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_05Title)],$INFO[Window(home).Property(ItemToMove.Subslot_05Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_05Click)],$INFO[Window(home).Property(ItemToMove.Subslot_05Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_06Title)],$INFO[Window(home).Property(ItemToMove.Subslot_06Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToEdit.Subslot_06Click)],$INFO[Window(home).Property(ItemToMove.Subslot_06Click)],home)</onfocus>
+	
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Label)],$INFO[Window(home).Property(ItemToEdit.Label)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Icon)],$INFO[Window(home).Property(ItemToEdit.Icon)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.MainslotClick)],$INFO[Window(home).Property(ItemToEdit.MainslotClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.MainslotWidgetContent)],$INFO[Window(home).Property(ItemToEdit.MainslotWidgetContent)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.MainslotWidgetTarget)],$INFO[Window(home).Property(ItemToEdit.MainslotWidgetTarget)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.MainslotWidgetOpenClick)],$INFO[Window(home).Property(ItemToEdit.MainslotWidgetOpenClick)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.MainslotWidgetTitle)],$INFO[Window(home).Property(ItemToEdit.MainslotWidgetTitle)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.MainslotWidgetCategory)],$INFO[Window(home).Property(ItemToEdit.MainslotWidgetCategory)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_01Title)],$INFO[Window(home).Property(ItemToEdit.Subslot_01Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_01Click)],$INFO[Window(home).Property(ItemToEdit.Subslot_01Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_02Title)],$INFO[Window(home).Property(ItemToEdit.Subslot_02Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_02Click)],$INFO[Window(home).Property(ItemToEdit.Subslot_02Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_03Title)],$INFO[Window(home).Property(ItemToEdit.Subslot_03Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_03Click)],$INFO[Window(home).Property(ItemToEdit.Subslot_03Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_04Title)],$INFO[Window(home).Property(ItemToEdit.Subslot_04Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_04Click)],$INFO[Window(home).Property(ItemToEdit.Subslot_04Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_05Title)],$INFO[Window(home).Property(ItemToEdit.Subslot_05Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_05Click)],$INFO[Window(home).Property(ItemToEdit.Subslot_05Click)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_06Title)],$INFO[Window(home).Property(ItemToEdit.Subslot_06Title)],home)</onfocus>
+	<onfocus>Skin.SetString($INFO[Window(home).Property(StringToMove.Subslot_06Click)],$INFO[Window(home).Property(ItemToEdit.Subslot_06Click)],home)</onfocus>-->
+	<onfocus>Dialog.Close(1114)</onfocus>
+</control>
+
+<control type="group">
+	<centerleft>50%</centerleft>
+	<centertop>50%</centertop>
+	<width>dialog-outer-width</width>
+	<height>425</height>
+	<include>animation_dialog_popup</include>
+	<control type="image">
+		<description>schatten 10+ elemente</description>
+		<include>global_dialog_shadow_neu</include>
+		<height>dialog-height10</height>
+	</control>
+	<control type="image">
+		<description>hintergrund 10+ elemente</description>
+		<include>global_dialogbg_neu</include>
+		<height>dialog-height10</height>
+	</control>
+	<control type="image">
+		<description>background header</description>
+		<include>dialog_headerfront_neu</include>
+	</control>
+	<control type="label" id="0">
+		<description>header</description>
+		<label>$LOCALIZE[31772]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="list" id="90100"><!-- List -->
+		<left>dialog-border</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>350</height>
+		<onleft>noop</onleft>
+		<onright>noop</onright>
+		<onup>90100</onup>
+		<ondown>90100</ondown>
+		<itemgap>0</itemgap>
+		<pagecontrol>-</pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>30</textoffsetx>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="image">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.HasFocus(90101) | Control.HasFocus(90100)</visible>
+			</control>
+			<control type="label">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<textwidth>400</textwidth>
+				<textoffsetx>30</textoffsetx>
+				<scroll>false</scroll>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="button">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>Hiddencontrol</include>
+				<onclick>SendClick(90101)</onclick>
+			</control>
+		</focusedlayout>
+			<content>
+				<include>menu_ordernewcontent</include>
+			</content>
+	</control>
+</control>
+</controls>
+</window>
+
+
+

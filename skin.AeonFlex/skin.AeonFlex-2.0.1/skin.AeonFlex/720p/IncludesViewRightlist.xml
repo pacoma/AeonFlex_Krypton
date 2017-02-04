@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- #### Viewtype Rightlist ####-->
+<!-- Rightlist Bottominfo header -->
+<variable name="viewrightlist_value_bottomheader">
+	<!-- sets -->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection]"> </value>
+	<!-- movies -->
+	<value condition="Container.Content(movies)">$INFO[ListItem.Year]</value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes)">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]</value>
+	<!-- seasons -->
+	<value condition="Container.Content(seasons)"></value>
+	<!-- TVshows -->
+	<value condition="Container.Content(tvshows)">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]</value>
+	<value condition="Container.Content(Albums)">$INFO[ListItem.Year]</value>
+	<value condition="Container.Content(Songs)">$INFO[ListItem.Year]</value>
+	<value condition="Container.Content(Artists)">$INFO[Container(5350).NumItems,, $LOCALIZE[132]]</value>
+</variable>
+
+
+<!-- ####Viewtype Rightlist includes ####-->
+<include name="viewrightlist-midartwork">
+	<control type="group">
+		<left>405</left>
+		<top>352</top>
+		<include>animation_vhoc_fade</include>
+		<visible>!ListItem.IsParentFolder + !String.Contains(Skin.String(RightlistArtworkMid),Empty space)</visible>
+		<!-- 1 Banner -->
+		<control type="image">
+			<left>0</left>
+			<top>53</top>
+			<width>356</width>
+			<height>71</height>
+			<texture>$VAR[art_value_banner]</texture>
+			<include>viewglobal_topelements_banner</include>
+			<visible>String.Contains(Skin.String(RightlistArtworkMid),Banner)</visible>
+		</control>
+		<!-- 5 Character -->
+		<control type="image">
+			<left>20</left>
+			<top>5</top>
+			<width>247</width>
+			<height>145</height>
+			<include>viewglobal_topelements_character</include>
+			<visible>String.Contains(Skin.String(RightlistArtworkMid),Character-Art)</visible>
+		</control>
+		<!-- 6 Clearart -->
+		<control type="image">
+			<left>20</left>
+			<top>5</top>
+			<width>247</width>
+			<height>145</height>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(RightlistArtworkMid),Clear-Art) | String.IsEmpty(Skin.String(RightlistArtworkMid))</visible>
+			<animation effect="slide" end="-100,0" time="0" condition="Skin.HasSetting(norightlistdiscart)">Conditional</animation>
+		</control>
+		<!-- 7 Clearlogo -->
+		<control type="image">
+			<left>20</left>
+			<top>0</top>
+			<width>247</width>
+			<height>145</height>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(RightlistArtworkMid),Clear-Logo)</visible>
+			<animation effect="slide" end="-100,0" time="0" condition="Skin.HasSetting(norightlistdiscart)">Conditional</animation>
+		</control>
+		<!-- Fallback 6301 -->
+		<control type="group">
+			<visible>String.Contains(Skin.String(RightlistArtworkMid),Banner)</visible>
+			<!-- defaultpicture banner -->
+			<control type="image">
+				<left>0</left>
+				<top>53</top>
+				<width>356</width>
+				<height>71</height>
+				<texture background="true">defaultpictures/DefaultSeasonBanner.png</texture>
+				<include>viewglobal_topelements_banner</include>
+				<visible>String.Contains(Skin.String(RightlistFallbackArtworkMid),Defaultpicture) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="label">
+				<left>148</left>
+				<top>69</top>
+				<width>62</width>
+				<height>42</height>
+				<textcolor>TextColor2</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$VAR[global_seasonprefix]$INFO[ListItem.Season]</label>
+				<font>SemiLarge</font>
+				<visible>String.Contains(Skin.String(RightlistFallbackArtworkMid),Defaultpicture) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="viewrightlist_video_info">
+	<!-- Right bottom info -->
+	<control type="group">
+		<left>830</left>
+		<top>5</top>
+		<visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+		<include>animation_vhoc_fade</include>
+		<!-- Plot text -->
+		<control type="textbox">
+			<left>-90</left>
+			<width>500</width>
+			<include>PlotNormal132</include>
+			<include>viewglobal_topelements_plot</include>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Plot) | String.IsEmpty(Skin.String(RightlistinfoGroup))</visible>
+		</control>
+		<!-- fanart -->
+		<control type="image">
+			<left>172</left>
+			<top>-5</top>
+			<width>280</width>
+			<height>150</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(RightlistinfoGroup),Fanart)</visible>
+		</control>
+		<!-- extra fanart -->
+		<control type="image">
+			<left>172</left>
+			<top>-5</top>
+			<width>280</width>
+			<height>150</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Extra-Fanart)</visible>
+		</control>
+		<!-- extra thumb -->
+		<control type="image">
+			<left>172</left>
+			<top>-5</top>
+			<width>280</width>
+			<height>150</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Extra-Thumb)</visible>
+		</control>
+		<!-- clearart -->
+		<control type="image">
+			<left>172</left>
+			<top>-5</top>
+			<width>280</width>
+			<height>150</height>
+			<texture diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Clear-Art) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<left>180</left>
+			<top>5</top>
+			<width>262</width>
+			<height>130</height>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Clear-Art)</visible>
+		</control>
+		<!-- clearlogo -->
+		<control type="image">
+			<left>172</left>
+			<top>-5</top>
+			<width>280</width>
+			<height>150</height>
+			<texture diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Clear-Logo) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<left>180</left>
+			<top>5</top>
+			<width>262</width>
+			<height>130</height>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Clear-Logo)</visible>
+		</control>
+		<!-- landscape -->
+		<control type="image">
+			<left>172</left>
+			<top>-5</top>
+			<width>280</width>
+			<height>150</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[art_value_landscape]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(RightlistinfoGroup),Landscape)</visible>
+		</control>
+		<!-- Fallback 6300 -->
+		<control type="group">
+			<visible>!String.IsEmpty(Skin.String(RightlistinfoGroup))</visible>
+			<!-- Fanart -->
+			<control type="image">
+				<left>172</left>
+				<top>-5</top>
+				<width>280</width>
+				<height>150</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.IsEqual(Skin.String(RightlistinfoGroupFallback),Fanart) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- Landscape -->
+			<control type="image">
+				<left>172</left>
+				<top>-5</top>
+				<width>280</width>
+				<height>150</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[art_value_landscape]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Landscape) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- defaultpicture -->
+			<control type="image">
+				<left>172</left>
+				<top>-5</top>
+				<width>280</width>
+				<height>150</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Defaultpicture) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- clearart -->
+			<control type="image">
+				<left>172</left>
+				<top>-5</top>
+				<width>280</width>
+				<height>150</height>
+				<texture diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<left>180</left>
+				<top>5</top>
+				<width>262</width>
+				<height>130</height>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- Clearlogo -->
+			<control type="image">
+				<left>172</left>
+				<top>-5</top>
+				<width>280</width>
+				<height>150</height>
+				<texture diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<left>180</left>
+				<top>5</top>
+				<width>262</width>
+				<height>130</height>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<!-- Plot text -->
+			<control type="textbox">
+				<left>-90</left>
+				<top>0</top>
+				<width>500</width>
+				<include>PlotNormal132</include>
+				<include>viewglobal_topelements_plot</include>
+				<visible>String.Contains(Skin.String(RightlistinfoGroupFallback),Plot) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="viewrightlist_genre_info">
+	<!-- Right bottom info category fix -->
+	<control type="group">
+		<visible>!Skin.HasSetting(noRightlistCategorypanel) + !ListItem.IsParentFolder + Container.Content(genres)</visible>
+		<include>animation_vhoc_fade</include>
+		<control type="image">
+			<left>300</left>
+			<width>702</width>
+			<height>150</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_banner/default.jpg">$VAR[art_value_banner]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>!Control.HasFocus(20001) + Container.Content(genres)</visible>
+		</control>
+		<control type="image">
+			<left>1002</left>
+			<width>280</width>
+			<height>150</height>
+			<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/default.jpg">$VAR[value_defaultfanart]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>!Control.HasFocus(20001) + Container.Content(genres)</visible>
+		</control>
+		<control type="image">
+			<description>schatten links</description>
+			<left>295</left>
+			<height>150</height>
+			<include>global_texture_border5_leftv</include>
+		</control>
+		<control type="image">
+			<description>schatten rechts</description>
+			<left>1002</left>
+			<height>150</height>
+			<include>global_texture_border5_rightv</include>
+			<visible>!Control.HasFocus(20001) + Container.Content(genres)</visible>
+		</control>
+
+		<control type="image">
+			<left>952</left>
+			<width>328</width>
+			<height>150</height>
+			<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(20001).ListItem.Art(fanart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>Control.HasFocus(20001)</visible>
+		</control>
+		<!-- Plot text -->
+		<control type="textbox">
+			<left>320</left>
+			<top>17</top>
+			<width>500</width>
+			<include>PlotNormal110</include>
+			<label>$INFO[Container(20001).ListItemNoWrap.Tagline,[B],[/B][CR]]$INFO[Container(20001).ListItemNoWrap.Plot]</label>
+			<include>viewglobal_topelements_plot</include>
+			<visible>Control.HasFocus(20001)</visible>
+		</control>
+	</control>
+</include>
+
+</includes>

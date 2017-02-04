@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<onunload>ClearProperty(PlottextReadMode,videos)</onunload>
+<defaultcontrol>5416</defaultcontrol>
+<coordinates>
+	<left>0</left>
+	<top>30</top>
+</coordinates>
+<include>animation_window</include>
+<controls>
+	<control type="Button" id="5416">
+		<include>Hiddencontrol defaultfocus</include>
+		<onfocus condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Menue) | String.IsEmpty(Skin.String(RDSinfoStartFocus))">SetFocus(9000)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Info)">SetFocus(901)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Info/Plot)">SetProperty(PlottextReadMode,Read,videos)</onfocus>
+		<onfocus condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Info/Plot)">SetFocus(613)</onfocus>
+	</control>
+	<control type="Button" id="5415"><!-- focus button -->
+		<include>Hiddencontrol</include>
+		<onleft>ClearProperty(PlottextReadMode,videos)</onleft>
+		<onleft>SetFocus(9000)</onleft>
+		<onright>ClearProperty(PlottextReadMode,videos)</onright>
+		<onright>SetFocus(9000)</onright>
+		<onup>ClearProperty(PlottextReadMode,videos)</onup>
+		<onup>SetFocus(9000)</onup>
+		<ondown>ClearProperty(PlottextReadMode,videos)</ondown>
+		<ondown>SetFocus(9000)</ondown>
+		<onclick>SetProperty(PlottextReadMode,Read,videos)</onclick>
+		<onclick>SetFocus(613)</onclick>
+	</control>
+	<control type="group"><!-- info -->
+		<top>85</top>
+		<include>panelbackground</include>
+		<animation type="Conditional" condition="!Control.HasFocus(5415) + !Control.HasFocus(613)">
+			<effect type="slide" end="-350,0" time="800" tween="sine" easing="out" reversible="true"/>
+			<effect type="zoom" center="640,360" end="30" time="800" tween="sine" easing="in" reversible="true"/>
+		</animation>
+		<animation type="Visible">
+			<effect type="fade" end="100" time="600" tween="sine" easing="in"/>
+			<effect type="slide" end="0,0" time="500" tween="sine" easing="in"/>
+			<effect type="zoom" center="640,360" delay="280" end="100" time="500" tween="sine" easing="in"/>
+		</animation>
+		<animation type="Hidden">
+			<effect type="slide" end="350,0" time="500" tween="quadratic" easing="out" reversible="true"/>
+			<effect type="zoom" center="640,360" end="30" time="500" tween="quadratic" easing="out" reversible="true"/>
+		</animation>
+		<control type="image"><!-- icon -->
+			<width>350</width>
+			<height>550</height>
+			<aspectratio align="center" aligy="bottom">keep</aspectratio>
+			<texture background="true">backgrounds/pvrinfo.jpg</texture>
+		</control>
+		<control type="group"><!-- Top Title-->
+			<left>400</left>
+			<top>23</top>
+			<control type="label">
+				<width>800</width>
+				<height>50</height>
+				<font>SemiBigger</font>
+				<label fallback="416">$INFO[RDS.Title]</label>
+			</control>
+			<control type="grouplist">
+				<top>42</top>
+				<width>700</width>
+				<height>25</height>
+				<itemgap>10</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<width>auto</width>
+					<height>25</height>
+					<label>$LOCALIZE[557]:</label>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>25</height>
+					<label fallback="31009">$INFO[RDS.Artist ,, - ]$INFO[RDS.Band]</label>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- mids info -->
+			<left>400</left>
+			<top>15</top>
+			<control type="list" id="901"><!-- List -->
+				<top>100</top>
+				<width>400</width>
+				<height>300</height>
+				<onleft>-</onleft>
+				<onright>-</onright>
+				<onup>49</onup>
+				<ondown>49</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<itemlayout height="30">
+					<control type="label">
+						<width>140</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>160</left>
+						<width>240</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="30">
+				<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+					<control type="label">
+						<width>160</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(901)</visible>
+					</control>
+					<control type="label">
+						<width>160</width>
+						<height>30</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(901)</visible>
+					</control>
+					<control type="label">
+						<left>160</left>
+						<width>240</width>
+						<height>30</height>
+						<autoscroll>false</autoscroll>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>!Control.HasFocus(901)</visible>
+					</control>
+					<control type="label">
+						<left>160</left>
+						<width>240</width>
+						<height>30</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>Control.HasFocus(901)</visible>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<description>Composer</description>
+						<label>$LOCALIZE[29903]</label>
+						<label2>$INFO[RDS.Composer]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.Composer)</visible>
+					</item>
+					<item id="2">
+						<description>Album</description>
+						<label>$LOCALIZE[558]</label>
+						<label2>$INFO[RDS.Album]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.Album)</visible>
+					</item>
+					<item id="3">
+						<description>Conductor</description>
+						<label>$LOCALIZE[29905]</label>
+						<label2>$INFO[RDS.Conductor]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.Conductor)</visible>
+					</item>
+					<item id="4">
+						<description>Programme Style</description>
+						<label>$LOCALIZE[29902]</label>
+						<label2>$INFO[RDS.ProgStyle]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.ProgStyle)</visible>
+					</item>
+					<item id="5">
+						<description>Programme Host</description>
+						<label>$LOCALIZE[29906]</label>
+						<label2>$INFO[RDS.ProgHost]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.ProgHost)</visible>
+					</item>
+					<item id="6">
+						<description>Comment</description>
+						<label>$LOCALIZE[569]</label>
+						<label2>$INFO[RDS.Comment]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.Comment)</visible>
+					</item>
+				</content>
+			</control>
+			<control type="list" id="902"><!-- List -->
+				<left>420</left>
+				<top>100</top>
+				<width>400</width>
+				<height>300</height>
+				<onleft>-</onleft>
+				<onright>-</onright>
+				<onup>49</onup>
+				<ondown>49</ondown>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+				<itemlayout height="30">
+					<control type="label">
+						<width>140</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>160</left>
+						<width>240</width>
+						<height>30</height>
+						<textcolor>TextColor1</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="30">
+					<control type="label">
+						<width>160</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>160</left>
+						<width>240</width>
+						<height>30</height>
+						<autoscroll>false</autoscroll>
+						<textcolor>TextColor1</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>!Control.HasFocus(902)</visible>
+					</control>
+					<control type="label">
+						<left>160</left>
+						<width>240</width>
+						<height>30</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<font>RegularNormal</font>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>Control.HasFocus(902)</visible>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="3">
+						<description>Editorial Staff</description>
+						<label>$LOCALIZE[29907]</label>
+						<label2>$INFO[RDS.ProgEditStaff]</label2>
+						<onclick>noop</onclick>
+					</item>
+					<item id="4">
+						<description>Phone (Studio)</description>
+						<label>$LOCALIZE[29910] ($LOCALIZE[572])]</label>
+						<label2>$INFO[RDS.PhoneStudio]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.PhoneStudio)</visible>
+					</item>
+					<item id="5">
+						<description>Email (Studio)</description>
+						<label>$LOCALIZE[29911] ($LOCALIZE[572])]</label>
+						<label2>$INFO[RDS.EmailStudio]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.EmailStudio)</visible>
+					</item>
+					<item id="6">
+						<description>SMS (Studio)</description>
+						<label>$LOCALIZE[29912] ($LOCALIZE[572])]</label>
+						<label2>$INFO[RDS.SMSStudio]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.SMSStudio)</visible>
+					</item>
+					<item id="7">
+						<description>Phone (Hotline)</description>
+						<label>$LOCALIZE[29910] ($LOCALIZE[29913])]</label>
+						<label2>$INFO[RDS.PhoneHotline]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.PhoneHotline)</visible>
+					</item>
+					<item id="8">
+						<description>Email (Hotline)</description>
+						<label>$LOCALIZE[29911] ($LOCALIZE[29913])]</label>
+						<label2>$INFO[RDS.EmailHotline]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.EmailHotline)</visible>
+					</item>
+					<item id="9">
+						<description>Website</description>
+						<label>$LOCALIZE[29914]</label>
+						<label2>$INFO[RDS.ProgHomepage]</label2>
+						<onclick>noop</onclick>
+						<visible>!String.IsEmpty(RDS.ProgHomepage)</visible>
+					</item>
+				</content>
+			</control>
+			<control type="label"><!-- statuslist -->
+				<top>305</top>
+				<width>800</width>
+				<height>50</height>
+				<font>SemiBig</font>
+				<label fallback="416">$INFO[RDS.ProgStation]</label>
+			</control>
+			<control type="group">
+				<top>365</top>
+				<width>880</width>
+				<height>25</height>
+				<control type="label">
+					<width>140</width>
+					<height>25</height>
+					<font>SemiNormal</font>
+					<label>$LOCALIZE[19030]</label>
+				</control>
+				<control type="label">
+					<left>160</left>
+					<width>700</width>
+					<height>25</height>
+					<label fallback="31008">$INFO[RDS.ProgNow]</label>
+				</control>
+			</control>
+			<control type="group">
+				<top>395</top>
+				<width>880</width>
+				<height>25</height>
+				<control type="label">
+					<left>0</left>
+					<width>140</width>
+					<height>25</height>
+					<font>SemiNormal</font>
+					<label>$LOCALIZE[19031]</label>
+				</control>
+				<control type="label">
+					<left>160</left>
+					<width>700</width>
+					<height>25</height>
+					<label fallback="31008">$INFO[RDS.ProgNext]</label>
+				</control>
+			</control>
+			<control type="textbox"><!-- Plot -->
+				<top>495</top>
+				<width>800</width>
+				<include>PlotNormal66</include>
+				<label fallback="31008">-</label>
+				<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+			</control>
+			<control type="scrollbar" id="613">
+				<left>810</left>
+				<top>140</top>
+				<height>392</height>
+				<showonepage>true</showonepage><!-- include ueberschreibung -->
+				<include>scrollbar_vertical</include>
+				<onleft>5415</onleft><!-- back -->
+				<onright>5415</onright><!-- back -->
+				<onup>613</onup>
+				<ondown>613</ondown>
+				<visible allowhiddenfocus="true">Control.HasFocus(613)</visible>
+			</control>
+			<control type="button" id="524"><!-- infobutton -->
+				<description>Next Page</description>
+				<include>Hiddencontrol</include>
+				<left>959</left>
+				<top>569</top>
+				<font>-</font>
+				<onleft>10</onleft>
+				<onright>10</onright>
+				<visible>Integer.IsGreater(Container(22).NumPages,1)</visible>
+			</control>
+		</control>
+		<control type="image"><!-- separator -->
+			<left>350</left>
+			<height>550</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+	<control type="group"><!-- Ebene1 -->
+		<left>400</left>
+		<top>160</top>
+		<include>animation_dialog_popup</include>
+		<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + $EXP[HasNotDialogPopup]</visible>
+		<control type="image">
+			<description>schatten 3 elemente</description>
+			<include>global_dialog_shadow_neu</include>
+			<height>dialog-height3</height>
+			<visible>!Integer.IsGreater(Container(9000).NumItems,3)</visible>
+		</control>
+		<control type="image">
+			<description>hintergrund 3 elemente</description>
+			<include>global_dialogbg_neu</include>
+			<height>dialog-height3</height>
+			<visible>!Integer.IsGreater(Container(9000).NumItems,3)</visible>
+		</control>
+		<control type="image">
+			<description>background header</description>
+			<include>dialog_headerfront_neu</include>
+		</control>
+		<control type="label">
+			<description>header</description>
+			<label>$LOCALIZE[31381]</label>
+			<include>dialog_headertitle_neu</include>
+		</control>
+		<control type="grouplist" id="9000">
+			<left>dialog-border</left>
+			<top>dialog-inner-top</top>
+			<width>dialog-inner-width</width>
+			<height>448</height>
+			<onleft>SetFocus(5415)</onleft>
+			<onright>SetFocus(5415)</onright><!-- close -->
+			<itemgap>0</itemgap>
+			<control type="button" id="600"><!-- Next Page -->
+				<description>Find similar</description>
+				<label>$INFO[Control.GetLabel(22)]</label>
+				<include>dialog_buttonneu</include>
+				<onclick>SetProperty(PlottextReadMode,Read,videos)</onclick>
+				<onclick>SendClick(626,22)</onclick>
+				<visible>Integer.IsGreater(Container(22).NumPages,1)</visible>
+			</control>
+			<control type="button" id="77">
+				<description>Startansicht</description>
+				<include>dialog_buttonneu</include>
+				<label>$LOCALIZE[31300]</label>
+				<label2>$INFO[Skin.String(RDSinfoStartFocus)]</label2>
+				<onclick condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Menue) | String.IsEmpty(Skin.String(RDSinfoStartFocus))">Skin.setString(RDSinfoStartFocus,Info)</onclick>
+				<onclick condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Info)">Skin.setString(RDSinfoStartFocus,Info/Plot)</onclick>
+				<onclick condition="String.IsEqual(Skin.String(RDSinfoStartFocus),Info/Plot)">Skin.setString(RDSinfoStartFocus,Menue)</onclick>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>

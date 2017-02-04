@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- #### Viewtype Posterlist ####-->
+<variable name="Posterlistpanel-label">
+	<value condition="String.IsEqual(Skin.String(Posterlistpanel),aus)">$LOCALIZE[31024]</value>
+	<value>$LOCALIZE[31025]</value>
+</variable>
+	
+
+<!-- ####Viewtype Posterlist ####-->
+<include name="viewposter_video_fallbackrow1">
+	<control type="group">
+		<visible>!Container.Content(genres) + !ListItem.IsParentFolder</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<left>0</left>
+			<width>300</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(PosterlistFallbackRow1),Fanart) +  String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<left>0</left>
+			<width>300</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[panelart_value_landscape]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEmpty(Skin.String(PosterlistFallbackRow1)) | String.Contains(Skin.String(PosterlistFallbackRow1),Landscape) +  String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<left>0</left>
+			<width>300</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow1),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<top>10</top>
+			<left>20</left>
+			<width>226</width>
+			<height>130</height>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow1),Clear-Logo) +  String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<left>0</left>
+			<width>300</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow1),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<top>10</top>
+			<left>20</left>
+			<width>226</width>
+			<height>130</height>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow1),Clear-Art) +  String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<left>0</left>
+			<width>300</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow1),Defaultpicture) +  String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+	</control>
+</include>
+
+<include name="viewposter_video_fallbackrow2">
+	<control type="group">
+		<visible>!Container.Content(genres) + !ListItem.IsParentFolder</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<left>900</left>
+			<width>380</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEmpty(Skin.String(PosterlistFallbackRow2)) | String.IsEqual(Skin.String(PosterlistFallbackRow2),Fanart) +  String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<left>900</left>
+			<width>380</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[panelart_value_landscape]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow2),Landscape) +  String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<left>900</left>
+			<width>380</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow2),Clear-Logo) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<top>10</top>
+			<left>1034</left>
+			<width>226</width>
+			<height>130</height>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow2),Clear-Logo) +  String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<left>900</left>
+			<width>380</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow2),Clear-Art) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<top>10</top>
+			<left>1034</left>
+			<width>226</width>
+			<height>130</height>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow2),Clear-Art) +  String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<left>900</left>
+			<width>380</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(PosterlistFallbackRow2),Defaultpicture) +  String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+	</control>
+</include>
+
+<include name="viewposter_video_bottomelements">
+	<control type="group">
+		<visible>!Container.Content(genres)</visible>
+		<!-- 1 Info -->
+		<control type="group">
+			<control type="grouplist">
+				<left>310</left>
+				<top>10</top>
+				<orientation>vertical</orientation>
+				<itemgap>5</itemgap>
+				<width>270</width>
+				<visible>String.Contains(Skin.String(PosterlistRow3),Info)</visible>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo1_title] $VAR[viewglobal_value_videoinfo1_label]</label>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo3_title] $VAR[viewglobal_value_videoinfo3_label]</label>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo4_title] $VAR[viewglobal_value_videoinfo4_label]</label>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo7_title] $VAR[viewglobal_value_videoinfo7_label]</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<left>590</left>
+				<top>10</top>
+				<width>300</width>
+				<orientation>vertical</orientation>
+				<itemgap>5</itemgap>
+				<visible>String.Contains(Skin.String(PosterlistRow3),Info)</visible>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo2_title] $VAR[viewglobal_value_videoinfo2_label]</label>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo5_title] $VAR[viewglobal_value_videoinfo5_label]</label>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_videoinfo6_title] $VAR[viewglobal_value_videoinfo6_label]</label>
+				</control>
+			</control>
+		</control>
+
+		<!-- 2 plot -->
+		<control type="group">
+			<control type="textbox">
+				<left>320</left>
+				<top>10</top>
+				<width>570</width>
+				<include>PlotNormal132</include>
+				<include>viewglobal_topelements_plot</include>
+				<visible>String.IsEqual(Skin.String(PosterlistRow3),Plot)</visible>
+			</control>
+		</control>
+
+		<!-- 3 fanart -->
+		<control type="group">
+			<top>0</top>
+			<control type="image">
+				<left>0</left>
+				<width>300</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="top">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.IsEqual(Skin.String(PosterlistRow1),Fanart)</visible>
+			</control>
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.IsEqual(Skin.String(PosterlistRow2),Fanart)</visible>
+			</control>
+		</control>
+
+		<!-- 3 extra fanart -->
+		<control type="group">
+			<top>0</top>
+			<!-- row1 -->
+			<control type="image">
+				<left>0</left>
+				<width>300</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="top">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow1),Extra-Fanart)</visible>
+			</control>
+			<!-- row2 -->
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="left" aligny="top">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.IsEmpty(Skin.String(PosterlistRow2)) | String.Contains(Skin.String(PosterlistRow2),Extra-Fanart)</visible>
+			</control>
+		</control>
+
+		<!-- 5 extra thumb -->
+		<control type="group">
+			<top>0</top>
+			<!-- row 1 -->
+			<control type="image">
+				<left>0</left>
+				<width>300</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="top">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow1),Extra-Thumb)</visible>
+			</control>
+			<!-- row 2 -->
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="left" aligny="top">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow2),Extra-Thumb)</visible>
+			</control>
+		</control>
+
+		<!-- 6 clear art -->
+		<control type="group">
+			<top>0</top>
+			<control type="image">
+				<left>0</left>
+				<width>300</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.IsEmpty(Skin.String(PosterlistRow1)) | String.Contains(Skin.String(PosterlistRow1),Clear-Art) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<top>10</top>
+				<width>226</width>
+				<height>130</height>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.IsEmpty(Skin.String(PosterlistRow1)) | String.Contains(Skin.String(PosterlistRow1),Clear-Art)</visible>
+			</control>
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow2),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<left>1034</left>
+				<top>10</top>
+				<width>226</width>
+				<height>130</height>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.Contains(Skin.String(PosterlistRow2),Clear-Art)</visible>
+			</control>
+		</control>
+
+		<!-- 7 clear logo -->
+		<control type="group">
+			<top>0</top>
+			<control type="image">
+				<left>0</left>
+				<width>300</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow1),Clear-Logo) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<top>10</top>
+				<width>226</width>
+				<height>130</height>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(PosterlistRow1),Clear-Logo)</visible>
+			</control>
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow2),Clear-Logo) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<left>1034</left>
+				<top>10</top>
+				<width>226</width>
+				<height>130</height>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(PosterlistRow2),Clear-Logo)</visible>
+			</control>
+		</control>
+
+		<!-- 8 landscape -->
+		<control type="group">
+			<top>10</top>
+			<!-- Row 1 -->
+			<control type="image">
+				<left>0</left>
+				<width>300</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[panelart_value_landscape]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow1),Landscape)</visible>
+			</control>
+			<!-- Row 2 -->
+			<control type="image">
+				<left>900</left>
+				<width>380</width>
+				<height>160</height>
+				<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[panelart_value_landscape]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(PosterlistRow2),Landscape)</visible>
+			</control>
+		</control>
+
+		<!-- 9 content -->
+		<control type="group">
+			<!-- row3 -->
+			<control type="group">
+				<visible>String.IsEmpty(Skin.String(PosterlistRow3)) | String.Contains(Skin.String(PosterlistRow3),Content) + !ListItem.IsParentFolder</visible>
+				<!-- Similar bei Titel, movies -->
+				<control type="label">
+					<left>320</left>
+					<top>10</top>
+					<width>350</width>
+					<height>22</height>
+					<label>[COLOR=TextColor2]$LOCALIZE[31088]:[/COLOR] $VAR[videocontent_similarlabel]</label>
+					<font>SemiNormal</font>
+					<visible>[Container.Content(movies) | ListItem.IsCollection | Container.Content(tvshows)]</visible>
+				</control>
+				<control type="label">
+					<left>320</left>
+					<top>30</top>
+					<width>350</width>
+					<height>30</height>
+					<label>[I]$LOCALIZE[31008][/I]</label>
+					<font>RegularNormal</font>
+					<textcolor>TextColor3</textcolor>
+					<aligny>center</aligny>
+					<visible>String.IsEmpty(Container(5369).ListItem.Label) + [Container.Content(movies) | ListItem.IsCollection | Container.Content(tvshows)]</visible>
+				</control>
+				<!-- Similar movies -->
+				<control type="fixedlist" id="5369">
+					<viewtype label="Lowlist">list</viewtype>
+					<left>300</left>
+					<top>30</top>
+					<width>600</width>
+					<height>120</height>
+					<onleft>50</onleft>
+					<onright>50</onright>
+					<onup>50</onup>
+					<ondown>50</ondown>
+					<focusposition>1</focusposition>
+					<orientation>vertical</orientation>
+					<scrolltime>450</scrolltime>
+					<preloaditems>2</preloaditems>
+					<visible>Container.Content(movies) | ListItem.IsCollection | Container.Content(tvshows)</visible>
+					<itemlayout width="600" height="30">
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>599</width>
+							<height>1</height>
+							<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+							<texture>backgrounds/line.png</texture>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<top>1</top>
+							<width>450</width>
+							<height>27</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<left>483</left>
+							<top>1</top>
+							<width>85</width>
+							<height>27</height>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+						</control>
+						<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+							<param name="left">560</param>
+							<param name="top">8</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+					</itemlayout>
+					<focusedlayout width="600" height="30">
+						<control type="image">
+							<width>600</width>
+							<height>30</height>
+							<include>global_listfocustexture</include>
+							<visible>Control.HasFocus(5369)</visible>
+						</control>
+						<control type="image">
+							<width>599</width>
+							<height>1</height>
+							<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+							<texture>backgrounds/line.png</texture>
+							<visible>!Control.HasFocus(5369)</visible>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<top>1</top>
+							<width>450</width>
+							<height>30</height>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!Control.HasFocus(5369)</visible>
+						</control>
+						<control type="label">
+							<left>483</left>
+							<top>0</top>
+							<width>85</width>
+							<height>30</height>
+							<align>center</align>
+							<textcolor>TextColor2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>!Control.HasFocus(5369)</visible>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<top>1</top>
+							<width>450</width>
+							<height>30</height>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Control.HasFocus(5369)</visible>
+						</control>
+						<control type="label">
+							<left>483</left>
+							<top>0</top>
+							<width>85</width>
+							<height>30</height>
+							<align>center</align>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Control.HasFocus(5369)</visible>
+						</control>
+						<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+							<param name="left">560</param>
+							<param name="top">8</param>
+							<param name="width">30</param>
+							<param name="height">30</param>
+						</include>
+					</focusedlayout>
+					<content limit="$VAR[videocontent_similar_limit]" sortby="$VAR[videocontent_similar_sort]" target="video">$VAR[videocontent_similar]</content>
+					<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">PlayMedia("$INFO[ListItem.FilenameandPath]")</onclick><!-- check -->
+					<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow)">ActivateWindow(videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick><!-- check -->
+				</control>
+				<!-- content fallback staffel -->
+				<control type="textbox">
+					<left>320</left>
+					<top>10</top>
+					<width>550</width>
+					<include>PlotNormal132</include>
+					<include>viewglobal_topelements_plot</include>
+					<visible>String.IsEqual(Skin.String(PosterlistRow3),Plot) | Container.Content(seasons)</visible>
+				</control>
+			</control>
+		</control>
+	</control>
+	
+	<!-- genre fix -->
+	<control type="group">
+		<visible>!ListItem.IsParentFolder + Container.Content(genres)</visible>
+		<control type="image">
+			<left>20</left>
+			<top>0</top>
+			<width>100</width>
+			<height>150</height>
+			<aspectratio scalediffuse="true">stretch</aspectratio>
+			<texture fallback="defaultpictures/DefaultMovies.png" diffuse="artworks/Infopanel_poster_diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(2).Art(poster)]</texture>
+			<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(2).label)</visible>
+		</control>
+		<control type="image">
+			<left>110</left>
+			<top>0</top>
+			<width>100</width>
+			<height>150</height>
+			<aspectratio scalediffuse="true">stretch</aspectratio>
+			<texture fallback="defaultpictures/DefaultMovies.png" diffuse="artworks/Infopanel_poster_diffuse.png" background="true">$INFO[Container(5350).ListItemNoWrap(1).Art(poster)]</texture>
+			<visible>!String.IsEmpty(Container(5350).ListItemNoWrap(1).label)</visible>
+		</control>
+		<control type="image">
+			<left>200</left>
+			<top>0</top>
+			<width>100</width>
+			<height>150</height>
+			<aspectratio scalediffuse="true">stretch</aspectratio>
+			<texture diffuse="artworks/Infopanel_poster_diffuse.png" fallback="defaultpictures/DefaultMovies.png" background="true">$INFO[Container(5350).ListItem.Art(poster)]</texture>
+		</control>
+		
+		
+		<!-- Content bei Genre -->
+		<!-- Similar bei Titel, movies -->
+		<control type="label">
+			<left>320</left>
+			<top>10</top>
+			<width>350</width>
+			<height>22</height>
+			<label>[COLOR=TextColor2]$LOCALIZE[135][/COLOR] $INFO[ListItem.Label]</label>
+			<font>SemiNormal</font>
+		</control>
+		<control type="label">
+			<left>320</left>
+			<top>22</top>
+			<width>350</width>
+			<height>30</height>
+			<label>[I]$LOCALIZE[31008][/I]</label>
+			<font>RegularNormal</font>
+			<textcolor>TextColor3</textcolor>
+			<aligny>center</aligny>
+			<visible>String.IsEmpty(Container(5371).ListItem.Label)</visible>
+		</control>
+		<!-- focus -->
+		<control type="fixedlist" id="5371">
+			<viewtype label="Lowlist">list</viewtype>
+			<left>300</left>
+			<top>30</top>
+			<width>600</width>
+			<height>120</height>
+			<onleft>50</onleft>
+			<onright>50</onright>
+			<onup>5371</onup>
+			<ondown>5371</ondown>
+			<focusposition>1</focusposition>
+			<orientation>vertical</orientation>
+			<scrolltime>450</scrolltime>
+			<preloaditems>2</preloaditems>
+			<itemlayout width="600" height="30">
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>599</width>
+					<height>1</height>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+					<texture>backgrounds/line.png</texture>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<top>1</top>
+					<width>450</width>
+					<height>27</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>483</left>
+					<top>1</top>
+					<width>85</width>
+					<height>27</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Year]</label>
+				</control>
+				<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+					<param name="left">560</param>
+					<param name="top">8</param>
+					<param name="width">30</param>
+					<param name="height">30</param>
+				</include>
+			</itemlayout>
+			<focusedlayout width="600" height="30">
+				<control type="image">
+					<width>600</width>
+					<height>30</height>
+					<include>global_listfocustexture</include>
+					<visible>Control.HasFocus(5371)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<top>1</top>
+					<width>450</width>
+					<height>30</height>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.HasFocus(5371)</visible>
+				</control>
+				<control type="label">
+					<left>483</left>
+					<top>0</top>
+					<width>85</width>
+					<height>30</height>
+					<align>center</align>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Year]</label>
+					<visible>!Control.HasFocus(5371)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<top>1</top>
+					<width>450</width>
+					<height>30</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.HasFocus(5371)</visible>
+				</control>
+				<control type="label">
+					<left>483</left>
+					<top>0</top>
+					<width>85</width>
+					<height>30</height>
+					<align>center</align>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Year]</label>
+					<visible>Control.HasFocus(5371)</visible>
+				</control>
+				<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+					<param name="left">560</param>
+					<param name="top">8</param>
+					<param name="width">30</param>
+					<param name="height">30</param>
+				</include>
+			</focusedlayout>
+			<content target="video">$VAR[content_focus]</content>
+			<onclick condition="String.IsEmpty(ListItem.Duration)">ActivateWindow(videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick>
+			<onclick condition="!String.IsEmpty(ListItem.Duration)">PlayMedia($ESCINFO[ListItem.Path])</onclick>
+		</control>
+		<control type="image">
+			<left>900</left>
+			<width>380</width>
+			<height>160</height>
+			<aspectratio scalediffuse="false" align="left" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$VAR[value_defaultfanart]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+		</control>
+	</control>
+	
+	<include>viewposter_video_fallbackrow1</include>
+	<include>viewposter_video_fallbackrow2</include>
+</include>
+
+
+</includes>

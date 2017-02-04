@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+	<shortcut>
+		<label>$LOCALIZE[31872]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,root)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31883]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(musicplaylisteditor)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31873]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,Albums,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31882]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,singles,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31874]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,Songs,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31880]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,compilations,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31878]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,recentlyaddedalbums,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31879]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,recentlyplayedalbums,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31876]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,Artists,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31875]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,genres,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31881]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,years,return)</action>
+	</shortcut>
+	<shortcut>
+		<label>$LOCALIZE[31890]</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action>ActivateWindow(Music,Addons,return)</action>
+	</shortcut>
+</shortcuts>

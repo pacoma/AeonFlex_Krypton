@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1199">
+<onload>ClearProperty(RefreshList3,Home)</onload>
+<visible>!String.IsEmpty(Window(Home).Property(RefreshList3))</visible>
+<animation effect="fade" start="100" end="0" time="0" delay="5">WindowClose</animation>
+<controls>
+</controls>
+</window>
+

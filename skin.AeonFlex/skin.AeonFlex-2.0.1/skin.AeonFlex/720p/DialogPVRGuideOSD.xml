@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- AeonKN draft kopie -->
+<defaultcontrol always="true">11</defaultcontrol>
+<coordinates>
+	<system>1</system>
+</coordinates>
+<controls>
+<control type="group">
+	<left>757</left>
+	<top>145</top>
+	<animation type="WindowOpen" reversible="true" condition="Window.IsVisible(pvrosdchannels)">
+		<effect type="zoom" center="445,0" start="0,100" end="100,100" time="280" tween="cubic" easing="out" />
+		<effect type="fade" start="0" end="100" time="220"/>
+	</animation>
+	<visible>![Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo)]</visible>
+	<include content="global_dialog_mid_bg">
+		<param name="global_dialog_mid_bg-width" value="456" />
+		<param name="global_dialog_mid_bg-innerwidth" value="446" />
+		<param name="global_dialog_mid_bg-height" value="385" />
+		<param name="global_dialog_mid_bg-headerlabel" value="" />
+	</include>
+	<control type="label">
+		<description>header</description>
+		<height>30</height><!-- include ueberschreibung -->
+		<label>$INFO[VideoPlayer.ChannelName] $INFO[Container(11).ListItem.StartDate]</label>
+		<include>dialog_headertitle_neu</include>
+	</control>
+	<control type="panel" id="11"><!-- list -->
+		<viewtype>list</viewtype>
+		<left>0</left>
+		<top>dialog-inner-top</top>
+		<width>dialog-inner-width</width>
+		<height>315</height>
+		<onleft>Dialog.Close(pvrosdguide)</onleft>
+		<onright>Dialog.Close(pvrosdguide)</onright>
+		<onup>11</onup>
+		<ondown>11</ondown>
+		<viewtype label="535">list</viewtype>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="dialog-inner-width" height="dialog-itemheight"><!-- hight 35 -->
+			<control type="label">
+				<description>StartTime</description>
+				<left>20</left>
+				<width>75</width>
+				<height>dialog-itemheight</height>
+				<label>$INFO[ListItem.StartTime]</label>
+			</control>
+			<control type="image">
+				<description>Encrypt status</description>
+				<left>105</left>
+				<top>10</top>
+				<width>32</width>
+				<height>12</height>
+				<aspectratio>keep</aspectratio>
+				<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+				<visible>ListItem.IsEncrypted</visible>
+			</control>
+			<control type="label">
+				<description>channellabel</description>
+				<left>105</left>
+				<width>315</width>
+				<scroll>false</scroll>
+				<height>dialog-itemheight</height>
+				<label>$INFO[ListItem.Label]</label>
+				<animation effect="slide" end="33" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+			</control>
+		</itemlayout>
+		<focusedlayout width="dialog-inner-width" height="dialog-itemheight">
+			<control type="image">
+				<width>dialog-inner-width</width>
+				<height>dialog-itemheight</height>
+				<include>global_listfocustexture</include>
+				<visible>Control.HasFocus(11)</visible>
+			</control>
+			<control type="group"><!-- unFocus -->
+				<visible>!Control.HasFocus(11)</visible>
+				<control type="label">
+					<description>StartTime</description>
+					<left>20</left>
+					<width>75</width>
+					<height>dialog-itemheight</height>
+					<label>$INFO[ListItem.StartTime]</label>
+				</control>
+				<control type="image">
+					<description>Encrypt status</description>
+					<left>105</left>
+					<top>10</top>
+					<width>32</width>
+					<height>12</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+					<visible>ListItem.IsEncrypted</visible>
+				</control>
+				<control type="label">
+					<description>channellabel</description>
+					<left>105</left>
+					<width>315</width>
+					<height>dialog-itemheight</height>
+					<scroll>false</scroll>
+					<label>$INFO[ListItem.Label]</label>
+					<animation effect="slide" end="33" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+				</control>
+			</control>
+			<control type="group"><!-- Focus -->
+				<visible>Control.HasFocus(11)</visible>
+				<control type="label">
+					<description>StartTime</description>
+					<left>20</left>
+					<width>75</width>
+					<height>dialog-itemheight</height>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.StartTime]</label>
+				</control>
+				<control type="image">
+					<description>Encrypt status</description>
+					<left>105</left>
+					<top>10</top>
+					<width>32</width>
+					<height>12</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="TextColorFocus">pvr/pvr_isencrypted.png</texture>
+					<visible>ListItem.IsEncrypted</visible>
+				</control>
+				<control type="label">
+					<description>channellabel</description>
+					<left>105</left>
+					<width>315</width>
+					<height>dialog-itemheight</height>
+					<scroll>false</scroll>
+					<label>$INFO[ListItem.Label]</label>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<textcolor>TextColorFocus</textcolor>
+					<animation effect="slide" end="33" time="0" condition="ListItem.IsEncrypted">Conditional</animation>
+				</control>
+			</control>
+		</focusedlayout>
+	</control>
+</control>
+</controls>
+</window>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+	<defaultcontrol>2</defaultcontrol>
+	<controls>
+<control type="group"id="13"><!-- pause -->
+	<left>590</left>
+	<top>330</top>
+	<width>60</width>
+	<height>60</height>
+	<animation delay="300" effect="fade" time="200">Visible</animation>
+	<animation effect="fade" delay="200" time="150">Hidden</animation>
+	<control type="label" id="13">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>TextColor3</textcolor>
+		<font>Caching-progressicon</font>
+		<label>Ņ</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label" id="13">
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<textcolor>ACSkinColor</textcolor>
+		<font>Caching-progressicon</font>
+		<label>$VAR[value_playerprogressinlay]</label>
+		<animation effect="fade" start="30" end="100" time="800" pulse="true" condition="true">Conditional</animation>
+	</control>
+	<control type="label">
+		<description>Titel</description>
+		<left>-610</left>
+		<top>80</top>
+		<width>1280</width>
+		<height>20</height>
+		<font>SemiLarge</font>
+		<align>center</align>
+		<shadowcolor>TextColorFocus</shadowcolor>
+		<label>$LOCALIZE[112]</label>
+	</control>
+	<control type="label">
+		<description>Titel</description>
+		<left>-610</left>
+		<top>110</top>
+		<width>1280</width>
+		<height>20</height>
+		<font>SemiLarge</font>
+		<align>center</align>
+		<shadowcolor>TextColorFocus</shadowcolor>
+		<label>$INFO[Slideshow.Filename]</label>
+	</control>
+</control>
+	</controls>
+</window>

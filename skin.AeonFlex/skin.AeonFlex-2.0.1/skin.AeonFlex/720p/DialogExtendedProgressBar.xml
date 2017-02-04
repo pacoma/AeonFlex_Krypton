@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<onload condition="Library.IsScanningVideo + !Skin.HasSetting(libraryautoartworkupdate)">SetProperty(libraryautoUpdateArt,1)</onload>
+<onunload condition="!String.IsEmpty(Window.Property(libraryautoUpdateArt)) + !Skin.HasSetting(libraryautoartworkupdate)">XBMC.RunScript(script.artwork.downloader)</onunload>
+<onunload condition="!String.IsEmpty(Window.Property(libraryautoUpdateArt)) + !Skin.HasSetting(libraryautoartworkupdate)">ClearProperty(libraryautoUpdateArt)</onunload>
+<controls>
+<control type="label" id="30">
+	<description>text</description>
+	<left>-100</left>
+	<top>-100</top>
+	<width>1</width>
+	<height>1</height>
+	<label>-</label>
+	<font>-</font>
+	<texturenofocus>-</texturenofocus>
+	<texturefocus>-</texturefocus>
+</control>
+<control type="label" id="31">
+	<description>text</description>
+	<left>-100</left>
+	<top>-100</top>
+	<width>1</width>
+	<height>1</height>
+	<label>-</label>
+	<font>-</font>
+	<texturenofocus>-</texturenofocus>
+	<texturefocus>-</texturefocus>
+</control>
+<control type="group">
+	<include>animation_topdialog_popup</include>
+	<include>dialog_bar</include>
+	<visible>![Window.IsVisible(DialogConfirm.xml) | Window.IsVisible(DialogNotification.xml) | !Player.Muted + Window.IsVisible(volumebar)]</visible>
+	<animation effect="slide" end="0,-70" time="200" condition="Window.IsVisible(FullscreenVideo) | Window.IsVisible(Visualisation)">conditional</animation>
+	<control type="progress" id="32">
+		<include>dialog_progress</include>
+	</control>
+	<control type="label">
+		<include content="dialog_label1">
+			<param name="DialogHeaderLabel1" value="$INFO[Control.GetLabel(30)]" />
+		</include>
+	</control>
+	<control type="label">
+		<include content="dialog_label2">
+			<param name="DialogHeaderLabel2" value="$INFO[Control.GetLabel(31)]" />
+		</include>
+	</control>
+</control>
+</controls>
+</window>

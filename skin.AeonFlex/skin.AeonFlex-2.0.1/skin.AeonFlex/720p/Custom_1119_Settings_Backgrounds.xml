@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1119">
+<defaultcontrol always="true">9000</defaultcontrol>
+<controls>
+<control type="group">
+	<left>80</left>
+	<top>145</top>
+	<width>1280</width>
+	<height>720</height>
+	<include>animation_dialog_popup</include>
+	<control type="group"><!-- preview -->
+		<left>0</left>
+		<top>-5</top>
+		<control type="image">
+			<description>background menue</description>
+			<width>720</width>
+			<height>405</height>
+			<texture border="5" flipx="true" colordiffuse="ACBackgroundColor">shadows/dialoge_inner.png</texture>
+		</control>
+		<control type="image">
+			<description>background menue</description>
+			<width>720</width>
+			<height>405</height>
+			<texture border="5" flipx="true" colordiffuse="$VAR[AC_value_shadow_color]">shadows/dialoge_shadow-left.png</texture>
+		</control>
+		<control type="multiimage">
+			<left>5</left>
+			<top>5</top>
+			<width>710</width>
+			<height>395</height>
+			<fadetime>FanartCrossFadeTime</fadetime>
+			<timeperimage>5000</timeperimage>
+			<randomize>true</randomize>
+			<aspectratio>stretch</aspectratio>
+			<imagepath fallback="special://skin/extras/defaultbackground.jpg" background="true">$VAR[value_window_background_preview]</imagepath>
+		</control>
+	</control>
+	<control type="group">
+		<left>715</left>
+		<height>365</height>
+		<include content="global_dialog_mid_bg">
+			<param name="global_dialog_mid_bg-left" value="0" />
+			<param name="global_dialog_mid_bg-width" value="360" />
+			<param name="global_dialog_mid_bg-innerwidth" value="350" />
+			<param name="global_dialog_mid_bg-height" value="405" />
+			<param name="global_dialog_mid_bg-headerlabel" value="$LOCALIZE[31168]" />
+			<param name="global_dialog_mid_headerid" value="-" />
+		</include>
+		<control type="list" id="9000"><!-- List -->
+			<top>53</top>
+			<width>350</width>
+			<height>320</height>
+			<onleft>90</onleft>
+			<onright>90</onright>
+			<onup>9000</onup>
+			<ondown>9000</ondown>
+			<itemgap>0</itemgap>
+			<pagecontrol>-</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<itemlayout width="350" height="40">
+				<control type="image">
+					<left>10</left>
+					<top>39</top>
+					<width>325</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>300</width>
+					<height>41</height>
+					<scroll>false</scroll>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="350" height="40">
+				<control type="image">
+					<height>40</height>
+					<width>350</width>
+					<include>global_listfocustexture</include>
+					<visible>Control.HasFocus(9000)</visible>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<top>39</top>
+					<width>325</width>
+					<height>1</height>
+					<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/line.png</texture>
+					<visible>!Control.HasFocus(9000)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>300</width>
+					<height>41</height>
+					<textcolor>TextColorFocus</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.HasFocus(9000)</visible>
+				</control>
+				<control type="label">
+					<left>20</left>
+					<width>300</width>
+					<height>41</height>
+					<scroll>false</scroll>
+					<textcolor>TextColor2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.HasFocus(9000)</visible>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="1">
+					<label>Einstellungen</label>
+					<onclick>Skin.SetFile(Commonbackground.settings,.jpg,special://skin/extras/windows/)</onclick>
+					<onclick>noop</onclick>
+				</item>
+				<item id="2">
+					<label>Video</label>
+					<onclick>Skin.SetFile(Commonbackground.video,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="3">
+					<label>Live-tv</label>
+					<onclick>Skin.SetFile(Commonbackground.livetv,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="4">
+					<label>Musik</label>
+					<onclick>Skin.SetFile(Commonbackground.music,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="5">
+					<label>Favoriten</label>
+					<onclick>Skin.SetFile(Commonbackground.favorites,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="6">
+					<label>Bilder</label>
+					<onclick>Skin.SetFile(Commonbackground.pictures,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="7">
+					<label>Addons</label>
+					<onclick>Skin.SetFile(Commonbackground.addons,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="8">
+					<label>Ausschalten</label>
+					<onclick>Skin.SetFile(Commonbackground.shutdown,.jpg,special://skin/extras/windows/)</onclick>
+				</item>
+				<item id="9">
+					<label>Wetter</label>
+					<label>$LOCALIZE[31183]</label>
+					<label2>$INFO[Skin.String(resource.images.weatherfanart.name)]</label2>
+					<onclick>RunScript(script.image.resource.select,type=resource.images.weatherfanart&amp;property=resource.images.weatherfanart)</onclick>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.Location)) + System.HasAddon(script.image.resource.select)</visible>
+				</item>
+			</content>
+		</control>
+	</control>
+</control>
+</controls>
+</window>
+
+
+

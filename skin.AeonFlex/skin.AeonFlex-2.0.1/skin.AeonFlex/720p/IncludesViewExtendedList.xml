@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- #### Viewtype ExtendedList ####-->
+<include name="viewextendedlist_backgroundoverlay">
+	<control type="group"><!-- extended list overlay -->
+		<animation effect="fade" start="100" end="0" time="200" tween="cubic" easing="in" reversible="false" condition="Window.IsVisible(movieinformation)">Conditional</animation>
+		<animation effect="fade" start="0" end="100" time="600" tween="cubic" easing="in" reversible="false" condition="!Window.IsVisible(movieinformation)">Conditional</animation>
+		<control type="image">
+			<top>108</top>
+			<width>1280</width>
+			<height>120</height>
+			<texture colordiffuse="ACBackgroundColor_extendedlist" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListListstyle),PlotList) | String.IsEqual(Skin.String(ExtendedListListstyle),BigList)</visible>
+		</control>
+		<control type="image">
+			<top>218</top>
+			<width>1280</width>
+			<height>190</height>
+			<texture colordiffuse="ACBackgroundColor_extendedlist" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListListstyle),PlotList) | String.IsEqual(Skin.String(ExtendedListListstyle),BigList)</visible>
+		</control>
+		<control type="image">
+			<left>0</left>
+			<top>408</top>
+			<width>1280</width>
+			<height>120</height>
+			<texture colordiffuse="ACBackgroundColor_extendedlist" diffuse="backgrounds/background-overlay-diffuse.png" flipy="true">White.png</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListListstyle),PlotList) | String.IsEqual(Skin.String(ExtendedListListstyle),BigList)</visible>
+		</control>
+		<control type="image">
+			<left>0</left>
+			<top>128</top>
+			<width>1280</width>
+			<height>100</height>
+			<texture colordiffuse="ACBackgroundColor_extendedlist" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListListstyle),SmallList)</visible>
+		</control>
+		<control type="image">
+			<left>0</left>
+			<top>228</top>
+			<width>1280</width>
+			<height>130</height>
+			<texture colordiffuse="ACBackgroundColor_extendedlist" >White.png</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListListstyle),SmallList)</visible>
+		</control>
+		<control type="image">
+			<left>0</left>
+			<top>358</top>
+			<width>1280</width>
+			<height>100</height>
+			<texture colordiffuse="ACBackgroundColor_extendedlist" diffuse="backgrounds/background-overlay-diffuse.png" flipy="true">White.png</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListListstyle),SmallList)</visible>
+		</control>
+	</control>
+</include>
+
+<variable name="viewextendedlist_video_artworkblockfallback">
+	<!-- film -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Banner) + String.IsEqual(Control.GetLabel(5305),)">xx</value><!-- 1 banner -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Fanart)">$INFO[ListItem.Art(fanart)]</value><!-- 3 fanart -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Extra-Fanart) + String.IsEqual(Control.GetLabel(5300),)">xx</value><!-- 4 extra fanart -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Extra-Thumb) + String.IsEqual(Control.GetLabel(5301),)">xx</value><!-- 5 extra thumb --><!-- xx wenn Var leer -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Clear-Art) + String.IsEqual(Control.GetLabel(5303),)">xx</value><!-- 6 clear art -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Clear-Logo) + String.IsEqual(Control.GetLabel(5304),)">xx</value><!-- 7 clear logo -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Landscape) + String.IsEqual(Control.GetLabel(5307),)">xx</value><!-- 8 landscape -->
+	<value condition="[Container.Content(movies) | Container.Content(sets)] + String.IsEmpty(Skin.String(ExtendedListMovieArtwork1)) + String.IsEqual(Control.GetLabel(5307),)">xx</value><!-- 8 landscape -->
+	<!-- Serie -->
+	<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowArtwork1),Banner) + String.IsEqual(Control.GetLabel(5305),)">xx</value><!-- 1 banner -->
+	<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowArtwork1),Fanart)">$INFO[ListItem.Art(fanart)]</value><!-- 3 fanart -->
+	<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowArtwork1),Extra-Fanart) + String.IsEqual(Control.GetLabel(5300),)">xx</value><!-- 4 extra fanart -->
+	<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowArtwork1),Clear-Art) + String.IsEqual(Control.GetLabel(5303),)">xx</value><!-- 6 clear art -->
+	<value condition="Container.Content(tvshows) + String.IsEmpty(Skin.String(ExtendedListShowArtwork1)) + String.IsEqual(Control.GetLabel(5304),)">xx</value><!-- 7 clear logo -->
+	<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowArtwork1),Clear-Logo) + String.IsEqual(Control.GetLabel(5304),)">xx</value><!-- 7 clear logo -->
+	<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(ExtendedListShowArtwork1),Landscape) + String.IsEqual(Control.GetLabel(5307),)">xx</value><!-- 8 landscape -->	
+	<!-- staffel -->
+	<value condition="Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Banner) + String.IsEqual(Control.GetLabel(5305),)">xx</value><!-- 1 banner -->
+	<value condition="Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Fanart)">$INFO[ListItem.Art(fanart)]</value><!-- 3 fanart -->
+	<value condition="Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart) + String.IsEqual(Control.GetLabel(5300),)">xx</value><!-- 4 extra fanart -->
+	<value condition="Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Clear-Art) + String.IsEqual(Control.GetLabel(5303),)">xx</value><!-- 6 clear art -->
+	<value condition="Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Clear-Logo) + String.IsEqual(Control.GetLabel(5304),)">xx</value><!-- 7 clear logo -->
+	<value condition="Container.Content(seasons) + String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1)) + String.IsEqual(Control.GetLabel(5307),)">xx</value><!-- 8 landscape -->
+	<value condition="Container.Content(seasons) + String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Landscape) + String.IsEqual(Control.GetLabel(5307),)">xx</value><!-- 8 landscape -->
+	<!-- episoden -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Banner) + String.IsEqual(Control.GetLabel(5305),)">xx</value><!-- 1 banner -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Fanart)">$INFO[ListItem.Art(fanart)]</value><!-- 3 fanart -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Extra-Fanart) + String.IsEqual(Control.GetLabel(5300),)">xx</value><!-- 4 extra fanart -->
+	<value condition="Container.Content(episodes) + String.IsEmpty(Skin.String(ExtendedListEpisodesArtwork1)) + String.IsEmpty(ListItem.Art(thumb))">xx</value><!-- 5 extra thumb --><!-- xx wenn Var leer -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Thumb) + String.IsEmpty(ListItem.Art(thumb))">xx</value><!-- 5 extra thumb --><!-- xx wenn Var leer -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Clear-Art) + String.IsEqual(Control.GetLabel(5303),)">xx</value><!-- 6 clear art -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Clear-Logo) + String.IsEqual(Control.GetLabel(5304),)">xx</value><!-- 7 clear logo -->
+	<value condition="Container.Content(episodes) + String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Landscape) + String.IsEqual(Control.GetLabel(5307),)">xx</value><!-- 8 landscape -->
+</variable>
+
+<variable name="viewextendedlist_video_value_liststyle">
+	<value condition="[Container.Content(movies) | Container.Content(sets)]">$INFO[Skin.String(ExtendedListMovieListstyle)]</value><!-- film -->
+	<value condition="Container.Content(tvshows)">$INFO[Skin.String(ExtendedListShowListstyle)]</value><!-- Serie -->
+	<value condition="Container.Content(seasons)">$INFO[Skin.String(ExtendedListSeasonListstyle)]</value><!-- staffel -->
+	<value condition="Container.Content(episodes)">$INFO[Skin.String(ExtendedListEpisodeListstyle)]</value><!-- episoden -->
+</variable>
+
+<variable name="viewextendedlist_video_value_liststyle">
+	<value condition="[Container.Content(movies) | Container.Content(sets)]">$INFO[Skin.String(ExtendedListMovieListstyle)]</value><!-- film -->
+	<value condition="Container.Content(tvshows)">$INFO[Skin.String(ExtendedListShowListstyle)]</value><!-- Serie -->
+	<value condition="Container.Content(seasons)">$INFO[Skin.String(ExtendedListSeasonListstyle)]</value><!-- staffel -->
+	<value condition="Container.Content(episodes)">$INFO[Skin.String(ExtendedListEpisodeListstyle)]</value><!-- episoden -->
+</variable>
+
+<variable name="viewextendedlist_video_value_detailstyle">
+	<value condition="[Container.Content(movies) | Container.Content(sets)]">$INFO[Skin.String(ExtendedListMovieDetailInfo)]</value><!-- film -->
+	<value condition="Container.Content(tvshows)">$INFO[Skin.String(ExtendedListShowDetailInfo)]</value><!-- Serie -->
+	<value condition="Container.Content(seasons)">$INFO[Skin.String(ExtendedListSeasonDetailInfo)]</value><!-- staffel -->
+	<value condition="Container.Content(episodes)">$INFO[Skin.String(ExtendedListEpisodeDetailInfo)]</value><!-- episoden -->
+</variable>
+
+
+<variable name="viewextendedlist-value-title">
+	<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Episode) + !String.Contains(Container.FolderPath,videodb://recentlyaddedepisodes/)">$VAR[global_episodeprefix]$INFO[ListItem.Episode,, ]$INFO[ListItem.Title]</value>
+	<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.Episode) + !String.Contains(Container.FolderPath,videodb://recentlyaddedepisodes/)">$INFO[ListItem.Title]</value>
+
+	<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Episode) + String.Contains(Container.FolderPath,videodb://recentlyaddedepisodes/)">$INFO[ListItem.TvShowTitle,, - ]$VAR[global_episodeprefix]$INFO[ListItem.Episode,, ]$INFO[ListItem.Title]</value>
+	<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.Episode) + String.Contains(Container.FolderPath,videodb://recentlyaddedepisodes/)">$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Title]</value>
+	<value>$INFO[ListItem.Label]</value>
+</variable>
+
+<variable name="viewextendedlist-value-textdetails1">
+	<!-- movies set-->
+	<value condition="!String.IsEmpty(Container(5350).ListItem.Label) + [Container.Content(sets) | ListItem.IsCollection] + Integer.IsGreater(Container(5350).NumItems,1)">$INFO[Container(5350).NumItems,, $LOCALIZE[20342]]</value>
+	<value condition="!String.StartsWith(ListItem.label,*)">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]</value>
+</variable>
+
+<variable name="viewextendedlist-value-textdetails2">
+	<!-- movies set-->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection]">$LOCALIZE[2050]: $INFO[Window(home).Property(Set.Movies.Runtime),, $LOCALIZE[31026]]</value>
+	<value condition="Container.Content(movies) + !ListItem.IsCollection">$LOCALIZE[2050]: $INFO[ListItem.Duration,, $LOCALIZE[31026]]</value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes)">$INFO[ListItem.Duration,, $LOCALIZE[31026] ]</value>
+	<!-- seasons -->
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons) + !String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: $INFO[ListItem.Studio]</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons) + String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	
+	<!-- tvshows -->
+	<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: $INFO[ListItem.Studio]</value>
+	<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+</variable>
+
+<variable name="viewextendedlist-value-textdetails3">
+	<!-- movies set-->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + !String.IsEmpty(Window(home).Property(Set.Movies.Genre))">$LOCALIZE[135]: $INFO[Window(home).Property(Set.Movies.Genre)]</value>
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + String.IsEmpty(Window(home).Property(Set.Movies.Genre))">$LOCALIZE[135]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + !String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: $INFO[ListItem.Genre]</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+</variable>
+	
+<variable name="viewextendedlist-value-textdetails4">
+	<!-- movies set-->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + !String.IsEmpty(Window(home).Property(Set.Movies.Director))">$LOCALIZE[31068]: $INFO[Window(home).Property(Set.Movies.Director)]</value>
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + String.IsEmpty(Window(home).Property(Set.Movies.Director))">$LOCALIZE[31068]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- movies -->
+	<value condition="!ListItem.IsCollection + Container.Content(movies) + !String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: $INFO[ListItem.Director]</value>
+	<value condition="!ListItem.IsCollection + Container.Content(movies) + String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: $INFO[ListItem.Director]</value>
+	<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- seasons -->
+	<value condition="!String.StartsWith(ListItem.label,*) + !String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(seasons) + Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0)">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]] ($LOCALIZE[16101]: $INFO[ListItem.Property(UnwatchedEpisodes)])</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + !String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(seasons) + ![Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(watchedEpisodes),0)]">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
+	<!-- tvshows -->
+	<value condition="!String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(tvshows) + Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(watchedEpisodes),0)">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]] ($LOCALIZE[16101]: $INFO[ListItem.Property(UnwatchedEpisodes)])</value>
+	<value condition="!String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(tvshows) + ![Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(watchedEpisodes),0)]">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
+</variable>
+<variable name="viewextendedlist-value-details1">
+	<!-- movies set-->
+	<value condition="!String.IsEmpty(Container(5350).ListItem.Label) + [Container.Content(sets) | ListItem.IsCollection] + Integer.IsGreater(Container(5350).NumItems,1)">$INFO[Container(5350).NumItems,, $LOCALIZE[20342]]$INFO[Window(home).Property(Set.Movies.Runtime),  |  , $LOCALIZE[31026]]</value>
+	<value condition="!String.IsEmpty(Container(5350).ListItem.Label) + [Container.Content(sets) | ListItem.IsCollection] + !Integer.IsGreater(Container(5350).NumItems,1)">$INFO[Container(5350).NumItems,, $LOCALIZE[20342]]$INFO[Window(home).Property(Set.Movies.Runtime),  |  , $LOCALIZE[31026]]</value>
+	<value condition="String.IsEmpty(Container(5350).ListItem.Label) + [Container.Content(sets) | ListItem.IsCollection]">$INFO[Window(home).Property(Set.Movies.Runtime),, $LOCALIZE[31026]]</value>
+	<!-- movies -->
+	<value condition="Container.Content(movies) + !ListItem.IsCollection">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]$INFO[ListItem.Duration,  |  , $LOCALIZE[31026]]</value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes)">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]$INFO[ListItem.Duration,  |  , $LOCALIZE[31026] ]</value>
+	<!-- seasons -->
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons)">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]</value>
+	<!-- tvshows -->
+	<value condition="Container.Content(tvshows)">$VAR[viewglobal_video_dateprefix]$VAR[viewglobal_video_date]</value>
+</variable>
+
+<variable name="viewextendedlist-value-details2">
+	<!-- movies set-->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + !String.IsEmpty(Window(home).Property(Set.Movies.Genre))">$LOCALIZE[135]: $INFO[Window(home).Property(Set.Movies.Genre)]</value>
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + String.IsEmpty(Window(home).Property(Set.Movies.Genre))">$LOCALIZE[135]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- movies-->
+	<value condition="Container.Content(movies) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: $INFO[ListItem.Genre]</value>
+	<value condition="Container.Content(movies) + !ListItem.IsCollection + String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<value condition="[Container.Content(sets) | ListItem.IsCollection]"></value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: $INFO[ListItem.Studio]</value>
+	<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- seasons -->
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons) + !String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: $INFO[ListItem.Genre]</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons) + String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- tvshows -->
+	<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: $INFO[ListItem.Genre]</value>
+	<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Genre)">$LOCALIZE[135]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+</variable>
+
+<variable name="viewextendedlist-value-details3">
+	<!-- movies set-->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + !String.IsEmpty(Window(home).Property(Set.Movies.Years))">$LOCALIZE[31078]: $INFO[Window(home).Property(Set.Movies.Years)]</value>
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + String.IsEmpty(Window(home).Property(Set.Movies.Years))">$LOCALIZE[31078]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- movies -->
+	<value condition="!ListItem.IsCollection + Container.Content(movies) + !String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: $INFO[ListItem.Director]</value>
+	<value condition="!ListItem.IsCollection + Container.Content(movies) + String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: $INFO[ListItem.Director]</value>
+	<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.Director)">$LOCALIZE[31068]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- seasons -->
+	<value condition="!String.StartsWith(ListItem.label,*) + !String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(seasons) + Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0)">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]] ($LOCALIZE[16101]: $INFO[ListItem.Property(UnwatchedEpisodes)])</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + !String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(seasons) + ![Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(watchedEpisodes),0)]">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
+	<!-- tvshows -->
+	<value condition="!String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(tvshows) + Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(watchedEpisodes),0)">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]] ($LOCALIZE[16101]: $INFO[ListItem.Property(UnwatchedEpisodes)])</value>
+	<value condition="!String.IsEmpty(ListItem.Property(TotalEpisodes)) + Container.Content(tvshows) + ![Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(watchedEpisodes),0)]">$LOCALIZE[126]: $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
+</variable>
+
+<variable name="viewextendedlist-value-details4">
+	<!-- movies set-->
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + !String.IsEmpty(Window(home).Property(Set.Movies.Director))">$LOCALIZE[31068]: $INFO[Window(home).Property(Set.Movies.Director)]</value>
+	<value condition="[Container.Content(sets) | ListItem.IsCollection] + String.IsEmpty(Window(home).Property(Set.Movies.Director))">$LOCALIZE[31068]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- movies -->
+	<value condition="!ListItem.IsCollection + Container.Content(movies) + !String.IsEmpty(ListItem.Writer)">$LOCALIZE[20417]: $INFO[ListItem.Writer]</value>
+	<value condition="!ListItem.IsCollection + Container.Content(movies) + String.IsEmpty(ListItem.Writer)">$LOCALIZE[20417]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- episode -->
+	<value condition="Container.Content(episodes)"></value>
+	<!-- seasons -->
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons) + !String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: $INFO[ListItem.Studio]</value>
+	<value condition="!String.StartsWith(ListItem.label,*) + Container.Content(seasons) + String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+	<!-- tvshows -->
+	<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: $INFO[ListItem.Studio]</value>
+	<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Studio)">$LOCALIZE[572]: [I][COLOR=TextColor3]$LOCALIZE[31008][/I][/COLOR]</value>
+</variable>
+
+<!-- focusartworks 440 right -->
+<include name="viewextendedlist_biglist_squareartworks">
+	<left>120</left>
+	<top>10</top>
+	<width>320</width>
+	<height>180</height>
+	<bordersize>0</bordersize>
+	<bordertexture>-</bordertexture>
+	<fadetime>FanartCrossFadeTime</fadetime>
+</include>
+
+<include name="viewextendedlist_biglist_posterartworks">
+	<left>320</left>
+	<top>10</top>
+	<width>120</width>
+	<height>180</height>
+	<bordersize>0</bordersize>
+	<bordertexture>-</bordertexture>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<aspectratio scalediffuse="true">stretch</aspectratio>
+	<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">$INFO[ListItem.Art(poster)]</texture>
+</include>
+
+<include name="viewextendedlist_biglist_bannerrartworks">
+	<left>-533</left>
+	<top>10</top>
+	<width>973</width>
+	<height>180</height>
+	<bordersize>0</bordersize>
+	<bordertexture>-</bordertexture>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<aspectratio align="center" aligny="center" scalediffuse="true">scale</aspectratio>
+	<texture background="true" diffuse="artworks/extendedbanner_diffuse.png">$VAR[art_value_banner]</texture>
+</include>
+
+<include name="viewextendedlist_biglist_clearrartworks">
+	<left>120</left>
+	<top>10</top>
+	<width>320</width>
+	<height>180</height>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<aspectratio>keep</aspectratio>
+	<bordersize>0,30,40,0</bordersize>
+</include>
+
+<include name="viewextendedlist_smalllist_clearrartworks">
+	<left>209</left>
+	<top>10</top>
+	<width>231</width>
+	<height>130</height>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<aspectratio>keep</aspectratio>
+	<bordersize>0,30,40,0</bordersize>
+</include>
+
+<include name="viewextendedlist_smalllist_bannerrartworks">
+	<left>-263</left>
+	<top>10</top>
+	<width>703</width>
+	<height>130</height>
+	<bordersize>0</bordersize>
+	<bordertexture>-</bordertexture>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<aspectratio align="right" aligny="center" scalediffuse="true">scale</aspectratio>
+	<texture background="true" diffuse="artworks/extendedbannersmall_diffuse.png">$VAR[art_value_banner]</texture>
+</include>
+
+<include name="viewextendedlist_smalllist_posterartworks">
+	<left>353</left>
+	<top>7</top>
+	<width>90</width>
+	<height>136</height>
+	<bordertexture>-</bordertexture>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<aspectratio scalediffuse="true">stretch</aspectratio>
+	<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">$INFO[ListItem.Art(poster)]</texture>
+</include>
+	
+<include name="viewextendedlist_smalllist_squareartworks">
+	<left>209</left>
+	<top>10</top>
+	<width>231</width>
+	<height>130</height>
+	<bordersize>0</bordersize>
+	<fadetime>FanartCrossFadeTime</fadetime>
+	<bordertexture>-</bordertexture>
+</include>
+
+<include name="viewextendedlist_bigflags_border">
+	<left>395</left>
+	<top>10</top>
+	<width>45</width>
+	<height>45</height>
+	<aspectratio align="center" aligny="center">keep</aspectratio>
+</include>
+
+<!-- movies -->
+<include name="viewextendedlist_movie_fallbackRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListMovieListstyle)) + [Container.Content(movies) | Container.Content(sets)]</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackMovie),Fanart) | String.IsEmpty(Skin.String(ExtendedListFallbackMovie))] + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),Clear-Logo) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),Clear-Art) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListMovieArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListMovieArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbanner_diffuse.png">defaultpictures/Extended_DefaultMovieBanner.png</texture>
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListMovieArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultMovies.png</texture>
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListMovieArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList) + [Container.Content(movies) | Container.Content(sets)]</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackMovie),Fanart) | String.IsEmpty(Skin.String(ExtendedListFallbackMovie))] + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),Clear-Logo) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),Clear-Art) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) +  String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListMovieArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListMovieArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListMovieArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbannersmall_diffuse.png">defaultpictures/Extended_DefaultMovieBanner.png</texture>
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListMovieArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultMovies.png</texture>
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListMovieArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackMovie),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+</include>
+
+<include name="viewextendedlist_movie_artworkRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListMovieListstyle)) + [Container.Content(movies) | Container.Content(sets)]</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Poster)</visible>
+		</control>
+		<!-- extra thumb -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5301)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Extra-Thumb)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Landscape) | String.IsEmpty(Skin.String(ExtendedListMovieArtwork1))</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Logo)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Art)</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListMovieListstyle),SmallList) + [Container.Content(movies) | Container.Content(sets)]</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra thumb -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5301)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Extra-Thumb)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Landscape) | String.IsEmpty(Skin.String(ExtendedListMovieArtwork1))</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Logo)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),Clear-Art)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<texture background="true">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListMovieArtwork1),defaultpicture)</visible>
+		</control>
+	</control>
+	<include>viewextendedlist_movie_fallbackRow</include>
+</include>
+
+<!-- tvshows -->
+<include name="viewextendedlist_show_fallbackRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListShowListstyle)) + Container.Content(tvshows)</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackShow),Fanart) | String.IsEmpty(Skin.String(ExtendedListFallbackShow))] + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),Clear-Logo) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),Clear-Art) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListShowArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListShowArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListShowArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListShowArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbanner_diffuse.png">defaultpictures/Extended_DefaultMovieBanner.png</texture>
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListShowArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultMovies.png</texture>
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListShowArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList) + Container.Content(tvshows)</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackShow),Fanart) | String.IsEmpty(Skin.String(ExtendedListFallbackShow))] + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),Clear-Logo) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),Clear-Art) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) +  String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListShowArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListShowArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListShowArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListShowArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbannersmall_diffuse.png">defaultpictures/Extended_DefaultMovieBanner.png</texture>
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListShowArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultMovies.png</texture>
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListShowArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackShow),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+</include>
+
+<include name="viewextendedlist_show_artworkRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListShowListstyle)) + Container.Content(tvshows)</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Landscape)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Logo) | String.IsEmpty(Skin.String(ExtendedListShowArtwork1))</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Art)</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListShowListstyle),SmallList) + Container.Content(tvshows)</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Landscape)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Logo) | String.IsEmpty(Skin.String(ExtendedListShowArtwork1))</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),Clear-Art)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">defaultpictures/DefaultMovieExtrathumb.png</texture>
+			<texture background="true">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListShowArtwork1),defaultpicture)</visible>
+		</control>
+	</control>
+	<include>viewextendedlist_show_fallbackRow</include>
+</include>
+	
+<!-- season @ textfallback staffel fehlt -->
+<include name="viewextendedlist_season_fallbackRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListSeasonListstyle)) + Container.Content(seasons)</visible>
+		<!-- Extra-Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Extra-Fanart) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.IsEqual(Skin.String(ExtendedListFallbackSeasons),Fanart) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[ListItem.Art(tvshow.landscape)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Clear-Logo) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Clear-Art) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultSeasonExtrathumb.png</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) | String.IsEmpty(Skin.String(ExtendedListFallbackSeasons))] + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Fanart) | String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1)) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="label">
+			<left>120</left>
+			<top>10</top>
+			<width>320</width>
+			<height>180</height>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+			<font>SemiBig</font>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) | String.IsEmpty(Skin.String(ExtendedListFallbackSeasons))] + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Fanart) | String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1)) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbanner_diffuse.png">defaultpictures/Extended_DefaultSeasonBanner.png</texture>
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Banner)</visible>
+		</control>
+		<control type="label">
+			<left>60</left>
+			<top>20</top>
+			<width>320</width>
+			<height>180</height>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>$VAR[global_seasonprefix]$INFO[ListItem.Season]</label>
+			<font>SemiBig</font>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultSeasonPoster.png</texture>
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Poster)</visible>
+		</control>
+		<control type="label">
+			<left>120</left>
+			<top>60</top>
+			<width>320</width>
+			<height>180</height>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>$VAR[global_seasonprefix]$INFO[ListItem.Season]</label>
+			<font>SemiLarge</font>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList) + Container.Content(seasons)</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Fanart) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[ListItem.Art(tvshow.landscape)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Clear-Logo) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),Clear-Art) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultSeasonExtrathumb.png</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) | String.IsEmpty(Skin.String(ExtendedListFallbackSeasons))] + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Fanart) | String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1)) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="label">
+			<left>160</left>
+			<top>10</top>
+			<width>320</width>
+			<height>130</height>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+			<font>SemiBig</font>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) | String.IsEmpty(Skin.String(ExtendedListFallbackSeasons))] + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListSeasonsArtwork1),Fanart) | String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1)) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Extra-Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbannersmall_diffuse.png">defaultpictures/Extended_DefaultSeasonBanner.png</texture>
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Banner)</visible>
+		</control>
+		<control type="label">
+			<left>120</left>
+			<top>0</top>
+			<width>320</width>
+			<height>150</height>
+			<textcolor>TextColor2</textcolor>
+			<align>center</align>
+			<label>$VAR[global_seasonprefix]$INFO[ListItem.Season]</label>
+			<font>SemiLarge</font>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultSeasonPoster.png</texture>
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackSeasons),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+</include>
+
+<include name="viewextendedlist_season_artworkRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListSeasonListstyle)) + Container.Content(seasons)</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Landscape) | String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1))</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Logo)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Art)</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListSeasonListstyle),SmallList) + Container.Content(seasons)</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Landscape) | String.IsEmpty(Skin.String(ExtendedListSeasonsArtwork1))</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Logo)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),Clear-Art)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">defaultpictures/DefaultSeasonExtrathumb.png</texture>
+			<texture background="true">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListSeasonsArtwork1),defaultpicture)</visible>
+		</control>
+	</control>
+	<include>viewextendedlist_season_fallbackRow</include>
+</include>
+	
+<!-- episodes -->
+<include name="viewextendedlist_episodes_fallbackRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList) + Container.Content(episodes)</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackEpisodes),Fanart) | String.IsEmpty(Skin.String(ExtendedListFallbackEpisodes))] + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[ListItem.Art(tvshow.landscape)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),Clear-Logo) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),Clear-Art) + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultSeasonExtrathumb.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbanner_diffuse.png">defaultpictures/Extended_DefaultSeasonBanner.png</texture>
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultSeasonPoster.png</texture>
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle)) + Container.Content(episodes)</visible>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>[String.Contains(Skin.String(ExtendedListFallbackEpisodes),Fanart) | String.IsEmpty(Skin.String(ExtendedListFallbackEpisodes))] + String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[ListItem.Art(tvshow.landscape)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),Landscape) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),Clear-Logo) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),Clear-Art) +  String.IsEqual(Control.Getlabel(6313),xx)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">defaultpictures/DefaultSeasonExtrathumb.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) +  String.IsEqual(Control.Getlabel(6313),xx) + [String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Extra-Fanart) | String.IsEqual(Skin.String(ExtendedListEpisodesArtwork1),Fanart) | String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Landscape) | String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Thumb)]</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/extendedbannersmall_diffuse.png">defaultpictures/Extended_DefaultSeasonBanner.png</texture>
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Banner)</visible>
+		</control>
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">defaultpictures/DefaultSeasonPoster.png</texture>
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Poster)</visible>
+		</control>
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">logo_flex_sw.png</texture>
+			<visible>String.Contains(Skin.String(ExtendedListFallbackEpisodes),defaultpicture) + String.IsEqual(Control.Getlabel(6313),xx) + [String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Art) | String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Logo)]</visible>
+		</control>
+	</control>
+</include>
+
+<include name="viewextendedlist_episodes_artworkRow">
+	<control type="group"><!-- biglist -->
+		<visible>String.IsEqual(Skin.String(ExtendedListEpisodeListstyle),BigList) + Container.Content(episodes)</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_biglist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">$INFO[ListItem.Art(tvshow.poster)]</texture>
+			<include>viewextendedlist_biglist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Fanart)</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- thumb -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[ListItem.Art(thumb)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Thumb) | String.IsEmpty(Skin.String(ExtendedListEpisodesArtwork1))</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_biglist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Landscape)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Logo)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_biglist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Art)</visible>
+		</control>
+	</control>
+	<control type="group"><!-- smalllist -->
+		<visible>String.IsEmpty(Skin.String(ExtendedListEpisodeListstyle)) + Container.Content(episodes)</visible>
+		<!-- Banner -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_bannerrartworks</include>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Banner)</visible>
+		</control>
+		<!-- poster -->
+		<control type="image">
+			<texture background="true" diffuse="artworks/Infopanel_poster_diffuse.png">$INFO[ListItem.Art(tvshow.poster)]</texture>
+			<include>viewextendedlist_smalllist_posterartworks</include>
+			<include>viewglobal_topelements_poster</include>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Poster)</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Fanart)</visible>
+		</control>
+		<!-- thumb -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[ListItem.Art(thumb)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Thumb) | String.IsEmpty(Skin.String(ExtendedListEpisodesArtwork1))</visible>
+		</control>
+		<!-- extra Fanart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Extra-Fanart)</visible>
+		</control>
+		<!-- Landscape -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true" diffuse="artworks/Infopanel_square_diffuse.png">$VAR[art_value_landscape]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Landscape)</visible>
+		</control>
+		<!-- Clearlogo -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_logo]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Logo)</visible>
+		</control>
+		<!-- Clearart -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_clearrartworks</include>
+			<texture background="true">$VAR[art_value_clearart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),Clear-Art)</visible>
+		</control>
+		<!-- defaultpicture -->
+		<control type="image">
+			<include>viewextendedlist_smalllist_squareartworks</include>
+			<texture background="true">defaultpictures/DefaultSeasonExtrathumb.png</texture>
+			<texture background="true">$VAR[value_defaultfanart]</texture>
+			<visible>String.Contains(Skin.String(ExtendedListEpisodesArtwork1),defaultpicture)</visible>
+		</control>
+	</control>
+	<include>viewextendedlist_episodes_fallbackRow</include>
+</include>
+
+
+</includes>

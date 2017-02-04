@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<zorder>0</zorder>
+<controls>
+	<control type="textbox" id="5001">
+	<visible>false</visible>
+	</control>
+	<control type="label" id="5000">
+	<visible>false</visible>
+	</control>
+	<control type="label" id="5002">
+	<visible>false</visible>
+	</control>
+	<control type="image" id="5003">
+	<visible>false</visible>
+	</control>
+	<control type="textbox" id="5004">
+	<visible>false</visible>
+	</control>
+	</controls>
+</window>

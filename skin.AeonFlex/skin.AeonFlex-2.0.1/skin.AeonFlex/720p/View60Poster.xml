@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- Aeon -->
+	<!--####  POSTER - ID 60   #############################################################################-->
+	<include name="PosterFixedList">
+		<control type="fixedlist" id="60">
+			<onleft>60</onleft>
+			<onright>60</onright>
+			<onup>SetFocus(9000)</onup><!-- menue -->
+			<ondown>80</ondown>
+			<include condition="Window.IsActive(videos)">Poster_VideoContent</include>
+		</control>
+	</include>
+	<include name="PosterWrapList">
+		<control type="wraplist" id="60">
+			<onleft>60</onleft>
+			<onright>60</onright>
+			<onup>SetFocus(9000)</onup><!-- menue -->
+			<ondown>80</ondown>
+			<include condition="Window.IsActive(videos)">Poster_VideoContent</include>
+		</control>
+	</include>
+	<variable name="art_value_poster_fallbackimage">
+		<value condition="ListItem.IsParentFolder">folderback/FolderBackPoster.png</value>
+		<value condition="Container.Content(genres)">resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg</value>
+		<value condition="Container.Content(seasons)">defaultpictures/DefaultSeasonPoster.png</value>
+		<value>defaultpictures/DefaultMovies.png</value>
+	</variable>
+
+	<include name="Poster_VideoContent">
+		<viewtype label="$LOCALIZE[31223]">list</viewtype>
+		<left>-88</left>
+		<top>125</top>
+		<width>1370</width>
+		<height>560</height>
+		<orientation>horizontal</orientation>
+		<focusposition>2</focusposition>
+		<scrolltime>400</scrolltime>
+		<preloaditems>2</preloaditems>
+		<pagecontrol>80</pagecontrol>
+		<include>OnInfoContent</include>
+		<animation effect="slide" reversible="true" end="0,130" time="200" condition="String.IsEqual(Skin.String(Posterlistpanel),aus) + ![Window.IsVisible(Custom_1113_Settings_Dialogs.xml)]">Conditional</animation>
+		<animation effect="slide" reversible="true" end="0,-50" time="200" condition="Control.HasFocus(80)">Conditional</animation>
+		<visible>!String.Contains(Container.FolderPath,plugin) + [[Container.Content(movies) + String.Contains(Skin.String(PLS_FilmViewtype),Poster) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(movies) + String.Contains(Skin.String(FilmViewtype),Poster) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(TVViewtype),Poster) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(PLS_TVViewtype),Poster) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(sets) + String.Contains(Skin.String(SetViewtype),Poster)] | [Container.Content(genres) + String.Contains(Skin.String(GenreViewtype),Poster)] | [Container.Content(seasons) + String.Contains(Skin.String(StaffelViewtype),Poster)]] | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+		<itemlayout width="212" height="560">
+			<control type="group">
+				<top>58</top>
+				<control type="image">
+					<description>Default Poster</description>
+					<width>198</width>
+					<height>289</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">$VAR[art_value_poster_fallbackimage]</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="label">
+					<left>52</left>
+					<top>107</top>
+					<width>88</width>
+					<height>58</height>
+					<textcolor>TextColor2</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+					<font>SemiLarge</font>
+					<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+				</control>
+				<control type="image">
+					<description>Poster</description>
+					<width>198</width>
+					<height>289</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">$VAR[art_value_poster]</texture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="image">
+					<description>lastwatched</description>
+					<left>8</left>
+					<top>8</top>
+					<width>30</width>
+					<height>30</height>
+					<texture>$VAR[viewglobal_video_lastwatchedflags]</texture>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<visible>!ListItem.IsParentFolder + !Skin.HasSetting(DisableLastwatchedHistory) + !Container.Content(genres)</visible>
+				</control>
+				<control type="image">
+					<description>dimmer</description>
+					<width>198</width>
+					<height>289</height>
+					<bordersize>8</bordersize>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+				</control>
+				<include content="watched_overlayBG"><!-- watched_overlay -->
+					<param name="left">155</param>
+					<param name="top">5</param>
+					<param name="width">38</param>
+					<param name="height">38</param>
+				</include>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw.</description>
+					<left>155</left>
+					<top>5</top>
+					<width>38</width>
+					<height>38</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlay38</font>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorFocus</selectedcolor>
+					<label>$VAR[WatchedOverlayFlag]</label>
+				</control>
+			</control>
+		</itemlayout>
+		<focusedlayout width="212" height="560">
+			<control type="group">
+				<top>58</top>
+				<animation type="WindowOpen">
+					<effect type="slide" start="-100,0" end="0,0" time="500" delay="1500" tween="cubic" easing="out"/>
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+				</animation>
+				<animation type="Visible">
+					<effect type="slide" start="0,0" end="70,0" time="500" delay="1500" tween="cubic" easing="out"/>
+					<effect type="fade" start="0" end="100" time="500" delay="1500"/>
+				</animation>
+				<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
+				<animation effect="slide" time="200" start="0,0" end="0,-20" tween="cubic" easing="out" condition="!Skin.HasSetting(noposterlistdiscart)">Conditional</animation>
+				<visible>System.IdleTime(1) + !Container.Content(seasons) + !Container.Content(genres) + !Skin.HasSetting(noposterlistdiscart) + !Container(60).OnNext + !Container(60).OnPrevious</visible>
+				<control type="image"><!-- Discart -->
+					<left>20</left>
+					<top>62</top>
+					<width>210</width>
+					<height>210</height>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<texture>$VAR[art_value_discart]</texture>
+					<visible>!String.IsEmpty(ListItem.Art(discart))</visible>
+				</control>
+			</control>
+			<control type="group">
+				<top>58</top>
+				<animation type="focus" reversible="false">
+					<effect type="zoom" start="100" end="116" center="auto" easing="out" tween="cubic" time="250"/>
+					<effect type="slide" end="0,15" center="auto" easing="out" tween="cubic" time="250"/>
+				</animation>
+				<animation type="unfocus" reversible="false">
+					<effect type="zoom" start="116" end="100" center="auto" easing="out" tween="cubic" time="250"/>
+					<effect type="slide" start="0,15" end="0,0" center="auto" easing="out" tween="cubic" time="250"/>
+				</animation>
+				<control type="image">
+					<description>Default Poster</description>
+					<width>198</width>
+					<height>289</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">$VAR[art_value_poster_fallbackimage]</texture>
+					<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="label">
+					<left>52</left>
+					<top>107</top>
+					<width>88</width>
+					<height>58</height>
+					<textcolor>TextColor2</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$VAR[global_seasonprefixshort]$INFO[ListItem.Season]</label>
+					<font>SemiLarge</font>
+					<visible>!ListItem.IsParentFolder + Container.Content(seasons)</visible>
+				</control>
+				<control type="image">
+					<description>Poster</description>
+					<width>198</width>
+					<height>289</height>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true">$VAR[art_value_poster]</texture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="image">
+					<description>dimmer</description>
+					<width>198</width>
+					<height>289</height>
+					<bordersize>8</bordersize>
+					<aspectratio>stretch</aspectratio>
+					<texture background="true" colordiffuse="ACInaktivItems">White.png</texture>
+					<include>animation_dimmer</include>
+				</control>
+				<include content="watched_overlayBG"><!-- watched_overlay -->
+					<param name="left">155</param>
+					<param name="top">5</param>
+					<param name="width">38</param>
+					<param name="height">38</param>
+				</include>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw.</description>
+					<left>155</left>
+					<top>5</top>
+					<width>38</width>
+					<height>38</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlay38</font>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorFocus</selectedcolor>
+					<label>$VAR[WatchedOverlayFlag]</label>
+				</control>
+			</control>
+		</focusedlayout>
+	</include>
+
+	<include name="View60Poster_video">
+		<control type="group"><!-- default group -->
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<visible>Control.IsVisible(60)</visible>
+			<control type="group">
+				<left>-100</left>
+				<top>500</top>
+				<visible>String.IsEmpty(Skin.String(Posterlistpanel)) | Window.IsVisible(Custom_1113_Settings_Dialogs.xml)</visible>
+				<animation effect="slide" reversible="true" end="0,300" delay="120" time="280" condition="ListItem.IsParentFolder">Conditional</animation>
+				<!-- floor bottom-->
+				<control type="image">
+					<left>0</left>
+					<top>-180</top>
+					<width>1685</width>
+					<height>180</height>
+					<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACFloorColor</colordiffuse>
+				</control>
+				<!-- Background left -->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>400</width>
+					<height>150</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+				</control>
+				<!-- Background right nicht content -->
+				<control type="image">
+					<left>1100</left>
+					<top>0</top>
+					<width>280</width>
+					<height>150</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+					<visible>!String.IsEqual(Skin.String(PosterlistRow3),Content) | String.Contains(Container.FolderPath,xsp)</visible>
+				</control>
+				<!-- Background middle nicht content -->
+				<control type="image">
+					<left>400</left>
+					<top>0</top>
+					<width>700</width>
+					<height>150</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+					<visible>!String.IsEqual(Skin.String(PosterlistRow3),Content) | String.Contains(Container.FolderPath,xsp)</visible>
+				</control>
+				<!-- Background right -->
+				<control type="image">
+					<left>1000</left>
+					<top>0</top>
+					<width>385</width>
+					<height>150</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor_light</colordiffuse>
+					<visible>String.IsEqual(Skin.String(PosterlistRow3),Content) + !String.Contains(Container.FolderPath,xsp)</visible>
+				</control>
+				<!-- List Label Background -->
+				<control type="image">
+					<left>400</left>
+					<width>600</width>
+					<height>150</height>
+					<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+					<visible>String.IsEqual(Skin.String(PosterlistRow3),Content) + !String.Contains(Container.FolderPath,xsp)</visible>
+				</control>
+				<!-- List Label2 Background - Rating -->
+				<control type="image">
+					<left>890</left>
+					<width>70</width>
+					<height>150</height>
+					<texture>White.png</texture>
+					<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+					<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)]</visible>
+					<visible>String.IsEqual(Skin.String(PosterlistRow3),Content) + !String.Contains(Container.FolderPath,xsp)</visible>
+				</control>
+				<!-- Shadow -->
+				<control type="image">
+					<left>0</left>
+					<top>-8</top>
+					<width>1380</width>
+					<include>global_topshadow8</include>
+				</control>
+				<control type="group">
+					<left>100</left>
+					<include>viewposter_video_bottomelements</include>
+					<include>animation_vhoc_fade</include>
+				</control>
+				<!-- shadow left -->
+				<control type="image">
+					<left>392</left>
+					<height>150</height>
+					<include>global_texture_border8_leftv</include>
+					<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+				</control>
+				<!-- Shadow right List content -->
+				<control type="image">
+					<left>1000</left>
+					<height>150</height>
+					<include>global_texture_border8_rightv</include>
+				</control>
+			</control>
+			<include condition="Skin.HasSetting(posterfixedlist)">PosterFixedList</include>
+			<include condition="!Skin.HasSetting(posterfixedlist)">PosterWrapList</include>
+			<control type="scrollbar" id="80">
+				<include>scrollbar_horizontal</include>
+				<left>190</left>
+				<top>455</top>
+				<width>900</width>
+				<onup>60</onup>
+				<ondown condition="!Container.Content(genres) + !String.IsEqual(Skin.String(PosterlistRow3),Content)">9000</ondown>
+				<ondown condition="Container.Content(tvshows) + String.IsEqual(Skin.String(PosterlistRow3),Content)">5369</ondown>
+				<ondown condition="Container.Content(movies) | ListItem.IsCollection + String.IsEqual(Skin.String(PosterlistRow3),Content)">5369</ondown>
+				<ondown condition="Container.Content(genres)">5371</ondown>
+				<visible allowhiddenfocus="true">Control.IsVisible(60) + Control.HasFocus(80)</visible>
+				<animation effect="slide" reversible="true" end="0,140" time="200" condition="String.IsEqual(Skin.String(Posterlistpanel),aus) + ![Window.IsVisible(Custom_1113_Settings_Dialogs.xml)]">Conditional</animation>
+			</control>
+		</control>
+	</include>
+
+</includes>

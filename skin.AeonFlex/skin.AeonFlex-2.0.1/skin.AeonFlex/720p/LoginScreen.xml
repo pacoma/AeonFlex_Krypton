@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">52</defaultcontrol>
+<coordinates>
+<system>1</system>
+<left>0</left>
+<top>0</top>
+</coordinates>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+<control type="label">
+	<left>560</left>
+	<top>537</top>
+	<width>760</width>
+	<height>20</height>
+	<aligny>center</aligny>
+	<font>SemiNormal</font>
+	<label>Aeon flex $VAR[flex_value_skinversion]</label>
+</control>
+<control type="wraplist" id="52">
+	<viewtype label="login">bigwrap</viewtype>
+	<left>560</left>
+	<top>587</top>
+	<width>760</width>
+	<height>80</height>
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>52</onup>
+	<ondown>52</ondown>
+	<scrolltime tween="quadratic" easing="out">400</scrolltime>
+	<focusposition>0</focusposition>
+	<pagecontrol>-</pagecontrol>
+	<orientation>vertical</orientation>
+	<preloaditems>2</preloaditems>
+	<itemlayout width="760" height="80"/>
+	<focusedlayout width="760" height="80">
+		<control type="group">
+			<control type="image">
+				<width>80</width>
+				<height>80</height>
+				<aspectratio scalediffuse="true" align="left">keep</aspectratio>
+				<texture fallback="DefaultUser.png" background="true">$INFO[ListItem.Icon]</texture>
+				<bordertexture border="6" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>6</bordersize>
+			</control>
+			<control type="label">
+				<left>100</left>
+				<top>20</top>
+				<width>760</width>
+				<height>20</height>
+				<aligny>center</aligny>
+				<font>SemiNormal</font>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<left>100</left>
+				<top>22</top>
+				<width>760</width>
+				<height>70</height>
+				<aligny>center</aligny>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</control>
+	</focusedlayout>
+</control>
+</controls>
+</window>

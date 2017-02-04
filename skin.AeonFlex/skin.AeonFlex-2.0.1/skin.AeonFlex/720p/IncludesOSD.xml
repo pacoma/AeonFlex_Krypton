@@ -1,0 +1,2697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- ####OSD settings #### -->
+<include name="videoosd-settinglevel1">
+	<control type="button" id="90591">
+		<label>$LOCALIZE[31330]</label>
+		<include>dialog_buttonneu</include>
+		<onclick>SetFocus(9015)</onclick>
+	</control>
+	<control type="radiobutton" id="90592">
+		<label>$LOCALIZE[31345]</label>
+		<include>dialog_buttonneu</include>
+		<onclick>Skin.Togglesetting(StillwatchingOSDoverlay)</onclick>
+		<selected>Skin.HasSetting(StillwatchingOSDoverlay)</selected>
+		<visible>!VideoPlayer.Content(LiveTV)</visible>
+	</control>
+	<control type="button" id="90594">
+		<label>$LOCALIZE[31351]</label>
+		<label2>$INFO[skin.string(FSLogo)]</label2>
+		<include>dialog_buttonneu</include>
+		<onclick>skin.reset(FSLogo)</onclick>
+		<onclick>skin.setstring(FSLogo,$LOCALIZE[31024])</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024])">skin.setstring(FSLogo,1)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),1)">skin.setstring(FSLogo,2)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),2)">skin.setstring(FSLogo,3)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),3)">skin.setstring(FSLogo,4)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),4)">skin.setstring(FSLogo,5)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),5)">skin.setstring(FSLogo,6)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),6)">skin.setstring(FSLogo,7)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),7)">skin.setstring(FSLogo,8)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),8)">skin.setstring(FSLogo,9)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),9)">skin.setstring(FSLogo,10)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),10)">skin.setstring(FSLogo,11)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),11)">skin.setstring(FSLogo,12)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),12)">skin.setstring(FSLogo,13)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),13)">skin.setstring(FSLogo,14)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),14)">skin.setstring(FSLogo,15)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),15)">skin.setstring(FSLogo,16)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),16)">skin.setstring(FSLogo,17)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),17)">skin.setstring(FSLogo,18)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),18)">skin.setstring(FSLogo,19)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),19)">skin.setstring(FSLogo,20)</onclick>
+		<onclick condition="String.IsEqual(skin.string(FSLogo),20)">skin.setstring(FSLogo,$LOCALIZE[31024])</onclick>
+		<visible>!String.IsEqual(Control.GetLabel(90161),leer.png)</visible>
+		<visible>!VideoPlayer.Content(LiveTV)</visible>
+	</control>
+	<control type="radiobutton" id="90595">
+		<label>$LOCALIZE[31352]</label>
+		<include>dialog_buttonneu</include>
+		<onclick>Skin.Togglesetting(noFSLogoOnInfo)</onclick>
+		<selected>Skin.HasSetting(noFSLogoOnInfo)</selected>
+		<visible>!VideoPlayer.Content(LiveTV) + ![String.IsEqual(skin.string(FSLogo),$LOCALIZE[31024]) | String.IsEmpty(skin.string(FSLogo))]</visible>
+	</control>
+</include>
+<include name="videoosd-settinglevel2">
+	<control type="button" id="90561">
+		<label>$LOCALIZE[31330]</label>
+		<label2>$INFO[Skin.String(DefaultFullscreeninfolayout)]</label2>
+		<include>dialog_buttonneu</include>
+		<onclick condition="!String.IsEmpty(Skin.String(DefaultFullscreeninfolayout))">Skin.reset(DefaultFullscreeninfolayout)</onclick>
+		<onclick condition="String.IsEmpty(Skin.String(DefaultFullscreeninfolayout))">Skin.SetString(DefaultFullscreeninfolayout,unten)</onclick>
+	</control>
+	<control type="button" id="90562">
+		<label>$LOCALIZE[31329]</label>
+		<label2>$INFO[Skin.String(DefaultFullscreeninfotextlayout)]</label2>
+		<include>dialog_buttonneu</include>
+		<onclick>Skin.reset(DefaultFullscreeninfotextlayout)</onclick>
+		<onclick>Skin.SetString(DefaultFullscreeninfotextlayout,Plot/Actor)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot/Actor)">Skin.SetString(DefaultFullscreeninfotextlayout,Plot)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot)">Skin.SetString(DefaultFullscreeninfotextlayout,Poster2)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Poster2)">Skin.SetString(DefaultFullscreeninfotextlayout,Plot/Actor)</onclick>
+		<visible>!String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten)</visible>
+	</control>
+	<control type="button" id="90563">
+		<label>$LOCALIZE[31344]</label>
+		<label2>$INFO[Skin.String(DefaultFullscreeninfoposition)]</label2>
+		<include>dialog_buttonneu</include>
+		<onclick>Skin.SetString(DefaultFullscreeninfoposition,1)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),1)">Skin.SetString(DefaultFullscreeninfoposition,2)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),2)">Skin.SetString(DefaultFullscreeninfoposition,3)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),3)">Skin.SetString(DefaultFullscreeninfoposition,4)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),4)">Skin.SetString(DefaultFullscreeninfoposition,5)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),5)">Skin.SetString(DefaultFullscreeninfoposition,6)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),6)">Skin.SetString(DefaultFullscreeninfoposition,7)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),7)">Skin.SetString(DefaultFullscreeninfoposition,8)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),8)">Skin.SetString(DefaultFullscreeninfoposition,1)</onclick>
+		<visible>String.IsEmpty(Skin.String(DefaultFullscreeninfolayout))</visible>
+	</control>
+	<control type="radiobutton" id="90564">
+		<label>$LOCALIZE[31348]</label>
+		<include>dialog_buttonneu</include>
+		<onclick>Skin.Togglesetting(DefaultFullscreeninfopanelCDart)</onclick>
+		<selected>!Skin.HasSetting(DefaultFullscreeninfopanelCDart)</selected>
+		<visible>String.IsEmpty(Skin.String(DefaultFullscreeninfolayout)) + videoplayer.content(movies)</visible>
+	</control>
+	<control type="radiobutton" id="90565">
+		<label>$LOCALIZE[31349]</label>
+		<include>dialog_buttonneu</include>
+		<onclick>Skin.Togglesetting(DefaultFullscreeninfoStandardCDart)</onclick>
+		<selected>!Skin.HasSetting(DefaultFullscreeninfoStandardCDart)</selected>
+		<visible>String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten) + videoplayer.content(movies)</visible>
+	</control>
+	<control type="button" id="90567">
+		<label>$LOCALIZE[31350]</label>
+		<label2 fallback="Off">$INFO[Skin.String(DefaultFullscreeninfobottomflagbar)]</label2>
+		<include>dialog_buttonneu</include>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default) | String.IsEmpty(Skin.String(DefaultFullscreeninfobottomflagbar))">Skin.SetString(DefaultFullscreeninfobottomflagbar,Minimal)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Minimal)">Skin.SetString(DefaultFullscreeninfobottomflagbar,Default)</onclick>
+		<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)">Skin.reset(DefaultFullscreeninfobottomflagbar)</onclick>
+		<visible>String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten)</visible>
+	</control>
+</include>
+<include name="dialogvideocosd_settings"><!-- Setting id9014/9015/9016 -->
+	<control type="image" id="90161"><!-- logo empty check -->
+		<width>10</width>
+		<height>10</height>
+		<texture fallback="leer.png">$VAR[playerart_value_logo]</texture>
+		<include>Hiddencontrol</include>
+	</control>
+	<control type="group"><!-- OSD preview -->
+		<visible>String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + Control.HasFocus(90592)</visible>
+		<include>StillwatchingWidget</include>
+	</control>
+	<control type="group">
+		<visible>String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten) + [ControlGroup(9015).HasFocus | Control.HasFocus(90591)]</visible>
+		<include>DialogFulscreeninfo-bottom</include>
+	</control>
+	<control type="group">
+		<visible>String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEmpty(Skin.String(DefaultFullscreeninfolayout)) + [ControlGroup(9015).HasFocus | Control.HasFocus(90591)]</visible>
+		<include>DialogFulscreeninfo-top</include>
+	</control>
+	<control type="group">
+		<left>500</left>
+		<top>48</top>
+		<visible>String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD)</visible>
+		<control type="group"><!-- Ebene1 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9014).HasFocus + $EXP[ViewSettingDialogPopup]</visible>
+			<control type="image">
+				<description>schatten 1 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height1</height>
+				<visible>String.IsEqual(Container(9014).NumItems,1)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 1 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height1</height>
+				<visible>String.IsEqual(Container(9014).NumItems,1)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 2 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height2</height>
+				<visible>String.IsEqual(Container(9014).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 2 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height2</height>
+				<visible>String.IsEqual(Container(9014).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 3 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(9014).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 3 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(9014).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9014).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9014).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9014).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9014).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9014).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9014).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 7 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9014).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 7 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9014).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 8 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9014).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 8 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9014).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 9 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height9</height>
+				<visible>String.IsEqual(Container(9014).NumItems,9)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 9 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height9</height>
+				<visible>String.IsEqual(Container(9014).NumItems,9)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 10 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height10</height>
+				<visible>String.IsEqual(Container(9014).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 10 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height10</height>
+				<visible>String.IsEqual(Container(9014).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 10+ elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height10</height>
+				<visible>Integer.IsGreater(Container(9014).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 10+ elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height10</height>
+				<visible>Integer.IsGreater(Container(9014).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31333] $INFO[Container.Viewmode]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9014">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<include>viewglobal_settings_navigation</include>
+				<include>viewglobal_settings_back</include>
+				<include>videoosd-settinglevel1</include>
+			</control>
+		</control>
+		<control type="group"><!-- Ebene2 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9015).HasFocus + $EXP[ViewSettingDialogPopup]</visible>
+			<animation effect="slide" end="0,410" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),1)">Conditional</animation>
+			<animation effect="slide" end="0,420" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),2)">Conditional</animation>
+			<animation effect="slide" end="0,420" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),3)">Conditional</animation>
+			<animation effect="slide" end="0,420" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),4)">Conditional</animation>
+			<animation effect="slide" end="0,420" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),5)">Conditional</animation>
+			<animation effect="slide" end="0,0" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),6)">Conditional</animation>
+			<animation effect="slide" end="0,0" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),7)">Conditional</animation>
+			<animation effect="slide" end="0,0" time="200" condition="String.IsEqual(Window(1113).Property(SettingsCategory),VideoOSD) + String.IsEqual(Skin.String(DefaultFullscreeninfoposition),8)">Conditional</animation>
+			<control type="image">
+				<description>schatten 1 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height1</height>
+				<visible>String.IsEqual(Container(9015).NumItems,1)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 1 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height1</height>
+				<visible>String.IsEqual(Container(9015).NumItems,1)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 2 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height2</height>
+				<visible>String.IsEqual(Container(9015).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 2 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height2</height>
+				<visible>String.IsEqual(Container(9015).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 3 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(9015).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 3 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(9015).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9015).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9015).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9015).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9015).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9015).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9015).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 7 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9015).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 7 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9015).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 8 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9015).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 8 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9015).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 9 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height9</height>
+				<visible>String.IsEqual(Container(9015).NumItems,9)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 9 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height9</height>
+				<visible>String.IsEqual(Container(9015).NumItems,9)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 10 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height10</height>
+				<visible>String.IsEqual(Container(9015).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 10 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height10</height>
+				<visible>String.IsEqual(Container(9015).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 10+ elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height10</height>
+				<visible>Integer.IsGreater(Container(9015).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 10+ elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height10</height>
+				<visible>Integer.IsGreater(Container(9015).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31308]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9015">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>SetFocus(9014)</onleft>
+				<onright>SetFocus(9014)</onright>
+				<include>viewglobal_settings_back</include>
+				<include>videoosd-settinglevel2</include>
+			</control>
+		</control>
+	</control>
+</include>
+<include name="dialogmusicosd_settings"><!-- Setting fullscreeninfo id9063 -->
+	<control type="group">
+		<visible>String.IsEqual(Window(1113).Property(SettingsCategory),MusicOSD)</visible>
+		<control type="group"><!-- ebene1 -->
+			<left>500</left>
+			<top>48</top>
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9063).HasFocus + !Window.IsVisible(shutdownmenu)</visible>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+			</control>
+			<control type="image">
+				<description>hintergrund 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31160]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9063">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>Dialog.Close(all,true)</onleft><!-- back -->
+				<onright>Dialog.Close(all,true)</onright><!-- back -->
+				<onback>Dialog.Close(all,true)</onback><!-- back -->
+				<onup>9063</onup>
+				<ondown>9063</ondown>
+				<itemgap>0</itemgap>
+				<control type="radiobutton" id="90596">
+					<label>$LOCALIZE[31355]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>Skin.Togglesetting(nopermanentmusicinfo)</onclick>
+					<selected>Skin.HasSetting(nopermanentmusicinfo)</selected>
+				</control>
+				<control type="radiobutton" id="90597">
+					<label>Invers</label>
+					<include>dialog_buttonneu</include>
+					<onclick>Skin.Togglesetting(EnableMCEMusicViz)</onclick>
+					<selected>Skin.HasSetting(EnableMCEMusicViz)</selected>
+				</control>
+				<control type="radiobutton" id="90598">
+					<label>Invers2</label>
+					<include>dialog_buttonneu</include>
+					<onclick>Skin.Togglesetting(Colorswitch)</onclick>
+					<selected>Skin.HasSetting(Colorswitch)</selected>
+				</control>
+				<control type="radiobutton" id="90599">
+					<label>Ken Burns effect animation</label>
+					<include>dialog_buttonneu</include>
+					<onclick>Skin.Togglesetting(MusicvisBurnsEffeckt)</onclick>
+					<selected>Skin.HasSetting(MusicvisBurnsEffeckt)</selected>
+				</control>
+			</control>
+		</control>
+	</control>
+</include>
+
+<!-- #### video osd #### -->
+<variable name="value_button_playpause">
+	<value condition="[Player.Paused | Player.Forwarding | Player.Rewinding]">buttons/osd/osd_play.png</value>
+	<value condition="Player.HasMedia + ![Player.Paused | Player.Forwarding | Player.Rewinding]">buttons/osd/osd_pause.png</value>
+	<value condition="!Player.HasMedia">buttons/osd/osd_play.png</value>
+</variable>
+<variable name="value_button_random">
+	<value condition="Playlist.IsRandom">buttons/osd/osd_random_on.png</value>
+	<value condition="!Playlist.IsRandom">buttons/osd/osd_random.png</value>
+</variable>
+<variable name="value_button_repeat">
+	<value condition="![Playlist.IsRepeat | Playlist.IsRepeatOne]">buttons/osd/osd_repeat.png</value>
+	<value condition="Playlist.IsRepeatOne">buttons/osd/osd_repeat_one.png</value>
+	<value condition="Playlist.IsRepeat">buttons/osd/osd_repeat_all.png</value>
+</variable>
+<variable name="value_button_repeatlabel">
+	<value condition="![Playlist.IsRepeat | Playlist.IsRepeatOne]">$LOCALIZE[486]</value>
+	<value condition="Playlist.IsRepeatOne">$LOCALIZE[487]</value>
+	<value condition="Playlist.IsRepeat">$LOCALIZE[488]</value>
+</variable>
+<variable name="NPPlaylist">
+	<value condition="!Window.IsVisible(1199)">playlistvideo://</value>
+</variable>
+<include name="dialogvideoosdbuttonssub">
+	<item id="23"><!-- skipbwd -->
+		<label>$LOCALIZE[31628]</label>
+		<icon>buttons/osd/osd_skipbwd.png</icon>
+		<onclick>PlayerControl(Previous)</onclick>
+	</item>
+	<item id="19"><!-- rew -->
+		<label>$LOCALIZE[210]</label>
+		<icon>buttons/osd/osd_rew.png</icon>
+		<onclick>PlayerControl(Rewind)</onclick>
+	</item>
+	<item id="20"><!-- playpause -->
+		<label>$LOCALIZE[13358]</label>
+		<icon>$VAR[value_button_playpause]</icon>
+		<onclick>PlayerControl(Play)</onclick>
+	</item>
+	<item id="22"><!-- stop -->
+		<label>$LOCALIZE[36044]</label>
+		<icon>buttons/osd/osd_stop.png</icon>
+		<onclick>PlayerControl(Stop)</onclick>
+	</item>	
+	<item id="21"><!-- ff -->
+		<label>$LOCALIZE[209]</label>
+		<icon>buttons/osd/osd_ff.png</icon>
+		<onclick>PlayerControl(Forward)</onclick>
+	</item>
+	<item id="17"><!-- skipfwd -->
+		<label>$LOCALIZE[31629]</label>
+		<icon>buttons/osd/osd_skipfwd.png</icon>
+		<onclick>PlayerControl(Next)</onclick>
+	</item>
+	<item id="16"><!-- info -->
+		<label>OSD info</label>
+		<icon>buttons/osd/osd_info.png</icon>
+		<onclick>Dialog.close(videoosd)</onclick>
+		<onclick>ActivateWindow(fullscreeninfo)</onclick>
+		<visible>!Window.IsVisible(home)</visible>
+	</item>
+	<item id="16"><!-- fullscreen -->
+		<label>fullscreen</label>
+		<icon>buttons/osd/osd_fullscreen.png</icon>
+		<onclick>fullscreen</onclick>
+		<visible>Window.IsVisible(home)</visible>
+	</item>
+	<item id="11"><!-- repeat -->
+		<label>$VAR[value_button_repeatlabel]</label>
+		<icon>$VAR[value_button_repeat]</icon>
+		<onclick>PlayerControl(Repeat)</onclick>
+		<visible>!String.IsEqual(Playlist.Length(video),0)</visible>
+	</item>
+	<item id="12"><!-- random -->
+		<label>$LOCALIZE[191]</label>
+		<icon>$VAR[value_button_random]</icon>
+		<onclick>PlayerControl(Random)</onclick>
+		<visible>!String.IsEqual(Playlist.Length(video),1)</visible>
+	</item>
+	<item id="13"><!-- volumeup -->
+		<label>$LOCALIZE[31614]</label>
+		<icon>buttons/osd/osd_volup.png</icon>
+		<onclick>VolumeUp</onclick>
+	</item>
+	<item id="14"><!-- volumedown-->
+		<label>$LOCALIZE[31615]</label>
+		<icon>buttons/osd/osd_voldown.png</icon>
+		<onclick>VolumeDown</onclick>
+	</item>
+	<item id="15"><!-- mute -->
+		<label>$LOCALIZE[31616]</label>
+		<icon>buttons/osd/osd_mute.png</icon>
+		<onclick>Mute</onclick>
+	</item>
+</include>
+<include name="dialogpvroosdbuttonssub">
+	<item id="23"><!-- skipbwd -->
+		<label>$LOCALIZE[31631]</label>
+		<icon>buttons/osd/osd_channeldown.png</icon>
+		<onclick>PlayerControl(Previous)</onclick>
+	</item>
+	<item id="19"><!-- rew -->
+		<label>$LOCALIZE[210]</label>
+		<icon>buttons/osd/osd_rew.png</icon>
+		<onclick>PlayerControl(Rewind)</onclick>
+	</item>
+	<item id="20"><!-- playpause -->
+		<label>$LOCALIZE[13358]</label>
+		<icon>$VAR[value_button_playpause]</icon>
+		<onclick>PlayerControl(Play)</onclick>
+	</item>
+	<item id="22"><!-- stop -->
+		<label>$LOCALIZE[36044]</label>
+		<icon>buttons/osd/osd_stop.png</icon>
+		<onclick>PlayerControl(Stop)</onclick>
+	</item>
+	<item id="21"><!-- ff -->
+		<label>$LOCALIZE[209]</label>
+		<icon>buttons/osd/osd_ff.png</icon>
+		<onclick>PlayerControl(Forward)</onclick>
+	</item>
+	<item id="17"><!-- skipfwd -->
+		<label>$LOCALIZE[31630]</label>
+		<icon>buttons/osd/osd_channelup.png</icon>
+		<onclick>PlayerControl(Next)</onclick>
+	</item>
+	<item id="15"><!-- mute -->
+		<label>$LOCALIZE[31616]</label>
+		<icon>buttons/osd/osd_mute.png</icon>
+		<onclick>Mute</onclick>
+	</item>
+	<item id="13"><!-- volumeup -->
+		<label>$LOCALIZE[31614]</label>
+		<icon>buttons/osd/osd_volup.png</icon>
+		<onclick>VolumeUp</onclick>
+	</item>
+	<item id="14"><!-- volumedown-->
+		<label>$LOCALIZE[31615]</label>
+		<icon>buttons/osd/osd_voldown.png</icon>
+		<onclick>VolumeDown</onclick>
+	</item>
+</include>
+<include name="dialogvideoosdbuttonsmain">
+	<item id="1"><!-- Focus -4 3D -->
+		<label>$LOCALIZE[36500]</label>
+		<icon>buttons/osd/osd_3d.png</icon>
+		<onclick>StereoMode</onclick>
+		<!-- 
+		<visible>!String.IsEmpty(VideoPlayer.StereoscopicMode)</visible>-->
+	</item>
+
+	<item id="2"><!-- Focus -3 untertitel delay -->
+		<label>$LOCALIZE[22006]</label>
+		<icon>buttons/osd/osd_sub.png</icon>
+		<onclick>SubtitleDelay</onclick>
+		<visible>VideoPlayer.HasSubtitles + VideoPlayer.SubtitlesEnabled</visible>
+	</item>
+	<item id="3"><!-- Focus -2 untertitel -->
+		<label>$LOCALIZE[287]</label>
+		<icon>buttons/osd/osd_sub.png</icon>
+		<onclick>Dialog.Close(VideoOSD)</onclick>
+		<onclick>ActivateWindow(SubtitleSearch)</onclick>
+		<visible>!VideoPlayer.HasSubtitles | !VideoPlayer.SubtitlesEnabled</visible>
+	</item>
+	<item id="3"><!-- Focus -2 untertitel -->
+		<label>$LOCALIZE[287]</label>
+		<icon>buttons/osd/osd_sub.png</icon>
+		<onclick>CycleSubtitle</onclick>
+		<visible>VideoPlayer.HasSubtitles + VideoPlayer.SubtitlesEnabled</visible>
+	</item>
+	<item id="4"><!-- Focus -1 audio OSD -->
+		<label>$LOCALIZE[31612]</label>
+		<icon>buttons/osd/osd_audio.png</icon>
+		<onclick>ActivateWindow(124)</onclick>
+	</item>
+	<item id="5"><!-- Focus 0 einstellen -->
+		<label>$LOCALIZE[10004]</label>
+		<icon>buttons/osd/osd_gensettings.png</icon>
+		<onclick>SetProperty(SettingsCategory,VideoOSD,1113)</onclick>
+		<onclick>ActivateWindow(1113)</onclick>
+	</item>
+	<item id="6"><!-- Focus 1 video osd -->
+		<label>$LOCALIZE[31613]</label>
+		<icon>buttons/osd/osd_video.png</icon>
+		<onclick>ActivateWindow(123)</onclick>
+	</item>
+	<item id="7"><!-- Focus 2 lesezeichen -->
+		<label>$LOCALIZE[298]</label>
+		<icon>buttons/osd/osd_book.png</icon>
+		<onclick>ActivateWindow(125)</onclick>
+	</item>
+	<item id="8"><!-- Focus 3 wiedergabeliste -->
+		<label>$LOCALIZE[559]</label>
+		<icon>buttons/osd/osd_playlist.png</icon>
+		<onclick>Dialog.close(videoosd)</onclick>
+		<onclick>ActivateWindow(videoplaylist)</onclick>
+		<visible>Integer.IsGreater(Playlist.Length(video),1)</visible>
+	</item>
+	<item id="9"><!-- Focus 4 dvd menue -->
+		<label>$LOCALIZE[31609]</label>
+		<icon>buttons/osd/osd_disc.png</icon>
+		<onclick>PlayerControl(ShowVideoMenu)</onclick>
+		<visible>VideoPlayer.HasMenu</visible>
+	</item>
+</include>
+<include name="dialogpvroosdbuttonsmain">
+	<item id="2"><!-- Focus -3 Medieninformation -->
+		<label>$LOCALIZE[544]</label>
+		<icon>buttons/osd/osd_info.png</icon>
+		<onclick>Dialog.close(videoosd)</onclick>
+		<onclick>ActivateWindow(fullscreeninfo)</onclick>
+	</item>
+	<item id="3"><!-- Focus -2 epg -->
+		<label>$LOCALIZE[22020]</label>
+		<icon>buttons/osd/osd_epg.png</icon>
+		<onclick>Dialog.Close(VideoOSD)</onclick>
+		<onclick>ActivateWindow(PVROSDGuide)</onclick>
+	</item>
+	<item id="4"><!-- Focus -1 audio OSD -->
+		<label>$LOCALIZE[31612]</label>
+		<icon>buttons/osd/osd_audio.png</icon>
+		<onclick>ActivateWindow(124)</onclick>
+	</item>
+	<item id="5"><!-- Focus 0 einstellen -->
+		<label>$LOCALIZE[10004]</label>
+		<icon>buttons/osd/osd_gensettings.png</icon>
+		<onclick>SetProperty(SettingsCategory,VideoOSD,1113)</onclick>
+		<onclick>ActivateWindow(1113)</onclick>
+	</item>
+	<item id="6"><!-- Focus 1 video osd -->
+		<label>$LOCALIZE[31613]</label>
+		<icon>buttons/osd/osd_video.png</icon>
+		<onclick>ActivateWindow(123)</onclick>
+	</item>
+	<item id="7"><!-- Focus 2 kanalliste -->
+		<label>$LOCALIZE[31611]</label>
+		<icon>buttons/osd/osd_channels.png</icon>
+		<onclick>Dialog.Close(VideoOSD)</onclick>
+		<onclick>ActivateWindow(PVROSDChannels)</onclick>
+	</item>
+	<item id="8"><!-- Focus 3 Aufnehmen -->
+		<label>$LOCALIZE[36428]</label>
+		<icon>buttons/osd/osd_rec.png</icon>
+		<onclick>PlayerControl(Record)</onclick>
+		<visible>Player.CanRecord</visible>
+	</item>
+	<item id="9"><!-- Focus 4 Umschalttimer -->
+		<label>$LOCALIZE[31610]</label>
+		<icon>buttons/osd/osd_timer.png</icon>
+		<onclick>Dialog.Close(VideoOSD)</onclick>
+		<onclick>ActivateWindow(1123)</onclick>
+		<visible>System.HasAddon(service.kn.switchtimer) +  !String.IsEqual(Skin.String(SwitchTimerActiveItems),0)</visible>
+	</item>
+</include>
+
+<!-- #### OSD info flags ####-->
+<variable name="value_playermediacategory">
+	<value condition="VideoPlayer.Content(episodes)">osd/category-show.png</value>
+	<value condition="VideoPlayer.Content(movies)">osd/category-film.png</value>
+	<value condition="VideoPlayer.Content(LiveTV) + Pvr.IsTimeShift">osd/category-timeshift.png</value>
+	<value condition="VideoPlayer.Content(LiveTV) + !Pvr.IsTimeShift">osd/category-pvr.png</value>
+	<value condition="VideoPlayer.Content(files)">osd/category-files.png</value>
+	<value condition="Player.IsInternetStream">osd/category-stream.png</value>
+	<value condition="Player.HasAudio">osd/category-music.png</value>
+</variable>
+<variable name="value_playerActStreamEncryption">
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,01) | String.Contains(PVR.ActStreamEncryptionName,9F)">flags/encryption/S.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,5)">flags/encryption/V.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,06)">flags/encryption/I.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,09)">flags/encryption/ND.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,0B)">flags/encryption/CO.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,0D)">flags/encryption/CW.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,17)">flags/encryption/B.png</value>
+	<value condition="String.Contains(PVR.ActStreamEncryptionName,18)">flags/encryption/N.png</value>
+	<value></value>
+</variable>
+<include name="playerflags_image_texture">
+	<width>84</width>
+	<height>50</height>
+	<aspectratio>keep</aspectratio>
+	<fadetime>FanartCrossFadeTime</fadetime>
+</include>
+
+<!-- #### OSD progressflags fortschrittsanzeige playerdauer und slideshow nach sekunden ####-->
+<variable name="value_playerprogressicon">
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),100)">Ņ</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),90)">ņ</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),80)">Ň</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),70)">ň</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),60)">ŉ</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),50)">Ŋ</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),40)">ŋ</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),30)">Ō</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),20)">ō</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),10)">Ŏ</value>
+	<value condition="Integer.IsGreaterOrEqual(Control.Getlabel(230),0)">ŏ</value>
+</variable>
+<variable name="value_slideshowprogressicon">
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),58)">Ņ</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),52)">ņ</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),46)">Ň</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),40)">ň</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),36)">ŉ</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),32)">Ŋ</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),24)">ŋ</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),18)">Ō</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),12)">ō</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),6)">Ŏ</value>
+	<value condition="Integer.IsGreaterOrEqual(System.Time(ss),0)">ŏ</value>
+</variable>
+<variable name="value_playerprogressinlay">
+	<value condition="Window.IsVisible(startup)">œ</value>
+	<value condition="Window.IsVisible(Custom_1154_VideoFakeOverlay.xml)">œ</value>
+	<value condition="Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml) | Window.IsVisible(script-nextup-notification-NextUpInfo.xml)">Œ</value>
+	<value condition="Window.IsVisible(slideshow) + Slideshow.IsPaused">œ</value>
+	<!-- 
+	<value condition="Player.Paused + String.IsEmpty(Player.SeekStepSize)">œ</value>-->
+	<value condition="[!String.IsEmpty(Player.SeekStepSize) | Player.DisplayAfterSeek | Player.Seeking] + String.StartsWith(Player.SeekOffset,-)">ő</value>
+	<value condition="[!String.IsEmpty(Player.SeekStepSize) | Player.DisplayAfterSeek | Player.Seeking]">Ő</value>
+	<value condition="Player.Paused + String.IsEmpty(Player.SeekStepSize)">œ</value>
+	<value condition="player.forwarding">Ő</value>
+	<value condition="player.rewinding">ő</value>
+	<value>Œ</value>
+</variable>
+
+<!-- Slider -->
+<variable name="value_reverse">
+	<value condition="String.Contains(Control.GetLabel(12),0.000)">$LOCALIZE[210] 2X</value>
+	<value condition="Player.Rewinding4x">$LOCALIZE[210] 4X</value>
+	<value condition="Player.Rewinding8x">$LOCALIZE[210] 8X</value>
+	<value condition="Player.Rewinding16x">$LOCALIZE[210] 16X</value>
+	<value condition="Player.Rewinding32x">$LOCALIZE[210] 32X</value>
+</variable>
+<variable name="value_forward">
+	<value condition="Player.Forwarding2x">$LOCALIZE[209] 2X</value>
+	<value condition="Player.Forwarding4x">$LOCALIZE[209] 4X</value>
+	<value condition="Player.Forwarding8x">$LOCALIZE[209] 8X</value>
+	<value condition="Player.Forwarding16x">$LOCALIZE[209] 16X</value>
+	<value condition="Player.Forwarding32x">$LOCALIZE[209] 32X</value>
+</variable>
+<variable name="value_SeekLabel">
+	<value condition="Window.IsVisible(Custom_1113_Settings_Dialogs.xml)">$LOCALIZE[31625]</value>
+	
+	<value condition="[Player.Paused + !Player.Caching] + !Player.Seeking + !Player.DisplayAfterSeek">$LOCALIZE[112]</value>
+	<value condition="!String.IsEmpty(Player.SeekStepSize) + ![player.forwarding | player.rewinding]">$LOCALIZE[773][COLOR=ACSkinColor] $INFO[Player.SeekStepSize][/COLOR]</value>
+	<value condition="Player.DisplayAfterSeek + ![player.forwarding | player.rewinding]">$LOCALIZE[773][COLOR=ACSkinColor] $INFO[Player.SeekOffset][/COLOR]</value>
+	<value condition="!Player.DisplayAfterSeek + Player.Seeking">$LOCALIZE[773]</value>
+	<value condition="Player.Forwarding">$LOCALIZE[31620]</value>
+	<value condition="Player.Rewinding">$LOCALIZE[31621]</value>
+</variable>
+
+<!-- #### OSD Labels ####-->
+<!-- player title labels -->
+<variable name="value_videoosdstillwatchingtitle">
+	<value condition="Player.HasVideo + !VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.Title]</value>
+	<value condition="Player.HasVideo + VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.Title]$INFO[VideoPlayer.EpisodeName, - ,]</value>
+	<value condition="Player.HasAudio">$VAR[player_trackprefix]$INFO[MusicPlayer.TrackNumber,,. ]$INFO[MusicPlayer.Title]</value>
+</variable>
+<variable name="value_videoosdstillwatchingtitle2">
+	<value condition="Player.HasVideo + !VideoPlayer.Content(episodes)">$INFO[VideoPlayer.Genre]</value>
+	<value condition="Player.HasVideo + VideoPlayer.Content(episodes)">$INFO[VideoPlayer.TvShowTitle,, - ]$VAR[player_seasonprefix]$INFO[Videoplayer.Season,,x]$VAR[player_episodeprefix]$INFO[Videoplayer.Episode,, ]</value>
+	<value condition="Player.HasVideo + VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.Channelname]</value>
+	<value condition="Player.HasAudio">$INFO[MusicPlayer.Artist]</value>
+</variable>
+<variable name="value_videoosdtitle">
+	<value condition="Player.HasVideo + !VideoPlayer.Content(LiveTV) + !VideoPlayer.Content(episodes)">$INFO[VideoPlayer.Title]$INFO[VideoPlayer.Year, (,)]</value>
+	<value condition="Player.HasVideo + !VideoPlayer.Content(LiveTV) + VideoPlayer.Content(episodes)">$VAR[player_seasonprefix]$INFO[Videoplayer.Season,,x]$VAR[player_episodeprefix]$INFO[Videoplayer.Episode,, ]$INFO[VideoPlayer.Title]</value>
+	<value condition="Player.HasVideo + VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.Title]$INFO[VideoPlayer.EpisodeName, - ,]</value>
+	<value condition="Player.HasAudio">$INFO[MusicPlayer.TrackNumber,,. ]$INFO[MusicPlayer.Title]</value>
+</variable>
+<variable name="value_videoosdtitleShort">
+	<value condition="Player.HasVideo + !VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.Title]</value>
+	<value condition="Player.HasVideo + VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.Title]$INFO[VideoPlayer.EpisodeName, - ,]</value>
+	<value condition="Player.HasAudio">$INFO[MusicPlayer.TrackNumber,,. ]$INFO[MusicPlayer.Title]</value>
+</variable>
+<!-- Subtitle -->
+<variable name="value_videoosdtitle2">
+	<value condition="Player.HasVideo + Player.IsInternetStream">$INFO[Player.Folderpath]</value>
+	<value condition="Player.HasVideo + ![VideoPlayer.Content(LiveTV) | VideoPlayer.Content(episodes)] + !String.IsEmpty(VideoPlayer.Tagline)">$INFO[VideoPlayer.Tagline]</value>
+	<value condition="Player.HasVideo + ![VideoPlayer.Content(LiveTV) | VideoPlayer.Content(episodes)]  + String.IsEmpty(VideoPlayer.Tagline)">$INFO[VideoPlayer.Genre]</value>
+	<value condition="Player.HasVideo + !VideoPlayer.Content(LiveTV) + VideoPlayer.Content(episodes)">$INFO[VideoPlayer.TVShowTitle]</value>
+	
+	<value condition="Player.HasVideo + VideoPlayer.Content(LiveTV)">$INFO[VideoPlayer.NextStartTime,,: ]$INFO[VideoPlayer.NextTitle]</value>
+	<value condition="Player.HasAudio">$INFO[MusicPlayer.Artist]$INFO[MusicPlayer.Album, | ]$INFO[MusicPlayer.Year, | ]</value>
+</variable>
+<variable name="value_videoosdtitle3">
+	<value condition="Player.HasVideo + Integer.IsGreater(Player.ChapterCount,1)">$LOCALIZE[21396]: $INFO[Player.Chapter]$INFO[Player.ChapterCount,/,-]$INFO[Player.ChapterName]</value>
+	<value condition="Integer.IsGreater(Playlist.Length,1)">$INFO[Playlist.Position]$INFO[Playlist.Length,/]</value>
+</variable>
+
+<!-- OSD Anzeige last.Played ohne Uhrzeit Schnick Schnack -->
+<variable name="VideoplayerLastPlayed2">
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2000)">2000</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2001)">2001</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2002)">2002</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2003)">2003</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2004)">2004</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2005)">2005</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2006)">2006</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2007)">2007</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2008)">2008</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2009)">2009</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2010)">2010</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2011)">2011</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2012)">2012</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2013)">2013</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2014)">2014</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2015)">2015</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2016)">2016</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2017)">2017</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2018)">2018</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2019)">2019</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2020)">2020</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2021)">2021</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2022)">2022</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2023)">2023</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2024)">2024</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2025)">2025</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2026)">2026</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2027)">2027</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2028)">2028</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2029)">2029</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2030)">2030</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2031)">2031</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2032)">2032</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2033)">2033</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2034)">2034</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2035)">2035</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2036)">2036</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2037)">2037</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2038)">2038</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2039)">2039</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2040)">2040</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2041)">2041</value>
+	<value condition="String.Contains(VideoPlayer.LastPlayed,2042)">2042</value>
+	<value></value>
+</variable>
+<variable name="VideoplayerLastPlayed1">
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.01.)">01.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.01.)">02.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.01.)">03.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.01.)">04.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.01.)">05.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.01.)">06.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.01.)">07.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.01.)">08.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.01.)">09.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.01.)">10.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.01.)">11.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.01.)">12.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.01.)">13.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.01.)">14.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.01.)">15.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.01.)">16.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.01.)">17.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.01.)">18.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.01.)">19.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.01.)">20.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.01.)">21.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.01.)">22.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.01.)">23.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.01.)">24.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.01.)">25.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.01.)">26.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.01.)">27.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.01.)">28.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.01.)">29.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.01.)">30.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.01.)">31.01.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.02.)">01.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.02.)">02.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.02.)">03.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.02.)">04.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.02.)">05.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.02.)">06.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.02.)">07.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.02.)">08.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.02.)">09.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.02.)">10.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.02.)">11.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.02.)">12.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.02.)">13.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.02.)">14.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.02.)">15.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.02.)">16.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.02.)">17.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.02.)">18.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.02.)">19.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.02.)">20.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.02.)">21.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.02.)">22.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.02.)">23.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.02.)">24.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.02.)">25.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.02.)">26.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.02.)">27.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.02.)">28.02.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.03.)">01.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.03.)">02.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.03.)">03.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.03.)">04.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.03.)">05.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.03.)">06.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.03.)">07.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.03.)">08.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.03.)">09.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.03.)">10.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.03.)">11.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.03.)">12.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.03.)">13.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.03.)">14.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.03.)">15.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.03.)">16.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.03.)">17.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.03.)">18.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.03.)">19.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.03.)">20.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.03.)">21.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.03.)">22.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.03.)">23.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.03.)">24.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.03.)">25.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.03.)">26.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.03.)">27.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.03.)">28.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.03.)">29.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.03.)">30.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.03.)">31.03.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.04.)">01.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.04.)">02.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.04.)">03.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.04.)">04.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.04.)">05.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.04.)">06.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.04.)">07.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.04.)">08.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.04.)">09.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.04.)">10.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.04.)">11.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.04.)">12.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.04.)">13.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.04.)">14.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.04.)">15.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.04.)">16.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.04.)">17.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.04.)">18.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.04.)">19.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.04.)">20.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.04.)">21.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.04.)">22.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.04.)">23.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.04.)">24.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.04.)">25.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.04.)">26.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.04.)">27.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.04.)">28.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.04.)">29.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.04.)">30.04.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.05.)">01.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.05.)">02.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.05.)">03.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.05.)">04.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.05.)">05.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.05.)">06.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.05.)">07.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.05.)">08.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.05.)">09.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.05.)">10.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.05.)">11.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.05.)">12.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.05.)">13.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.05.)">14.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.05.)">15.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.05.)">16.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.05.)">17.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.05.)">18.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.05.)">19.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.05.)">20.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.05.)">21.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.05.)">22.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.05.)">23.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.05.)">24.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.05.)">25.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.05.)">26.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.05.)">27.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.05.)">28.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.05.)">29.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.05.)">30.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.05.)">31.05.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.06.)">01.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.06.)">02.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.06.)">03.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.06.)">04.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.06.)">05.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.06.)">06.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.06.)">07.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.06.)">08.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.06.)">09.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.06.)">10.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.06.)">11.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.06.)">12.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.06.)">13.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.06.)">14.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.06.)">15.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.06.)">16.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.06.)">17.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.06.)">18.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.06.)">19.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.06.)">20.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.06.)">21.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.06.)">22.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.06.)">23.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.06.)">24.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.06.)">25.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.06.)">26.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.06.)">27.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.06.)">28.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.06.)">29.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.06.)">30.06.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.07.)">01.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.07.)">02.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.07.)">03.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.07.)">04.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.07.)">05.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.07.)">06.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.07.)">07.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.07.)">08.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.07.)">09.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.07.)">10.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.07.)">11.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.07.)">12.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.07.)">13.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.07.)">14.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.07.)">15.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.07.)">16.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.07.)">17.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.07.)">18.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.07.)">19.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.07.)">20.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.07.)">21.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.07.)">22.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.07.)">23.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.07.)">24.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.07.)">25.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.07.)">26.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.07.)">27.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.07.)">28.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.07.)">29.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.07.)">30.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.07.)">31.07.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.08.)">01.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.08.)">02.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.08.)">03.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.08.)">04.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.08.)">05.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.08.)">06.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.08.)">07.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.08.)">08.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.08.)">09.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.08.)">10.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.08.)">11.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.08.)">12.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.08.)">13.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.08.)">14.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.08.)">15.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.08.)">16.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.08.)">17.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.08.)">18.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.08.)">19.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.08.)">20.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.08.)">21.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.08.)">22.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.08.)">23.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.08.)">24.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.08.)">25.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.08.)">26.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.08.)">27.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.08.)">28.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.08.)">29.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.08.)">30.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.08.)">31.08.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.09.)">01.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.09.)">02.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.09.)">03.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.09.)">04.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.09.)">05.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.09.)">06.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.09.)">07.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.09.)">08.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.09.)">09.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.09.)">10.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.09.)">11.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.09.)">12.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.09.)">13.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.09.)">14.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.09.)">15.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.09.)">16.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.09.)">17.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.09.)">18.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.09.)">19.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.09.)">20.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.09.)">21.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.09.)">22.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.09.)">23.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.09.)">24.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.09.)">25.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.09.)">26.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.09.)">27.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.09.)">28.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.09.)">29.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.09.)">30.09.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.10.)">01.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.10.)">02.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.10.)">03.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.10.)">04.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.10.)">05.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.10.)">06.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.10.)">07.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.10.)">08.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.10.)">09.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.10.)">10.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.10.)">11.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.10.)">12.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.10.)">13.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.10.)">14.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.10.)">15.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.10.)">16.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.10.)">17.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.10.)">18.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.10.)">19.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.10.)">20.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.10.)">21.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.10.)">22.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.10.)">23.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.10.)">24.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.10.)">25.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.10.)">26.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.10.)">27.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.10.)">28.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.10.)">29.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.10.)">30.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.10.)">31.10.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.11.)">01.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.11.)">02.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.11.)">03.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.11.)">04.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.11.)">05.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.11.)">06.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.11.)">07.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.11.)">08.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.11.)">09.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.11.)">10.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.11.)">11.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.11.)">12.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.11.)">13.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.11.)">14.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.11.)">15.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.11.)">16.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.11.)">17.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.11.)">18.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.11.)">19.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.11.)">20.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.11.)">21.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.11.)">22.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.11.)">23.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.11.)">24.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.11.)">25.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.11.)">26.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.11.)">27.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.11.)">28.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.11.)">29.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.11.)">30.11.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,01.12.)">01.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,02.12.)">02.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,03.12.)">03.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,04.12.)">04.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,05.12.)">05.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,06.12.)">06.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,07.12.)">07.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,08.12.)">08.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,09.12.)">09.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,10.12.)">10.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,11.12.)">11.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,12.12.)">12.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,13.12.)">13.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,14.12.)">14.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,15.12.)">15.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,16.12.)">16.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,17.12.)">17.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,18.12.)">18.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,19.12.)">19.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,20.12.)">20.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,21.12.)">21.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,22.12.)">22.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,23.12.)">23.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,24.12.)">24.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,25.12.)">25.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,26.12.)">26.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,27.12.)">27.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,28.12.)">28.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,29.12.)">29.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,30.12.)">30.12.</value>
+	<value condition="String.StartsWith(VideoPlayer.LastPlayed,31.12.)">31.12.</value>
+	<value></value>
+</variable>
+
+<variable name="value_osd_timeduration">
+	<value condition="!Player.ChapterCount + !Player.Paused">$INFO[Player.Time]$INFO[Player.Duration, / ]</value>
+	<value condition="Player.ChapterCount + !Player.Paused">$INFO[VideoPlayer.Time]$INFO[VideoPlayer.Duration, / ] - $INFO[Player.Chapter,$LOCALIZE[21396]: ]$INFO[Player.ChapterCount, / ]$INFO[Player.ChapterName, - (,)]</value>
+	<value>$LOCALIZE[31623]</value>
+</variable>
+<variable name="value_playerplot">
+	<value condition="Player.HasVideo">$INFO[VideoPlayer.Plot]</value>
+	<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.Property(Album_Description)) + String.IsEmpty(MusicPlayer.Property(Artist_Description))">[B]$INFO[MusicPlayer.Album ,,[CR]][/B]$INFO[MusicPlayer.Property(Album_Description)]</value>
+	<value condition="Player.HasAudio + String.IsEmpty(MusicPlayer.Property(Album_Description)) + !String.IsEmpty(MusicPlayer.Property(Artist_Description))">[B]$INFO[MusicPlayer.Artist ,,[CR]][/B]$INFO[MusicPlayer.Property(Artist_Description)]</value>
+	
+	<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.Property(Album_Description)) + !String.IsEmpty(MusicPlayer.Property(Artist_Description))">[B]$INFO[MusicPlayer.Album ,,[CR]][/B]$INFO[MusicPlayer.Property(Album_Description),,[CR][CR]][B]$INFO[MusicPlayer.Artist,,[CR]][/B]$INFO[MusicPlayer.Property(Artist_Description)]</value>
+</variable>
+
+<!-- ####OSD includes ####-->
+<include name="DialogFulscreeninfo-top">
+	<!-- info top-->
+	<control type="group">
+		<left>100</left>
+		<top>110</top>
+		<animation effect="slide" end="0,-150" time="200" condition="String.IsEmpty(Skin.String(DefaultFullscreeninfolayout)) + !String.IsEmpty(Window(home).Property(osdinfoplot2)) + [String.IsEqual(Skin.String(DefaultFullscreeninfoposition),8) | String.IsEqual(Skin.String(DefaultFullscreeninfoposition),7)]">Conditional</animation><!-- slide hoeher wenn info unten aktiv -->
+		<animation effect="slide" end="0,0" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),1)">Conditional</animation>
+		<animation effect="slide" end="0,50" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),2)">Conditional</animation>
+		<animation effect="slide" end="0,80" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),3)">Conditional</animation>
+		<animation effect="slide" end="0,90" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),4)">Conditional</animation>
+		<animation effect="slide" end="0,100" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),5)">Conditional</animation>
+		<animation effect="slide" end="0,150" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),6)">Conditional</animation>
+		<animation effect="slide" end="0,200" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),7)">Conditional</animation>
+		<animation effect="slide" end="0,250" time="200" condition="String.IsEqual(Skin.String(DefaultFullscreeninfoposition),8)">Conditional</animation>
+		<control type="image"><!-- cd art -->
+			<include>animation_cdart</include>
+			<left>9</left>
+			<top>-75</top>
+			<width>170</width>
+			<height>170</height>
+			<texture diffuse="artworks/cdart-diffuse-small.png">$VAR[playerart_value_discart]</texture>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<visible>!Skin.HasSetting(DefaultFullscreeninfopanelCDart) + VideoPlayer.Content(movies)</visible>
+		</control>
+		<control type="group">
+			<top>5</top>
+			<description>Hintergrund layout beides</description>
+			<include content="global_dialog_mid_singlebg">
+				<param name="global_dialog_mid_bg-width" value="1040" />
+				<param name="global_dialog_mid_bg-height" value="292" />
+			</include>
+			<visible>!String.IsEmpty(Window(home).Property(osdinfoplot2))</visible>
+		</control>
+		<control type="group">
+			<top>5</top>
+			<visible>String.IsEmpty(Window(home).Property(osdinfoplot2))</visible>
+			<include content="global_dialog_mid_singlebg">
+				<description>Hintergrund layout nur top hoeher fuer progressline</description>
+				<param name="global_dialog_mid_bg-width" value="1040" />
+				<param name="global_dialog_mid_bg-height" value="342" />
+			</include>
+		</control>
+		<control type="image">
+			<description>Hintergrund flagsets diffuse</description>
+			<left>680</left>
+			<top>65</top>
+			<width>350</width>
+			<height>60</height>
+			<texture colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+		</control>
+		<control type="image">
+			<description>schatten unten titelzeile oben</description>
+			<top>65</top>
+			<width>1030</width>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="group"><!-- top layout status line wenn layout nur top -->
+			<visible>String.IsEmpty(Window(home).Property(osdinfoplot2))</visible>
+			<control type="image"><!-- shadow unten wenn hintergrund hoeher für status -->
+				<description>schatten unten</description>
+				<top>287</top>
+				<width>1030</width>
+				<include>global_bottomshadow8</include>
+			</control>
+			<control type="image"><!-- progress unten -->
+				<description>background unten progress</description>
+				<top>3310</top>
+				<width>1030</width>
+				<height>30</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="progress" id="230">
+				<left>30</left>
+				<top>298</top>
+				<width>300</width>
+				<height>5</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+			<control type="label">
+				<left>30</left>
+				<top>307</top>
+				<width>200</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$INFO[Player.Time]$INFO[Player.Duration,/,]</label>
+			</control>
+			<control type="label">
+				<left>660</left>
+				<top>287</top>
+				<width>200</width>
+				<height>25</height>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31035]</label>
+			</control>
+			<control type="label">
+				<left>660</left>
+				<top>307</top>
+				<width>200</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$INFO[System.Time]</label>
+			</control>
+			<control type="image">
+				<left>800</left>
+				<top>287</top>
+				<width>1</width>
+				<height>45</height>
+				<texture>backgrounds/line_v.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="label">
+				<left>810</left>
+				<top>287</top>
+				<width>200</width>
+				<height>25</height>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31036]</label>
+			</control>
+			<control type="label">
+				<left>810</left>
+				<top>307</top>
+				<width>200</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$INFO[Player.TimeRemaining]</label>
+			</control>
+			<control type="image">
+				<left>920</left>
+				<top>287</top>
+				<width>1</width>
+				<height>45</height>
+				<texture>backgrounds/line_v.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="label">
+				<left>930</left>
+				<top>287</top>
+				<width>200</width>
+				<height>25</height>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[31037]</label>
+			</control>
+			<control type="label">
+				<left>930</left>
+				<top>307</top>
+				<width>200</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$INFO[Player.FinishTime]</label>
+			</control>
+		</control>
+		<control type="grouplist"><!-- global right flags -->
+			<left>420</left>
+			<top>68</top>
+			<width>600</width>
+			<height>50</height>
+			<align>right</align>
+			<orientation>horizontal</orientation>
+			<itemgap>0</itemgap>
+			<control type="image">
+				<aspectratio aligny="center">keep</aspectratio>
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.VideoResolution,flags/resolution/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoResolution)</visible>
+			</control>
+			<control type="image">
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.VideoCodec,flags/videocodec/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoCodec)</visible>
+			</control>
+			<control type="image"><!-- Aspect -->
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[Videoplayer.VideoAspect,flags/aspectratio/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoAspect)</visible>
+			</control>
+			<control type="image"><!-- Audio Codec -->
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.AudioCodec,flags/audiocodec/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.audiocodec)</visible>
+			</control>
+			<control type="image"><!-- Channels -->
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.AudioChannels,flags/audiochannels/,ch.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.AudioChannels)</visible>
+			</control>
+		</control>
+		
+		<control type="group"><!-- Info Handlung / Handlung und Darsteller -->
+			<visible>[String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot) | String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot/Actor)] + !VideoPlayer.Content(LiveTV)</visible>
+			<control type="image">
+				<left>240</left>
+				<top>0</top>
+				<width>1</width>
+				<height>67</height>
+				<texture>backgrounds/line_v.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="image"><!-- studio -->
+				<description>Hintergrund studio diffuse</description>
+				<left>0</left>
+				<top>5</top>
+				<width>240</width>
+				<height>60</height>
+				<texture flipx="true" colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<top>5</top>
+				<width>100</width>
+				<height>50</height>
+				<aspectratio align="left">keep</aspectratio>
+				<texture fallback="flags/defaultstudio.png">resource://resource.images.studios.coloured/$INFO[VideoPlayer.Studio,,.png]</texture>
+			</control>
+			<control type="label">
+				<left>100</left>
+				<top>2</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Ratingback-label]</label>
+				<font>Rating</font>
+				<include>Star-Rating-color-layoutback</include>
+			</control>
+			<control type="label">
+				<left>100</left>
+				<top>2</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Rating-label]</label>
+				<font>Rating</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>String.IsEmpty(VideoPlayer.UserRating)</visible>
+			</control>
+			<control type="label">
+				<left>100</left>
+				<top>2</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Rating-label]</label>
+				<font>Rating</font>
+				<include>Star-UserRating-color-layout</include>
+				<visible>!String.IsEmpty(VideoPlayer.UserRating)</visible>
+			</control>
+			<control type="label"><!-- ratinglabel -->
+				<left>105</left>
+				<top>38</top>
+				<width>118</width>
+				<height>25</height>
+				<align>center</align>
+				<font>OSDNormal</font>
+				<label>$VAR[player_rating_value_label]</label>
+			</control>
+			<control type="image"><!-- status icon Film/Serie/PVR -->
+				<left>247</left>
+				<top>8</top>
+				<width>46</width>
+				<height>23</height>
+				<texture>$VAR[value_playermediacategory]</texture>
+			</control>
+			<control type="label"><!-- Toptitle -->
+				<left>301</left>
+				<top>6</top>
+				<width>700</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$LOCALIZE[31178]</label>
+				<visible>!VideoPlayer.Content(episodes)</visible>
+			</control>
+			<control type="label">
+				<left>301</left>
+				<top>6</top>
+				<width>700</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$LOCALIZE[31178]  $INFO[VideoPlayer.TVShowTitle]</label>
+				<visible>VideoPlayer.Content(episodes)</visible>
+			</control>
+			<control type="label">
+				<left>250</left>
+				<top>33</top>
+				<width>650</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<label>$VAR[value_videoosdtitleShort]</label>
+			</control>
+			<control type="image">
+				<left>930</left>
+				<top>18</top>
+				<aspectratio aligny="center" align="right">keep</aspectratio>
+				<include>playerflags_image_texture</include>
+				<texture fallback="flags/mpaa/fsk-0.png" background="true">$VAR[flags_value_player_mpaa]</texture>
+			<control type="grouplist"><!-- global right flags -->
+			</control>
+				<left>20</left>
+				<top>80</top>
+				<width>600</width>
+				<height>25</height>
+				<orientation>horizontal</orientation>
+				<itemgap>0</itemgap>
+				<!-- ## Bottominfolines ## -->
+				<control type="image"><!-- AudioLanguage icon -->
+					<width>25</width>
+					<height>25</height>
+					<aspectratio>keep</aspectratio>
+					<texture fallback="leer.png">$INFO[VideoPlayer.Country,resource://resource.images.languageflags.colour/,.png]</texture>
+					<visible>!String.IsEqual(Control.GetLabel(2300),leer.png) + !String.IsEmpty(VideoPlayer.Country)</visible>
+				</control>
+				<control type="label"><!-- Date value -->
+					<width>520</width>
+					<height>25</height>
+					<font>OSDNormal</font>
+					<label>$VAR[player_dateprefix,, ]$VAR[player_date]</label>
+					<visible>!VideoPlayer.Content(episodes)</visible>
+				</control>
+				<control type="label"><!-- Date value -->
+					<left>20</left>
+					<top>83</top>
+					<width>520</width>
+					<height>25</height>
+					<font>OSDNormal</font>
+					<label>$VAR[player_seasonprefixlong]$INFO[Videoplayer.Season,,$COMMA ]$VAR[player_episodeprefixlong]$INFO[Videoplayer.Episode,,$COMMA ]$VAR[player_dateprefix,, ]$VAR[player_date]</label>
+					<visible>VideoPlayer.Content(episodes)</visible>
+				</control>
+			</control>
+			<control type="label"><!-- genre -->
+				<left>20</left>
+				<top>105</top>
+				<width>500</width>
+				<height>25</height>
+				<font>OSDNormal</font>
+				<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ,]</label>
+			</control>
+			<control type="group"><!-- Handlung und Darsteller -->
+				<visible>String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot/Actor)</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>20</left>
+					<top>144</top>
+					<width>520</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="textbox"><!-- cast -->
+					<left>600</left>
+					<top>144</top>
+					<width>400</width>
+					<include>PlotOSDLarge120</include>
+					<label>$INFO[VideoPlayer.CastAndRole]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+			<control type="group"><!-- Nur Handlung -->
+				<visible>String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot)</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>20</left>
+					<top>144</top>
+					<width>960</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+
+		<control type="group"><!-- Poster -->
+			<visible>[String.IsEmpty(Skin.String(DefaultFullscreeninfotextlayout)) | String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Poster2)] + !VideoPlayer.Content(LiveTV)</visible>
+			<control type="label">
+				<left>910</left>
+				<top>-5</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Ratingback-label]</label>
+				<font>Rating-small</font>
+				<include>Star-Rating-color-layoutback</include>
+			</control>
+			<control type="label">
+				<left>910</left>
+				<top>-5</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Rating-label]</label>
+				<font>Rating-small</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>String.IsEmpty(VideoPlayer.UserRating)</visible>
+			</control>
+			<control type="label">
+				<left>910</left>
+				<top>-5</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Rating-label]</label>
+				<font>Rating-small</font>
+				<include>Star-UserRating-color-layout</include>
+				<visible>!String.IsEmpty(VideoPlayer.UserRating)</visible>
+			</control>
+			<control type="image">
+				<left>930</left>
+				<top>20</top>
+				<aspectratio aligny="center" align="right">keep</aspectratio>
+				<include>playerflags_image_texture</include>
+				<texture fallback="flags/mpaa/fsk-0.png" background="true">$VAR[flags_value_player_mpaa]</texture>
+			</control>
+			<control type="image"><!-- status icon Film/Serie/PVR -->
+				<left>326</left>
+				<top>8</top>
+				<width>46</width>
+				<height>23</height>
+				<texture>$VAR[value_playermediacategory]</texture>
+			</control>
+			<control type="label"><!-- Toptitle -->
+				<left>380</left>
+				<top>5</top>
+				<width>480</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$LOCALIZE[31178]</label>
+			</control>
+			<control type="label">
+				<left>330</left>
+				<top>33</top>
+				<width>560</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<label>$VAR[value_videoosdtitleShort]</label>
+			</control>
+			<control type="grouplist"><!-- global right flags -->
+				<left>200</left>
+				<top>80</top>
+				<width>600</width>
+				<height>25</height>
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
+				<!-- ## Bottominfolines ## -->
+				<control type="image"><!-- AudioLanguage icon -->
+					<left>200</left>
+					<top>85</top>
+					<width>25</width>
+					<height>25</height>
+					<aspectratio>keep</aspectratio>
+					<texture fallback="leer.png">$INFO[VideoPlayer.Country,resource://resource.images.languageflags.colour/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.Country) + !String.IsEqual(Control.GetLabel(2300),leer.png)</visible>
+				</control>
+				<control type="label"><!-- Date value -->
+					<width>380</width>
+					<height>25</height>
+					<font>OSDNormal</font>
+					<label>$VAR[player_seasonprefixlong]$INFO[Videoplayer.Season,,$COMMA ]$VAR[player_episodeprefixlong]$INFO[Videoplayer.Episode,,$COMMA ]$VAR[player_dateprefix,, ]$VAR[player_date]</label>
+					<visible>VideoPlayer.Content(episodes)</visible>
+				</control>
+				<control type="label"><!-- Date value -->
+					<width>380</width>
+					<height>25</height>
+					<font>OSDNormal</font>
+					<label>$VAR[player_dateprefix,, ]$VAR[player_date]</label>
+					<visible>!VideoPlayer.Content(episodes)</visible>
+				</control>
+			</control>
+			<control type="label"><!-- genre -->
+				<left>200</left>
+				<top>105</top>
+				<width>350</width>
+				<height>25</height>
+				<font>OSDNormal</font>
+				<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ,]</label>
+			</control>
+			<control type="image">
+				<left>300</left>
+				<top>0</top>
+				<width>1</width>
+				<height>67</height>
+				<texture>backgrounds/line_v.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="image"><!-- studio -->
+				<description>Hintergrund studio diffuse</description>
+				<left>188</left>
+				<top>5</top>
+				<width>112</width>
+				<height>60</height>
+				<texture flipx="true" colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			</control>
+			<control type="image">
+				<left>198</left>
+				<top>5</top>
+				<width>100</width>
+				<height>50</height>
+				<aspectratio align="left">keep</aspectratio>
+				<texture fallback="flags/defaultstudio.png">resource://resource.images.studios.coloured/$INFO[VideoPlayer.Studio,,.png]</texture>
+			</control>
+			<control type="image"><!-- Artwork -->
+				<left>0</left>
+				<top>5</top>
+				<width>188</width>
+				<height>282</height>
+				<aspectratio aligny="center" align="center" scalediffuse="false">scale</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[playerart_value_poster]</texture>
+			</control>
+			<control type="image"><!-- Artwork shadow right -->
+				<left>188</left>
+				<top>5</top>
+				<width>5</width><!-- include ueberschreibung -->
+				<height>282</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="group"><!-- Handlung und Darsteller -->
+				<visible>String.IsEmpty(Skin.String(DefaultFullscreeninfotextlayout))</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>200</left>
+					<top>140</top>
+					<width>390</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="textbox"><!-- cast -->
+					<left>610</left>
+					<top>140</top>
+					<width>370</width>
+					<include>PlotOSDLarge120</include>
+					<label>$INFO[VideoPlayer.CastAndRole]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+			<control type="group"><!-- Handlung  -->
+				<visible>String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Poster2)</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>200</left>
+					<top>140</top>
+					<width>780</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+		
+		<control type="group"><!-- LiveTV Handlung / Handlung und Darsteller live tv -->
+			<visible>[String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot) | String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot/Actor)] + VideoPlayer.Content(LiveTV)</visible>
+			<control type="image"><!-- hintergrund topleft diffuse -->
+				<left>100</left>
+				<top>0</top>
+				<width>1</width>
+				<height>67</height>
+				<texture>backgrounds/line_v.png</texture>
+				<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Hintergrund diffuse</description>
+				<left>0</left>
+				<top>5</top>
+				<width>100</width>
+				<height>60</height>
+				<texture flipx="true" colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			</control>
+			<control type="grouplist"><!-- top infoline header left -->
+				<left>128</left>
+				<top>6</top>
+				<width>580</width>
+				<height>23</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<orientation>horizontal</orientation>
+				<itemgap>3</itemgap>
+				<control type="image"><!-- status icon Film/Serie/PVR -->
+					<left>200</left>
+					<top>8</top>
+					<width>46</width>
+					<height>23</height>
+					<texture>$VAR[value_playermediacategory]</texture>
+				</control>
+				<control type="image"><!-- encryption -->
+					<left>200</left>
+					<top>8</top>
+					<width>20</width>
+					<height>23</height>
+					<texture>$VAR[value_playerActStreamEncryption]</texture>
+					<visible>!String.IsEmpty(PVR.ActStreamEncryptionName)</visible>
+				</control>
+				<control type="label"><!-- Toptitle -->
+					<left>260</left>
+					<top>0</top>
+					<width>380</width>
+					<height>23</height>
+					<textoffsetx>10</textoffsetx>
+					<font>OSDSmall</font>
+					<label>$LOCALIZE[31178]</label>
+				</control>
+			</control>
+			<control type="label">
+				<left>130</left>
+				<top>33</top>
+				<width>400</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<label>$VAR[value_videoosdtitleShort]</label>
+			</control>
+			<control type="label"><!-- Toptitle next -->
+				<left>530</left>
+				<top>6</top>
+				<width>470</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$LOCALIZE[31039] $INFO[VideoPlayer.NextStartTime, ,-]$INFO[VideoPlayer.NextEndTime]</label>
+			</control>
+			<control type="label">
+				<left>530</left>
+				<top>33</top>
+				<width>470</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<scroll>false</scroll>
+				<label>$INFO[VideoPlayer.NextTitle]</label>
+			</control>
+			<!-- ## Bottominfolines ## -->
+			<control type="label"><!-- genre -->
+				<left>30</left>
+				<top>75</top>
+				<width>470</width>
+				<height>25</height>
+				<font>OSDNormal</font>
+				<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ,]</label>
+			</control>
+			<control type="label"><!-- time/endtime -->
+				<left>30</left>
+				<top>100</top>
+				<width>470</width>
+				<height>25</height>
+				<font>OSDNormal</font>
+				<label>$INFO[Player.StartTime,,-]$INFO[VideoPlayer.EndTime]</label>
+			</control>
+
+			<control type="image"><!-- Artwork -->
+				<left>0</left>
+				<top>15</top>
+				<width>100</width>
+				<height>40</height>
+				<aspectratio aligny="center" align="center" scalediffuse="false">keep</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$VAR[playerart_value_poster]</texture>
+				<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+			</control>
+			<control type="image"><!-- Artwork -->
+				<left>0</left>
+				<top>15</top>
+				<width>100</width>
+				<height>40</height>
+				<aspectratio aligny="center" align="center" scalediffuse="false">keep</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultChannel.png">$VAR[playerart_value_poster]</texture>
+				<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+			</control>
+			<control type="group"><!-- Handlung und Darsteller -->
+				<visible>String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot/Actor)</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>30</left>
+					<top>140</top>
+					<width>470</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="textbox"><!-- Plot next -->
+					<left>530</left>
+					<top>140</top>
+					<width>470</width>
+					<include>PlotOSDLarge120</include>
+					<label>$INFO[VideoPlayer.NextPlot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+			<control type="group"><!-- Handlung  -->
+				<visible>String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Plot)</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>30</left>
+					<top>140</top>
+					<width>970</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+		
+		<control type="group"><!-- LiveTV Poster -->
+			<visible>[String.IsEmpty(Skin.String(DefaultFullscreeninfotextlayout)) | String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Poster2)] + VideoPlayer.Content(LiveTV)</visible>
+			<control type="image"><!-- hintergrund topleft diffuse -->
+				<description>Hintergrund diffuse</description>
+				<left>0</left>
+				<top>5</top>
+				<width>188</width>
+				<height>282</height>
+				<texture flipx="true" colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<top>33</top>
+				<width>150</width>
+				<height>25</height>
+				<font>OSDChannel</font>
+				<align>left</align>
+				<label>$INFO[VideoPlayer.ChannelNumber]</label>
+			</control>
+			<control type="label">
+				<left>20</left>
+				<top>245</top>
+				<width>150</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<wrapmultiline>true</wrapmultiline>
+				<label>$INFO[VideoPlayer.ChannelName]</label>
+				<visible>String.IsEmpty(Player.Art(thumb))</visible>
+			</control>
+			<control type="grouplist"><!-- top infoline header left -->
+				<left>197</left>
+				<top>5</top>
+				<width>580</width>
+				<height>23</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<orientation>horizontal</orientation>
+				<itemgap>3</itemgap>
+				<control type="image"><!-- status icon Film/Serie/PVR -->
+					<left>200</left>
+					<top>8</top>
+					<width>46</width>
+					<height>23</height>
+					<texture>$VAR[value_playermediacategory]</texture>
+				</control>
+				<control type="image"><!-- encryption -->
+					<left>200</left>
+					<top>8</top>
+					<width>20</width>
+					<height>23</height>
+					<texture>$VAR[value_playerActStreamEncryption]</texture>
+					<visible>!String.IsEmpty(PVR.ActStreamEncryptionName)</visible>
+				</control>
+				<control type="label"><!-- Toptitle -->
+					<left>260</left>
+					<top>0</top>
+					<width>380</width>
+					<height>23</height>
+					<textoffsetx>10</textoffsetx>
+					<font>OSDSmall</font>
+					<label>$LOCALIZE[31178]</label>
+				</control>
+			</control>
+			<control type="label">
+				<left>200</left>
+				<top>33</top>
+				<width>380</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<label>$VAR[value_videoosdtitleShort]</label>
+			</control>
+			<control type="label"><!-- Toptitle next -->
+				<left>610</left>
+				<top>6</top>
+				<width>380</width>
+				<height>25</height>
+				<font>OSDSmall</font>
+				<label>$LOCALIZE[31039] $INFO[VideoPlayer.NextStartTime, ,-]$INFO[VideoPlayer.NextEndTime]</label>
+			</control>
+			<control type="label">
+				<left>610</left>
+				<top>33</top>
+				<width>380</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<scroll>false</scroll>
+				<label>$INFO[VideoPlayer.NextTitle]</label>
+			</control>
+			<!-- ## Bottominfolines ## -->
+			<control type="label"><!-- genre -->
+				<left>200</left>
+				<top>75</top>
+				<width>400</width>
+				<height>25</height>
+				<font>OSDNormal</font>
+				<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ,]</label>
+			</control>
+			<control type="image"><!-- Artwork -->
+				<left>10</left>
+				<top>65</top>
+				<width>168</width>
+				<height>172</height>
+				<bordersize>10</bordersize>
+				<aspectratio aligny="center" align="top">keep</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultChannelLogo.png">$VAR[playerart_value_poster]</texture>
+				<visible>Skin.HasSetting(borderlessPVRIcons)</visible>
+			</control>
+			<control type="image"><!-- Artwork -->
+				<left>10</left>
+				<top>65</top>
+				<width>168</width>
+				<height>172</height>
+				<aspectratio aligny="center" align="top">keep</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultChannel.png">$VAR[playerart_value_poster]</texture>
+				<bordertexture border="8" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>8</bordersize>
+				<visible>!Skin.HasSetting(borderlessPVRIcons)</visible>
+			</control>
+			<control type="image"><!-- Artwork shadow -->
+				<left>188</left>
+				<top>5</top>
+				<width>5</width><!-- include ueberschreibung -->
+				<height>282</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="group"><!-- Handlung und Darsteller -->
+				<visible>String.IsEmpty(Skin.String(DefaultFullscreeninfotextlayout))</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>200</left>
+					<top>140</top>
+					<width>380</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+				<control type="textbox"><!-- Plot next -->
+					<left>610</left>
+					<top>140</top>
+					<width>380</width>
+					<include>PlotOSDLarge120</include>
+					<label>$INFO[VideoPlayer.NextPlot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+			<control type="group"><!-- Handlung  -->
+				<visible>String.IsEqual(Skin.String(DefaultFullscreeninfotextlayout),Poster2)</visible>
+				<control type="textbox"><!-- Plot -->
+					<left>200</left>
+					<top>140</top>
+					<width>780</width>
+					<include>PlotOSDLarge120</include>
+					<label fallback="31009">$INFO[VideoPlayer.Plot]</label>
+					<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+				</control>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="DialogFulscreeninfo-bottom">
+	<control type="group" id="1">
+		<left>20</left>
+		<top>560</top>
+		<control type="image"id="1">
+			<description>hintergrund mitte</description>
+			<width>1200</width>
+			<height>125</height>
+			<left>-5</left>
+			<top>-5</top>
+			<texture border="5" colordiffuse="ACBackgroundColor_heavy">shadows/dialoge_inner.png</texture>
+		</control>
+		<control type="image"id="1">
+			<description>hintergrund schatten</description>
+			<width>1200</width>
+			<height>125</height>
+			<left>-5</left>
+			<top>-5</top>
+			<texture border="5" colordiffuse="$VAR[AC_value_shadow_color]">shadows/dialoge_shadow.png</texture>
+		</control>
+		<control type="image" id="1"><!-- background top/left diffuse -->
+			<description>Hintergrund diffuse</description>
+			<width>180</width>
+			<height>45</height>
+			<texture flipx="true" colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+		</control>
+		<control type="image" id="1"><!-- background top/right diffuse -->
+			<description>Hintergrund time/flag diffuse</description>
+			<left>550</left>
+			<width>640</width>
+			<height>45</height>
+			<texture colordiffuse="ACSkinColor" diffuse="backgrounds/background-overlay-diffuse_v.png">White.png</texture>
+		</control>
+		<control type="image" id="1"><!-- cd art -->
+			<left>9</left>
+			<top>-95</top>
+			<width>190</width>
+			<height>190</height>
+			<texture diffuse="osd/osd-CDart-diffuse.png">$VAR[playerart_value_discart]</texture>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<visible>!Skin.HasSetting(DefaultFullscreeninfoStandardCDart) + VideoPlayer.Content(movies)</visible>
+			<animation effect="fade" delay="600" start="100" end="0" time="200" condition="VideoPlayer.Content(movies) + !Skin.HasSetting(DefaultFullscreeninfopanelCDart) + String.IsEmpty(Window(home).Property(osdinfoplot))">Conditional</animation>
+		</control>
+		<control type="image" id="1">
+			<description>schatten unten</description>
+			<top>45</top>
+			<width>1190</width>
+			<include>global_bottomshadow8</include>
+		</control>
+		<control type="image" id="1"><!-- line - trenner linke gruppe -->
+			<left>240</left>
+			<width>1</width>
+			<height>45</height>
+			<texture>backgrounds/line_v.png</texture>
+			<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+		</control>
+		<control type="image" id="1">
+			<left>240</left>
+			<top>45</top>
+			<width>1</width>
+			<height>70</height>
+			<texture>backgrounds/line_v.png</texture>
+			<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+		</control>
+		<control type="grouplist" id="1"><!-- left infoline line -->
+			<left>250</left>
+			<top>11</top>
+			<width>278</width>
+			<height>50</height>
+			<align>left</align>
+			<aligny>center</aligny>
+			<orientation>horizontal</orientation>
+			<itemgap>0</itemgap>
+			<control type="image" id="1"><!-- status icon Film/Serie/PVR -->
+				<width>50</width>
+				<height>25</height>
+				<bordersize>1</bordersize>
+				<texture>$VAR[value_playermediacategory]</texture>
+			</control>
+			<control type="image" id="1"><!-- AudioLanguage -->
+				<width>35</width>
+				<height>25</height>
+				<aspectratio>keep</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<texture>flags/audiolanguage.png</texture>
+				<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
+			</control>
+			<control type="image" id="1"><!-- AudioLanguage icon -->
+				<width>54</width>
+				<height>25</height>
+				<aspectratio align="left">keep</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<texture>resource://resource.images.languageflags.colour/$INFO[VideoPlayer.AudioLanguage,,.png]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
+			</control>
+			<control type="image" id="1"><!-- SubtitleLanguage -->
+				<width>35</width>
+				<height>25</height>
+				<aspectratio>keep</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<texture>flags/subtitlelanguage.png</texture>
+				<visible>!String.IsEmpty(VideoPlayer.SubtitleLanguage)</visible>
+			</control>
+			<control type="image" id="1"><!-- SubtitleLanguage icon -->
+				<width>54</width>
+				<height>25</height>
+				<aspectratio align="left">keep</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<texture>resource://resource.images.languageflags.colour/$INFO[VideoPlayer.SubtitleLanguage,,.png]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.SubtitleLanguage)</visible>
+			</control>
+			<control type="image"><!-- divider -->
+				<width>14</width>
+				<height>25</height>
+				<texture>-</texture>
+			</control>
+			<control type="label" id="1"><!-- channelname -->
+				<width>auto</width>
+				<height>20</height>
+				<font>SemiBig</font>
+				<align>top</align>
+				<label>$INFO[Videoplayer.ChannelName]</label>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="image" id="1"><!-- divider -->
+				<width>14</width>
+				<height>25</height>
+				<texture>-</texture>
+				<visible>Pvr.ActStreamIsEncrypted</visible>
+			</control>
+			<control type="image" id="1"><!-- status icon Film/Serie/PVR -->
+				<width>29</width>
+				<height>25</height>
+				<bordersize>1</bordersize>
+				<texture>$VAR[value_playerActStreamEncryption]</texture>
+				<visible>!String.IsEmpty(PVR.ActStreamEncryptionName)</visible>
+			</control>
+			<control type="image" id="1"><!-- Encrypted schluessel -->
+				<width>32</width>
+				<height>25</height>
+				<aspectratio aligny="center">keep</aspectratio>
+				<texture colordiffuse="TextColor2">pvr/pvr_isencrypted.png</texture>
+				<visible>Pvr.ActStreamIsEncrypted</visible>
+			</control>
+		</control>
+		<!-- info -->
+		<control type="grouplist" id="1"><!-- right time/flag line default und aus = nur Uhr -->
+			<left>200</left>
+			<top>1</top>
+			<width>960</width>
+			<height>50</height>
+			<align>right</align>
+			<aligny>center</aligny>
+			<orientation>horizontal</orientation>
+			<itemgap>10</itemgap>
+			<visible>String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default) | String.IsEmpty(Skin.String(DefaultFullscreeninfobottomflagbar))</visible>
+			<control type="image" id="1"><!-- defaultflagbar -->
+				<aspectratio aligny="center">keep</aspectratio>
+				<width>67</width>
+				<height>40</height>
+				<include>playerflags_image_texture</include>
+				<texture fallback="flags/mpaa/fsk-0.png" background="true">$VAR[flags_value_player_mpaa]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.Mpaa) + !VideoPlayer.Content(LiveTV) + String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)</visible>
+			</control>
+			<control type="image" id="1">
+				<aspectratio aligny="center">keep</aspectratio>
+				<width>67</width>
+				<height>40</height>
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.VideoResolution,flags/resolution/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoResolution) + String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)</visible>
+			</control>
+			<control type="image" id="1">
+				<aspectratio aligny="center">keep</aspectratio>
+				<width>67</width>
+				<height>40</height>
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.VideoCodec,flags/videocodec/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoCodec) + String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)</visible>
+			</control>
+			<control type="image" id="1"><!-- Aspect -->
+				<aspectratio aligny="center">keep</aspectratio>
+				<width>67</width>
+				<height>40</height>
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[Videoplayer.VideoAspect,flags/aspectratio/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoAspect) + String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)</visible>
+			</control>
+			<control type="image" id="1"><!-- Audio Codec -->
+				<aspectratio aligny="center">keep</aspectratio>
+				<width>67</width>
+				<height>40</height>
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.AudioCodec,flags/audiocodec/,.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.audiocodec) + String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)</visible>
+			</control>
+			<control type="image" id="1"><!-- Channels -->
+				<aspectratio aligny="center">keep</aspectratio>
+				<width>67</width>
+				<height>40</height>
+				<include>playerflags_image_texture</include>
+				<texture>$INFO[VideoPlayer.AudioChannels,flags/audiochannels/,ch.png]</texture>
+				<visible>!String.IsEmpty(Videoplayer.AudioChannels) + String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Default)</visible>
+			</control>
+			<control type="label" id="1"><!-- System Time -->
+				<description>time</description>
+				<width>auto</width>
+				<height>40</height>
+				<font>SemiLarge</font>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[System.Time]</label>
+			</control>
+		</control>
+		<control type="grouplist" id="1"><!-- right time/flag line minimal nur Aufloesung HD7SD und fsk + Uhr -->
+			<left>200</left>
+			<top>8</top>
+			<width>960</width>
+			<height>50</height>
+			<align>right</align>
+			<aligny>center</aligny>
+			<orientation>horizontal</orientation>
+			<itemgap>10</itemgap>
+			<visible>String.IsEqual(Skin.String(DefaultFullscreeninfobottomflagbar),Minimal)</visible>
+			<control type="image" id="1">
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<width>30</width>
+				<height>25</height>
+				<include>playerflags_image_texture</include>
+				<texture>osd/osd-resolution-hd.png</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoResolution) + Integer.IsGreater(Videoplayer.VideoResolution,720)</visible>
+			</control>
+			<control type="image" id="1">
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<width>30</width>
+				<height>25</height>
+				<include>playerflags_image_texture</include>
+				<texture>osd/osd-resolution-sd.png</texture>
+				<visible>!String.IsEmpty(Videoplayer.VideoResolution) + !Integer.IsGreater(Videoplayer.VideoResolution,720)</visible>
+			</control>
+			<control type="image" id="1">
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<width>30</width>
+				<height>25</height>
+				<include>playerflags_image_texture</include>
+				<texture fallback="osd/fsk_OSD_NR.png" background="true">$VAR[flags_value_player_mpaa_min]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.Mpaa) + !VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="label" id="1"><!-- System Time -->
+				<description>time</description>
+				<width>auto</width>
+				<height>25</height>
+				<font>SemiLarge</font>
+				<textcolor>TextColorFocus</textcolor>
+				<label>$INFO[System.Time]</label>
+			</control>
+		</control>
+		<control type="group" id="1"><!-- left progress + time -->
+			<left>20</left>
+			<top>10</top>
+			<width>200</width>
+			<height>22</height>
+			<control type="group" id="1"><!-- progress kreis -->
+				<left>-10</left>
+				<top>-5</top>
+				<width>30</width>
+				<height>30</height>
+				<control type="label" id="1">
+					<width>auto</width>
+					<height>36</height>
+					<textcolor>TextColor3</textcolor>
+					<font>Info-osd-progressicon</font>
+					<label>Ņ</label>
+				</control>
+				<control type="label" id="1">
+					<width>auto</width>
+					<height>36</height>
+					<textcolor>TextColorFocus</textcolor>
+					<font>Info-osd-progressicon</font>
+					<label>$VAR[value_playerprogressicon]</label>
+				</control>
+				<control type="label" id="1">
+					<width>auto</width>
+					<height>36</height>
+					<textcolor>TextColorFocus</textcolor>
+					<font>Info-osd-progressicon</font>
+					<label>$VAR[value_playerprogressinlay]</label>
+				</control>
+			</control>
+			<control type="label" id="1">
+				<left>85</left>
+				<top>-12</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Ratingback-label]</label>
+				<font>Rating</font>
+				<include>Star-Rating-color-layoutback</include>
+				<visible>!VideoPlayer.Content(LiveTV) + !VideoPlayer.Content(files)</visible>
+			</control>
+			<control type="label" id="1">
+				<left>85</left>
+				<top>-12</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Rating-label]</label>
+				<font>Rating</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>!VideoPlayer.Content(LiveTV) + !VideoPlayer.Content(files) + String.IsEmpty(VideoPlayer.UserRating)</visible>
+			</control>
+			<control type="label" id="1">
+				<left>85</left>
+				<top>-12</top>
+				<width>135</width>
+				<height>25</height>
+				<label>$VAR[Player-Star-Rating-label]</label>
+				<font>Rating</font>
+				<include>Star-UserRating-color-layout</include>
+				<visible>!VideoPlayer.Content(LiveTV) + !VideoPlayer.Content(files) + !String.IsEmpty(VideoPlayer.UserRating)</visible>
+			</control>
+			<control type="label" id="1"><!-- channelnumber -->
+				<width>200</width>
+				<height>25</height>
+				<font>OSDChannel</font>
+				<align>right</align>
+				<label>$INFO[VideoPlayer.ChannelNumber]</label>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+		</control>
+		<control type="group" id="1"><!-- left player time -->
+			<left>20</left>
+			<top>55</top>
+			<width>200</width>
+			<height>80</height>
+			<control type="label" id="1">
+				<width>200</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<label>$INFO[VideoPlayer.Time]</label>
+			</control>
+			<control type="progress" id="230">
+				<left>0</left>
+				<top>25</top>
+				<width>200</width>
+				<height>5</height>
+				<info>Player.Progress</info>
+				<texturebg colordiffuse="TextColor3">dialogs/progress/osd_progress_back.png</texturebg>
+				<lefttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_left.png</lefttexture>
+				<midtexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_mid.png</midtexture>
+				<righttexture colordiffuse="$VAR[AC_value_progresscolor]">dialogs/progress/osd_progress_right.png</righttexture>
+			</control>
+			<control type="label" id="1">
+				<left>0</left>
+				<top>35</top>
+				<width>200</width>
+				<height>25</height>
+				<align>right</align>
+				<font>OSDLarge</font>
+				<label>$INFO[Player.FinishTime]</label>
+			</control>
+		</control>
+		<control type="group" id="1"><!-- right title -->
+			<left>250</left>
+			<top>55</top>
+			<width>1200</width>
+			<height>80</height>
+			<control type="image" id="1"><!-- pvr recording icon -->
+				<left>5</left>
+				<top>5</top>
+				<width>27</width>
+				<height>18</height>
+				<texture colordiffuse="TextColor2">pvr/pvr_isrecording_back.png</texture>
+				<visible>Pvr.IsPlayingRecording</visible>
+			</control>
+			<control type="image" id="1">
+				<left>5</left>
+				<top>5</top>
+				<width>27</width>
+				<height>18</height>
+				<texture>pvr/pvr_isrecording_front.png</texture>
+				<visible>Pvr.IsPlayingRecording</visible>
+			</control>
+			<control type="label"><!-- Title -->
+				<left>5</left>
+				<top>0</top>
+				<width>1200</width>
+				<height>25</height>
+				<font>SemiBig</font>
+				<label>$VAR[value_videoosdtitle]</label>
+				<animation effect="slide" end="57" time="0" condition="Pvr.IsPlayingRecording">Conditional</animation>
+			</control>
+			<control type="label" id="1">
+				<left>5</left>
+				<top>30</top>
+				<width>600</width>
+				<height>25</height>
+				<font>OSDLarge</font>
+				<label>$VAR[value_videoosdtitle2]</label>
+			</control>
+			<control type="label" id="1"><!-- right chapter number -->
+				<left>610</left>
+				<top>30</top>
+				<width>300</width>
+				<height>25</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<wrapmultiline>false</wrapmultiline>
+				<font>OSDLarge</font>
+				<label>$VAR[value_videoosdtitle3]</label>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="StillwatchingWidget">
+	<control type="group">
+		<left>426</left>
+		<top>-1</top>
+		<animation effect="slide" start="0,-70" end="0,0" time="280" easing="inout" tween="cubic">WindowOpen</animation>
+		<animation effect="slide" start="0,-70" end="0,0" time="280" easing="inout" tween="cubic">Visible</animation>
+		<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+		<animation effect="slide" start="0,0" end="0,-70" time="300" easing="inout" tween="cubic">Hidden</animation>
+		<control type="image">
+			<width>442</width>
+			<height>60</height>
+			<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/bar-shadow.png</texture>
+		</control>
+		<control type="image">
+			<width>442</width>
+			<height>60</height>
+			<texture colordiffuse="ACBackgroundColor">backgrounds/bar.png</texture>
+		</control>
+		<control type="group"><!-- progress kreis -->
+			<left>60</left>
+			<top>6</top>
+			<width>50</width>
+			<height>50</height>
+			<control type="label">
+				<width>auto</width>
+				<height>36</height>
+				<textcolor>TextColor3</textcolor>
+				<font>Seekbar-progressicon</font>
+				<label>Ņ</label>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>36</height>
+				<textcolor>ACSkinColor</textcolor>
+				<font>Seekbar-progressicon</font>
+				<label>$VAR[value_playerprogressinlay]</label>
+			</control>
+		</control>
+		<control type="label">
+			<description>titel</description>
+			<left>135</left>
+			<top>7</top>
+			<width>270</width>
+			<height>20</height>
+			<font>SemiLarge</font>
+			<label>$VAR[value_videoosdstillwatchingtitle]</label>
+		</control>
+		<control type="label">
+			<description>subtitle</description>
+			<left>135</left>
+			<top>28</top>
+			<width>240</width>
+			<height>20</height>
+			<label>$VAR[value_videoosdstillwatchingtitle2]</label>
+		</control>
+	</control>
+</include>
+
+<include name="MusicTopinfo">
+	<control type="group">
+		<include>animation_topdialog_popup</include>
+		<visible>![Library.IsScanningVideo | Library.IsScanningMusic]</visible>
+		<control type="label">
+			<left>20</left>
+			<top>5</top>
+			<width>160</width>
+			<height>23</height>
+			<aligny>top</aligny>
+			<font>SemiLarge</font>
+			<textcolor>$VAR[MusicVizHeavy]</textcolor>
+			<label>$INFO[System.Time]</label>
+		</control>
+		<control type="label">
+			<left>20</left>
+			<top>35</top>
+			<width>160</width>
+			<height>20</height>
+			<aligny>top</aligny>
+			<textcolor>$VAR[MusicVizHeavy]</textcolor>
+			<label>$VAR[flex_value_systemdate]</label>
+		</control>
+	</control>
+	<control type="group">
+		<include>animation_topdialog_popup</include>
+		<left>1100</left>
+		<visible>![Library.IsScanningVideo | Library.IsScanningMusic]</visible>
+		<control type="label">
+			<left>0</left>
+			<top>5</top>
+			<width>160</width>
+			<height>23</height>
+			<align>right</align>
+			<font>SemiLarge</font>
+			<textcolor>$VAR[MusicVizHeavy]</textcolor>
+			<label>$INFO[MusicPlayer.PlaylistPosition] | $INFO[MusicPlayer.PlaylistLength]</label>
+		</control>
+	</control>
+</include>
+
+</includes>

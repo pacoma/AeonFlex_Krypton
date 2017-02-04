@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">9031</defaultcontrol>
+<onload condition="!String.IsEqual(ListItem.DBTYPE,album) + !String.IsEqual(ListItem.DBTYPE,song) + !String.IsEqual(ListItem.DBTYPE,artist)">close</onload><!-- autosclose bei falschem inhalt -->
+<onload>ClearProperty(PlottextReadMode,videos)</onload><!-- Plotzoom reset -->
+<onload>ClearProperty(InfobottomBar,home)</onload>
+<onload>ClearProperty(Selectdialogcategory,home)</onload>
+<onload>ClearProperty(SelectdialogcategoryTitle,home)</onload>
+<onunload>ClearProperty(InfobottomBar,home)</onunload>
+<onunload>ClearProperty(Selectdialogcategory,home)</onunload>
+<onunload>ClearProperty(SelectdialogcategoryTitle,home)</onunload>
+<onunload>ClearProperty(PlottextReadMode,videos)</onunload><!-- Plotzoom reset -->
+<controls>
+	<control type="button" id="5415"><!-- hiddenfocus -->
+		<include>Hiddencontrol</include>
+		<onleft>ClearProperty(PlottextReadMode,videos)</onleft>
+		<onleft>SetProperty(InfobottomBar,Temp,home)</onleft>
+		<onleft>SetFocus(9031)</onleft>
+		<onright>ClearProperty(PlottextReadMode,videos)</onright>
+		<onright>SetProperty(InfobottomBar,Temp,home)</onright>
+		<onright>SetFocus(9031)</onright>
+		<onup>ClearProperty(PlottextReadMode,videos)</onup>
+		<onup>SetProperty(InfobottomBar,Temp,home)</onup>
+		<onup>SetFocus(9031)</onup>
+		<ondown>ClearProperty(PlottextReadMode,videos)</ondown>
+		<ondown>SetProperty(InfobottomBar,Temp,home)</ondown>
+		<ondown>SetFocus(9031)</ondown>
+		<onclick>SetProperty(PlottextReadMode,Read,videos)</onclick>
+		<onclick>SetFocus(613)</onclick>
+	</control>
+	<include condition="!Window.IsVisible(home) + [String.IsEqual(ListItem.DBTYPE,album) | String.IsEqual(ListItem.DBTYPE,song) | String.IsEqual(ListItem.DBTYPE,artist)]">musicinfo</include>
+	<include condition="!Skin.HasSetting(ModernHome) + Window.IsVisible(home) + [String.IsEqual(ListItem.DBTYPE,album) | String.IsEqual(ListItem.DBTYPE,song) | String.IsEqual(ListItem.DBTYPE,artist)]">classic_home_musicinfo</include>
+	<include condition="Skin.HasSetting(ModernHome) + Window.IsVisible(home) + [String.IsEqual(ListItem.DBTYPE,album) | String.IsEqual(ListItem.DBTYPE,song) | String.IsEqual(ListItem.DBTYPE,artist)]">modern_home_musicinfo</include>
+</controls>
+</window>

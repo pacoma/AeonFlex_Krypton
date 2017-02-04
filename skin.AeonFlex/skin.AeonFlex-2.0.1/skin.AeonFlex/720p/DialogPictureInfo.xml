@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">80</defaultcontrol>
+<controls>
+<control type="group">
+	<include condition="!Window.IsVisible(home)">animation_window</include>
+	<include condition="Window.IsVisible(home)">animation_topinfopopup</include>
+	<visible>!Window.IsVisible(shutdownmenu)</visible>
+	<control type="image">
+		<top>-5</top>
+		<include>global_topshadow5</include>
+	</control>
+	<control type="image">
+		<width>1280</width>
+		<height>585</height>
+		<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor_light</colordiffuse>
+	</control>
+	<control type="image">
+		<top>190</top>
+		<width>1280</width>
+		<height>310</height>
+		<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+		<colordiffuse>ACBackgroundColor</colordiffuse>
+	</control>
+	<control type="image">
+		<top>500</top>
+		<include>global_bottomshadow5</include>
+	</control>
+	<control type="image"><!-- Artwork -->
+		<width>600</width>
+		<height>500</height>
+		<aspectratio align="center" aligny="center">scale</aspectratio>
+		<texture background="true">$INFO[ListItem.Icon]</texture>
+	</control>
+	<control type="group"><!-- Top Title-->
+		<left>650</left>
+		<top>8</top>
+		<control type="label">
+			<width>600</width>
+			<include>dialog_title</include>
+			<label>$LOCALIZE[13406]</label>
+		</control>
+		<control type="label">
+			<width>600</width>
+			<include>dialog_tagline</include>
+			<label>$INFO[ListItem.Label]$INFO[ListItem.PictureDate, (,)]</label>
+		</control>
+	</control>
+	<control type="group"><!-- mids info -->
+		<left>650</left>
+		<control type="label">
+			<width>600</width>
+			<top>105</top>
+			<height>40</height>
+			<width>700</width>
+			<height>25</height>
+			<label>$INFO[Container.FolderName]</label>
+		</control>
+		<control type="list" id="5"><!-- List -->
+			<top>145</top>
+			<width>600</width>
+			<height>330</height>
+			<onleft>close</onleft>
+			<onright>80</onright>
+			<onup>5</onup>
+			<ondown>5</ondown>
+			<itemgap>0</itemgap>
+			<pagecontrol>80</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<itemlayout height="30">
+				<control type="label">
+					<width>200</width>
+					<height>30</height>
+					<textcolor>TextColor2</textcolor>
+					<selectedcolor>TextColor2</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>200</left>
+					<width>400</width>
+					<height>30</height>
+					<textcolor>TextColor1</textcolor>
+					<selectedcolor>TextColor1</selectedcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="30">
+				<control type="label">
+					<width>200</width>
+					<height>30</height>
+					<textcolor>TextColor2</textcolor>
+					<selectedcolor>TextColor2</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>!Control.HasFocus(5)</visible>
+				</control>
+				<control type="label">
+					<width>200</width>
+					<height>30</height>
+					<textcolor>TextColor1</textcolor>
+					<selectedcolor>TextColor2</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>Control.HasFocus(5)</visible>
+				</control>
+				<control type="label">
+					<left>200</left>
+					<width>400</width>
+					<height>30</height>
+					<autoscroll>false</autoscroll>
+					<textcolor>TextColor2</textcolor>
+					<selectedcolor>TextColor2</selectedcolor>
+					<label>$INFO[ListItem.Label2]</label>
+					<visible>!Control.HasFocus(5)</visible>
+				</control>
+				<control type="label">
+					<left>200</left>
+					<width>400</width>
+					<height>30</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>RegularNormal</font>
+					<textcolor>TextColor1</textcolor>
+					<selectedcolor>TextColorSelectFO</selectedcolor>
+					<label>$INFO[ListItem.Label2]</label>
+					<visible>Control.HasFocus(5)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="80">
+			<include>scrollbar_vertical</include>
+			<left>600</left>
+			<top>145</top>
+			<showonepage>true</showonepage>
+			<height>330</height>
+			<onleft>close</onleft>
+			<onright>close</onright>
+			<visible allowhiddenfocus="true">Control.HasFocus(80) | Control.HasFocus(5)</visible>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

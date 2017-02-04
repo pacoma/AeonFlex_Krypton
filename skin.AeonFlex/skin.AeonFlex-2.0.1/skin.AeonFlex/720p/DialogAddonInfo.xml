@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">9031</defaultcontrol>
+<controls>
+	<include condition="Skin.HasSetting(ModernHome) + Window.IsVisible(home)">modern_home_addoninfo</include>
+	<include condition="!Window.IsVisible(home) | !Skin.HasSetting(ModernHome)">addoninfo</include>
+</controls>
+</window>

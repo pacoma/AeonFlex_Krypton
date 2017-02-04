@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colors>
+	<!-- #### Hintergrundfarben ####-->
+		<!-- Hintergrundfarbe in drei tranzparen -->
+		<color name="ACBackgroundColorFull">FFFEFBF4</color>
+		<color name="ACBackgroundColor">E5FEFBF4</color>
+		<color name="ACBackgroundColor_heavy">CCFEFBF4</color>
+		<color name="ACBackgroundColor_light">B3FEFBF4</color>
+		<!-- Hintergrundfarbe extendedlist focus -->
+		<color name="ACBackgroundColor_extendedlist">E5FEFBF4</color>
+		<!-- Hintergrundfarbe clearartworks in panels -->
+		<color name="ACBackgroundColorClearart">85E2A9F3</color> <!-- 2 -->
+	
+	<!-- #### Einstellbare Farben in Skinsettings #### -->
+		<!-- Progressbarfarbe -->
+		<color name="ACprogress">FF6F5373</color><!-- 4 -->
+		<!-- Ratingfarben -->
+		<color name="ACRatingColor">FF380B61</color><!-- 5 -->
+		<color name="ACUserratingColor">FF99385C</color>
+		<!-- selectedcolor - Textfarbe fuer Listentexte die z.B. gerade abgespielt werden -->
+		<color name="TextColorSelect">FFB737DD</color>
+		<color name="TextColorSelectFO">FFF7DBFF</color>
+		<!-- Schattenfarbe -->
+		<color name="ACShadowColor">FF363636</color>
+		<!-- Statusmarkierungen neu, begonnen, gesehen, movieset -->
+		<color name="ACOverlayNew">FF542A47</color>
+		<color name="ACOverlayOngoing">FF542A47</color>
+		<color name="ACOverlaySet">FF542A47</color>
+		<color name="ACOverlayWatched">FF542A47</color>
+	
+	<!-- #### Farben #### -->
+		<!-- Skinfarbe -->
+		<color name="ACSkinColor">FFB737DD</color> <!-- 1 -->
+		<!-- inaktive Farbueberlagerung von artworks die nicht fokusiert sind -->
+		<color name="ACInaktivItems">332A2C2B</color>
+		<!-- Markierungsleistenfarben -->
+		<color name="ACFloorColor">85BE81F7</color> <!-- 3 -->
+		<!-- Moderhomeoverlay -->
+		<color name="ACModerhomeoverlay">FF8D21AD</color>
+		<color name="ACModerhomeoverlay2">85BE81F7</color>
+		<!-- Textfarbe Focus-->
+		<color name="TextColorFocus">FFF1F1F1</color>
+		<!-- Textfarben in 3 Abstufungen im Idealfall eine Basisfarbe mit 3 Gewichtungen -->
+		<color name="TextColor1">FF2A2A2A</color>
+		<color name="TextColor2">FF474747</color>
+		<color name="TextColor3">FF9E9E9E</color>
+
+		
+	<!-- #### defaultfarben fuer settings, die nicht veraendert werden sollten #### -->
+	<!-- Tranzparenz Beispiele:
+		42 = 26%		47 = 28%		4D = 30%		52 = 32%		57 = 34%
+		5C = 36%		61 = 38%		66 = 40%		6B = 42%		70 = 44%
+		75 = 46%		7A = 48%		7F = 50%		85 = 52%		8A = 54%
+		8F = 56%		94 = 58%		99 = 60%		9E = 62%		A3 = 64%
+		A8 = 66%		AD = 68%		B3 = 70%		B8 = 72%		BD = 74%
+		C2 = 76%		C7 = 78%		CC = 80%		D1 = 82%		D6 = 86%
+		DB = 88%		E0 = 90%		E5 = 92%
+	-->
+	<!-- wildcard farben fuer viewsettings -->
+	<color name="WildcardRed">4DB20000</color>
+	<color name="WildcardLight">4D7E7E7E</color>
+	<color name="WildcardWhite">FFF1F1F1</color>
+	<color name="Wildcard">FF7E7E7E</color>	
+	
+	<!-- Menue erstellen hintergrundfarben fuer unterschiedlich farbige buttons -->
+	<color name="ACSlotSettingCustomNF">82F33E3E</color>
+	<color name="ACSlotSettingCustomFO">FFF33E3E</color>
+	<color name="ACSlotSettingDefaultNF">823E64F3</color>
+	<color name="ACSlotSettingDefaultFO">FF3E64F3</color>
+	<color name="ACSlotContentDefaultNF">8224C01D</color>
+	<color name="ACSlotContentDefaultFO">FF24C01D</color>
+	<color name="ACSlotContentDefault2NF">8232B6A8</color>
+	<color name="ACSlotContentDefault2FO">FF32B6A8</color>
+	<color name="ACSlotContentDefault3NF">82996600</color>
+	<color name="ACSlotContentDefault3FO">FF996600</color>
+	<color name="ACSlotContentDefault4NF">82996699</color>
+	<color name="ACSlotContentDefault4FO">FF996699</color>
+	<color name="ACSlotContentDefault5NF">82FF3366</color>
+	<color name="ACSlotContentDefault5FO">FFFF3366</color>
+	<color name="ACSlotContentDefault6NF">824E8975</color>
+	<color name="ACSlotContentDefault6FO">FF4E8975</color>
+	<color name="ACViewSettingCustomOffNF">82F33E3E</color>
+	<color name="ACViewSettingCustomOffFO">FFF33E3E</color>
+	<color name="ACViewSettingCustomOnNF">8224C01D</color>
+	<color name="ACViewSettingCustomOnFO">FF24C01D</color>
+	
+	<!-- hintergrund schwarz fuer videovorschau, trailer usw.. -->
+	<color name="black">FF000000</color>
+	
+	<!-- warnfarbe fuer meldungen wie Wetter fehlt, inhalt wird aktualisiert, keine untertitel verfuegbar, Addon deffeckt usw. -->
+	<color name="ACRed">FFB20000</color>
+</colors>

@@ -1,0 +1,1705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<variable name="viewwall_video_focusartwork">
+	<value condition="ListItem.IsParentFolder">folderback/FolderBackExtrathumb.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="[String.IsEqual(Skin.String(WallFocusArtwork),Fanart) | String.IsEmpty(Skin.String(WallFocusArtwork))] + !String.IsEmpty(ListItem.Art(fanart))">$VAR[value_defaultfanart]</value>
+	<value condition="String.IsEqual(Skin.String(WallFocusArtwork),Extra-Fanart) + !String.IsEqual(Control.Getlabel(6300),xx)">$INFO[Control.GetLabel(5300)]</value>
+	<value condition="String.IsEqual(Skin.String(WallFocusArtwork),Landscape) + !String.IsEqual(Control.Getlabel(6300),xx)">$VAR[panelart_value_landscape]</value>
+	<value condition="!Container.Content(genres) + String.IsEmpty(ListItem.Art(fanart))">defaultpictures/DefaultMovieExtrathumb.png</value>
+	<value condition="!String.IsEmpty(ListItem.Art(fanart))">$VAR[value_defaultfanart]</value>
+	<value condition="!Container.Content(genres)">defaultpictures/DefaultMovieExtrathumb.png</value>
+</variable>
+
+<variable name="viewwall_video_postervalue-6">
+	<value condition="ListItem(-6).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(-6).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(-6).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(-6).Art(poster))">$INFO[ListItem(-6).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue-5">
+	<value condition="ListItem(-5).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(-5).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(-5).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(-5).Art(poster))">$INFO[ListItem(-5).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue-4">
+	<value condition="ListItem(-4).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(-4).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(-4).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(-4).Art(poster))">$INFO[ListItem(-4).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue-3">
+	<value condition="ListItem(-3).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(-3).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(-3).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(-3).Art(poster))">$INFO[ListItem(-3).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue-2">
+	<value condition="ListItem(-2).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(-2).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(-2).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(-2).Art(poster))">$INFO[ListItem(-2).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue-1">
+	<value condition="ListItem(-1).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(-1).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(-1).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(-1).Art(poster))">$INFO[ListItem(-1).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue1">
+	<value condition="ListItem(1).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(1).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(1).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(1).Art(poster))">$INFO[ListItem(1).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue2">
+	<value condition="ListItem(2).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(2).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(2).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(2).Art(poster))">$INFO[ListItem(2).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue3">
+	<value condition="ListItem(3).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(3).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(3).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(3).Art(poster))">$INFO[ListItem(3).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue4">
+	<value condition="ListItem(4).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(4).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(4).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(4).Art(poster))">$INFO[ListItem(4).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue5">
+	<value condition="ListItem(5).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(5).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(5).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(5).Art(poster))">$INFO[ListItem(5).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue6">
+	<value condition="ListItem(6).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(6).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(6).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(6).Art(poster))">$INFO[ListItem(6).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue7">
+	<value condition="ListItem(7).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(7).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(7).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(7).Art(poster))">$INFO[ListItem(7).Art(poster)]</value>
+</variable>
+<variable name="viewwall_video_postervalue8">
+	<value condition="ListItem(8).IsParentFolder">folderback/FolderBackPoster.png</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/genres/)]">$INFO[ListItem(8).Label,resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/,.jpg]</value>
+	<value condition="Container.Content(genres) + [String.StartsWith(Container.FolderPath,library://video/tvshows/) | String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]">$INFO[ListItem(8).Label,resource://resource.images.moviegenrefanart.flex/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem(8).Art(poster))">$INFO[ListItem(8).Art(poster)]</value>
+</variable>
+
+
+
+<variable name="viewwall_value_leftartwork">
+	<value condition="[String.Contains(Skin.String(WallArtwork1),Clear-Art) | String.IsEmpty(Skin.String(WallArtwork1))] + !String.IsEmpty(Control.GetLabel(5303))">$VAR[art_value_clearart]</value>
+	<value condition="String.Contains(Skin.String(WallArtwork1),Clear-Logo) + !String.IsEmpty(Control.GetLabel(5304))">$VAR[art_value_logo]</value>
+	<value condition="[String.Contains(Skin.String(WallArtwork1),Clear-Art) | String.IsEmpty(Skin.String(WallArtwork1))] + String.IsEmpty(Control.GetLabel(5303))">$VAR[art_value_logo]</value>
+	<value condition="String.Contains(Skin.String(WallArtwork1),Clear-Logo) + String.IsEmpty(Control.GetLabel(5304))">$VAR[art_value_clearart]</value>
+</variable>
+
+<include name="viewwall_video_leftartwork">
+	<control type="group">
+		<description>Artwork ueber Focusposter</description>
+		<left>1000</left>
+		<top>55</top>
+		<include>animation_vhoc_fade</include>
+		<visible>!ListItem.IsParentFolder</visible>
+		<control type="group">
+			<control type="image">
+				<description>ClearArt</description>
+				<top>139</top>
+				<width>245</width>
+				<height>8</height>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" colordiffuse="$VAR[AC_value_shadow_color]">borders/border_line3.png</texture>
+				<visible>[String.Contains(Skin.String(WallArtwork1),Clear-Art) | String.IsEmpty(Skin.String(WallArtwork1))] + !String.IsEmpty(Control.GetLabel(5303))</visible>
+			</control>
+			<control type="image">
+				<width>245</width>
+				<height>142</height>
+				<bordersize>15,15,15,3</bordersize>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<texture background="true">$VAR[viewwall_value_leftartwork]</texture>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="view58Wall_video">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<animation effect="zoom" end="77" center="0,720" delay="600" time="400" reversible="true" condition="!String.IsEmpty(Window(home).Property(ViewtypepreviewVisible))">Conditional</animation>
+		<visible>Control.IsVisible(58)</visible>
+		<include>viewwall_video_leftartwork</include><!-- Extra Artwork ueber Artwork focus -->
+		<control type="image">
+			<description>Background</description>
+			<left>0</left>
+			<top>232</top>
+			<width>1280</width>
+			<height>250</height>
+			<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+			<colordiffuse>ACBackgroundColor</colordiffuse>
+		</control>
+		<control type="image">
+			<description>Schatten oben</description>
+			<top>224</top>
+			<left>0</left>
+			<include>global_topshadow8</include>
+		</control>		
+		<control type="group">
+			<top>240</top>
+			<left>28</left>
+			<visible>Container.Content(genres)</visible>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>0</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue-6]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>100</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue-5]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>66</left>
+				<top>0</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue-4]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>200</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue-3]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>300</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue-2]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>66</left>
+				<top>200</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue-1]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>199</left>
+				<top>0</top>
+				<width>700</width>
+				<height>400</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/default.jpg">$VAR[viewwall_video_focusartwork]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>899</left>
+				<top>0</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue1]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>899</left>
+				<top>200</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue2]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1032</left>
+				<top>0</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue3]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1032</left>
+				<top>200</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue4]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>0</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue5]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>100</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue6]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>200</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue7]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>300</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_poster/default.jpg">$VAR[viewwall_video_postervalue8]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+		</control>
+		<control type="group">
+			<top>240</top>
+			<left>28</left>
+			<visible>!Container.Content(genres)</visible>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>0</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue-6]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>100</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue-5]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>66</left>
+				<top>0</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue-4]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>200</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue-3]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>0</left>
+				<top>300</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue-2]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>66</left>
+				<top>200</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue-1]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>199</left>
+				<top>0</top>
+				<width>700</width>
+				<height>400</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="resource://resource.images.moviegenrefanart.flex/moviegenres_fanart/default.jpg">$VAR[viewwall_video_focusartwork]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="group">
+				<visible>!Skin.HasSetting(noWalllist)</visible>
+				<include content="watched_overlayBG"><!-- watched_overlay -->
+					<param name="left">858</param>
+					<param name="top">2</param>
+					<param name="width">38</param>
+					<param name="height">38</param>
+				</include>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw.</description>
+					<left>858</left>
+					<top>5</top>
+					<width>38</width>
+					<height>38</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlay38</font>
+					<textcolor>TextColorFocus</textcolor>
+					<selectedcolor>TextColorFocus</selectedcolor>
+					<label>$VAR[WatchedOverlayFlag]</label>
+				</control>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>899</left>
+				<top>0</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue1]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>899</left>
+				<top>200</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue2]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1032</left>
+				<top>0</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue3]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1032</left>
+				<top>200</top>
+				<width>133</width>
+				<height>200</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue4]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>0</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue5]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>100</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue6]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>200</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue7]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+			<control type="image">
+				<description>artwork</description>
+				<left>1165</left>
+				<top>300</top>
+				<width>66</width>
+				<height>100</height>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="defaultpictures/DefaultMovies.png">$VAR[viewwall_video_postervalue8]</texture>
+				<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>5</bordersize>
+			</control>
+		</control>
+						
+
+		<control type="group"><!-- List -->
+			<left>232</left>
+			<top>521</top>
+			<animation effect="slide" start="-2000,0" end="-2000,0" time="0" condition="!Skin.HasSetting(noWalllist)">Conditional</animation>
+			<control type="image">
+				<description>Label Background</description>
+				<width>690</width>
+				<height>114</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Label Background</description>
+				<top>87</top>
+				<width>690</width>
+				<height>27</height>
+				<texture diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Label2 Background</description>
+				<left>590</left>
+				<width>70</width>
+				<height>114</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(songs) | Container.Content(albums) | Container.Content(years)]</visible>
+			</control>
+			<control type="fixedlist" id="58">
+				<viewtype label="Wall">list</viewtype>
+				<left>0</left>
+				<top>0</top>
+				<width>690</width>
+				<height>114</height>
+				<pagecontrol>-</pagecontrol>
+				<onleft>SetFocus(9000)</onleft><!-- menue -->
+				<onright>SetFocus(9000)</onright><!-- menue -->
+				<onup>58</onup>
+				<ondown>58</ondown>
+				<focusposition>1</focusposition>
+				<orientation>vertical</orientation>
+				<scrolltime>450</scrolltime>
+				<preloaditems>2</preloaditems>
+				<visible>!String.Contains(Container.FolderPath,plugin) + [[Container.Content(movies) + String.Contains(Skin.String(PLS_FilmViewtype),Wall) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(movies) + String.Contains(Skin.String(FilmViewtype),Wall) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(TVViewtype),Wall) + !String.Contains(Container.FolderPath,xsp)] | [Container.Content(tvshows) + String.Contains(Skin.String(PLS_TVViewtype),Wall) + String.Contains(Container.FolderPath,xsp)] | [Container.Content(genres) + String.Contains(Skin.String(GenreViewtype),Wall)] | [Container.Content(sets) + String.Contains(Skin.String(SetViewtype),Wall)]] | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+				<itemlayout  width="690" height="32">
+					<control type="image">
+						<width>690</width>
+						<height>1</height>
+						<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+						<texture>backgrounds/line.png</texture>
+					</control>
+					<control type="label"><!-- Label1  -->
+						<left>20</left>
+						<top>1</top>
+						<width>450</width>
+						<height>30</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label"><!-- rating -->
+						<left>583</left>
+						<top>1</top>
+						<width>85</width>
+						<height>27</height>
+						<font>SemiNormal</font>
+						<align>center</align>
+						<textcolor>TextColor2</textcolor>
+						<label fallback="0.0">$VAR[rating_value_label]</label>
+						<visible>!ListItem.IsParentFolder</visible>
+					</control>
+					<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+						<param name="left">650</param>
+						<param name="top">8</param>
+						<param name="width">30</param>
+						<param name="height">30</param>
+					</include>
+				</itemlayout>
+				<focusedlayout  width="690" height="50">
+					<control type="image">
+						<width>690</width>
+						<height>50</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.HasFocus(58)</visible>
+					</control>
+					<control type="image">
+						<width>690</width>
+						<height>1</height>
+						<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+						<texture>backgrounds/line.png</texture>
+						<visible>!Control.HasFocus(58)</visible>
+					</control>
+					<control type="group">
+						<visible>!Control.HasFocus(58)</visible>
+						<control type="label"><!-- Label1  -->
+							<left>20</left>
+							<width>450</width>
+							<height>30</height>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>TextColor2</textcolor>
+						</control>
+						<control type="label"><!-- Label2  -->
+							<left>20</left>
+							<top>29</top>
+							<width>450</width>
+							<height>16</height>
+							<label>$VAR[viewglobal_listinfofocus]</label>
+							<textcolor>TextColor2</textcolor>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="label">
+							<left>592</left>
+							<top>18</top>
+							<width>80</width>
+							<height>25</height>
+							<label>$VAR[Star-Ratingback-label]</label>
+							<font>Rating-smaller</font>
+							<include>Star-Rating-color-layoutback</include>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="label">
+							<left>592</left>
+							<top>18</top>
+							<width>80</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-smaller</font>
+							<include>Star-Rating-color-layout</include>
+							<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>592</left>
+							<top>18</top>
+							<width>80</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-smaller</font>
+							<include>Star-UserRating-color-layout</include>
+							<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>583</left>
+							<top>1</top>
+							<width>85</width>
+							<height>27</height>
+							<font>SemiNormal</font>
+							<align>center</align>
+							<textcolor>TextColor2</textcolor>
+							<label fallback="0.0">$VAR[rating_value_label]</label>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+					</control>
+					<control type="group">
+						<visible>Control.HasFocus(58)</visible>
+						<control type="label"><!-- Label1  -->
+							<left>20</left>
+							<width>450</width>
+							<height>30</height>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+						</control>
+						<control type="label"><!-- Label2  -->
+							<left>20</left>
+							<top>29</top>
+							<width>450</width>
+							<height>16</height>
+							<label>$VAR[viewglobal_listinfofocus]</label>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="label">
+							<left>592</left>
+							<top>18</top>
+							<width>80</width>
+							<height>25</height>
+							<label>$VAR[Star-Ratingback-label]</label>
+							<font>Rating-smaller</font>
+							<include>Star-Rating-color-layoutback</include>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+						<control type="label">
+							<left>592</left>
+							<top>18</top>
+							<width>80</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-smaller</font>
+							<include>Star-Rating-color-layout</include>
+							<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>592</left>
+							<top>18</top>
+							<width>80</width>
+							<height>25</height>
+							<label>$VAR[Star-Rating-label]</label>
+							<font>Rating-smaller</font>
+							<include>Star-UserRating-color-layout</include>
+							<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating)</visible>
+						</control>
+						<control type="label">
+							<left>583</left>
+							<top>1</top>
+							<width>85</width>
+							<height>27</height>
+							<font>SemiNormal</font>
+							<align>center</align>
+							<textcolor>TextColorFocus</textcolor>
+							<selectedcolor>TextColorSelectFO</selectedcolor>
+							<label fallback="0.0">$VAR[rating_value_label]</label>
+							<visible>!ListItem.IsParentFolder</visible>
+						</control>
+					</control>
+					<include content="watched_overlay_listLabel"><!-- watched_overlay -->
+						<param name="left">650</param>
+						<param name="top">8</param>
+						<param name="width">30</param>
+						<param name="height">30</param>
+					</include>
+				</focusedlayout>
+			</control>
+			<control type="image"><!-- Schatten links contentlist-->
+				<description>Schatten liste links</description>
+				<left>-5</left>
+				<height>114</height>
+				<include>global_texture_border5_leftv</include>
+			</control>
+			<control type="image"><!-- Schatten rechts contentlist-->
+				<description>Schatten liste links</description>
+				<left>690</left>
+				<height>114</height>
+				<include>global_texture_border5_rightv</include>
+			</control>
+		</control>
+				
+		
+		
+		
+		
+		
+		
+	</control>
+</include>
+	
+<!-- #### LOW LIST files #### -->
+<include name="LowListContainerFilesLayout">
+	<itemlayout condition="!Container.Content(songs)" width="600" height="32">
+		<control type="image">
+			<width>599</width>
+			<height>1</height>
+			<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			<texture>backgrounds/line.png</texture>
+		</control>
+		<control type="label"><!-- Label1  -->
+			<left>20</left>
+			<top>1</top>
+			<width>450</width>
+			<height>30</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$INFO[ListItem.Label]</label>
+			<visible>!String.Contains(ListItem.DBTYPE,Song)</visible>
+		</control>
+		<control type="label"><!-- Label1  -->
+			<left>20</left>
+			<top>1</top>
+			<width>450</width>
+			<height>30</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[global_trackprefix]$INFO[ListItem.TrackNumber,, - ]$INFO[ListItem.Title]</label>
+			<visible>String.Contains(ListItem.DBTYPE,Song)</visible>
+		</control>
+		<control type="label"><!-- rating -->
+			<left>480</left>
+			<top>1</top>
+			<width>85</width>
+			<height>27</height>
+			<font>SemiNormal</font>
+			<align>center</align>
+			<textcolor>TextColor2</textcolor>
+			<label fallback="0.0">$VAR[rating_value_label]</label>
+			<visible>!ListItem.IsParentFolder + [Container.Content(albums) | Container.Content(songs)]</visible>
+		</control>
+		<control type="label">
+			<left>483</left>
+			<top>1</top>
+			<width>85</width>
+			<height>27</height>
+			<font>Breadcumb-topbar</font>
+			<align>center</align>
+			<textcolor>TextColor2</textcolor>
+			<label>Ĥ</label>
+			<visible>!ListItem.IsParentFolder + Container.Content(addons) + ListItem.Property(Addon.IsEnabled)</visible>
+		</control>
+		<control type="label">
+			<left>483</left>
+			<top>1</top>
+			<width>95</width>
+			<height>27</height>
+			<align>center</align>
+			<textcolor>TextColor2</textcolor>
+			<label>$INFO[ListItem.Label2]</label>
+			<visible>!String.IsEmpty(ListItem.Size) + Window.IsVisible(pictures)</visible>
+		</control>
+		<control type="label">
+			<description>Overlay addonupdate</description>
+			<left>560</left>
+			<top>8</top>
+			<width>30</width>
+			<height>30</height>
+			<aligny>top</aligny>
+			<align>right</align>
+			<font>IconListOverlay30</font>
+			<textcolor>ACRed</textcolor>
+			<label>U</label>
+			<visible>ListItem.Property(Addon.HasUpdate)</visible>
+		</control>
+	</itemlayout>
+	<focusedlayout condition="!Container.Content(songs)"  width="600" height="50">
+		<control type="image">
+			<width>600</width>
+			<height>50</height>
+			<include>global_listfocustexture</include>
+			<visible>Control.HasFocus(51)</visible>
+		</control>
+		<control type="label">
+			<description>Overlay addonupdate</description>
+			<left>560</left>
+			<top>8</top>
+			<width>30</width>
+			<height>30</height>
+			<aligny>top</aligny>
+			<align>right</align>
+			<font>IconListOverlay30</font>
+			<textcolor>ACRed</textcolor>
+			<label>U</label>
+			<visible>ListItem.Property(Addon.HasUpdate)</visible>
+		</control>
+		<control type="group"><!-- focus  -->
+			<visible>Control.HasFocus(51)</visible>
+			<control type="label"><!-- Label1 focus  -->
+				<left>20</left>
+				<width>450</width>
+				<height>30</height>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label"><!-- Label2  -->
+				<left>20</left>
+				<top>29</top>
+				<width>450</width>
+				<height>16</height>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$VAR[viewglobal_listinfofocus]</label>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Ratingback-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layoutback</include>
+				<visible>!ListItem.IsParentFolder + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Rating-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating) + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Rating-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-UserRating-color-layout</include>
+				<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating) + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>480</left>
+				<top>1</top>
+				<width>85</width>
+				<height>27</height>
+				<font>SemiNormal</font>
+				<align>center</align>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label fallback="0.0">$VAR[rating_value_label]</label>
+				<visible>!ListItem.IsParentFolder + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>483</left>
+				<top>1</top>
+				<width>85</width>
+				<height>27</height>
+				<font>Breadcumb-topbar</font>
+				<align>center</align>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>Ĥ</label>
+				<visible>!ListItem.IsParentFolder + Container.Content(addons) + ListItem.Property(Addon.IsEnabled)</visible>
+			</control>
+			<control type="label">
+				<left>483</left>
+				<top>1</top>
+				<width>95</width>
+				<height>27</height>
+				<align>center</align>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$INFO[ListItem.Label2]</label>
+				<visible>!String.IsEmpty(ListItem.Size) + Window.IsVisible(pictures)</visible>
+			</control>
+		</control>
+		<control type="group"><!-- unfocus  -->
+			<visible>!Control.HasFocus(51)</visible>
+			<control type="label"><!-- Label1 focus  -->
+				<left>20</left>
+				<width>450</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label"><!-- Label2  -->
+				<left>20</left>
+				<top>29</top>
+				<width>450</width>
+				<height>16</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[viewglobal_listinfofocus]</label>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Ratingback-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layoutback</include>
+				<visible>!ListItem.IsParentFolder + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Rating-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>!ListItem.IsParentFolder + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>480</left>
+				<top>1</top>
+				<width>85</width>
+				<height>27</height>
+				<font>SemiNormal</font>
+				<align>center</align>
+				<textcolor>TextColor2</textcolor>
+				<label fallback="0.0">$VAR[rating_value_label]</label>
+				<visible>!ListItem.IsParentFolder + Container.Content(albums)</visible>
+			</control>
+			<control type="label">
+				<left>483</left>
+				<top>1</top>
+				<width>85</width>
+				<height>27</height>
+				<font>Breadcumb-topbar</font>
+				<align>center</align>
+				<textcolor>TextColor2</textcolor>
+				<label>Ĥ</label>
+				<visible>!ListItem.IsParentFolder + Container.Content(addons) + ListItem.Property(Addon.IsEnabled)</visible>
+			</control>
+			<control type="label">
+				<left>483</left>
+				<top>1</top>
+				<width>95</width>
+				<height>27</height>
+				<align>center</align>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+				<visible>!String.IsEmpty(ListItem.Size) + Window.IsVisible(pictures)</visible>
+			</control>
+		</control>
+	</focusedlayout>
+	<itemlayout condition="Container.Content(songs)" width="600" height="32">
+		<control type="image">
+			<width>599</width>
+			<height>1</height>
+			<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+			<texture>backgrounds/line.png</texture>
+		</control>
+		<control type="label"><!-- TrackNumber Label  -->
+			<left>20</left>
+			<top>1</top>
+			<width>35</width>
+			<height>30</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$VAR[global_trackprefix]$INFO[ListItem.TrackNumber]</label>
+		</control>
+		<control type="label"><!-- title Label  -->
+			<left>45</left>
+			<top>1</top>
+			<width>430</width>
+			<height>30</height>
+			<textcolor>TextColor2</textcolor>
+			<label>$INFO[ListItem.Title]</label>
+		</control>
+		<control type="label">
+			<left>480</left>
+			<top>1</top>
+			<width>85</width>
+			<height>27</height>
+			<font>SemiNormal</font>
+			<align>center</align>
+			<textcolor>TextColor2</textcolor>
+			<label fallback="0.0">$VAR[rating_value_label]</label>
+			<visible>!ListItem.IsParentFolder</visible>
+		</control>
+	</itemlayout>
+	<focusedlayout condition="Container.Content(songs)"  width="600" height="50">
+		<control type="image">
+			<width>600</width>
+			<height>50</height>
+			<include>global_listfocustexture</include>
+			<visible>Control.HasFocus(51)</visible>
+		</control>
+		<control type="group"><!-- focus  -->
+			<visible>Control.HasFocus(51)</visible>
+			<control type="label"><!-- TrackNumber Label  -->
+				<left>20</left>
+				<top>1</top>
+				<width>35</width>
+				<height>30</height>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$VAR[global_trackprefix]$INFO[ListItem.TrackNumber]</label>
+			</control>
+			<control type="label"><!-- title Label  -->
+				<left>45</left>
+				<top>1</top>
+				<width>430</width>
+				<height>30</height>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label>$INFO[ListItem.Title]</label>
+			</control>
+			<control type="label"><!-- Label2  -->
+				<left>45</left>
+				<top>29</top>
+				<width>430</width>
+				<height>16</height>
+				<label>$VAR[viewglobal_listinfofocus]</label>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Ratingback-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layoutback</include>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Rating-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating)</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Rating-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-UserRating-color-layout</include>
+				<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating)</visible>
+			</control>
+			<control type="label">
+				<left>480</left>
+				<top>1</top>
+				<width>85</width>
+				<height>27</height>
+				<font>SemiNormal</font>
+				<align>center</align>
+				<textcolor>TextColorFocus</textcolor>
+				<selectedcolor>TextColorSelectFO</selectedcolor>
+				<label fallback="0.0">$VAR[rating_value_label]</label>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+		</control>
+		<control type="group"><!-- unfocus  -->
+			<visible>!Control.HasFocus(51)</visible>
+			<control type="label"><!-- TrackNumber Label  -->
+				<left>20</left>
+				<top>1</top>
+				<width>35</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$VAR[global_trackprefix]$INFO[ListItem.TrackNumber]</label>
+			</control>
+			<control type="label"><!-- title Label  -->
+				<left>45</left>
+				<top>1</top>
+				<width>430</width>
+				<height>30</height>
+				<textcolor>TextColor2</textcolor>
+				<label>$INFO[ListItem.Title]</label>
+			</control>
+			<control type="label"><!-- Label2  -->
+				<left>45</left>
+				<top>29</top>
+				<width>430</width>
+				<height>16</height>
+				<label>$VAR[viewglobal_listinfofocus]</label>
+				<textcolor>TextColor2</textcolor>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Ratingback-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layoutback</include>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>492</left>
+				<top>18</top>
+				<width>80</width>
+				<height>25</height>
+				<label>$VAR[Star-Rating-label]</label>
+				<font>Rating-smaller</font>
+				<include>Star-Rating-color-layout</include>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+			<control type="label">
+				<left>480</left>
+				<top>1</top>
+				<width>85</width>
+				<height>27</height>
+				<font>SemiNormal</font>
+				<align>center</align>
+				<textcolor>TextColor2</textcolor>
+				<label fallback="0.0">$VAR[rating_value_label]</label>
+				<visible>!ListItem.IsParentFolder</visible>
+			</control>
+		</control>
+	</focusedlayout>
+</include>
+
+<include name="View51LowList_files">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<visible>Control.IsVisible(51)</visible>
+		<control type="label" id="6307">
+			<include>Hiddencontrol</include>
+			<label>$VAR[viewlowlist_video_slideinfopanelfallback]</label>
+		</control>
+		<!-- Infobutton Navigation -->
+		<control type="button" id="9927">
+			<include>Hiddencontrol</include>
+			<onleft>SetFocus(51)</onleft>
+			<onright>SetFocus(51)</onright>
+			<onup>SetFocus(51)</onup>
+			<ondown>SetFocus(51)</ondown>
+		</control>
+		<control type="group"><!-- Background -->
+			<top>400</top>
+			<control type="image">
+				<description>diffuse</description>
+				<width>1285</width>
+				<texture>backgrounds/background-smalloverlay.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background left</description>
+				<width>300</width>
+				<height>250</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background right double</description>
+				<left>900</left>
+				<width>385</width>
+				<height>250</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background right double</description>
+				<left>900</left>
+				<width>380</width>
+				<height>250</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Schatten oben</description>
+				<top>-8</top>
+				<include>global_topshadow8</include>
+			</control>
+		</control>
+
+		<control type="group"><!-- List -->
+			<left>300</left>
+			<top>400</top>
+			<control type="image">
+				<description>List Label Background</description>
+				<width>600</width>
+				<height>250</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>List Label2 Background</description>
+				<left>480</left>
+				<width>85</width>
+				<height>247</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+				<visible>[Container.Content(albums) | Container.Content(songs) | Container.Content(addons)]</visible>
+			</control>
+			<control type="fixedlist" id="51">
+				<viewtype label="$LOCALIZE[31220]">list</viewtype>
+				<width>600</width>
+				<height>250</height>
+				<pagecontrol>80</pagecontrol>
+				<onleft>SetFocus(9000)</onleft><!-- menue -->
+				<onright condition="Integer.IsGreater(Container(51).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(51).NumPages,1) + !Container.Content(albums) + !Container.Content(artists) + !Container.Content(songs) + !Container.Content(addons)">SetFocus(9000)</onright><!-- menue -->
+				<onright condition="!Integer.IsGreater(Container(51).NumPages,1) + [Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons)] + !String.IsEmpty(Control.GetLabel(5101))">SetFocus(9927)</onright><!-- slideinfopanel -->
+				<onright condition="!Integer.IsGreater(Container(51).NumPages,1) + [Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons)] + String.IsEmpty(Control.GetLabel(5101))">SetFocus(9000)</onright><!-- menue -->
+				<onup>51</onup>
+				<ondown>51</ondown>
+				<focusposition>1</focusposition>
+				<orientation>vertical</orientation>
+				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<preloaditems>2</preloaditems>
+				<!-- -->
+				<visible>[Container.Content(albums) + String.Contains(Skin.String(AlbumViewtype),Lowlist)] | [Container.Content(artists) + String.Contains(Skin.String(ArtistViewtype),Lowlist)] | [Container.Content(songs) + String.Contains(Skin.String(SongViewtype),Lowlist)] | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | !String.IsEmpty(Window(home).Property(Viewtypepreview))</visible>
+					<include>LowListContainerFilesLayout</include>
+			</control>
+			<control type="image"><!-- Schatten ueber contentlist-->
+				<description>Schatten liste links</description>
+				<left>-8</left>
+				<height>250</height>
+				<include>global_texture_border8_leftv</include>
+			</control>
+			<control type="image">
+				<description>Schatten liste rechts</description>
+				<left>600</left>
+				<height>250</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+		</control>
+		<control type="group"><!-- Artwork -->
+			<left>30</left>
+			<top>190</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<animation effect="slide" time="1000" start="-400,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" time="1000" start="-400,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" time="280" start="100" end="0">Hidden</animation>
+			<control type="group"><!-- CDART -->
+				<animation type="Visible" reversible="false">
+					<effect type="slide" start="-100,0" end="0,0" time="500" delay="500" tween="cubic" easing="out"/>
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+				</animation>
+				<animation type="Hidden" reversible="false">
+					<effect type="slide" start="0,0" end="-100,0" time="300" tween="cubic" easing="out"/>
+					<effect type="fade" start="100" end="0" time="200"/>
+				</animation>
+				<visible>!String.Contains(Control.Getlabel(5102),leer) + [Container.Content(albums) | Container.Content(songs)]</visible>
+				<control type="image">
+					<left>152</left>
+					<top>85</top>
+					<width>170</width>
+					<height>170</height>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<texture fallback="leer">$VAR[art_value_cdart]</texture>
+				</control>
+			</control>
+			<control type="group"><!-- music -->
+				<top>50</top>
+				<visible>Window.IsVisible(music)</visible>
+				<control type="image">
+					<description>reflect</description>
+					<top>261</top>
+					<width>243</width>
+					<height>243</height>
+					<bordersize>10</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+					<texture border="10" flipy="true" fallback="DefaultAudio.png" diffuse="borders/poster-reflect.png" background="true">$VAR[art_value_thumb]</texture>
+				</control>
+				<control type="image">
+					<description>thumb</description>
+					<top>40</top>
+					<width>243</width>
+					<height>243</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<texture fallback="DefaultAudio.png" background="true">$VAR[art_value_thumb]</texture>
+					<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>10</bordersize>
+				</control>
+			</control>
+			<control type="group"><!-- addon -->
+				<top>50</top>
+				<visible>!Window.IsVisible(music)</visible>
+				<control type="image">
+					<description>reflect</description>
+					<top>261</top>
+					<width>243</width>
+					<height>243</height>
+					<bordersize>10</bordersize>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+					<texture border="10" flipy="true" fallback="DefaultAddon.png" diffuse="borders/poster-reflect.png" background="true">$VAR[art_value_thumb]</texture>
+				</control>
+				<control type="image">
+					<description>thumb</description>
+					<top>40</top>
+					<width>243</width>
+					<height>243</height>
+					<aspectratio align="center" aligny="bottom">keep</aspectratio>
+					<fadetime>FanartCrossFadeTime</fadetime>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<bordertexture fallback="DefaultAddon.png" border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+					<bordersize>10</bordersize>
+				</control>
+			</control>
+		</control>		
+		<control type="group"><!-- Info -->
+			<description>Info right bottom List</description>
+			<left>920</left>
+			<top>420</top>
+			<include>animation_vhoc_fade</include>
+			<visible>!ControlGroup.HasFocus(9928) + !Control.HasFocus(9927)</visible>
+			<visible>!ListItem.IsParentFolder</visible>
+			<control type="grouplist">
+				<width>320</width>
+				<height>150</height>
+				<orientation>vertical</orientation>
+				<itemgap>5</itemgap>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo1_title] $VAR[viewglobal_value_fileinfo1_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5112))</visible>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo2_title] $VAR[viewglobal_value_fileinfo2_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5113))</visible>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo3_title] $VAR[viewglobal_value_fileinfo3_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5114))</visible>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo4_title] $VAR[viewglobal_value_fileinfo4_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5115))</visible>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo5_title] $VAR[viewglobal_value_fileinfo5_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5116))</visible>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo6_title] $VAR[viewglobal_value_fileinfo6_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5117))</visible>
+				</control>
+				<control type="label">
+					<include>viewglobal_topelements_textinfo_label</include>
+					<label>$VAR[viewglobal_value_fileinfo7_title] $VAR[viewglobal_value_fileinfo7_label]</label>
+					<visible>!String.IsEmpty(Control.GetLabel(5118))</visible>
+				</control>
+			</control>
+			<control type="image">
+				<description>infopanel indikator</description>
+				<left>310</left>
+				<top>240</top>
+				<width>20</width>
+				<height>20</height>
+				<texture colordiffuse="TextColor1">arrows/arrow_right.png</texture>
+			   <visible>!String.IsEmpty(Control.GetLabel(5101))</visible>
+			</control>
+		</control>
+		<control type="group" id="9928"><!-- Info Panel -->
+			<left>1285</left>
+			<visible allowhiddenfocus="true">!ListItem.IsParentFolder + [!ControlGroup(8888).HasFocus + [String.IsEqual(skin.string(Lowlistpanel),auto) + Control.IsVisible(9926)] | [Window.IsVisible(Custom_1113_Settings_Dialogs.xml) | Control.HasFocus(9927)]]</visible>
+			<animation effect="slide" end="385,0" time="500" tween="sine" easing="out" condition="Window.IsVisible(Custom_1113_Settings_Dialogs.xml)">conditional</animation>
+			<animation effect="slide" end="-385,0" time="500" tween="sine" easing="out">Visible</animation>
+			<animation effect="slide" end="0,0" time="500" tween="sine" easing="out">Hidden</animation>
+			<control type="image">
+				<description>Schatten panel links</description>
+				<left>-8</left>
+				<top>-235</top>
+				<height>985</height>
+				<include>global_texture_border8_leftv</include>
+			</control>
+			<control type="image">
+				<top>-335</top>
+				<width>380</width>
+				<height>555</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<top>220</top>
+				<width>380</width>
+				<height>550</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="group"><!-- Artwork -->
+				<left>30</left>
+				<top>22</top>
+				<visible>!ListItem.IsParentFolder</visible>
+				<control type="image">
+					<description>Extrafanart</description>
+					<left>-30</left>
+					<top>-15</top>
+					<width>380</width>
+					<height>213</height>
+					<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+					<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse.png">$INFO[Control.GetLabel(5300)]</texture>
+					<fadetime>PanelartworksCrossFadeTime</fadetime>
+				</control>
+				<control type="group"><!-- Fallback -->
+					<description>Fallback logo</description>
+					<visible>String.IsEmpty(Control.Getlabel(5300)) + Window.IsVisible(music)</visible>
+					<control type="image">
+						<left>-30</left>
+						<top>-2</top>
+						<width>380</width>
+						<height>200</height>
+						<texture diffuse="artworks/Infopanel_vertical_square_diffuse.png">White.png</texture>
+						<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+						<fadetime>PanelartworksCrossFadeTime</fadetime>
+					</control>
+					<control type="image">
+						<width>330</width>
+						<height>188</height>
+						<include>viewglobal_topelements_logo</include>
+					</control>
+				</control>
+				<control type="group"><!-- Fallback addons -->
+					<description>Fallback fanart bei addons</description>
+					<visible>!Window.IsVisible(music)</visible>
+					<control type="image">
+						<left>-30</left>
+						<top>-15</top>
+						<width>380</width>
+						<height>213</height>
+						<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+						<texture background="true" fallback="defaultpictures/DefaultAddonExtrathumb.png" diffuse="artworks/Infopanel_vertical_square_diffuse.png">$VAR[value_defaultfanart]</texture>
+						<fadetime>PanelartworksCrossFadeTime</fadetime>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Info -->
+				<left>30</left>
+				<top>240</top>
+				<control type="textbox"><!-- plot -->
+					<width>330</width>
+					<include>PlotNormal352</include>
+					<pagecontrol>83</pagecontrol>
+					<label>$VAR[viewglobal_value_plot]</label>
+					<autoscroll delay="30000" time="3000" repeat="30000">true</autoscroll>
+				</control>
+			</control>
+			<control type="image">
+				<description>Schatten</description>
+				<top>220</top>
+				<width>380</width>
+				<include>global_bottomshadow5</include>
+			</control>
+		</control>
+		<control type="scrollbar" id="80"><!-- scrollbar -->
+			<include>scrollbar_vertical</include>
+			<left>863</left>
+			<top>401</top>
+			<height>250</height>
+			<onleft>51</onleft>
+			<onright condition="Container.Content(genres)">SetFocus(9000)</onright><!-- menue -->
+			<onright condition="!Container.Content(genres) + [Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons)] + !String.IsEmpty(Control.GetLabel(5101))">SetFocus(9927)</onright><!-- slideinfopanel -->
+			<onright condition="!Container.Content(genres) + String.IsEmpty(Control.GetLabel(5101))">SetFocus(9000)</onright><!-- menue wenn plot leer -->
+			<visible allowhiddenfocus="true">Control.IsVisible(51) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+
+<include name="View51LowList_pictures">
+	<control type="group">
+		<animation effect="fade" time="400">VisibleChange</animation>
+		<visible>Control.IsVisible(51)</visible>
+		<control type="group"><!-- Background -->
+			<top>400</top>
+			<control type="image">
+				<description>diffuse</description>
+				<width>1285</width>
+				<texture>backgrounds/background-smalloverlay.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background left</description>
+				<width>680</width>
+				<height>320</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background right double</description>
+				<left>680</left>
+				<width>600</width>
+				<height>320</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor_light</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Background right double</description>
+				<left>680</left>
+				<width>600</width>
+				<height>320</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>Schatten oben</description>
+				<top>-8</top>
+				<include>global_topshadow8</include>
+			</control>
+		</control>
+		<control type="group"><!-- List -->
+			<left>680</left>
+			<top>400</top>
+			<control type="image">
+				<description>List Label Background</description>
+				<width>600</width>
+				<height>300</height>
+				<texture flipy="true" diffuse="backgrounds/background-overlay-diffuse.png">White.png</texture>
+				<colordiffuse>ACBackgroundColor</colordiffuse>
+			</control>
+			<control type="image">
+				<description>List Label2 Background</description>
+				<left>470</left>
+				<width>120</width>
+				<height>297</height>
+				<texture>White.png</texture>
+				<colordiffuse>ACBackgroundColor_heavy</colordiffuse>
+			</control>
+			<control type="fixedlist" id="51">
+				<viewtype label="$LOCALIZE[31220]">list</viewtype>
+				<width>600</width>
+				<height>300</height>
+				<pagecontrol>80</pagecontrol>
+				<onleft>SetFocus(9000)</onleft><!-- menue -->
+				<onright condition="Integer.IsGreater(Container(51).NumPages,1)">80</onright>
+				<onright condition="!Integer.IsGreater(Container(51).NumPages,1)">SetFocus(9000)</onright><!-- menue -->
+				<onup>51</onup>
+				<ondown>51</ondown>
+				<focusposition>1</focusposition>
+				<orientation>vertical</orientation>
+				<scrolltime>450</scrolltime>
+				<preloaditems>2</preloaditems>
+				<visible>Window.IsVisible(pictures)</visible>
+					<include>LowListContainerFilesLayout</include>
+			</control>
+			<control type="image"><!-- Schatten ueber contentlist-->
+				<description>Schatten liste links</description>
+				<left>-8</left>
+				<height>300</height>
+				<include>global_texture_border8_leftv</include>
+			</control>
+			<control type="image">
+				<description>Schatten liste rechts</description>
+				<left>600</left>
+				<height>300</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+		</control>
+		<control type="group"><!-- Artwork -->
+			<left>30</left>
+			<top>230</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<animation effect="slide" time="1000" start="-400,0" end="0,0" tween="cubic" easing="out">WindowOpen</animation>
+			<animation effect="slide" time="1000" start="-400,0" end="0,0" tween="cubic" easing="out">Visible</animation>
+			<animation effect="fade" time="280" start="100" end="0">Hidden</animation>
+			<control type="image">
+				<description>reflect</description>
+				<top>261</top>
+				<width>620</width>
+				<height>400</height>
+				<bordersize>10</bordersize>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<aspectratio align="right" aligny="top">keep</aspectratio>
+				<texture border="10" flipy="true" fallback="DefaultAddon.png" diffuse="borders/poster-reflect.png" background="true">$VAR[art_value_thumb]</texture>
+			</control>
+			<control type="image">
+				<description>thumb</description>
+				<top>40</top>
+				<width>620</width>
+				<height>400</height>
+				<aspectratio align="right" aligny="bottom">keep</aspectratio>
+				<fadetime>FanartCrossFadeTime</fadetime>
+				<texture background="true">$INFO[ListItem.Icon]</texture>
+				<bordertexture border="10" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+				<bordersize>10</bordersize>
+			</control>
+		</control>
+		<control type="scrollbar" id="80"><!-- scrollbar -->
+			<include>scrollbar_vertical</include>
+			<left>1250</left>
+			<top>401</top>
+			<height>250</height>
+			<onleft>51</onleft>
+			<onright>SetFocus(9000)</onright><!-- menue -->
+			<visible allowhiddenfocus="true">Control.IsVisible(51) + Control.HasFocus(80)</visible>
+		</control>
+	</control>
+</include>
+	
+
+
+</includes>

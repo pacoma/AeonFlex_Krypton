@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- #### shadow Color #### -->
+	<variable name="AC_value_shadow_color">
+		<value condition="!String.IsEmpty(skin.string(shadowcolor))">FF$INFO[skin.string(shadowcolor)]</value>
+		<value>ACShadowColor</value>
+	</variable>
+
+	<!-- #### progress Color #### -->
+	<variable name="AC_value_progresscolor">
+		<value condition="!String.IsEmpty(skin.string(progresscolor))">FF$INFO[skin.string(progresscolor)]</value>
+		<value>ACprogress</value>
+	</variable>
+
+	<!-- #### starrating Colors #### -->
+	<variable name="AC_value_starrating_color">
+		<value condition="!String.IsEmpty(skin.string(starratingcolor))">FF$INFO[skin.string(starratingcolor)]</value>
+		<value>ACRatingColor</value>
+	</variable>
+	<variable name="AC_value_userrating_color">
+		<value condition="!String.IsEmpty(skin.string(userratingcolor))">FF$INFO[skin.string(userratingcolor)]</value>
+		<value>ACUserratingColor</value>
+	</variable>
+	
+	<!-- #### watched Overlay #### -->
+	<variable name="watched_overlay_color">
+		<value condition="!String.IsEmpty(skin.string(watched_overlay_color))">$INFO[skin.string(watched_overlay_color)]</value>
+		<value>ACOverlayWatched</value>
+	</variable>
+	<variable name="ongoing_overlay_color">
+		<value condition="!String.IsEmpty(skin.string(ongoing_overlay_color))">$INFO[skin.string(ongoing_overlay_color)]</value>
+		<value>ACOverlayOngoing</value>
+	</variable>
+	<variable name="new_overlay_color">
+		<value condition="!String.IsEmpty(skin.string(new_overlay_color))">$INFO[skin.string(new_overlay_color)]</value>
+		<value>ACOverlayNew</value>
+	</variable>
+	<variable name="set_overlay_color">
+		<value condition="!String.IsEmpty(skin.string(set_overlay_color))">$INFO[skin.string(set_overlay_color)]</value>
+		<value>ACOverlaySet</value>
+	</variable>
+	
+	
+	<!-- ####MusicViz Colors ####-->
+
+<variable name="Colorswitch">
+	<value condition="Skin.HasSetting(Colorswitch)">FF000000</value>
+	<value>TextColorFocus</value>
+</variable>
+<variable name="ColorswitchInv">
+	<value condition="Skin.HasSetting(Colorswitch)">TextColorFocus</value>
+	<value>00000000</value>
+</variable>
+
+<variable name="MusicVizLight">
+	<value condition="Skin.HasSetting(Colorswitch)">FF9A9999</value><!-- dark -->
+	<value>TextColor2</value>
+</variable>
+
+<variable name="MusicVizMedium">
+	<value condition="Skin.HasSetting(Colorswitch)">FFBCBBBB</value><!-- dark -->
+	<value>TextColor2</value>
+</variable>
+
+<variable name="MusicVizHeavy">
+	<value condition="Skin.HasSetting(Colorswitch)">FFE5E5E5</value><!-- dark -->
+	<value>TextColor1</value>
+</variable>
+	<!-- ####settings dialog ####-->
+	<variable name="AC_value_colorsettings_helptext_left">
+		<value condition="String.IsEqual(Window(skinsettings).Property(TextcolorString),userratingcolor)">$LOCALIZE[31586]</value><!-- nutzer bewertungen -->
+		<value condition="String.IsEqual(Window(skinsettings).Property(TextcolorString),starratingcolor)">$LOCALIZE[31585]</value><!-- bewertungen -->
+		<value condition="String.IsEqual(Window(skinsettings).Property(TextcolorString),progresscolor)">$LOCALIZE[31584]</value><!-- selected color text -->
+		<value condition="String.IsEqual(Window(skinsettings).Property(TextcolorString),shadowcolor)">$LOCALIZE[31583]</value><!-- schatten -->
+	</variable>
+
+	<variable name="AC_value_colorsettings_helptext_right">
+		<value condition="!Control.HasFocus(95292)">$VAR[AC_value_colorselection_Titellabel]</value>
+		<value>$LOCALIZE[31206]</value><!-- nutzer bewertungen -->
+	</variable>
+	
+	<variable name="AC_value_colorselection_Titellabel">
+		<value condition="!Control.HasFocus(95292)">$INFO[Window(skinsettings).Property(ColordialogTitle)]</value>
+		<value>$LOCALIZE[31205]</value>
+	</variable>
+</includes>

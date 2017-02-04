@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol always="true">5400</defaultcontrol>
+<menucontrol>5446</menucontrol>
+<onload condition="Window.Isvisible(Custom_1125_Info.xml)">Dialog.close(1125)</onload><!-- autosclose bei falschem inhalt -->
+<onload condition="!String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEqual(ListItem.DBTYPE,episode)">close</onload><!-- autosclose bei falschem inhalt -->
+<onload>ClearProperty(PlottextReadMode,videos)</onload><!-- Plotzoom reset -->
+<onload>ClearProperty(InfobottomBar,home)</onload>
+<onload>ClearProperty(Selectdialogcategory,home)</onload>
+<onload>ClearProperty(SelectdialogcategoryTitle,home)</onload>
+<onunload>ClearProperty(Infovisible,home)</onunload>
+<onunload>ClearProperty(InfobottomBar,home)</onunload>
+<onunload>ClearProperty(Selectdialogcategory,home)</onunload>
+<onunload>ClearProperty(SelectdialogcategoryTitle,home)</onunload>
+<onunload>ClearProperty(PlottextReadMode,videos)</onunload><!-- Plotzoom reset -->
+	<onunload condition="Window.IsVisible(1154)">fullscreen</onunload>
+	<onload condition="!String.IsEmpty(Window(home).Property(Videoratinginfo))">SetProperty(Ratingdialog,Userrating,home)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(Videoratinginfo))">SendClick(2003,7)</onload>
+<controls>
+<control type="image">
+	<include>single-bg</include>
+	<texture fallback="empty">$INFO[Container(511).ListItem.Icon]</texture>
+	<animation effect="fade" start="0" end="100" time="500" delay="1000" tween="quadratic" easing="out">Visible</animation>
+	<animation effect="fade" start="100" end="0" time="500" delay="0" tween="sine" easing="out">Hidden</animation>
+	<visible>Window.IsVisible(home) + Control.HasFocus(511)</visible>
+</control>
+<control type="group">
+	<control type="label" id="3074"><!-- MPAA String.IsEmpty Condition -->
+		<label>$VAR[flags_value_mpaa]</label>
+		<include>Hiddencontrol</include>
+	</control>
+	<control type="button" id="6">
+		<description>default button Refresh</description>
+		<include>Hiddencontrol</include>
+	</control>
+	<control type="button" id="10">
+		<description>default button Get Fanart</description>
+		<include>Hiddencontrol</include>
+	</control>
+	<control type="label" id="5309"><!-- hiddencondition last watched -->
+		<include>Hiddencontrol</include>
+		<label>$VAR[viewglobal_video_value_lastshow]</label>
+	</control>
+	<control type="button" id="5400"><!-- default focus -->
+		<include>Hiddencontrol</include>
+		<onfocus condition="Window.IsVisible(home)">6415</onfocus><!-- home default menue -->
+		<onfocus condition="!Window.IsVisible(home) + String.IsEqual(Skin.String(VideoinfoStartFocus),Info)">SetProperty(InfobottomBar,Movieinfos,home)</onfocus><!-- info -->
+		<onfocus condition="!Window.IsVisible(home) + String.IsEqual(Skin.String(VideoinfoStartFocus),Info)">SetFocus(5415)</onfocus><!-- info -->
+		<onfocus condition="!Window.IsVisible(home) + String.IsEqual(Skin.String(VideoinfoStartFocus),Menue) | String.IsEmpty(Skin.String(VideoinfoStartFocus))">SetProperty(InfobottomBar,Temp,home)</onfocus><!-- menue -->
+		<onfocus condition="!Window.IsVisible(home) + String.IsEqual(Skin.String(VideoinfoStartFocus),Menue) | String.IsEmpty(Skin.String(VideoinfoStartFocus))">SetFocus(9031)</onfocus><!-- menue -->
+		<onfocus condition="!Window.IsVisible(home) + String.IsEqual(Skin.String(VideoinfoStartFocus),Actions)">SetProperty(InfobottomBar,Temp,home)</onfocus><!-- menue2 -->
+		<onfocus condition="!Window.IsVisible(home) + String.IsEqual(Skin.String(VideoinfoStartFocus),Actions)">SetFocus(9033)</onfocus><!-- menue2 -->
+		<onleft>SetProperty(InfobottomBar,Temp,home)</onleft>
+		<onleft>SetFocus(9031)</onleft>
+		<onright>SetProperty(InfobottomBar,Temp,home)</onright>
+		<onright>SetFocus(9031)</onright>
+		<onup>SetProperty(InfobottomBar,Temp,home)</onup>
+		<onup>SetFocus(9031)</onup>
+		<ondown>SetProperty(InfobottomBar,Temp,home)</ondown>
+		<ondown>SetFocus(9031)</ondown>
+	</control>
+	<control type="button" id="5415"><!-- hidden nav button info -->
+		<include>Hiddencontrol</include>
+		<onleft>ClearProperty(PlottextReadMode,videos)</onleft>
+		<onleft>SetProperty(InfobottomBar,Temp,home)</onleft>
+		<onleft>SetFocus(9031)</onleft>
+		<onright>ClearProperty(PlottextReadMode,videos)</onright>
+		<onright>SetProperty(InfobottomBar,Temp,home)</onright>
+		<onright>SetFocus(9031)</onright>
+		<onup>ClearProperty(PlottextReadMode,videos)</onup>
+		<onup>SetProperty(InfobottomBar,Temp,home)</onup>
+		<onup>SetFocus(9031)</onup>
+		<ondown>ClearProperty(PlottextReadMode,videos)</ondown>
+		<ondown>SetProperty(InfobottomBar,Temp,home)</ondown>
+		<ondown>SetFocus(9031)</ondown>
+		<onclick>SetProperty(PlottextReadMode,Read,videos)</onclick>
+		<onclick>SetFocus(613)</onclick>
+	</control>
+	<control type="button" id="5446"><!-- menuecontrolbutton -->
+		<width>1280</width>
+		<height>720</height>
+		<texturefocus>-</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<onfocus>SetProperty(InfobottomBar,Temp,home)</onfocus>
+		<onfocus>SetFocus(9031)</onfocus>
+	</control>
+	<include condition="!Window.IsVisible(Custom_1154_VideoFakeOverlay.xml) + !Window.IsVisible(home) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,episode)]">videoinfo</include>
+	<include condition="Skin.HasSetting(ModernHome) + [Window.IsVisible(home) | Window.IsVisible(Custom_1154_VideoFakeOverlay.xml)] + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,episode)]">modern_home_videoinfo</include>
+	<include condition="!Skin.HasSetting(ModernHome) + [Window.IsVisible(home) | Window.IsVisible(Custom_1154_VideoFakeOverlay.xml)] + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,episode)]">classic_home_videoinfo</include>
+</control>
+</controls>
+</window>

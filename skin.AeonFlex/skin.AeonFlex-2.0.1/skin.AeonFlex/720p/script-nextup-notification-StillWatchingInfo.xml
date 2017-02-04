@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol always="true">4012</defaultcontrol>
+<zorder>0</zorder>
+<controls>
+<control type="label" id="4000">
+	<visible>false</visible>
+</control>
+<control type="image" id="4001">
+	<visible>false</visible>
+</control>
+<control type="image" id="4002">
+	<visible>false</visible>
+</control>
+<control type="label" id="4003">
+	<visible>false</visible>
+</control>
+<control type="label" id="4004">
+	<visible>false</visible>
+</control>
+<control type="image" id="4005">
+	<visible>false</visible>
+</control>
+<control type="textbox" id="4006">
+	<visible>false</visible>
+</control>
+<control type="image" id="4007">
+	<visible>false</visible>
+</control>
+<control type="label" id="4008">
+	<visible>false</visible>
+</control>
+<control type="label" id="4009">
+	<visible>false</visible>
+</control>
+<control type="label" id="4010">
+	<visible>false</visible>
+</control>
+<control type="label" id="4011">
+	<visible>false</visible>
+</control>
+<control type="image" id="4014">
+	<visible>false</visible>
+</control>
+<control type="label" id="4018">
+	<visible>false</visible>
+</control>
+<control type="group">
+	<left>426</left>
+	<top>-1</top>
+	<animation effect="slide" start="0,-70" end="0,0" time="280" easing="inout" tween="cubic">WindowOpen</animation>
+	<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+	<control type="image">
+		<width>442</width>
+		<height>60</height>
+		<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/bar-shadow.png</texture>
+	</control>
+	<control type="image">
+		<width>442</width>
+		<height>60</height>
+		<texture colordiffuse="ACBackgroundColor">backgrounds/bar.png</texture>
+	</control>
+	<control type="group"><!-- progress kreis -->
+		<left>70</left>
+		<top>6</top>
+		<width>50</width>
+		<height>50</height>
+		<control type="label">
+			<width>auto</width>
+			<height>36</height>
+			<textcolor>TextColor3</textcolor>
+			<font>Seekbar-progressicon</font>
+			<label>Ņ</label>
+		</control>
+		<control type="label">
+			<width>auto</width>
+			<height>36</height>
+			<textcolor>ACSkinColor</textcolor>
+			<font>Seekbar-progressicon</font>
+			<label>$VAR[value_playerprogressicon]</label>
+		</control>
+		<control type="label">
+			<width>auto</width>
+			<height>36</height>
+			<textcolor>ACSkinColor</textcolor>
+			<font>Seekbar-progressicon</font>
+			<label>$VAR[value_playerprogressinlay]</label>
+		</control>
+	</control>
+	<control type="label">
+		<description>Seekbar Label</description>
+		<left>135</left>
+		<top>7</top>
+		<width>300</width>
+		<height>20</height>
+		<font>SemiLarge</font>
+		<label>$LOCALIZE[31043]</label>
+	</control>
+	<control type="fadelabel">
+		<description>Elapsed Time Label</description>
+		<left>135</left>
+		<top>28</top>
+		<width>240</width>
+		<height>20</height>
+		<pauseatend>3000</pauseatend>
+		<scrollout>false</scrollout>
+		<label>$LOCALIZE[31075] $INFO[Control.GetLabel(4008)]x$INFO[Control.GetLabel(4009)] </label>
+		<label>$INFO[Control.GetLabel(4010)]</label>
+		<label>$INFO[Control.GetLabel(4000)]</label>
+	</control>
+	<control type="button" id="4013">
+		<description>Cancel</description>
+		<include>Hiddencontrol</include>
+		<onleft>4012</onleft>
+		<onright>4012</onright>
+		<onup>4012</onup>
+		<ondown>4012</ondown>
+		<onfocus>PreviousMenu</onfocus>
+	</control>
+	<control type="button" id="4012">
+		<description>Watch Now</description>
+		<include>Hiddencontrol</include>
+		<onleft>Sendclick(4013)</onleft>
+		<onright>Sendclick(4013)</onright>
+		<onup>Sendclick(4013)</onup>
+		<ondown>Sendclick(4013)</ondown>
+	</control>
+</control>
+</controls>
+</window>

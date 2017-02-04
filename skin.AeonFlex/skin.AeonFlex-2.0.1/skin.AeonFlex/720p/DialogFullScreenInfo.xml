@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol always="true">5553</defaultcontrol>
+<coordinates>
+	<left>30</left>
+	<top>0</top>
+</coordinates>
+<controls>
+<control type="image" id="2300"><!-- AudioLanguage icon -->
+	<left>-200</left>
+	<top>-85</top>
+	<width>25</width>
+	<height>25</height>
+	<aspectratio>keep</aspectratio>
+	<texture fallback="leer.png">$INFO[VideoPlayer.Country,resource://resource.images.languageflags.colour/,.png]</texture>
+</control>
+<control type="button" id="5553">
+	<description>Default Focusbutton umschalten</description>
+	<left>-100</left>
+	<top>-100</top>
+	<width>80</width>
+	<height>80</height>
+	<include>HiddenControl</include>
+	<onup>5553</onup>
+	<ondown>5553</ondown>
+	<onleft>5553</onleft>
+	<onright>5553</onright>
+	<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten) + String.IsEmpty(Window(home).Property(osdinfoplot))">SetProperty(osdinfoplot,on,home)</onclick>
+	<onclick condition="String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten) + !String.IsEmpty(Window(home).Property(osdinfoplot))">ClearProperty(osdinfoplot,home)</onclick>
+	<onclick condition="String.IsEmpty(Skin.String(DefaultFullscreeninfolayout)) + String.IsEmpty(Window(home).Property(osdinfoplot2))">SetProperty(osdinfoplot2,on,home)</onclick>
+	<onclick condition="String.IsEmpty(Skin.String(DefaultFullscreeninfolayout)) + !String.IsEmpty(Window(home).Property(osdinfoplot2))">ClearProperty(osdinfoplot2,home)</onclick>
+</control>
+<control type="group">
+	<include>animation_osd_vhoc_bottombarslide</include>
+	<visible>!Window.IsVisible(script-nextup-notification-NextUpInfo.xml) + !Window.IsVisible(Custom_1113_Settings_Dialogs.xml) + !Window.IsVisible(VideoOSD)</visible>
+	<visible>String.IsEqual(Skin.String(DefaultFullscreeninfolayout),unten) | !String.IsEmpty(Window(home).Property(osdinfoplot2)) | VideoPlayer.Content(files)</visible>
+	<include>DialogFulscreeninfo-bottom</include>
+</control>
+<control type="group">
+	<include>animation_window</include>
+	<visible>!VideoPlayer.Content(files) + !Window.IsVisible(Custom_1113_Settings_Dialogs.xml) + !Window.IsVisible(VideoOSD)</visible>
+	<visible>!Window.IsVisible(script-nextup-notification-NextUpInfo.xml) + String.IsEmpty(Skin.String(DefaultFullscreeninfolayout)) | !String.IsEmpty(Window(home).Property(osdinfoplot))</visible>
+	<include>DialogFulscreeninfo-top</include>
+</control>
+</controls>
+</window>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- AeonKN draft kopie -->
+<defaultcontrol always="true">71</defaultcontrol>
+<views>71</views>
+<menucontrol>9000</menucontrol>
+<controls>
+	<include>CommonBackground</include>
+	<control type="group"><!-- Visualization -->
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<control type="videowindow">
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasVideo</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+		<control type="visualisation">
+			<width>1280</width>
+			<height>720</height>
+			<visible>Player.HasAudio</visible>
+			<animation effect="slide" start="0,0" end="-2000,0" time="0">WindowClose</animation>
+		</control>
+	</control>
+	<control type="group">
+		<animation effect="fade" reversible="true" time="300">VisibleChange</animation>
+		<include>animation_window</include>
+		<visible>![Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRGuideSearch) | Window.IsActive(PVRTimerSetting)]</visible>
+		<visible>Control.IsVisible(71)</visible>
+		<control type="group"><!-- info search values focus-->
+			<top>585</top>
+			<include>PVR_PVRCommonInfo</include>
+			<animation type="Visible">
+				<effect type="fade" end="100" time="280" tween="sine" easing="out"/>
+				<effect type="slide" start="0,135" end="0,0" time="280" tween="sine" easing="out"/>
+			</animation>
+			<animation type="Hidden">
+				<effect type="fade" end="0" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+				<effect type="slide" start="0,0" end="0,720" time="280" delay="280" tween="sine" easing="out" reversible="true"/>
+			</animation>
+		</control>
+		<control type="group">
+			<top>130</top>
+			<control type="image">
+				<description>Hintergrund links</description>
+				<width>240</width>
+				<height>440</height>
+				<include>global_texture_light</include>
+			</control>
+			<control type="image"><!-- Background right-->
+				<description>Hintergrund</description>
+				<left>240</left>
+				<width>1040</width>
+				<height>440</height>
+				<include>global_texture_heavy</include>
+			</control>
+			<control type="image">
+				<description>hintergrund titel</description>
+				<width>240</width>
+				<include>global_texture_title</include>
+			</control>
+			<control type="label">
+				<description>titel</description>
+				<left>20</left>
+				<width>220</width>
+				<include>global_label_title</include>
+				<label>$LOCALIZE[19148]</label>
+			</control>
+			<control type="image">
+				<top>-8</top>
+				<include>global_topshadow8</include>
+			</control>
+			<control type="image">
+				<description>schatten unter</description>
+				<top>440</top>
+				<include>global_bottomshadow8</include>
+			</control>
+			<control type="panel" id="71"><!-- list -->
+				<top>70</top>
+				<width>1280</width>
+				<height>360</height>
+				<onup>71</onup>
+				<onleft condition="Window.Previous(radioguide)">ActivateWindow(radioguide)</onleft>
+				<onleft condition="Window.Previous(tvguide)">ActivateWindow(tvguide)</onleft>
+				<onleft condition="![Window.Previous(radioguide) | Window.Previous(tvguide)]">close</onleft>
+				<ondown>71</ondown>
+				<onright condition="!Integer.IsGreater(Container(71).NumPages,1) + Window.Previous(radioguide)">ActivateWindow(radioguide)</onright>
+				<onright condition="!Integer.IsGreater(Container(71).NumPages,1) + Window.Previous(tvguide)">ActivateWindow(tvguide)</onright>
+				<onright condition="!Integer.IsGreater(Container(71).NumPages,1) + ![Window.Previous(radioguide) | Window.Previous(tvguide)]">close</onright>
+				<pagecontrol>80</pagecontrol>
+				<scrolltime>350</scrolltime>
+				<itemlayout width="1100" height="40">
+					<control type="label">
+						<width>239</width>
+						<height>40</height>
+						<textoffsety>7</textoffsety>
+						<textoffsetx>20</textoffsetx>
+						<aligny>top</aligny>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>3</height>
+						<texture colordiffuse="$VAR[AC_value_shadow_color]">backgrounds/divider.png</texture>
+					</control>
+					<control type="label">
+						<left>250</left>
+						<width>300</width>
+						<height>40</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.StartDate] [B]$INFO[ListItem.StartTime][/B]</label>
+					</control>
+					<control type="label">
+						<left>550</left>
+						<top>1</top>
+						<width>560</width>
+						<height>38</height>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>1180</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor3">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1180</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1180</left>
+						<top>10</top>
+						<width>20</width>
+						<height>20</height>
+						<texture>pvr/pvr_hastimer.png</texture>
+						<visible>ListItem.HasTimer + ![ListItem.IsRecording]</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40" width="1100">
+					<control type="image">
+						<top>1</top>
+						<width>240</width>
+						<height>38</height>
+						<include>global_listfocustexture</include>
+						<animation effect="fade" start="100" end="50" time="50" condition="!Control.Hasfocus(71)">conditional</animation>
+					</control>
+					<control type="image">
+						<left>240</left>
+						<top>1</top>
+						<width>1040</width>
+						<height>38</height>
+						<include>global_listfocustexture</include>
+					</control>
+					<control type="label">
+						<left>0</left>
+						<top>0</top>
+						<width>239</width>
+						<height>40</height>
+						<textoffsety>7</textoffsety>
+						<textoffsetx>20</textoffsetx>
+						<aligny>top</aligny>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.ChannelName]</label>
+					</control>
+					<control type="label">
+						<left>250</left>
+						<top>0</top>
+						<width>300</width>
+						<height>40</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.StartDate] [B]$INFO[ListItem.StartTime][/B]</label>
+					</control>
+					<control type="label">
+						<left>550</left>
+						<top>1</top>
+						<width>560</width>
+						<height>38</height>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="image">
+						<left>1180</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture colordiffuse="TextColor3">pvr/pvr_isrecording_back.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1180</left>
+						<top>10</top>
+						<width>30</width>
+						<height>20</height>
+						<texture>pvr/pvr_isrecording_front.png</texture>
+						<visible>ListItem.IsRecording</visible>
+					</control>
+					<control type="image">
+						<left>1180</left>
+						<top>10</top>
+						<width>20</width>
+						<height>20</height>
+						<texture>pvr/pvr_hastimer.png</texture>
+						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="image"><!-- Shadow liste menue links darueber -->
+				<description>Schatten</description>
+				<left>240</left>
+				<height>440</height>
+				<include>global_texture_border8_rightv</include>
+			</control>
+			<control type="scrollbar" id="80">
+				<include>scrollbar_vertical</include>
+				<left>1245</left>
+				<top>70</top>
+				<height>360</height>
+				<onleft>71</onleft>
+				<onright>36</onright>
+				<ondown>80</ondown>
+				<onup>80</onup>
+			</control>
+		</control>
+	</control>
+	<include>pvr_sidebarmenue</include><!-- sidebar 9000/90002 -->
+	<include>global_topbar_multidata</include>
+</controls>
+</window>

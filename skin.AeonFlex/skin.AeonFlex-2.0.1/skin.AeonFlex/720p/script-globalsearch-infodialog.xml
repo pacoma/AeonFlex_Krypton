@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<onload>ClearProperty(PlottextReadMode,videos)</onload><!-- Plotzoom reset -->
+<onunload>ClearProperty(PlottextReadMode,videos)</onunload><!-- Plotzoom reset -->
+	<defaultcontrol>-</defaultcontrol>
+	<controls>
+		<control type="list" id="100">
+			<posx>-10</posx>
+			<posy>-10</posy>
+			<width>1</width>
+			<height>1</height>
+			<visible>false</visible>
+			<itemlayout width="1" height="1"/>
+			<focusedlayout width="1" height="1"/>
+		</control>
+		<!-- Flags HiddenCondition mpaa -->
+		<control type="image" id="558">
+			<include>Hiddencontrol</include>
+			<texture>$VAR[flags_value_mpaaGS]</texture>
+		</control>
+		<!-- Bottom Info Flagbar -->
+		<control type="group">
+			<top>30</top>
+			<visible>[Control.IsVisible(110) | Control.IsVisible(140) | Control.IsVisible(150)]</visible>
+			<control type="group">
+				<animation effect="slide" start="0,300" end="0,0"  time="500" tween="sine" easing="out">WindowOpen</animation>
+				<animation effect="slide" start="0,300" end="0,0"  time="500" tween="sine" easing="out">Visible</animation>
+				<animation effect="slide" start="0,0" end="0,300"  time="500" tween="sine" easing="out">Hidden</animation>
+				<control type="image">
+					<left>-30</left>
+					<top>650</top>
+					<height>42</height>
+					<width>1685</width>
+					<texture>backgrounds/background-smalloverlay.png</texture>
+					<colordiffuse>ACBackgroundColor</colordiffuse>
+				</control>
+				<control type="grouplist">
+					<left>20</left>
+					<top>645</top>
+					<orientation>horizontal</orientation>
+					<itemgap>22</itemgap>
+				 	<control type="image">Studio 
+						<height>45</height>
+						<include>flags_image_texture</include>
+						<texture fallback="flags/defaultstudio.png">resource://resource.images.studios.coloured/$INFO[ListItem.Studio,,.png]</texture>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+					</control>
+					<control type="image"><!-- Mpaa -->
+						<include>flags_image_texture</include>
+						<texture>$VAR[flags_value_mpaaGS]</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(Mpaa)) + !String.IsEmpty(Control.GetLabel(558))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(Mpaa)) + !String.IsEmpty(Control.GetLabel(558))</visible>
+					</control>
+					<control type="image"><!-- Codec -->
+						<include>flags_image_texture</include>
+						<texture>$INFO[Container(100).ListItem.Property(VideoCodec),flags/videocodec/,.png]</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(VideoCodec))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(VideoCodec))</visible>
+					</control>
+					<control type="image"><!-- Resolution -->
+						<include>flags_image_texture</include>
+						<texture>$INFO[Container(100).ListItem.Property(VideoResolution),flags/resolution/,.png]</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(VideoResolution))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(VideoResolution))</visible>
+					</control>
+					<control type="image"><!-- Aspect -->
+						<include>flags_image_texture</include>
+						<texture>$INFO[Container(100).ListItem.Property(VideoAspect),flags/aspectratio/,.png]</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(VideoAspect))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(VideoAspect))</visible>
+					</control>
+					<control type="image"><!-- Codec audio -->
+						<include>flags_image_texture</include>
+						<texture>$INFO[Container(100).ListItem.Property(AudioCodec),flags/audiocodec/,.png]</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(AudioCodec))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(AudioCodec))</visible>
+					</control>
+					<control type="image"><!-- Channels -->
+						<include>flags_image_texture</include>
+						<texture>$INFO[Container(100).ListItem.Property(AudioChannels),flags/audiochannels/,ch.png]</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(AudioChannels))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(AudioChannels))</visible>
+					</control>
+					<control type="image"><!-- Trailer -->
+						<include>flags_image_texture</include>
+						<texture>flags/trailer.png</texture>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(Trailer))</visible>
+					</control>
+					<control type="image">
+						<include>flags_image_separator</include>
+						<visible>!String.IsEmpty(Container(100).ListItem.Property(Trailer))</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!-- infos -->
+		<control type="group">
+			<include>animation_window</include>
+			<control type="group">
+				<top>85</top>
+				<include>panelbackground</include>
+				<!-- Artwork -->
+				<control type="image">
+					<width>366</width>
+					<height>550</height>
+					<aspectratio align="center">scale</aspectratio>
+					<texture background="true"  fallback="defaultpictures/DefaultMovies.png">$INFO[Container(100).ListItem.Icon]</texture>
+				</control>
+				<control type="label"><!-- Top Title-->
+					<left>400</left>
+					<top>8</top>
+					<include>dialog_title</include>
+					<label>$INFO[Container(100).ListItem.Label]</label>
+				</control>
+				<!-- mids info -->
+				<control type="group" id="101">
+					<left>400</left>
+					<top>70</top>
+					<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+					<control type="list" id="200"><!-- The script will set this id to visible when the selected item is a programme -->
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>200</onup>
+						<ondown>200</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<left>0</left>
+								<top>0</top>
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<top>0</top>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<left>0</left>
+								<top>0</top>
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<top>0</top>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[19080]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(StartTime)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(StartTime))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[19081]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(EndTime)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(EndTime))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration),, $LOCALIZE[12391]]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[19148]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(ChannelNumber)]. $INFO[Container(100).ListItem.Property(ChannelName)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(ChannelName))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="110"><!-- The script will set this id to visible when the selected item is a movie or actor -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>SetProperty(PlottextReadMode,Read,videos)</onright>
+						<onright>613</onright>
+						<onup>110</onup>
+						<ondown>110</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[20339]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Director)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Director))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[572]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Studio)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Studio))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[562]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Year)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Year))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration),, $LOCALIZE[12391]]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration)) + !String.Contains(Container(100).ListItem.Property(Duration),min)</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration)) + String.Contains(Container(100).ListItem.Property(Duration),min)</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[563]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Rating)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Rating))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[202]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(TagLine)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(TagLine))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[203]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(PlotOutline)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(PlotOutline))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20074]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Mpaa)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Mpaa))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[567]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Playcount)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Playcount))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="120"><!-- The script will set this id to visible when the selected item is a tv show -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>120</onup>
+						<ondown>120</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[20360]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Episode)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Episode))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20416]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Premiered)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Premiered))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[572]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Studio)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Studio))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[562]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Year)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Year))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[563]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Rating)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Rating))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20074]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Mpaa)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Mpaa))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[567]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Playcount)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Playcount))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="130"><!-- The script will set this id to visible when the selected item is a season -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>130</onup>
+						<ondown>130</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[20364]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(TVShowTitle)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(TVShowTitle))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20360]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Episode)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Episode))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[567]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Playcount)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Playcount))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+
+						</content>
+					</control>
+					<control type="list" id="140"><!-- The script will set this id to visible when the selected item is a episode -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>130</onup>
+						<ondown>130</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<left>0</left>
+								<top>0</top>
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<top>0</top>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<left>0</left>
+								<top>0</top>
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<top>0</top>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[20364]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(TVShowTitle)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(TVShowTitle))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20373]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Season)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Season))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20360]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Episode)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Episode))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20339]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Director)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Director))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20416]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Premiered)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Premiered))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration),, $LOCALIZE[12391]]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration)) + !String.Contains(Container(100).ListItem.Property(Duration),min)</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration)) + String.Contains(Container(100).ListItem.Property(Duration),min)</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[563]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Rating)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Rating))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[567]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Playcount)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Playcount))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="150"><!-- The script will set this id to visible when the selected item is a music video -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>150</onup>
+						<ondown>150</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[557]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[558]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[572]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Studio)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Studio))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[20339]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Director)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Director))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[562]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Year)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Year))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[567]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Playcount)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Playcount))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="160"><!-- The script will set this id to visible when the selected item is a artist -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>160</onup>
+						<ondown>160</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[21893]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_Born)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_Born))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[21894]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_Formed)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_Formed))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[21897]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_Died)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_Died))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[21896]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_Disbanded)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_Disbanded))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[21898]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_YearsActive)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_YearsActive))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[175]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_Mood)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_Mood))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[176]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist_Style)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist_Style))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="170"><!-- The script will set this id to visible when the selected item is a album -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>170</onup>
+						<ondown>170</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[557]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[563]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album_Rating)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album_Rating))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[175]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album_Mood)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album_Mood))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[176]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album_Style)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album_Style))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[21895]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album_Theme)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album_Theme))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[146]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album_Type)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album_Type))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[21899]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album_Label)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album_Label))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[562]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Year)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Year))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+					<control type="list" id="180"><!-- The script will set this id to visible when the selected item is a song -->
+						<left>0</left>
+						<top>0</top>
+						<width>740</width>
+						<height>300</height>
+						<onleft>190</onleft>
+						<onright>190</onright>
+						<onup>180</onup>
+						<ondown>180</ondown>
+						<itemgap>0</itemgap>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="30">
+							<control type="label">
+								<width>200</width>
+								<height>30</height>
+								<textcolor>TextColor2</textcolor>
+								<selectedcolor>TextColor2</selectedcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>200</left>
+								<width>490</width>
+								<height>30</height>
+								<textcolor>TextColor1</textcolor>
+								<selectedcolor>TextColor1</selectedcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[557]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Artist)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Artist))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[558]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Album)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Album))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[554]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Track)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Track))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration),, $LOCALIZE[12391]]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration)) + !String.Contains(Container(100).ListItem.Property(Duration),min)</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[2050]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Duration)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Duration)) + String.Contains(Container(100).ListItem.Property(Duration),min)</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[563]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Rating)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Rating))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[515]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Genre)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Genre))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[562]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Year)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Year))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[567]:</label>
+								<label2>$INFO[Container(100).ListItem.Property(Playcount)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Playcount))</visible>
+							</item>
+							<item>
+								<label>$LOCALIZE[15311]</label>
+								<label2>$INFO[Container(100).ListItem.Property(Path)]</label2>
+								<onclick>noop</onclick>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Path))</visible>
+							</item>
+						</content>
+					</control>
+				</control>
+				<control type="group">
+					<left>400</left>
+					<control type="textbox"><!-- Plot -->
+						<top>400</top>
+						<width>800</width>
+						<include>PlotNormal66</include>
+						<label fallback="31009">$INFO[Container(100).ListItem.Property(Plot)]$INFO[Container(100).ListItem.Property(Artist_Description)]$INFO[Container(100).ListItem.Property(Album_Description)]$INFO[Container(100).ListItem.Property(Comment)]</label>
+						<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+						<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+					</control>
+					<control type="textbox"><!-- Plot focus -->
+						<top>95</top>
+						<width>800</width>
+						<include>PlotLarge390</include>
+						<pagecontrol>613</pagecontrol>
+						<label fallback="31009">$INFO[Container(100).ListItem.Property(Plot)]$INFO[Container(100).ListItem.Property(Artist_Description)]$INFO[Container(100).ListItem.Property(Album_Description)]$INFO[Container(100).ListItem.Property(Comment)]</label>
+						<autoscroll delay="15000" time="5000" repeat="15000">true</autoscroll>
+						<visible>!String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+					</control>
+					<control type="image">
+						<texture colordiffuse="ACSkinColor">buttons/plotzoom.png</texture>
+						<left>806</left>
+						<top>400</top>
+						<height>30</height>
+						<width>30</width>
+						<visible>String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+					</control>
+					<control type="scrollbar" id="613"><!-- scrollbar -->
+						<left>804</left>
+						<top>100</top>
+						<height>396</height>
+						<showonepage>true</showonepage><!-- include ueberschreibung -->
+						<include>scrollbar_vertical</include>
+						<onleft>ClearProperty(PlottextReadMode,videos)</onleft><!-- back -->
+						<onleft>110</onleft><!-- back -->
+						<onright>ClearProperty(PlottextReadMode,videos)</onright><!-- back -->
+						<onright>110</onright><!-- back -->
+						<onup>613</onup>
+						<ondown>613</ondown>
+						<visible allowhiddenfocus="true">Control.HasFocus(613) + !String.IsEmpty(Window(videos).Property(PlottextReadMode))</visible>
+					</control>
+				</control>
+				<control type="image">
+					<left>366</left>
+					<top>500</top>
+					<width>914</width>
+					<height>50</height>
+					<texture colordiffuse="ACSkinColor">backgrounds/background-titles.png</texture>
+				</control>
+				<control type="grouplist" id="190">
+					<left>400</left>
+					<top>500</top>
+					<width>800</width>
+					<height>50</height>
+					<onleft>190</onleft>
+					<onright>190</onright>
+					<onup>Close</onup>
+					<ondown>Close</ondown>
+					<itemgap>0</itemgap>
+					<orientation>horizontal</orientation>
+					<scrolltime tween="quadratic">200</scrolltime>
+					<control type="button" id="191">
+						<width>auto</width>
+						<height>50</height>
+						<textoffsetx>30</textoffsetx>
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<alttexturefocus>-</alttexturefocus>
+						<alttexturenofocus>-</alttexturenofocus>
+						<textcolor>TextColor2</textcolor>
+						<focusedcolor>TextColorFocus</focusedcolor>
+						<label>$LOCALIZE[186]</label>
+					</control>
+					<control type="button" id="192">
+						<width>auto</width>
+						<height>50</height>
+						<textoffsetx>30</textoffsetx>
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<alttexturefocus>-</alttexturefocus>
+						<alttexturenofocus>-</alttexturenofocus>
+						<textcolor>TextColor2</textcolor>
+						<focusedcolor>TextColorFocus</focusedcolor>
+						<label>-</label>
+					</control>
+					<control type="button" id="193">
+						<width>auto</width>
+						<height>50</height>
+						<textoffsetx>30</textoffsetx>
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<alttexturefocus>-</alttexturefocus>
+						<alttexturenofocus>-</alttexturenofocus>
+						<textcolor>TextColor2</textcolor>
+						<focusedcolor>TextColorFocus</focusedcolor>
+						<label>-</label>
+					</control>
+					<control type="button" id="2193">
+						<width>auto</width>
+						<height>50</height>
+						<textoffsetx>30</textoffsetx>
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<alttexturefocus>-</alttexturefocus>
+						<alttexturenofocus>-</alttexturenofocus>
+						<textcolor>TextColor2</textcolor>
+						<focusedcolor>TextColorFocus</focusedcolor>
+						<onclick>SetProperty(PlottextReadMode,Read,videos)</onclick>
+						<onclick>SetFocus(613)</onclick>
+						
+						<label>$LOCALIZE[20323]</label>
+					</control>
+				</control>
+				<control type="image">
+					<left>366</left>
+					<height>550</height>
+					<include>global_texture_border8_rightv</include>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

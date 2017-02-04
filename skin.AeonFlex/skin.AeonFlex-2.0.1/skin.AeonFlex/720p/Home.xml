@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<onload condition="[String.IsEqual(Skin.String(LastwatchedHistoryDialog),Dialog) | String.IsEqual(Skin.String(LastwatchedHistoryDialog),Panel)] + Window.Previous(startup)">ActivateWindow(1149)</onload><!-- Lastwatched -->
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<previouswindow>startup</previouswindow>
+<onload>ClearProperty(WindowTrailer,home)</onload>
+<onload>ClearProperty(gotv.addon.isrunning,home)</onload>
+<defaultcontrol always="true">300</defaultcontrol>
+<menucontrol>8888</menucontrol>
+<backgroundcolor>ACBackgroundColorFull</backgroundcolor>
+<controls>
+<control type="label" id="3074"><!-- MPAA String.IsEmpty Condition -->
+	<label>$VAR[widget_flagsvalue_mpaa]</label>
+	<include>Hiddencontrol</include>
+</control>
+<control type="label" id="3075"><!-- MPAA String.IsEmpty Condition -->
+	<label>$VAR[genrewidget_flagsvalue_mpaa]</label>
+	<include>Hiddencontrol</include>
+</control>
+<control type="button" id="8888"><!-- widget selector "m" Button -->
+	<description>widget selector "m" Button</description>
+	<include>Hiddencontrol</include>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx1)">SetProperty(SlotclickWidget,MainSlotx1WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx1)">SetProperty(SlotclickWidgettarget,MainSlotx1WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx1)">SetProperty(SlotclickWidgettitle,MainSlotx1WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx1)">SetProperty(SlotclickWidgetCategory,MainSlotx1WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx1)">SetProperty(SlotclickWidgetOpenClick,MainSlotx1WidgetOpenClick,1110)</onfocus>
+
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx2)">SetProperty(SlotclickWidget,MainSlotx2WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx2)">SetProperty(SlotclickWidgettarget,MainSlotx2WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx2)">SetProperty(SlotclickWidgettitle,MainSlotx2WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx2)">SetProperty(SlotclickWidgetCategory,MainSlotx2WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx2)">SetProperty(SlotclickWidgetOpenClick,MainSlotx2WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx3)">SetProperty(SlotclickWidget,MainSlotx3WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx3)">SetProperty(SlotclickWidgettarget,MainSlotx3WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx3)">SetProperty(SlotclickWidgettitle,MainSlotx3WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx3)">SetProperty(SlotclickWidgetCategory,MainSlotx3WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx3)">SetProperty(SlotclickWidgetOpenClick,MainSlotx3WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx4)">SetProperty(SlotclickWidget,MainSlotx4WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx4)">SetProperty(SlotclickWidgettarget,MainSlotx4WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx4)">SetProperty(SlotclickWidgettitle,MainSlotx4WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx4)">SetProperty(SlotclickWidgetCategory,MainSlotx4WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx4)">SetProperty(SlotclickWidgetOpenClick,MainSlotx4WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx5)">SetProperty(SlotclickWidget,MainSlotx5WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx5)">SetProperty(SlotclickWidgettarget,MainSlotx5WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx5)">SetProperty(SlotclickWidgettitle,MainSlotx5WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx5)">SetProperty(SlotclickWidgetCategory,MainSlotx5WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx5)">SetProperty(SlotclickWidgetOpenClick,MainSlotx5WidgetOpenClick,1110)</onfocus>
+
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx6)">SetProperty(SlotclickWidget,MainSlotx6WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx6)">SetProperty(SlotclickWidgettarget,MainSlotx6WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx6)">SetProperty(SlotclickWidgettitle,MainSlotx6WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx6)">SetProperty(SlotclickWidgetCategory,MainSlotx6WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx6)">SetProperty(SlotclickWidgetOpenClick,MainSlotx6WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx7)">SetProperty(SlotclickWidget,MainSlotx7WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx7)">SetProperty(SlotclickWidgettarget,MainSlotx7WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx7)">SetProperty(SlotclickWidgettitle,MainSlotx7WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx7)">SetProperty(SlotclickWidgetCategory,MainSlotx7WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx7)">SetProperty(SlotclickWidgetOpenClick,MainSlotx7WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx8)">SetProperty(SlotclickWidget,MainSlotx8WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx8)">SetProperty(SlotclickWidgettarget,MainSlotx8WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx8)">SetProperty(SlotclickWidgettitle,MainSlotx8WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx8)">SetProperty(SlotclickWidgetCategory,MainSlotx8WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx8)">SetProperty(SlotclickWidgetOpenClick,MainSlotx8WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx9)">SetProperty(SlotclickWidget,MainSlotx9WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx9)">SetProperty(SlotclickWidgettarget,MainSlotx9WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx9)">SetProperty(SlotclickWidgettitle,MainSlotx9WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx9)">SetProperty(SlotclickWidgetCategory,MainSlotx9WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slotx9)">SetProperty(SlotclickWidgetOpenClick,MainSlotx9WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot1)">SetProperty(SlotclickWidget,Mainslot1WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot1)">SetProperty(SlotclickWidgettarget,Mainslot1WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot1)">SetProperty(SlotclickWidgettitle,Mainslot1WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot1)">SetProperty(SlotclickWidgetCategory,Mainslot1WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot1)">SetProperty(SlotclickWidgetOpenClick,Mainslot1WidgetOpenClick,1110)</onfocus>
+
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot2)">SetProperty(SlotclickWidget,Mainslot2WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot2)">SetProperty(SlotclickWidgettarget,Mainslot2WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot2)">SetProperty(SlotclickWidgettitle,Mainslot2WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot2)">SetProperty(SlotclickWidgetCategory,Mainslot2WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot2)">SetProperty(SlotclickWidgetOpenClick,Mainslot2WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot3)">SetProperty(SlotclickWidget,Mainslot3WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot3)">SetProperty(SlotclickWidgettarget,Mainslot3WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot3)">SetProperty(SlotclickWidgettitle,Mainslot3WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot3)">SetProperty(SlotclickWidgetCategory,Mainslot3WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot3)">SetProperty(SlotclickWidgetOpenClick,Mainslot3WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot4)">SetProperty(SlotclickWidget,Mainslot4WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot4)">SetProperty(SlotclickWidgettarget,Mainslot4WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot4)">SetProperty(SlotclickWidgettitle,Mainslot4WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot4)">SetProperty(SlotclickWidgetCategory,Mainslot4WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot4)">SetProperty(SlotclickWidgetOpenClick,Mainslot4WidgetOpenClick,1110)</onfocus>
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot5)">SetProperty(SlotclickWidget,Mainslot5WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot5)">SetProperty(SlotclickWidgettarget,Mainslot5WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot5)">SetProperty(SlotclickWidgettitle,Mainslot5WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot5)">SetProperty(SlotclickWidgetCategory,Mainslot5WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot5)">SetProperty(SlotclickWidgetOpenClick,Mainslot5WidgetOpenClick,1110)</onfocus>
+
+	
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot6)">SetProperty(SlotclickWidget,Mainslot6WidgetContent,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot6)">SetProperty(SlotclickWidgettarget,Mainslot6WidgetTarget,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot6)">SetProperty(SlotclickWidgettitle,Mainslot6WidgetTitle,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot6)">SetProperty(SlotclickWidgetCategory,Mainslot6WidgetCategory,1110)</onfocus>
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector) + String.IsEqual(Container(300).ListItem.Label2,Slot6)">SetProperty(SlotclickWidgetOpenClick,Mainslot6WidgetOpenClick,1110)</onfocus>
+
+	<onfocus condition="!Skin.HasSetting(nohomewidgetselector)">ActivateWindow(1111)</onfocus>
+	<onfocus condition="Skin.HasSetting(nohomewidgetselector)">ActivateWindow(1121)</onfocus>
+	<onclick>noop</onclick>
+</control>
+<control type="list" id="550"><!-- genrewidget content -->
+	<onleft>550</onleft>
+	<onright>550</onright>
+	<ondown>510</ondown>
+	<orientation>horizontal</orientation>
+	<include>Compaircontainer</include>
+	<content target="video">$VAR[widget_genrecontent_focus]</content>
+	<onclick condition="!String.IsEmpty(Container(550).ListItem.Duration))">PlayMedia("$INFO[ListItem.FilenameandPath]")</onclick><!-- episode/film -->
+	<onclick condition="String.IsEmpty(Container(550).ListItem.Duration)">ActivateWindow(videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick><!-- serie -->
+	<visible>String.Contains(Container(300).ListItem.Property(WidgetCategory),moviegenres) | String.Contains(Container(300).ListItem.Property(WidgetCategory),tvshowgenres)</visible>
+</control>
+<include>HomeBackground</include>
+<include condition="!Skin.HasSetting(ModernHome)">classic_home</include>
+<include condition="Skin.HasSetting(ModernHome)">modern_home</include>
+
+
+
+</controls>
+</window>

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- flex 2.0 -->
+<variable name="switchtimer_value_numitems">
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),0)">10</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),1)">9</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),2)">8</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),3)">7</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),4)">6</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),5)">5</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),4)">4</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),3)">3</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),2)">2</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),1)">1</value>
+	<value condition="String.IsEqual(Skin.String(SwitchTimerActiveItems),0)">0</value>
+	<value></value>
+</variable>
+	
+
+
+<variable name="value_pvrcurrenticon">
+	<value condition="PVR.IsRecording">$INFO[Pvr.NowRecordingChannelIcon]</value>
+	<value condition="!PVR.IsRecording + Pvr.HasTimer">$INFO[Pvr.NextRecordingChannelIcon]</value>
+</variable>
+
+<include name="PVR_background">
+	<control type="image">
+		<description>Hintergrund links</description>
+		<top>60</top>
+		<width>240</width>
+		<height>510</height>
+		<include>global_texture_light</include>
+	</control>
+	<control type="image">
+		<description>Hintergrund rechts</description>
+		<left>240</left>
+		<top>60</top>
+		<width>1040</width>
+		<height>510</height>
+		<include>global_texture_heavy</include>
+	</control>
+	<control type="image">
+		<description>hintergrund titel rechts</description>
+		<left>240</left>
+		<top>60</top>
+		<width>1040</width>
+		<include>global_texture_title</include>
+	</control>
+	<control type="label">
+		<description>titel rechts</description>
+		<left>260</left>
+		<top>60</top>
+		<width>500</width>
+		<include>global_label_title</include>
+		<label>$INFO[Control.GetLabel(29)]</label>
+	</control>
+	<control type="label">
+		<description>titel2 rechts</description>
+		<left>760</left>
+		<top>60</top>
+		<width>500</width>
+		<include>global_label_title</include>
+		<align>right</align>
+		<label>$VAR[flex_value_systemdate]$INFO[System.Time,  |  ,]</label>
+	</control>
+	<control type="label">
+		<description>titel</description>
+		<left>20</left>
+		<top>60</top>
+		<width>200</width>
+		<textcolor>TextColor1</textcolor><!-- include ueberschreibung -->
+		<include>global_label_title</include>
+		<label>$LOCALIZE[19019]</label>
+		<visible>![Control.IsVisible(13) | Window.IsVisible(Custom_1123_PVRSwitchTimer.xml)]</visible>
+	</control>
+	<control type="label">
+		<description>titel</description>
+		<left>20</left>
+		<top>60</top>
+		<width>200</width>
+		<textcolor>TextColor1</textcolor><!-- include ueberschreibung -->
+		<include>global_label_title</include>
+		<label>$LOCALIZE[33063]</label>
+		<visible>Window.IsVisible(Custom_1123_PVRSwitchTimer.xml)</visible>
+	</control>
+	<control type="label">
+		<description>titel</description>
+		<left>20</left>
+		<top>60</top>
+		<width>200</width>
+		<textcolor>TextColor1</textcolor><!-- include ueberschreibung -->
+		<include>global_label_title</include>
+		<label>$LOCALIZE[19019]</label>
+		<visible>Control.IsVisible(13) + !Window.IsVisible(Custom_1123_PVRSwitchTimer.xml)</visible>
+	</control>
+	<control type="image">
+		<top>52</top>
+		<include>global_topshadow8</include>
+	</control>
+	<control type="image">
+		<top>570</top>
+		<include>global_bottomshadow8</include>
+	</control>
+</include>
+
+<include name="pvr_sidebarmenue"><!-- Menue -->
+	<control type="button" id="28">
+		<description>Channel Groups</description>
+		<include>Hiddencontrol</include>
+		<visible>Control.IsEnabled(28)</visible>
+	</control>
+	<control type="group" id="8888">
+		<left>310</left>
+		<top>145</top>
+		<control type="group"><!-- ebene1 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten bis 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>Integer.IsLessOrEqual(Container(9000).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>Integer.IsLessOrEqual(Container(9000).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9000).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 7 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 7 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height7</height>
+				<visible>String.IsEqual(Container(9000).NumItems,7)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 8 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 8 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height8</height>
+				<visible>String.IsEqual(Container(9000).NumItems,8)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 9 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height9</height>
+				<visible>String.IsEqual(Container(9000).NumItems,9)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 9 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height9</height>
+				<visible>String.IsEqual(Container(9000).NumItems,9)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 10 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height10</height>
+				<visible>String.IsEqual(Container(9000).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 10 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height10</height>
+				<visible>String.IsEqual(Container(9000).NumItems,10)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 11 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height11</height>
+				<visible>String.IsEqual(Container(9000).NumItems,11)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 11 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height11</height>
+				<visible>String.IsEqual(Container(9000).NumItems,11)</visible>
+			</control>
+			<control type="image">
+				<description>schatten bis 12 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height12</height>
+				<visible>String.IsEqual(Container(9000).NumItems,12)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 12 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height12</height>
+				<visible>String.IsEqual(Container(9000).NumItems,12)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 13 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height13</height>
+				<visible>Integer.IsGreater(Container(9000).NumItems,12)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 13 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height13</height>
+				<visible>Integer.IsGreater(Container(9000).NumItems,12)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[31395]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9000"><!-- 5-10 -->
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>455</height>
+				<onleft>ClearProperty(Viewtypepreview,home)</onleft><!-- close and back -->
+				<onleft>SetFocus(50)</onleft><!-- close and back -->
+				<onright>ClearProperty(Viewtypepreview,home)</onright><!-- close and back -->
+				<onright>SetFocus(50)</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<onback>50</onback>
+				<itemgap>0</itemgap>
+				<control type="button" id="2">
+					<description>View As button</description>
+					<label>$LOCALIZE[457]</label>
+					<include>dialog_buttonneu</include>
+					<visible>[Window.IsActive(TVChannels) | Window.IsActive(RadioChannels) | Window.IsVisible(tvguide) | Window.IsVisible(radioguide)]</visible>
+				</control>
+				<control type="button" id="22">
+					<description>View setting</description>
+					<label>$LOCALIZE[31302]</label><!-- Ansicht einstellen -->
+					<include>dialog_buttonneu</include>
+					<onclick condition="[Window.IsVisible(radiochannels) | Window.IsVisible(tvchannels)]">SetProperty(SettingsCategory,view51pvr,1113)</onclick>
+					<onclick condition="Window.IsVisible(tvguide) | Window.IsVisible(radioguide)">SetProperty(SettingsCategory,viewepg,1113)</onclick>
+					<onclick>ActivateWindow(1113)</onclick>
+					<visible>Control.IsVisible(51) + [Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)] | Window.IsVisible(tvguide) | Window.IsVisible(radioguide)</visible>
+				</control>
+				<control type="button" id="2222">
+					<description>qicknav</description>
+					<label>Quicknav</label>
+					<include>dialog_buttonneu</include>
+					<onclick>ActivateWindow(1120)</onclick>
+				</control>
+				<control type="button" id="209">
+					<label>$LOCALIZE[10004]</label>
+					<font>SemiNormal</font><!-- include ueberschreibung -->
+					<include>dialog_buttonneu</include>
+					<onclick>SetFocus(9002)</onclick>
+				</control>
+				<control type="button" id="3">
+					<description>Sort by</description>
+					<label>$LOCALIZE[103]</label>
+					<include>dialog_buttonneu</include>
+					<visible>Control.IsEnabled(3)</visible>
+				</control>
+				<control type="togglebutton" id="4">
+					<description>Sort asc</description>
+					<label>$LOCALIZE[31005]</label>
+					<altlabel>$LOCALIZE[31004]</altlabel>
+					<include>dialog_buttonneu</include>
+					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+					<visible>Control.IsEnabled(4)</visible>
+				</control>
+				<control type="radiobutton" id="31">
+					<description>Filter</description>
+					<label>$LOCALIZE[587]</label>
+					<include>dialog_buttonneu</include>
+					<selected>Container.Filtered</selected>
+					<onclick>right</onclick>
+					<visible>Window.IsActive(MyPVRChannels.xml)</visible>
+					<visible>Control.IsEnabled(31)</visible>
+				</control>
+				<control type="button" id="37">
+					<description>fullscreen</description>
+					<label>$LOCALIZE[31626]</label>
+					<include>dialog_buttonneu</include>
+					<onclick>fullscreen</onclick>
+					<visible>Player.HasMedia</visible>
+				</control>
+				<control type="button" id="104">
+					<description>Search</description>
+					<label>$LOCALIZE[137]</label>
+					<include>dialog_buttonneu</include>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVSearch)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioSearch)</onclick>
+					<visible>Control.IsEnabled(104) + !Window.IsVisible(MyPVRSearch.xml)</visible>
+				</control>
+				<control type="button" id="101">
+					<description>TV Guide</description>
+					<label>$LOCALIZE[22020]</label>
+					<include>dialog_buttonneu</include>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVGuide)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioGuide)</onclick>
+					<visible>!Window.IsActive(TVGuide) + !Window.IsActive(RadioGuide) + Control.IsEnabled(101)</visible>
+				</control>
+				<control type="button" id="100">
+					<description>channels</description>
+					<label>$LOCALIZE[19019]</label>
+					<include>dialog_buttonneu</include>
+					<onclick condition="Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)">NextChannelGroup</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVChannels)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioChannels)</onclick>
+					<visible>Control.IsEnabled(100)</visible>
+				</control>
+				<control type="button" id="102">
+					<description>aufnahmen</description>
+					<label>$LOCALIZE[19163]</label>
+					<include>dialog_buttonneu</include>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVRecordings)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioRecordings)</onclick>
+					<visible>Control.IsEnabled(102) + !Window.IsVisible(MyPVRRecordings.xml)</visible>
+				</control>
+				<control type="button" id="103">
+					<description>timer</description>
+					<label>$LOCALIZE[19040]</label>
+					<include>dialog_buttonneu</include>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimers)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimers)</onclick>
+					<visible>Control.IsEnabled(103) + !Window.IsVisible(MyPVRTimers.xml)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- ebene2 -->
+			<include>animation_dialog_popup</include>
+			<visible allowhiddenfocus="true">ControlGroup(9002).HasFocus + $EXP[HasNotDialogPopup]</visible>
+			<control type="image">
+				<description>schatten bis 2 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height2</height>
+				<visible>Integer.IsLessOrEqual(Container(9002).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund bis 2 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height2</height>
+				<visible>Integer.IsLessOrEqual(Container(9002).NumItems,2)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 3 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(9002).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 3 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height3</height>
+				<visible>String.IsEqual(Container(9002).NumItems,3)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 4 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9002).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 4 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height4</height>
+				<visible>String.IsEqual(Container(9002).NumItems,4)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 5 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9002).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 5 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height5</height>
+				<visible>String.IsEqual(Container(9002).NumItems,5)</visible>
+			</control>
+			<control type="image">
+				<description>schatten 6 elemente</description>
+				<include>global_dialog_shadow_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9002).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>hintergrund 6 elemente</description>
+				<include>global_dialogbg_neu</include>
+				<height>dialog-height6</height>
+				<visible>String.IsEqual(Container(9002).NumItems,6)</visible>
+			</control>
+			<control type="image">
+				<description>background header</description>
+				<include>dialog_headerfront_neu</include>
+			</control>
+			<control type="label">
+				<description>header</description>
+				<label>$LOCALIZE[10004]</label>
+				<include>dialog_headertitle_neu</include>
+			</control>
+			<control type="grouplist" id="9002">
+				<left>dialog-border</left>
+				<top>dialog-inner-top</top>
+				<width>dialog-inner-width</width>
+				<height>448</height>
+				<onleft>SetFocus(9000)</onleft>
+				<onright>SetFocus(9000)</onright>
+				<onup>9002</onup>
+				<ondown>9002</ondown>
+				<onback>SetFocus(9000)</onback>
+				<itemgap>0</itemgap>
+				<control type="radiobutton" id="5">
+					<description>Group recording items by folder structure</description>
+					<label>$LOCALIZE[19270]</label>
+					<include>dialog_buttonneu</include>
+					<visible>Window.IsActive(MyPVRRecordings.xml)</visible>
+				</control>
+				<control type="radiobutton" id="6">
+					<description>Show hidden channels</description>
+					<label>$LOCALIZE[19051]</label>
+					<include>dialog_buttonneu</include>
+					<visible>Window.IsActive(MyPVRChannels.xml)</visible>
+				</control>
+				<control type="radiobutton" id="7">
+					<description>Show deleted recordings</description>
+					<label>$LOCALIZE[19184]</label>
+					<include>dialog_buttonneu</include>
+					<visible>Window.IsActive(MyPVRRecordings.xml)</visible>
+				</control>
+				<control type="radiobutton" id="8">
+					<description>Hide disabled timers</description>
+					<label>$LOCALIZE[19077]</label>
+					<include>dialog_buttonneu</include>
+					<visible>Window.IsActive(MyPVRTimers.xml)</visible>
+				</control>
+				<control type="radiobutton" id="800">
+					<description>icons</description>
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31343]</label>
+					<onclick>Skin.ToggleSetting(borderlessPVRIcons)</onclick>
+					<selected>Skin.HasSetting(borderlessPVRIcons)</selected>
+				</control>
+				<control type="radiobutton" id="802">
+					<include>dialog_buttonneu</include>
+					<label>$LOCALIZE[31376]</label>
+					<onclick>Skin.Togglesetting(Channelview_background_video)</onclick>
+					<selected>Skin.HasSetting(Channelview_background_video)</selected>
+				</control>
+			</control>
+		</control>
+	</control>
+</include>
+
+</includes>

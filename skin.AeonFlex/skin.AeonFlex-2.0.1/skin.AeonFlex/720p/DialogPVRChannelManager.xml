@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol always="true">20</defaultcontrol>
+<controls>
+	<control type="group">
+		<left>153</left>
+		<top>142</top>
+		<width>937</width>
+		<height>435</height>
+		<include>animation_dialog_popup</include>
+		<control type="group">
+			<include content="global_dialog_mid_bg">
+				<param name="global_dialog_mid_bg-left" value="0" />
+				<param name="global_dialog_mid_bg-width" value="947" />
+				<param name="global_dialog_mid_bg-innerwidth" value="800" />
+				<param name="global_dialog_mid_bg-height" value="435" />
+				<param name="global_dialog_mid_bg-headerlabel" value="$LOCALIZE[19199] $LOCALIZE[19023]" />
+				<param name="global_dialog_mid_headerid" value="-" />
+			</include>
+			<control type="label">
+				<top>64</top>
+				<width>420</width>
+				<height>30</height>
+				<textoffsetx>20</textoffsetx>
+				<font>SemiNormal</font>
+				<label>$LOCALIZE[19210]: $INFO[ListItem.Property(ClientName)]</label>
+			</control>
+			<control type="list" id="20">
+				<top>94</top>
+				<width>420</width>
+				<height>315</height>
+				<onup>20</onup>
+				<ondown>20</ondown>
+				<onleft>9000</onleft>
+				<onright>9002</onright>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<itemlayout height="35" width="420">
+					<control type="image">
+						<left>20</left>
+						<top>5</top>
+						<width>25</width>
+						<height>25</height>
+						<texture fallback="defaultpictures/DefaultChannel.png">$INFO[ListItem.Property(Icon)]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>ListItem.Property(ActiveChannel)</visible>
+					</control>
+					<control type="image">
+						<left>20</left>
+						<top>5</top>
+						<width>25</width>
+						<height>25</height>
+						<colordiffuse fallback="defaultpictures/DefaultChannel.png">ACInaktivItems</colordiffuse>
+						<texture>$INFO[ListItem.Property(Icon)]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!ListItem.Property(ActiveChannel)</visible>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<width>335</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Property(Number),, - ]$INFO[ListItem.Property(Name)]</label>
+						<visible>ListItem.Property(ActiveChannel)</visible>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<width>335</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Property(Number),, - ]$INFO[ListItem.Property(Name)]</label>
+						<visible>!ListItem.Property(ActiveChannel)</visible>
+					</control>
+					<control type="image">
+						<left>390</left>
+						<top>5</top>
+						<width>30</width>
+						<height>30</height>
+						<texture colordiffuse="TextColor2">pvr/pvr_changed.png</texture>
+						<visible>ListItem.Property(Changed)</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout height="35" width="420">
+					<control type="image">
+						<width>420</width>
+						<height>35</height>
+						<include>global_listfocustexture</include>
+						<visible>Control.HasFocus(20)</visible>
+					</control>
+					<control type="image">
+						<left>20</left>
+						<top>5</top>
+						<width>25</width>
+						<height>25</height>
+						<texture fallback="defaultpictures/DefaultChannel.png">$INFO[ListItem.Property(Icon)]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>ListItem.Property(ActiveChannel)</visible>
+					</control>
+					<control type="image">
+						<left>20</left>
+						<top>5</top>
+						<width>25</width>
+						<height>25</height>
+						<colordiffuse>ACInaktivItems</colordiffuse>
+						<texture fallback="defaultpictures/DefaultChannel.png">$INFO[ListItem.Property(Icon)]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!ListItem.Property(ActiveChannel)</visible>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<width>335</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Property(Number),, - ]$INFO[ListItem.Property(Name)]</label>
+						<visible>ListItem.Property(ActiveChannel) + Control.HasFocus(20)</visible>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<width>335</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColorFocus</textcolor>
+						<selectedcolor>TextColorSelectFO</selectedcolor>
+						<label>$INFO[ListItem.Property(Number),, - ]$INFO[ListItem.Property(Name)]</label>
+						<visible>!ListItem.Property(ActiveChannel) + Control.HasFocus(20)</visible>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<width>335</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Property(Number),, - ]$INFO[ListItem.Property(Name)]</label>
+						<visible>ListItem.Property(ActiveChannel) + !Control.HasFocus(20)</visible>
+					</control>
+					<control type="label">
+						<left>35</left>
+						<width>335</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>TextColor2</textcolor>
+						<label>$INFO[ListItem.Property(Number),, - ]$INFO[ListItem.Property(Name)]</label>
+						<visible>!ListItem.Property(ActiveChannel) + !Control.HasFocus(20)</visible>
+					</control>
+					<control type="image">
+						<left>390</left>
+						<top>5</top>
+						<width>30</width>
+						<height>30</height>
+						<texture colordiffuse="TextColor2">pvr/pvr_changed.png</texture>
+						<visible>ListItem.Property(Changed) + !Control.HasFocus(20)</visible>
+					</control>
+					<control type="image">
+						<left>390</left>
+						<top>5</top>
+						<width>30</width>
+						<height>30</height>
+						<texture colordiffuse="TextColorFocus">pvr/pvr_changed.png</texture>
+						<visible>ListItem.Property(Changed) + Control.HasFocus(20)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="group"><!-- channel options list-->
+				<left>420</left>
+				<control type="label">
+					<description>channel options Header</description>
+					<top>64</top>
+					<width>380</width>
+					<height>30</height>
+					<textoffsetx>20</textoffsetx>
+					<font>SemiNormal</font>
+					<label>$LOCALIZE[31360]</label>
+				</control>
+				<control type="grouplist" id="9002">
+					<top>94</top>
+					<onleft>20</onleft>
+					<onright>9000</onright>
+					<onup>34</onup>
+					<ondown>30</ondown>
+					<itemgap>0</itemgap>
+					<control type="radiobutton" id="7">
+						<description>Channel activated</description>
+						<width>380</width>
+						<height>35</height>
+						<textwidth>315</textwidth>
+						<textoffsetx>20</textoffsetx>
+						<radiowidth>65</radiowidth>
+						<radioheight>55</radioheight>
+						<radioposx>310</radioposx>
+						<label>$LOCALIZE[19074]</label>
+					</control>
+					<control type="edit" id="8">
+						<description>Channel name</description>
+						<width>380</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<texturenofocus>-</texturenofocus>
+						<label>$LOCALIZE[19201]</label>
+					</control>
+					<control type="group" id="9005">
+						<width>380</width>
+						<height>40</height>
+						<control type="button" id="9">
+							<description>Channel logo Button</description>
+							<width>380</width>
+							<height>40</height>
+							<textoffsetx>20</textoffsetx>
+							<label>$LOCALIZE[19202]</label>
+							<onleft>60</onleft>
+							<onright>9000</onright>
+							<onup>8</onup>
+							<ondown>12</ondown>
+						</control>
+						<control type="image">
+							<description>Current Channel Icon</description>
+							<left>325</left>
+							<top>3</top>
+							<width>34</width>
+							<height>34</height>
+							<aspectratio>keep</aspectratio>
+							<info>ListItem.Property(Icon)</info>
+						</control>
+					</control>
+					<control type="radiobutton" id="12">
+						<description>EPG activated</description>
+						<width>380</width>
+						<height>35</height>
+						<textwidth>315</textwidth>
+						<textoffsetx>20</textoffsetx>
+						<radiowidth>65</radiowidth>
+						<radioheight>55</radioheight>
+						<radioposx>310</radioposx>
+						<label>$LOCALIZE[19206]</label>
+					</control>
+					<control type="spincontrolex" id="13">
+						<description>EPG source</description>
+						<width>380</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<textwidth>200</textwidth>
+						<texturenofocus>-</texturenofocus>
+						<spinwidth>34</spinwidth>
+						<spinheight>55</spinheight>
+						<spinposx>5</spinposx>
+						<label>$LOCALIZE[19200]</label>
+					</control>
+					<control type="radiobutton" id="14">
+						<description>Parental locked</description>
+						<width>380</width>
+						<height>35</height>
+						<textwidth>315</textwidth>
+						<textoffsetx>20</textoffsetx>
+						<radiowidth>65</radiowidth>
+						<radioheight>55</radioheight>
+						<radioposx>310</radioposx>
+						<label>$LOCALIZE[19267]</label>
+					</control>
+				</control>
+				<control type="grouplist">
+					<top>304</top>
+					<itemgap>0</itemgap>
+					<onleft>60</onleft>
+					<onright>9000</onright>
+					<onup>14</onup>
+					<ondown>7</ondown>
+					<animation effect="slide" start="0,0" end="0,35" time="0" condition="!Control.IsVisible(31)">Conditional</animation>
+					<control type="label" id="9003">
+						<description>channel options Header</description>
+						<width>380</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<font>SemiNormal</font>
+						<label>$LOCALIZE[33063]</label>
+					</control>
+					<control type="button" id="31">
+						<description>New channel Button</description>
+						<width>380</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<label>$LOCALIZE[19204]</label>
+					</control>
+					<control type="button" id="30">
+						<description>Group Manager Button</description>
+						<width>380</width>
+						<height>35</height>
+						<textoffsetx>20</textoffsetx>
+						<label>$LOCALIZE[19205]</label>
+					</control>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Button Menue -->
+			<left>800</left>
+			<top>54</top>
+			<control type="grouplist" id="9000">
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<onleft>9002</onleft>
+				<onright>20</onright>
+				<control type="button" id="4">
+					<description>OK Button</description>
+					<include>dialog_menuebutton</include>
+					<label>$LOCALIZE[186]</label>
+				</control>
+				<control type="button" id="5">
+					<description>Apply changes Button</description>
+					<include>dialog_menuebutton</include>
+					<label>$LOCALIZE[14070]</label>
+				</control>
+				<control type="button" id="6">
+					<description>Cancel Button</description>
+					<include>dialog_menuebutton</include>
+					<label>$LOCALIZE[222]</label>
+				</control>
+				<control type="label" id="4056">
+					<description>Empty Buttondivider</description>
+					<width>163</width>
+					<height>11</height>
+					<label></label>
+				</control>
+				<control type="togglebutton" id="34">
+					<description>TV/Radio toggle</description>
+					<include>dialog_menuebutton</include>
+					<label>$LOCALIZE[19024]</label>
+					<altlabel>$LOCALIZE[19023]</altlabel>
+					<usealttexture>!String.IsEmpty(Window.Property(IsRadio))</usealttexture>
+				</control>
+			</control>
+		</control>
+		<include content="global_dialog_mid_dividershadow-right">
+			<param name="global_dialog_mid_dividershadow-right-left" value="800" />
+			<param name="global_dialog_mid_dividershadow-right-height" value="425" />
+		</include>
+		<control type="image">
+			<description>divider shadow</description>
+			<left>420</left>
+			<top>94</top>
+			<width>3</width><!-- include ueberschreibung -->
+			<height>315</height>
+			<include>global_texture_border8_rightv</include>
+		</control>
+	</control>
+</controls>
+</window>

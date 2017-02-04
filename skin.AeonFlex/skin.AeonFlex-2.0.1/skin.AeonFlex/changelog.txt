@@ -1,0 +1,41 @@
+[B]2.0.0[/B]
+
+- Skinupgrade auf Kodi 17 Krypton
+- diverse Anpassungen von Farben, Ansichten und Codes
+- Umgestaltungen Skinsettings
+- Entfernen der MediaCases
+- Entfernen der UserFarbpaletten
+- Integration von German Telecast Offers
+*****************************************************************
+
+[B]1.0.1[/B]
+
+- Wechsel von der lokalen deutschen Sprachen zur Multisprachen 
+- Deutsche Sprachdatei hinzugefügt
+- Englische Sprachdatei hinzugefügt
+- Diverse Anpassungen zur Verbesserung der stabilität
+- Korrektur Musikpfad für Artistslideshow
+- Neuer Installations Ordner-Name
+- Neue Verfügbarkeit auf Github https://github.com/AeonFlex/skin.AeonFlex
+- Neue Themen verfügbar (Danke an Ikaruz)
+- Neue Schriftenarten für MusikViz eingefügt
+- Erweiterung der Ansicht SimpleList mit einem Poster rechts unten
+******************************************************************
+- Change from local german Language to Multilanguage
+- Add german string.po
+- Add english string.po
+- Various adjustments to improve stability 
+- Correction Music Pad Artist Slideshow
+- New installation folder name
+- New availability on Github https://github.com/AeonFlex/skin.AeonFlex
+- New Themes availabel (Thanks to Ikaruz)
+- New fonts added for MusikViz
+- Expansion considers SimpleList a poster bottom right
+
+
+[B]1.0.0[/B]
+
+- Erstes stabiles Release
+*******************************************************************
+- First stable Release
+

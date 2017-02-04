@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- #### Viewtype Category ####-->
+<variable name="viewcategory_value_info1_titel">
+	<value condition="String.StartsWith(Container.Folderpath,videodb://movies)">$INFO[Container(510).ListItem.Label]</value>
+	<value condition="String.StartsWith(Container.Folderpath,videodb://tvshows)">$INFO[Container(510).ListItem.TvShowTitle]</value>
+</variable>
+
+<variable name="viewcategory_value_info1_label">
+	<value condition="Container.Content(tags)">$LOCALIZE[20459]: $INFO[Container(57).ListItem.Label]</value>
+	<value condition="Container.Content(genres)">$LOCALIZE[515]: $INFO[Container(57).ListItem.Label]</value>
+	<value condition="Container.Content(years)">$LOCALIZE[31078]: $INFO[Container(57).ListItem.Label]</value>
+	<value condition="Container.Content(actors)">$LOCALIZE[20337]: $INFO[Container(57).ListItem.Label]</value>
+	<value condition="Container.Content(studios)">$LOCALIZE[572]: $INFO[Container(57).ListItem.Label]</value>
+	<value condition="Container.Content(directors)">$LOCALIZE[20339]: $INFO[Container(57).ListItem.Label]</value>
+</variable>
+
+<variable name="viewcategory_value_info2_label">
+	<!-- movies -->
+	<value condition="String.StartsWith(Container.Folderpath,videodb://movies) + !Integer.IsGreater(Container(510).NumItems,1)">$INFO[Container(510).NumItems,, $LOCALIZE[20338]]</value>
+	<value condition="String.StartsWith(Container.Folderpath,videodb://movies) + Integer.IsGreater(Container(510).NumItems,1)">$INFO[Container(510).NumItems,, $LOCALIZE[20342]]</value>
+	<!-- tvshows -->
+	<value condition="String.StartsWith(Container.Folderpath,videodb://tvshows) + !Integer.IsGreater(Container(510).NumItems,1)">$INFO[Container(510).NumItems,, $LOCALIZE[20364]]</value>
+	<value condition="String.StartsWith(Container.Folderpath,videodb://tvshows) + Integer.IsGreater(Container(510).NumItems,1)">$INFO[Container(510).NumItems,, $LOCALIZE[20343]]</value>
+</variable>
+
+<variable name="viewcategory_value_info3_label">
+	<!-- movies -->
+	<value condition="!String.IsEmpty(Container(510).ListItem.Year) + Container.Content(genres)">$INFO[Container(510).ListItem.Year]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Genre) + Container.Content(years)">$INFO[Container(510).ListItem.Genre]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Year) + Container.Content(tags)">$INFO[Container(510).ListItem.Year]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Year) + Container.Content(actors)">$INFO[Container(510).ListItem.Year]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Year) + Container.Content(studios)">$INFO[Container(510).ListItem.Year]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Year) + Container.Content(directors)">$INFO[Container(510).ListItem.Year]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Year) + Container.Content(countries)">$INFO[Container(510).ListItem.Year]</value>
+</variable>
+
+<variable name="viewcategory_value_info3_title">
+	<value condition="!Container.Content(years)">$LOCALIZE[345]</value>
+	<value condition="Container.Content(genres)">$LOCALIZE[515]</value>
+</variable>
+
+<variable name="viewcategory_value_info4_label">
+	<!-- movies -->
+	<value condition="!String.IsEmpty(Container(510).ListItem.Studio) + Container.Content(genres)">$INFO[Container(510).ListItem.Studio]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Director) + Container.Content(years)">$INFO[Container(510).ListItem.Director]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Genre) + Container.Content(tags)">$INFO[Container(510).ListItem.Genre]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Genre) + Container.Content(actors)">$INFO[Container(510).ListItem.Genre]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Genre) + Container.Content(studios)">$INFO[Container(510).ListItem.Genre]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Genre) + Container.Content(countries)">$INFO[Container(510).ListItem.Genre]</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Studio) + Container.Content(directors)">$INFO[Container(510).ListItem.Studio]</value>
+</variable>
+
+<variable name="viewcategory_value_info4_title">
+	<value condition="Container.Content(genres)">$LOCALIZE[572]</value>
+	<value condition="Container.Content(years)">$LOCALIZE[20339]</value>
+	<value condition="Container.Content(tags)">$LOCALIZE[515]</value>
+	<value condition="Container.Content(actors)">$LOCALIZE[515]</value>
+	<value condition="Container.Content(studios)">$LOCALIZE[515]</value>
+	<value condition="Container.Content(countries)">$LOCALIZE[515]</value>
+	<value condition="Container.Content(directors)">$LOCALIZE[572]</value>
+</variable>
+
+<variable name="viewcategory_value_info5_label">
+	<!-- movies -->
+	<value condition="Integer.IsGreater(Container(510).ListItem.PlayCount,0) + String.StartsWith(Container.Folderpath,videodb://movies)">$INFO[Container(510).ListItem.LastPlayed]$INFO[Container(510).ListItem.PlayCount, (,)]</value>
+	<value condition="Integer.IsGreater(Container(510).ListItem.PercentPlayed,10) + String.StartsWith(Container.Folderpath,videodb://movies)">$INFO[Container(510).ListItem.PercentPlayed]% $INFO[Container(510).ListItem.LastPlayed,$LOCALIZE[31027] ,]</value>
+	<value condition="!Integer.IsGreater(Container(510).ListItem.PlayCount,0) + String.StartsWith(Container.Folderpath,videodb://movies)">[COLOR=TextColorSelect]$LOCALIZE[31086][/COLOR]</value>
+	<!-- tvshows -->
+	<value condition="!String.IsEmpty(Container(510).ListItem.Property(TotalEpisodes)) + String.StartsWith(Container.Folderpath,videodb://tvshows) + Integer.IsGreater(Container(510).ListItem.Property(UnwatchedEpisodes),0)">$INFO[Container(510).ListItem.Property(TotalEpisodes)] ($LOCALIZE[16101]: $INFO[Container(510).ListItem.Property(UnwatchedEpisodes)])</value>
+	<value condition="!String.IsEmpty(Container(510).ListItem.Property(TotalEpisodes)) + String.StartsWith(Container.Folderpath,videodb://tvshows) + !Integer.IsGreater(Container(510).ListItem.Property(UnwatchedEpisodes),0)">$INFO[Container(510).ListItem.Property(TotalEpisodes)] $LOCALIZE[31087]</value>
+</variable>
+
+<include name="viewcategory-contentbig-artwork">
+	<control type="group">
+		<left>671</left>
+		<top>340</top>
+		<description>artwork recht gross bei focus oben auf contentliste</description>
+		<control type="image">
+			<description>fanart</description>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(fanart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(CategoryBigArtwork),Fanart)</visible>
+		</control>
+		<control type="image">
+			<description>extra fanart</description>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEmpty(Skin.String(CategoryBigArtwork)) | String.Contains(Skin.String(CategoryBigArtwork),Extra-Fanart)</visible>
+		</control>
+		<control type="image">
+			<description>extra thumb</description>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(CategoryBigArtwork),Extra-Thumb)</visible>
+		</control>
+		<control type="image">
+			<description>clearart</description>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(CategoryBigArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<description>clearart</description>
+			<left>90</left>
+			<top>30</top>
+			<height>280</height>
+			<width>290</width>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<texture background="true">$INFO[Container(510).ListItem.Art(clearart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(CategoryBigArtwork),Clear-Art)</visible>
+		</control>
+		<control type="image">
+			<description>clearlogo</description>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(CategoryBigArtwork),Clear-Logo) + !String.IsEqual(Control.Getlabel(6300),xx)</visible>
+		</control>
+		<control type="image">
+			<description>clearlogo</description>
+			<left>90</left>
+			<top>30</top>
+			<height>280</height>
+			<width>290</width>
+			<texture background="true">$INFO[Container(510).ListItem.Art(clearlogo)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<include>viewglobal_topelements_logo</include>
+			<visible>String.Contains(Skin.String(CategoryBigArtwork),Clear-Logo)</visible>
+		</control>
+		<control type="image">
+			<description>Landscape</description>
+			<width>609</width>
+			<height>340</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(landscape)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(CategoryBigArtwork),Landscape)</visible>
+		</control>
+		<control type="group"><!-- Fallback 5346 -->
+			<description>Fallback 5346</description>
+			<visible>!String.IsEmpty(Skin.String(CategoryBigArtwork))</visible>
+			<control type="image">
+				<description>Fanart</description>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(fanart)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>[String.IsEmpty(Skin.String(CategoryBigArtworkFalback)) | String.IsEqual(Skin.String(CategoryBigArtworkFalback),Fanart)] + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<description>defaultpicture</description>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(CategoryBigArtworkFalback),Defaultpicture) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearart</description>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(CategoryBigArtworkFalback),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearart</description>
+				<left>90</left>
+				<top>30</top>
+				<height>280</height>
+				<width>490</width>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<texture background="true">$INFO[Container(510).ListItem.Art(clearart)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.Contains(Skin.String(CategoryBigArtworkFalback),Clear-Art) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearlogo</description>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="false" align="right" aligny="center">scale</aspectratio>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(CategoryBigArtworkFalback),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearlogo</description>
+				<left>90</left>
+				<top>30</top>
+				<height>280</height>
+				<width>490</width>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<texture background="true">$INFO[Container(510).ListItem.Art(clearlogo)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(CategoryBigArtworkFalback),Clear-Logo) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+			<control type="image">
+				<description>Landscape</description>
+				<width>609</width>
+				<height>340</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(landscape)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(CategoryBigArtworkFalback),Landscape) + String.IsEqual(Control.Getlabel(6300),xx)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="viewcategory-contentsmall-artwork">
+	<control type="group"><!-- left info -->
+		<description>artwork links klein</description>
+		<top>340</top>
+		<include>animation_vhoc_fade</include>
+		<visible>!String.Contains(Container(510).NumItems,0) + !ListItem.IsParentFolder + !String.IsEqual(Container(57).ListItem.Label,$LOCALIZE[20462])</visible>
+		<control type="image">
+			<description>fanart</description>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(fanart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.IsEqual(Skin.String(CategorySmallArtwork),Fanart) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<description>extra fanart</description>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5300)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(CategorySmallArtwork),Extra-Fanart) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<description>extra thumb</description>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Control.GetLabel(5301)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(CategorySmallArtwork),Extra-Thumb) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<description>clearart</description>
+			<width>332</width>
+			<height>178</height>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>String.Contains(Skin.String(CategorySmallArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<left>20</left>
+			<top>10</top>
+			<height>164</height>
+			<width>285</width>
+			<texture background="true">$INFO[Container(510).ListItem.Art(clearart)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<include>viewglobal_topelements_clearart</include>
+			<visible>String.Contains(Skin.String(CategorySmallArtwork),Clear-Art) + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<description>clearlogo</description>
+			<width>332</width>
+			<height>178</height>
+			<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+			<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+			<visible>[String.IsEmpty(Skin.String(CategorySmallArtwork)) | String.Contains(Skin.String(CategorySmallArtwork),Clear-Logo)] + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<description>clearlogo</description>
+			<left>20</left>
+			<top>10</top>
+			<height>164</height>
+			<width>285</width>
+			<texture background="true">$INFO[Container(510).ListItem.Art(clearlogo)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<include>viewglobal_topelements_logo</include>
+			<visible>[String.IsEmpty(Skin.String(CategorySmallArtwork)) | String.Contains(Skin.String(CategorySmallArtwork),Clear-Logo)] + !String.IsEqual(Control.Getlabel(6301),xx)</visible>
+		</control>
+		<control type="image">
+			<description>Landscape</description>
+			<width>332</width>
+			<height>178</height>
+			<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+			<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(landscape)]</texture>
+			<fadetime>PanelartworksCrossFadeTime</fadetime>
+			<visible>String.Contains(Skin.String(CategorySmallArtwork),Landscape)</visible>
+		</control>
+		<control type="group"><!-- Fallback 5346 -->
+			<description>Fallback 5346</description>
+			<control type="image">
+				<description>Fanart</description>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(fanart)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.IsEqual(Skin.String(CategorySmallArtworkFalback),Fanart) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<description>defaultpicture</description>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">defaultpictures/DefaultMovieExtrathumb.png</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>[String.IsEmpty(Skin.String(CategorySmallArtworkFalback)) | String.Contains(Skin.String(CategorySmallArtworkFalback),Defaultpicture)] + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearart</description>
+				<width>332</width>
+				<height>178</height>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(CategorySmallArtworkFalback),Clear-Art) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<top>10</top>
+				<height>164</height>
+				<width>285</width>
+				<texture background="true">$INFO[Container(510).ListItem.Art(clearart)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<include>viewglobal_topelements_clearart</include>
+				<visible>String.Contains(Skin.String(CategorySmallArtworkFalback),Clear-Art) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearlogo</description>
+				<width>332</width>
+				<height>178</height>
+				<texture flipx="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">White.png</texture>
+				<colordiffuse>ACBackgroundColorClearart</colordiffuse>
+				<visible>String.Contains(Skin.String(CategorySmallArtworkFalback),Clear-Logo) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<description>clearlogo</description>
+				<left>20</left>
+				<top>10</top>
+				<height>164</height>
+				<width>285</width>
+				<texture background="true">$INFO[Container(510).ListItem.Art(clearlogo)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<include>viewglobal_topelements_logo</include>
+				<visible>String.Contains(Skin.String(CategorySmallArtworkFalback),Clear-Logo) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+			<control type="image">
+				<description>Landscape</description>
+				<top>340</top>
+				<width>332</width>
+				<height>178</height>
+				<aspectratio scalediffuse="true" align="right" aligny="center">scale</aspectratio>
+				<texture background="true" diffuse="artworks/Infopanel_vertical_square_diffuse_flip.png">$INFO[Container(510).ListItem.Art(landscape)]</texture>
+				<fadetime>PanelartworksCrossFadeTime</fadetime>
+				<visible>String.Contains(Skin.String(CategorySmallArtworkFalback),Landscape) + String.IsEqual(Control.Getlabel(6301),xx)</visible>
+			</control>
+		</control>
+	</control>
+</include>
+
+
+</includes>

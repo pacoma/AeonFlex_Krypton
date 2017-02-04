@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- flex 2.0 -->
+<window>
+<defaultcontrol>61</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<left>294</left>
+	<top>145</top>
+</coordinates>
+<controls>
+<control type="group"><!-- default group -->
+	<include>animation_dialog_popup</include>
+	<include content="global_dialog_mid_bg">
+		<param name="global_dialog_mid_bg-left" value="0" />
+		<param name="global_dialog_mid_bg-width" value="680" />
+		<param name="global_dialog_mid_bg-innerwidth" value="670" />
+		<param name="global_dialog_mid_bg-height" value="430" />
+		<param name="global_dialog_mid_bg-headerlabel" value="-" />
+		<param name="global_dialog_mid_headerid" value="1" />
+	</include>
+	<control type="image">
+		<description>line top</description>
+		<top>80</top>
+		<width>600</width>
+		<height>2</height>
+		<align>left</align>
+		<texture flipx="true">backgrounds/divider.png</texture>
+		<colordiffuse>$VAR[AC_value_shadow_color]</colordiffuse>
+	</control>
+	<control type="image"><!-- reflect -->
+		<left>580</left>
+		<top>125</top>
+		<width>80</width>
+		<height>80</height>
+		<bordersize>5</bordersize>
+		<fadetime>FanartCrossFadeTime</fadetime>
+		<aspectratio align="left" aligny="top">keep</aspectratio>
+		<texture border="5" flipy="true" fallback="DefaultFile.png" diffuse="borders/poster-reflect.png" background="true">$INFO[ListItem.Icon]</texture>
+	</control>
+	<control type="image">
+		<left>580</left>
+		<top>60</top>
+		<width>80</width>
+		<height>80</height>
+		<aspectratio scalediffuse="true" aligny="bottom" align="left">keep</aspectratio>
+		<texture fallback="DefaultFile.png" background="true">$INFO[ListItem.Icon]</texture>
+		<bordertexture border="5" colordiffuse="$VAR[AC_value_shadow_color]">borders/border6.png</bordertexture>
+		<bordersize>5</bordersize>
+	</control>
+	<control type="textbox" id="5">
+		<description>textarea</description>
+		<left>40</left>
+		<top>100</top>
+		<width>535</width>
+		<include>PlotNormal308</include>
+		<label>-</label>
+		<pagecontrol>61</pagecontrol>
+	</control>
+	<control type="scrollbar" id="61">
+		<left>8</left>
+		<top>95</top>
+		<height>319</height>
+		<showonepage>true</showonepage><!-- include ueberschreibung -->
+		<include>scrollbar_vertical</include>
+		<onleft>close</onleft>
+		<onright>close</onright>
+		<ondown>61</ondown>
+		<onup>61</onup>
+	</control>
+</control>
+</controls>
+</window>
